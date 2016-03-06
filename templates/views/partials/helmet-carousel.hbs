@@ -1,0 +1,22 @@
+<div class="container">
+    <div id="helmet-carousel-{{slug}}" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+			{{#each gallery}}
+                <li data-target="#helmet-carousel-{{../slug}}" data-slide-to="{{@index}}"
+                    class="{{#if @first}} active{{/if}}">
+                </li>
+			{{/each}}
+        </ol>
+        <div class="carousel-inner">
+			{{#each gallery }}
+                <div class="item{{#if @first}} active{{/if}} row">
+                    <img src="{{url}}" class="img-responsive" alt="{{name}}">
+                    <h4>
+                        <small>{{name}}</small>
+                    </h4>
+                </div><!-- End Item -->
+			{{/each}}
+        </div><!-- End Carousel Inner -->
+    </div><!-- /.carousel -->
+</div>

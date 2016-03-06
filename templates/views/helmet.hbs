@@ -1,0 +1,18 @@
+<!-- if helmet -->
+{{#if helmet}}
+	<div class="container">
+		<h1>{{helmet.name}}</h1>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-md-8">
+				<div class="row">
+					{{>helmet-carousel helmet}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{else}}
+	<!-- else -->
+	<h3 class="text-muted">Helmet does not exist.</h3>
+{{/if}}
