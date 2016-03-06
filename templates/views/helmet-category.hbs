@@ -1,12 +1,23 @@
 <!-- if helmets -->
 <div class="container">
-	{{#if helmets}}
-		{{#each helmets}}
-            <h1>{{this.name}}</h1>
-            <img class="img-responsive" src="{{this.heroImage.url}}"/>
-		{{/each}}
-	{{else}}
-        <!-- else -->
-        <h3 class="text-muted">No helmets exist.</h3>
-	{{/if}}
+{{#if helmets}}
+	{{#everyNth helmets 2}}
+		{{#if isModZeroNotFirst}}
+            </div>
+		{{/if}}
+		{{#if isModZero}}
+            <div class="row">
+		{{/if}}
+            <div class="col-sm-6">
+                <h1>{{this.name}}</h1>
+                <img class="img-responsive" src="{{this.heroImage.url}}"/>
+            </div>
+		{{#if isLast}}
+            </div><!-- End Item -->
+		{{/if}}
+	{{/everyNth}}
+{{else}}
+    <!-- else -->
+    <h3 class="text-muted">No helmets exist.</h3>
+{{/if}}
 </div>

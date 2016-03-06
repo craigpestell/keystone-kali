@@ -12,6 +12,16 @@ var _ = require('underscore');
 var keystone = require('keystone');
 var async = require('async');
 
+function getSiteSettings(cb) {
+	keystone.list('SiteSetting').model.find().exec(function(err, data){
+		var simpleData = {};
+		data.forEach(function(setting, i){
+			simpleData[setting._doc.key] = setting._doc;
+		});
+		cb(err, simpleData);
+	});
+}
+
 function getHelmets(categories, cb) {
 	
 	async.map(categories, function(category, callback){
@@ -60,45 +70,49 @@ exports.initLocals = function (req, res, next) {
 
 	var locals = res.locals;
 
-	getHelmets([{name:'Bike'}, {name:'Powersports'}],function(err, helmets){
-		getHelmetCategoryChildren([{name:'Bike'}, {name:'Powersports'}],function(err, categories){
-			//console.log('categories:', categories);
-			locals.test = 'xxxxxxxx';
-			locals.navLinks = [
-				{
-					label: 'Composite Fusion', 
-					key: 'composite-fusion', 
-					href: '/composite-fusion',
-					dropdown:[
-						{label: 'Overview', key: 'overview', href: '/overview'},
-						{label: 'Kali Design', key: 'kali-design', href: '/kali-design'},
-						{label: 'Cutting Edge Safety', key: 'safety', href: '/safety'},
-						{label: 'The White Papers', key: 'white-papers', href: '/white-papers'}
-					]
-				},
-				{
-					label: 'Bike', key: 'bike', href: '/bike',
-					helmets:helmets.Bike,
-					categories: categories.Bike
-				},
-				{label: 'Powersports', key: 'powersports', href: '/powersports',
-					helmets: helmets.Powersports,
-					categories: categories.Powersports
-				},
-				//{label: 'Blog', key: 'blog', href: '/blog'},
-				//{label: 'Gallery', key: 'gallery', href: '/gallery'},
-				//{label: 'Contact', key: 'contact', href: '/contact'}
-			];
-			//console.log(locals.navLinks);
-			/*for(var i in helmets.categories) {
-			 console.log(i);
-			 }*/
-	
-			locals.user = req.user;
-	
-			next();
+	getSiteSettings(function(err, siteSettings){
+		getHelmets([{name:'Bike'}, {name:'Powersports'}],function(err, helmets){
+			getHelmetCategoryChildren([{name:'Bike'}, {name:'Powersports'}],function(err, categories){
+				//console.log('categories:', categories);
+				locals.test = 'xxxxxxxx';
+				locals.siteSettings = siteSettings;
+				locals.navLinks = [
+					{
+						label: 'Composite Fusion',
+						key: 'composite-fusion',
+						href: '/composite-fusion',
+						dropdown:[
+							{label: 'Overview', key: 'overview', href: '/overview'},
+							{label: 'Kali Design', key: 'kali-design', href: '/kali-design'},
+							{label: 'Cutting Edge Safety', key: 'safety', href: '/safety'},
+							{label: 'The White Papers', key: 'white-papers', href: '/white-papers'}
+						]
+					},
+					{
+						label: 'Bike', key: 'bike', href: '/bike',
+						helmets:helmets.Bike,
+						categories: categories.Bike
+					},
+					{label: 'Powersports', key: 'powersports', href: '/powersports',
+						helmets: helmets.Powersports,
+						categories: categories.Powersports
+					},
+					//{label: 'Blog', key: 'blog', href: '/blog'},
+					//{label: 'Gallery', key: 'gallery', href: '/gallery'},
+					//{label: 'Contact', key: 'contact', href: '/contact'}
+				];
+				//console.log(locals.navLinks);
+				/*for(var i in helmets.categories) {
+				 console.log(i);
+				 }*/
 
+				locals.user = req.user;
+
+				next();
+
+			});
 		});
+		
 	});
 
 };

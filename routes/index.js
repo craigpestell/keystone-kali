@@ -57,6 +57,8 @@ exports = module.exports = function(app) {
 	app.get('/helmets/:helmet?', routes.views.helmet);
 
 	app.get('/helmet-category/:category?', routes.views['helmet-category']);
+
+	app.get('/dealers', routes.views['dealer-locator']);
 	
 	app.all('/contact', routes.views.contact);
 	

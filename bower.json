@@ -1,0 +1,22 @@
+{
+  "name": "kali",
+  "description": "",
+  "main": "keystone.js",
+  "authors": [
+    "craigpestell <craigpestell@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/craigpestell/keystone-kali",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "bootstrap": "^3.3.6"
+  }
+}

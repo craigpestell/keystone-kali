@@ -6,7 +6,7 @@ var Types = keystone.Field.Types;
  * =============
  */
 
-var SiteSetting = new keystone.List('SiteSettings', {
+var SiteSetting = new keystone.List('SiteSetting', {
 	autokey: { from: 'name', path: 'key', unique: true, sortable: true}
 });
 SiteSetting.defaultColumns = 'name';
