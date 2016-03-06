@@ -34,13 +34,37 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-					<img class="navbar-logo" src="{{siteSettings.nav-logo-large.imageValue.url}}" alt="Kali Protectives"/>
-				</a>
+                    <img class="navbar-logo" src="{{siteSettings.nav-logo-large.imageValue.url}}"
+                         alt="Kali Protectives"/>
+                </a>
             </div>
             <div class="collapse navbar-collapse js-navbar-collapse">
                 <ul class="nav navbar-nav">
 					{{# each navLinks}}
-                    <li class="dropdown mega-dropdown {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}">
+					
+							<li class="visible-xs dropdown" {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}">
+                                
+										{{#if helmets}}
+											<a href="{{href}}">{{label}}</a>
+										{{/if}}
+										{{#if dropdown}}
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ label }} <span
+                                                    class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                        <li class="col-sm-12">
+                                            <ul>
+												{{#each dropdown}}
+                                                    <li><a href="{{href}}">{{label}}</a></li>
+												{{/each}}
+                                            </ul>
+                                        </ul>
+                                            </li>
+										{{/if}}
+                                    </li>
+                                
+					
+                            <li class="hidden-xs dropdown mega-dropdown {{#ifeq ../section key}}class="active
+                        "{{else}}{{/ifeq}}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ label }} <span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu mega-dropdown-menu">
@@ -434,11 +458,11 @@
         $(document).ready(function () {
             $(".dropdown").hover(
                     function () {
-                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("400");
+                        $('.mega-dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("400");
                         $(this).toggleClass('open');
                     },
                     function () {
-                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("400");
+                        $('.mega-dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("400");
                         $(this).toggleClass('open');
                     }
             );
