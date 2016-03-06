@@ -13,8 +13,8 @@ HelmetTechnology.relationship({ path: 'helmets', ref: 'Helmet', refPath: 'techno
 HelmetTechnology.add({
 	name: { type: String, required: true, default: '' },
 	description: { type: String, default: '' },
-	heroImage: { type: Types.CloudinaryImage},
-	gallery: { type: Types.CloudinaryImages }
+	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	gallery: { type: Types.CloudinaryImages,  autoCleanup : true }
 });
 
 HelmetTechnology.register();

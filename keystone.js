@@ -9,17 +9,11 @@ var handlebars = require('express-handlebars');
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
-keystone.set('s3 config', 
-	{ 
-		bucket: 'kali-www', 
-		key: 'AKIAIHXC3MAW7FFGJFSQ', 
-		secret: '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' 
-	});
 
 keystone.init({
 
 	'name': 'kali',
-	'brand': 'kali',
+	'brand': 'Kali Protectives',
 	
 	'sass': 'public',
 	'static': 'public',
@@ -40,8 +34,14 @@ keystone.init({
 	'auto update': true,
 	'session': true,
 	'auth': true,
-	'user model': 'User'
+	'user model': 'User',
 
+
+	's3 config': {
+		bucket: 'kali-www',
+		key: 'AKIAIHXC3MAW7FFGJFSQ',
+		secret: 'g1Ggylpwuu4FCqmcLUM8k05XA+0RVDDkXCqBjSis'
+	}
 });
 
 // Load your project's Models

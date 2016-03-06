@@ -11,7 +11,17 @@ var HelmetCategory = new keystone.List('HelmetCategory', {
 });
 HelmetCategory.relationship({ path: 'helmets', ref: 'Helmet', refPath: 'categories' });
 HelmetCategory.add({
-	name: { type: String, required: true, default: '' }
+	name: { type: String, required: true, default: '' },
+	slug: { type: String, required: true, initial: true},
+	parentCategory:{ type: Types.Relationship, ref: 'HelmetCategory'}
+	
+});
+
+// Virtuals
+// ------------------------------
+
+HelmetCategory.schema.virtual('url').get(function() {
+	return '/helmet-category/' + this.slug;
 });
 
 HelmetCategory.register();

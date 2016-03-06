@@ -1,0 +1,12 @@
+<!-- if helmets -->
+<div class="container">
+	{{#if helmets}}
+		{{#each helmets}}
+            <h1>{{this.name}}</h1>
+            <img class="img-responsive" src="{{this.heroImage.url}}"/>
+		{{/each}}
+	{{else}}
+        <!-- else -->
+        <h3 class="text-muted">No helmets exist.</h3>
+	{{/if}}
+</div>

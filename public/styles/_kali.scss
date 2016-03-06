@@ -16,19 +16,20 @@
 body {
   font-family: 'Open Sans', 'sans-serif';
 }
+
 @media (min-width: 768px) {
   body {
-	background: url("http://griddle.it/720px-12-30px") repeat-y center top !important;
+	background: url("http://griddle.it/720px-4-30px") repeat-y center top !important;
   }
 }
 @media (min-width: 992px) {
   body {
-	background: url("http://griddle.it/940px-12-30px") repeat-y center top !important;
+	background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
   }
 }
 @media (min-width: 1200px) {
   body {
-	background: url("http://griddle.it/1140px-12-30px") repeat-y center top !important;
+	background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
   }
 }
 
