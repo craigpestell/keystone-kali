@@ -44,7 +44,12 @@ function getHelmetCategoryChildren(categories, cb) {
 
 	async.map(categories, function(category, callback){
 		keystone.list('HelmetCategory').model.findOne({name:category.name}).exec(function (err, category) {
-				keystone.list('HelmetCategory').model.find({parentCategory: category._doc._id}, callback);
+			keystone.list('HelmetCategory').model
+				.find({parentCategory: category._doc._id})
+				.sort('sort')
+				.exec(function (err, data) {
+					callback(err, data);
+				});
 		});
 			
 	},

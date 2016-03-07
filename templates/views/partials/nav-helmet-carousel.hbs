@@ -1,37 +1,9 @@
-
-<div id="nav-carousel-{{key}}" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-		{{#everyNth helmets 4}}
-			{{#if isModZero}}
-				<li data-target="#nav-carousel-{{../../key}}" data-slide-to="{{page}}" 
-					class="{{#if isFirst}} active{{/if}}"></li>
-			{{/if}}
-
-		{{/everyNth}}
-    </ol>
-<div class="carousel-inner">
-
-	{{#everyNth helmets 4}}
-		{{#if isModZeroNotFirst}}
-        </div>
-		{{/if}}
-		{{#if isModZero}}
-        <div class="item{{#if isFirst}} active{{/if}} row">
-		{{/if}}
+<div id="nav-carousel-{{key}}" class="slick-slider">
+	{{#each helmets}}
         <div class="col-sm-3">
-            <a href="{{url}}">
-                <img src="{{carouselImage.url}}" class="img-responsive" alt="{{name}}">
-            </a>
-            <h4>
-                <small>{{name}}</small>
-            </h4>
-
-        </div>
-
-		{{#if isLast}}
+                <a href="{{url}}">
+                    <img src="{{carouselImage.url}}" class="img-responsive" alt="{{name}}">
+                </a>
         </div><!-- End Item -->
-		{{/if}}
-	{{/everyNth}}
-</div><!-- End Carousel Inner -->
-</div><!-- /.carousel -->
+	{{/each}}
+</div>

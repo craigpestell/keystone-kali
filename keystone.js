@@ -41,7 +41,9 @@ keystone.init({
 		bucket: 'kali-www',
 		key: 'AKIAIHXC3MAW7FFGJFSQ',
 		secret: 'g1Ggylpwuu4FCqmcLUM8k05XA+0RVDDkXCqBjSis'
-	}
+	},
+	'embedly api key': 'e9763d8cbe1c468fb6b5b10b5ac87e98'
+	
 });
 
 // Load your project's Models

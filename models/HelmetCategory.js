@@ -13,7 +13,8 @@ HelmetCategory.relationship({ path: 'helmets', ref: 'Helmet', refPath: 'categori
 HelmetCategory.add({
 	name: { type: String, required: true, default: '' },
 	slug: { type: String, required: true, initial: true},
-	parentCategory:{ type: Types.Relationship, ref: 'HelmetCategory'}
+	parentCategory:{ type: Types.Relationship, ref: 'HelmetCategory'},
+	sort: { type: Number }
 	
 });
 

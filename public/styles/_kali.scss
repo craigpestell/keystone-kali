@@ -21,15 +21,27 @@ body {
   body {
 	background: url("http://griddle.it/720px-4-30px") repeat-y center top !important;
   }
+  .slick-slider{
+	height: 80px;
+	margin-bottom: 30px;
+  }
 }
 @media (min-width: 992px) {
   body {
 	background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
   }
+  .slick-slider{
+	height: 140px;
+	margin-bottom: 50px;
+  }
 }
 @media (min-width: 1200px) {
   body {
 	background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
+  }
+  .slick-slider{
+	height: 200px;
+	margin-bottom: 50px;
   }
 }
 
@@ -37,6 +49,16 @@ body {
   height:50px;
   margin-top:-15px;
 }
+
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent; }
+
+@media (min-width: 768px) {
+  .navbar {
+	border-radius: 0px; } }
 
 .mega-dropdown {
   position: static !important;
@@ -70,47 +92,3 @@ body {
   line-height: 30px;
 }
 
-.carousel-control {
-  width: 30px;
-  height: 30px;
-  top: -35px;
-
-}
-.left.carousel-control {
-  right: 30px;
-  left: inherit;
-}
-.carousel-control .glyphicon-chevron-left,
-.carousel-control .glyphicon-chevron-right {
-  font-size: 12px;
-  background-color: #fff;
-  line-height: 30px;
-  text-shadow: none;
-  color: #333;
-  border: 1px solid #ddd;
-}
-.carousel-indicators li {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 1px;
-  text-indent: -999px;
-  border: 1px solid #337ab7;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: green \9;
-  background-color: transparent;
-}
-.carousel-indicators .active {
-  margin: 0;
-  width: 12px;
-  height: 12px;
-  background-color: #fff; }
-
-.nav-slider-group{
-  border: 1px dashed black;
-}
-.nav-slider-group > *{
-  padding:5px;
-  float:left;
-}

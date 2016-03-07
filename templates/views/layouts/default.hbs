@@ -7,6 +7,8 @@
     <title>kali</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link href="/styles/site.css" rel="stylesheet">
+    <link href="/js/slick-carousel/slick//slick.css" rel="stylesheet">
+
 
 	{{!-- This file provides the default styling for the KeystoneJS Content Editor
         - only renders when user is logged in and admin--}}
@@ -18,7 +20,15 @@
 	<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
 	<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+	{{!--
+        //- jQuery 1.11.3 is included by default, and required by both Bootstrap
+        //- and the KeystoneJS Content Editor. If you are not targeting IE8,
+        //- you can upgrade to 2.1.4 (also bundled) for better performance.
+    --}}
+    <!--<script src="/js/jquery/jquery-1.11.3.min.js"></script>-->
+    <!--jquery 2.2.1-->
+    <script src="/js/jquery/dist/jquery.min.js"></script>
+	
 </head>
 <body>
 <div id="header">
@@ -41,36 +51,37 @@
             <div class="collapse navbar-collapse js-navbar-collapse">
                 <ul class="nav navbar-nav">
 					{{# each navLinks}}
-					
-							<li class="visible-xs dropdown" {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}">
-                                
-										{{#if helmets}}
-											<a href="{{href}}">{{label}}</a>
-										{{/if}}
-										{{#if dropdown}}
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ label }} <span
-                                                    class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                        <li class="col-sm-12">
-                                            <ul>
-												{{#each dropdown}}
-                                                    <li><a href="{{href}}">{{label}}</a></li>
-												{{/each}}
-                                            </ul>
-                                        </ul>
-                                            </li>
-										{{/if}}
-                                    </li>
-                                
-					
-                            <li class="hidden-xs dropdown mega-dropdown {{#ifeq ../section key}}class="active
-                        "{{else}}{{/ifeq}}">
+
+                    <li class="visible-xs dropdown{{#ifeq ../section key}} active{{else}}{{/ifeq}}">
+
+						{{#if helmets}}
+                            <a href="{{href}}">{{label}}</a>
+						{{/if}}
+						{{#if dropdown}}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ label }} <span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="col-sm-12">
+                                    <ul>
+										{{#each dropdown}}
+                                            <li><a href="{{href}}">{{label}}</a></li>
+										{{/each}}
+                                    </ul>
+                            </ul>
+                        </li>
+						{{/if}}
+                        </li>
+                            
+						<li class="hidden-xs dropdown mega-dropdown {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ label }} <span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu mega-dropdown-menu">
                             <li class="col-sm-12">
 								{{#if helmets}}
-									{{> nav-helmet-carousel}}
+									<div class="container">
+										{{> nav-helmet-carousel}}
+                                    </div>
+								
 									{{> nav-helmet-categories}}
 								{{/if}}
 								{{#if dropdown}}
@@ -132,14 +143,6 @@
         </div>
     </div>
 	{{!--
-        //- jQuery 1.11.3 is included by default, and required by both Bootstrap
-        //- and the KeystoneJS Content Editor. If you are not targeting IE8,
-        //- you can upgrade to 2.1.4 (also bundled) for better performance.
-    --}}
-    <!--<script src="/js/jquery/jquery-1.11.3.min.js"></script>-->
-    <!--jquery 2.2.1-->
-    <script src="/js/jquery/dist/jquery.min.js"></script>
-	{{!--
         //- Customise which Bootstrap javascript files are served by including
         //- them specifically here, instead of bootstrap-3.3.5.min.js
     --}}
@@ -148,10 +151,43 @@
     <script src="/js/handlebars/handlebars.min.js"></script>
     <script src="http://maps.google.com/maps/api/js"></script>
     <script src="/js/plugins/storeLocator/jquery.storelocator.js"></script>
+	<script src="/js/slick-carousel/slick/slick.js"></script>
 
 	{{{isAdminEditorJS user}}}
 
     <script>
+
+        $(document).ready(function () {
+			var navSliderInit = false;
+            $(".mega-dropdown").hover(
+				function () {
+					$('.mega-dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("400");
+					$(this).toggleClass('open');
+						
+						$(this).find('.slick-slider').not('.slick-initialized').slick({
+							infinite: true,
+							slidesToShow: 4,
+							slidesToScroll: 1,
+							centerMode: true,
+							centerPadding: '0px',
+							dots: true,
+							adaptiveHeight: true
+						});
+					
+				},
+				function () {
+					$('.mega-dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("400");
+					$(this).toggleClass('open');
+				}
+            );
+
+            $(function () {
+                $('#bh-sl-map-container').storeLocator({autoGeocode: true, dataRaw: getData()});
+            });
+            
+
+        });
+
         function getData() {
             return [{
                 "id": "1",
@@ -455,21 +491,6 @@
                 "hours3": ""
             }];
         }
-        $(document).ready(function () {
-            $(".mega-dropdown").hover(
-                    function () {
-                        $('.mega-dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("400");
-                        $(this).toggleClass('open');
-                    },
-                    function () {
-                        $('.mega-dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("400");
-                        $(this).toggleClass('open');
-                    }
-            );
-            $(function () {
-                $('#bh-sl-map-container').storeLocator({autoGeocode: true, dataRaw: getData()});
-            });
-        });
     </script>
 </body>
 </html>

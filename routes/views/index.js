@@ -9,6 +9,9 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'home';
 	
+	//popuplate Home page data.
+	view.query('home', keystone.list('BasePage').model.findOne({slug:'home'}));
+	
 	// Render the view
 	view.render('index');
 	
