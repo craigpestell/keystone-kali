@@ -27,7 +27,9 @@ function getHelmets(categories, cb) {
 	async.map(categories, function(category, callback){
 		keystone.list('HelmetCategory').model.find({name:category.name}).exec(function (err, category) {
 			if(category.length) {
-				keystone.list('Helmet').model.find().where('categories').in([category[0]._id]).exec(callback);
+				keystone.list('Helmet').model.find()
+					.where('categories').in([category[0]._id])
+					.sort('sort' + category[0]._doc.name).exec(callback);
 			}else{
 				callback('No helmet categories found', null);	
 			}

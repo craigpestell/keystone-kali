@@ -33,7 +33,7 @@
 <body>
 <div id="header">
 
-
+	{{json navLinks}}
     <div class="">
         <nav class="navbar navbar-inverse">
             <div class="navbar-header">
@@ -158,7 +158,7 @@
     <script>
 
         $(document).ready(function () {
-			var navSliderInit = false;
+			
             $(".mega-dropdown").hover(
 				function () {
 					$('.mega-dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("400");
@@ -167,11 +167,12 @@
 						$(this).find('.slick-slider').not('.slick-initialized').slick({
 							infinite: true,
 							slidesToShow: 4,
-							slidesToScroll: 1,
-							centerMode: true,
+							slidesToScroll: 4,
+							dots:true
+							/*centerMode: true,
 							centerPadding: '0px',
 							dots: true,
-							adaptiveHeight: true
+							adaptiveHeight: true*/
 						});
 					
 				},

@@ -19,7 +19,9 @@ Helmet.add({
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },
 	carouselImage: { type: Types.CloudinaryImage, autoCleanup : true },
 	gallery: { type: Types.CloudinaryImages,  autoCleanup : true },
-	extra: { type: Types.Html, wysiwyg: true }
+	extra: { type: Types.Html, wysiwyg: true },
+	sortBike: { type: Number },
+	sortPowersports: { type: Number }
 });
 
 // Virtuals
