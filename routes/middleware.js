@@ -26,7 +26,12 @@ function getHelmets(categories, cb) {
 	
 	async.map(categories, function(category, callback){
 		keystone.list('HelmetCategory').model.find({name:category.name}).exec(function (err, category) {
-			keystone.list('Helmet').model.find().where('categories').in([category[0]._id]).exec(callback);
+			if(category.length) {
+				keystone.list('Helmet').model.find().where('categories').in([category[0]._id]).exec(callback);
+			}else{
+				callback('No helmet categories found', null);	
+			}
+				
 		});
 	},
 	function done(err, data){
@@ -43,14 +48,18 @@ function getHelmets(categories, cb) {
 function getHelmetCategoryChildren(categories, cb) {
 
 	async.map(categories, function(category, callback){
-		keystone.list('HelmetCategory').model.findOne({name:category.name}).exec(function (err, category) {
-			keystone.list('HelmetCategory').model
-				.find({parentCategory: category._doc._id})
-				.sort('sort')
-				.exec(function (err, data) {
-					callback(err, data);
-				});
-		});
+		if(category.length) {
+			keystone.list('HelmetCategory').model.findOne({name:category.name}).exec(function (err, category) {
+				keystone.list('HelmetCategory').model
+					.find({parentCategory: category._doc._id})
+					.sort('sort')
+					.exec(function (err, data) {
+						callback(err, data);
+					});
+			});
+		}else{
+			callback('No helmet categories found', null);
+		}
 			
 	},
 	function done(err, data){
