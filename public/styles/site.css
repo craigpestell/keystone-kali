@@ -5,7 +5,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -5823,7 +5822,7 @@ button.close {
     display: none !important; } }
 
 #header {
-  margin-top: 30px; }
+  margin-top: 0px; }
 
 #footer {
   margin-top: 30px;
@@ -6414,8 +6413,15 @@ button.close {
   zoom: 1;
   /* ie 6/7 */ }
 
+@font-face {
+  font-family: 'Gotham';
+  src: url("/fonts/Gotham-Light.eot");
+  src: url("/fonts/Gotham-Light.eot?#iefix") format("embedded-opentype"), url("/fonts/Gotham-Light.woff") format("woff"), url("/fonts/Gotham-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
 body {
-  font-family: 'Open Sans', 'sans-serif'; }
+  font-family: Gotham, Arial, SansSerif; }
 
 @media (min-width: 768px) {
   body {
@@ -6438,47 +6444,40 @@ body {
     height: 200px;
     margin-bottom: 50px; } }
 
-.navbar-logo {
-  height: 50px;
-  margin-top: -15px; }
+/** bootstrap 3 helpers */
+.navbar-form input, .form-inline input {
+  width: auto; }
 
 .navbar {
+  margin-bottom: 0;
+  min-height: 0; }
+
+.subnav {
+  margin: 0;
+  top: 0px;
+  z-index: 10;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #E1E1E1;
+  padding: 0px 0px 0px 0px; }
+
+.subnav.affix {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 10; }
+
+.navbar-brand {
+  padding: 0; }
+
+.navbar-logo, .subnav-logo {
+  height: 50px; }
+
+.panel {
+  border: 0;
+  margin-bottom: 0; }
+
+/*.navbar {
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
-  border: 1px solid transparent; }
-
-@media (min-width: 768px) {
-  .navbar {
-    border-radius: 0px; } }
-
-.mega-dropdown {
-  position: static !important; }
-
-.mega-dropdown-menu {
-  padding: 20px 0px;
-  width: 100%;
-  box-shadow: none;
-  -webkit-box-shadow: none; }
-
-.mega-dropdown-menu > li > ul {
-  padding: 0;
-  margin: 0; }
-
-.mega-dropdown-menu > li > ul > li {
-  list-style: none; }
-
-.mega-dropdown-menu > li > ul > li > a {
-  display: block;
-  color: #222;
-  padding: 3px 5px; }
-
-.mega-dropdown-menu > li ul > li > a:hover,
-.mega-dropdown-menu > li ul > li > a:focus {
-  text-decoration: none; }
-
-.mega-dropdown-menu .dropdown-header {
-  font-size: 18px;
-  color: #ff3546;
-  padding: 5px 60px 5px 5px;
-  line-height: 30px; }
+  border: 1px solid transparent; }*/

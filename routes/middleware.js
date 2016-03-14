@@ -23,32 +23,33 @@ function getSiteSettings(cb) {
 }
 
 function getHelmets(categories, cb) {
-	
-	async.map(categories, function(category, callback){
+	function getHelmetsForCategory(category, callback){
 		keystone.list('HelmetCategory').model.find({name:category.name}).exec(function (err, category) {
 			if(category.length) {
 				keystone.list('Helmet').model.find()
 					.where('categories').in([category[0]._id])
 					.sort('sort' + category[0]._doc.name).exec(callback);
 			}else{
-				callback('No helmet categories found', null);	
+				callback('No helmet categories found', null);
 			}
-				
+
 		});
-	},
-	function done(err, data){
-		var returnData = {};
-		var thisData = data;
-		
-		categories.forEach(function(category, i, categories){
-			returnData[categories[i].name] = thisData[i];
+	}
+	async.map(categories, getHelmetsForCategory,
+		function done(err, data){
+			var returnData = {};
+			var thisData = data;
+			
+			categories.forEach(function(category, i, categories){
+				returnData[categories[i].name] = thisData[i];
+			});
+			cb(err, returnData);
 		});
-		cb(err, returnData);
-	});
 }
 
 function getHelmetCategoryChildren(categories, cb) {
 
+	
 	async.map(categories, function(category, callback){
 		keystone.list('HelmetCategory').model.findOne({name:category.name}).exec(function (err, category) {
 			if(category !== undefined) {		
@@ -104,7 +105,7 @@ exports.initLocals = function (req, res, next) {
 						]
 					},
 					{
-						label: 'Bike', key: 'bike', href: '/helmet-category/bike',
+						label: 'Helmets', key: 'bike', href: '/helmet-category/bike',
 						helmets:helmets.Bike,
 						categories: categories.Bike
 					},
