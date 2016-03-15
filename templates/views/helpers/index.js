@@ -375,6 +375,22 @@ module.exports = function() {
 		return ret;
 	};
 
+	_helpers.safeString = function(html){
+			//url = Handlebars.escapeExpression(url);
+			//text = Handlebars.escapeExpression(text);
+
+		return new hbs.SafeString(
+			html
+		);
+		
+	};
+	
+	_helpers.everyOther = function (index, amount, scope) {
+		if ( ++index % amount )
+			return scope.inverse(this);
+		else
+			return scope.fn(this);
+	};
 
 	return _helpers;
 };

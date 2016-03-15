@@ -13,7 +13,7 @@
 }
 
 @font-face {
-  font-family: 'Gotham';
+  font-family: 'Gotham-Light';
   src: url('/fonts/Gotham-Light.eot');
   src: url('/fonts/Gotham-Light.eot?#iefix') format('embedded-opentype'),
   url('/fonts/Gotham-Light.woff') format('woff'),
@@ -22,8 +22,28 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Gotham-Black';
+  src: url('/fonts/GothamBlack.eot');
+  src: url('/fonts/GothamBlack.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/GothamBlack.woff') format('woff'),
+  url('/fonts/GothamBlack.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham-Medium';
+  src: url('/fonts/GothamMedium.eot');
+  src: url('/fonts/GothamMedium.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/GothamMedium.woff') format('woff'),
+  url('/fonts/GothamMedium.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
 body{
-  font-family: Gotham, Arial, SansSerif;
+  font-family: Gotham-Medium, Arial, SansSerif;
 }
 @media (min-width: 768px) {
   body {
@@ -53,7 +73,20 @@ body{
   }
 }
 
+h1, h2, h3{
+  font-family: Gotham-Black, Arial, SansSerif;
+  text-transform: uppercase;
+}
+
 /** bootstrap 3 helpers */
+
+.helmets .row:nth-of-type(odd) {
+  background: #ffffff;
+}
+
+.helmets .row:nth-of-type(even) {
+  background: #dcdcdc;
+}
 
 .navbar-form input, .form-inline input {
   width:auto;
@@ -62,6 +95,7 @@ body{
 .navbar {
   margin-bottom:0;
   min-height:0;
+  text-transform: uppercase;
 }
 
 .subnav {

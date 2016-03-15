@@ -74,6 +74,7 @@ function getHelmetCategoryChildren(categories, cb) {
 		cb(err, returnData);
 	});
 }
+
 /**
  Initialises the standard view locals
 
@@ -81,7 +82,6 @@ function getHelmetCategoryChildren(categories, cb) {
  the navigation in the header, you may wish to change this array
  or replace it with your own templates / logic.
  */
-
 exports.initLocals = function (req, res, next) {
 
 	var locals = res.locals;
