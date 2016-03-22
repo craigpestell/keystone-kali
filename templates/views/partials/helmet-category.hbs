@@ -3,11 +3,10 @@
 	
 {{#if helmets}}
 {{#each helmets.subCategories}}
-	<div id="{{slug}}" style="margin-top:-100px;padding-top:100px;">{{slug}} anchor</div>
+	<div class="row"><div id="{{slug}}" class="col-sm-12" style="margin-top:-100px;padding-top:100px;"><h2>{{slug}}</h2></div></div>
 	{{#each helmets}}
 	<div class="row">
 		<div class="col-sm-6">
-			
 			<a href="{{this.url}}">
 				<img class="img-responsive" src="{{this.heroImage.url}}"/>
 			</a>
