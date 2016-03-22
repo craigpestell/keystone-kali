@@ -105,11 +105,11 @@ exports.initLocals = function (req, res, next) {
 					label: 'Helmets', key: 'bike', href: '/helmet-category/bike',
 					helmets: data.categories.bike,
 					categories: data.categories.bike.subCategories
-				},
+				}/*,
 				{label: 'Powersports', key: 'powersports', href: '/helmet-category/powersports',
 					helmets: data.categories.powersports,
 					categories: data.categories.powersports.subCategories
-				},
+				},*/
 			];
 			
 	

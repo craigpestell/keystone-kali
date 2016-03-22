@@ -2,9 +2,8 @@
 
 <div class="navbar subnav" role="navigation">
     <div class="navbar-inner">
-		
-		<div class="btn-group-wrap">
-			<a href="#top"><img class="navbar-logo subnav-logo" src="{{parent.siteSettings.nav-logo-large.imageValue.url}}" alt="Kali Protectives"/></a>
+        <a href="#top"><img class="navbar-logo subnav-logo" src="{{parent.siteSettings.nav-logo-large.imageValue.url}}" alt="Kali Protectives"/></a>
+		<div class="text-center">
 			{{#each categories}}
 				<a class="btn btn-default" href="#{{slug}}" role="button">{{name}}</a>&nbsp;
 			{{/each}}
