@@ -1,3 +1,4 @@
+@import 'bootstrap/bootstrap/variables';
 .clearfix:before,
 .clearfix:after {
   content: "";
@@ -79,6 +80,15 @@ h1, h2, h3{
   margin-top: 0px;
 }
 
+/** bootstrap 3 variable overrides */
+$brand-primary: red;
+$link-color: purple;
+$navbar-default-link-color:                green !default;
+$navbar-default-link-hover-color:          #333 !default;
+$navbar-default-link-hover-bg:             transparent !default;
+$navbar-default-link-active-color:         #555 !default;
+
+
 /** bootstrap 3 helpers */
 
 .helmets .row {
@@ -90,13 +100,13 @@ h1, h2, h3{
   padding-left:0;
 }​
 
-.helmets .row:nth-of-type(odd) {
+/*.helmets .row:nth-of-type(odd) {
   background: #ffffff;
 }
 
 .helmets .row:nth-of-type(even) {
   background: #dcdcdc;
-}
+}*/
 
 .navbar-form input, .form-inline input {
   width:auto;
@@ -107,12 +117,14 @@ h1, h2, h3{
   min-height:0;
   text-transform: uppercase;
 }
-
+.navbar .navbar-right {
+  margin-right: 0px;
+}
 .subnav {
   margin:0;
   top: 0px;
   z-index: 10;
-  background-color: rgb(247,247,247);
+  background-color: $body-bg;
   border-bottom: 1px solid #E1E1E1;
   padding: 0px 0px 0px 0px;
 }

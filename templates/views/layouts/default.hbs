@@ -33,6 +33,7 @@
 <body>
 
 <div id="header">
+	
     <nav id="main-navbar" class="navbar navbar-static-top">
 		<div class="">
 			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
@@ -65,8 +66,9 @@
 		<div class="panel">
 			{{# each navLinks}}
 			<div class="collapse" id="{{key}}">
-				{{> nav-helmet-categories parent=..}}
-				{{# if helmets}}{{> helmet-category}}{{/if}}
+				
+				{{> nav-helmet-categories}}
+				{{> helmet-category}}
 				{{#if dropdown}}
 				<ul>
 					{{#each dropdown}}

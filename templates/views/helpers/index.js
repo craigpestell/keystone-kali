@@ -350,7 +350,7 @@ module.exports = function() {
 	};
 	
 	_helpers.json = function(context) {
-		console.log('json helper:', JSON.stringify(context));
+		//console.log('json helper:', JSON.stringify(context));
 		return JSON.stringify(context);
 	};
 	

@@ -13,7 +13,10 @@ exports = module.exports = function(req, res) {
 	// TODO: filter by category
 	
 	keystone.list('HelmetCategory').model.find({slug:req.params.category},function (err, data) {
-		view.query('helmets',keystone.list('Helmet').model.find().where('categories').in([data[0]._doc._id]));
+		if(data.length){
+			view.query('helmets',keystone.list('Helmet').model.find().where('categories').in([data[0]._doc._id]));
+			
+		}
 		// Render the view
 		view.render('helmet-category');
 	});

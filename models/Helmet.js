@@ -13,7 +13,8 @@ Helmet.defaultColumns = 'name,categories,technologies';
 Helmet.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
-	categories: { type: Types.Relationship, ref: 'HelmetCategory', many: true },
+	mainCategories: { type: Types.Relationship, ref: 'HelmetCategory', many: true },
+	subCategory: { type: Types.Relationship, ref: 'HelmetSubCategory' },
 	technologies: { type: Types.Relationship, ref: 'HelmetTechnology', many: true },
 	specs: { type: Types.Html },
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },

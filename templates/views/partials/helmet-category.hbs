@@ -1,9 +1,13 @@
 <!-- if helmets -->
 <div class="container helmets">
+	
 {{#if helmets}}
-{{#each helmets}}
+{{#each helmets.subCategories}}
+	<div id="{{slug}}" style="margin-top:-100px;padding-top:100px;">{{slug}} anchor</div>
+	{{#each helmets}}
 	<div class="row">
 		<div class="col-sm-6">
+			
 			<a href="{{this.url}}">
 				<img class="img-responsive" src="{{this.heroImage.url}}"/>
 			</a>
@@ -13,6 +17,7 @@
 			{{safeString this.specs}}
 		</div>
 	</div>
+	{{/each}}
 {{/each}}
 {{else}}
 	<!-- else -->
