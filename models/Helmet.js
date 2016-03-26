@@ -16,6 +16,7 @@ Helmet.add({
 	mainCategories: { type: Types.Relationship, ref: 'HelmetCategory', many: true },
 	subCategory: { type: Types.Relationship, ref: 'HelmetSubCategory' },
 	technologies: { type: Types.Relationship, ref: 'HelmetTechnology', many: true },
+	description: { type: Types.Html, default: '' },
 	specs: { type: Types.Html },
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },
 	carouselImage: { type: Types.CloudinaryImage, autoCleanup : true },

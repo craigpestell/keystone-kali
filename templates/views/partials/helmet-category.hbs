@@ -2,6 +2,9 @@
 <div class="container helmets">
 	
 {{#if helmets}}
+
+	{{> nav-helmet-categories helmets}}
+
 {{#each helmets.subCategories}}
 	<div class="row"><div id="{{slug}}" class="col-sm-12" style="{{#unless @first}}margin-top:-80px;{{/unless}}padding-top:100px;"><h3>{{name}}</h3></div></div>
 	{{#each helmets}}

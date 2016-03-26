@@ -18,6 +18,7 @@
   "dependencies": {
     "handlebars": "^4.0.5",
     "bootstrap": "^3.3.6",
-    "lazysizes": "^1.4.0"
+    "lazysizes": "^1.4.0",
+    "highcharts": "^4.2.3"
   }
 }

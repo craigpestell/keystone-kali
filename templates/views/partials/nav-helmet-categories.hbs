@@ -1,19 +1,15 @@
 <!-- subnav here -->
 
-<div class="navbar subnav" role="navigation">
+<div class="navbar subnav helmets hidden-xs hidden-sm" role="navigation">
     <div class="navbar-inner">
-        <a href="#top"><img class="navbar-logo subnav-logo" src="{{parent.siteSettings.nav-logo-large.imageValue.url}}" alt="Kali Protectives"/></a>
+        <a href="#top" ><img class="navbar-logo subnav-logo" src="{{parent.siteSettings.nav-logo-large.imageValue.url}}" alt="Kali Protectives"/></a>
 		<div class="text-center">
-			{{#each categories}}
-				<a class="btn btn-default" href="#{{slug}}" role="button">{{name}}</a>&nbsp;
+			
+			{{#each this}}
+				<a class="btn btn-default nav-anchor" href="#{{slug}}" role="button">{{name}}</a>&nbsp;
 			{{/each}}
 
 		</div>
         
     </div>
 </div>
-
-<div class="container text-center">
-	
-</div>
-

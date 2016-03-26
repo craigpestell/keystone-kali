@@ -48,7 +48,7 @@ body{
 }
 @media (min-width: 768px) {
   body {
-	background: url("http://griddle.it/720px-4-30px") repeat-y center top !important;
+	//background: url("http://griddle.it/720px-4-30px") repeat-y center top !important;
   }
   .slick-slider{
 	height: 80px;
@@ -57,7 +57,7 @@ body{
 }
 @media (min-width: 992px) {
   body {
-	background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
+	//background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
   }
   .slick-slider{
 	height: 140px;
@@ -66,7 +66,7 @@ body{
 }
 @media (min-width: 1200px) {
   body {
-	background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
+	//background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
   }
   .slick-slider{
 	height: 200px;
@@ -78,6 +78,10 @@ h1, h2, h3{
   font-family: Gotham-Black, Arial, SansSerif;
   text-transform: uppercase;
   margin-top: 0px;
+}
+
+.img-circle{
+  -webkit-transform:translate(-50%);
 }
 
 /** bootstrap 3 variable overrides */

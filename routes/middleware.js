@@ -60,6 +60,8 @@ function getNavData(navDataCb){
 					});
 					
 					if(cat._id.equals(subCat.parentCategory)){
+						subCat.label = subCat.name;
+						subCat.href = '/' + cat.slug + '/' + subCat.slug;
 						returnData.categories[cat.slug].subCategories.push(subCat);
 					}
 				});
@@ -94,22 +96,30 @@ exports.initLocals = function (req, res, next) {
 					label: 'Composite Fusion',
 					key: 'composite-fusion',
 					href: '/composite-fusion',
+					categories: [{name:'Overview', slug: 'overview'},
+						{name:'Kali Design', slug: 'kali-design'},
+						{name:'Cutting Edge Safety', slug: 'safety'},
+						{name:'The White Papers', slug: 'white-papers'}],
 					dropdown:[
 						{label: 'Overview', key: 'overview', href: '/overview'},
 						{label: 'Kali Design', key: 'kali-design', href: '/kali-design'},
 						{label: 'Cutting Edge Safety', key: 'safety', href: '/safety'},
 						{label: 'The White Papers', key: 'white-papers', href: '/white-papers'}
 					]
-				},
-				{
-					label: 'Helmets', key: 'bike', href: '/helmet-category/bike',
+				}
+				,{
+					label: 'Helmets', key: 'bike', href: '/bike',
 					helmets: data.categories.bike,
-					categories: data.categories.bike.subCategories
+					categories: data.categories.bike.subCategories,
+					dropdown: data.categories.bike.subCategories
 				}/*,
-				{label: 'Powersports', key: 'powersports', href: '/helmet-category/powersports',
+				{	label: 'Powersports', key: 'powersports', href: '/helmet-category/powersports',
 					helmets: data.categories.powersports,
 					categories: data.categories.powersports.subCategories
-				},*/
+				}*/
+				,{
+					label: 'Dealer Locator', key: 'dealer-locator', href: '/dealers',
+				}
 			];
 			
 	
