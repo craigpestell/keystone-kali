@@ -1,9 +1,6 @@
 <!-- if helmets -->
 {{#if helmets}}
-	
-{{#unless helmetSubCategory}}
-	{{> nav-helmet-categories helmets}}	
-{{/unless}}
+	{{> nav-helmet-categories navHelmets}}	
 
 <div class="container helmets">
 	{{#each helmets}}
@@ -12,7 +9,7 @@
 		{{#each this.helmets}}
 			<div class="row">
 				<div class="col-sm-6">
-					<a href="{{this.url}}">
+					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 						<img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555}}"/>
 					</a>
 				</div>

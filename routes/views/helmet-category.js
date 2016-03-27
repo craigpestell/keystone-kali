@@ -1,7 +1,8 @@
 var keystone = require('keystone');
 
 
-var navigationData = require('../navigation-data');
+var navigationData = require('../helmet-navigation-data');
+var helmetCategoryData = require('../helmet-category-data');
 
 exports = module.exports = function(req, res) {
 
@@ -13,9 +14,13 @@ exports = module.exports = function(req, res) {
 	locals.helmetSubCategory = req.params.subCategory;
 	
 	console.log(req.params);
-	navigationData.getNavigationData(req.params.category, req.params.subCategory, function (err, data) {
-		locals.helmets = data;
-		// Render the view
-		view.render('helmet-category');
+	navigationData.getHelmetNavigationData(req.params.category, function (err, navigationData) {
+		helmetCategoryData.getHelmetCategoryData(req.params.category, req.params.subCategory, function (err, helmetCategoryData) {
+			locals.navHelmets = navigationData;
+			locals.helmets = helmetCategoryData;
+			// Render the view
+			view.render('helmet-category');
+		});
 	});
 };
+ 

@@ -7,7 +7,7 @@ var Types = keystone.Field.Types;
  */
 
 var HelmetSubCategory = new keystone.List('HelmetSubCategory', {
-	autokey: { from: 'name', path: 'key', unique: true }
+	autokey: { from: 'slug', path: 'key', unique: true, drilldown: 'Helmet' }
 });
 //HelmetSubCategory.relationship({ path: 'helmets', ref: 'Helmet', refPath: 'categories' });
 

@@ -20,8 +20,8 @@ HelmetCategory.add({
 // Virtuals
 // ------------------------------
 
-HelmetCategory.schema.virtual('url').get(function() {
-	return '/helmet-category/' + this.slug;
-});
+//HelmetCategory.schema.virtual('url').get(function() {
+//	return '/helmet-category/' + this.slug;
+//});
 
 HelmetCategory.register();

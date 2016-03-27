@@ -1,24 +1,21 @@
 var keystone = require('keystone');
 var async = require('async');
 
-module.exports.getNavigationData = function (category, subCategory, helmetDataCb){
+module.exports.getHelmetNavigationData = function (category, helmetDataCb){
 	var categoryWhere = {};
-	var subCatWhere = {};
 	if(category) {
 		categoryWhere = {slug:category};
 	}
-	if(subCategory){
-		subCatWhere = {slug:subCategory};
-	}
+	
 	async.parallel({
 			categories: function(callback){
 				keystone.list('HelmetCategory').model.find(categoryWhere).exec(callback);
 			},
 			subcategories: function(callback){
-				keystone.list('HelmetSubCategory').model.find(subCatWhere).exec(callback);
+				keystone.list('HelmetSubCategory').model.find().exec(callback);
 			},
 			helmets: function(callback){
-				keystone.list('Helmet').model.find().exec(callback);
+				keystone.list('Helmet').model.find().populate('mainCategory subCategory').exec(callback);
 			}
 		},
 		function massage(err, results){
@@ -31,7 +28,7 @@ module.exports.getNavigationData = function (category, subCategory, helmetDataCb
 					}
 					//get all helmets for sub category
 					results.helmets.forEach(function(helmet){
-						if (subCat._id.equals(helmet.subCategory) && cat._id.equals(subCat.parentCategory)) {
+						if (subCat._id.equals(helmet.subCategory.id) && cat._id.equals(subCat.parentCategory)) {
 							subCat.helmets.push(helmet);
 						}
 					});

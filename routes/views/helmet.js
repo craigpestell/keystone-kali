@@ -1,5 +1,5 @@
 var keystone = require('keystone');
-var navigationData = require('../navigation-data');
+var navigationData = require('../helmet-navigation-data');
 
 exports = module.exports = function(req, res) {
 
@@ -9,9 +9,8 @@ exports = module.exports = function(req, res) {
 	// Set locals
 	locals.section = 'helmet';
 	
-	// Load the galleries by sortOrder
 	view.query('helmet', keystone.list('Helmet').model.findOne({slug:req.params.helmet}));
-	navigationData.getNavigationData(req.params.category, req.params.subCategory, function (err, data) {
+	navigationData.getHelmetNavigationData(req.params.category, function (err, data) {
 		locals.helmets = data;
 
 		// Render the view
