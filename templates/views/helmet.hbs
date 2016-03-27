@@ -35,58 +35,40 @@
             </div>
         </div>
     </div>
-    <div id="links" class="col-sm-7" style="padding-left:15px;">
-		{{#each helmet.gallery}}
-            <a href="{{url}}" title="{{name}}" data-gallery>
-                <img id="helmet-{{@index}}" src="{{{url}}}" class="img-responsive image-toggle lazyload"
-                     alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
-            </a>
-		{{/each}}
-    </div>
-	
-    <div class="col-sm-5">
-        <h2>{{helmet.name}}</h2>
-        <p>{{safeString helmet.description}}</p>
-        <p>{{safeString helmet.specs}}</p>
-		
-		<div class="col-xs-12">
-        <div class="btn-group" data-toggle="buttons">
+    <div class="container">
+
+        <div id="links" class="col-sm-7" style="padding-left:15px;">
 			{{#each helmet.gallery}}
-				<img data-image-id="#helmet-{{@index}}" class="image-toggler img-circle" src="{{{cloudinaryUrl width=30 height=30}}}"/>
+                <a href="{{url}}" title="{{name}}" data-gallery>
+                    <img id="helmet-{{@index}}" src="{{{url}}}" class="img-responsive image-toggle lazyload"
+                         alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
+                </a>
 			{{/each}}
         </div>
-        </div>
-        <div class="row">
-		<div class="col-xs-5">
-        	{{safeString helmet.usageChart}}
-            <dl id="helmet-usage-chart">
-                <dt>Usage Chart</dt>
-                <dd class="percentage percentage-20">
-				<span class="text">
-				  X-Country
-				</span>
-                </dd>
-                <dd class="percentage percentage-60">
-				<span class="text">
-				  Trail
-				</span>
-                </dd>
-                <dd class="percentage percentage-88">
-				<span class="text">
-				  Enduro / All Mountain
-				</span>
-                </dd>
-                <dd class="percentage percentage-100">
-				<span class="text">
-				  Downhill
-				</span>
-                </dd>
-            </dl>
-        </div>
-			</div>
-        
-    </div>
 
+        <div class="col-sm-5">
+            <h2>{{helmet.name}}</h2>
+            <p>{{safeString helmet.description}}</p>
+            <div class="row">
+                <div class="col-xs-12">
+					{{safeString helmet.specs}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+					{{safeString helmet.usageChart}}
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="btn-group" data-toggle="buttons">
+					{{#each helmet.gallery}}
+                        <img data-image-id="#helmet-{{@index}}" class="image-toggler img-circle"
+                             src="{{{cloudinaryUrl width=30 height=30}}}"/>
+					{{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
 {{else}}
     <!-- else -->
     <h3 class="text-muted">Helmet does not exist.</h3>

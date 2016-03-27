@@ -4,8 +4,10 @@
 
 <div class="container helmets">
 	{{#each helmets}}
-		<a id="{{slug}}" class="helmet-category-anchor">helmet category anchor</a>
-		<div class="row"><div class="col-sm-12"><h3>{{name}}</h3></div></div>
+        <a id="{{slug}}" class="helmet-category-anchor">{{name}} category anchor</a>
+        <div class="row">
+            <div class="col-sm-12"><a href="/{{../helmetCategory}}/{{slug}}"><h3>{{name}}</h3></a></div>
+        </div>
 		{{#each this.helmets}}
 			<div class="row">
 				<div class="col-sm-6">

@@ -193,7 +193,7 @@ a.helmet-category-anchor {
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent; }*/
-.percentage {
+/*.percentage {
   background: repeating-linear-gradient(
 				  to right,
 				  #ddd,
@@ -201,7 +201,7 @@ a.helmet-category-anchor {
 				  #fff 1px,
 				  #fff 10%
   );
-}
+}*/
 .percentage:after {
   content: "";
   display: block;
@@ -219,8 +219,26 @@ a.helmet-category-anchor {
 
 
 #helmet-usage-chart dt{
-  display: none;
+
 }
 #helmet-usage-chart dd {
   
+}
+
+dl {
+  //border: 3px double #ccc;
+  //padding: 0.5em;
+}
+
+dt {
+  float: left;
+  clear: left;
+  width: 100px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+dd {
+  margin: 0 0 0 110px;
+  padding: 0 0 0.5em 0;
 }
