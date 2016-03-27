@@ -6,7 +6,7 @@
 	{{#each helmets}}
         <a id="{{slug}}" class="helmet-category-anchor">{{name}} category anchor</a>
         <div class="row">
-            <div class="col-sm-12"><a href="/{{../helmetCategory}}/{{slug}}"><h3>{{name}}</h3></a></div>
+            <div class="col-sm-12"><a href="/{{../helmetCategory}}/{{slug}}"><h2>{{name}}</h2></a></div>
         </div>
 		{{#each this.helmets}}
 			<div class="row">
@@ -16,7 +16,7 @@
 					</a>
 				</div>
 				<div class="col-sm-6">
-					<h2>{{this.name}}</h2>
+					<h1>{{this.name}}</h1>
 					{{safeString description}}
 					{{safeString specs}}
 				</div>
