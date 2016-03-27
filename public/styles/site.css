@@ -6733,7 +6733,8 @@ body:last-child .blueimp-gallery-playing > .play-pause {
   font-style: normal; }
 
 body {
-  font-family: Gotham-Medium, Arial, SansSerif; }
+  font-family: Gotham-Medium, Arial, SansSerif;
+  padding-top: 65px; }
 
 @media (min-width: 768px) {
   .slick-slider {
@@ -6774,7 +6775,9 @@ h1, h2, h3 {
 .navbar {
   margin-bottom: 0;
   min-height: 0;
-  text-transform: uppercase; }
+  padding-top: 5px;
+  text-transform: uppercase;
+  background-color: #fff; }
 
 .navbar .navbar-right {
   margin-right: 0px; }
@@ -6782,25 +6785,39 @@ h1, h2, h3 {
 .navbar-toggle .icon-bar {
   background-color: black; }
 
-.subnav {
+.navbar .subnav {
   margin: 0;
   top: 0px;
+  width: 100%;
   z-index: 10;
   background-color: #fff;
   border-bottom: 1px solid #E1E1E1;
-  padding: 0px 0px 0px 0px; }
+  padding: 0px 0px 5px 0px;
+  display: table; }
 
-.subnav.affix {
+.navbar.subnav ul.navbar {
+  padding-left: 0px; }
+
+.navbar.subnav li {
+  display: table-cell;
+  width: 1%;
+  float: none; }
+
+/*.subnav.affix {
   position: fixed;
   top: 0px;
   width: 100%;
-  z-index: 10; }
-
+  z-index: 10;
+}*/
 .navbar-brand {
   padding: 0; }
 
 .navbar-logo, .subnav-logo {
   height: 50px; }
+
+.subnav {
+  position: fixed;
+  top: 55px; }
 
 .panel {
   border: 0;
