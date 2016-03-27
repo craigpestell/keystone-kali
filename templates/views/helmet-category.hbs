@@ -7,12 +7,13 @@
 
 <div class="container helmets">
 	{{#each helmets}}
-		<div class="row"><div id="{{slug}}" class="col-sm-12" style="{{#unless @first}}margin-top:-80px;{{/unless}}padding-top:80px;"><h3>{{name}}</h3></div></div>
+		<a id="{{slug}}" class="helmet-category-anchor">helmet category anchor</a>
+		<div class="row"><div class="col-sm-12"><h3>{{name}}</h3></div></div>
 		{{#each this.helmets}}
 			<div class="row">
 				<div class="col-sm-6">
 					<a href="{{this.url}}">
-						<img class="img-responsive lazyload" src="{{this.heroImage.url}}"/>
+						<img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555}}"/>
 					</a>
 				</div>
 				<div class="col-sm-6">

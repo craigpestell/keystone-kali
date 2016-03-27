@@ -47,13 +47,20 @@
     <div class="col-sm-5">
         <h2>{{helmet.name}}</h2>
         <p>{{safeString helmet.description}}</p>
-        <div>{{safeString helmet.specs}}</div>
+        <p>{{safeString helmet.specs}}</p>
+		
+		<div class="col-xs-12">
         <div class="btn-group" data-toggle="buttons">
 			{{#each helmet.gallery}}
 				<img data-image-id="#helmet-{{@index}}" class="image-toggler img-circle" src="{{{cloudinaryUrl width=30 height=30}}}"/>
 			{{/each}}
         </div>
+        </div>
+        <div class="row">
+		<div class="col-xs-5">
         {{safeString helmet.usageChart}}
+        </div>
+			</div>
         
     </div>
 
