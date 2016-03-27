@@ -1,4 +1,5 @@
 @import 'bootstrap/bootstrap/variables';
+
 .clearfix:before,
 .clearfix:after {
   content: "";
@@ -43,89 +44,97 @@
   font-style: normal;
 }
 
-body{
+body {
   font-family: Gotham-Medium, Arial, SansSerif;
 }
+
 @media (min-width: 768px) {
   body {
 	//background: url("http://griddle.it/720px-4-30px") repeat-y center top !important;
   }
-  .slick-slider{
+  .slick-slider {
 	height: 80px;
 	margin-bottom: 30px;
   }
 }
+
 @media (min-width: 992px) {
   body {
 	//background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
   }
-  .slick-slider{
+  .slick-slider {
 	height: 140px;
 	margin-bottom: 50px;
   }
 }
+
 @media (min-width: 1200px) {
   body {
 	//background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
   }
-  .slick-slider{
+  .slick-slider {
 	height: 200px;
 	margin-bottom: 50px;
   }
 }
 
-h1, h2, h3{
+h1, h2, h3 {
   font-family: Gotham-Black, Arial, SansSerif;
   text-transform: uppercase;
   margin-top: 0px;
 }
 
-.img-circle{
-  -webkit-transform:translate(-50%);
+.img-circle {
+  -webkit-transform: translate(-50%);
 }
 
 /** bootstrap 3 variable overrides */
 $brand-primary: red;
 $link-color: purple;
-$navbar-default-link-color:                green !default;
-$navbar-default-link-hover-color:          #333 !default;
-$navbar-default-link-hover-bg:             transparent !default;
-$navbar-default-link-active-color:         #555 !default;
-
+$navbar-default-link-color: green !default;
+$navbar-default-link-hover-color: #333 !default;
+$navbar-default-link-hover-bg: transparent !default;
+$navbar-default-link-active-color: #555 !default;
 
 /** bootstrap 3 helpers */
 
 .helmets .row {
-	padding: 15px 0px 15px 0px;  
+  padding: 15px 0px 15px 0px;
 }
 
 .helmets .row ul {
-  list-style:none;
-  padding-left:0;
-}​
-
-/*.helmets .row:nth-of-type(odd) {
-  background: #ffffff;
+  list-style: none;
+  padding-left: 0;
 }
 
-.helmets .row:nth-of-type(even) {
-  background: #dcdcdc;
-}*/
-
+​
+  /*.helmets .row:nth-of-type(odd) {
+    background: #ffffff;
+  }
+  
+  .helmets .row:nth-of-type(even) {
+    background: #dcdcdc;
+  }*/
 .navbar-form input, .form-inline input {
-  width:auto;
+  width: auto;
 }
 
 .navbar {
-  margin-bottom:0;
-  min-height:0;
+  margin-bottom: 0;
+  min-height: 0;
   text-transform: uppercase;
 }
+
 .navbar .navbar-right {
   margin-right: 0px;
 }
+
+.navbar-toggle .icon-bar {
+  background-color: black;
+}
+
 .subnav {
-  margin:0;
+  margin: 0;
   top: 0px;
   z-index: 10;
   background-color: $body-bg;
@@ -137,26 +146,52 @@ $navbar-default-link-active-color:         #555 !default;
   position: fixed;
   top: 0px;
   width: 100%;
-  z-index:10;
+  z-index: 10;
 }
 
-.navbar-brand{
-  padding:0;
+.navbar-brand {
+  padding: 0;
   //position: fixed;
   //z-index:15;
 }
-.navbar-logo, .subnav-logo{
-  height:50px;
-}
-.subnav-logo{
-  
+
+.navbar-logo, .subnav-logo {
+  height: 50px;
 }
 
-.panel{border:0; margin-bottom:0}
+.subnav-logo {
+
+}
+
+.panel {
+  border: 0;
+  margin-bottom: 0
+}
 
 /*.navbar {
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent; }*/
+.percentage {
+  background: repeating-linear-gradient(
+				  to right,
+				  #ddd,
+				  #ddd 1px,
+				  #fff 1px,
+				  #fff 10%
+  );
+}
+.percentage:after {
+  content: "";
+  display: block;
+  background-color: #ddd;
+}
 
+@for $i from 1 through 100 {
+  .percentage-#{$i}:after {
+	$value: ($i * 1%);
+	width: $value;
+	content:'\00a0'
+  }
+}

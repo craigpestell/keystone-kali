@@ -1,13 +1,14 @@
 var keystone = require('keystone');
 var async = require('async');
 
-function getHelmets(category, helmetDataCb){
+function getHelmets(category, subCategory, helmetDataCb){
 	var categoryWhere = {};
 	var subCatWhere = {};
-	if(category == 'bike' || category == 'powersports') {
+	if(category) {
 		categoryWhere = {slug:category};
-	}else if(category !== undefined){
-		subCatWhere = {slug:category};
+	}
+	if(subCategory){
+		subCatWhere = {slug:subCategory};
 	}
 	async.parallel({
 			categories: function(callback){
@@ -52,23 +53,14 @@ exports = module.exports = function(req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
-	var category = req.params.category;
-	if(category == undefined){
-		if(req.url == '/bike'){
-			category = 'bike';
-		}
-	}
-	
-	
-	
 	// Set locals
 	locals.section = 'helmets';
-	console.log('category:', category);
-	getHelmets(category, function (err, data) {
-		console.log('In getHelmets');
+	locals.helmetCategory = req.params.category;
+	locals.helmetSubCategory = req.params.subCategory;
+	
+	console.log(req.params);
+	getHelmets(req.params.category, req.params.subCategory, function (err, data) {
 		locals.helmets = data;
-		
-		console.log(locals.helmets);
 		// Render the view
 		view.render('helmet-category');
 	});

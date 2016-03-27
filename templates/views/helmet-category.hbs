@@ -1,6 +1,10 @@
 <!-- if helmets -->
 {{#if helmets}}
-{{> nav-helmet-categories helmets}}
+	
+{{#unless helmetSubCategory}}
+	{{> nav-helmet-categories helmets}}	
+{{/unless}}
+
 <div class="container helmets">
 	{{#each helmets}}
 		<div class="row"><div id="{{slug}}" class="col-sm-12" style="{{#unless @first}}margin-top:-80px;{{/unless}}padding-top:100px;"><h3>{{name}}</h3></div></div>

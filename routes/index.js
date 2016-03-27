@@ -56,12 +56,14 @@ exports = module.exports = function(app) {
 
 	app.get('/helmets/:helmet?', routes.views.helmet);
 
-	app.get('/bike', routes.views['helmet-category']);
-	app.get('/bike/:category?', routes.views['helmet-category']);
-	app.get('/powersports', routes.views['helmet-category']);
-	app.get('/powersports/:category?', routes.views['helmet-category']);
+	app.get('/:category(bike|powersports)', routes.views['helmet-category']);
+	app.get('/:category(bike|powersports)/:subCategory?', routes.views['helmet-category']);
+	//app.get('/powersports', routes.views['helmet-category']);
+	//app.get('/powersports/:subCategory?', routes.views['helmet-category']);
 
 	app.get('/dealers', routes.views['dealer-locator']);
+	
+	app.get('/:page', routes.views.index);
 	
 	app.all('/contact', routes.views.contact);
 	
