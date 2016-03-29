@@ -96,7 +96,7 @@ exports.initLocals = function (req, res, next) {
 					label: 'Composite Fusion',
 					key: 'composite-fusion',
 					href: '/composite-fusion',
-					categories: [{name:'Overview', slug: 'overview'},
+					categories: [{name:'Overview', slug: 'composite-fusion'},
 						{name:'Kali Design', slug: 'kali-design'},
 						{name:'Cutting Edge Safety', slug: 'safety'},
 						{name:'The White Papers', slug: 'white-papers'}],

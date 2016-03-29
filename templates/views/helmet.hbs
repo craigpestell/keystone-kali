@@ -48,7 +48,7 @@
 
         <div class="col-sm-5">
             <h1>{{helmet.name}}</h1>
-            <p class="lead">{{safeString helmet.description}}</p>
+            <p class="lead">{{{helmet.description}}}</p>
 			<div class="row">
 				<div class="col-xs-12  hidden-xs">
 					<div class="btn-group" data-toggle="buttons">
@@ -61,12 +61,12 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 initialism">
-					{{safeString helmet.specs}}
+					{{{helmet.specs}}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 initialism">
-					{{safeString helmet.usageChart}}
+					{{{helmet.usageChart}}}
                 </div>
             </div>
         </div>

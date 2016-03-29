@@ -1,0 +1,8 @@
+{{!< default}}
+<div class="container">{{{data.page.contentHtml}}}</div>
+<div class="embedly"></div>
+<script>
+    var decoded = $('<textarea />').html("{{data.page.embedlyData.html}}").val();
+    document.write(decoded);
+</script>
+

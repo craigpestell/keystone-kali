@@ -61,7 +61,7 @@ exports = module.exports = function(app) {
 
 	app.get('/dealers', routes.views['dealer-locator']);
 	
-	app.get('/:page', routes.views.index);
+	app.get('/:page', routes.views.page);
 	
 	app.all('/contact', routes.views.contact);
 	

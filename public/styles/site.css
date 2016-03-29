@@ -6737,16 +6737,22 @@ body {
   padding-top: 100px; }
 
 @media (min-width: 768px) {
+  body {
+    background: url("http://griddle.it/720px-4-30px") repeat-y center top !important; }
   .slick-slider {
     height: 80px;
     margin-bottom: 30px; } }
 
 @media (min-width: 992px) {
+  body {
+    background: url("http://griddle.it/940px-4-30px") repeat-y center top !important; }
   .slick-slider {
     height: 140px;
     margin-bottom: 50px; } }
 
 @media (min-width: 1200px) {
+  body {
+    background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important; }
   .slick-slider {
     height: 200px;
     margin-bottom: 50px; } }
@@ -6779,9 +6785,6 @@ h1, h2, h3 {
   text-transform: uppercase;
   background-color: #fff; }
 
-.navbar .navbar-right {
-  margin-right: 0px; }
-
 .navbar-toggle .icon-bar {
   background-color: black; }
 
@@ -6792,15 +6795,17 @@ h1, h2, h3 {
   z-index: 10;
   background-color: #fff;
   border-bottom: 1px solid #E1E1E1;
-  padding: 0px 0px 5px 0px;
-  display: table; }
+  padding: 0px 0px 5px 0px; }
 
 .navbar.subnav ul.navbar {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
   padding-left: 0px; }
 
 .navbar.subnav li {
   display: table-cell;
-  width: 1%;
+  width: auto;
   float: none; }
 
 a.helmet-category-anchor {
@@ -6816,7 +6821,7 @@ a.helmet-category-anchor {
   z-index: 10;
 }*/
 .navbar-brand {
-  padding: 0; }
+  padding: 0 0 0 15px; }
 
 .navbar-logo, .subnav-logo {
   height: 50px; }
@@ -7253,14 +7258,14 @@ a.helmet-category-anchor {
 .row {
   margin-bottom: 15px; }
 
-dt {
+#helmet-usage-chart dt {
   float: left;
   clear: left;
   width: 100px;
   font-weight: bold;
   white-space: nowrap; }
 
-dd {
+#helmet-usage-chart dd {
   margin: 0 0 0 110px;
   padding: 0 0 0.5em 0; }
 
