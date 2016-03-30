@@ -6795,18 +6795,19 @@ h1, h2, h3 {
   z-index: 10;
   background-color: #fff;
   border-bottom: 1px solid #E1E1E1;
-  padding: 0px 0px 5px 0px; }
+  padding: 0px 0px 5px 0px;
+  display: table; }
 
 .navbar.subnav ul.navbar {
-  width: 100%;
   display: table;
   table-layout: fixed;
-  padding-left: 0px; }
+  width: 100%;
+  padding-left: 0px;
+  border: 1px solid blue; }
 
 .navbar.subnav li {
   display: table-cell;
-  width: auto;
-  float: none; }
+  border: 1px solid orange; }
 
 a.helmet-category-anchor {
   display: block;

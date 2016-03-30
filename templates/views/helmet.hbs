@@ -36,39 +36,39 @@
         </div>
     </div>
     <div class="container">
-
-        <div id="links" class="col-sm-7" style="padding-left:15px;">
-			{{#each helmet.gallery}}
-                <a href="{{url}}" title="{{name}}" data-gallery>
-                    <img id="helmet-{{@index}}" src="{{{cloudinaryUrl width=635}}}" class="img-responsive image-toggle lazyload"
-                         alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
-                </a>
-			{{/each}}
-        </div>
-
-        <div class="col-sm-5">
-            <h1>{{helmet.name}}</h1>
-            <p class="lead">{{{helmet.description}}}</p>
-			<div class="row">
-				<div class="col-xs-12  hidden-xs">
-					<div class="btn-group" data-toggle="buttons">
-						{{#each helmet.gallery}}
-							<img data-image-id="#helmet-{{@index}}" class="image-toggler img-circle"
-								 src="{{{cloudinaryUrl width=50 height=50	}}}"/>
-						{{/each}}
+		<div class="row">
+			<div id="links" class="col-sm-7">
+				{{#each helmet.gallery}}
+					<a href="{{url}}" title="{{name}}" data-gallery>
+						<img id="helmet-{{@index}}" src="{{{cloudinaryUrl width=635}}}" class="img-responsive image-toggle lazyload"
+							 alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
+					</a>
+				{{/each}}
+			</div>
+	
+			<div class="col-sm-5">
+				<h1>{{helmet.name}}</h1>
+				<p class="lead">{{{helmet.description}}}</p>
+				<div class="row">
+					<div class="col-xs-12  hidden-xs">
+						<div class="btn-group" data-toggle="buttons">
+							{{#each helmet.gallery}}
+								<img data-image-id="#helmet-{{@index}}" class="image-toggler img-circle" src="{{{cloudinaryUrl width=50 height=50}}}"/>
+							{{/each}}
+						</div>
 					</div>
 				</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 initialism">
-					{{{helmet.specs}}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 initialism">
-					{{{helmet.usageChart}}}
-                </div>
-            </div>
+				<div class="row">
+					<div class="col-xs-12 initialism">
+						{{{helmet.specs}}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 initialism">
+						{{{helmet.usageChart}}}
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 {{else}}
