@@ -12,9 +12,9 @@ var HelmetTechnology = new keystone.List('HelmetTechnology', {
 HelmetTechnology.relationship({ path: 'helmets', ref: 'Helmet', refPath: 'technologies' });
 HelmetTechnology.add({
 	name: { type: String, required: true, default: '' },
-	description: { type: String, default: '' },
-	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true},
-	gallery: { type: Types.CloudinaryImages,  autoCleanup : true }
+	description: { type: Types.Html, default: '' },
+	iconImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true}
 });
 
 HelmetTechnology.register();

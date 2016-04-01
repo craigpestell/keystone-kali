@@ -12,7 +12,6 @@ module.exports.getHelmetCategoryData = function (category, subCategory, helmetDa
 	if(subCategory) {
 		subCategoryWhere = {slug:subCategory};
 	}
-
 	async.parallel({
 			categories: function(callback){
 				keystone.list('HelmetCategory').model.find(categoryWhere).exec(callback);
@@ -21,7 +20,7 @@ module.exports.getHelmetCategoryData = function (category, subCategory, helmetDa
 				keystone.list('HelmetSubCategory').model.find(subCategoryWhere).exec(callback);
 			},
 			helmets: function(callback){
-				keystone.list('Helmet').model.find().populate('mainCategory subCategory').exec(callback);
+				keystone.list('Helmet').model.find().populate('mainCategory subCategory technologies').exec(callback);
 			}
 		},
 		function massage(err, results){
@@ -35,6 +34,7 @@ module.exports.getHelmetCategoryData = function (category, subCategory, helmetDa
 					//get all helmets for sub category
 					results.helmets.forEach(function(helmet){
 						if (subCat._id.equals(helmet.subCategory.id) && cat._id.equals(subCat.parentCategory)) {
+							
 							subCat.helmets.push(helmet);
 						}
 					});
@@ -49,4 +49,5 @@ module.exports.getHelmetCategoryData = function (category, subCategory, helmetDa
 			helmetDataCb(null, returnData);
 		}
 	);
+
 };

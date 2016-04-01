@@ -46,7 +46,7 @@
 
 body {
   font-family: Gotham-Medium, Arial, SansSerif;
-  padding-top:100px;
+  padding-top:120px;
 }
 
 @media (min-width: 768px) {
@@ -138,30 +138,34 @@ $navbar-default-link-active-color: #555 !default;
 
 .navbar .subnav {
   margin: 0;
-  top: 0px;
+  top: 0;
   width:100%;
   z-index: 10;
   background-color: $body-bg;
   border-bottom: 1px solid #E1E1E1;
   //border: 1px solid red;
-  padding: 0px 0px 5px 0px;
+  padding: 0 0 5px 0;
   display:table;
   
 }
 
 .navbar.subnav ul.navbar{
-  display: table;
-  table-layout: fixed;
+  text-align: justify;
   width:100%;
-  padding-left:0px;
-  border: 1px solid blue;
+  min-width:500px;
+  padding-left:0;
+}
+.navbar.subnav ul.navbar:after{
+  content: '';
+  display: inline-block;
+  width:100%;
 }
 .navbar.subnav li {
-  //width:100%;
-  display: table-cell;
-  //width: auto;
-  //float: none;
-  border: 1px solid orange;
+  display: inline-block;
+  float: none;
+}
+.navbar.subnav li a{
+  padding: 0
 }
 
 a.helmet-category-anchor {

@@ -1,0 +1,9 @@
+<div class="row">
+	{{#everyOther @index 2}}
+		{{> helmet-technology-hero-image}}
+		{{> helmet-technology-info}}
+	{{else}}
+		{{> helmet-technology-info}}
+		{{> helmet-technology-hero-image}}
+	{{/everyOther}}
+</div>
