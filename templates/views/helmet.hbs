@@ -42,7 +42,7 @@
 		<div class="row">
 			<div class="col-sm-12 text-center text-uppercase helmet-section-nav">
 				<ul>
-					<li><a class="nav-anchor" href="#technology">Technology</a></li><li><a href="#features">Features</a></li><li><a href="#sizing">Sizing</a></li>
+					<li><a class="nav-anchor" href="#technology">Technology</a></li><li><a href="#features">Features</a></li><li><a href="#helmet-sizing-guide">Sizing</a></li>
 				</ul>
             </div>
 		</div>
@@ -51,11 +51,8 @@
     		{{> helmet-technology}}
 		{{/each}}
         </div>
-		<div class="row">
-			<div class="col-sm-12">
-				{{{siteSettings.helmet-sizing-chart.htmlValue}}}
-			</div>
-		</div>
+		{{> helmet-sizing-guide}}		
+		
     </div>
 {{else}}
     <!-- else -->

@@ -87,10 +87,8 @@ exports.initLocals = function (req, res, next) {
 	var locals = res.locals;
 	getSiteSettings(function(err, siteSettings){
 		getNavData(function(err, data){
-			//console.log(data.categories.bike.subCategories[0].helmets);
-			
-			locals.test = 'xxxxxxxx';
 			locals.siteSettings = siteSettings;
+			locals.year = new Date().getFullYear();
 			locals.navLinks = [
 				{
 					label: 'Composite Fusion',

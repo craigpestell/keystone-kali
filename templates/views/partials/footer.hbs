@@ -1,25 +1,35 @@
 <div id="footer">
-	<div class="row">
-		<div class="col-xs-12 text-uppercase text-center">
-			<form method="post">
-				<label for="email">Join #KaliForLife</label>
-				<input type="hidden" name="action" value="newsletter"/>
-				<input type="text" name="email"/>
-				<input type="submit" value="Submit"/>
-			</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<form method="post">
+					<label for="email"><h2>Join #KaliForLife</h2></label>
+					<input type="hidden" name="action" value="newsletter"/>
+					<input type="text" name="email"/>
+					<input type="submit" value="Submit"/>
+				</form>
+			</div>
 		</div>
-	</div>
-    <div class="row">
-        <div class="col-xs-3"><a href="#">A footer link...</a></div>
-        <div class="col-xs-3"><a href="#">A footer link...</a></div>
-        <div class="col-xs-3"><a href="#">A footer link...</a></div>
-        <div class="col-xs-3"><a href="#">A footer link...</a></div>
+		<div class="row">
+			<div class="col-sm-3 col-xs-6"><h3>Find a Dealer</h3><ul><li><a href="/dealers">Dealer Locator</a></li></ul></div>
+			<div class="col-sm-3 col-xs-6">
+				<h3>Contact</h3>
+				<ul>
+					<li><a href="#">Address</a></li>
+					<li><a href="#">Phone</a></li>
+					<li><a href="#">Employee contact list</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-3 col-xs-6">
+				<h3>#KaliForLife</h3>
+				<ul>
+					<li><a href="#">Register</a></li>
+					<li><a href="#">Dealers</a></li>
+				</ul>
+			</div>
+		</div>
+	
+		<p class="text-uppercase">&copy;Kali Protectives {{year}}</p>
     </div>
-    <div class="row">
-        <div class="col-xs-3"><a href="#">A footer link...</a></div>
-        <div class="col-xs-3"><a href="#">A footer link...</a></div>
-        <div class="col-xs-3"><a href="#">A footer link...</a></div>
-        <div class="col-xs-3"><a href="#">A footer link...</a></div>
-    </div>
-    <p>&copy;Kali Protectives {{year}}</p>
+
 </div>

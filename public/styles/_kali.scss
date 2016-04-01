@@ -269,6 +269,13 @@ a.helmet-category-anchor {
   padding: 0 0 0.5em 0;
 }
 
+#helmet-sizing-guide h1{
+  font-size: $font-size-large;
+}
+#helmet-sizing-guide h2{
+  font-size: $font-size-base;
+}
+
 .lazyload {
   opacity: 0;
 }
@@ -277,4 +284,19 @@ a.helmet-category-anchor {
   opacity: 1;
   transition: opacity 300ms;
   background: #f7f7f7 url(/img/loading.gif) no-repeat center;
+}
+
+#footer, #footer a{
+  background-color: #5e5e5e;
+  color: #fff;
+}
+#footer h2{
+  font-size: $font-size-large;
+}
+#footer h3{
+  font-size: $font-size-base;
+}
+#footer ul{
+  list-style: none;
+  padding: 0;
 }
