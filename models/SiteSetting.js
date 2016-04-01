@@ -13,6 +13,7 @@ SiteSetting.defaultColumns = 'name';
 SiteSetting.add({
 	name: { type: String, required: true },
 	textValue: {type: Types.Text},
+	htmlValue: {type: Types.Html},
 	imageValue:{type: Types.CloudinaryImage}
 });
 
