@@ -22,9 +22,14 @@ Helmet.add({
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },
 	carouselImage: { type: Types.CloudinaryImage, autoCleanup : true },
 	gallery: { type: Types.CloudinaryImages,  autoCleanup : true },
+	galleryColorSwatches: {type: String, default: ''},
 	extra: { type: Types.Html, wysiwyg: true },
 	sortBike: { type: Number },
 	sortPowersports: { type: Number }
+});
+
+Helmet.schema.virtual('galleryColorSwatchArray').get(function(){
+	return this.galleryColorSwatches.split(';');	
 });
 
 Helmet.register();

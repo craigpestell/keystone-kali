@@ -6765,6 +6765,16 @@ h1, h2, h3 {
 .img-circle {
   -webkit-transform: translate(-50%); }
 
+.helmet-swatch-circle {
+  border-radius: 50%;
+  behavior: url(PIE.htc);
+  /* remove if you don't care about IE8 */
+  width: 40px;
+  height: 40px;
+  background: yellow;
+  float: left;
+  margin-right: 10px; }
+
 /** bootstrap 3 variable overrides */
 /** bootstrap 3 helpers */
 .helmets .row {
