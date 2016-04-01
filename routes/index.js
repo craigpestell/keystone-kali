@@ -63,7 +63,7 @@ exports = module.exports = function(app) {
 	
 	app.get('/:page', routes.views.page);
 	
-	app.all('/contact', routes.views.contact);
+	//app.all('/newsletter', routes.views.newsletter);
 	
 		
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

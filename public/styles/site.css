@@ -6752,7 +6752,9 @@ h1, h2, h3 {
   height: 40px;
   background: yellow;
   float: left;
-  margin-right: 10px; }
+  margin-right: 10px;
+  cursor: pointer;
+  cursor: hand; }
 
 /** bootstrap 3 variable overrides */
 /** bootstrap 3 helpers */
