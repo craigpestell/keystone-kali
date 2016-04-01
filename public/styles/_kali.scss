@@ -51,32 +51,23 @@ body {
 
 @media (min-width: 768px) {
   body {
-	background: url("http://griddle.it/720px-4-30px") repeat-y center top !important;
+	//background: url("http://griddle.it/720px-4-30px") repeat-y center top !important;
   }
-  .slick-slider {
-	height: 80px;
-	margin-bottom: 30px;
-  }
+
 }
 
 @media (min-width: 992px) {
   body {
-	background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
+	//background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
   }
-  .slick-slider {
-	height: 140px;
-	margin-bottom: 50px;
-  }
+
 }
 
 @media (min-width: 1200px) {
   body {
-	background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
+	//background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
   }
-  .slick-slider {
-	height: 200px;
-	margin-bottom: 50px;
-  }
+
 }
 
 h1, h2, h3 {
@@ -155,8 +146,6 @@ $navbar-default-link-active-color: #555 !default;
   border-bottom: 1px solid #E1E1E1;
   //border: 1px solid red;
   padding: 0 0 5px 0;
-  display:table;
-  
 }
 
 .navbar.subnav ul.navbar{
@@ -176,6 +165,15 @@ $navbar-default-link-active-color: #555 !default;
 }
 .navbar.subnav li a{
   padding: 0
+}
+
+.helmet-section-nav ul{
+  list-style: none;
+  
+}
+.helmet-section-nav ul li{
+  display: inline;
+  padding:15px;
 }
 
 a.helmet-category-anchor {

@@ -14,7 +14,6 @@ SiteSetting.add({
 	name: { type: String, required: true },
 	textValue: {type: Types.Text},
 	imageValue:{type: Types.CloudinaryImage}
-	
 });
 
 SiteSetting.register();

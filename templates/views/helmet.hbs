@@ -17,15 +17,6 @@
 				<h1>{{helmet.name}}</h1>
 				<p class="lead">{{{helmet.description}}}</p>
 				<div class="row">
-					<div class="col-xs-12  hidden-xs">
-						<div class="btn-group" data-toggle="buttons">
-							{{#each helmet.gallery}}
-								<div data-image-id="#helmet-{{@index}}" class="image-toggler helmet-swatch-circle" style="background-color:{{lookup ../helmet.galleryColorSwatchArray @index}}"></div>
-							{{/each}}
-						</div>
-					</div>
-				</div>
-				<div class="row">
 					<div class="col-xs-12 initialism">
 						{{{helmet.specs}}}
 					</div>
@@ -35,11 +26,29 @@
 						{{{helmet.usageChart}}}
 					</div>
 				</div>
+                <div class="row">
+                    <div class="col-xs-12  hidden-xs">
+                        <div class="btn-group" data-toggle="buttons">
+							{{#each helmet.gallery}}
+                                <div data-image-id="#helmet-{{@index}}" class="image-toggler helmet-swatch-circle" style="background-color:{{lookup ../helmet.galleryColorSwatchArray @index}}"></div>
+							{{/each}}
+                        </div>
+                    </div>
+                </div>
 			</div>
         </div>
+		<div class="row">
+			<div class="col-sm-12 text-center text-uppercase helmet-section-nav">
+				<ul>
+					<li><a class="nav-anchor" href="#technology">Technology</a></li><li><a href="#features">Features</a></li><li><a href="#sizing">Sizing</a></li>
+				</ul>
+            </div>
+		</div>
+		<div id="technology">
 		{{#each helmet.technologies}}
     		{{> helmet-technology}}
 		{{/each}}
+        </div>
 	
     </div>
 {{else}}
