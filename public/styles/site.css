@@ -6807,10 +6807,11 @@ h1, h2, h3 {
   padding: 0; }
 
 .helmet-section-nav ul {
+  padding: 0;
   list-style: none; }
 
 .helmet-section-nav ul li {
-  display: inline;
+  display: inline-block;
   padding: 15px; }
 
 a.helmet-category-anchor {

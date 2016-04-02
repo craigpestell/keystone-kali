@@ -16,20 +16,25 @@ Helmet.add({
 	mainCategory: { type: Types.Relationship, ref: 'HelmetCategory'},
 	subCategory: { type: Types.Relationship, ref: 'HelmetSubCategory' },
 	technologies: { type: Types.Relationship, ref: 'HelmetTechnology', many: true },
+	features: { type: Types.Relationship, ref: 'HelmetFeature', many: true },
 	description: { type: Types.Html, default: '' },
 	specs: { type: Types.Html, default: '' },
 	usageChart: { type: Types.Html, default: '' },
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },
-	carouselImage: { type: Types.CloudinaryImage, autoCleanup : true },
 	gallery: { type: Types.CloudinaryImages,  autoCleanup : true },
-	galleryColorSwatches: {type: String, default: ''},
+	galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
 	extra: { type: Types.Html, wysiwyg: true },
 	sortBike: { type: Number },
 	sortPowersports: { type: Number }
 });
 
 Helmet.schema.virtual('galleryColorSwatchArray').get(function(){
-	return this.galleryColorSwatches.split(';');	
+	return this.galleryColorSwatches.split(';');
+});
+
+Helmet.schema.virtual('technologiesAndFeatures').get(function(){
+	this.features[0].featureAnchor = true;
+	return this.technologies.concat(this.features);
 });
 
 Helmet.register();

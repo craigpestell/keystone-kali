@@ -9,7 +9,7 @@ exports = module.exports = function(req, res) {
 	// Set locals
 	locals.section = 'helmet';
 	
-	view.query('helmet', keystone.list('Helmet').model.findOne({slug:req.params.helmet}).populate('technologies')).then(function (err, results, next) {
+	view.query('helmet', keystone.list('Helmet').model.findOne({slug:req.params.helmet}).populate('technologies features')).then(function (err, results, next) {
 		if (err) return next(err);
 			console.log(results);
 			next();
