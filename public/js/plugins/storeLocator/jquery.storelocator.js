@@ -104,7 +104,7 @@
 		'nameSearch'               : false,
 		'searchID'                 : 'bh-sl-search',
 		'nameAttribute'            : 'name',
-		'visibleMarkersList'       : false,
+		'visibleMarkersList'       : true,
 		'dragSearch'               : false,
 		'infowindowTemplatePath'   : '/js/plugins/storeLocator/templates/infowindow-description.html',
 		'listTemplatePath'         : '/js/plugins/storeLocator/templates/location-list-description.html',

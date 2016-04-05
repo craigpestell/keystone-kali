@@ -49,7 +49,8 @@ exports = module.exports = function(app) {
 				});
 		}
 	);*/
-	app.get('/', routes.views.index);
+	app.all('/register', routes.views.registration);
+	
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
@@ -62,9 +63,8 @@ exports = module.exports = function(app) {
 	app.get('/dealers', routes.views['dealer-locator']);
 	
 	app.get('/:page', routes.views.page);
-	
-	//app.all('/newsletter', routes.views.newsletter);
-	
+
+	app.get('/', routes.views.index);
 		
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
