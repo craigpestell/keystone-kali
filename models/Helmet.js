@@ -33,7 +33,9 @@ Helmet.schema.virtual('galleryColorSwatchArray').get(function(){
 });
 
 Helmet.schema.virtual('technologiesAndFeatures').get(function(){
-	this.features[0].featureAnchor = true;
+	if(this.features[0] !== undefined){
+		this.features[0].featureAnchor = true;
+	}
 	return this.technologies.concat(this.features);
 });
 

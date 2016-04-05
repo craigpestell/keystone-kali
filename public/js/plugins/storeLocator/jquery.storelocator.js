@@ -18,6 +18,27 @@
 	var filters = {}, locationData = {}, GeoCodeCalc = {}, mappingObj = {};
 
 	// Create the defaults once. DO NOT change these settings in this file - settings should be overridden in the plugin call
+    var stylesArray = [
+    {
+        featureType: "all",
+        stylers: [
+        { saturation: -80 }
+        ]
+    },{
+        featureType: "road.arterial",
+        elementType: "geometry",
+        stylers: [
+        { hue: "#00ffee" },
+        { saturation: 50 }
+        ]
+    },{
+        featureType: "poi.business",
+        elementType: "labels",
+        stylers: [
+        { visibility: "off" }
+        ]
+    }
+    ];
 	var defaults = {
 		'mapID'                    : 'bh-sl-map',
 		'locationList'             : 'bh-sl-loc-list',
@@ -26,8 +47,17 @@
 		'addressID'                : 'bh-sl-address',
 		'regionID'                 : 'bh-sl-region',
 		'mapSettings'              : {
-			zoom     : 12,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+			zoom     : 10,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true, // a way to quickly hide all controls
+            //mapTypeControl: true,
+            //scaleControl: true,
+            zoomControl: true,
+            zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.LARGE 
+            },
+            styles: stylesArray,
+            scrollwheel: false
 		},
 		'markerImg'                : null,
 		'markerDim'                : null,
@@ -1973,13 +2003,13 @@
 			// Check the closest marker
 			if (_this.settings.maxDistance === true && firstRun !== true && maxDistance) {
 				if (typeof locationset[0] === 'undefined' || locationset[0].distance > maxDistance) {
-					_this.notify(_this.settings.distanceErrorAlert + maxDistance + ' ' + distUnit);
+					//_this.notify(_this.settings.distanceErrorAlert + maxDistance + ' ' + distUnit);
 					return;
 				}
 			}
 			else {
 				if (_this.settings.distanceAlert !== -1 && locationset[0].distance > _this.settings.distanceAlert) {
-					_this.notify(_this.settings.distanceErrorAlert + _this.settings.distanceAlert + ' ' + distUnit);
+					//_this.notify(_this.settings.distanceErrorAlert + _this.settings.distanceAlert + ' ' + distUnit);
 					distError = true;
 				}
 			}
