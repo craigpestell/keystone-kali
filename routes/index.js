@@ -19,6 +19,7 @@
  */
 
 var keystone = require('keystone');
+var restful = require('restful-keystone')(keystone);
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
 
@@ -49,6 +50,13 @@ exports = module.exports = function(app) {
 				});
 		}
 	);*/
+
+	// /api/dealers
+	restful.expose({
+		Dealer : true
+	}).start();
+	
+	app.get('/', routes.views.index);
 	app.all('/register', routes.views.registration);
 	
 	app.get('/blog/:category?', routes.views.blog);
@@ -64,7 +72,7 @@ exports = module.exports = function(app) {
 	
 	app.get('/:page', routes.views.page);
 
-	app.get('/', routes.views.index);
+
 		
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

@@ -9,9 +9,9 @@
             <div class="col-sm-12"><a href="/{{../helmetCategory}}/{{slug}}"><h2>{{name}}</h2></a></div>
         </div>
 		{{#each this.helmets}}
-			<div class="row">
+			<!-- visible on phones and tablets -->
+			<div class="row visible-xs visible-sm">
 				<div class="col-sm-6">
-					
 					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 						<img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555}}"/>
 					</a>
@@ -22,6 +22,21 @@
 					{{{specs}}}
 				</div>
 			</div>
+		
+			<!-- visible on desktop -->
+            <div class="col-sm-6 hidden-xs hidden-sm">
+                <div class="helmet-category-item">
+                    <h1>{{this.name}}</h1>
+                    <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+                        <img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555}}"/>
+						<div class="helmet-category-item-overlay">
+							<h1>{{this.name}}</h1>
+							{{{usageChart}}}
+							{{{specs}}}
+						</div>
+                    </a>\
+				</div>
+            </div>
 		{{/each}}
 	{{/each}}
 </div>

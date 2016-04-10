@@ -110,7 +110,8 @@ keystone.set('nav', {
 	'galleries': 'galleries',
 	'enquiries': 'enquiries',
 	'users': 'users',
-	'helmets': 'helmets'
+	'helmets': 'helmets',
+	'dealers': 'dealers'
 });
 
 // Start Keystone to connect to your database and initialise the web server

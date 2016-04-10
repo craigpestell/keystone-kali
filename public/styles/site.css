@@ -6514,6 +6514,7 @@ body:last-child .blueimp-gallery-playing > .play-pause {
 .bh-sl-container .bh-sl-loc-list ul li {
   border: 1px solid #fff;
   width: 20%;
+  height: 180px;
   /* Adding this to prevent moving li elements when adding the list-focus class*/
   box-sizing: border-box;
   float: left;
@@ -6766,6 +6767,8 @@ h1, h2, h3 {
   width: auto; }
 
 .navbar {
+  border: 0;
+  border-radius: 0;
   margin-bottom: 0;
   min-height: 0;
   padding-top: 5px;
@@ -7260,6 +7263,26 @@ a.helmet-category-anchor {
 .row {
   margin-bottom: 15px; }
 
+/* END Bootstrap overrides */
+/* Helmet category */
+.helmet-category-item {
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)); }
+
+.helmet-category-item .helmet-category-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+  height: 100%;
+  width: 100%; }
+
+.helmet-category-item:hover .helmet-category-item-overlay {
+  visibility: visible; }
+
+/* */
+/* Helmet detail */
 #helmet-usage-chart dt {
   float: left;
   clear: left;
@@ -7277,6 +7300,7 @@ a.helmet-category-anchor {
 #helmet-sizing-guide h2 {
   font-size: 14px; }
 
+/* END helmet detail page */
 .lazyload {
   opacity: 0; }
 

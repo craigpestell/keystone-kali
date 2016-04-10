@@ -92,7 +92,7 @@
 		'maxDistance'              : false,
 		'maxDistanceID'            : 'bh-sl-maxdistance',
 		'fullMapStart'             : false,
-		'fullMapStartBlank'        : false,
+		'fullMapStartBlank'        : true,
 		'fullMapStartListLimit'    : false,
 		'noForm'                   : false,
 		'loading'                  : false,
