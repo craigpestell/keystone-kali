@@ -107,10 +107,10 @@ keystone.set('email tests', require('./routes/emails'));
 
 keystone.set('nav', {
 	'posts': ['posts', 'post-categories'],
-	'galleries': 'galleries',
-	'enquiries': 'enquiries',
+	//'galleries': 'galleries',
+	//'enquiries': 'enquiries',
 	'users': 'users',
-	'helmets': 'helmets',
+	'helmets': ['helmets', 'helmet-categories', 'helmet-sub-categories', 'helmet-features', 'helmet-technologies'],
 	'dealers': 'dealers'
 });
 

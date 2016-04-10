@@ -1,18 +1,25 @@
 <div class="bh-sl-container">
-    <div id="page-header">
-        <h1 class="bh-sl-title">Locate a dealer</h1>
+	<div class="container">
+			
+		<div class="col-xs-12">
+			
+			<div id="page-header">
+				<h1 class="bh-sl-title">Locate a dealer</h1>
+		
+			</div>
+			<div class="bh-sl-form-container">
+				<form id="bh-sl-user-location" method="post" action="#">
+					<div class="form-input">
+						<label for="bh-sl-address">Enter Address or Zip Code:</label>
+						<input type="text" id="bh-sl-address" name="bh-sl-address"/>
+					</div>
+		
+					<button id="bh-sl-submit" type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
 
-    </div>
-    <div class="bh-sl-form-container">
-        <form id="bh-sl-user-location" method="post" action="#">
-            <div class="form-input">
-                <label for="bh-sl-address">Enter Address or Zip Code:</label>
-                <input type="text" id="bh-sl-address" name="bh-sl-address"/>
-            </div>
-
-            <button id="bh-sl-submit" type="submit">Submit</button>
-        </form>
-    </div>
 
     <div id="bh-sl-map-container" class="bh-sl-map-container">
         <div id="bh-sl-map" class="bh-sl-map"></div>
@@ -21,7 +28,7 @@
         </div>
     </div>
 </div>
-<button id="importDealers">Import Dealers</button>
+<button id="importDealers" style="display:none;">Import Dealers</button>
 <script type="text/javascript">
 
     $(document).ready(function () {
