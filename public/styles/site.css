@@ -6166,9 +6166,16 @@ body:last-child .blueimp-gallery-playing > .play-pause {
   font-weight: 300;
   font-style: normal; }
 
+html {
+  background-color: #5e5e5e; }
+
 body {
   font-family: Gotham-Medium, Arial, SansSerif;
   padding-top: 120px; }
+
+@media (min-width: 768px) {
+  .bh-sl-container .bh-sl-loc-list ul li {
+    height: 250px; } }
 
 h1, h2, h3 {
   font-family: Gotham-Black, Arial, SansSerif;
@@ -6781,12 +6788,11 @@ a[href^="https://maps.google.com/maps"] {
   max-width: 800px; }
 
 #page-header .bh-sl-title {
-  color: #797874;
-  font: normal 20px/1.4 Arial, Helvetica, sans-serif; }
-
-@media (min-width: 1024px) {
-  #page-header .bh-sl-title {
-    font-size: 30px; } }
+  /*color: #797874;
+    font: normal 20px/1.4 Arial, Helvetica, sans-serif; }
+    @media (min-width: 1024px) {
+      #page-header .bh-sl-title {
+        font-size: 30px; } */ }
 
 /* Infowindow Roboto font override */
 .gm-style div, .gm-style span, .gm-style label, .gm-style a {
@@ -6809,7 +6815,6 @@ a[href^="https://maps.google.com/maps"] {
 
 .bh-sl-container {
   box-sizing: border-box;
-  color: #555;
   float: left;
   font: normal 14px/1.4 Arial, Helvetica, sans-serif;
   padding: 0px;
@@ -6860,7 +6865,6 @@ a[href^="https://maps.google.com/maps"] {
     margin: 0 15px 0 10px; } }
 
 .bh-sl-container button {
-  background: #00447a;
   border: none;
   border-radius: 4px;
   color: #fff;
@@ -6958,14 +6962,14 @@ a[href^="https://maps.google.com/maps"] {
   display: inline; }
 
 .bh-sl-container .bh-sl-loc-list .list-label {
-  background: #00192d;
+  background: #000;
   border-radius: 15px;
   color: #fff;
   display: block;
   float: left;
   font-weight: bold;
   margin: 10px 0 0 15px;
-  padding: 4px 7px;
+  padding: 4px 10px;
   text-align: center;
   width: auto;
   min-width: 13px; }

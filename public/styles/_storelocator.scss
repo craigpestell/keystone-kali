@@ -4,12 +4,13 @@
   float: left;
   max-width: 800px; }
   #page-header .bh-sl-title {
-    color: #797874;
+    /*color: #797874;
     font: normal 20px/1.4 Arial, Helvetica, sans-serif; }
     @media (min-width: 1024px) {
       #page-header .bh-sl-title {
-        font-size: 30px; } }
-
+        font-size: 30px; } */
+  }
+	
 /* Infowindow Roboto font override */
 .gm-style div, .gm-style span, .gm-style label, .gm-style a {
   font-family: Gotham-Medium, Arial, SansSerif; }
@@ -31,7 +32,7 @@
 
 .bh-sl-container {
   box-sizing: border-box;
-  color: #555;
+  //color: #555;
   float: left;
   font: normal 14px/1.4 Arial, Helvetica, sans-serif;
   padding: 0px;
@@ -73,7 +74,7 @@
           width: auto;
           margin: 0 15px 0 10px; } }
   .bh-sl-container button {
-    background: #00447a;
+    //background: #00447a;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -150,7 +151,7 @@
       .bh-sl-container .bh-sl-loc-list ul li {
         border: 1px solid #fff;
 		//width: 20%;
-		height:180px;
+		height: 180px;
         /* Adding this to prevent moving li elements when adding the list-focus class*/
         box-sizing: border-box;
         float: left;
@@ -158,14 +159,14 @@
         display: inline;
 	  }
     .bh-sl-container .bh-sl-loc-list .list-label {
-      background: #00192d;
+      background: #000;
       border-radius: 15px;
       color: #fff;
       display: block;
       float: left;
       font-weight: bold;
       margin: 10px 0 0 15px;
-      padding: 4px 7px;
+      padding: 4px 10px;
       text-align: center;
       width: auto;
       min-width: 13px; }

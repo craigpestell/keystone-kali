@@ -112,7 +112,7 @@ exports.initLocals = function (req, res, next) {
 					categories: data.categories.powersports.subCategories
 				}*/
 				,{
-					label: 'Dealer Locator', key: 'dealer-locator', href: '/dealers',
+					label: 'Dealer', key: 'dealer-locator', href: '/dealers',
 				}
 			];
 			

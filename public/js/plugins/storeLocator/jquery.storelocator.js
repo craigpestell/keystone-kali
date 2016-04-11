@@ -59,7 +59,7 @@
             styles: stylesArray,
             scrollwheel: false
 		},
-		'markerImg'                : null,
+		'markerImg'                : '/img/marker.png',
 		'markerDim'                : null,
 		'catMarkers'               : null,
 		'selectedMarkerImg'        : null,
