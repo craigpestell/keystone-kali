@@ -6,14 +6,14 @@
 	{{#each helmets}}
         <a id="{{slug}}" class="helmet-category-anchor">{{name}} category anchor</a>
         <div class="row">
-            <div class="col-sm-12"><a href="/{{../helmetCategory}}/{{slug}}"><h2>{{name}}</h2></a></div>
+            <div class="col-sm-12"><h2>{{name}}</h2></div>
         </div>
 		{{#each this.helmets}}
 			<!-- visible on phones and tablets -->
 			<div class="row visible-xs visible-sm">
 				<div class="col-sm-6">
 					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-						<img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555}}"/>
+						<img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
 					</a>
 				</div>
 				<div class="col-sm-6">
@@ -28,7 +28,7 @@
                 <div class="helmet-category-item">
                     <h1>{{this.name}}</h1>
                     <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-                        <img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555}}"/>
+                        <img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
 						<div class="helmet-category-item-overlay">
 							{{{usageChart}}}
 							{{{specs}}}

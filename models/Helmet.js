@@ -24,8 +24,7 @@ Helmet.add({
 	gallery: { type: Types.CloudinaryImages,  autoCleanup : true },
 	galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
 	extra: { type: Types.Html, wysiwyg: true },
-	sortBike: { type: Number },
-	sortPowersports: { type: Number }
+	sort: { type: Number }
 });
 
 Helmet.schema.virtual('galleryColorSwatchArray').get(function(){

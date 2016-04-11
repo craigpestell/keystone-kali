@@ -45,7 +45,7 @@
 }
 
 html {
-  background-color: #5e5e5e;	
+  background-color: #5e5e5e;
 }
 body {
   font-family: Gotham-Medium, Arial, SansSerif;
@@ -289,7 +289,12 @@ a.helmet-category-anchor {
 
 /* */ 
 
-/* Helmet detail */ 
+/* Helmet detail */
+#helmet-zoom-current{
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
 #helmet-usage-chart dt{
 
 }

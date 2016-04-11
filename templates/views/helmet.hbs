@@ -37,12 +37,22 @@
                     </div>
                 </div>
 				{{/ifCond}}
+                <div class="row">
+                    <div class="col-xs-12"><a href="/dealers"><h3 style="color: go">Find a Dealer</h3></a></div>
+                </div>
+				<div class="row">
+					<div class="col-xs-12">
+						<img id="helmet-zoom-current" src="/img/bfa_plus-square_simple-black_512x512.png"/>
+                    </div>
+				</div>
 			</div>
         </div>
 		<div class="row">
 			<div class="col-xs-12 text-center text-uppercase helmet-section-nav">
 				<ul>
-					<li><a class="nav-anchor" href="#technology">Technology</a></li><li><a class="nav-anchor" href="#features">Features</a></li><li><a class="nav-anchor" href="#helmet-sizing-guide">Sizing</a></li>
+					{{#if helmet.technologies}}<li><a class="nav-anchor" href="#technology">Technology</a></li>{{/if}}
+					{{#if helmet.features}}<li><a class="nav-anchor" href="#features">Features</a></li>{{/if}}
+					<li><a class="nav-anchor" href="#helmet-sizing-guide">Sizing</a></li>
 				</ul>
             </div>
 		</div>
@@ -51,10 +61,22 @@
     		{{> helmet-technology}}
 		{{/each}}
         </div>
-		{{> helmet-sizing-guide}}		
-		
+		{{> helmet-sizing-guide}}
     </div>
 {{else}}
     <!-- else -->
     <h3 class="text-muted">Helmet does not exist.</h3>
 {{/if}}
+<script type="text/javascript">
+    $(document).ready(function () {
+		$('#helmet-zoom-current').click(function(){
+			$('[data-gallery]').each(function(i, el){
+				if($(el).children('img').is(':visible')){
+                    $(el).click();
+					return;
+				}
+			});
+
+		});
+    });
+</script>

@@ -14,13 +14,16 @@ module.exports.getHelmetCategoryData = function (category, subCategory, helmetDa
 	}
 	async.parallel({
 			categories: function(callback){
-				keystone.list('HelmetCategory').model.find(categoryWhere).exec(callback);
+				keystone.list('HelmetCategory')
+					.model.find(categoryWhere).exec(callback);
 			},
 			subcategories: function(callback){
-				keystone.list('HelmetSubCategory').model.find(subCategoryWhere).exec(callback);
+				keystone.list('HelmetSubCategory')
+					.model.find(subCategoryWhere).sort('sort').exec(callback);
 			},
 			helmets: function(callback){
-				keystone.list('Helmet').model.find().populate('mainCategory subCategory technologies').exec(callback);
+				keystone.list('Helmet')
+					.model.find().populate('mainCategory subCategory technologies').sort('sort').exec(callback);
 			}
 		},
 		function massage(err, results){
