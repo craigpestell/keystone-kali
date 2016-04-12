@@ -17,14 +17,19 @@ Dealer.add({
 
 Dealer.schema.pre('save', function(next) {
 	var self = this;
-	this._.location.googleLookup("US", "overwrite", function(err, location, result){
-		//console.log(location);
-		//console.log(result);
-		if(location !== undefined){
-			self.location = location;
-		}
-		next();
-	});
+	setTimeout(function(){
+		
+		self._.location.googleLookup("US", "overwrite", function(err, location, result){
+			//console.log(location);
+			//console.log(result);
+			if(location !== undefined){
+				self.location = location;
+				console.log(location);
+			}
+			next();
+		});		
+	}, 1000);
+
 });
 /*
  "id": "9",
