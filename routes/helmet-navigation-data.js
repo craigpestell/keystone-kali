@@ -12,10 +12,10 @@ module.exports.getHelmetNavigationData = function (category, helmetDataCb){
 				keystone.list('HelmetCategory').model.find(categoryWhere).exec(callback);
 			},
 			subcategories: function(callback){
-				keystone.list('HelmetSubCategory').model.find().exec(callback);
+				keystone.list('HelmetSubCategory').model.find().sort('sortOrder').exec(callback);
 			},
 			helmets: function(callback){
-				keystone.list('Helmet').model.find().populate('mainCategory subCategory').exec(callback);
+				keystone.list('Helmet').model.find().populate('mainCategory subCategory').sort('sortOrder').exec(callback);
 			}
 		},
 		function massage(err, results){

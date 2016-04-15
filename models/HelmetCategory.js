@@ -7,14 +7,12 @@ var Types = keystone.Field.Types;
  */
 
 var HelmetCategory = new keystone.List('HelmetCategory', {
-	autokey: { from: 'name', path: 'key', unique: true }
+	autokey: { from: 'name', path: 'key', unique: true }, sortable: true
 });
 HelmetCategory.relationship({ path: 'helmets', ref: 'Helmet', refPath: 'categories' });
 HelmetCategory.add({
 	name: { type: String, required: true, default: '' },
-	slug: { type: String, required: true, initial: true},
-	sort: { type: Number }
-	
+	slug: { type: String, required: true, initial: true}
 });
 
 // Virtuals

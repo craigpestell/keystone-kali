@@ -1,0 +1,41 @@
+<nav class="navbar navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img class="navbar-logo" src="{{cloudinaryUrl siteSettings.nav-logo-large.imageValue width=130}}" alt="Kali Protectives"/>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-main">
+        <ul class="nav navbar-nav">
+			{{# each navLinks}}
+				{{#unless @last}}
+					{{#if dropdown}}
+                        <li class="hidden-xs hidden-sm"><a href="{{href}}">{{label}}</a></li>
+                        <li class="dropdown visible-xs visible-sm">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+							   aria-haspopup="true" aria-expanded="false">{{label}}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+								{{#each dropdown}}
+                                    <li><a href="{{href}}">{{label}}</a></li>
+								{{/each}}
+                            </ul>
+                        </li>
+					{{else}}
+                        <li class=""><a href="{{href}}">{{label}}</a></li>
+					{{/if}}
+				{{else}}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{href}}">{{label}}</a></li>
+				{{/unless}}
+			{{/each}}
+        </ul>
+        </div>
+    </div>
+</nav>

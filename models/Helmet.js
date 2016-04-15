@@ -7,14 +7,14 @@ var Types = keystone.Field.Types;
  */
 
 var Helmet = new keystone.List('Helmet', {
-	autokey: { from: 'slug', path: 'key', unique: true, sortable: true, drilldown: 'HelmetSpec'}
+	autokey: { from: 'slug', path: 'key', unique: true, drilldown: 'HelmetSpec'}, sortable: true//, sortContext: 'HelmetSubCategory:helmets'
 });
 Helmet.defaultColumns = 'name,categories,technologies';
 Helmet.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
 	mainCategory: { type: Types.Relationship, ref: 'HelmetCategory'},
-	subCategory: { type: Types.Relationship, ref: 'HelmetSubCategory' },
+	subCategory: { type: Types.Relationship, ref: 'HelmetSubCategory'},
 	technologies: { type: Types.Relationship, ref: 'HelmetTechnology', many: true },
 	features: { type: Types.Relationship, ref: 'HelmetFeature', many: true },
 	description: { type: Types.Html, default: '' },
@@ -23,8 +23,7 @@ Helmet.add({
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },
 	gallery: { type: Types.CloudinaryImages,  autoCleanup : true },
 	galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
-	extra: { type: Types.Html, wysiwyg: true },
-	sort: { type: Number }
+	extra: { type: Types.Html, wysiwyg: true }
 });
 
 Helmet.schema.virtual('galleryColorSwatchArray').get(function(){

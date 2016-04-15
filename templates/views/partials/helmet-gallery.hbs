@@ -1,0 +1,13 @@
+{{# ifCond helmet.gallery.length '>' 1}}
+    <div class="{{class}}">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="btn-group" data-toggle="buttons">
+					{{#each helmet.gallery}}
+                        <div data-image-id="#helmet-{{@index}}" class="image-toggler helmet-swatch-circle" style="background-color:{{lookup ../helmet.galleryColorSwatchArray @index}}"></div>
+					{{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/ifCond}}

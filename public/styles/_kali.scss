@@ -49,7 +49,7 @@ html {
 }
 body {
   font-family: Gotham-Medium, Arial, SansSerif;
-  padding-top:120px;
+  //padding-top:120px;
 }
 
 @media (min-width: 768px) {
@@ -88,11 +88,11 @@ h1, h2, h3 {
 .helmet-swatch-circle{
   border-radius: 50%;
   behavior: url(PIE.htc); /* remove if you don't care about IE8 */
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   background: yellow;
   float:left;
-  margin-right:10px;
+  margin:5px 10px;
   cursor: pointer; cursor: hand;
 }
 
@@ -134,7 +134,8 @@ $navbar-default-link-active-color: #555 !default;
   min-height: 0;
   padding-top: 5px;
   text-transform: uppercase;
-  background-color: $body-bg;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
 }
 
 .navbar .navbar-right {
@@ -145,15 +146,17 @@ $navbar-default-link-active-color: #555 !default;
   background-color: black;
 }
 
-.navbar .subnav {
+/*.navbar .subnav {
   margin: 0;
   top: 0;
   width:100%;
   z-index: 10;
-  background-color: $body-bg;
   border-bottom: 1px solid #E1E1E1;
   //border: 1px solid red;
   padding: 0 0 5px 0;
+}*/
+.subnav .navbar {
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .navbar.subnav ul.navbar{
@@ -188,7 +191,7 @@ $navbar-default-link-active-color: #555 !default;
 a.helmet-category-anchor {
   display: block;
   position: relative;
-  top: -100px;
+  /*top: -100px;*/
   visibility: hidden;
 }
 /*.subnav.affix {
@@ -209,8 +212,8 @@ a.helmet-category-anchor {
 }
 
 .subnav{
-  position:fixed;
-  top:55px;
+  //position:fixed;
+  //top:55px;
 }
 .panel {
   border: 0;

@@ -13,7 +13,7 @@ exports = module.exports = function(req, res) {
 	locals.helmetCategory = req.params.category;
 	locals.helmetSubCategory = req.params.subCategory;
 	
-	console.log(req.params);
+	//console.log(req.params);
 	navigationData.getHelmetNavigationData(req.params.category, function (err, navigationData) {
 		helmetCategoryData.getHelmetCategoryData(req.params.category, req.params.subCategory, function (err, helmetCategoryData) {
 			locals.navHelmets = navigationData;

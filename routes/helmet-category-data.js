@@ -19,11 +19,11 @@ module.exports.getHelmetCategoryData = function (category, subCategory, helmetDa
 			},
 			subcategories: function(callback){
 				keystone.list('HelmetSubCategory')
-					.model.find(subCategoryWhere).sort('sort').exec(callback);
+					.model.find(subCategoryWhere).sort('sortOrder').exec(callback);
 			},
 			helmets: function(callback){
 				keystone.list('Helmet')
-					.model.find().populate('mainCategory subCategory technologies').sort('sort').exec(callback);
+					.model.find().populate('mainCategory subCategory technologies').sort('sortOrder').exec(callback);
 			}
 		},
 		function massage(err, results){

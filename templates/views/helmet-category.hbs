@@ -8,6 +8,7 @@
         <div class="row">
             <div class="col-sm-12"><h2>{{name}}</h2></div>
         </div>
+		<div class="row">
 		{{#each this.helmets}}
 			<!-- visible on phones and tablets -->
 			<div class="row visible-xs visible-sm">
@@ -24,19 +25,19 @@
 			</div>
 		
 			<!-- visible on desktop -->
-            <div class="col-sm-6 hidden-xs hidden-sm">
+            <div class="col-sm-6 col-lg-4 hidden-xs hidden-sm">
                 <div class="helmet-category-item">
                     <h1>{{this.name}}</h1>
                     <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
                         <img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
 						<div class="helmet-category-item-overlay">
 							{{{usageChart}}}
-							{{{specs}}}
 						</div>
                     </a>
 				</div>
             </div>
 		{{/each}}
+        </div>
 	{{/each}}
 </div>
 {{else}}

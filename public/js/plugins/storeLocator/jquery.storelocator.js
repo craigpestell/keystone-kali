@@ -22,7 +22,7 @@
     {
         featureType: "all",
         stylers: [
-        { saturation: -80 }
+        { saturation: -60 }
         ]
     },{
         featureType: "road.arterial",
@@ -47,7 +47,7 @@
 		'addressID'                : 'bh-sl-address',
 		'regionID'                 : 'bh-sl-region',
 		'mapSettings'              : {
-			zoom     : 10,
+			zoom     : 6,
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true, // a way to quickly hide all controls
             //mapTypeControl: true,

@@ -4,51 +4,51 @@
     {{> helmet-blueimp-gallery-dom}}
     <div class="container">
 		<div class="row">
-			<div id="links" class="col-sm-7">
+			<div id="links" class="col-xs-12 col-md-7">
 				{{#each helmet.gallery}}
 					<a href="{{url}}" title="{{name}}" data-gallery>
 						<img id="helmet-{{@index}}" src="{{{cloudinaryUrl width=635}}}" class="img-responsive image-toggle{{#unless @first}} lazyload{{/unless}}"
 							 alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
 					</a>
 				{{/each}}
+				<div class="text-right">
+                    <img id="helmet-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40}}" style="margin-top:-100px;margin-right:75px"/>	
+				</div>
+                
+				<div style="display: table;margin: 0 auto;">
+				{{> helmet-gallery class="col-xs-12"}}
+                </div>
 			</div>
 	
-			<div class="col-sm-5">
-				<h1>{{helmet.name}}</h1>
-				<p class="lead">{{{helmet.description}}}</p>
-				<div class="row">
-					<div class="col-xs-12 initialism">
-						{{{helmet.specs}}}
+			<div class="col-md-5">
+				
+				
+				<div class="col-xs-12">
+					<h1>{{helmet.name}}</h1>
+					<p class="lead">{{{helmet.description}}}</p>
+					<div class="row">
+						<div class="col-xs-12 initialism">
+							{{{helmet.specs}}}
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 initialism">
-						{{{helmet.usageChart}}}
+					<div class="row">
+						<div class="col-xs-12 initialism">
+							{{{helmet.usageChart}}}
+						</div>
 					</div>
-				</div>
-				{{# ifCond helmet.gallery.length '>' 1}}
-                <div class="row">
-                    <div class="col-xs-12  hidden-xs">
-                        <div class="btn-group" data-toggle="buttons">
-							{{#each helmet.gallery}}
-                                <div data-image-id="#helmet-{{@index}}" class="image-toggler helmet-swatch-circle" style="background-color:{{lookup ../helmet.galleryColorSwatchArray @index}}"></div>
-							{{/each}}
+                    <div class="row">
+                        <div class="col-xs-12"><a href="/dealers"><h3 style="color: go">Find a Dealer</h3></a></div>
+                    </div>
+                    <!--<div class="row">
+                        <div class="col-xs-12">
+                            <img id="helmet-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40}}"/>
                         </div>
-                    </div>
-                </div>
-				{{/ifCond}}
-                <div class="row">
-                    <div class="col-xs-12"><a href="/dealers"><h3 style="color: go">Find a Dealer</h3></a></div>
-                </div>
-				<div class="row">
-					<div class="col-xs-12">
-						<img id="helmet-zoom-current" src="/img/bfa_plus-square_simple-black_512x512.png"/>
-                    </div>
+                    </div>-->
 				</div>
 			</div>
         </div>
-		<div class="row">
-			<div class="col-xs-12 text-center text-uppercase helmet-section-nav">
+		<div class="row helmet-section-nav">
+			<div class="col-xs-12 text-center text-uppercase">
 				<ul>
 					{{#if helmet.technologies}}<li><a class="nav-anchor" href="#technology">Technology</a></li>{{/if}}
 					{{#if helmet.features}}<li><a class="nav-anchor" href="#features">Features</a></li>{{/if}}
