@@ -91,9 +91,9 @@ exports.initLocals = function (req, res, next) {
 			locals.year = new Date().getFullYear();
 			locals.navLinks = [
 				{
-					label: 'Composite Fusion',
-					key: 'composite-fusion',
-					href: '/composite-fusion',
+					label: 'Technology',
+					key: 'technology',
+					href: '/technology',
 					dropdown:[
 						{label: 'Overview', key: 'composite-fusion', href: '/composite-fusion'},
 						{label: 'Kali Design', key: 'kali-design', href: '/kali-design'},
@@ -112,7 +112,7 @@ exports.initLocals = function (req, res, next) {
 					categories: data.categories.powersports.subCategories
 				}*/
 				,{
-					label: 'Dealer', key: 'dealer-locator', href: '/dealers',
+					label: 'Dealers', key: 'dealer-locator', href: '/dealers',
 				}
 			];
 			
