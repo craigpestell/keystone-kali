@@ -6188,8 +6188,8 @@ h1, h2, h3 {
   border-radius: 50%;
   behavior: url(PIE.htc);
   /* remove if you don't care about IE8 */
-  width: 35px;
-  height: 35px;
+  width: 20px;
+  height: 20px;
   background: yellow;
   float: left;
   margin: 5px 10px;
@@ -6722,7 +6722,11 @@ a.helmet-category-anchor {
 /* Helmet category */
 .helmet-category-item {
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)); }
+  /*background-image:
+		  linear-gradient(
+						  rgba(0, 0, 0, 0.1),
+						  rgba(0, 0, 0, 0.1)
+		  )*/ }
 
 .helmet-category-item .helmet-category-item-overlay {
   position: absolute;
