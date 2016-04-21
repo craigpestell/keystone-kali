@@ -3,7 +3,7 @@
 {{#if helmet}}
     {{> helmet-blueimp-gallery-dom}}
     <div class="container">
-		<div class="row">
+		<div id="helmet-main" class="row">
 			<div id="links" class="col-xs-12 col-md-7">
 				{{#each helmet.gallery}}
 					<a href="{{url}}" title="{{name}}" data-gallery>
@@ -47,15 +47,20 @@
 				</div>
 			</div>
         </div>
-		<div class="row helmet-section-nav">
-			<div class="col-xs-12 text-center text-uppercase">
-				<ul>
-					{{#if helmet.technologies}}<li><a class="nav-anchor" href="#technology">Technology</a></li>{{/if}}
-					{{#if helmet.features}}<li><a class="nav-anchor" href="#features">Features</a></li>{{/if}}
-					<li><a class="nav-anchor" href="#helmet-sizing-guide">Sizing</a></li>
-				</ul>
-            </div>
-		</div>
+		<div class="helmet-section-nav-wrapper" style="min-height:65px">
+			<div class="container helmet-section-nav" style="height:50px">
+				<div class="col-xs-12 text-center text-uppercase" style="position:relative;">
+					<ul>
+						{{#if helmet.technologies}}<li><a class="nav-anchor" href="#technology">Technology</a></li>{{/if}}
+						{{#if helmet.features}}<li><a class="nav-anchor" href="#features">Features</a></li>{{/if}}
+						<li><a class="nav-anchor" href="#helmet-sizing-guide">Sizing</a></li>
+					</ul>
+                    <ul style="position:absolute;right:0;top:0;">
+                        <li><a class="nav-anchor" href="#nav-main">{{helmet.name}}</a></li>
+                    </ul>
+				</div>
+			</div>
+        </div>
 		<div id="technology">
 		{{#each helmet.technologiesAndFeatures}}
     		{{> helmet-technology}}
@@ -69,14 +74,46 @@
 {{/if}}
 <script type="text/javascript">
     $(document).ready(function () {
-		$('#helmet-zoom-current').click(function(){
+        $('.helmet-section-nav').affix({
+            offset: {
+                top: function(){
+						return $('#helmet-main').outerHeight() + 
+							$('#nav-main').outerHeight() + 
+							$('#nav-helmet-categories').outerHeight() + 15;
+					}
+            }
+        })
+        $('.image-toggler').click(function () {
+            $('.image-toggle').hide();
+            $($(this).attr('data-image-id')).show();
+        });
+
+        $('#helmet-zoom-current').click(function(){
 			$('[data-gallery]').each(function(i, el){
 				if($(el).children('img').is(':visible')){
                     $(el).click();
 					return;
 				}
 			});
-
 		});
+        var borderless = true;
+        $('#blueimp-gallery').data('fullScreen', false);
+        $('#blueimp-gallery').data('toggleControlsOnSlideClick', false);
+        $('#blueimp-gallery').data('slideClass', 'slide zoom');
+		
+        //$('#blueimp-gallery').data('useBootstrapModal', !borderless);
+        $('#blueimp-gallery').toggleClass('blueimp-gallery-controls', borderless);
+		$('#blueimp-gallery').on('slide',function (slide, index) {
+            $(slide).zoom({ on:'click' });
+			console.log('slide:', slide);
+			console.log('index:', index);
+            /*$('.slide-content').each(function(i, e){
+				$(e).zoom({ on:'click' });
+            });*/
+            // Callback function executed when the Gallery has been initialized
+            // and the initialization transition has been completed.
+        });
+
+		
     });
 </script>

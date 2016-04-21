@@ -80,14 +80,11 @@
 	<script src="/js/lazysizes/lazysizes.min.js" async=""></script>
 	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 	<script src="/js/bootstrap-image-gallery.js"></script>
+	<script src="/js/jquery.zoom/jquery.zoom.js"></script>
 	
 	{{{isAdminEditorJS user}}}
 
     <script>
-		var borderless = true;
-        $('#blueimp-gallery').data('fullScreen', false);
-        $('#blueimp-gallery').data('useBootstrapModal', !borderless);
-        $('#blueimp-gallery').toggleClass('blueimp-gallery-controls', borderless);
 		
         $(document).ready(function () {
             /*$('.helmet-section-nav').affix({
@@ -95,11 +92,7 @@
                     top: $('.helmet-section-nav').height()
                 }
             });*/
-            $('.image-toggler').click(function () {
-                $('.image-toggle').hide();
-                $($(this).attr('data-image-id')).show();
-            });
-			
+            
             $(function() {
                 $('a.nav-anchor[href*="#"]:not([href="#"])').click(function() {
                     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
