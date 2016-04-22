@@ -23,11 +23,42 @@ Helmet.add({
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },
 	gallery: { type: Types.CloudinaryImages,  autoCleanup : true },
 	galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
+	imagesPerColorSwatch: {type: Number, note: 'Number of images for each color swatch.'},
 	extra: { type: Types.Html, wysiwyg: true }
 });
 
 Helmet.schema.virtual('galleryColorSwatchArray').get(function(){
-	return this.galleryColorSwatches.split(';');
+	var colorSwatches = [];
+	var colors = this.galleryColorSwatches.split(';');
+	colors.forEach(function(color){
+		colorSwatches.push({
+			color: color
+		});
+	});
+	
+	var split = [];
+	colorSwatches.forEach(function(swatch, i){
+		split = [];
+		if(swatch.color.indexOf('/') > -1){
+			split = swatch.color.split('/');
+		}
+		if(split.length){
+			colorSwatches[i].split = split;
+		}
+		
+	});
+	
+	//assign index to first image in each swatch collection.
+	var imagesPerSwatch = this.imagesPerColorSwatch;
+	colorSwatches.forEach(function(swatch, i){
+		if(i === 0) {
+			colorSwatches[i].helmetIndex = 0;
+		}else{
+			colorSwatches[i].helmetIndex = ((i)*imagesPerSwatch);
+		}
+	});
+	
+	return colorSwatches;
 });
 
 Helmet.schema.virtual('technologiesAndFeatures').get(function(){

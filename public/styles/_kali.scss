@@ -83,13 +83,14 @@ h1, h2, h3 {
 
 .img-circle {
   -webkit-transform: translate(-50%);
+  border-radius: 50%;
 }
 
 .helmet-swatch-circle{
   border-radius: 50%;
   behavior: url(PIE.htc); /* remove if you don't care about IE8 */
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background: yellow;
   float:left;
   margin:5px 10px;
@@ -97,7 +98,7 @@ h1, h2, h3 {
 }
 
 /** bootstrap 3 variable overrides */
-$brand-primary: red;
+$brand-primary: green;
 $link-color: purple;
 $navbar-default-link-color: green !default;
 $navbar-default-link-hover-color: #333 !default;
@@ -105,9 +106,12 @@ $navbar-default-link-hover-bg: transparent !default;
 $navbar-default-link-active-color: #555 !default;
 
 /** bootstrap 3 helpers */
-
+.popover {
+  /*max-width:500px;
+  width:500px;*/
+}
 .helmets .row {
-  padding: 15px 0px 15px 0px;
+  //padding: 15px 0px 15px 0px;
 }
 
 .helmets .row ul {
@@ -230,6 +234,9 @@ a.helmet-category-anchor {
   margin-bottom: 0
 }
 
+.initialism .row{
+  margin-top:5px;
+}
 /*.navbar {
   position: relative;
   min-height: 50px;
@@ -248,7 +255,7 @@ a.helmet-category-anchor {
 .percentage:after {
   content: "";
   display: block;
-  background-color: #bbb;
+  background-color: $brand-primary;
   line-height:15px;
 }
 
@@ -262,7 +269,7 @@ a.helmet-category-anchor {
 
 
 .row{
-  margin-bottom:15px;
+  margin-top:15px;
 }
 
 /* END Bootstrap overrides */
@@ -283,7 +290,7 @@ a.helmet-category-anchor {
 .helmet-category-item .helmet-category-item-overlay {
   
   position:absolute; 
-  bottom:0; 
+  top:0; 
   left:0;
   visibility: hidden;
   padding: 15px;
@@ -292,11 +299,30 @@ a.helmet-category-anchor {
 						  rgba(255, 255, 255, 0.8),
 						  rgba(255, 255, 255, 0.8)
 		  );
-  vertical-align: bottom;
   width:100%;
+  height:100%;
   font-size: 1.2em;
 }
 
+.helmet-category-item .helmet-category-item-overlay p{
+  text-indent: 0px;
+}
+
+.helmet-category-item .helmet-category-item-overlay span.highlight{
+  background-color:#FFF;
+  padding:5px;
+}
+
+.helmet-category-item .helmet-category-item-overlay span.highlight-inverse{
+  color: #FFF;
+  background-color:#000;
+  font-weight: 100;
+  padding:5px;
+}
+
+.helmet-category-item:hover{
+  
+}
 .helmet-category-item:hover .helmet-category-item-overlay {
   visibility: visible;
 }
@@ -353,7 +379,7 @@ a.helmet-category-anchor {
 }
 
 #footer, #footer a{
-  background-color: #5e5e5e;
+  background-color: #000;
   color: #fff;
   margin-top:0;
 }

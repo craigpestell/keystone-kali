@@ -1,46 +1,50 @@
 <!-- if helmets -->
 {{#if helmets}}
-	{{> nav-helmet-categories navHelmets}}	
+	{{> nav-helmet-categories navHelmets}}
 
-<div class="container helmets">
-	{{#each helmets}}
-        <a id="{{slug}}" class="helmet-category-anchor">{{name}} category anchor</a>
-        <div class="row">
-            <div class="col-sm-12"><h2>{{name}}</h2></div>
-        </div>
-		<div class="row">
-		{{#each this.helmets}}
-			<!-- visible on phones and tablets -->
-			<div class="row visible-xs visible-sm">
-				<div class="col-sm-6">
-					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-						<img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
-					</a>
-				</div>
-				<div class="col-sm-6">
-					<h1>{{this.name}}</h1>
-					{{{description}}}
-					{{{specs}}}
-				</div>
-			</div>
-		
-			<!-- visible on desktop -->
-            <div class="col-sm-6 col-lg-4 hidden-xs hidden-sm">
-                <div class="helmet-category-item">
-                    <h1>{{this.name}}</h1>
-                    <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-                        <img class="img-responsive lazyload" src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
-						<div class="helmet-category-item-overlay">
-							{{{description}}}
-						</div>
-                    </a>
-				</div>
+    <div class="container helmets">
+		{{#each helmets}}
+            <a id="{{slug}}" class="helmet-category-anchor">{{name}} category anchor</a>
+            <div class="row">
+                <div class="col-sm-12"><h1>{{name}}</h1></div>
+            </div>
+            <div class="row">
+				{{#each this.helmets}}
+                    <!-- visible on phones and tablets -->
+                    <div class="row visible-xs visible-sm">
+                        <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+                            <div class="col-sm-6">
+
+                                <img class="img-responsive lazyload"
+                                     src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <h2>{{this.name}}</h2>
+								{{{description}}}
+								{{{specs}}}
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- visible on desktop -->
+                    <div class="col-sm-6 col-lg-4 hidden-xs hidden-sm">
+                        <div class="helmet-category-item">
+                            <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+                                <img class="img-responsive lazyload"
+                                     src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
+                                <div class="helmet-category-item-overlay">
+                                    <h2>{{this.name}}</h2>
+									{{{description}}}
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+				{{/each}}
             </div>
 		{{/each}}
-        </div>
-	{{/each}}
-</div>
+    </div>
 {{else}}
-<!-- else -->
-<h3 class="text-muted">No helmets exist.</h3>
+    <!-- else -->
+    <h3 class="text-muted">No helmets exist.</h3>
 {{/if}}

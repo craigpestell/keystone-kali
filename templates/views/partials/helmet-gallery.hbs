@@ -3,11 +3,79 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="btn-group" data-toggle="buttons">
-					{{#each helmet.gallery}}
-                        <div data-image-id="#helmet-{{@index}}" class="image-toggler helmet-swatch-circle" style="background-color:{{lookup ../helmet.galleryColorSwatchArray @index}}"></div>
-					{{/each}}
+					{{#everyNth helmet.galleryColorSwatchArray helmet.imagesPerColorSwatch}}
+                        <div data-image-id="#helmet-{{helmetIndex}}" class="image-toggler helmet-swatch-circle"
+                             style="{{#if split}}background: linear-gradient(-45deg, {{split.[1]}} 50%,
+								 {{split.[0]}} 50%);background-size:30px 30px;{{else}}background-color:{{color}}{{/if}}"></div>
+					{{/everyNth}}
+                    
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var imagesPerSwatch = {{helmet.imagesPerColorSwatch}};
+            var swatches = {{{json helmet.galleryColorSwatchArray}}};
+			//client-side init gallery;
+			var gallery = [];
+			//server-side render code to populate gallery.
+			{{#each helmet.gallery}}
+				gallery.push("{{{cloudinaryUrl this height=80}}}");
+			{{/each}}
+            
+			swatches.forEach(function(swatch, swatchIndex){
+				console.log('swatch:',swatch);
+                var content = '<div style="width:' + imagesPerSwatch * 80 + 'px; height:80px;">';
+				//var thisGallery = [];
+				for (var i = swatch.helmetIndex; i < swatch.helmetIndex + imagesPerSwatch; i++) {
+					//thisGallery.push(gallery[i]);
+					content += '<img style="width:80px;" class="image-toggler" data-image-id="#helmet-' + i + '" src="' + gallery[i] + '"/>';
+				}
+				content += '</div>';
+				console.log('helmetIndex:', swatch.helmetIndex );
+                $("[data-image-id='#helmet-" + swatch.helmetIndex + "']").popover({
+                    //title: 'Look! A bird!',
+                    content: content,
+                    html: true,
+                    placement: 'top',
+                    trigger: 'manual'
+                }).on("mouseenter", function (e) {
+                    var _this = this;
+                    $(this).popover("show");
+					
+                    $('.image-toggler').click(function (e) {
+                        $('.image-toggle').hide();
+                        $($(this).attr('data-image-id')).show();
+						
+                        /*setTimeout(function () {
+							$(_this).popover("hide")
+                        }, 1000);*/
+                    });
+
+                    $(this).siblings(".popover").on("mouseleave", function () {
+                        $(_this).popover('hide');
+                    });
+                }).on("mouseleave", function () {
+                    var _this = this;
+                    setTimeout(function () {
+                        if (!$(".popover:hover").length) {
+                            $(_this).popover("hide")
+                        }
+                    }, 100);
+                }).on("click", function (event) {
+                    var _this = this;
+                    setTimeout(function () {
+						$(_this).popover("hide")
+                    }, 100);
+                });
+				
+			});
+            /*$('.image-toggler').click(function (e) {
+                $('.image-toggle').hide();
+                $($(this).attr('data-image-id')).show();
+            });*/
+
+        });
+    </script>
 {{/ifCond}}

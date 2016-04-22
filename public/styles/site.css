@@ -6182,14 +6182,15 @@ h1, h2, h3 {
   margin-top: 0px; }
 
 .img-circle {
-  -webkit-transform: translate(-50%); }
+  -webkit-transform: translate(-50%);
+  border-radius: 50%; }
 
 .helmet-swatch-circle {
   border-radius: 50%;
   behavior: url(PIE.htc);
   /* remove if you don't care about IE8 */
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background: yellow;
   float: left;
   margin: 5px 10px;
@@ -6198,8 +6199,9 @@ h1, h2, h3 {
 
 /** bootstrap 3 variable overrides */
 /** bootstrap 3 helpers */
-.helmets .row {
-  padding: 15px 0px 15px 0px; }
+.popover {
+  /*max-width:500px;
+  width:500px;*/ }
 
 .helmets .row ul {
   list-style: none;
@@ -6294,6 +6296,9 @@ a.helmet-category-anchor {
   border: 0;
   margin-bottom: 0; }
 
+.initialism .row {
+  margin-top: 5px; }
+
 /*.navbar {
   position: relative;
   min-height: 50px;
@@ -6312,7 +6317,7 @@ a.helmet-category-anchor {
 .percentage:after {
   content: "";
   display: block;
-  background-color: #bbb;
+  background-color: green;
   line-height: 15px; }
 
 .percentage-1:after {
@@ -6716,7 +6721,7 @@ a.helmet-category-anchor {
   content: '\00a0'; }
 
 .row {
-  margin-bottom: 15px; }
+  margin-top: 15px; }
 
 /* END Bootstrap overrides */
 /* Helmet category */
@@ -6730,14 +6735,27 @@ a.helmet-category-anchor {
 
 .helmet-category-item .helmet-category-item-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   visibility: hidden;
   padding: 15px;
   background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
-  vertical-align: bottom;
   width: 100%;
+  height: 100%;
   font-size: 1.2em; }
+
+.helmet-category-item .helmet-category-item-overlay p {
+  text-indent: 0px; }
+
+.helmet-category-item .helmet-category-item-overlay span.highlight {
+  background-color: #FFF;
+  padding: 5px; }
+
+.helmet-category-item .helmet-category-item-overlay span.highlight-inverse {
+  color: #FFF;
+  background-color: #000;
+  font-weight: 100;
+  padding: 5px; }
 
 .helmet-category-item:hover .helmet-category-item-overlay {
   visibility: visible; }
@@ -6776,7 +6794,7 @@ a.helmet-category-anchor {
   background: #f7f7f7 url(/img/loading.gif) no-repeat center; }
 
 #footer, #footer a {
-  background-color: #5e5e5e;
+  background-color: #000;
   color: #fff;
   margin-top: 0; }
 
