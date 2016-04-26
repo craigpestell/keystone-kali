@@ -29,7 +29,10 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            var imagesPerSwatch = {{product.imagesPerColorSwatch}};
+			var imagesPerSwatch = 3;
+			{{#if product.imagesPerColorSwatch}}
+            	imagesPerSwatch = {{product.imagesPerColorSwatch}};
+			{{/if}}
             var swatches = {{{json product.galleryColorSwatchArray}}};
 			//client-side init gallery;
 			var gallery = [];
@@ -37,19 +40,20 @@
 			{{#each product.gallery}}
 				gallery.push("{{{cloudinaryUrl this height=80}}}");
 			{{/each}}
-            
-			
-			swatches.forEach(function(swatch, swatchIndex){
-				console.log('swatch:',swatch);
+
+
+            for (var i = 0; i < gallery.length + imagesPerSwatch; i+=imagesPerSwatch) {
+			//swatches.forEach(function(swatch, swatchIndex){
+				//console.log('swatch:',swatch);
                 var content = '<div style="width:' + (imagesPerSwatch) * 80 + 'px; height:80px;">';
 				//var thisGallery = [];
-				for (var i = swatch.productIndex; i < swatch.productIndex + imagesPerSwatch; i++) {
+				for (var j = i; j < i+imagesPerSwatch; j++) {
 					//thisGallery.push(gallery[i]);
-					content += '<img style="width:80px;" class="image-toggler" data-image-id="#product-' + i + '" src="' + gallery[i] + '"/>';
+					content += '<img style="width:80px;" class="image-toggler" data-image-id="#product-' + j + '" src="' + gallery[j] + '"/>';
 				}
 				content += '</div>';
-				console.log('productIndex:', swatch.productIndex );
-                $("[data-image-id='#product-" + swatch.productIndex + "']").popover({
+				//console.log('productIndex:', swatch.productIndex );
+                $("[data-image-id='#product-" + i + "']").popover({
                     //title: 'Look! A bird!',
                     content: content,
                     html: true,
@@ -74,23 +78,23 @@
                     });
                 }).on("mouseleave", function () {
                     var _this = this;
-                    if (!$(".popover:hover").length) {
-                    
+                    setTimeout(function () {
+                        if (!$(".popover:hover").length) {
                             $(_this).popover("hide")
-                    	
-                    }
+                        }
+                    }, 100);
                 }).on("click", function (event) {
                     var _this = this;
-                    
-						$(_this).popover("hide")
-                    
+                    setTimeout(function () {
+                        $(_this).popover("hide")
+                    }, 100);
                 });
 				
-			});
-            $('.image-toggler').click(function (e) {
+			};
+            /*$('.image-toggler').click(function (e) {
                 $('.image-toggle').hide();
                 $($(this).attr('data-image-id')).show();
-            });
+            });*/
 
         });
     </script>
