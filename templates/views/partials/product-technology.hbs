@@ -1,0 +1,9 @@
+<div class="row"> {{#if this.featureAnchor}}<a id="features"></a>{{/if}}
+	{{#everyOther @index 2}}
+		{{> product-technology-hero-image}}
+		{{> product-technology-info}}
+	{{else}}
+		{{> product-technology-info}}
+		{{> product-technology-hero-image}}
+	{{/everyOther}}
+</div>

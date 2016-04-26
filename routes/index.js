@@ -41,9 +41,9 @@ exports = module.exports = function(app) {
 			var view = new keystone.View(req, res);
 			var locals = res.locals;
 
-			keystone.list('Helmet').model.find().populate('categories').sort('sortOrder')
-				.exec(function(err, helmets){
-					locals['helmets'] = helmets;
+			keystone.list('Product').model.find().populate('categories').sort('sortOrder')
+				.exec(function(err, products){
+					locals['products'] = products;
 					locals.test = 'xxxxxxxx';
 					next();
 
@@ -65,9 +65,9 @@ exports = module.exports = function(app) {
 	app.get('/gallery', routes.views.gallery);
 
 	
-	app.get('/:category(bike|powersports)?', routes.views['helmet-category']);
-	app.get('/:category(bike|powersports)/:subCategory?', routes.views['helmet-category']);
-	app.get('/:category(bike|powersports)/:subCategory/:helmet?', routes.views.helmet);
+	app.get('/:category(bike|powersports)?', routes.views['product-category']);
+	app.get('/:category(bike|powersports)/:subCategory?', routes.views['product-category']);
+	app.get('/:category(bike|powersports)/:subCategory/:product?', routes.views.product);
 
 	app.get('/dealers', routes.views['dealer-locator']);
 	

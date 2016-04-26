@@ -111,7 +111,7 @@ keystone.set('nav', {
 	//'enquiries': 'enquiries',
 	'base-pages': 'base-pages',
 	//'users': 'users',
-	'helmets': ['helmets', 'helmet-categories', 'helmet-sub-categories', 'helmet-features', 'helmet-technologies'],
+	'products': ['products', 'product-categories', 'product-sub-categories', 'product-features', 'product-technologies'],
 	'dealers': 'dealers'
 });
 

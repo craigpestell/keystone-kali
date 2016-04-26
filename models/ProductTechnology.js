@@ -2,19 +2,19 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 /**
- * HelmetFeature Model
+ * ProductTechnology Model
  * =============
  */
 
-var HelmetFeature = new keystone.List('HelmetFeature', {
+var ProductTechnology = new keystone.List('ProductTechnology', {
 	autokey: { from: 'name', path: 'key', unique: true }
 });
-HelmetFeature.relationship({ path: 'helmets', ref: 'Helmet', refPath: 'features' });
-HelmetFeature.add({
+ProductTechnology.relationship({ path: 'products', ref: 'Product', refPath: 'technologies' });
+ProductTechnology.add({
 	name: { type: String, required: true, default: '' },
 	description: { type: Types.Html, default: '' },
 	iconImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true}
 });
 
-HelmetFeature.register();
+ProductTechnology.register();

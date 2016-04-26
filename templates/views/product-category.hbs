@@ -1,15 +1,15 @@
-<!-- if helmets -->
-{{#if helmets}}
-	{{> nav-helmet-categories navHelmets}}
+<!-- if products -->
+{{#if products}}
+	{{> nav-product-categories navProducts}}
 
-    <div class="container helmets">
-		{{#each helmets}}
-            <a id="{{slug}}" class="helmet-category-anchor">{{name}} category anchor</a>
+    <div class="container products">
+		{{#each products}}
+            <a id="{{slug}}" class="product-category-anchor">{{name}} category anchor</a>
             <div class="row">
                 <div class="col-sm-12"><h1>{{name}}</h1></div>
             </div>
             <div class="row">
-				{{#each this.helmets}}
+				{{#each this.products}}
                     <!-- visible on phones and tablets -->
                     <div class="row visible-xs visible-sm">
                         <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
@@ -29,11 +29,11 @@
 
                     <!-- visible on desktop -->
                     <div class="col-sm-6 col-lg-4 hidden-xs hidden-sm">
-                        <div class="helmet-category-item">
+                        <div class="product-category-item">
                             <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
                                 <img class="img-responsive lazyload"
                                      src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
-                                <div class="helmet-category-item-overlay">
+                                <div class="product-category-item-overlay">
                                     <h2>{{this.name}}</h2>
 									{{{description}}}
                                 </div>
@@ -46,5 +46,5 @@
     </div>
 {{else}}
     <!-- else -->
-    <h3 class="text-muted">No helmets exist.</h3>
+    <h3 class="text-muted">No products exist.</h3>
 {{/if}}

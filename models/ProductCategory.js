@@ -2,15 +2,15 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 /**
- * HelmetCategory Model
+ * ProductCategory Model
  * =============
  */
 
-var HelmetCategory = new keystone.List('HelmetCategory', {
+var ProductCategory = new keystone.List('ProductCategory', {
 	autokey: { from: 'name', path: 'key', unique: true }, sortable: true
 });
-HelmetCategory.relationship({ path: 'helmets', ref: 'Helmet', refPath: 'categories' });
-HelmetCategory.add({
+ProductCategory.relationship({ path: 'products', ref: 'Product', refPath: 'categories' });
+ProductCategory.add({
 	name: { type: String, required: true, default: '' },
 	slug: { type: String, required: true, initial: true}
 });
@@ -18,8 +18,8 @@ HelmetCategory.add({
 // Virtuals
 // ------------------------------
 
-//HelmetCategory.schema.virtual('url').get(function() {
-//	return '/helmet-category/' + this.slug;
+//ProductCategory.schema.virtual('url').get(function() {
+//	return '/product-category/' + this.slug;
 //});
 
-HelmetCategory.register();
+ProductCategory.register();

@@ -2,21 +2,21 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 /**
- * Helmet Model
+ * Product Model
  * =============
  */
 
-var Helmet = new keystone.List('Helmet', {
-	autokey: { from: 'slug', path: 'key', unique: true, drilldown: 'HelmetSpec'}, sortable: true//, sortContext: 'HelmetSubCategory:helmets'
+var Product = new keystone.List('Product', {
+	autokey: { from: 'slug', path: 'key', unique: true, drilldown: 'ProductSpec'}, sortable: true//, sortContext: 'ProductSubCategory:products'
 });
-Helmet.defaultColumns = 'name,categories,technologies';
-Helmet.add({
+Product.defaultColumns = 'name,categories,technologies';
+Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
-	mainCategory: { type: Types.Relationship, ref: 'HelmetCategory'},
-	subCategory: { type: Types.Relationship, ref: 'HelmetSubCategory'},
-	technologies: { type: Types.Relationship, ref: 'HelmetTechnology', many: true },
-	features: { type: Types.Relationship, ref: 'HelmetFeature', many: true },
+	mainCategory: { type: Types.Relationship, ref: 'ProductCategory'},
+	subCategory: { type: Types.Relationship, ref: 'ProductSubCategory'},
+	technologies: { type: Types.Relationship, ref: 'ProductTechnology', many: true },
+	features: { type: Types.Relationship, ref: 'ProductFeature', many: true },
 	description: { type: Types.Html, default: '' },
 	specs: { type: Types.Html, default: '' },
 	usageChart: { type: Types.Html, default: '' },
@@ -27,7 +27,7 @@ Helmet.add({
 	extra: { type: Types.Html, wysiwyg: true }
 });
 
-Helmet.schema.virtual('galleryColorSwatchArray').get(function(){
+Product.schema.virtual('galleryColorSwatchArray').get(function(){
 	var colorSwatches = [];
 	var colors = this.galleryColorSwatches.split(';');
 	colors.forEach(function(color){
@@ -52,21 +52,21 @@ Helmet.schema.virtual('galleryColorSwatchArray').get(function(){
 	var imagesPerSwatch = this.imagesPerColorSwatch;
 	colorSwatches.forEach(function(swatch, i){
 		if(i === 0) {
-			colorSwatches[i].helmetIndex = 0;
+			colorSwatches[i].productIndex = 0;
 		}else{
-			colorSwatches[i].helmetIndex = ((i)*imagesPerSwatch);
+			colorSwatches[i].productIndex = ((i)*imagesPerSwatch);
 		}
 	});
 	
 	return colorSwatches;
 });
 
-Helmet.schema.virtual('technologiesAndFeatures').get(function(){
+Product.schema.virtual('technologiesAndFeatures').get(function(){
 	if(this.features[0] !== undefined){
 		this.features[0].featureAnchor = true;
 	}
 	return this.technologies.concat(this.features);
 });
 
-Helmet.register();
+Product.register();
 

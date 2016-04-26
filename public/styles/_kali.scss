@@ -86,7 +86,7 @@ h1, h2, h3 {
   border-radius: 50%;
 }
 
-.helmet-swatch-circle{
+.product-swatch-circle{
   border-radius: 50%;
   behavior: url(PIE.htc); /* remove if you don't care about IE8 */
   width: 30px;
@@ -110,21 +110,21 @@ $navbar-default-link-active-color: #555 !default;
   /*max-width:500px;
   width:500px;*/
 }
-.helmets .row {
+.products .row {
   //padding: 15px 0px 15px 0px;
 }
 
-.helmets .row ul {
+.products .row ul {
   list-style: none;
   padding-left: 0;
 }
 
 ​
-  /*.helmets .row:nth-of-type(odd) {
+  /*.products .row:nth-of-type(odd) {
     background: #ffffff;
   }
   
-  .helmets .row:nth-of-type(even) {
+  .products .row:nth-of-type(even) {
     background: #dcdcdc;
   }*/
 .navbar-form input, .form-inline input {
@@ -182,24 +182,24 @@ $navbar-default-link-active-color: #555 !default;
   padding: 0
 }
 
-.helmet-section-nav{
+.product-section-nav{
   top: 0px;
   z-index: 1020;
   background-color: rgb(247,247,247);
   border-bottom: 1px solid #E1E1E1;
   padding: 8px 0px 0px 0px;
 }
-.helmet-section-nav ul{
+.product-section-nav ul{
   padding:0;
   list-style: none;
   top:0;
 }
-.helmet-section-nav ul li{
+.product-section-nav ul li{
   display: inline-block;
   padding:15px;
 }
 
-a.helmet-category-anchor {
+a.product-category-anchor {
   display: block;
   position: relative;
   /*top: -100px;*/
@@ -275,8 +275,8 @@ a.helmet-category-anchor {
 /* END Bootstrap overrides */
 
 
-/* Helmet category */
-.helmet-category-item {
+/* Product category */
+.product-category-item {
   position:relative;
   /*background-image:
 		  linear-gradient(
@@ -284,10 +284,10 @@ a.helmet-category-anchor {
 						  rgba(0, 0, 0, 0.1)
 		  )*/
 }
-.helmet-category-item h2{
+.product-category-item h2{
   
 }
-.helmet-category-item .helmet-category-item-overlay {
+.product-category-item .product-category-item-overlay {
   
   position:absolute; 
   top:0; 
@@ -304,50 +304,50 @@ a.helmet-category-anchor {
   font-size: 1.2em;
 }
 
-.helmet-category-item .helmet-category-item-overlay p{
+.product-category-item .product-category-item-overlay p{
   text-indent: 0px;
 }
 
-.helmet-category-item .helmet-category-item-overlay span.highlight{
+.product-category-item .product-category-item-overlay span.highlight{
   background-color:#FFF;
   padding:5px;
 }
 
-.helmet-category-item .helmet-category-item-overlay span.highlight-inverse{
+.product-category-item .product-category-item-overlay span.highlight-inverse{
   color: #FFF;
   background-color:#000;
   font-weight: 100;
   padding:5px;
 }
 
-.helmet-category-item:hover{
+.product-category-item:hover{
   
 }
-.helmet-category-item:hover .helmet-category-item-overlay {
+.product-category-item:hover .product-category-item-overlay {
   visibility: visible;
 }
 
 /* */ 
 
-/* Helmet detail */
-#helmet-zoom-current{
+/* Product detail */
+#product-zoom-current{
   height: 40px;
   width: 40px;
   cursor: pointer;
 }
-#helmet-usage-chart dt{
+#product-usage-chart dt{
 
 }
-#helmet-usage-chart dd {
+#product-usage-chart dd {
   
 }
 
-#helmet-usage-chart dl {
+#product-usage-chart dl {
   //border: 3px double #ccc;
   //padding: 0.5em;
 }
 
-#helmet-usage-chart dt {
+#product-usage-chart dt {
   float: left;
   clear: left;
   width: 100px;
@@ -355,18 +355,18 @@ a.helmet-category-anchor {
   white-space: nowrap;
 }
 
-#helmet-usage-chart dd {
+#product-usage-chart dd {
   margin: 0 0 0 110px;
   padding: 0 0 0.5em 0;
 }
 
-#helmet-sizing-guide h1{
+#product-sizing-guide h1{
   font-size: $font-size-large;
 }
-#helmet-sizing-guide h2{
+#product-sizing-guide h2{
   font-size: $font-size-base;
 }
-/* END helmet detail page */ 
+/* END product detail page */ 
 
 .lazyload {
   opacity: 0;

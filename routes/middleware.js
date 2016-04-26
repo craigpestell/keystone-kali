@@ -26,20 +26,20 @@ function getSiteSettings(cb) {
 /*
 * Get all Main categories
 * Get al sub categories
-* Get all helmets
-* Join helmets to sub categories, sub categories to main categories
+* Get all products
+* Join products to sub categories, sub categories to main categories
 * */
 
 function getNavData(navDataCb){
 	async.parallel({
 			categories: function(callback){
-				keystone.list('HelmetCategory').model.find().exec(callback);
+				keystone.list('ProductCategory').model.find().exec(callback);
 			},
 			subcategories: function(callback){
-				keystone.list('HelmetSubCategory').model.find().exec(callback);
+				keystone.list('ProductSubCategory').model.find().exec(callback);
 			},
-			helmets: function(callback){
-				keystone.list('Helmet').model.find().exec(callback);
+			products: function(callback){
+				keystone.list('Product').model.find().exec(callback);
 			}
 		},
 		function massage(err, results){
@@ -49,13 +49,13 @@ function getNavData(navDataCb){
 				returnData.categories[cat.slug] = cat;
 				returnData.categories[cat.slug].subCategories = [];
 				results.subcategories.forEach(function(subCat, j){
-					if(subCat.helmets == undefined) {
-						subCat.helmets = [];
+					if(subCat.products == undefined) {
+						subCat.products = [];
 					}
-					//get all helmets for sub category
-					results.helmets.forEach(function(helmet){
-						if (subCat._id.equals(helmet.subCategory) && cat._id.equals(subCat.parentCategory)) {
-							subCat.helmets.push(helmet);
+					//get all products for sub category
+					results.products.forEach(function(product){
+						if (subCat._id.equals(product.subCategory) && cat._id.equals(subCat.parentCategory)) {
+							subCat.products.push(product);
 						}
 					});
 					
@@ -102,13 +102,13 @@ exports.initLocals = function (req, res, next) {
 					]
 				}
 				,{
-					label: 'Helmets', key: 'bike', href: '/bike',
-					helmets: data.categories.bike,
+					label: 'Products', key: 'bike', href: '/bike',
+					products: data.categories.bike,
 					categories: data.categories.bike.subCategories,
 					dropdown: data.categories.bike.subCategories
 				}/*,
-				{	label: 'Powersports', key: 'powersports', href: '/helmet-category/powersports',
-					helmets: data.categories.powersports,
+				{	label: 'Powersports', key: 'powersports', href: '/product-category/powersports',
+					products: data.categories.powersports,
 					categories: data.categories.powersports.subCategories
 				}*/
 				,{

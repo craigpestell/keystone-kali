@@ -1,9 +1,9 @@
 var keystone = require('keystone');
 var async = require('async');
 /**
- * Get all subcategories and helmets in main category
+ * Get all subcategories and products in main category
  * */
-module.exports.getHelmetCategoryData = function (category, subCategory, helmetDataCb){
+module.exports.getProductCategoryData = function (category, subCategory, productDataCb){
 	var categoryWhere = {};
 	if(category) {
 		categoryWhere = {slug:category};
@@ -14,15 +14,15 @@ module.exports.getHelmetCategoryData = function (category, subCategory, helmetDa
 	}
 	async.parallel({
 			categories: function(callback){
-				keystone.list('HelmetCategory')
+				keystone.list('ProductCategory')
 					.model.find(categoryWhere).exec(callback);
 			},
 			subcategories: function(callback){
-				keystone.list('HelmetSubCategory')
+				keystone.list('ProductSubCategory')
 					.model.find(subCategoryWhere).sort('sortOrder').exec(callback);
 			},
-			helmets: function(callback){
-				keystone.list('Helmet')
+			products: function(callback){
+				keystone.list('Product')
 					.model.find().populate('mainCategory subCategory technologies').sort('sortOrder').exec(callback);
 			}
 		},
@@ -31,14 +31,14 @@ module.exports.getHelmetCategoryData = function (category, subCategory, helmetDa
 
 			results.categories.forEach(function(cat){
 				results.subcategories.forEach(function(subCat, j){
-					if(subCat.helmets == undefined) {
-						subCat.helmets = [];
+					if(subCat.products == undefined) {
+						subCat.products = [];
 					}
-					//get all helmets for sub category
-					results.helmets.forEach(function(helmet){
-						if (subCat._id.equals(helmet.subCategory.id) && cat._id.equals(subCat.parentCategory)) {
+					//get all products for sub category
+					results.products.forEach(function(product){
+						if (subCat._id.equals(product.subCategory.id) && cat._id.equals(subCat.parentCategory)) {
 							
-							subCat.helmets.push(helmet);
+							subCat.products.push(product);
 						}
 					});
 
@@ -49,7 +49,7 @@ module.exports.getHelmetCategoryData = function (category, subCategory, helmetDa
 			});
 			//console.log("MASSAGED RESULTS: ", returnData);
 			//console.log(returnData.categories.bike.subCategories);
-			helmetDataCb(null, returnData);
+			productDataCb(null, returnData);
 		}
 	);
 
