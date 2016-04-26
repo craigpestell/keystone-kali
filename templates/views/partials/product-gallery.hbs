@@ -49,7 +49,7 @@
 				//var thisGallery = [];
 				for (var j = i; j < i+imagesPerSwatch; j++) {
 					//thisGallery.push(gallery[i]);
-					content += '<img style="width:80px;" class="image-toggler" data-image-id="#product-' + j + '" src="' + gallery[j] + '"/>';
+					content += '<img style="width:80px;" class="image-toggler-popover" data-image-id="#product-' + j + '" src="' + gallery[j] + '"/>';
 				}
 				content += '</div>';
 				//console.log('productIndex:', swatch.productIndex );
@@ -64,7 +64,7 @@
                    
 					$(this).popover("show");
 
-                    $('.image-toggler').hover(function (e) {
+                    $('.image-toggler-popover').click(function (e) {
                         $('.image-toggle').hide();
                         $($(this).attr('data-image-id')).show();
 						
