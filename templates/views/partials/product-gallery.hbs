@@ -17,7 +17,7 @@
                 <div class="btn-group" data-toggle="buttons">
 					{{#everyNth product.gallery product.imagesPerColorSwatch}}
 						{{#if isModZero}}
-                        <div data-image-id="#product-{{productIndex}}" class="image-toggler" style="float:left;">
+                        <div data-image-id="#product-{{n}}" class="image-toggler" style="float:left;">
 							<img src="{{cloudinaryUrl this width=80}}" />
 						</div>
 						{{/if}}
@@ -38,10 +38,6 @@
 				gallery.push("{{{cloudinaryUrl this height=80}}}");
 			{{/each}}
             
-			for (var i = 0; i < product.gallery.length; i+= imagesPerSwatch){
-				
-			}
-			
 			
 			swatches.forEach(function(swatch, swatchIndex){
 				console.log('swatch:',swatch);
@@ -79,15 +75,15 @@
                 }).on("mouseleave", function () {
                     var _this = this;
                     if (!$(".popover:hover").length) {
-                    $.debounce(100, function () {
+                    
                             $(_this).popover("hide")
-                    	});
+                    	
                     }
                 }).on("click", function (event) {
                     var _this = this;
-                    $.debounce(100, function () {
+                    
 						$(_this).popover("hide")
-                    });
+                    
                 });
 				
 			});
