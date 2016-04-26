@@ -61,9 +61,11 @@
                     trigger: 'manual'
                 }).on("mouseenter", function (e) {
                     var _this = this;
-                   
+                    $('.image-toggle').hide();
+					
+                    $($(this).attr('data-image-id')).show();
 					$(this).popover("show");
-
+					
                     $('.image-toggler-popover').click(function (e) {
                         $('.image-toggle').hide();
                         $($(this).attr('data-image-id')).show();
