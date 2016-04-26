@@ -6211,6 +6211,9 @@ h1, h2, h3 {
 .navbar-form input, .form-inline input {
   width: auto; }
 
+#nav-main {
+  font-weight: bold; }
+
 .navbar {
   border: 0;
   border-radius: 0;
