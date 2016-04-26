@@ -6212,7 +6212,8 @@ h1, h2, h3 {
   width: auto; }
 
 #nav-main {
-  font-weight: bold; }
+  font-size: 1.1em;
+  font-family: Gotham-Black, Arial, SansSerif; }
 
 .navbar {
   border: 0;
