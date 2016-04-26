@@ -6328,7 +6328,7 @@ a.product-category-anchor {
 .percentage:after {
   content: "";
   display: block;
-  background-color: green;
+  background-color: #66cc00;
   line-height: 15px; }
 
 .percentage-1:after {
