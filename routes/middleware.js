@@ -102,7 +102,13 @@ exports.initLocals = function (req, res, next) {
 					]
 				}
 				,{
-					label: 'Products', key: 'bike', href: '/bike',
+					label: 'Helmets', key: 'bike', href: '/bike',
+					products: data.categories.bike,
+					categories: data.categories.bike.subCategories,
+					dropdown: data.categories.bike.subCategories
+				}
+				,{
+					label: 'Armor', key: 'armor', href: '/armor',
 					products: data.categories.bike,
 					categories: data.categories.bike.subCategories,
 					dropdown: data.categories.bike.subCategories
