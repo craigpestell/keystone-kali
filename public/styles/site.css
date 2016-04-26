@@ -6253,7 +6253,11 @@ h1, h2, h3 {
 
 .navbar.subnav li {
   display: inline-block;
-  float: none; }
+  float: none;
+  padding: 15px; }
+
+.navbar.subnav li:hover {
+  background-color: #eee; }
 
 .navbar.subnav li a {
   padding: 0; }

@@ -180,7 +180,13 @@ $navbar-default-link-active-color: #555 !default;
 .navbar.subnav li {
   display: inline-block;
   float: none;
+  padding:15px;
 }
+.navbar.subnav li:hover{
+  background-color: #eee;
+  
+}
+
 .navbar.subnav li a{
   padding: 0
 }
