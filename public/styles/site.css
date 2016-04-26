@@ -6212,8 +6212,7 @@ h1, h2, h3 {
   width: auto; }
 
 #nav-main {
-  font-weight: normal;
-  font-size: 1.2em; }
+  font-weight: bold; }
 
 .navbar {
   border: 0;
