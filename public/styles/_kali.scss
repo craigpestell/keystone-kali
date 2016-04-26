@@ -188,7 +188,7 @@ $navbar-default-link-active-color: #555 !default;
 }
 
 .navbar.subnav li:hover{
-  background-color: #eee;
+  background-color: $brand-primary;
 }
 
 .navbar.subnav li a{
