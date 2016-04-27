@@ -1,17 +1,5 @@
 {{# ifCond product.gallery.length '>' 1}}
     <div class="{{class}}">
-        <!--<div class="row">
-            <div class="col-xs-12">
-                <div class="btn-group" data-toggle="buttons">
-					{{#everyNth product.galleryColorSwatchArray product.imagesPerColorSwatch}}
-                        <div data-image-id="#product-{{productIndex}}" class="image-toggler product-swatch-circle"
-                             style="{{#if split}}background: linear-gradient(-45deg, {{split.[1]}} 50%,
-								 {{split.[0]}} 50%);background-size:30px 30px;{{else}}background-color:{{color}}{{/if}}"></div>
-					{{/everyNth}}
-                    
-                </div>
-            </div>
-        </div>-->
         <div class="row">
             <div class="col-xs-12">
                 <div class="btn-group" data-toggle="buttons">
@@ -63,6 +51,7 @@
                     $('.image-toggle').hide();
 					
                     $($(this).attr('data-image-id')).show();
+					
 					$(this).popover("show");
 					
                     $('.image-toggler-popover').click(function (e) {
@@ -88,7 +77,7 @@
                     var _this = this;
                     setTimeout(function () {
                         $(_this).popover("hide")
-                    }, 100);
+                    }, 200);
                 });
 				
 			};

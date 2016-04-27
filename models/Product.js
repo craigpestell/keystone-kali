@@ -9,7 +9,7 @@ var Types = keystone.Field.Types;
 var Product = new keystone.List('Product', {
 	autokey: { from: 'slug', path: 'key', unique: true, drilldown: 'ProductSpec'}, sortable: true//, sortContext: 'ProductSubCategory:products'
 });
-Product.defaultColumns = 'name,categories,technologies';
+Product.defaultColumns = 'name,subCategory';
 Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},

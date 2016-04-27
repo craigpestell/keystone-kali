@@ -7,7 +7,8 @@
 			<div id="links" class="col-xs-12 col-md-7">
 				{{#each product.gallery}}
 					<a href="{{url}}" title="{{name}}" data-gallery>
-						<img id="product-{{@index}}" src="{{{cloudinaryUrl width=635}}}" class="img-responsive image-toggle{{#unless @first}} lazyload{{/unless}}"
+						<img id="product-{{@index}}" src="{{{cloudinaryUrl width=635}}}" 
+							 class="{{#unless @first}}img-responsive {{/unless}}image-toggle{{#unless @first}} lazyload{{/unless}}"
 							 alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
 					</a>
 				{{/each}}
@@ -36,6 +37,13 @@
 							{{{product.usageChart}}}
 						</div>
 					</div>
+					{{#if product.technologiesAndFeatures.length}}
+					<div class="row">
+						{{#each product.technologiesAndFeatures}}
+                            <img style="float:left;" class="lazyload img-responsive" src="{{{cloudinaryUrl iconImage width=70 height=70}}}"/>
+						{{/each}}
+					</div>
+					{{/if}}
                     <div class="row">
                         <div class="col-xs-12"><a href="/dealers"><h3 style="color: go">Find a Dealer</h3></a></div>
                     </div>
@@ -82,7 +90,7 @@
 							$('#nav-product-categories').outerHeight() + 15;
 					}
             }
-        })
+        });
 
         $('#product-zoom-current').click(function(){
 			$('[data-gallery]').each(function(i, el){
@@ -93,22 +101,22 @@
 			});
 		});
         var borderless = true;
-        $('#blueimp-gallery').data('fullScreen', false);
+        /*$('#blueimp-gallery').data('fullScreen', false);
         $('#blueimp-gallery').data('toggleControlsOnSlideClick', false);
         $('#blueimp-gallery').data('slideClass', 'slide zoom');
 		
         //$('#blueimp-gallery').data('useBootstrapModal', !borderless);
         $('#blueimp-gallery').toggleClass('blueimp-gallery-controls', borderless);
-		$('#blueimp-gallery').on('slide',function (slide, index) {
-            $(slide).zoom({ on:'click' });
-			console.log('slide:', slide);
-			console.log('index:', index);
+		//$('#blueimp-gallery').on('slide',function (slide, index) {
+            //$(slide).zoom({ on:'click' });
+		//	console.log('slide:', slide);
+		//	console.log('index:', index);
             /*$('.slide-content').each(function(i, e){
 				$(e).zoom({ on:'click' });
             });*/
             // Callback function executed when the Gallery has been initialized
             // and the initialization transition has been completed.
-        });
+        //});
 
 		
     });
