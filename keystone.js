@@ -111,7 +111,7 @@ keystone.set('nav', {
 	//'enquiries': 'enquiries',
 	'base-pages': 'base-pages',
 	//'users': 'users',
-	'products': ['products', 'product-categories', 'product-sub-categories', 'product-features', 'product-technologies', 'product-types'],
+	'products': ['products', 'product-categories', 'product-sub-categories', 'product-features', 'product-technologies'],
 	'dealers': 'dealers'
 });
 

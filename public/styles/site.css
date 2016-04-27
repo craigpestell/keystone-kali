@@ -6253,17 +6253,17 @@ h1, h2, h3 {
 
 .navbar.subnav li {
   display: inline-block;
-  float: none;
-  padding: 10px 15px; }
+  float: none; }
+
+.navbar.subnav li a {
+  padding: 10px 15px;
+  display: block; }
 
 .navbar.subnav li a:focus, .navbar.subnav li a:hover {
   text-decoration: none; }
 
 .navbar.subnav li:hover {
   background-color: #eee; }
-
-.navbar.subnav li a {
-  padding: 0; }
 
 .product-section-nav {
   top: 0px;

@@ -13,7 +13,7 @@ Product.defaultColumns = 'name,categories,technologies';
 Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
-	type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
+	//type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
 	mainCategory: { type: Types.Relationship, ref: 'ProductCategory', required: true, initial: true},
 	subCategory: { type: Types.Relationship, ref: 'ProductSubCategory', required: true, initial: true},
 	technologies: { type: Types.Relationship, ref: 'ProductTechnology', many: true },
@@ -23,12 +23,12 @@ Product.add({
 	usageChart: { type: Types.Html, default: '' },
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },
 	gallery: { type: Types.CloudinaryImages,  autoCleanup : true },
-	galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
+	//galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
 	imagesPerColorSwatch: {type: Number, note: 'Number of images for each color swatch.'},
 	extra: { type: Types.Html, wysiwyg: true }
 });
 
-Product.schema.virtual('galleryColorSwatchArray').get(function(){
+/*Product.schema.virtual('galleryColorSwatchArray').get(function(){
 	var colorSwatches = [];
 	var colors = this.galleryColorSwatches.split(';');
 	colors.forEach(function(color){
@@ -60,7 +60,7 @@ Product.schema.virtual('galleryColorSwatchArray').get(function(){
 	});
 	
 	return colorSwatches;
-});
+});*/
 
 Product.schema.virtual('technologiesAndFeatures').get(function(){
 	if(this.features[0] !== undefined){

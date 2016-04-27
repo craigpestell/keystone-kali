@@ -12,7 +12,7 @@ module.exports.getProductNavigationData = function (category, productDataCb){
 				keystone.list('ProductCategory').model.find(categoryWhere).exec(callback);
 			},
 			subcategories: function(callback){
-				keystone.list('ProductSubCategory').model.find().sort('sortOrder').exec(callback);
+				keystone.list('ProductSubCategory').model.find().populate('parentCategory').sort('sortOrder').exec(callback);
 			},
 			products: function(callback){
 				keystone.list('Product').model.find().populate('mainCategory subCategory').sort('sortOrder').exec(callback);
@@ -28,12 +28,13 @@ module.exports.getProductNavigationData = function (category, productDataCb){
 					}
 					//get all products for sub category
 					results.products.forEach(function(product){
-						if (subCat._id.equals(product.subCategory.id) && cat._id.equals(subCat.parentCategory)) {
+						if (subCat._id.equals(product.subCategory.id) && 
+							cat._id.equals(subCat.parentCategory.id)) {
 							subCat.products.push(product);
 						}
 					});
 
-					if(cat._id.equals(subCat.parentCategory)){
+					if(cat._id.equals(subCat.parentCategory.id)){
 						returnData.push(subCat);
 					}
 				});

@@ -102,16 +102,16 @@ exports.initLocals = function (req, res, next) {
 					]
 				}
 				,{
-					label: 'Helmets', key: 'bike', href: '/bike',
-					products: data.categories.bike,
-					categories: data.categories.bike.subCategories,
-					dropdown: data.categories.bike.subCategories
+					label: 'Helmets', key: 'helmets', href: '/helmets',
+					products: data.categories.helmets,
+					categories: data.categories.helmets.subCategories,
+					dropdown: data.categories.helmets.subCategories
 				}
 				,{
 					label: 'Armor', key: 'armor', href: '/armor',
-					products: data.categories.bike,
-					categories: data.categories.bike.subCategories,
-					dropdown: data.categories.bike.subCategories
+					products: data.categories.armor,
+					categories: data.categories.armor.subCategories,
+					dropdown: data.categories.armor.subCategories
 				}/*,
 				{	label: 'Powersports', key: 'powersports', href: '/product-category/powersports',
 					products: data.categories.powersports,

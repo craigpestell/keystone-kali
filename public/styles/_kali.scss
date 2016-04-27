@@ -180,7 +180,11 @@ $navbar-default-link-active-color: #555 !default;
 .navbar.subnav li {
   display: inline-block;
   float: none;
-  padding:10px 15px;
+
+}
+.navbar.subnav li a {
+  padding: 10px 15px;
+  display: block;
 }
 
 .navbar.subnav li a:focus, .navbar.subnav li a:hover{
@@ -189,10 +193,6 @@ $navbar-default-link-active-color: #555 !default;
 
 .navbar.subnav li:hover{
   background-color: #eee;
-}
-
-.navbar.subnav li a{
-  padding: 0
 }
 
 .product-section-nav{
