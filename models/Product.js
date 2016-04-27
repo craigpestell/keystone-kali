@@ -13,9 +13,9 @@ Product.defaultColumns = 'name,categories,technologies';
 Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
-	type: { type: Types.Relationship, ref: 'ProductType'},
-	mainCategory: { type: Types.Relationship, ref: 'ProductCategory'},
-	subCategory: { type: Types.Relationship, ref: 'ProductSubCategory'},
+	type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
+	mainCategory: { type: Types.Relationship, ref: 'ProductCategory', required: true, initial: true},
+	subCategory: { type: Types.Relationship, ref: 'ProductSubCategory', required: true, initial: true},
 	technologies: { type: Types.Relationship, ref: 'ProductTechnology', many: true },
 	features: { type: Types.Relationship, ref: 'ProductFeature', many: true },
 	description: { type: Types.Html, default: '' },
