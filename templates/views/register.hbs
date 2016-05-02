@@ -14,8 +14,6 @@
                 mollis ipsum, eget suscipit erospurus in ante.
 			</p>
 			<hr/>
-			<h2>Register your Kali Here</h2>
-			<hr/>
 			<h3>Personal Information</h3>
 			<form method="post" role="form" class="">
 				<input type="hidden" name="action" value="register">
@@ -137,7 +135,7 @@
 					<div class="col-sm-3">
 						<div class="form-group {{#if validationErrors.helmetPricePaid}}has-error{{/if}}">
 							<label>Price Paid</label>
-							<input type="text" name="helmetModel" class="form-control" value="{{formData.helmetPricePaid}}">
+							<input type="text" name="helmetModel" placeholder="(optional)" class="form-control" value="{{formData.helmetPricePaid}}">
 						</div>
                     </div>
 				</div>
@@ -180,7 +178,7 @@
                     <div class="col-sm-6">
                         <div class="form-group {{#if validationErrors.feedbackComments}}has-error{{/if}}">
                             <label>Please leave any other comments below:</label>
-                            <textarea name="feedbackWhyKali" class="form-control">{{formData.feedbackComments}}</textarea>
+                            <textarea name="feedbackWhyKali" placeholder="(optional)" class="form-control">{{formData.feedbackComments}}</textarea>
                         </div>
 					</div>
 				</div>

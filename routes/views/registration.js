@@ -19,9 +19,13 @@ exports = module.exports = function(req, res) {
 		var newRegistration = new Registration.model(),
 			updater = newRegistration.getUpdateHandler(req);
 		
+		var requiredFields = [
+			'nameFirst', 'nameLast', 'email', 'phone', 'address', 'gender', 'birthDate', 
+			'helmetModel', 'helmetGraphic', 'helmetColor', 'helmetSize','helmetPurchaseLocation', 'helmetPricePaid',
+			'feedbackHowOften', 'feedbackRidingType'];
 		updater.process(req.body, {
 			flashErrors: true,
-			fields: 'nameFirst, nameLast, email, phone, address, gender, birthDate',
+			fields: 'nameFirst, nameLast, email, phone, address, gender, birthDate, helmetModel, helmetGraphic, helmetColor',
 			errorMessage: 'There was a problem registering your product:'
 		}, function(err) {
 			if (err) {

@@ -6198,6 +6198,9 @@ h1, h2, h3 {
   cursor: hand; }
 
 /** bootstrap 3 variable overrides */
+.btn {
+  border-radius: 0; }
+
 /** bootstrap 3 helpers */
 .popover {
   /*max-width:500px;
@@ -6264,8 +6267,8 @@ h1, h2, h3 {
 .navbar.subnav li a:focus, .navbar.subnav li a:hover {
   text-decoration: none; }
 
-.navbar.subnav li:hover {
-  background-color: #eee; }
+.nav li a:hover, .nav li a:focus, .nav .open a:hover, .navbar.subnav li:hover {
+  background-color: #c2cdb6; }
 
 .product-section-nav {
   top: 0px;

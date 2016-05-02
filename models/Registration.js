@@ -20,7 +20,7 @@ Registration.add({
 	gender: { type: Types.Select, options: 'male, female', required: true },
 	birthDate: {type: Types.Date, required: true},
 
-	/*helmetModel: {type: String, required: true},
+	helmetModel: {type: String, required: true},
 	helmetGraphic: {type: String, required: true},
 	helmetColor: {type: String, required: true},
 	helmetSize: {type: String, required: true},
@@ -29,9 +29,8 @@ Registration.add({
 	feedbackHowOften: {type: String, required: true, note: 'How often do you wear your Kali?'},
 	feedbackRidingType: {type: String, required: true, note: 'What type of riding do you use your Kali Helmet for?'},
 	feedbackLastHelmet: {type: String, required: true, note: 'What brand was your last helmet?'},
-	feedbackWhyKali: {type: String, required: true, note: 'Why did you choose a Kali?'},
+	feedbackWhyKali: {type: Types.Textarea, required: true, note: 'Why did you choose a Kali?'},
 	
-	*/
 	feedbackComments: { type: Types.Textarea},
 	createdAt: { type: Date, default: Date.now }
 });

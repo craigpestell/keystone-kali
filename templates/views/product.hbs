@@ -8,7 +8,7 @@
 				{{#each product.gallery}}
 					<a href="{{url}}" title="{{name}}" data-gallery>
 						<img id="product-{{@index}}" src="{{{cloudinaryUrl width=635}}}" 
-							 class="{{#unless @first}}img-responsive {{/unless}}image-toggle{{#unless @first}} lazyload{{/unless}}"
+							 class="img-responsive image-toggle{{#unless @first}} lazyload{{/unless}}"
 							 alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
 					</a>
 				{{/each}}
