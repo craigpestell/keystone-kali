@@ -6167,7 +6167,7 @@ body:last-child .blueimp-gallery-playing > .play-pause {
   font-style: normal; }
 
 html {
-  background-color: #5e5e5e; }
+  background-color: #000; }
 
 body {
   font-family: Gotham-Medium, Arial, SansSerif; }
@@ -6213,14 +6213,15 @@ h1, h2, h3 {
 
 #nav-main {
   font-size: 1.1em;
-  font-family: Gotham-Black, Arial, SansSerif; }
+  font-family: Gotham-Black, Arial, SansSerif;
+  padding: 10px 0px;
+  margin: 0; }
 
 .navbar {
   border: 0;
   border-radius: 0;
   margin-bottom: 5px;
   min-height: 0;
-  padding-top: 5px;
   text-transform: uppercase;
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 1; }
@@ -6807,7 +6808,8 @@ a.product-category-anchor {
 #footer, #footer a {
   background-color: #000;
   color: #fff;
-  margin-top: 0; }
+  margin-top: 0;
+  border: 0; }
 
 #footer h2 {
   font-size: 18px; }

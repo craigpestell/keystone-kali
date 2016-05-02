@@ -12,10 +12,27 @@ var Registration = new keystone.List('Registration', {
 });
 
 Registration.add({
-	name: { type: Types.Name, required: true },
+	nameFirst: { type: String, required: true, label: 'First Name' },
+	nameLast: { type: String, required: true, label: 'Last Name' },
 	email: { type: Types.Email, required: true },
 	phone: { type: String },
-	message: { type: Types.Markdown, required: true },
+	address: {type: Types.Location, required: true},
+	gender: { type: Types.Select, options: 'male, female', required: true },
+	birthDate: {type: Types.Date, required: true},
+
+	/*helmetModel: {type: String, required: true},
+	helmetGraphic: {type: String, required: true},
+	helmetColor: {type: String, required: true},
+	helmetSize: {type: String, required: true},
+	helmetPurchaseLocation: {type: String, required: true},
+	helmetPricePaid: {type: String},
+	feedbackHowOften: {type: String, required: true, note: 'How often do you wear your Kali?'},
+	feedbackRidingType: {type: String, required: true, note: 'What type of riding do you use your Kali Helmet for?'},
+	feedbackLastHelmet: {type: String, required: true, note: 'What brand was your last helmet?'},
+	feedbackWhyKali: {type: String, required: true, note: 'Why did you choose a Kali?'},
+	
+	*/
+	feedbackComments: { type: Types.Textarea},
 	createdAt: { type: Date, default: Date.now }
 });
 

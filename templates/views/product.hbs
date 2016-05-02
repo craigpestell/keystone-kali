@@ -37,13 +37,13 @@
 							{{{product.usageChart}}}
 						</div>
 					</div>
-					{{#if product.technologiesAndFeatures.length}}
+					<!--{{#if product.technologiesAndFeatures.length}}
 					<div class="row">
 						{{#each product.technologiesAndFeatures}}
                             <img style="float:left;" class="lazyload img-responsive" src="{{{cloudinaryUrl iconImage width=70 height=70}}}"/>
 						{{/each}}
 					</div>
-					{{/if}}
+					{{/if}}-->
                     <div class="row">
                         <div class="col-xs-12"><a href="/dealers"><h3 style="color: go">Find a Dealer</h3></a></div>
                     </div>
@@ -55,7 +55,7 @@
 				</div>
 			</div>
         </div>
-		<div class="product-section-nav-wrapper" style="min-height:65px">
+		<!--<div class="product-section-nav-wrapper" style="min-height:65px">
 			<div class="container product-section-nav" style="height:50px">
 				<div class="col-xs-12 text-center text-uppercase" style="position:relative;">
 					<ul>
@@ -73,7 +73,7 @@
 		{{#each product.technologiesAndFeatures}}
     		{{> product-technology}}
 		{{/each}}
-        </div>
+        </div>-->
 		{{> product-sizing-guide}}
     </div>
 {{else}}
@@ -82,7 +82,7 @@
 {{/if}}
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.product-section-nav').affix({
+        /*$('.product-section-nav').affix({
             offset: {
                 top: function(){
 						return $('#product-main').outerHeight() + 
@@ -90,7 +90,7 @@
 							$('#nav-product-categories').outerHeight() + 15;
 					}
             }
-        });
+        });*/
 
         $('#product-zoom-current').click(function(){
 			$('[data-gallery]').each(function(i, el){

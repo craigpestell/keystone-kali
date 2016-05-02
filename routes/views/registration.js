@@ -21,8 +21,8 @@ exports = module.exports = function(req, res) {
 		
 		updater.process(req.body, {
 			flashErrors: true,
-			fields: 'name, email, phone, message',
-			errorMessage: 'There was a problem submitting your registration:'
+			fields: 'nameFirst, nameLast, email, phone, address, gender, birthDate',
+			errorMessage: 'There was a problem registering your product:'
 		}, function(err) {
 			if (err) {
 				locals.validationErrors = err.errors;

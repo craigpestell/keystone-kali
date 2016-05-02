@@ -9,6 +9,7 @@ BasePage.add(
 	{
 		title: { type: String, required: true },
 		slug: { type: String, readonly: true },
+		heroImage: {type: Types.CloudinaryImage},
 		carousel: {type: Types.CloudinaryImages},
 		contentHtml: {type: Types.Html},
 		embedlyPath: {type: String},
