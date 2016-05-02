@@ -116,7 +116,8 @@ $navbar-default-link-active-color: $brand-grey !default;
   width:500px;*/
 }
 .form-control {
-  color: $brand-grey;
+  color: #000;
+  border-color: $brand-grey;
 }
 .input-group-addon {
   background-color: $brand-grey;

@@ -6207,7 +6207,8 @@ h1, h2, h3 {
   width:500px;*/ }
 
 .form-control {
-  color: #c9cbc7; }
+  color: #000;
+  border-color: #c9cbc7; }
 
 .input-group-addon {
   background-color: #c9cbc7; }

@@ -22,10 +22,10 @@ exports = module.exports = function(req, res) {
 		var requiredFields = [
 			'nameFirst', 'nameLast', 'email', 'phone', 'address', 'gender', 'birthDate', 
 			'helmetModel', 'helmetGraphic', 'helmetColor', 'helmetSize','helmetPurchaseLocation', 'helmetPricePaid',
-			'feedbackHowOften', 'feedbackRidingType'];
+			'feedbackHowOften', 'feedbackRidingType', 'feedbackLastHelmet', 'feedbackWhyKali' ];
 		updater.process(req.body, {
 			flashErrors: true,
-			fields: 'nameFirst, nameLast, email, phone, address, gender, birthDate, helmetModel, helmetGraphic, helmetColor',
+			fields: requiredFields.join(', '),
 			errorMessage: 'There was a problem registering your product:'
 		}, function(err) {
 			if (err) {
