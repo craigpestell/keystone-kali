@@ -21,7 +21,6 @@ Registration.add({
 	birthDate: {type: Types.Date, required: true, label: 'Birthdate (mm/dd/yyyy)'},
 
 	helmetModel: {type: String, required: true},
-	helmetGraphic: {type: String, required: true},
 	helmetColor: {type: String, required: true},
 	helmetSize: {type: String, required: true},
 	helmetPurchaseLocation: {type: String, required: true},
