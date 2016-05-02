@@ -93,13 +93,13 @@ exports.initLocals = function (req, res, next) {
 				{
 					label: 'Technology',
 					key: 'technology',
-					href: '/technology',
+					href: '/technology'/*,
 					dropdown:[
 						{label: 'Overview', key: 'composite-fusion', href: '/composite-fusion'},
 						{label: 'Kali Design', key: 'kali-design', href: '/kali-design'},
 						{label: 'Cutting Edge Safety', key: 'safety', href: '/safety'},
 						{label: 'The White Papers', key: 'white-papers', href: '/white-papers'}
-					]
+					]*/
 				}
 				,{
 					label: 'Helmets', key: 'helmets', href: '/helmets',

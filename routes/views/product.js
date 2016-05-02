@@ -11,7 +11,6 @@ exports = module.exports = function(req, res) {
 	
 	view.query('product', keystone.list('Product').model.findOne({slug:req.params.product}).populate('technologies features')).then(function (err, results, next) {
 		if (err) return next(err);
-			console.log(results);
 			next();
 		});
 	navigationData.getProductNavigationData(req.params.category, function (err, data) {

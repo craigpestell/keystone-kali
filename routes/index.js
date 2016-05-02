@@ -70,6 +70,7 @@ exports = module.exports = function(app) {
 	app.get('/:category(helmets|armor)/:subCategory/:product?', routes.views.product);
 
 	app.get('/dealers', routes.views['dealer-locator']);
+	app.get('/technology', routes.views.technology);
 	
 	app.get('/:page', routes.views.page);
 
