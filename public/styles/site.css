@@ -6207,17 +6207,17 @@ h1, h2, h3 {
   width:500px;*/ }
 
 .form-control {
-  color: #c5cbbe; }
+  color: #c9cbc7; }
 
 .input-group-addon {
-  background-color: #c5cbbe; }
+  background-color: #c9cbc7; }
 
 /* end bootstrap 3 variable overrides */
 hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #c5cbbe;
+  border-top: 1px solid #c9cbc7;
   margin: 1em 0;
   padding: 0; }
 
@@ -6282,7 +6282,7 @@ hr {
   text-decoration: none; }
 
 .nav li a:hover, .nav li a:focus, .nav .open a:hover, .navbar.subnav li:hover {
-  background-color: #c5cbbe; }
+  background-color: #c9cbc7; }
 
 .product-section-nav {
   top: 0px;
@@ -6342,7 +6342,7 @@ a.product-category-anchor {
 				  #fff 1px,
 				  #fff 3%
   );*/
-  background: linear-gradient(to right, #c5cbbe, white); }
+  background: linear-gradient(to right, #c9cbc7, white); }
 
 .percentage:after {
   content: "";
