@@ -21,6 +21,10 @@
 			{{#if product.imagesPerColorSwatch}}
             	imagesPerSwatch = {{product.imagesPerColorSwatch}};
 			{{/if}}
+			var colorways = [];
+			{{#if product.colorwaysArray}}
+                colorways = {{{json product.colorwaysArray}}};
+			{{/if}}
 			//client-side init gallery;
 			var gallery = [];
 			//server-side render code to populate gallery.
@@ -28,16 +32,21 @@
 				gallery.push("{{{cloudinaryUrl this height=80}}}");
 			{{/each}}
 
-
+			console.log(colorways);
             for (var i = 0; i < gallery.length + imagesPerSwatch; i+=imagesPerSwatch) {
 			//swatches.forEach(function(swatch, swatchIndex){
 				//console.log('swatch:',swatch);
                 var content = '<div style="width:' + (imagesPerSwatch) * 80 + 'px; height:80px;">';
-				//var thisGallery = [];
+				
 				for (var j = i; j < i+imagesPerSwatch; j++) {
 					//thisGallery.push(gallery[i]);
 					content += '<img style="width:80px;" class="image-toggler-popover" data-image-id="#product-' + j + '" src="' + gallery[j] + '"/>';
 				}
+                colorways.forEach(function(colorway){
+                    if(colorway.productIndex !== undefined && colorway.productIndex == i) {
+                        content += '<div class="colorway">' + colorway.color + '</div>';
+                    }
+                });
 				content += '</div>';
 				//console.log('productIndex:', swatch.productIndex );
                 $("[data-image-id='#product-" + i + "']").popover({

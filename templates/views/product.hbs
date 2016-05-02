@@ -74,7 +74,7 @@
     		{{> product-technology}}
 		{{/each}}
         </div>-->
-		{{> product-sizing-guide}}
+		<!--{{> product-sizing-guide}}-->
     </div>
 {{else}}
     <!-- else -->
@@ -91,7 +91,11 @@
 					}
             }
         });*/
-
+		/*$('[data-gallery]').click(function(){
+			
+		});*/
+		
+		
         $('#product-zoom-current').click(function(){
 			$('[data-gallery]').each(function(i, el){
 				if($(el).children('img').is(':visible')){
@@ -100,7 +104,7 @@
 				}
 			});
 		});
-        var borderless = true;
+        //var borderless = true;
         /*$('#blueimp-gallery').data('fullScreen', false);
         $('#blueimp-gallery').data('toggleControlsOnSlideClick', false);
         $('#blueimp-gallery').data('slideClass', 'slide zoom');
