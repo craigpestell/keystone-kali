@@ -12,6 +12,20 @@ exports = module.exports = function(req, res) {
 	locals.formData = req.body || {};
 	locals.validationErrors = {};
 	locals.registrationSubmitted = false;
+	locals.data = {};
+
+	view.on('init', function(next) {
+
+		var q = keystone.list('BasePage').model.findOne({
+			slug: 'register'
+		});//.populate('author categories');
+
+		q.exec(function(err, result) {
+			locals.data.page = result;
+			next(err);
+		});
+
+	});
 	
 	// On POST requests, add the Registration item to the database
 	view.on('post', { action: 'register' }, function(next) {
