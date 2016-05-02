@@ -97,7 +97,7 @@ h1, h2, h3 {
   cursor: pointer; cursor: hand;
 }
 
-$brand-grey: #c2cdb6;
+$brand-grey: #c9cbc7;
 
 /** bootstrap 3 variable overrides */
 $brand-primary: #66cc00;
@@ -200,7 +200,7 @@ $navbar-default-link-active-color: $brand-grey !default;
 }
 
 .nav li a:hover,.nav li a:focus, .nav .open a:hover, .navbar.subnav li:hover{
-  background-color: #c2cdb6;
+  background-color: $brand-grey;
 }
 
 .product-section-nav{
