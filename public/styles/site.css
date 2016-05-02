@@ -6206,7 +6206,21 @@ h1, h2, h3 {
   /*max-width:500px;
   width:500px;*/ }
 
+.form-control {
+  color: #c5cbbe; }
+
+.input-group-addon {
+  background-color: #c5cbbe; }
+
 /* end bootstrap 3 variable overrides */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #c5cbbe;
+  margin: 1em 0;
+  padding: 0; }
+
 .products .row ul {
   list-style: none;
   padding-left: 0; }
@@ -6268,7 +6282,7 @@ h1, h2, h3 {
   text-decoration: none; }
 
 .nav li a:hover, .nav li a:focus, .nav .open a:hover, .navbar.subnav li:hover {
-  background-color: #c9cbc7; }
+  background-color: #c5cbbe; }
 
 .product-section-nav {
   top: 0px;
@@ -6328,7 +6342,7 @@ a.product-category-anchor {
 				  #fff 1px,
 				  #fff 3%
   );*/
-  background: linear-gradient(to right, #bbb, white); }
+  background: linear-gradient(to right, #c5cbbe, white); }
 
 .percentage:after {
   content: "";

@@ -97,7 +97,7 @@ h1, h2, h3 {
   cursor: pointer; cursor: hand;
 }
 
-$brand-grey: #c9cbc7;
+$brand-grey: #c5cbbe;
 
 /** bootstrap 3 variable overrides */
 $brand-primary: #66cc00;
@@ -115,8 +115,23 @@ $navbar-default-link-active-color: $brand-grey !default;
   /*max-width:500px;
   width:500px;*/
 }
+.form-control {
+  color: $brand-grey;
+}
+.input-group-addon {
+  background-color: $brand-grey;
+}
 /* end bootstrap 3 variable overrides */
 
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid $brand-grey;
+  margin: 1em 0;
+  padding: 0;
+}
 .products .row {
   //padding: 15px 0px 15px 0px;
 }
@@ -271,7 +286,7 @@ a.product-category-anchor {
 				  #fff 1px,
 				  #fff 3%
   );*/
-  background: linear-gradient(to right, #bbb, white);
+  background: linear-gradient(to right, $brand-grey, white);
 }
 .percentage:after {
   content: "";
