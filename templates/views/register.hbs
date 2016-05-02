@@ -4,6 +4,16 @@
 			{{#if registrationSubmitted}}
 			<h3>Thanks for registering.</h3>
 			{{else}}
+			<h2>Why register your Kali?</h2>
+			<p>
+                Lorem Ipsum dolor sit amet, consectetuer adipiscingelit. Duis tellus. Donec ante dolor, iaculis
+
+                nec, gravidaac, cursus in, eros. Mauris vestibulum, felis et egestasullamcorper, purus nibh vehicu-
+                la sem, eu egestas antenisl non justo. Fusce tincidunt, lorem nev dapibusconsectetuer, leo orci
+
+                mollis ipsum, eget suscipit erospurus in ante.
+			</p>
+			<hr/>
 			<h2>Register your Kali Here</h2>
 			<hr/>
 			<h3>Personal Information</h3>
@@ -68,7 +78,7 @@
                 </div>
                 
 				<div class="row">
-					<div class="col-sm-3">
+					<div class="col-xs-6 col-sm-3">
 						<div class="form-group {{#if validationErrors.gender}}has-error{{/if}}">
 							<label for="gender">Gender</label>
 							<select name="gender" class="form-control">
@@ -78,10 +88,13 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-xs-6 col-sm-3">
 						<div class="form-group {{#if validationErrors.birthDate}}has-error{{/if}}">
 							<label for="birthDate">Birthdate</label>
-							<input type="text" name="birthDate"/>
+							<div class="input-group date">
+							<input type="text" class="form-control" name="birthDate"/>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                            </div>
 						</div>
 					</div>
 				</div>
@@ -131,27 +144,47 @@
                 
 				<hr/>
 				<h3>Feedback</h3>
-                <div class="form-group {{#if validationErrors.feedbackHowOften}}has-error{{/if}}">
-                    <label>How often do you wear your Kali?</label>
-                    <input type="text" name="feedbackHowOften" class="form-control" value="{{formData.feedbackHowOften}}">
+				<div class="row">
+					<div class="col-sm-6">
+                        <div class="form-group {{#if validationErrors.feedbackHowOften}}has-error{{/if}}">
+                            <label>How often do you wear your Kali?</label>
+                            <input type="text" name="feedbackHowOften" class="form-control" value="{{formData.feedbackHowOften}}">
+                        </div>
+					</div>
+				</div>
+				<div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group {{#if validationErrors.feedbackRidingType}}has-error{{/if}}">
+                            <label>What type of riding do you use your Kali helmet for?</label>
+                            <input type="text" name="feedbackRidingType" class="form-control" value="{{formData.feedbackRidingType}}">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group {{#if validationErrors.feedbackRidingType}}has-error{{/if}}">
-                    <label>What type of riding do you use your Kali helmet for?</label>
-                    <input type="text" name="feedbackRidingType" class="form-control" value="{{formData.feedbackRidingType}}">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group {{#if validationErrors.feedbackLastHelmet}}has-error{{/if}}">
+                            <label>What brand was your last Helmet?</label>
+                            <input type="text" name="feedbackLastHelmet" class="form-control" value="{{formData.feedbackLastHelmet}}">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group {{#if validationErrors.feedbackLastHelmet}}has-error{{/if}}">
-                    <label>What brand was your last Helmet?</label>
-                    <input type="text" name="feedbackLastHelmet" class="form-control" value="{{formData.feedbackLastHelmet}}">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group {{#if validationErrors.feedbackWhyKali}}has-error{{/if}}">
+                            <label>Why did you choose a Kali?</label>
+                            <input type="text" name="feedbackWhyKali" class="form-control" value="{{formData.feedbackWhyKali}}">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group {{#if validationErrors.feedbackWhyKali}}has-error{{/if}}">
-                    <label>Why did you choose a Kali?</label>
-                    <input type="text" name="feedbackWhyKali" class="form-control" value="{{formData.feedbackWhyKali}}">
-                </div>
-                <div class="form-group {{#if validationErrors.feedbackComments}}has-error{{/if}}">
-                    <label>Please leave any other comments below:</label>
-                    <textarea name="feedbackWhyKali" class="form-control">{{formData.feedbackComments}}</textarea>
-                </div>
-
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group {{#if validationErrors.feedbackComments}}has-error{{/if}}">
+                            <label>Please leave any other comments below:</label>
+                            <textarea name="feedbackWhyKali" class="form-control">{{formData.feedbackComments}}</textarea>
+                        </div>
+					</div>
+				</div>
+                
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
@@ -160,3 +193,10 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+        $('.input-group.date').datepicker({
+        });
+	});
+</script>

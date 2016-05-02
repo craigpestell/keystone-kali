@@ -6203,6 +6203,7 @@ h1, h2, h3 {
   /*max-width:500px;
   width:500px;*/ }
 
+/* end bootstrap 3 variable overrides */
 .products .row ul {
   list-style: none;
   padding-left: 0; }
