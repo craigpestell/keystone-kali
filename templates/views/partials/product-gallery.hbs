@@ -1,6 +1,6 @@
 {{# ifCond product.gallery.length '>' 1}}
     <div class="{{class}}">
-        <div class="row">
+        <div class="row" style="margin-top: 5px; margin-bottom: 15px">
             <div class="col-xs-12">
                 <div class="btn-group" data-toggle="buttons">
 					{{#everyNth product.gallery product.imagesPerColorSwatch}}
@@ -31,11 +31,9 @@
 			{{#each product.gallery}}
 				gallery.push("{{{cloudinaryUrl this height=80}}}");
 			{{/each}}
-
-			console.log(colorways);
+			
             for (var i = 0; i < gallery.length + imagesPerSwatch; i+=imagesPerSwatch) {
-			//swatches.forEach(function(swatch, swatchIndex){
-				//console.log('swatch:',swatch);
+				// Construct popover html
                 var content = '<div style="width:' + (imagesPerSwatch) * 80 + 'px; height:80px;">';
 				
 				for (var j = i; j < i+imagesPerSwatch; j++) {

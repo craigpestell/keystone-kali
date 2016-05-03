@@ -114,6 +114,7 @@ $navbar-default-link-active-color: $brand-grey !default;
 .popover {
   /*max-width:500px;
   width:500px;*/
+  max-width: 1000px;
 }
 .form-control {
   color: #000;
@@ -127,7 +128,13 @@ $navbar-default-link-active-color: $brand-grey !default;
   background-color: $brand-grey;
 }
 /* end bootstrap 3 variable overrides */
+.blueimp-gallery{
+  background: rgba(255, 255, 255, 0.9);  
+}
 
+.bh-sl-container .bh-sl-loc-list .list-focus {
+  border: 2px solid $brand-primary;
+}
 
 hr {
   display: block;

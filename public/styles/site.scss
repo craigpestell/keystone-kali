@@ -6,7 +6,7 @@
 @import "bootstrap/bootstrap";
 
 @import "blueimp-gallery";
-@import "bootstrap-image-gallery";
+//@import "bootstrap-image-gallery";
 
 // The easiest way to customise Bootstrap variables while
 // being able to easily override the source files with new
@@ -24,7 +24,8 @@
 // Add your own site style includes here
 @import "site/layout";
 
+@import "storelocator";
+
 @import "kali";
 
-@import "storelocator";
 
