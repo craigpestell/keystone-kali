@@ -94,7 +94,7 @@
                             <div class="form-group {{#if validationErrors.birthDate}}has-error{{/if}}">
                                 <label for="birthDatePicker">Birthdate</label>
                                 <div class="input-group date">
-                                    <input type="text" class="form-control" name="birthDatePicker"
+                                    <input type="text" class="form-control" id="birthDatePicker"
                                            value="{{formData.birthDate}}"/>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                     <input type="hidden" id="birthDate" name="birthDate"
@@ -210,7 +210,7 @@
                 .on('changeDate', function (e) {
                     // Set the value for the date input
                     $(this).val($(this).datepicker('getFormattedDate'));
-                    $("input[name='birthDatePicker']").val($(this).datepicker('getFormattedDate'));
+                    //$("#birthDatePicker").val($(this).datepicker('getFormattedDate'));
                     $("#birthDate").val($(this).datepicker('getFormattedDate'));
 
                     // Revalidate it
