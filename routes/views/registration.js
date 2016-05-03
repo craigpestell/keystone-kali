@@ -34,7 +34,7 @@ exports = module.exports = function(req, res) {
 			updater = newRegistration.getUpdateHandler(req);
 		
 		var requiredFields = [
-			'nameFirst', 'nameLast', 'email', 'phone', 'address', 'gender', 'birthDate', 
+			'nameFirst', 'nameLast', 'email', 'phone', 'address', 'gender', 'age', 
 			'helmetModel', 'helmetColor', 'helmetSize','helmetPurchaseLocation', 'helmetPricePaid',
 			'feedbackHowOften', 'feedbackRidingType', 'feedbackLastHelmet', 'feedbackWhyKali' ];
 		updater.process(req.body, {

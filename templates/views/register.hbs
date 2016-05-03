@@ -91,15 +91,9 @@
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-3">
-                            <div class="form-group {{#if validationErrors.birthDate}}has-error{{/if}}">
-                                <label for="birthDatePicker">Birthdate</label>
-                                <div class="input-group date">
-                                    <input type="text" class="form-control" id="birthDatePicker"
-                                           value="{{formData.birthDate}}"/>
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                    <input type="hidden" id="birthDate" name="birthDate"
-                                           value="{{formData.birthDate}}"/>
-                                </div>
+                            <div class="form-group {{#if validationErrors.age}}has-error{{/if}}">
+                                <label>Age</label>
+                                <input type="text" name="age" class="form-control" value="{{formData.age}}">
                             </div>
                         </div>
                     </div>
@@ -206,7 +200,7 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.input-group.date').datepicker({})
+        /*$('.input-group.date').datepicker({})
                 .on('changeDate', function (e) {
                     // Set the value for the date input
                     $(this).val($(this).datepicker('getFormattedDate'));
@@ -216,6 +210,6 @@
                     // Revalidate it
                     //$('#eventForm').formValidation('revalidateField', 'selectedDate');
                 });
-        ;
+        ;*/
     });
 </script>
