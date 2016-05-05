@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: kali-prod
+    environment: kali-dev
 global:
   application_name: kali
   default_ec2_keyname: aws-eb
