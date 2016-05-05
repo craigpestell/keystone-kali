@@ -1,0 +1,10 @@
+branch-defaults:
+  master:
+    environment: kali-prod
+global:
+  application_name: kali
+  default_ec2_keyname: aws-eb
+  default_platform: 64bit Amazon Linux 2016.03 v2.1.0 running Node.js
+  default_region: us-west-1
+  profile: eb-cli
+  sc: git
