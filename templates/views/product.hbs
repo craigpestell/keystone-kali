@@ -7,7 +7,7 @@
 			<div id="links" class="col-xs-12 col-md-7">
 				{{#each product.gallery}}
 					<a href="{{url}}" title="{{name}}" data-gallery>
-						<img id="product-{{@index}}" src="{{{cloudinaryUrl width=635}}}" 
+						<img id="product-{{@index}}" src="{{{cloudinaryUrl width=720}}}" 
 							 class="img-responsive image-toggle{{#unless @first}} lazyload{{/unless}}"
 							 alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
 					</a>

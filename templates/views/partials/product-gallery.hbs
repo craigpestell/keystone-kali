@@ -17,7 +17,25 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-			var imagesPerSwatch = 3;
+            function findBootstrapEnvironment() {
+                var envs = ['xs', 'sm', 'md', 'lg'];
+
+                var $el = $('<div>');
+                $el.appendTo($('body'));
+
+                for (var i = envs.length - 1; i >= 0; i--) {
+                    var env = envs[i];
+
+                    $el.addClass('hidden-'+env);
+                    if ($el.is(':hidden')) {
+                        $el.remove();
+                        return env;
+                    }
+                }
+            }
+
+
+            var imagesPerSwatch = 3;
 			{{#if product.imagesPerColorSwatch}}
             	imagesPerSwatch = {{product.imagesPerColorSwatch}};
 			{{/if}}
@@ -32,9 +50,13 @@
 				gallery.push("{{{cloudinaryUrl this height=80}}}");
 			{{/each}}
 			
+			var showPopup = false;
+			if(findBootstrapEnvironment() !== 'xs' && findBootstrapEnvironment() !== 'sm'){
+				showPopup = true;
+			}
             for (var i = 0; i < gallery.length + imagesPerSwatch; i+=imagesPerSwatch) {
 				// Construct popover html
-                var content = '<div style="width:' + (imagesPerSwatch) * 80 + 'px; height:80px;">';
+                var content = '<div class="hidden-xs hidden-sm" style="width:' + (imagesPerSwatch) * 80 + 'px; height:80px;">';
 				
 				for (var j = i; j < i+imagesPerSwatch; j++) {
 					//thisGallery.push(gallery[i]);

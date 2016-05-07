@@ -8,40 +8,40 @@
             <div class="row">
                 <div class="col-sm-12"><h1>{{name}}</h1></div>
             </div>
-            <div class="row">
-				{{#each this.products}}
-                    <!-- visible on phones and tablets -->
-                    <div class="row visible-xs visible-sm">
-                        <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-                            <div class="col-sm-6">
+            
+			{{#each this.products}}
+				<!-- visible on phones and tablets -->
+				<div class="row visible-xs visible-sm">
+					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+						<div class="col-sm-6">
 
-                                <img class="img-responsive lazyload"
-                                     src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
+							<img class="img-responsive lazyload"
+								 src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
 
-                            </div>
-                            <div class="col-sm-6">
-                                <h2>{{this.name}}</h2>
+						</div>
+					</a>
+					<div class="col-sm-6">
+						<h2>{{this.name}}</h2>
+						{{{shortDescription}}}
+						{{{specs}}}
+					</div>
+				</div>
+
+				<!-- visible on desktop -->
+				<div class="col-sm-6 col-lg-4 hidden-xs hidden-sm">
+					<div class="product-category-item">
+						<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+							<img class="img-responsive lazyload"
+								 src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
+							<div class="product-category-item-overlay">
+								<h2>{{this.name}}</h2>
 								{{{shortDescription}}}
-								{{{specs}}}
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- visible on desktop -->
-                    <div class="col-sm-6 col-lg-4 hidden-xs hidden-sm">
-                        <div class="product-category-item">
-                            <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-                                <img class="img-responsive lazyload"
-                                     src="{{cloudinaryUrl this.heroImage width=555 quality=80}}"/>
-                                <div class="product-category-item-overlay">
-                                    <h2>{{this.name}}</h2>
-									{{{shortDescription}}}
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-				{{/each}}
-            </div>
+							</div>
+						</a>
+					</div>
+				</div>
+			{{/each}}
+            
 		{{/each}}
     </div>
 {{else}}

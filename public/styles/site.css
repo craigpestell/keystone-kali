@@ -6453,8 +6453,18 @@ body {
   font-family: Gotham-Medium, Arial, SansSerif; }
 
 @media (min-width: 768px) {
+  body {
+    background: url("http://griddle.it/720px-4-30px") repeat-y center top !important; }
   .bh-sl-container .bh-sl-loc-list ul li {
     height: 250px; } }
+
+@media (min-width: 992px) {
+  body {
+    background: url("http://griddle.it/940px-4-30px") repeat-y center top !important; } }
+
+@media (min-width: 1200px) {
+  body {
+    background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important; } }
 
 h1, h2, h3 {
   font-family: Gotham-Black, Arial, SansSerif;
