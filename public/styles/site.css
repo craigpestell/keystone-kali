@@ -6595,18 +6595,9 @@ hr {
   display: inline-block;
   padding: 15px; }
 
-a.product-category-anchor {
-  display: block;
-  position: relative;
-  /*top: -100px;*/
-  visibility: hidden; }
+a.product-category-anchor:hover, a.product-category-anchor:active {
+  text-decoration: none; }
 
-/*.subnav.affix {
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  z-index: 10;
-}*/
 .navbar-brand {
   padding: 0; }
 

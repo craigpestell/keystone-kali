@@ -4,9 +4,9 @@
 
     <div class="container products">
 		{{#each products}}
-            <a id="{{slug}}" class="product-category-anchor">{{name}} category anchor</a>
+            
             <div class="row">
-                <div class="col-sm-12"><h1>{{name}}</h1></div>
+                <div class="col-sm-12"><a id="{{slug}}" class="product-category-anchor"><h1>{{name}}</h1></a></div>
             </div>
             
 			{{#each this.products}}
