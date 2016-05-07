@@ -6461,6 +6461,9 @@ h1, h2, h3 {
   text-transform: uppercase;
   margin-top: 0px; }
 
+.cld-responsive {
+  width: 100%; }
+
 .img-circle {
   -webkit-transform: translate(-50%);
   border-radius: 50%; }

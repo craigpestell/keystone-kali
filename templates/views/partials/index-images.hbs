@@ -1,3 +1,5 @@
 {{#each this}}
-	<img src="{{{cloudinaryUrl this}}}" class="img-responsive"/>
+	
+	<img data-src="{{cloudinaryUrl this width="auto" format="jpg"}}" class="cld-responsive" style="width:100%"/>
+    
 {{/each}}

@@ -14,8 +14,7 @@
 				<div class="row visible-xs visible-sm">
 					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 						<div class="col-sm-6">
-							<img class="img-responsive lazyload"
-								 src="{{cloudinaryUrl this.heroImage width=555 background="#FFFFFF" format="jpg"}}"/>
+                            <img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg"}}" class="cld-responsive"/>
 						</div>
 					</a>
 					<div class="col-sm-6">
@@ -29,8 +28,9 @@
 				<div class="col-sm-6 col-lg-4 hidden-xs hidden-sm">
 					<div class="product-category-item">
 						<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-							<img class="img-responsive lazyload"
-								 src="{{cloudinaryUrl this.heroImage width=555 background="#FFFFFF" format="jpg"}}"/>
+							<!--<img class="img-responsive lazyload"
+								 src="{{cloudinaryUrl this.heroImage width=555 background="#FFFFFF" format="jpg"}}"/>-->
+							<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg"}}" class="cld-responsive"/>
 							<div class="product-category-item-overlay">
 								<h2>{{this.name}}</h2>
 								{{{shortDescription}}}

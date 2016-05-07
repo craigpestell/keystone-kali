@@ -26,6 +26,12 @@
     <!--jquery 2.2.1-->
     <script src="/js/jquery/dist/jquery.min.js"></script>
 
+    <script src="/js/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.min.js"></script>
+	<script type="text/javascript">
+		$.cloudinary.config({cloud_name:'kaliprotectives-com', api_key: "277924468792588"});
+	</script>
+    
+
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
@@ -104,6 +110,7 @@
     <script>
 		
         $(document).ready(function () {
+            $.cloudinary.responsive();
             /*$('.product-section-nav').affix({
                 offset: {
                     top: $('.product-section-nav').height()
