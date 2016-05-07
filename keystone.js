@@ -42,7 +42,8 @@ keystone.init({
 		secret: 'g1Ggylpwuu4FCqmcLUM8k05XA+0RVDDkXCqBjSis'
 	},
 	'embedly api key': 'e9763d8cbe1c468fb6b5b10b5ac87e98',
-	'mongo': process.env.DO ? '10.134.0.166:27017/kali' : '162.243.149.37:27017/kali'
+	//'mongo': process.env.DO ? '10.134.0.166:27017/kali' : '162.243.149.37:27017/kali'
+	'mongo': '162.243.149.37:27017/kali'
         //'mongo': '54.183.41.152:27017/kali'
 
 });
