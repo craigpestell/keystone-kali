@@ -226,6 +226,9 @@ module.exports = function() {
 		
 		if ((context) && (context.public_id)) {
 			var imageName = context.public_id.concat('.',context.format);
+			if(options.hash.format !== undefined){
+				imageName = imageName.substr(0, imageName.lastIndexOf('.'));
+			}
 			return cloudinary.url(imageName, options.hash);
 		}
 		else {
