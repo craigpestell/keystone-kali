@@ -2,7 +2,7 @@
     <div class="{{class}}">
         <div class="row" style="margin-top: 5px; margin-bottom: 15px">
             <div class="col-xs-12">
-                <div class="btn-group" data-toggle="buttons">
+                <div class="col-md-12 btn-group" data-toggle="buttons">
 					{{#everyNth product.gallery product.imagesPerColorSwatch}}
 						{{#if isModZero}}
                         <div data-image-id="#product-{{n}}" class="image-toggler" style="float:left;">
@@ -17,25 +17,7 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            function findBootstrapEnvironment() {
-                var envs = ['xs', 'sm', 'md', 'lg'];
-
-                var $el = $('<div>');
-                $el.appendTo($('body'));
-
-                for (var i = envs.length - 1; i >= 0; i--) {
-                    var env = envs[i];
-
-                    $el.addClass('hidden-'+env);
-                    if ($el.is(':hidden')) {
-                        $el.remove();
-                        return env;
-                    }
-                }
-            }
-
-
-            var imagesPerSwatch = 3;
+			var imagesPerSwatch = 3;
 			{{#if product.imagesPerColorSwatch}}
             	imagesPerSwatch = {{product.imagesPerColorSwatch}};
 			{{/if}}
@@ -50,13 +32,9 @@
 				gallery.push("{{{cloudinaryUrl this height=80}}}");
 			{{/each}}
 			
-			var showPopup = false;
-			if(findBootstrapEnvironment() !== 'xs' && findBootstrapEnvironment() !== 'sm'){
-				showPopup = true;
-			}
             for (var i = 0; i < gallery.length + imagesPerSwatch; i+=imagesPerSwatch) {
 				// Construct popover html
-                var content = '<div class="hidden-xs hidden-sm" style="width:' + (imagesPerSwatch) * 80 + 'px; height:80px;">';
+                var content = '<div style="width:' + (imagesPerSwatch) * 80 + 'px; height:80px;">';
 				
 				for (var j = i; j < i+imagesPerSwatch; j++) {
 					//thisGallery.push(gallery[i]);
