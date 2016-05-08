@@ -17,7 +17,7 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            var tap = ("ontouchstart" in document.documentElement);
+            var tap = ('createTouch' in document) &&  (window.navigator.msPointerEnabled && window.navigator.msMaxTouchPoints);
 			
 			var imagesPerSwatch = 3;
 			{{#if product.imagesPerColorSwatch}}
@@ -61,6 +61,7 @@
                     $('.image-toggle').hide();
 					
                     $($(this).attr('data-image-id')).show();
+					//disable popover on mobile.
 					if(!tap){
                         $(this).popover("show");
 					}
