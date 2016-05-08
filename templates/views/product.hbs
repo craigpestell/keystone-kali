@@ -15,7 +15,7 @@
                     <img id="product-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40}}" style="margin-top:-100px;margin-right:75px"/>	
 				</div>
                 
-				<div style="display: table;margin: 0 auto;">
+				<div id="product-gallery" style="margin: 0 auto; display: table; visibility:hidden">
 				{{> product-gallery class="col-xs-12"}}
                 </div>
 			</div>
@@ -123,4 +123,7 @@
 
 		
     });
+	$(window).load(function(){
+        $('#product-gallery').css({visibility:'visible', opacity: 0.0}).animate({opacity: 1}, 500);
+	});
 </script>
