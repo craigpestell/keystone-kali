@@ -263,7 +263,7 @@ a.product-category-anchor:hover, a.product-category-anchor:active {
 }
 
 a.product-category-anchor h1{
-  margin: 15px 0px 0px 0px;
+  margin: 15px 0;
 }
 
 
@@ -338,6 +338,9 @@ a.product-category-anchor h1{
 						  rgba(0, 0, 0, 0.1),
 						  rgba(0, 0, 0, 0.1)
 		  )*/
+}
+.product-category-item a:hover, .product-category-item a:active{
+  text-decoration: none;
 }
 .product-category-item h2{
   

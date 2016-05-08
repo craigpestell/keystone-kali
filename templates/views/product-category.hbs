@@ -10,31 +10,27 @@
             </div>
             
 			{{#each this.products}}
-				<!-- visible on phones and tablets -->
-				<div class="row visible-xs visible-sm">
-					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-						<div class="col-sm-6">
-                            <img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg"}}" class="cld-responsive"/>
-						</div>
-					</a>
-					<div class="col-sm-6">
-						<h2>{{this.name}}</h2>
-						{{{shortDescription}}}
-					</div>
-				</div>
-
 				<!-- visible on desktop -->
-				<div class="col-sm-6 col-lg-4 hidden-xs hidden-sm">
+				<div class="col-xs-12 col-lg-4">
 					<div class="product-category-item">
-						<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-							<!--<img class="img-responsive lazyload"
-								 src="{{cloudinaryUrl this.heroImage width=555 background="#FFFFFF" format="jpg"}}"/>-->
-							<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg"}}" class="cld-responsive"/>
-							<div class="product-category-item-overlay">
+                        <div class="col-xs-6 col-lg-12">
+							<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+								<!--<img class="img-responsive lazyload"
+									 src="{{cloudinaryUrl this.heroImage width=555 background="#FFFFFF" format="jpg"}}"/>-->
+								<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg"}}" class="cld-responsive"/>
+								<div class="product-category-item-overlay hidden-xs hidden-sm hidden-md">
+									<h2>{{this.name}}</h2>
+									{{{shortDescription}}}
+								</div>
+							</a>
+						</div>
+						
+                        <div class="col-sm-6 visible-xs visible-sm visible-md">
+                            <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 								<h2>{{this.name}}</h2>
 								{{{shortDescription}}}
-							</div>
-						</a>
+							</a>
+                        </div>
 					</div>
 				</div>
 			{{/each}}
