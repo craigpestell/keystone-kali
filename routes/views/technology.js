@@ -6,7 +6,8 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 
 	// Set locals
-	locals.section = req.params.page;
+	locals.page = 'technology';
+	
 	locals.filters = {
 		page: 'technology'
 	};

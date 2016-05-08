@@ -6,7 +6,7 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 
 	// Set locals
-	locals.section = 'dealer-locator';
+	locals.page = 'dealer-locator';
 	
 	locals.data = {
 		dealers: []

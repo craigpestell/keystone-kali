@@ -9,7 +9,13 @@ exports = module.exports = function(req, res) {
 	// Set locals
 	locals.section = 'product';
 	
-	view.query('product', keystone.list('Product').model.findOne({slug:req.params.product}).populate('technologies features')).then(function (err, results, next) {
+	
+	view.query('product', keystone.list('Product').model.findOne({slug:req.params.product})
+		.populate('technologies features mainCategory subCategory'))
+		.then(function (err, results, next) {
+		
+		locals.page = results.mainCategory.key;
+		locals.subCategory = results.subCategory.key;
 		if (err) return next(err);
 			next();
 		});

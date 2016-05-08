@@ -84,7 +84,9 @@ function getNavData(navDataCb){
 exports.initLocals = function (req, res, next) {
 
 	
+	
 	var locals = res.locals;
+	
 	getSiteSettings(function(err, siteSettings){
 		getNavData(function(err, data){
 			locals.siteSettings = siteSettings;

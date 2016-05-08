@@ -9,6 +9,7 @@ exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	// Set locals
+	locals.page = req.params.category;
 	locals.section = 'products';
 	locals.productCategory = req.params.category;
 	locals.productSubCategory = req.params.subCategory;

@@ -16,8 +16,8 @@
 			{{# each navLinks}}
 				{{#unless @last}}
 					{{#if dropdown}}
-                        <li class="hidden-xs hidden-sm"><a href="{{href}}">{{label}}</a></li>
-                        <li class="dropdown visible-xs visible-sm">
+						<li class="hidden-xs hidden-sm{{#ifeq key ../../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
+                        <li class="dropdown visible-xs visible-sm{{#ifeq key ../../../page}} active{{/ifeq}}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
 							   aria-haspopup="true" aria-expanded="false">{{label}}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -27,12 +27,12 @@
                             </ul>
                         </li>
 					{{else}}
-                        <li class=""><a href="{{href}}">{{label}}</a></li>
+			            <li class="{{#ifeq key ../../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 					{{/if}}
 				{{else}}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{href}}">{{label}}</a></li>
+                    <li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 				</ul>
 				{{/unless}}
 			{{/each}}
