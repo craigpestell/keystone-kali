@@ -17,6 +17,8 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
+            var tap = ("ontouchstart" in document.documentElement);
+			
 			var imagesPerSwatch = 3;
 			{{#if product.imagesPerColorSwatch}}
             	imagesPerSwatch = {{product.imagesPerColorSwatch}};
@@ -47,6 +49,7 @@
                 });
 				content += '</div>';
 				//console.log('productIndex:', swatch.productIndex );
+				
                 $("[data-image-id='#product-" + i + "']").popover({
                     //title: 'Look! A bird!',
                     content: content,
@@ -58,8 +61,9 @@
                     $('.image-toggle').hide();
 					
                     $($(this).attr('data-image-id')).show();
-					
-					$(this).popover("show");
+					if(!tap){
+                        $(this).popover("show");
+					}
 					
                     $('.image-toggler-popover').click(function (e) {
                         $('.image-toggle').hide();

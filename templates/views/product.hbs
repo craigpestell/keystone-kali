@@ -1,5 +1,5 @@
 {{> nav-product-categories products subCategory=subCategory}}
-<!-- if product -->
+
 {{#if product}}
     {{> product-blueimp-gallery-dom}}
     <div class="container">
@@ -21,8 +21,6 @@
 			</div>
 	
 			<div class="col-md-5">
-				
-				
 				<div class="col-xs-12">
 					<h1>{{product.name}}</h1>
 					<p class="lead">{{{product.description}}}</p>
@@ -46,11 +44,6 @@
                     <div class="row">
                         <div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em">Find a Dealer</h3></a></div>
                     </div>
-                    <!--<div class="row">
-                        <div class="col-xs-12">
-                            <img id="product-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40}}"/>
-                        </div>
-                    </div>-->
 				</div>
 			</div>
         </div>
@@ -76,7 +69,6 @@
 		<!--{{> product-sizing-guide}}-->
     </div>
 {{else}}
-    <!-- else -->
     <h3 class="text-muted">Product does not exist.</h3>
 {{/if}}
 <script type="text/javascript">
@@ -103,25 +95,6 @@
 				}
 			});
 		});
-        //var borderless = true;
-        /*$('#blueimp-gallery').data('fullScreen', false);
-        $('#blueimp-gallery').data('toggleControlsOnSlideClick', false);
-        $('#blueimp-gallery').data('slideClass', 'slide zoom');
-		
-        //$('#blueimp-gallery').data('useBootstrapModal', !borderless);
-        $('#blueimp-gallery').toggleClass('blueimp-gallery-controls', borderless);
-		//$('#blueimp-gallery').on('slide',function (slide, index) {
-            //$(slide).zoom({ on:'click' });
-		//	console.log('slide:', slide);
-		//	console.log('index:', index);
-            /*$('.slide-content').each(function(i, e){
-				$(e).zoom({ on:'click' });
-            });*/
-            // Callback function executed when the Gallery has been initialized
-            // and the initialization transition has been completed.
-        //});
-
-		
     });
 	$(window).load(function(){
         $('#product-gallery').css({visibility:'visible', opacity: 0.0}).animate({opacity: 1}, 500);
