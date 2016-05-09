@@ -1,4 +1,6 @@
+<div id="colorway-container"></div>
 {{# ifCond product.gallery.length '>' 1}}
+    
     <div class="{{class}}">
         <div class="row" style="margin-top: 5px; margin-bottom: 15px">
             <div class="col-xs-12">
@@ -32,34 +34,68 @@
 			{{#each product.gallery}}
 				gallery.push("{{{cloudinaryUrl this height=80}}}");
 			{{/each}}
-			
+
+            (function($) {
+                $.fn.colorway = function( options ) {
+
+                    // Establish our default settings
+                    var settings = $.extend({
+                        content      : 'Hello, World!',
+                        color        : null,
+                        complete	 : null,
+						container    : '#colorway-container'
+                    }, options);
+
+                    return this.each( function() {
+                        $(settings.container).html( settings.content);
+
+                        if ( settings.color ) {
+                            $(this).css( 'color', settings.color );
+                        }
+
+                        if ( $.isFunction( settings.complete ) ) {
+                            settings.complete.call(this);
+                        }
+                    });
+
+                };
+                $.fn.colorway.log = function() {
+                    //console.log($(this));
+                    return '<strong></strong>';
+                };
+            }(jQuery));
+
             for (var i = 0; i < gallery.length + imagesPerSwatch; i+=imagesPerSwatch) {
-				// Construct popover html
-                var content = '<div style="width:' + (imagesPerSwatch) * 80 + 'px; height:80px;">';
 				
-				for (var j = i; j < i+imagesPerSwatch; j++) {
-					//thisGallery.push(gallery[i]);
-					content += '<img style="width:80px;" class="image-toggler-popover" data-image-id="#product-' + j + '" src="' + gallery[j] + '"/>';
-				}
-                colorways.forEach(function(colorway){
-                    if(colorway.productIndex !== undefined && colorway.productIndex == i) {
-                        content += '<div class="colorway">' + colorway.color + '</div>';
+				var initColorway = (function(){
+                    var content = '<div style="width:' + (imagesPerSwatch) * 80 + 'px; height:80px;">';
+
+                    for (var j = i; j < i+imagesPerSwatch; j++) {
+                        //thisGallery.push(gallery[i]);
+                        //content += '<img style="width:80px;" class="image-toggler-popover" data-image-id="#product-' + j + '" src="' + gallery[j] + '"/>';
+                        //content += '<div class="product-swatch-circle">'+j+'</div>'
+                        content += j + ' - '
                     }
-                });
-				content += '</div>';
-				//console.log('productIndex:', swatch.productIndex );
-				
-                $("[data-image-id='#product-" + i + "']").popover({
-                    //title: 'Look! A bird!',
-                    content: content,
-                    html: true,
-                    placement: 'top',
-                    trigger: 'manual'
-                }).on("mouseenter", function (e) {
+                    colorways.forEach(function(colorway){
+                        if(colorway.productIndex !== undefined && colorway.productIndex == i) {
+                            content += '<div class="colorway">' + colorway.color + '</div>';
+                        }
+                    });
+                    content += '</div>';
+					return function(){ return content;}
+				})();
+
+                $("[data-image-id='#product-" + i + "']").colorway({content:initColorway()})
+				.on("mouseenter", function (e) {
                     var _this = this;
                     $('.image-toggle').hide();
 					
                     $($(this).attr('data-image-id')).show();
+					
+					
+					$(this).colorway.log();
+					
+					
 					//disable popover on mobile.
 					if(!Modernizr.touchevents){
                         $(this).popover("show");
