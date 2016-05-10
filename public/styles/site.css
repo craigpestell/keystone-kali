@@ -6464,11 +6464,11 @@ body {
 
 @media (min-width: 992px) {
   .slide-overlay {
-    font-size: 0.9em; } }
+    font-size: 1em; } }
 
 @media (min-width: 1200px) {
   .slide-overlay {
-    font-size: 1em; } }
+    font-size: 1.2em; } }
 
 h1, h2, h3 {
   font-family: Gotham-Black, Arial, SansSerif;
@@ -6480,7 +6480,6 @@ h1, h2, h3 {
   top: 30%;
   left: 3%;
   width: 23%;
-  border: 1px solid green;
   color: white;
   font-family: Gotham-Light, Arial, SansSerif; }
 
