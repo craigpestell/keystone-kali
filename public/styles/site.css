@@ -6428,21 +6428,21 @@ body:last-child .blueimp-gallery-playing > .play-pause {
 @font-face {
   font-family: 'Gotham-Light';
   src: url("/fonts/Gotham-Light.eot");
-  src: url("/fonts/Gotham-Light.eot?#iefix") format("embedded-opentype"), url("/fonts/Gotham-Light.woff") format("woff"), url("/fonts/Gotham-Light.ttf") format("truetype");
+  src: url("/fonts/Gotham-Light.eot?#iefix") format("embedded-opentype"), url("/fonts/Gotham-Light.woff2") format("woff2"), url("/fonts/Gotham-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal; }
 
 @font-face {
   font-family: 'Gotham-Black';
   src: url("/fonts/GothamBlack.eot");
-  src: url("/fonts/GothamBlack.eot?#iefix") format("embedded-opentype"), url("/fonts/GothamBlack.woff") format("woff"), url("/fonts/GothamBlack.ttf") format("truetype");
+  src: url("/fonts/GothamBlack.eot?#iefix") format("embedded-opentype"), url("/fonts/GothamBlack.woff2") format("woff2"), url("/fonts/GothamBlack.ttf") format("truetype");
   font-weight: 300;
   font-style: normal; }
 
 @font-face {
   font-family: 'Gotham-Medium';
   src: url("/fonts/GothamMedium.eot");
-  src: url("/fonts/GothamMedium.eot?#iefix") format("embedded-opentype"), url("/fonts/GothamMedium.woff") format("woff"), url("/fonts/GothamMedium.ttf") format("truetype");
+  src: url("/fonts/GothamMedium.eot?#iefix") format("embedded-opentype"), url("/fonts/GothamMedium.woff2") format("woff2"), url("/fonts/GothamMedium.ttf") format("truetype");
   font-weight: 300;
   font-style: normal; }
 
@@ -6452,14 +6452,37 @@ html {
 body {
   font-family: Gotham-Medium, Arial, SansSerif; }
 
+@media (min-width: 0px) {
+  .slide-overlay {
+    font-size: 0.8em; } }
+
 @media (min-width: 768px) {
   .bh-sl-container .bh-sl-loc-list ul li {
-    height: 250px; } }
+    height: 250px; }
+  .slide-overlay {
+    font-size: 0.8em; } }
+
+@media (min-width: 992px) {
+  .slide-overlay {
+    font-size: 0.9em; } }
+
+@media (min-width: 1200px) {
+  .slide-overlay {
+    font-size: 1em; } }
 
 h1, h2, h3 {
   font-family: Gotham-Black, Arial, SansSerif;
   text-transform: uppercase;
   margin-top: 0px; }
+
+.slide-overlay {
+  position: absolute;
+  top: 30%;
+  left: 3%;
+  width: 23%;
+  border: 1px solid green;
+  color: white;
+  font-family: Gotham-Light, Arial, SansSerif; }
 
 .cld-responsive {
   width: 100%; }

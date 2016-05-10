@@ -11,9 +11,8 @@ BasePage.add(
 		slug: { type: String, readonly: true },
 		heroImage: {type: Types.CloudinaryImage,  autoCleanup : true},
 		carousel: {type: Types.CloudinaryImages,  autoCleanup : true},
-		contentHtml: {type: Types.Html},
-		embedlyPath: {type: String},
-		embedlyData:{type: Types.Embedly, from: 'embedlyPath'}
+		slides: { type: Types.Relationship, ref: 'Slide', many: true },
+		contentHtml: {type: Types.Html}
 	}
 );
 BasePage.register();
