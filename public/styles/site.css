@@ -6452,14 +6452,35 @@ html {
 body {
   font-family: Gotham-Medium, Arial, SansSerif; }
 
+@media (min-width: 0px) {
+  .slide-overlay {
+    font-size: 0.8em; } }
+
 @media (min-width: 768px) {
   .bh-sl-container .bh-sl-loc-list ul li {
-    height: 250px; } }
+    height: 250px; }
+  .slide-overlay {
+    font-size: 0.8em; } }
+
+@media (min-width: 992px) {
+  .slide-overlay {
+    font-size: 1em; } }
+
+@media (min-width: 1200px) {
+  .slide-overlay {
+    font-size: 1.2em; } }
 
 h1, h2, h3 {
   font-family: Gotham-Black, Arial, SansSerif;
   text-transform: uppercase;
   margin-top: 0px; }
+
+.slide-overlay {
+  position: absolute;
+  top: 35%;
+  width: 26%;
+  color: white;
+  font-family: Gotham-Light, Arial, SansSerif; }
 
 .cld-responsive {
   width: 100%; }

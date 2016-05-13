@@ -10,7 +10,7 @@ exports = module.exports = function(req, res) {
 	locals.section = 'home';
 	
 	//popuplate Home page data.
-	view.query('home', keystone.list('BasePage').model.findOne({slug:'home'}));
+	view.query('home', keystone.list('BasePage').model.findOne({slug:'home'}).populate('slides'));
 	
 	// Render the view
 	view.render('index');
