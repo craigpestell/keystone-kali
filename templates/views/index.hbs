@@ -1,6 +1,10 @@
 {{#each home.slides}}
-    <div style="width:100%; position:relative">
-		{{{parsedOverlay}}}
-        <a href="{{href}}"><img data-src="{{cloudinaryUrl image width="auto" format="jpg"}}" class="cld-responsive" style="width:100%" src=""/></a>
+	<div class="" style="background-color:#000;">
+	<div class="container">
+		<div style="width:100%; position:relative">
+			{{{parsedOverlay}}}
+			<a href="{{href}}"><img data-src="{{cloudinaryUrl image width="auto" format="jpg"}}" class="cld-responsive" style="width:100%" src=""/></a>
+		</div>
+    </div>
     </div>
 {{/each}}
