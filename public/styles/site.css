@@ -7127,7 +7127,7 @@ a.product-category-anchor h1 {
   transition: opacity 300ms;
   background: #f7f7f7 url(/img/loading.gif) no-repeat center; }
 
-#footer .col {
+#footer ul {
   margin-bottom: 30px; }
 
 #footer, #footer a {
