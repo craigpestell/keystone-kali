@@ -12,7 +12,7 @@
 					</a>
 				{{/each}}
 				<div class="text-right" style="height:0px;">
-                    <img id="product-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40}}" style="margin-top:-100px;margin-right:75px"/>	
+                    <img id="product-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg"}}" style="margin-top:-100px;margin-right:75px"/>	
 				</div>
                 
 				<div id="product-gallery" style="margin: 0 auto; display: table; visibility:hidden">
@@ -37,7 +37,7 @@
 					<!--{{#if product.technologiesAndFeatures.length}}
 					<div class="row">
 						{{#each product.technologiesAndFeatures}}
-                            <img style="float:left;" class="lazyload img-responsive" src="{{{cloudinaryUrl iconImage width=70 height=70}}}"/>
+                            <img style="float:left;" class="lazyload img-responsive" src="{{{cloudinaryUrl iconImage width=70 height=70 format="jpg"}}}"/>
 						{{/each}}
 					</div>
 					{{/if}}-->

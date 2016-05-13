@@ -6,7 +6,7 @@
 					{{#everyNth product.gallery product.imagesPerColorSwatch}}
 						{{#if isModZero}}
                         <div data-image-id="#product-{{n}}" class="image-toggler" style="float:left;">
-							<img src="{{cloudinaryUrl this width=80}}"/>
+							<img src="{{cloudinaryUrl this width=80 format="jpg"}}"/>
 						</div>
 						{{/if}}
 					{{/everyNth}}
@@ -30,7 +30,7 @@
 			var gallery = [];
 			//server-side render code to populate gallery.
 			{{#each product.gallery}}
-				gallery.push("{{{cloudinaryUrl this height=80}}}");
+				gallery.push("{{{cloudinaryUrl this height=80 format="jpg"}}}");
 			{{/each}}
 			
             for (var i = 0; i < gallery.length + imagesPerSwatch; i+=imagesPerSwatch) {
