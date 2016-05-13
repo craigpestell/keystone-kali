@@ -24,6 +24,12 @@
 // Add your own site style includes here
 @import "site/layout";
 
+@import "site-genesis";
+@import "slick";
+@import "../js/photoswipe/src/css/main";
+@import "../js/photoswipe/src/css/default-skin/default-skin";
+@import "kali-slick-product";
+
 @import "storelocator";
 
 @import "kali";
