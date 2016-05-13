@@ -6478,8 +6478,7 @@ h1, h2, h3 {
 .slide-overlay {
   position: absolute;
   top: 30%;
-  left: 3%;
-  width: 23%;
+  width: 26%;
   color: white;
   font-family: Gotham-Light, Arial, SansSerif; }
 
