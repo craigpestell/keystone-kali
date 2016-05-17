@@ -36,7 +36,7 @@ function getNavData(navDataCb){
 				keystone.list('ProductCategory').model.find().exec(callback);
 			},
 			subcategories: function(callback){
-				keystone.list('ProductSubCategory').model.find().exec(callback);
+				keystone.list('ProductSubCategory').model.find().sort('sortOrder').exec(callback);
 			},
 			products: function(callback){
 				keystone.list('Product').model.find().exec(callback);
