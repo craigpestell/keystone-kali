@@ -35,7 +35,7 @@ exports = module.exports = function(req, res) {
 		
 		var requiredFields = [
 			'nameFirst', 'nameLast', 'email', 'phone', 'address', 'gender', 'age', 
-			'helmetModel', 'helmetColor', 'helmetSize','helmetPurchaseLocation', 'helmetPricePaid',
+			'helmetModel', 'helmetColor', 'helmetSize', 'helmetSerial', 'helmetPurchaseLocation', 'helmetPricePaid',
 			'feedbackHowOften', 'feedbackRidingType', 'feedbackLastHelmet', 'feedbackWhyKali' ];
 		updater.process(req.body, {
 			flashErrors: true,

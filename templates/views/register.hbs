@@ -101,37 +101,44 @@
                     <hr/>
                     <h3>Helmet Info</h3>
                     <div class="row">
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="form-group {{#if validationErrors.helmetModel}}has-error{{/if}}">
                                 <label>Model</label>
                                 <input type="text" name="helmetModel" class="form-control"
                                        value="{{formData.helmetModel}}">
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="form-group {{#if validationErrors.helmetColor}}has-error{{/if}}">
                                 <label>Color</label>
                                 <input type="text" name="helmetColor" class="form-control"
                                        value="{{formData.helmetColor}}">
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="form-group {{#if validationErrors.helmetSize}}has-error{{/if}}">
                                 <label>Size</label>
                                 <input type="text" name="helmetSize" class="form-control"
                                        value="{{formData.helmetSize}}">
-                            </div>
+                            </div>	
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <div class="form-group {{#if validationErrors.helmetSerial}}has-error{{/if}}">
+                                <label>Serial Number (YYYY/MM NNNNNN)</label>
+                                <input type="text" name="helmetSerial" class="form-control"
+                                       value="{{formData.helmetSerial}}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
                             <div class="form-group {{#if validationErrors.helmetPurchaseLocation}}has-error{{/if}}">
                                 <label>Where did you purchase your helmet?</label>
                                 <input type="text" name="helmetPurchaseLocation" class="form-control"
                                        value="{{formData.helmetPurchaseLocation}}">
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="form-group {{#if validationErrors.helmetPricePaid}}has-error{{/if}}">
                                 <label>Price Paid</label>
                                 <input type="text" name="helmetPricePaid" placeholder="(optional)" class="form-control"
