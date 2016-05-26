@@ -114,6 +114,9 @@ exports.initLocals = function (req, res, next) {
 					products: data.categories.armor,
 					categories: data.categories.armor.subCategories,
 					dropdown: data.categories.armor.subCategories
+				}
+				,{
+					label: 'Moto', key: 'moto', href: '/moto'
 				}/*,
 				{	label: 'Powersports', key: 'powersports', href: '/product-category/powersports',
 					products: data.categories.powersports,
