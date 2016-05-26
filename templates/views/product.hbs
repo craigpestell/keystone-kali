@@ -6,30 +6,11 @@
 		<div id="product-main" class="row">
 			<div id="links" class="col-xs-12 col-md-7">
 				{{#each product.gallery}}
-					{{#if @first}}
-					<a href="{{cloudinaryUrl this width=1170}}" title="{{name}}" data-gallery>
-                        <img data-src="{{cloudinaryUrl width="auto" format="jpg"}}" class="cld-responsive lazy image-toggle"
-							 id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
-					</a>
-					{{/if}}
+                    <a href="{{cloudinaryUrl this width=1170}}" title="{{name}}" data-gallery>
+                        <img data-src="{{cloudinaryUrl width="auto" format="jpg"}}" class="cld-responsive image-toggle"
+                             id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
+                    </a>
 				{{/each}}
-				<script>
-					$(document).ready(function(){
-						$('#product-0').load(function(){
-							var content = "
-							{{#each product.gallery}}
-								{{#unless @first}}
-                                    <a href="{{cloudinaryUrl this width=1170}}" title="{{name}}" data-gallery>
-                                <img data-src="{{cloudinaryUrl width="auto" format="jpg"}}" class="cld-responsive lazy image-toggle"
-                                    id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
-                                </a>
-								{{/unless}}
-							{{/each}}
-							";
-							$(this).parent.appendTo($(this).parent());
-						})	
-					});
-				</script>
 				<div class="text-right" style="height:0px;">
                     <img id="product-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40}}" style="margin-top:-100px;margin-right:75px"/>	
 				</div>

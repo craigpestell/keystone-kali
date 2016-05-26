@@ -82,10 +82,11 @@
                         }
                     });
                     content += '</div>';
+                    $("[data-image-id='#product-" + i + "']").colorway({content:content});
 					return function(){ return content;}
 				})();
 
-                $("[data-image-id='#product-" + i + "']").colorway({content:initColorway()})
+                $("[data-image-id='#product-" + i + "']")
 				.on("mouseenter", function (e) {
                     var _this = this;
                     $('.image-toggle').hide();
