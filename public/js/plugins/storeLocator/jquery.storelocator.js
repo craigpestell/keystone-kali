@@ -56,7 +56,7 @@
 		var zoomControl = new ZoomControl(google, zoomControlDiv, map);
 
 		zoomControlDiv.index = 1;
-		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(zoomControlDiv);
+		map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(zoomControlDiv);
 	};
 	
 	var pluginName = 'storeLocator';
