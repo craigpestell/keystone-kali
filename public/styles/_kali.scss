@@ -51,6 +51,11 @@ body {
   font-family: Gotham-Medium, Arial, SansSerif;
   //padding-top:120px;
 }
+@media (min-width: 0px) {
+  .slide-overlay {
+	font-size: 0.8em;
+  }
+}
 
 @media (min-width: 768px) {
   body {
@@ -59,26 +64,42 @@ body {
   .bh-sl-container .bh-sl-loc-list ul li {
   	height: 250px;
   }
+  .slide-overlay {
+	font-size: 0.8em;
+  }
 }
 
 @media (min-width: 992px) {
   body {
 	//background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
   }
-
+  .slide-overlay {
+	font-size: 1em;
+  }
 }
 
 @media (min-width: 1200px) {
   body {
 	//background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
   }
-
+  .slide-overlay {
+	font-size: 1.2em;
+  }
 }
 
 h1, h2, h3 {
   font-family: Gotham-Black, Arial, SansSerif;
   text-transform: uppercase;
   margin-top: 0px;
+}
+
+.slide-overlay {
+  position:absolute;
+  top: 30%;
+  left: 15px;
+  width:26%;
+  color: white;
+  font-family: Gotham-Light, Arial, SansSerif;
 }
 
 .cld-responsive{
@@ -457,8 +478,8 @@ End Product Page
   background: #f7f7f7 url(/img/loading.gif) no-repeat center;
 }
 
-#footer .col {
-	margin-bottom: 30px;  
+#footer ul {
+  margin-bottom: 30px;
 }
 
 #footer, #footer a{
@@ -467,6 +488,7 @@ End Product Page
   margin-top:0;
   border:0;
 }
+
 #footer h2{
   font-size: $font-size-large;
 }

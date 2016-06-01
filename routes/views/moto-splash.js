@@ -7,12 +7,12 @@ exports = module.exports = function(req, res) {
 	
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
-	locals.section = 'home';
+	locals.section = 'moto';
 	
 	//popuplate Home page data.
-	view.query('home', keystone.list('BasePage').model.findOne({slug:'home'}).populate('slides'));
+	view.query('moto', keystone.list('BasePage').model.findOne({slug:'moto'}).populate('slides'));
 	
 	// Render the view
-	view.render('index');
+	view.render('moto-splash');
 	
 };

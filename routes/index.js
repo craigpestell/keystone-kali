@@ -60,8 +60,6 @@ exports = module.exports = function(app) {
 	app.all('/register', routes.views.registration);
 	app.all('/contact', routes.views.contact);
 	
-	app.get('/blog/:category?', routes.views.blog);
-	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
 
 	
@@ -71,7 +69,9 @@ exports = module.exports = function(app) {
 
 	app.get('/dealers', routes.views['dealer-locator']);
 	app.get('/technology', routes.views.technology);
-	
+
+	app.get('/moto', routes.views['moto-splash']);
+
 	app.get('/:page', routes.views.page);
 
 

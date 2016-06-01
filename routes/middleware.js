@@ -36,7 +36,7 @@ function getNavData(navDataCb){
 				keystone.list('ProductCategory').model.find().exec(callback);
 			},
 			subcategories: function(callback){
-				keystone.list('ProductSubCategory').model.find().exec(callback);
+				keystone.list('ProductSubCategory').model.find().sort('sortOrder').exec(callback);
 			},
 			products: function(callback){
 				keystone.list('Product').model.find().exec(callback);
@@ -114,6 +114,9 @@ exports.initLocals = function (req, res, next) {
 					products: data.categories.armor,
 					categories: data.categories.armor.subCategories,
 					dropdown: data.categories.armor.subCategories
+				}
+				,{
+					label: 'Moto', key: 'moto', href: '/moto'
 				}/*,
 				{	label: 'Powersports', key: 'powersports', href: '/product-category/powersports',
 					products: data.categories.powersports,

@@ -2,13 +2,13 @@
 {{# ifCond product.gallery.length '>' 1}}
     
     <div class="{{class}}">
-        <div class="row" style="margin-top: 5px; margin-bottom: 15px">
+        <div class="row" style="margin-top: 5px; margin-bottom: 15px;">
             <div class="col-xs-12">
                 <div class="col-md-12 btn-group" data-toggle="buttons">
 					{{#everyNth product.gallery product.imagesPerColorSwatch}}
 						{{#if isModZero}}
                         <div data-image-id="#product-{{n}}" class="image-toggler" style="float:left;">
-							<img src="{{cloudinaryUrl this width=80}}"/>
+							<img src="{{cloudinaryUrl this width=80 format="jpg"}}"/>
 						</div>
 						{{/if}}
 					{{/everyNth}}
@@ -32,7 +32,7 @@
 			var gallery = [];
 			//server-side render code to populate gallery.
 			{{#each product.gallery}}
-				gallery.push("{{{cloudinaryUrl this height=80}}}");
+				gallery.push("{{{cloudinaryUrl this height=80 format="jpg"}}}");
 			{{/each}}
 
             (function($) {
