@@ -13,9 +13,9 @@
 		// Set CSS for the control wrapper
 		var controlWrapper = document.createElement('div');
 		controlWrapper.style.backgroundColor = 'white';
-		controlWrapper.style.borderStyle = 'solid';
-		controlWrapper.style.borderColor = 'gray';
-		controlWrapper.style.borderWidth = '1px';
+		//controlWrapper.style.borderStyle = 'solid';
+		//controlWrapper.style.borderColor = 'gray';
+		//controlWrapper.style.borderWidth = '1px';
 		controlWrapper.style.cursor = 'pointer';
 		controlWrapper.style.textAlign = 'center';
 		controlWrapper.style.width = '32px';
@@ -57,6 +57,7 @@
 
 		zoomControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(zoomControlDiv);
+		
 	};
 	
 	var pluginName = 'storeLocator';
@@ -109,10 +110,10 @@
             disableDefaultUI: true, // a way to quickly hide all controls
             //mapTypeControl: true,
             //scaleControl: true,
-            zoomControl: true,
-            zoomControlOptions: {
+            zoomControl: false,
+            /*zoomControlOptions: {
             style: google.maps.ZoomControlStyle.LARGE 
-            },
+            },*/
             styles: stylesArray,
             scrollwheel: false
 		},
