@@ -15,7 +15,7 @@ Dealer.add({
 	web: {type: Types.Url}
 });
 
-Dealer.schema.pre('save', function(next) {
+/*Dealer.schema.pre('save', function(next) {
 	var self = this;
 	setTimeout(function(){
 		
@@ -30,7 +30,7 @@ Dealer.schema.pre('save', function(next) {
 		});		
 	}, 1000);
 
-});
+});*/
 /*
  "id": "9",
  "name": "Chipotle Minnetonka",
