@@ -65,14 +65,14 @@ Product.schema.virtual('galleryColorwaysArray').get(function(){
 	var colors = this.colorways.split(';');
 	colors.forEach(function(color){
 		var colorway = color.split(':')[0];
-		var color = 'yellow';
+		var c = 'yellow';
 
 		if(color.split(':').length > 1) {
-			color = color.split(':')[1];
+			c = color.split(':')[1];
 		}
 		colorSwatches.push({
 			colorway: colorway,
-			color: color
+			color: c
 		});
 	});
 
