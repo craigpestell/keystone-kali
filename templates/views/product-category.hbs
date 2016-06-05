@@ -15,9 +15,7 @@
 					<div class="product-category-item">
                         <div class="col-xs-6 col-lg-12">
 							<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-								<!--<img class="img-responsive lazyload"
-									 src="{{cloudinaryUrl this.heroImage width=555 background="#FFFFFF" format="jpg"}}"/>-->
-								<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg"}}" class="cld-responsive"/>
+								<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg" fetch_format="auto"}}" class="cld-responsive"/>
 								<div class="product-category-item-overlay hidden-xs hidden-sm hidden-md">
 									<h2>{{this.name}}</h2>
 									{{{shortDescription}}}

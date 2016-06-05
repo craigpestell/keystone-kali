@@ -6,13 +6,13 @@
 		<div id="product-main" class="row">
 			<div id="links" class="col-xs-12 col-md-7">
 				{{#each product.gallery}}
-					<a href="{{cloudinaryUrl this width=1170}}" title="{{name}}" data-gallery>
-                        <img data-src="{{cloudinaryUrl width="auto" format="jpg"}}" class="cld-responsive image-toggle"
+					<a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto"}}" title="{{name}}" data-gallery>
+                        <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto"}}" class="cld-responsive image-toggle"
 							 id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
 					</a>
 				{{/each}}
 				<div class="text-right" style="height:0px;">
-                    <img id="product-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg"}}" style="margin-top:-100px;margin-right:75px"/>	
+                    <img id="product-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto"}}" style="margin-top:-100px;margin-right:75px"/>	
 				</div>
                 
 				<div id="product-gallery" style="margin: 0 auto; display: table; visibility:hidden">

@@ -6525,7 +6525,7 @@ h1, h2, h3 {
 
 /* end bootstrap 3 variable overrides */
 .blueimp-gallery {
-  background: rgba(255, 255, 255, 0.9); }
+  background-color: #FFF; }
 
 .bh-sl-container .bh-sl-loc-list .list-focus {
   border: 2px solid #66cc00; }
