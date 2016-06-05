@@ -29,9 +29,8 @@
     <div class="row">
         <div class="col-xs-12 col-centered">
             <div class="btn-group" data-toggle="buttons">
-				
 				{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
-				    <div data-icon-id="#product-icon-{{productIndex}}" class="icon-toggler color-swatch"
+				    <div data-icon-id="#product-icon-{{productIndex}}" data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch"
                          style="{{#if split}}background: linear-gradient(-45deg, {{split.[1]}} 50%,
 							 {{split.[0]}} 50%);background-size:30px 30px;{{else}}background-color:{{color}}{{/if}}">
 					</div>
@@ -43,9 +42,11 @@
 	</div>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.icon-toggler').on('mouseenter click', function (e) {
+            $('.icon-toggler').on('click', function (e) {
                 $('.icon-toggle').hide();
                 $($(this).attr('data-icon-id')).show();
+                $('.image-toggle').hide();
+                $($(this).attr('data-image-id')).show();
             });
 
 
