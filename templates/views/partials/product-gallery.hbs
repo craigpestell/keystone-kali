@@ -11,6 +11,9 @@
 				{{/if}}
 				{{#if isModZero}}
 					<div id="product-icon-{{n}}" class="icon-toggle" style="{{#unless isFirst}}display:none{{/unless}}">
+						{{#with (lookup ../../product.galleryColorwaysArray page)}}
+                            <div style="text-align: center; width: 100%">{{colorway}}</div>
+						{{/with}}
 				{{/if}}
 					<div data-image-id="#product-{{n}}" class="image-toggler" style="float:left;">
 						<img src="{{cloudinaryUrl this width=80 format="jpg"}}"/>
@@ -26,6 +29,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="btn-group" data-toggle="buttons">
+				
 				{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
 				    <div data-icon-id="#product-icon-{{productIndex}}" class="icon-toggler color-swatch"
                          style="{{#if split}}background: linear-gradient(-45deg, {{split.[1]}} 50%,
