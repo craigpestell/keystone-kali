@@ -60,5 +60,44 @@ Product.schema.virtual('technologiesAndFeatures').get(function(){
 	return this.technologies.concat(this.features);
 });
 
+Product.schema.virtual('galleryColorwaysArray').get(function(){
+	var colorSwatches = [];
+	var colors = this.colorways.split(';');
+	colors.forEach(function(color){
+		var colorway = color.split(':')[0];
+		var color = color.split(':')[1];
+		colorSwatches.push({
+			colorway: colorway,
+			color: color
+		});
+	});
+
+	var split = [];
+	colorSwatches.forEach(function(swatch, i){
+		split = [];
+		if(swatch.color.indexOf('/') > -1){
+			split = swatch.color.split('/');
+		}
+		if(split.length){
+			colorSwatches[i].split = split;
+		}
+
+	});
+
+	//assign index to first image in each swatch collection.
+	var imagesPerSwatch = this.imagesPerColorSwatch;
+	colorSwatches.forEach(function(swatch, i){
+		if(i === 0) {
+			colorSwatches[i].productIndex = 0;
+		}else{
+			colorSwatches[i].productIndex = ((i)*imagesPerSwatch);
+		}
+	});
+
+	return colorSwatches;
+});
+
+
+
 Product.register();
 

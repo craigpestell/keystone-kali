@@ -6490,7 +6490,7 @@ h1, h2, h3 {
   -webkit-transform: translate(-50%);
   border-radius: 50%; }
 
-.product-swatch-circle {
+.color-swatch {
   border-radius: 50%;
   behavior: url(PIE.htc);
   /* remove if you don't care about IE8 */
