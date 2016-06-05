@@ -6607,6 +6607,9 @@ hr {
 #nav-product-categories li.active {
   font-weight: bold; }
 
+/*
+	Product page
+*/
 .product-section-nav {
   top: 0px;
   z-index: 1020;
@@ -6629,6 +6632,12 @@ a.product-category-anchor:hover, a.product-category-anchor:active {
 a.product-category-anchor h1 {
   margin: 15px 0; }
 
+.product-gallery {
+  background: url(../img/loading.gif) center no-repeat; }
+
+/*
+End Product Page
+*/
 .navbar-brand {
   padding: 0; }
 

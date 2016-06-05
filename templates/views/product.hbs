@@ -14,8 +14,7 @@
 				<div class="text-right" style="height:0px;">
                     <img id="product-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto"}}" style="margin-top:-100px;margin-right:75px"/>	
 				</div>
-                
-				<div id="product-gallery" style="margin: 0 auto; display: table; visibility:hidden">
+                <div id="product-gallery" style="margin: 0 auto; display: table; visibility:hidden">
 				{{> product-gallery class="col-xs-12"}}
                 </div>
 			</div>
@@ -73,6 +72,7 @@
 {{/if}}
 <script type="text/javascript">
     $(document).ready(function () {
+		
         /*$('.product-section-nav').affix({
             offset: {
                 top: function(){
