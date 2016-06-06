@@ -118,13 +118,12 @@ h1, h2, h3 {
 }
 
 .color-swatch{
-  display:inline;
+  display:inline-block;
   border-radius: 50%;
   behavior: url(PIE.htc); /* remove if you don't care about IE8 */
   width: 25px;
   height: 25px;
   background: yellow;
-  float:left;
   margin:5px 12px;
   cursor: pointer; cursor: hand;
   
