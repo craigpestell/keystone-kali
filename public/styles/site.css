@@ -6425,6 +6425,11 @@ body:last-child .blueimp-gallery-playing > .play-pause {
   zoom: 1;
   /* ie 6/7 */ }
 
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
+  display: table; }
+
 @font-face {
   font-family: 'Gotham-Light';
   src: url("/fonts/Gotham-Light.eot");

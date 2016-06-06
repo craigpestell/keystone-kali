@@ -9,20 +9,18 @@
 				{{#if isModZeroNotFirst}}
 					</div>
 					</div>
-					</div>
 				{{/if}}
 				{{#if isModZero}}
 					<div id="product-icon-{{n}}" class="product-icon-group icon-toggle" style="{{#unless isFirst}}display:none{{/unless}}">
 						{{#with (lookup ../../product.galleryColorwaysArray page)}}
                             <div style="text-transform: uppercase; text-align: center;">{{colorway}}</div>
 						{{/with}}
-                    			<div class="center-block"><div>
+                    			<div class="center-block">
 				{{/if}}
 					<div data-image-id="#product-{{n}}" class="image-toggler" style="display:inline;">
 						<img src="{{cloudinaryUrl this width=80 format="jpg"}}"/>
 					</div>
 				{{#if isLast}}
-					</div>
 					</div>
 					</div>
 				{{/if}}
