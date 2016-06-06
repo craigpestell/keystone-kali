@@ -3,25 +3,22 @@
     
     <div class="{{class}}">
         <div class="row" style="margin-top: 5px; margin-bottom: 15px;">
-            <div class="col-xs-12 col-centered">
+            <div class="col-xs-12" style="text-align:center">
             
 				{{#everyNth product.gallery product.imagesPerColorSwatch}}
 				{{#if isModZeroNotFirst}}
 					</div>
-					</div>
 				{{/if}}
 				{{#if isModZero}}
-					<div id="product-icon-{{n}}" class="product-icon-group icon-toggle" style="{{#unless isFirst}}display:none{{/unless}}">
+					<div id="product-icon-{{n}}" class="product-icon-group icon-toggle" style="text-align:center;{{#unless isFirst}}display:none;{{/unless}}">
 						{{#with (lookup ../../product.galleryColorwaysArray page)}}
-                            <div style="text-transform: uppercase; text-align: center;">{{colorway}}</div>
+                            <div style="text-transform: uppercase;">{{colorway}}</div>
 						{{/with}}
-                    			<div class="center-block">
 				{{/if}}
-					<div data-image-id="#product-{{n}}" class="image-toggler" style="display:inline;">
+					<div data-image-id="#product-{{n}}" class="image-toggler" style="display: inline-block;">
 						<img src="{{cloudinaryUrl this width=80 format="jpg"}}"/>
 					</div>
 				{{#if isLast}}
-					</div>
 					</div>
 				{{/if}}
 				{{/everyNth}}
@@ -57,7 +54,9 @@
 
         });
         $(window).load(function(){
-            $('#product-color-swatches').css({visibility:'visible', opacity: 0.0}).animate({opacity: 1}, 500);
+			if($('#product-color-swatches').length > 1) {
+            	$('#product-color-swatches').css({visibility:'visible', opacity: 0.0}).animate({opacity: 1}, 500);
+            }
         });
     </script>
 {{/ifCond}}
