@@ -12,7 +12,7 @@
 				{{#if isModZero}}
 					<div id="product-icon-{{n}}" class="product-icon-group icon-toggle" style="text-align:center;{{#unless isFirst}}display:none;{{/unless}}">
 						{{#with (lookup ../../product.galleryColorwaysArray page)}}
-                            <div style="text-transform: uppercase;">{{colorway}}</div>
+                            <div class="product-swatch-title">{{colorway}}</div>
 						{{/with}}
 				{{/if}}
 					<div data-image-id="#product-{{n}}" class="image-toggler" style="display: inline-block;">
