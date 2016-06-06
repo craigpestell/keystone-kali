@@ -54,7 +54,7 @@
 
         });
         $(window).load(function(){
-			if($('#product-color-swatches').length > 1) {
+			if($('#product-color-swatches').children().length > 1) {
             	$('#product-color-swatches').css({visibility:'visible', opacity: 0.0}).animate({opacity: 1}, 500);
             }
         });
