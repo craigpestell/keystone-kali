@@ -4,39 +4,39 @@
     <div class="{{class}}">
         <div class="row" style="margin-top: 5px; margin-bottom: 15px;">
             <div class="col-xs-12 col-centered">
-            <div class="btn-group" data-toggle="buttons">
+            
 				{{#everyNth product.gallery product.imagesPerColorSwatch}}
 				{{#if isModZeroNotFirst}}
 					</div>
+					</div>
 				{{/if}}
 				{{#if isModZero}}
-					<div id="product-icon-{{n}}" class="icon-toggle" style="{{#unless isFirst}}display:none{{/unless}}">
+					<div id="product-icon-{{n}}" class="product-icon-group icon-toggle" style="{{#unless isFirst}}display:none{{/unless}}">
 						{{#with (lookup ../../product.galleryColorwaysArray page)}}
-                            <div style="text-transform: uppercase; text-align: center; width: 100%">{{colorway}}</div>
+                            <div style="text-transform: uppercase; text-align: center;">{{colorway}}</div>
 						{{/with}}
+					    <div style="border:2px solid red;">
 				{{/if}}
 					<div data-image-id="#product-{{n}}" class="image-toggler" style="float:left;">
 						<img src="{{cloudinaryUrl this width=80 format="jpg"}}"/>
 					</div>
 				{{#if isLast}}
 					</div>
+					</div>
 				{{/if}}
 				{{/everyNth}}
-            </div>
+            
         </div>
     </div>
 
     <div class="row">
-        <div class="col-xs-12 col-centered">
-            <div class="btn-group" data-toggle="buttons">
-				{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
-				    <div data-icon-id="#product-icon-{{productIndex}}" data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch"
-                         style="{{#if split}}background: linear-gradient(-45deg, {{split.[1]}} 50%,
-							 {{split.[0]}} 50%);background-size:30px 30px;{{else}}background-color:{{color}}{{/if}}">
-					</div>
-				{{/everyNth}}
-
-            </div>
+        <div class="col-xs-12 col-centered" style="text-align:center">
+			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
+				<div data-icon-id="#product-icon-{{productIndex}}" data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch"
+					 style="{{#if split}}background: linear-gradient(-45deg, {{split.[1]}} 50%,
+						 {{split.[0]}} 50%);background-size:30px 30px;{{else}}background-color:{{color}}{{/if}}">
+				</div>
+			{{/everyNth}}
         </div>
     </div>
 	</div>

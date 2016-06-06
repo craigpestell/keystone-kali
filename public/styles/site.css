@@ -6491,6 +6491,7 @@ h1, h2, h3 {
   border-radius: 50%; }
 
 .color-swatch {
+  display: inline;
   border-radius: 50%;
   behavior: url(PIE.htc);
   /* remove if you don't care about IE8 */
@@ -6625,6 +6626,9 @@ hr {
 .product-section-nav ul li {
   display: inline-block;
   padding: 15px; }
+
+.product-icon-group {
+  display: inline; }
 
 a.product-category-anchor:hover, a.product-category-anchor:active {
   text-decoration: none; }

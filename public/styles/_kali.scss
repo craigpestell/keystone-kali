@@ -112,6 +112,7 @@ h1, h2, h3 {
 }
 
 .color-swatch{
+  display:inline;
   border-radius: 50%;
   behavior: url(PIE.htc); /* remove if you don't care about IE8 */
   width: 30px;
@@ -285,6 +286,9 @@ hr {
   padding:15px;
 }
 
+.product-icon-group{
+  display:inline;
+}
 a.product-category-anchor:hover, a.product-category-anchor:active {
   text-decoration: none;
 }
