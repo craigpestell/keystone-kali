@@ -432,6 +432,10 @@ End Product Page
 /* */ 
 
 /* Product detail */
+
+.image-toggler {
+  cursor: pointer; cursor: hand;
+}
 #product-zoom-current{
   height: 40px;
   width: 40px;
