@@ -1194,7 +1194,6 @@
 			var _this = this;
 			// Define the location data
 			var locations = this._defineLocationData(marker, storeStart, page);
-			console.log(locations);
 			// Set up the infowindow template with the location data
 			var formattedAddress = infowindowTemplate(locations);
 
