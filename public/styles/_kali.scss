@@ -117,6 +117,7 @@ h1, h2, h3 {
   border-radius: 50%;
 }
 
+
 .color-swatch{
   display:inline-block;
   border-radius: 50%;
@@ -261,11 +262,13 @@ hr {
   font-weight: bold;
 }
 
-
-
 /*
 	Product page
 */
+
+#product-color-swatches{
+  margin-bottom: 15px;
+}
 
 .product-section-nav{
   top: 0px;

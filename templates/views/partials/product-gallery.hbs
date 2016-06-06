@@ -30,8 +30,7 @@
         <div id="product-color-swatches" class="col-xs-12" style="text-align:center; visibility:hidden;">
 			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
 				<div data-icon-id="#product-icon-{{productIndex}}" data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch"
-					 style="{{#if split}}background: linear-gradient(-45deg, {{split.[1]}} 50%,
-						 {{split.[0]}} 50%);background-size:25px 25px;{{else}}background-color:{{color}};{{/if}}">
+					 style="{{#if split}}background: linear-gradient(-45deg, {{split.[1]}} 50%,{{split.[0]}} 50%);{{else}}background-color:{{color}};{{/if}}">
 				</div>
 			{{/everyNth}}
         </div>
