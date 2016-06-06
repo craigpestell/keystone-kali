@@ -1268,7 +1268,7 @@
 		_autoGeocodeError: function () {
 			this.writeDebug('_autoGeocodeError');
 			// If automatic detection doesn't work show an error
-			this.notify(this.settings.autoGeocodeErrorAlert);
+			//this.notify(this.settings.autoGeocodeErrorAlert);
 		},
 
 		/**
