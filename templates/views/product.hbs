@@ -11,7 +11,7 @@
 							 id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;" {{/unless}}/>
 					</a>
 				{{/each}}
-				<div class="hidden-xs hidden-sm text-right" style="height:0px;">
+				<div class="hidden-xs text-right" style="height:0px;">
                     <img id="product-zoom-current" src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto"}}" style="margin-top:-100px;margin-right:75px"/>	
 				</div>
                 <div id="product-gallery" style="margin: 0 auto; display: table; visibility:hidden">
