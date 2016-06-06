@@ -30,7 +30,7 @@
     </div>
 
     <div class="row">
-        <div class="col-xs-12" style="text-align:center">
+        <div id="product-color-swatches" class="col-xs-12" style="text-align:center; visibility:hidden;">
 			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
 				<div data-icon-id="#product-icon-{{productIndex}}" data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch"
 					 style="{{#if split}}background: linear-gradient(-45deg, {{split.[1]}} 50%,
@@ -55,6 +55,9 @@
                 $($(this).attr('data-image-id')).show();
             });
 
+        });
+        $(window).load(function(){
+            $('#product-color-swatches').css({visibility:'visible', opacity: 0.0}).animate({opacity: 1}, 500);
         });
     </script>
 {{/ifCond}}
