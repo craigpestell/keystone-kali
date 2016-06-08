@@ -141,6 +141,7 @@ h1, h2, h3 {
 
   box-shadow: 2px 2px 5px darken($brand-grey, 15%);
   border-image-width: 0;
+  -webkit-backface-visibility: hidden;
 }
 
 .color-swatch .circle {
