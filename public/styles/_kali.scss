@@ -138,8 +138,8 @@ h1, h2, h3 {
   overflow: hidden;
   display: inline-block;
 
-  box-shadow: 2px 0px 5px darken($brand-grey, 15%);
-
+  box-shadow: 2px 2px 5px darken($brand-grey, 15%);
+  border-image-width: 0;
 }
 
 .color-swatch .circle {

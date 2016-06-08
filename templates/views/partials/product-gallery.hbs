@@ -27,7 +27,7 @@
     </div>
 
     <div class="row">
-        <div id="product-color-swatches" class="col-xs-12" style="text-align:center; visibility:hidden;">
+        <div id="product-color-swatches" class="col-xs-12" style="text-align:center;">
             
 			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
             <div data-icon-id="#product-icon-{{productIndex}}" data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch">
@@ -63,9 +63,9 @@
 
         });
         $(window).load(function(){
-			if($('#product-color-swatches').children().length > 1) {
+			/*if($('#product-color-swatches').children().length > 1) {
             	$('#product-color-swatches').css({visibility:'visible', opacity: 0.0}).animate({opacity: 1}, 500);
-            }
+            }*/
         });
     </script>
 {{/ifCond}}
