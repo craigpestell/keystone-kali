@@ -15,9 +15,11 @@
                             <div class="product-swatch-title">{{colorway}}</div>
 						{{/with}}
 				{{/if}}
+				{{#ifCond ../product.imagesPerColorSwatch '>' 1}}
 					<div data-image-id="#product-{{n}}" class="image-toggler" style="display: inline-block;">
 						<img src="{{cloudinaryUrl this width=80 format="jpg"}}"/>
 					</div>
+				{{/ifCond}}
 				{{#if isLast}}
 					</div>
 				{{/if}}
@@ -26,6 +28,7 @@
         </div>
     </div>
 
+	{{#ifCond product.galleryColorwaysArray.length '>' 1}}
     <div class="row">
         <div id="product-color-swatches" class="col-xs-12" style="text-align:center;">
             
@@ -45,6 +48,7 @@
 			
         </div>
     </div>
+	{{/ifCond}}
 	</div>
     <script type="text/javascript">
         $(document).ready(function () {
