@@ -38,6 +38,27 @@
 						{{/each}}
 					</div>
 					{{/if}}-->
+					{{#ifCond product.galleryColorwaysArray.length '>' 1}}
+                        <div class="row hidden-xs hidden-sm">
+                            <div id="product-color-swatches" class="col-xs-12" style="text-align:center;">
+
+								{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
+                                    <div data-icon-id="#product-icon-{{productIndex}}" data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch">
+                                        <div class="circle">
+											{{#ifCond split.length ">" 1}}
+												{{#each split}}
+                                                    <div class="circle-slice" style="background-color:{{this}}"></div>
+												{{/each}}
+											{{else}}
+                                                <div class="circle-slice" style="background-color:{{color}}"></div>
+											{{/ifCond}}
+                                        </div>
+                                    </div>
+								{{/everyNth}}
+
+                            </div>
+                        </div>
+					{{/ifCond}}
                     <div class="row">
                         <div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em">Find a Dealer</h3></a></div>
                     </div>

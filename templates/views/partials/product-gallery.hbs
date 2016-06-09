@@ -1,4 +1,3 @@
-<div id="colorway-container"></div>
 {{# ifCond product.gallery.length '>' 1}}
     
     <div class="{{class}}">
@@ -29,7 +28,7 @@
     </div>
 
 	{{#ifCond product.galleryColorwaysArray.length '>' 1}}
-    <div class="row">
+    <div class="row visible-xs visible-sm">
         <div id="product-color-swatches" class="col-xs-12" style="text-align:center;">
             
 			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
