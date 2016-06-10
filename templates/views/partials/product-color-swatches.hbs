@@ -1,0 +1,21 @@
+{{#ifCond product.galleryColorwaysArray.length '>' 1}}
+    <div class="row {{visibleClass}}">
+        <div id="product-color-swatches" class="col-xs-12" style="text-align:{{align}}">
+			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
+                <div data-icon-id="#product-icon-{{productIndex}}"
+                     data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch">
+                    <div class="circle">
+						{{#ifCond split.length ">" 1}}
+							{{#each split}}
+                                <div class="circle-slice" style="background-color:{{this}}"></div>
+							{{/each}}
+						{{else}}
+                            <div class="circle-slice" style="background-color:{{color}}"></div>
+						{{/ifCond}}
+                    </div>
+                </div>
+			{{/everyNth}}
+
+        </div>
+    </div>
+{{/ifCond}}

@@ -152,9 +152,6 @@ h1, h2, h3 {
 }
 .color-swatch .circle-slice{
   display: table-cell;
-  padding: 0;
-  border: 0;
-  padding: 2px;
 }
 
 /** bootstrap 3 variable overrides */
@@ -232,13 +229,22 @@ hr {
 .navbar {
   border: 0;
   border-radius: 0;
-  margin-bottom: 5px;
+  margin-bottom: 0;
   min-height: 0;
   text-transform: uppercase;
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 1;
 }
-
+.navbar:after{
+  content: none;
+}
+.navbar>.container:after {
+  content: none;
+}
+.navbar.subnav ul.navbar:after {
+  content: none; 
+  display: none;
+}
 .navbar .navbar-right {
   //	margin-right: 0px;
 }
@@ -304,6 +310,25 @@ hr {
 	Product page
 */
 
+.product-title{
+  color: #FFF;
+  background-color: #000;
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.product-title h1{
+  margin: 0;
+  margin-bottom: -5px;
+}
+
+.product-description {
+  background-color: lighten($brand-grey, 15%);
+  padding: 10px;
+}
+.product-description p {
+  margin: 0;
+}
 #product-color-swatches {
   margin-bottom: 15px;
 }
