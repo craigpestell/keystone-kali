@@ -6,7 +6,11 @@
 		{{#each products}}
             
             <div class="row">
-                <div class="col-sm-12"><a id="{{slug}}" class="product-category-anchor"><h1>{{name}}</h1></a></div>
+                <div class="col-sm-12">
+                    <div class="product-category-title">
+						<a id="{{slug}}" class="product-category-anchor"><h1>{{name}}</h1></a>
+					</div>
+				</div>
             </div>
             
 			{{#each this.products}}
