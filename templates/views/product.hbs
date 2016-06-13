@@ -9,9 +9,9 @@
                     <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto"}}"
                        title="{{name}}" data-gallery>
                         <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto"}}"
-                             class="cld-responsive image-toggle"
-                             id="product-{{@index}}" alt="{{name}}"{{#unless @first}}
-                             style="display:none;" {{/unless}}/>
+                             class="{{#if @first}}cld-responsive {{/if}}image-toggle"
+                             id="product-{{@index}}" alt="{{name}}"{{#unless @first}} 
+							 style="display:none;" {{/unless}}/>
                     </a>
 				{{/each}}
                 <div class="hidden-xs text-right" style="height:0px;">
@@ -82,7 +82,15 @@
 {{/if}}
 <script type="text/javascript">
     $(document).ready(function () {
-
+        
+		$('#product-0').one("load", function(){
+			//$(this).removeClass('cld-responsive');
+			$('.image-toggle:not(.cld-responsive)').addClass('cld-responsive');
+			$.cloudinary.responsive();	
+			
+		});
+        $.cloudinary.responsive({responsive_resize: false});
+        //$.cloudinary.responsive();
         /*$('.product-section-nav').affix({
             offset: {
                 top: function(){

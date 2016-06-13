@@ -61,6 +61,9 @@ body {
 }
 
 @media (min-width: 0px) {
+  .bh-sl-container .bh-sl-map{
+	height:300px;
+  }
   .slide-overlay {
 	font-size: 0.8em;
   }
@@ -69,6 +72,9 @@ body {
 @media (min-width: 768px) {
   body {
 	//background: url("http://griddle.it/720px-4-30px") repeat-y center top !important;
+  }
+  .bh-sl-container .bh-sl-map{
+	height:400px;
   }
   .bh-sl-container .bh-sl-loc-list ul li {
 	height: 250px;
@@ -81,6 +87,9 @@ body {
 @media (min-width: 992px) {
   body {
 	//background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
+  }
+  .bh-sl-container .bh-sl-map{
+	height:530px;
   }
   .slide-overlay {
 	font-size: 1em;
@@ -562,6 +571,9 @@ End Product Page
   background: #f7f7f7 url(/img/loading.gif) no-repeat center;
 }
 
+#footer {
+  padding-bottom:10px
+}
 #footer ul {
   margin-bottom: 30px;
 }
