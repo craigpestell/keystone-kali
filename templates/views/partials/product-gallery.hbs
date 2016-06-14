@@ -16,7 +16,7 @@
 				{{/if}}
 				{{#ifCond ../product.imagesPerColorSwatch '>' 1}}
 					<div data-image-id="#product-{{n}}" class="image-toggler" style="display: inline-block;">
-						<img src="{{cloudinaryUrl this width=80 format="jpg"}}"/>
+						<img src="{{cloudinaryUrl this width=80 format="jpg" quality="80"}}"/>
 					</div>
 				{{/ifCond}}
 				{{#if isLast}}
