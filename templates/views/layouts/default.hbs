@@ -9,7 +9,7 @@
 
 	{{!-- This file provides the default styling for the KeystoneJS Content Editor
         - only renders when user is logged in and admin--}}
-	{{{isAdminEditorCSS user}}}
+	<!--{{{isAdminEditorCSS user}}}-->
 
 	{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     //- Safely remove this block if you are not targeting IE8 --}}
@@ -26,7 +26,10 @@
 	<script type="text/javascript">
 		$.cloudinary.config({cloud_name:'kaliprotectives-com', api_key: "277924468792588"});
 	</script>
-    
+	{{#ifCond section "==" "product"}}
+        <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+	{{/ifCond}}
+
 
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
@@ -92,26 +95,25 @@
     --}}
     <!--bootstrap 3.3.6 -->
     <script src="/js/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/js/handlebars/handlebars.min.js"></script>
+    
     {{#ifCond section "==" "dealer-locator"}}
+        <script src="/js/handlebars/handlebars.min.js"></script>
 		<script src="//maps.googleapis.com/maps/api/js?v=3&amp;file=api&amp;&amp;key=AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY"></script>
 		<script type="text/javascript">var apiKey = "AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY";</script>
 		<script src="/js/plugins/storeLocator/jquery.storelocator.js"></script>
 	{{/ifCond}}
 	
-	{{#ifCond section "==" "product"}}
-		<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-        <!--<script src="/js/jquery_lazyload/jquery.lazyload.js"></script>-->
-	{{/ifCond}}
+<!--<script src="/js/jquery_lazyload/jquery.lazyload.js"></script>-->
 
 	<!--<script src="/js/bootstrap-image-gallery.js"></script>-->
 	<!--<script src="/js/jquery.zoom/jquery.zoom.js"></script>-->
 	
-	{{{isAdminEditorJS user}}}
+	<!--{{{isAdminEditorJS user}}}-->
     <script>
 		
         $(document).ready(function () {
 			var section = '{{section}}';
+			console.log('section: ', section);
 			if( section !== 'product' ) {
                 $.cloudinary.responsive();
 			}

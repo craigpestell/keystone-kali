@@ -4,7 +4,8 @@
 	{{> product-blueimp-gallery-dom}}
     <div class="container">
         <div id="product-main" class="row">
-            <div id="links" class="col-xs-12 col-md-7">
+            <div class="col-xs-12 col-md-7">
+                <div id="links">
 				{{#each product.gallery}}
                     <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto"}}"
                        title="{{name}}" data-gallery>
@@ -14,10 +15,11 @@
 							 style="display:none;" {{/unless}}/>
                     </a>
 				{{/each}}
-                <div class="hidden-xs text-right" style="height:0px;">
-                    <img id="product-zoom-current"
-                         src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto"}}"
-                         style="margin-top:-100px;margin-right:75px"/>
+					<div class="hidden-xs text-right" style="height:0px;">
+						<img id="product-zoom-current"
+							 src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto"}}"
+							 style="margin-top:-70px;margin-right:18px"/>
+					</div>
                 </div>
 				{{> product-gallery class="col-xs-12"}}
             </div>
@@ -80,14 +82,14 @@
 {{else}}
     <h3 class="text-muted">Product does not exist.</h3>
 {{/if}}
+
 <script type="text/javascript">
     $(document).ready(function () {
-        
+            
 		$('#product-0').one("load", function(){
 			//$(this).removeClass('cld-responsive');
 			$('.image-toggle:not(.cld-responsive)').addClass('cld-responsive');
-			$.cloudinary.responsive();	
-			
+			$.cloudinary.responsive();
 		});
         $.cloudinary.responsive({responsive_resize: false});
         //$.cloudinary.responsive();
