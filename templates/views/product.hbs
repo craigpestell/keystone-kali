@@ -1,7 +1,6 @@
 {{> nav-product-categories products subCategory=subCategory}}
 
 {{#if product}}
-	{{> product-blueimp-gallery-dom}}
     <div class="container">
         <div id="product-main" class="row">
             <div class="col-xs-12 col-md-7">
@@ -79,6 +78,8 @@
         </div>-->
         <!--{{> product-sizing-guide}}-->
     </div>
+	{{> product-blueimp-gallery-dom}}
+
 {{else}}
     <h3 class="text-muted">Product does not exist.</h3>
 {{/if}}
