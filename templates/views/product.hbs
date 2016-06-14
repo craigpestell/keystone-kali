@@ -4,7 +4,7 @@
 	{{> product-blueimp-gallery-dom}}
     <div class="container">
         <div id="product-main" class="row">
-            <div id="links" class="col-xs-12 col-md-6">
+            <div id="links" class="col-xs-12 col-md-7">
 				{{#each product.gallery}}
                     <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto"}}"
                        title="{{name}}" data-gallery>
@@ -22,7 +22,7 @@
 				{{> product-gallery class="col-xs-12"}}
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="col-xs-12">
 					<div class="product-title">
                     	<h1>{{product.name}}</h1>

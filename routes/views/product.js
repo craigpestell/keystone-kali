@@ -14,12 +14,12 @@ exports = module.exports = function(req, res) {
 		.populate('technologies features mainCategory subCategory'))
 		.then(function (err, results, next) {
 
-			
+			/*
 			locals.product.specs = locals.product.specs.replace(new RegExp('col-xs-5', 'g'), 'col-xs-6');
 			locals.product.specs = locals.product.specs.replace(new RegExp('col-xs-7', 'g'), 'col-xs-6');
 			locals.product.usageChart = locals.product.usageChart.replace(new RegExp('col-xs-5', 'g'), 'col-xs-6');
 			locals.product.usageChart = locals.product.usageChart.replace(new RegExp('col-xs-7', 'g'), 'col-xs-6');
-		
+			*/
 
 			locals.page = results.mainCategory.key;
 		locals.subCategory = results.subCategory.key;
