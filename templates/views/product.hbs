@@ -6,9 +6,9 @@
             <div class="col-xs-12 col-md-7">
                 <div id="links">
 				{{#each product.gallery}}
-                    <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto"}}"
+                    <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="80"}}"
                        title="{{name}}" data-gallery>
-                        <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto"}}"
+                        <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto" quality="80"}}"
                              class="{{#if @first}}cld-responsive {{/if}}image-toggle"
                              id="product-{{@index}}" alt="{{name}}"{{#unless @first}} 
 							 style="display:none;" {{/unless}}/>
