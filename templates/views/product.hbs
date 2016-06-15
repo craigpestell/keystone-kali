@@ -16,8 +16,8 @@
 				{{/each}}
 					<div class="hidden-xs text-right" style="height:0px;">
 						<img id="product-zoom-current"
-							 src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto" quality="90"}}"
-							 style="margin-top:-70px;margin-right:32px"/>
+							 data-src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto" quality="90"}}"
+							 style="margin-top:-70px;margin-right:32px" class="cld-responsive"/>
 					</div>
                 </div>
 				{{> product-gallery class="col-xs-12"}}
@@ -86,12 +86,11 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-            
-		$('#product-0').one("load", function(){
+        $('#product-0').one("load", function(){
 			//$(this).removeClass('cld-responsive');
-			$('.image-toggle:not(.cld-responsive)').addClass('cld-responsive');
-			$.cloudinary.responsive();
-		});
+			$('.gallery-icon:not(.cld-responsive), .image-toggle:not(.cld-responsive), .product-thumb:not(.cld-responsive)').addClass('cld-responsive');
+            $.cloudinary.responsive();
+        });
         $.cloudinary.responsive({responsive_resize: false});
         //$.cloudinary.responsive();
         /*$('.product-section-nav').affix({
