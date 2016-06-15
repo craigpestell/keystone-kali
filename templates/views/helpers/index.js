@@ -229,7 +229,9 @@ module.exports = function() {
 			if(options.hash.format !== undefined){
 				imageName = imageName.substr(0, imageName.lastIndexOf('.'));
 			}
-			return cloudinary.url(imageName, options.hash);
+			var url = cloudinary.url(imageName, options.hash);
+			url = url.replace('http://', '//');
+			return url;
 		}
 		else {
 			return null;
