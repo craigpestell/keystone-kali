@@ -6,9 +6,9 @@
             <div class="col-xs-12 col-md-7">
                 <div id="links">
 				{{#each product.gallery}}
-                    <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="80"}}"
+                    <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
                        title="{{name}}" data-gallery>
-                        <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto" quality="80"}}"
+                        <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto" quality="90"}}"
                              class="{{#if @first}}cld-responsive {{/if}}image-toggle"
                              id="product-{{@index}}" alt="{{name}}"{{#unless @first}} 
 							 style="display:none;" {{/unless}}/>
@@ -16,7 +16,7 @@
 				{{/each}}
 					<div class="hidden-xs text-right" style="height:0px;">
 						<img id="product-zoom-current"
-							 src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto"}}"
+							 src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto" quality="90"}}"
 							 style="margin-top:-70px;margin-right:32px"/>
 					</div>
                 </div>
