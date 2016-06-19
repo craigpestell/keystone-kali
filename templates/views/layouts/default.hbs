@@ -108,17 +108,17 @@
 	<!--<script src="/js/jquery.zoom/jquery.zoom.js"></script>-->
 	
 	<!--{{{isAdminEditorJS user}}}-->
-    <script>
-		
+	{{#ifCond section '==' 'product' }}
+		{{> product-dom-ready}}		
+	{{/ifCond}}
+	{{#ifCond section '==' 'dealer-locator' }}
+		{{> dealer-locator-dom-ready}}
+	{{/ifCond}}
+	<script>
         $(document).ready(function () {
 			var section = '{{section}}';
 			console.log('section: ', section);
-			if( section == 'product' ) {
-				{{> product-dom-ready}}
-            }else if(section == 'dealer-locator') {
-				{{> dealer-locator-dom-ready}}
-                $.cloudinary.responsive();
-            }else{	
+			if( section !== 'product' ) {
                 $.cloudinary.responsive();
 			}
             /*$('.product-section-nav').affix({

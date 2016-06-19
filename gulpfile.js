@@ -5,7 +5,8 @@ var watch = require('gulp-watch');
 var shell = require('gulp-shell');
 
 var sass = require('gulp-sass');
-
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
 
 var paths = {
 	'src':['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json']
@@ -36,8 +37,15 @@ gulp.task('watch:sass', function () {
 });
 
 gulp.task('sass', function(){
+	var sassOptions = {
+		//errLogToConsole: true,
+		outputStyle: 'compressed'
+	};
 	gulp.src(paths.style.all)
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sourcemaps.init())
+		.pipe(sass(sassOptions).on('error', sass.logError))
+		.pipe(autoprefixer())
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.style.output));
 });
 

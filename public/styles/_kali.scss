@@ -403,7 +403,7 @@ End Product Page
 
 .panel {
   border: 0;
-  margin-bottom: 0
+  margin-bottom: 0;
 }
 
 .initialism .row {
@@ -437,7 +437,7 @@ End Product Page
   .percentage-#{$i}:after {
 	$value: ($i * 1%);
 	width: $value;
-	content: '\00a0'
+	content: '\00a0';
   }
 }
 
@@ -572,7 +572,7 @@ End Product Page
 }
 
 #footer {
-  padding-bottom:10px
+  padding-bottom:10px;
 }
 #footer ul {
   margin-bottom: 30px;
@@ -600,11 +600,11 @@ End Product Page
 
 /* Google Maps overrides */
 a[href^="http://maps.google.com/maps"] {
-  display: none !important
+  display: none !important;
 }
 
 a[href^="https://maps.google.com/maps"] {
-  display: none !important
+  display: none !important;
 }
 
 .gmnoprint a, .gmnoprint span, .gm-style-cc {
