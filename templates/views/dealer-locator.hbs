@@ -1,11 +1,11 @@
 <div class="bh-sl-container">
 	<div class="container">
-			
+
 		<div class="col-xs-12">
-			
+
 			<!--<div id="page-header">
 				<h1 class="bh-sl-title">Locate a dealer</h1>
-		
+
 			</div>-->
 			<div class="bh-sl-form-container">
 				<form id="bh-sl-user-location" method="post" action="#">
@@ -13,13 +13,12 @@
 						<label for="bh-sl-address">Enter Address or Zip Code:</label>
 						<input type="text" id="bh-sl-address" name="bh-sl-address"/>
 					</div>
-		
+
 					<button id="bh-sl-submit" class="btn btn-primary" type="submit">Submit</button>
 				</form>
 			</div>
 		</div>
 	</div>
-
 
     <div id="bh-sl-map-container" class="bh-sl-map-container">
         <div id="bh-sl-map" class="bh-sl-map"></div>
@@ -31,10 +30,10 @@
 <button id="importDealers" style="display:none">Import Dealers</button>
 
 <script type="text/javascript">
-	
-    //if (window.location.protocol != "https:")
-    //    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-	
+
+    if (window.location.protocol != "https:")
+        window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+
     $(document).ready(function () {
 		$('#importDealers').click(function(){
 			var dealers = [
@@ -52,7 +51,7 @@
 					console.log(textStatus);
 				})
 			});
-			
+
 		});
 		$.ajax('/api/dealers', {
 			success: function(data){
@@ -72,7 +71,7 @@
                         }
 					}
 				});
-				
+
 				/*{"id":"1",
 				   "name":"Chipotle Minneapolis",
 				   "lat":"44.947464",
