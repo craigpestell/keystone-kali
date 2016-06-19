@@ -1,4 +1,5 @@
 public/styles/site.css
+public/styles/site.css.map
 node_modules
 .env
 .idea
