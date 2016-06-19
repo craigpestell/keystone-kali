@@ -33,26 +33,5 @@
 	{{> product-color-swatches visibleClass="visible-xs visible-sm" align="center"}}
 	
 	</div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.icon-toggler').on('click', function (e) {
-                $('.icon-toggle').hide();
-                $($(this).attr('data-icon-id')).show();
-                $('.image-toggle').hide();
-                $($(this).attr('data-image-id')).show();
-            });
-
-
-            $('.image-toggler').on('click', function (e) {
-                $('.image-toggle').hide();
-                $($(this).attr('data-image-id')).show();
-            });
-
-        });
-        $(window).load(function(){
-			/*if($('#product-color-swatches').children().length > 1) {
-            	$('#product-color-swatches').css({visibility:'visible', opacity: 0.0}).animate({opacity: 1}, 500);
-            }*/
-        });
-    </script>
+    
 {{/ifCond}}

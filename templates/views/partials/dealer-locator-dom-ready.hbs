@@ -1,0 +1,97 @@
+$('#importDealers').click(function () {
+	var dealers = [];
+	dealers.forEach(function (d) {
+		var data = {};
+		data.location = {};
+		data.name = d["Account Name"];
+		data.location.street1 = d["Mailing Street"];
+		data.location.suburb = d["Mailing City"];
+		data.location.state = d["Mailing State/Province"];
+		data.phone = d["Phone"];
+		$.post('/api/dealers', data, function (responseData, textStatus) {
+			console.log(textStatus);
+		})
+	});
+
+});
+$.ajax('/api/dealers', {
+	success: function (data) {
+//console.log(data.dealers);
+		var mapDealers = [];
+		data.dealers.forEach(function (dealer, i) {
+			if (dealer.location) {
+				data.dealers[i].address = dealer.location.street1;
+				data.dealers[i].address2 = dealer.location.street2;
+				data.dealers[i].city = dealer.location.suburb;
+				data.dealers[i].state = dealer.location.state;
+				data.dealers[i].postal = dealer.location.postcode;
+				if (dealer.location.geo) {
+					data.dealers[i].lng = parseFloat(dealer.location.geo[0]);
+					data.dealers[i].lat = parseFloat(dealer.location.geo[1]);
+					mapDealers.push(data.dealers[i]);
+				}
+			}
+		});
+
+		/*{"id":"1",
+		 "name":"Chipotle Minneapolis",
+		 "lat":"44.947464",
+		 "lng":"-93.320826",
+		 "address":"3040 Excelsior Blvd",
+		 "address2":"",
+		 "city":"Minneapolis",
+		 "state":"MN",
+		 "postal":"55416",
+		 "phone":"612-922-6662",
+		 "web":"http:\/\/www.chipotle.com",
+		 "hours1":"Mon-Sun 11am-10pm",
+		 "hours2":"",
+		 "hours3":""}*/
+		var stylesArray = [
+			{
+				featureType: "all",
+				stylers: [
+					{saturation: -80}
+				]
+			}, {
+				featureType: "road.arterial",
+				elementType: "geometry",
+				stylers: [
+					{hue: "#00ffee"},
+					{saturation: 50}
+				]
+			}, {
+				featureType: "poi.business",
+				elementType: "labels",
+				stylers: [
+					{visibility: "off"}
+				]
+			}
+		];
+		var options = {
+			autoGeocode: true,
+			dataType: 'json',
+			dataRaw: mapDealers,
+			fullMapStart: true,
+			fullMapStartBlank: false,
+			fullMapStartListLimit: true,
+			loading: true,
+			storeLimit: mapDealers.length,
+			slideMap: false,
+			mapSettings: {
+				zoom: 10,
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				disableDefaultUI: true, // a way to quickly hide all controls
+//mapTypeControl: true,
+//scaleControl: true,
+//zoomControl: true,
+				/*zoomControlOptions: {
+				 style: google.maps.ZoomControlStyle.LARGE
+				 },*/
+				styles: stylesArray,
+				scrollwheel: false
+			}
+		};
+		$('#bh-sl-map-container').storeLocator(options);
+	}
+});

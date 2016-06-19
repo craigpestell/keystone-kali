@@ -85,36 +85,3 @@
     <h3 class="text-muted">Product does not exist.</h3>
 {{/if}}
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#product-0').one("load", function(){
-			//$(this).removeClass('cld-responsive');
-			$('.gallery-icon:not(.cld-responsive), .image-toggle:not(.cld-responsive), .product-thumb:not(.cld-responsive)').addClass('cld-responsive');
-            $.cloudinary.responsive();
-        });
-        $.cloudinary.responsive({responsive_resize: false});
-        //$.cloudinary.responsive();
-        /*$('.product-section-nav').affix({
-            offset: {
-                top: function(){
-						return $('#product-main').outerHeight() + 
-							$('#nav-main').outerHeight() + 
-							$('#nav-product-categories').outerHeight() + 15;
-					}
-            }
-        });*/
-        /*$('[data-gallery]').click(function(){
-            
-        });*/
-
-
-        $('#product-zoom-current').click(function () {
-            $('[data-gallery]').each(function (i, el) {
-                if ($(el).children('img').is(':visible')) {
-                    $(el).click();
-                    return;
-                }
-            });
-        });
-    });
-</script>
