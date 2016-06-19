@@ -230,6 +230,7 @@ module.exports = function() {
 				imageName = imageName.substr(0, imageName.lastIndexOf('.'));
 			}
 			var url = cloudinary.url(imageName, options.hash);
+			//if (window.location.protocol != "https:")
 			url = url.replace('http://', '//');
 			return url;
 		}
