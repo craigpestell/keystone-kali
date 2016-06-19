@@ -239,6 +239,65 @@ module.exports = function() {
 		}		
 	};
 	
+	_helpers.cloudinaryImgSrcSet = function(context, options){
+		if (!options && context.hasOwnProperty('hash')) {
+			// strategy is to place context kwargs into options
+			options = context;
+			// bind our default inherited scope into context
+			context = this;
+		}
+
+		// safe guard to ensure context is never null
+		context = context === null ? undefined : context;
+		//console.log('context:',context);
+		
+		if(options.hash.widths !== undefined){
+			options.hash.widths = JSON.parse(options.hash.widths)
+		}else{
+			return;
+		}
+		//console.log('options:', options);
+		var smallestW = options.hash.widths[0];
+		var largestW = options.hash.widths[options.hash.widths.length-1];
+		var srcset = '<picture> <img sizes="(max-width: "' + largestW + 'px) 100vw, ' + largestW + 'px" srcset="';
+		
+		if ((context) && (context.public_id)) {
+			var imageName = context.public_id.concat('.',context.format);
+			if(options.hash.format !== undefined){
+				imageName = imageName.substr(0, imageName.lastIndexOf('.'));
+			}
+			var imgs = [];
+			options.hash.widths.forEach(function(w){
+				options.hash.width = w;
+				var url = cloudinary.url(imageName, options.hash);
+				url = url.replace('http://', '//');
+				var src = url + ' ' + w + 'w';
+				imgs.push(src);
+			});	
+			srcset += imgs.join(', ');
+			srcset += '" src="' + cloudinary.url(imageName, options.hash) + '" alt="">	</picture>';
+			//if (window.location.protocol != "https:")
+			
+			return srcset;
+		}
+		else {
+			return null;
+		}
+		/*<picture>
+		 <img
+		 sizes="(max-width: 1400px) 100vw, 1400px"
+		 srcset="
+		 shiva-polished_byykrd_c_scale,w_200.jpg 200w,
+		 shiva-polished_byykrd_c_scale,w_592.jpg 592w,
+		 shiva-polished_byykrd_c_scale,w_857.jpg 857w,
+		 shiva-polished_byykrd_c_scale,w_1066.jpg 1066w,
+		 shiva-polished_byykrd_c_scale,w_1269.jpg 1269w,
+		 shiva-polished_byykrd_c_scale,w_1400.jpg 1400w"
+		 src="shiva-polished_byykrd_c_scale,w_1400.jpg"
+		 alt="">
+		 </picture>*/
+	};
+	
 	// ### Content Url Helpers
 	// KeystoneJS url handling so that the routes are in one place for easier
 	// editing.  Should look at Django/Ghost which has an object layer to access
