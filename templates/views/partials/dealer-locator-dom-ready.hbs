@@ -1,7 +1,1296 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#importDealers').click(function () {
-            var dealers = [];
+            var dealers = [
+                [
+                    {
+                        "name": "100 pour 100 Cycles",
+                        "address": "37 Rue Antoine Masson",
+                        "city": "AUXONNE",
+                        "zip": 21130,
+                        "country": "FRANCE",
+                        "phone": "03 45 83 13 58",
+                        "email": "loccasionrevee@yahoo.com",
+                        "web": 0
+                    },
+                    {
+                        "name": "100% SPORTS",
+                        "address": "60 Route des Rutys",
+                        "city": "PRINGY",
+                        "zip": 74370,
+                        "country": "FRANCE",
+                        "phone": "04 50 32 82 42",
+                        "email": "lionel.passet@orange.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "A VELO BRUSQUE",
+                        "address": "Zone Artisanale Lioujas",
+                        "city": "LIOUJAS",
+                        "zip": 12740,
+                        "country": "FRANCE",
+                        "phone": "05 65 42 95 83",
+                        "email": "a-velo12@orange.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "ABS",
+                        "address": "18 Rue Sainte-Hélène",
+                        "city": "LYON",
+                        "zip": 69002,
+                        "country": "FRANCE",
+                        "phone": "33 4 72 40 01 57",
+                        "email": "contact@abslyon.com",
+                        "web": 0
+                    },
+                    {
+                        "name": "AC EMOTION",
+                        "address": "40 Avenue de la Grande Armée",
+                        "city": "Paris",
+                        "zip": 75017,
+                        "country": "FRANCE",
+                        "phone": "33 1 41 83 81 42",
+                        "email": "johnny.prevote@ac-emotion.com",
+                        "web": 0
+                    },
+                    {
+                        "name": "AC EMOTION",
+                        "address": "9 Boulevard Murat",
+                        "city": "Paris",
+                        "zip": 75016,
+                        "country": "FRANCE",
+                        "phone": "33 1 41 43 81 41",
+                        "email": "jerome.lebrun@acemotion.com",
+                        "web": 0
+                    },
+                    {
+                        "name": "ACTION VELO",
+                        "address": "10 Rue de la Côté de Beauté",
+                        "city": "Saintes",
+                        "zip": 17100,
+                        "country": "FRANCE",
+                        "phone": "05 46 98 47 58",
+                        "email": "contact@actionvelo.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "ALBERA BIKES",
+                        "address": "22 Chemin de Palau del Vidre",
+                        "city": "Argelès-sur-Mer",
+                        "zip": 66700,
+                        "country": "FRANCE",
+                        "phone": "09 81 28 36 00",
+                        "email": "contact@alberabike.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "ALPES ATTITUDE",
+                        "address": "19 Place du Baraty",
+                        "city": "MORZINE",
+                        "zip": 74110,
+                        "country": "FRANCE",
+                        "phone": "04 50 92 95 13",
+                        "email": "resaskimium@yahoo.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "ALPES AVENTURES",
+                        "address": "le caprice des neiges",
+                        "city": "La Giettaz",
+                        "zip": 73590,
+                        "country": "FRANCE",
+                        "phone": "04 79 37 30 56",
+                        "email": 0,
+                        "web": "alpesaventures.com"
+                    },
+                    {
+                        "name": "ALTERMOVE",
+                        "address": "1 Rue des Arts",
+                        "city": "Lille",
+                        "zip": 59000,
+                        "country": "FRANCE",
+                        "phone": "33 3 62 84 01 01",
+                        "email": "sebastien.gautherot@altermove.com",
+                        "web": "altermove.com"
+                    },
+                    {
+                        "name": "ANETO",
+                        "address": "125 Route des Cols",
+                        "city": "Beaudean",
+                        "zip": 65710,
+                        "country": "FRANCE",
+                        "phone": "05 62 91 71 15",
+                        "email": "aneto.sports@gmail.com",
+                        "web": "aneto-sports.com"
+                    },
+                    {
+                        "name": "ASS BIKE",
+                        "address": "4 Bis Rue Des Orfèvres",
+                        "city": "Les Sorinières",
+                        "zip": 44840,
+                        "country": "FRANCE",
+                        "phone": "02 40 40 21 47",
+                        "email": "assbike@gmail.com",
+                        "web": "assbike.com"
+                    },
+                    {
+                        "name": "AZUR BICYCLES",
+                        "address": "Quartier de la Pierre Ronde, 340 Route Départementale 97",
+                        "city": "LA GARDE",
+                        "zip": 83130,
+                        "country": "FRANCE",
+                        "phone": "04 94 58 84 52\n09 75 98 93 20",
+                        "email": "azurbicycle@wanadoo.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "BEROD SPORT",
+                        "address": "Le Cernix",
+                        "city": "Crest-Voland",
+                        "zip": 73590,
+                        "country": "FRANCE",
+                        "phone": "04 79 31 70 85",
+                        "email": 0,
+                        "web": "berod-sports.com"
+                    },
+                    {
+                        "name": "BIKE AND TEST",
+                        "address": "14 Rue de Montfort",
+                        "city": "Maurepas",
+                        "zip": 78310,
+                        "country": "FRANCE",
+                        "phone": "01 77 04 61 44",
+                        "email": "contact@bikeandtest.fr",
+                        "web": "bikeandtest.fr"
+                    },
+                    {
+                        "name": "BLUE BEAR",
+                        "address": "Camping La Sirène, Route de Taxo",
+                        "city": "Argelès-sur-Mer",
+                        "zip": 66700,
+                        "country": "FRANCE",
+                        "phone": "04 68 95 77 68 \n06 20 25 49 97",
+                        "email": 0,
+                        "web": "blue-bear.org"
+                    },
+                    {
+                        "name": "BMX GANGSTER",
+                        "address": "Rue de la Bonnette",
+                        "city": "Carnas",
+                        "zip": 30260,
+                        "country": "FRANCE",
+                        "phone": "04.27.86.80.06",
+                        "email": "contact@bmxgangster.com",
+                        "web": "bmxgangster.com"
+                    },
+                    {
+                        "name": "BROS STORE",
+                        "address": "68 Rue de Marseille",
+                        "city": "LYON",
+                        "zip": 69007,
+                        "country": "FRANCE",
+                        "phone": "06 85 17 58 97",
+                        "email": "contact@brosstore.fr",
+                        "web": "brosstore.fr"
+                    },
+                    {
+                        "name": "CDK CRI DU KANGOUROU",
+                        "address": "21 Rue d'Algérie",
+                        "city": "LYON",
+                        "zip": 69001,
+                        "country": "FRANCE",
+                        "phone": "04 72 00 99 10",
+                        "email": "fitness@cdk.fr",
+                        "web": "cdk.fr"
+                    },
+                    {
+                        "name": "CH SPORT",
+                        "address": "72 Avenue de la Muzelle",
+                        "city": "Deux Alpes (Les)",
+                        "zip": 38860,
+                        "country": "FRANCE",
+                        "phone": "04 76 79 22 36",
+                        "email": "ch.intersport2alpes@wanadoo.fr",
+                        "web": "ch-sports.fr"
+                    },
+                    {
+                        "name": "CHARLES SPORTS",
+                        "address": "88 Route de Thonon",
+                        "city": "Châtel",
+                        "zip": 74390,
+                        "country": "FRANCE",
+                        "phone": "04 50 73 24 37",
+                        "email": "charlesport@wanadoo.fr",
+                        "web": "charles-sports.com"
+                    },
+                    {
+                        "name": "CITE 2 ROUES",
+                        "address": "15 Allées Forain-François Verdier",
+                        "city": "Toulouse",
+                        "zip": 31000,
+                        "country": "FRANCE",
+                        "phone": "05 62 26 04 50",
+                        "email": 0,
+                        "web": 0
+                    },
+                    {
+                        "name": "COCCI VELOS",
+                        "address": "47 Avenue du Maréchal de Lattre de Tassigny",
+                        "city": "GUJAN MESTRAS",
+                        "zip": 33470,
+                        "country": "FRANCE",
+                        "phone": "05 56 54 17 36",
+                        "email": 0,
+                        "web": "coccivelos.bike"
+                    },
+                    {
+                        "name": "COMPTOIRE DE L'OCEAN INDIEN",
+                        "address": "3 Chemin des Anglais",
+                        "city": "PORT (LE)",
+                        "zip": 97420,
+                        "country": "FRANCE",
+                        "phone": 0,
+                        "email": "pierre.judic@gbh.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "CONCEPT BOARD SHOP",
+                        "address": "11 Rue des Clercs",
+                        "city": "Grenoble",
+                        "zip": 38000,
+                        "country": "FRANCE",
+                        "phone": "04 38 37 12 89",
+                        "email": "conceptpierre@hotmail.fr",
+                        "web": "conceptboardshop.com"
+                    },
+                    {
+                        "name": "CROCONUTS",
+                        "address": "4 Rue de la Savonnerie,",
+                        "city": "Lutterbach",
+                        "zip": 68460,
+                        "country": "FRANCE",
+                        "phone": "03 89 57 41 01",
+                        "email": "pierre@croconuts.com",
+                        "web": "crocoboardshop.com"
+                    },
+                    {
+                        "name": "CULTURE VELO / CYCL'HORIZON RENNES",
+                        "address": "106 Rue Eugène Pottier",
+                        "city": "Rennes",
+                        "zip": 35000,
+                        "country": "FRANCE",
+                        "phone": "02 99 01 09 20",
+                        "email": "35rennes@culturevelo.com",
+                        "web": "culturevelo.com"
+                    },
+                    {
+                        "name": "CULTURE VELO BLAGNAC",
+                        "address": "4 Impasse Emile Zola",
+                        "city": "BLAGNAC",
+                        "zip": 31700,
+                        "country": "FRANCE",
+                        "phone": "05 34 36 00 34",
+                        "email": "31blagnac@culturevelo.com",
+                        "web": "culturevelo.com"
+                    },
+                    {
+                        "name": "CYCL OLMES",
+                        "address": "9 Q Avenue du 11 Novembre 1918",
+                        "city": "Laroque-d'Olmes",
+                        "zip": 9600,
+                        "country": "FRANCE",
+                        "phone": "05 61 01 52 57",
+                        "email": "cyclolmespyrenees@orange.fr",
+                        "web": "cyclolmes.com"
+                    },
+                    {
+                        "name": "CYCLABE ANNECY",
+                        "address": "6 Rue de Bonlieu",
+                        "city": "ANNECY",
+                        "zip": 74000,
+                        "country": "FRANCE",
+                        "phone": "04 56 73 97 71",
+                        "email": "annecy@cyclabe.com",
+                        "web": "cyclable.com"
+                    },
+                    {
+                        "name": "CYCLE 73",
+                        "address": "21 Boulevard Maréchal de Lattre de Tassigny",
+                        "city": "AIX LES BAINS",
+                        "zip": 73100,
+                        "country": "FRANCE",
+                        "phone": "04 79 34 62 07",
+                        "email": "infos@cycles73.com",
+                        "web": "cycles73.com"
+                    },
+                    {
+                        "name": "CYCLE EXPERT/ DANJOUTIN",
+                        "address": "4 Rue du Général de Gaulle",
+                        "city": "DANJOUTIN",
+                        "zip": 90400,
+                        "country": "FRANCE",
+                        "phone": "03 84 90 37 26",
+                        "email": "districycle.belfort@wanadoo.fr",
+                        "web": "cyclexperts.com"
+                    },
+                    {
+                        "name": "CYCLE HORIZON",
+                        "address": "13 Avenue Abbé Tarroux",
+                        "city": "Bédarieux",
+                        "zip": 34600,
+                        "country": "FRANCE",
+                        "phone": "04 67 95 34 25",
+                        "email": "cycleshorizon@neuf.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "CYCLE LEALEC",
+                        "address": "Rue Alex Dumas",
+                        "city": "Saint-Jean-d'Angély",
+                        "zip": 17400,
+                        "country": "FRANCE",
+                        "phone": "05 46 32 17 51",
+                        "email": "CYCLESLEALEC@FREE.FR",
+                        "web": 0
+                    },
+                    {
+                        "name": "CYCLE LTR",
+                        "address": "Zone d'Activité de la Noyeraie",
+                        "city": "St romain de popey",
+                        "zip": 69490,
+                        "country": "FRANCE",
+                        "phone": "04 74 05 68 87",
+                        "email": "cyclesltr@gmail.com",
+                        "web": "aero-tech.eu"
+                    },
+                    {
+                        "name": "CYCLES 22",
+                        "address": "21 Rue de Bettendorf",
+                        "city": "Quévert",
+                        "zip": 22100,
+                        "country": "FRANCE",
+                        "phone": "02 96 85 07 60",
+                        "email": "cycle22@orange.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "CYCLES DIEBOLT",
+                        "address": 0,
+                        "city": "Hirsingue",
+                        "zip": 68560,
+                        "country": "FRANCE",
+                        "phone": "03 89 40 55 50",
+                        "email": "cycles.diebolt@wanadoo.fr",
+                        "web": "cycles-diebolt.com"
+                    },
+                    {
+                        "name": "CYCLES DUTRION",
+                        "address": "29 Rue Pasteur,",
+                        "city": "DIJON",
+                        "zip": 21000,
+                        "country": "FRANCE",
+                        "phone": "03 80 66 54 50",
+                        "email": "cyclesdutrion@gmail.com",
+                        "web": "cycles-dutrion.com"
+                    },
+                    {
+                        "name": "CYCLES EXPERT ANNECY",
+                        "address": "48 Rue de la Mandallaz",
+                        "city": "Epagny",
+                        "zip": 74330,
+                        "country": "FRANCE",
+                        "phone": "04 50 22 06 56",
+                        "email": "cyclexpertsannecy@orange.fr",
+                        "web": "cyclexperts.com"
+                    },
+                    {
+                        "name": "CYCLES EXPERT ANNEMASSE",
+                        "address": "338 Route de Collonges",
+                        "city": "Archamps",
+                        "zip": 74160,
+                        "country": "FRANCE",
+                        "phone": "04 50 95 95 04",
+                        "email": "cyclexperts74@orange.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "CYCLES EXPERT MOTO PASSION BERGUES",
+                        "address": "Z.A.C de la Croix Rouge, Fbg de Cassel",
+                        "city": "SOCX",
+                        "zip": 59380,
+                        "country": "FRANCE",
+                        "phone": "03 28 68 51 27",
+                        "email": "bergues@cyclexperts.com",
+                        "web": "moto-passion-59.com"
+                    },
+                    {
+                        "name": "CYCLES EXPERTS DIGNES",
+                        "address": "Avenue de Saint-Christophe",
+                        "city": "DIGNES LES BAINS",
+                        "zip": 4000,
+                        "country": "FRANCE",
+                        "phone": "04.92.31.57.57",
+                        "email": "cyclexpertsdigne@orange.fr",
+                        "web": "alpinbike.fr"
+                    },
+                    {
+                        "name": "CYCLES FONTANEL",
+                        "address": "20 Rue Paul Langevin,",
+                        "city": "Langon",
+                        "zip": 33210,
+                        "country": "FRANCE",
+                        "phone": "05 56 76 85 20",
+                        "email": 0,
+                        "web": "cyclesfontanel.com"
+                    },
+                    {
+                        "name": "CYCLES MARIUS",
+                        "address": "1 Rue Léon Sergent",
+                        "city": "Wimille",
+                        "zip": 62126,
+                        "country": "FRANCE",
+                        "phone": "03 21 83 56 12",
+                        "email": "cycles.marius@wanadoo.fr",
+                        "web": "cycles-lapierre.fr"
+                    },
+                    {
+                        "name": "CYCLEWORKS",
+                        "address": "25 Rue de Concarneau",
+                        "city": "QUIMPER",
+                        "zip": 29000,
+                        "country": "FRANCE",
+                        "phone": "02 98 64 03 93",
+                        "email": "cycleworks@wanadoo.fr",
+                        "web": "cycleworks.fr"
+                    },
+                    {
+                        "name": "CYCLO SCOOT/La biciclette viganaise",
+                        "address": "18 Boulevard du Plan d'Auvergne",
+                        "city": "LE VIGAN",
+                        "zip": 30120,
+                        "country": "FRANCE",
+                        "phone": "04 67 81 11 88",
+                        "email": "cyclosscoots@orange.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "DELAVAY SPORT",
+                        "address": "523 Rue du Ctre",
+                        "city": "LES GETS",
+                        "zip": 74260,
+                        "country": "FRANCE",
+                        "phone": "04 50 79 74 57",
+                        "email": "info@delavaysports.com",
+                        "web": "delavaysports.com"
+                    },
+                    {
+                        "name": "DERNIER CRI",
+                        "address": "3 Rue Aristide Berges",
+                        "city": "CABESTANY",
+                        "zip": 66330,
+                        "country": "FRANCE",
+                        "phone": "04 68 50 78 65",
+                        "email": "contact@dcbs.fr",
+                        "web": "dcbs.fr"
+                    },
+                    {
+                        "name": "DV SPORT",
+                        "address": "93 Avenue d'Aubière",
+                        "city": "COURNON D'AUVERGNE",
+                        "zip": 63800,
+                        "country": "FRANCE",
+                        "phone": "04 73 77 74 17",
+                        "email": "dvsport63@gmail.com",
+                        "web": "dv-sport63.com"
+                    },
+                    {
+                        "name": "ELECTRIK AVENUE",
+                        "address": "84 Avenue Maréchal de Saxe",
+                        "city": "Lyon",
+                        "zip": 69003,
+                        "country": "FRANCE",
+                        "phone": "09 83 34 18 54",
+                        "email": "julien@electrik-avenue.com'",
+                        "web": "electrik-avenue.com"
+                    },
+                    {
+                        "name": "ESPACE CYCLES ST JU",
+                        "address": "7 Bis Ancienne Route d'Annecy",
+                        "city": "SAINT JULIEN",
+                        "zip": 74160,
+                        "country": "FRANCE",
+                        "phone": "04 50 49 26 07",
+                        "email": "espacecycles@orange.fr",
+                        "web": "espace-cycles.fr"
+                    },
+                    {
+                        "name": "EYMAR DAUPHIN SPORTS",
+                        "address": "Galerie Commerciale",
+                        "city": "Saint-Léger-les-Mélèzes",
+                        "zip": 5260,
+                        "country": "FRANCE",
+                        "phone": "04 92 50 40 83",
+                        "email": "edsport@orange.fr",
+                        "web": "eymar-dauphin.sport2000.fr"
+                    },
+                    {
+                        "name": "FB FREERIDE",
+                        "address": "146 Taille de Mas du Pleney",
+                        "city": "MORZINE",
+                        "zip": 74110,
+                        "country": "FRANCE",
+                        "phone": "04 50 79 09 66",
+                        "email": "info@fbfreeride.com",
+                        "web": "fbfreeride.com"
+                    },
+                    {
+                        "name": "FOUCHY CYCLES",
+                        "address": "445 Route de Toulouse",
+                        "city": "Villenave-d'Ornon",
+                        "zip": 33140,
+                        "country": "FRANCE",
+                        "phone": "05.56.37.32.09",
+                        "email": "fouchycycles@wanadoo.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "GENERAL BIKE",
+                        "address": "Z.A. Les Moulins, le Chêne",
+                        "city": "GARGAS",
+                        "zip": 84400,
+                        "country": "FRANCE",
+                        "phone": "04 90 71 48 61",
+                        "email": "contact@generalbike.fr",
+                        "web": "general-bike-luberon.fr"
+                    },
+                    {
+                        "name": "GO SPORT CAP MALO LA MÉZIÈRE",
+                        "address": "Unité 1, Zone commerciale Cap Malo, Avenue du Phare du Grand Jardin",
+                        "city": "La Mézière",
+                        "zip": 35520,
+                        "country": "FRANCE",
+                        "phone": "02 99 13 19 34",
+                        "email": "gosportcapmalo@gmail.com",
+                        "web": "go-sport.com"
+                    },
+                    {
+                        "name": "GO SPORT LAVAL",
+                        "address": "66 Avenue de Paris",
+                        "city": "Saint-Berthevin",
+                        "zip": 53940,
+                        "country": "FRANCE",
+                        "phone": "02 30 05 40 30",
+                        "email": "gosportlaval@gmail.com",
+                        "web": "go-sport.com"
+                    },
+                    {
+                        "name": "GO SPORT LORIENT ZC DE KERULVE",
+                        "address": "ZAC Kerulvé,",
+                        "city": "LORIENT",
+                        "zip": 56100,
+                        "country": "FRANCE",
+                        "phone": "02 97 89 20 40",
+                        "email": "p.cheineau@go-sport.fr",
+                        "web": "go-sport.com"
+                    },
+                    {
+                        "name": "GO SPORT MUZILLAC",
+                        "address": "Zone Espace Littoral",
+                        "city": "MUZILLAC",
+                        "zip": 56190,
+                        "country": "FRANCE",
+                        "phone": "02 97 48 31 41",
+                        "email": "gosportmuzillac@gmail.com",
+                        "web": "go-sport.com"
+                    },
+                    {
+                        "name": "GO SPORT PONTIVY",
+                        "address": "35 Rue Albert de Mun",
+                        "city": "PONTIVY",
+                        "zip": 56300,
+                        "country": "FRANCE",
+                        "phone": "02 97 25 03 49",
+                        "email": "gosportpontivy@gmail.com",
+                        "web": "go-sport.com"
+                    },
+                    {
+                        "name": "GO SPORT QUIMPERLE",
+                        "address": "Centre commercial Intermarché 6. Kérvidanou 3.",
+                        "city": "MELLAC",
+                        "zip": 29300,
+                        "country": "FRANCE",
+                        "phone": "02 98 39 33 49",
+                        "email": "gosportquimperle@gmail.com",
+                        "web": "go-sport.com"
+                    },
+                    {
+                        "name": "GO SPORT REDON",
+                        "address": "ZI de Briangaud rte de Rennes",
+                        "city": "REDON",
+                        "zip": 35600,
+                        "country": "FRANCE",
+                        "phone": "02 30 30 11 11",
+                        "email": "gosportredon@gmail.com",
+                        "web": "go-sport.com"
+                    },
+                    {
+                        "name": "GO SPORT ST MEEN",
+                        "address": "ZA du Maupas, Rue Louison Bobet,",
+                        "city": "ST MEEN LE GRAND",
+                        "zip": 35290,
+                        "country": "FRANCE",
+                        "phone": "02 99 09 66 08",
+                        "email": "gosportsaintmeen@gmail.com",
+                        "web": "go-sport.com"
+                    },
+                    {
+                        "name": "HAPPY BIKE",
+                        "address": "557 Avenue Henri Chapays",
+                        "city": "VOREPPE",
+                        "zip": 38340,
+                        "country": "FRANCE",
+                        "phone": "04 76 50 69 91            06 08 83 60 85",
+                        "email": "happybike@wanadoo.fr",
+                        "web": "happybike.fr"
+                    },
+                    {
+                        "name": "HYPER BIKE",
+                        "address": "14 Quai Illhaeusern",
+                        "city": "COLLONGES AU MONT D'OR",
+                        "zip": 69660,
+                        "country": "FRANCE",
+                        "phone": "04 78 22 66 15",
+                        "email": "hyperbike@aliceadsl.fr",
+                        "web": "hyperbike.cycles.free.fr"
+                    },
+                    {
+                        "name": "INSTERSPORT PAMIERS",
+                        "address": "25 Route de Foix",
+                        "city": "PAMIERS CEDEX",
+                        "zip": 9104,
+                        "country": "FRANCE",
+                        "phone": "05.61.68.42.00",
+                        "email": "pamiers@reseau-intersport.fr",
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERPSORT AURILLAC",
+                        "address": "Avenue du Général Leclerc",
+                        "city": "AURILLAC",
+                        "zip": 15000,
+                        "country": "FRANCE",
+                        "phone": "04 71 64 54 88",
+                        "email": 0,
+                        "web": "intersport.fr"
+                    },
+                    {
+                        "name": "INTERSKI",
+                        "address": "Etoile des Neiges",
+                        "city": "ORCIERES",
+                        "zip": 5170,
+                        "country": "FRANCE",
+                        "phone": "06 80 84 10 15",
+                        "email": "info@interski.pro",
+                        "web": 0
+                    },
+                    {
+                        "name": "INTERSPORT",
+                        "address": "8 Rond-Point Vincent Badie",
+                        "city": "BEZIERS",
+                        "zip": 34500,
+                        "country": "FRANCE",
+                        "phone": "04 67 39 37 60",
+                        "email": "mfdgwen@gmail.com",
+                        "web": "intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT",
+                        "address": "Rue des Longues Raies",
+                        "city": "ESSEY LES NANCY",
+                        "zip": 54270,
+                        "country": "FRANCE",
+                        "phone": "03 83 29 96 40",
+                        "email": "jerome.col54@gmail.com",
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT AGEN",
+                        "address": "4 Avenue de Lacapelette",
+                        "city": "BOE",
+                        "zip": 47550,
+                        "country": "FRANCE",
+                        "phone": "05 53 98 50 10",
+                        "email": "agen009@reseau-intersport.fr",
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT AUCH",
+                        "address": "Rue François Mauriac, Zone Leclerc",
+                        "city": "AUCH",
+                        "zip": 32000,
+                        "country": "FRANCE",
+                        "phone": "05 62 61 89 89",
+                        "email": 0,
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT BIGANOS",
+                        "address": "Centre Commercial les Portes du Delta Zone Auchan Nicolas Robert, 7 Rue Saint-Louis",
+                        "city": "BIGANOS",
+                        "zip": 33380,
+                        "country": "FRANCE",
+                        "phone": "05 57 17 19 79",
+                        "email": "yann.groupe.arnou@reseau-intersport.fr",
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT JAMES SPORT",
+                        "address": "Immeuble La Montagne",
+                        "city": "NOTRE DAME DE BELLECOMBE",
+                        "zip": 73590,
+                        "country": "FRANCE",
+                        "phone": "04 79 31 70 95",
+                        "email": "jamessport@hotmail.com",
+                        "web": "jamessport.com"
+                    },
+                    {
+                        "name": "INTERSPORT LANNEMEZAN",
+                        "address": "300 Rue de la Ramondia",
+                        "city": "LANNEMEZAN",
+                        "zip": 65300,
+                        "country": "FRANCE",
+                        "phone": "05 62 98 16 54",
+                        "email": "reception.lannemezan@reseau-intersport.fr",
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT LIBOURNE",
+                        "address": "Centre Commercial Continent, 114 Avenue du Général de Gaulle",
+                        "city": "LIBOURNE",
+                        "zip": 33500,
+                        "country": "FRANCE",
+                        "phone": "05 57 55 45 75",
+                        "email": "versport2@wanadoo.fr",
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT LONS",
+                        "address": "Avenue André Marie Ampère",
+                        "city": "LONS",
+                        "zip": 64140,
+                        "country": "FRANCE",
+                        "phone": "05 59 83 78 73",
+                        "email": 0,
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT MONT DE MARSAN",
+                        "address": "Grand Moun, Centre Commercial Grand Moune, 200 Boulevard Oscar Niemeyer,",
+                        "city": "SAINT PIERRE DU MONT",
+                        "zip": 40280,
+                        "country": "FRANCE",
+                        "phone": "05 58 05 39 40",
+                        "email": "cycle.canalpmi@orange.fr",
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT MOZAC",
+                        "address": "Espace Mozac D446",
+                        "city": "Mozac",
+                        "zip": 63200,
+                        "country": "FRANCE",
+                        "phone": "04 73 64 59 60",
+                        "email": "o.velasco@reseau-intersport.fr",
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT PAU",
+                        "address": "Centre commercial le Hameau, Boulevard du Commandant René Mouchotte",
+                        "city": "PAU",
+                        "zip": 64000,
+                        "country": "FRANCE",
+                        "phone": "05 59 02 99 38",
+                        "email": 0,
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT PONTARLIER",
+                        "address": "8 Rue Pierre Dechanet",
+                        "city": "PONTARLIER",
+                        "zip": 25300,
+                        "country": "FRANCE",
+                        "phone": "03 81 39 47 03",
+                        "email": "adm-pontarlier@reseau-intersport.fr",
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "INTERSPORT RODEZ",
+                        "address": "l'Entreprise, 12 Avenue de l'Entreprise",
+                        "city": "RODEZ",
+                        "zip": 12000,
+                        "country": "FRANCE",
+                        "phone": "05 65 62 40 83",
+                        "email": 0,
+                        "web": "magasins.intersport.fr"
+                    },
+                    {
+                        "name": "JACQUES SPORT",
+                        "address": "Immeuble 3300, 11 Rue des Vikings",
+                        "city": "les Deux alpes",
+                        "zip": 38860,
+                        "country": "FRANCE",
+                        "phone": "04 76 80 53 56",
+                        "email": "jacques.sports@wanadoo.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "J'AIME SPORT",
+                        "address": "Avenue du Fer À Cheval",
+                        "city": "SAMOENS",
+                        "zip": 74340,
+                        "country": "FRANCE",
+                        "phone": "06 08 33 19 68",
+                        "email": "info@jaimesport.fr",
+                        "web": "jaimesport.fr"
+                    },
+                    {
+                        "name": "JUST BIKE SARL",
+                        "address": "6 bis Avenue de Romans",
+                        "city": "SAINT MARCELLIN",
+                        "zip": 38160,
+                        "country": "FRANCE",
+                        "phone": "04 76 64 16 15",
+                        "email": "just-bike@orange.fr",
+                        "web": "justbike.fr"
+                    },
+                    {
+                        "name": "L'APPART SKATE SHOP",
+                        "address": "2 Rue Antoine Roule",
+                        "city": "SAINT ETIENNE",
+                        "zip": 42000,
+                        "country": "FRANCE",
+                        "phone": "04 77 59 16 24",
+                        "email": "lappartskateshop@hotmail.fr",
+                        "web": "le-site-du-skateboard.com"
+                    },
+                    {
+                        "name": "LE SCHUSS",
+                        "address": "59 Pré de Foire",
+                        "city": "LA CLUSAZ",
+                        "zip": 74220,
+                        "country": "FRANCE",
+                        "phone": "04 50 02 42 68",
+                        "email": "schuss.le@wanadoo.fr",
+                        "web": "le-schuss.notresphere.com"
+                    },
+                    {
+                        "name": "LES CYCLISTES BRANCHES / Au Vélo Branche",
+                        "address": "47 Avenue de Versailles",
+                        "city": "PARIS",
+                        "zip": 75016,
+                        "country": "FRANCE",
+                        "phone": "09 80 85 62 04",
+                        "email": "alexis.blaevoet@les-cyclistes-branches.com",
+                        "web": "les-cyclistes-branches.com"
+                    },
+                    {
+                        "name": "LUCHON MOUNTAIN BIKE",
+                        "address": "4 Place du Comminges",
+                        "city": "BAGNERES DE LUCHON",
+                        "zip": 31110,
+                        "country": "FRANCE",
+                        "phone": "05 61 79 88 56",
+                        "email": "mtbmag@sfr.fr",
+                        "web": "luchon-mountain-bike.com"
+                    },
+                    {
+                        "name": "MANURACING",
+                        "address": "Rue de la Vèze",
+                        "city": "ECHENOZ LA MELINE",
+                        "zip": 70000,
+                        "country": "FRANCE",
+                        "phone": "03.84.75.65.65",
+                        "email": "contact.manuracing@gmail.com",
+                        "web": "manuracing.com"
+                    },
+                    {
+                        "name": "MOR'LES CYCLES",
+                        "address": "26 Rue de Brest",
+                        "city": "MORLAIX",
+                        "zip": 29600,
+                        "country": "FRANCE",
+                        "phone": "09 51 38 15 06                              06 50 83 38 67",
+                        "email": 0,
+                        "web": "mor-lescycles.com"
+                    },
+                    {
+                        "name": "MTR65",
+                        "address": "1 Avenue du Monge",
+                        "city": "LOURDES",
+                        "zip": 65100,
+                        "country": "FRANCE",
+                        "phone": "05 62 31 07 21\n05 62 42 69 08",
+                        "email": 0,
+                        "web": 0
+                    },
+                    {
+                        "name": "N'BIKES",
+                        "address": "41 Avenue de Château-Thierry",
+                        "city": "BELLEU",
+                        "zip": 2200,
+                        "country": "FRANCE",
+                        "phone": "03.23.53.72.09",
+                        "email": "nbikes@orange.fr",
+                        "web": "megacycles.fr"
+                    },
+                    {
+                        "name": "NEOVELEC",
+                        "address": "2 Rue Joseph Lemarchand",
+                        "city": "MAGNY LES HAMEAUX",
+                        "zip": 78114,
+                        "country": "FRANCE",
+                        "phone": "01 30 47 4 62",
+                        "email": "thierry.ordines@neovelec.fr contact@neovelec.fr",
+                        "web": "neovelec.fr"
+                    },
+                    {
+                        "name": "NEWAY NICE",
+                        "address": "Bis,, 23 Avenue Auguste Verola",
+                        "city": "NICE",
+                        "zip": 6300,
+                        "country": "FRANCE",
+                        "phone": "04 92 29 10 03",
+                        "email": "info@neway-nice.com",
+                        "web": "neway-nice.com"
+                    },
+                    {
+                        "name": "OMEGA CYCLE",
+                        "address": "42 Chemin de l'Orme",
+                        "city": "Grasse",
+                        "zip": 6130,
+                        "country": "FRANCE",
+                        "phone": "04 92 60 94 91",
+                        "email": "info@cycles-omega.fr",
+                        "web": "cyclesomega.fr"
+                    },
+                    {
+                        "name": "PASSION VELO",
+                        "address": "85 Bis Avenue Léo Lagrange",
+                        "city": "Thiers",
+                        "zip": 63300,
+                        "country": "FRANCE",
+                        "phone": "04 73 80 39 55",
+                        "email": "passionvelo63@orange.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "PLANETE MONTAGNE/PLANETE SPORTS",
+                        "address": "Résidence le Seignon",
+                        "city": "VARS",
+                        "zip": 5560,
+                        "country": "FRANCE",
+                        "phone": "04 92 46 52 46\n04 92 46 54 41",
+                        "email": 0,
+                        "web": "planetemontagne-vars.com"
+                    },
+                    {
+                        "name": "PULSE BIKE",
+                        "address": "29 Rue Jean-Jacques Rousseau",
+                        "city": "Roanne",
+                        "zip": 42300,
+                        "country": "FRANCE",
+                        "phone": "04 77 23 50 65",
+                        "email": "contact@pulse-bikeparts.com",
+                        "web": "pulse-bikeparts.com"
+                    },
+                    {
+                        "name": "ROCKY SPORT",
+                        "address": "rue du 93ème RAM",
+                        "city": "Alpe d'huez",
+                        "zip": 38750,
+                        "country": "FRANCE",
+                        "phone": "04 76 80 63 02",
+                        "email": "sports.rocky@wanadoo.fr",
+                        "web": "rocky-sports.com"
+                    },
+                    {
+                        "name": "SLIDE BOX BESANCON",
+                        "address": "6 Rue Jean Baptiste Proudhon",
+                        "city": "Besançon",
+                        "zip": 25000,
+                        "country": "FRANCE",
+                        "phone": "03 81 81 65 56\n06 58 82 04 14",
+                        "email": "slidebox.besancon@gmail.com",
+                        "web": "slidercorner.com"
+                    },
+                    {
+                        "name": "SLIDE BOX STRASBOURG",
+                        "address": "5 Rue Gustave Doré",
+                        "city": "STRASBOURG",
+                        "zip": 67000,
+                        "country": "FRANCE",
+                        "phone": "03 88 32 57 30",
+                        "email": "v2@slidebox.fr",
+                        "web": "slidebox.fr"
+                    },
+                    {
+                        "name": "SLIDE PLANET",
+                        "address": "82 Avenue de la Muzelle",
+                        "city": "les Deux alpes",
+                        "zip": 38860,
+                        "country": "FRANCE",
+                        "phone": "04 76 79 04 71",
+                        "email": "cyril.audeoud@my-ski.fr",
+                        "web": "my-ski.fr"
+                    },
+                    {
+                        "name": "SNOWPARKSHOP",
+                        "address": "Rue des Almes",
+                        "city": "TIGNES LELAC",
+                        "zip": 73320,
+                        "country": "FRANCE",
+                        "phone": "04 79 06 55 00",
+                        "email": "contact@snowparkshop.com",
+                        "web": "intersport-tigneslelac.fr"
+                    },
+                    {
+                        "name": "SPORT  EMOTION",
+                        "address": "Les Bleuets, 112 Avenue de la Muzelle",
+                        "city": "les Deux alpes",
+                        "zip": 38860,
+                        "country": "FRANCE",
+                        "phone": "04 76 79 20 93",
+                        "email": "sportemotion@wanadoo.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "SPORT 2000 2X2 ROUES",
+                        "address": "ZA de la Castagnalotte Rond Point La Richarde,",
+                        "city": "BOUT DU PONT DE LARN",
+                        "zip": 81660,
+                        "country": "FRANCE",
+                        "phone": "05 63 98 53 85",
+                        "email": 0,
+                        "web": "sport2000.fr"
+                    },
+                    {
+                        "name": "SPORT 2000 LOC'AVENTURE",
+                        "address": "Rue de Soulan",
+                        "city": "ST LARY SOULAN",
+                        "zip": 65170,
+                        "country": "FRANCE",
+                        "phone": "06 73 84 16 12",
+                        "email": "contact@office-sports-montagne.com",
+                        "web": "st-laryvillage.sport2000.fr"
+                    },
+                    {
+                        "name": "SPORT 2000 LOUVIERS",
+                        "address": "Boulevard du Dr Postel",
+                        "city": "Louviers",
+                        "zip": 27400,
+                        "country": "FRANCE",
+                        "phone": "02 32 09 41 00",
+                        "email": "sport2000.sebastiendesplanques@orange.fr",
+                        "web": "sport2000.fr"
+                    },
+                    {
+                        "name": "SPORT 2000 SGAMBATO",
+                        "address": "Centre Commercial la Roche Béranger, 480 avenue du pére Tasse",
+                        "city": "Chamrousse",
+                        "zip": 38410,
+                        "country": "FRANCE",
+                        "phone": "04 76 89 96 87",
+                        "email": "ski2000@wanadoo.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "SPORT 2000 ST ALBAN MAT MAT SPORT",
+                        "address": "C.Cial Exagone, 135 Rn 20",
+                        "city": "SAINT ALBAN",
+                        "zip": 31140,
+                        "country": "FRANCE",
+                        "phone": "04 79 33 51 06",
+                        "email": "sport2000.sportco@orange.fr",
+                        "web": "sport2000-saint-alban.fr"
+                    },
+                    {
+                        "name": "SPORT 2000 USTOU",
+                        "address": "Résidence du Vallier",
+                        "city": "USTOU",
+                        "zip": 9140,
+                        "country": "FRANCE",
+                        "phone": "05 61 04 42 81",
+                        "email": "guzetsport@orange.fr",
+                        "web": "guzetsport.sport2000.fr"
+                    },
+                    {
+                        "name": "SPORT2000 LOULOU SPORT",
+                        "address": "9 Allée de la Blache",
+                        "city": "Alpe Du Grand Serre",
+                        "zip": 38350,
+                        "country": "FRANCE",
+                        "phone": "04 76 72 18 74",
+                        "email": "loulou@loulousport.com",
+                        "web": "loulou.sport2000.fr"
+                    },
+                    {
+                        "name": "STAR SKI",
+                        "address": "112 Route des Udrezants",
+                        "city": "Morzine",
+                        "zip": 74110,
+                        "country": "FRANCE",
+                        "phone": "04 50 79 18 51",
+                        "email": "info@star-ski.fr",
+                        "web": "starskichalet.fr"
+                    },
+                    {
+                        "name": "SUN RIDER 83",
+                        "address": "les Thyssalines, Bd du Vendée Globe",
+                        "city": "Olonne-sur-Mer",
+                        "zip": 85340,
+                        "country": "FRANCE",
+                        "phone": "06 16 86 02 86",
+                        "email": "geraldinelegoyet@hotmail.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "TAKAMAKA",
+                        "address": "23 Fbg Sainte-Claire",
+                        "city": "Annecy",
+                        "zip": 74000,
+                        "country": "FRANCE",
+                        "phone": "33 4 50 45 60 61",
+                        "email": "info@takamaka.fr",
+                        "web": "annecy.takamaka.fr"
+                    },
+                    {
+                        "name": "TWINNER ACTIVE MOUNTAIN",
+                        "address": "Le Village de Lessy, Le Chinaillon",
+                        "city": "Le Grand-Bornand",
+                        "zip": 74450,
+                        "country": "FRANCE",
+                        "phone": "06 60 17 41 53",
+                        "email": "laurent.finetti@wanadoo.fr",
+                        "web": "twinner-legrandbornand-chinaillon.fr"
+                    },
+                    {
+                        "name": "TWINNER LES MENUIRES",
+                        "address": "Saint-Martin-de-Belleville",
+                        "city": "SAINT MARTIN DE BELLEVILLE",
+                        "zip": 73440,
+                        "country": "FRANCE",
+                        "phone": "04 79 00 65 10 \n33 4 79 00 68 03",
+                        "email": "info@alpes-vtt.com",
+                        "web": "rocsports.fr"
+                    },
+                    {
+                        "name": "Twinner Montbrison",
+                        "address": "8 Allée Jean 1er du Forez",
+                        "city": "Montbrison",
+                        "zip": 42600,
+                        "country": "FRANCE",
+                        "phone": "04 77 96 36 63",
+                        "email": "renaud.twinner@orange.fr",
+                        "web": "twinner-montbrison.com"
+                    },
+                    {
+                        "name": "ULTIME BIKE",
+                        "address": "523 Rue Sainte-Geneviève",
+                        "city": "Avignon",
+                        "zip": 84000,
+                        "country": "FRANCE",
+                        "phone": "04 84 51 01 70",
+                        "email": "admin@ultimebike.com",
+                        "web": "ultimebike.com"
+                    },
+                    {
+                        "name": "UNLEADED BMX",
+                        "address": "Espace vernede 7 lot 43, Rue de la Vernède",
+                        "city": "Puget-sur-Argens",
+                        "zip": 83480,
+                        "country": "FRANCE",
+                        "phone": "(0)4 94 53 70 95",
+                        "email": "contact@unleaded.fr",
+                        "web": "unleadedbmx.com"
+                    },
+                    {
+                        "name": "URBAN CYCLE 44",
+                        "address": "35 Chaussée de la Madeleine",
+                        "city": "Nantes",
+                        "zip": 44000,
+                        "country": "FRANCE",
+                        "phone": "02 51 89 92 70",
+                        "email": "urban.cycle@orange.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "VELO ATTITUDE",
+                        "address": "15 Rue Vincent Mir",
+                        "city": "Saint-Lary-Soulan",
+                        "zip": 65170,
+                        "country": "FRANCE",
+                        "phone": "05 62 39 44 61",
+                        "email": "contact@velo-attitude.com",
+                        "web": "velo-attitude.com"
+                    },
+                    {
+                        "name": "VELO ATTITUDE MEGACYCLES",
+                        "address": "134 Avenue Georges Pompidou",
+                        "city": "Laon",
+                        "zip": 2000,
+                        "country": "FRANCE",
+                        "phone": "03 23 20 29 29",
+                        "email": "megacycles02000@wanadoo.fr",
+                        "web": 0
+                    },
+                    {
+                        "name": "VELO OXYGENE CLERMOND",
+                        "address": "1 Avenue du Lac",
+                        "city": "Clermont-l'Hérault",
+                        "zip": 34800,
+                        "country": "FRANCE",
+                        "phone": "04 67 44 98 22",
+                        "email": "engel.fab@orange.fr",
+                        "web": "vtt-salagou.com"
+                    },
+                    {
+                        "name": "VETEIX",
+                        "address": "6 Rue de Clermont",
+                        "city": "Compiègne",
+                        "zip": 60200,
+                        "country": "FRANCE",
+                        "phone": "03 44 83 44 83",
+                        "email": "info@veteix.fr",
+                        "web": "veteix.fr"
+                    },
+                    {
+                        "name": "YODA BIKE METZ",
+                        "address": "1 Rue de la jeunesse",
+                        "city": "Longeville-lès-Metz",
+                        "zip": 57050,
+                        "country": "FRANCE",
+                        "phone": "03 87 57 46 11",
+                        "email": "yodabikes@wanadoo.fr",
+                        "web": "yodabikes.fr"
+                    }
+                ]
+            ];
+            dealers.forEach(function(d){
+                var data = {};
+                data.location = {};
+                data.name = d["name"];
+                data.location.street1 = d["address"];
+                data.location.suburb = d["city"];
+                //data.location.state = d["Mailing State/Province"];
+                data.location.country = d["country"];
+                data.location.postcode = d["zip"];
+                data.phone = d["phone"];
+
+                data.web = d["web"];
+                $.post('/api/dealers', data, function(responseData, textStatus){
+                    console.log(textStatus);
+                })
+            });
             dealers.forEach(function (d) {
                 var data = {};
                 data.location = {};
