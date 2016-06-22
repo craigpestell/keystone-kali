@@ -12,14 +12,15 @@ Dealer.add({
 	name: { type: String, required: true, index: true },
 	location:{ type: Types.Location, initial: true, required: true, enableMapsAPI: true},
 	phone: {type: Types.Text},
-	web: {type: Types.Url}
+	web: {type: Types.Url},
+	email: {type: Types.Email}
 });
 
-/*Dealer.schema.pre('save', function(next) {
+Dealer.schema.pre('save', function(next) {
 	var self = this;
 	setTimeout(function(){
 		
-		self._.location.googleLookup("US", "overwrite", function(err, location, result){
+		self._.location.googleLookup("France", "overwrite", function(err, location, result){
 			//console.log(location);
 			//console.log(result);
 			if(location !== undefined){
@@ -30,7 +31,7 @@ Dealer.add({
 		});		
 	}, 1000);
 
-});*/
+});
 /*
  "id": "9",
  "name": "Chipotle Minnetonka",

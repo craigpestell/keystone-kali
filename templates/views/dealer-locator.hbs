@@ -42,11 +42,14 @@
 			dealers.forEach(function(d){
 				var data = {};
 				data.location = {};
-				data.name = d["Account Name"];
-                data.location.street1 = d["Mailing Street"];
-                data.location.suburb = d["Mailing City"];
-                data.location.state = d["Mailing State/Province"];
-                data.phone = d["Phone"];
+				data.name = d["name"];
+                data.location.street1 = d["address"];
+                data.location.suburb = d["city"];
+                //data.location.state = d["Mailing State/Province"];
+				data.location.country = d["country"];
+                data.phone = d["phone"];
+				
+				data.web = d["web"];
 				$.post('/api/dealers', data, function(responseData, textStatus){
 					console.log(textStatus);
 				})
