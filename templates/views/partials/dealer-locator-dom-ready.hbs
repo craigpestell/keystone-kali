@@ -2,7 +2,6 @@
     $(document).ready(function () {
         $('#importDealers').click(function () {
             var dealers = [
-                [
                     {
                         "name": "100 pour 100 Cycles",
                         "address": "37 Rue Antoine Masson",
@@ -1273,7 +1272,6 @@
                         "email": "yodabikes@wanadoo.fr",
                         "web": "yodabikes.fr"
                     }
-                ]
             ];
             dealers.forEach(function(d){
                 var data = {};
@@ -1285,24 +1283,13 @@
                 data.location.country = d["country"];
                 data.location.postcode = d["zip"];
                 data.phone = d["phone"];
-
-                data.web = d["web"];
+                if(d["web"])data.web = d["web"];
+				console.log('data',d);
                 $.post('/api/dealers', data, function(responseData, textStatus){
                     console.log(textStatus);
                 })
             });
-            dealers.forEach(function (d) {
-                var data = {};
-                data.location = {};
-                data.name = d["Account Name"];
-                data.location.street1 = d["Mailing Street"];
-                data.location.suburb = d["Mailing City"];
-                data.location.state = d["Mailing State/Province"];
-                data.phone = d["Phone"];
-                $.post('/api/dealers', data, function (responseData, textStatus) {
-                    console.log(textStatus);
-                })
-            });
+            
 
         });
         $.ajax('/api/dealers', {
