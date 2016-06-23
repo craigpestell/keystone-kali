@@ -35,6 +35,14 @@
             $($(this).attr('data-icon-id')).show();
             $('.image-toggle').hide();
             $($(this).attr('data-image-id')).show();
+			
+			var label = $('.product-title>h1').text() + ': ' + $(this).attr('data-colorway');
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Color Swatches',
+                eventAction: 'click',
+                eventLabel: label
+            });
         });
 
 

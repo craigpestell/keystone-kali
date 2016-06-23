@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Kali Protectives</title>
     <link href="/styles/site.css" rel="stylesheet">
-	{{{isAdminEditorCSS user}}}
+	<!--{{{isAdminEditorCSS user}}}-->
     <!--[if lt IE 9]>
-	<!--<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
-	<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>-->
+	<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+	<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
@@ -61,11 +61,8 @@
 	{{{body}}}
 </div>
 {{> footer}}
-<!--jquery 2.2.4-->
 <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script>
-<!--jquery 2.2.1-->
-<!--<script src="/js/jquery/dist/jquery.min.js"></script>-->
 <script src="/js/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.min.js"></script>
 <script type="text/javascript">
     $.cloudinary.config({cloud_name: 'kaliprotectives-com', api_key: "277924468792588"});
@@ -76,8 +73,8 @@
 
 <!--bootstrap 3.3.6 -->
 <!--<script src="/js/bootstrap/dist/js/bootstrap.min.js"></script>-->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
 
 {{#ifCond section "==" "dealer-locator"}}
@@ -86,7 +83,7 @@
     <script type="text/javascript">var apiKey = "AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY";</script>
     <script src="/js/plugins/storeLocator/jquery.storelocator.js"></script>
 {{/ifCond}}
-{{{isAdminEditorJS user}}}
+<!--{{{isAdminEditorJS user}}}-->
 {{#ifCond section '==' 'product' }}
 	{{> product-dom-ready}}
 {{/ifCond}}
@@ -123,20 +120,10 @@
     });
 </script>
 <script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
     ga('create', 'UA-41223501-2', 'auto');
     ga('send', 'pageview');
 </script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 </body>
 </html>
