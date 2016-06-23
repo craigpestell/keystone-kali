@@ -51,9 +51,9 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 			to: admins,
 			from: {
 				name: 'kali',
-				email: 'contact@kali.com'
+				email: 'contact@kaliprotectives.com'
 			},
-			subject: 'New Enquiry for kali',
+			subject: 'New Enquiry on kaliprotectives.com',
 			enquiry: enquiry
 		}, callback);
 		
