@@ -1215,7 +1215,7 @@
 						hitType: 'event',
 						eventCategory: 'Dealer Map Pin',
 						eventAction: 'click',
-						eventLabel: formattedAddress
+						eventLabel: JSON.stringify(locations.location[0])
 					});
 					// Focus on the list
 					var markerId = marker.get('id');
