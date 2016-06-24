@@ -21,12 +21,11 @@
         
          });*/
 
-
-		$('[data-gallery]').on('click', function(){
+		$('#blueimp-gallery.blueimp-gallery.blueimp-gallery-controls').on('slide', function(){
             var label = $('.product-title>h1').text();
             ga('send', {
                 hitType: 'event',
-                eventCategory: 'Product Zoom',
+                eventCategory: 'Product Zoom Slide',
                 eventAction: 'click',
                 eventLabel: label
             });
