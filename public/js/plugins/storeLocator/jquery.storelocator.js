@@ -1077,7 +1077,6 @@
 					draggable: false
 				});
 			}
-
 			return marker;
 		},
 
@@ -1211,6 +1210,13 @@
 				google.maps.event.addListener(marker, 'click', function () {
 					infowindow.setContent(formattedAddress);
 					infowindow.open(marker.get('map'), marker);
+					
+					ga('send', {
+						hitType: 'event',
+						eventCategory: 'Dealer Map Pin',
+						eventAction: 'click',
+						eventLabel: formattedAddress
+					});
 					// Focus on the list
 					var markerId = marker.get('id');
 					var $selectedLocation = $('.' + _this.settings.locationList + ' li[data-markerid=' + markerId + ']');
@@ -1796,7 +1802,6 @@
 				if(map.getBounds().contains(marker.getPosition())) {
 					// Define the location data
 					_this.listSetup(marker, 0, 0);
-
 					// Set up the list template with the location data
 					listHtml = listTemplate(locations);
 					$('.' + _this.settings.locationList + ' ul').append(listHtml);
