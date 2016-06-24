@@ -49,6 +49,17 @@
         $('.image-toggler').on('click', function (e) {
             $('.image-toggle').hide();
             $($(this).attr('data-image-id')).show();
+
+			var prodId =$(this).attr('data-image-id').split('-')[1]; 
+            var label = $(this).attr('data-product-name') + ': ' + prodId;
+			
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Alternate Image',
+                eventAction: 'click',
+                eventLabel: label
+            });
+
         });
     });
 </script>
