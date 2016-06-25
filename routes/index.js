@@ -111,22 +111,12 @@ exports = module.exports = function(app) {
 		keystone.list('Product').model.find()
 			.populate('mainCategory subCategory')
 			.exec(function (err, results, next) {
-				//console.log(results);
 				results.forEach(function(product){
-					//console.log(product);
 					var categoryUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug;
 					var productUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug + '/' + product.slug ;
-					//console.log(categoryUrl);
-					//console.log(sitemap[categoryUrl]);
-					//console.log(productUrl);
-					
 					if(sitemap.map[categoryUrl] == undefined)
 						sitemap.map[categoryUrl] = ['get'];
 					sitemap.map[productUrl] = ['get'];
-
-					console.log(sitemap.map);
-
-					
 
 				});
 				sitemap.XMLtoWeb(res);
