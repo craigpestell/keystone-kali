@@ -81,6 +81,15 @@ exports = module.exports = function(app) {
 	 * sitemap
 	 */
 	var sitemap = map({
+		map:{
+			'/technology':['get'],
+			'/helmets':['get'],
+			'/armor':['get'],
+			'/moto':['get'],
+			'/dealers':['get'],
+			'/contact':['get'],
+			'/register':['get'],
+		},
 		route: {
 			'ALL': {
 				lastmod: '2016-06-20',
@@ -89,13 +98,38 @@ exports = module.exports = function(app) {
 			},
 		},
 	});
+	var navData = require('./product-navigation-data');
+	var catData = require('./product-category-data');
 
-	sitemap.generate(app); // generate sitemap from express route, you can set generate inside sitemap({})
+	//sitemap.generate(app); // generate sitemap from express route, you can set generate inside sitemap({})
 	app.get('/robots.txt', function(req, res){
 		sitemap.TXTtoWeb(res);
 	});
 	app.get('/sitemap.xml', function(req, res){
-		sitemap.XMLtoWeb(res);
+		keystone.list('Product').model.find()
+			.populate('mainCategory subCategory')
+			.exec(function (err, results, next) {
+				//console.log(results);
+				results.forEach(function(product){
+					//console.log(product);
+					var categoryUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug;
+					var productUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug + '/' + product.slug ;
+					//console.log(categoryUrl);
+					//console.log(sitemap[categoryUrl]);
+					//console.log(productUrl);
+					
+					if(sitemap.map[categoryUrl] == undefined)
+						sitemap.map[categoryUrl] = ['get'];
+					sitemap.map[productUrl] = ['get'];
+
+					console.log(sitemap.map);
+
+					
+
+				});
+				sitemap.XMLtoWeb(res);
+			});
+		
 	});
 
 
