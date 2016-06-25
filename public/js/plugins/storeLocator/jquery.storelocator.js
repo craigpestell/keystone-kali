@@ -1211,11 +1211,19 @@
 					infowindow.setContent(formattedAddress);
 					infowindow.open(marker.get('map'), marker);
 					
+					var gaLocation = {};
+					gaLocation.id  =  locations.location[0]._id;
+					gaLocation.dealer =  locations.location[0].name;
+					gaLocation.address =  locations.location[0].address;
+					gaLocation.address2 =  locations.location[0].address2;
+					gaLocation.city =  locations.location[0].city;
+					gaLocation.state =  locations.location[0].state;
+					gaLocation.country =  locations.location[0].country;
 					ga('send', {
 						hitType: 'event',
 						eventCategory: 'Dealer Map Pin',
 						eventAction: 'click',
-						eventLabel: JSON.stringify(locations.location[0])
+						eventLabel: JSON.stringify(gaLocation)
 					});
 					// Focus on the list
 					var markerId = marker.get('id');
