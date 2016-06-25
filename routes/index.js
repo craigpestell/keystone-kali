@@ -103,7 +103,7 @@ exports = module.exports = function(app) {
 	};
 	
 	
-	console.log(keystone.get('env') );
+	console.log('env:',keystone.get('env') );
 	if (keystone.get('env') != 'production'){
 		mapConfig.disallow = true;
 		mapConfig.route['ALL'].disallow = true;
