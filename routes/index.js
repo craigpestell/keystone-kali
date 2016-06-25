@@ -81,6 +81,8 @@ exports = module.exports = function(app) {
 	 * sitemap
 	 */
 	var sitemap = map({
+		http: 'https',
+		url: 'kaliprotectives.com',
 		map:{
 			'/technology':['get'],
 			'/helmets':['get'],
