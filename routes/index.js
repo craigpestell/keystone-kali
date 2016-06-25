@@ -80,7 +80,7 @@ exports = module.exports = function(app) {
 	/*
 	 * sitemap
 	 */
-	var sitemap = map({
+	var mapConfig = {
 		http: 'https',
 		url: 'kaliprotectives.com',
 		sitemapSubmission: '/sitemap.xml',
@@ -100,7 +100,17 @@ exports = module.exports = function(app) {
 				priority: 1.0,
 			},
 		},
-	});
+	};
+	
+	
+	console.log(keystone.get('env') );
+	if (keystone.get('env') != 'production'){
+		mapConfig.disallow = true;
+		mapConfig.route['ALL'].disallow = true;
+	}
+
+	var sitemap = map(mapConfig);
+	
 	var navData = require('./product-navigation-data');
 	var catData = require('./product-category-data');
 
