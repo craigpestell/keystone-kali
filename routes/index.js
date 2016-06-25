@@ -80,6 +80,7 @@ exports = module.exports = function(app) {
 	/*
 	 * sitemap
 	 */
+	var url = 'kaliprotectives.com';
 	var mapConfig = {
 		http: 'https',
 		url: 'kaliprotectives.com',
@@ -103,8 +104,8 @@ exports = module.exports = function(app) {
 	};
 	
 	
-	console.log('env:',keystone.get('env') );
 	if (keystone.get('env') != 'production'){
+		mapConfig.url = 'dev.' + mapConfig.url;
 		mapConfig.disallow = true;
 		mapConfig.route['ALL'].disallow = true;
 	}
