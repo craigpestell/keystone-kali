@@ -30,13 +30,12 @@
 			            <li class="{{#ifeq key ../../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 					{{/if}}
 				{{else}}
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
-				</ul>
+		</ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
+		</ul>
 				{{/unless}}
 			{{/each}}
-        </ul>
         </div>
     </div>
 </nav>
