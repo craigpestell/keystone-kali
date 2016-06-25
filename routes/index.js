@@ -94,7 +94,10 @@ exports = module.exports = function(app) {
 	app.get('/robots.txt', function(req, res){
 		sitemap.TXTtoWeb(res);
 	});
+	app.get('/sitemap.xml', function(req, res){
+		sitemap.XMLtoWeb(res);
+	});
 
-	
+
 	app.get('/:page', routes.views.page);
 };
