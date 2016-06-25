@@ -83,21 +83,18 @@ exports = module.exports = function(app) {
 	var sitemap = map({
 		route: {
 			'ALL': {
-				lastmod: '2014-06-20',
+				lastmod: '2016-06-20',
 				changefreq: 'always',
 				priority: 1.0,
 			},
-			generate:true
 		},
 	});
 
 	sitemap.generate(app); // generate sitemap from express route, you can set generate inside sitemap({})
 	app.get('/robots.txt', function(req, res){
-		console.log('robots.txt');
 		sitemap.TXTtoWeb(res);
 	});
 
-	//sitemap.XMLtoFile(); // write this map to file
 	
 	app.get('/:page', routes.views.page);
 };
