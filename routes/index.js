@@ -111,11 +111,7 @@ exports = module.exports = function(app) {
 	}
 
 	var sitemap = map(mapConfig);
-	
-	var navData = require('./product-navigation-data');
-	var catData = require('./product-category-data');
 
-	//sitemap.generate(app); // generate sitemap from express route, you can set generate inside sitemap({})
 	app.get('/robots.txt', function(req, res){
 		sitemap.TXTtoWeb(res);
 	});
