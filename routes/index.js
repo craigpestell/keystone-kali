@@ -83,6 +83,7 @@ exports = module.exports = function(app) {
 	var sitemap = map({
 		http: 'https',
 		url: 'kaliprotectives.com',
+		sitemapSubmission: '/sitemap.xml',
 		map:{
 			'/technology':['get'],
 			'/helmets':['get'],
