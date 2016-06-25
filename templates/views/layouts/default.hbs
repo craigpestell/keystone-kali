@@ -34,6 +34,7 @@
 <div class="container">
 	{{> nav}}
 </div>
+
 <div id="body" class="clearfix">
 	{{#if messages}}
         <div id="flash-messages" class="container">
@@ -131,7 +132,7 @@
 </script>
 <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-41223501-2', 'auto');
+    ga('create', '{{ga_key}}', 'auto');
     ga('send', 'pageview');
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>

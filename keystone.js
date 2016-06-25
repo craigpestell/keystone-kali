@@ -43,14 +43,16 @@ keystone.init({
 	},
 	'embedly api key': 'e9763d8cbe1c468fb6b5b10b5ac87e98',
 	//'mongo': process.env.DO ? '10.134.0.166:27017/kali' : '162.243.149.37:27017/kali'
-	'mongo': 'mongodb://162.243.149.37:27017/kali'
-        //'mongo': '54.183.41.152:27017/kali'
-
+	'mongo': 'mongodb://162.243.149.37:27017/kali',
+	'ga_key': process.env.GOOGLE_TRACKING_KEY
+	
 });
 
 // Load your project's Models
 
 keystone.import('models');
+
+
 
 // Setup common locals for your templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely
@@ -60,7 +62,8 @@ keystone.set('locals', {
 	_: require('underscore'),
 	env: keystone.get('env'),
 	utils: keystone.utils,
-	editable: keystone.content.editable
+	editable: keystone.content.editable,
+	'ga_key': keystone.get('ga_key')
 });
 
 // Load your project's Routes
