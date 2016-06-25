@@ -47,6 +47,10 @@ keystone.init({
 	'ga_key': process.env.GOOGLE_TRACKING_KEY
 	
 });
+if(process.env.PRODUCTION){
+	keystone.set('env', 'production');
+}
+
 
 // Load your project's Models
 
