@@ -5,6 +5,9 @@ exports = module.exports = function(req, res) {
 
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
+	locals.data = {
+		page: []
+	};
 
 	// Set locals
 	locals.section = 'product';
@@ -22,6 +25,8 @@ exports = module.exports = function(req, res) {
 
 			locals.page = results.mainCategory.key;
 			locals.subCategory = results.subCategory.key;
+			locals.data.page.title = results.name + ' - Kali Protectives';
+			
 			if (err) return next(err);
 			next();
 		});
