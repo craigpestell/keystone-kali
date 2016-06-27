@@ -10,7 +10,8 @@ exports = module.exports = function(req, res) {
 	
 	
 	locals.data = {
-		dealers: []
+		dealers: [],
+		page : {title: 'Dealers - Kali Protectives'}
 	};
 
 	// Load the current post

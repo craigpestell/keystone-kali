@@ -22,6 +22,7 @@ exports = module.exports = function(req, res) {
 
 		q.exec(function(err, result) {
 			locals.data.page = result;
+			locals.data.page.title = locals.data.page.title + ' - Kali Protectives';
 			next(err);
 		});
 
