@@ -2,13 +2,13 @@ var keystone = require('keystone');
 var Registration = keystone.list('Registration');
 
 exports = module.exports = function(req, res) {
-	console.log('loading registration');	
+	console.log('loading registration');
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
-	
+
 	// Set locals
 	locals.section = 'register';
-	
+
 	locals.formData = req.body || {};
 	locals.validationErrors = {};
 	locals.registrationSubmitted = false;
@@ -22,20 +22,20 @@ exports = module.exports = function(req, res) {
 
 		q.exec(function(err, result) {
 			locals.data.page = result;
-			locals.data.page.title = locals.data.page.title + ' - Kali Protectives';
+			locals.data.page.title = locals.data.page.title;
 			next(err);
 		});
 
 	});
-	
+
 	// On POST requests, add the Registration item to the database
 	view.on('post', { action: 'register' }, function(next) {
-		
+
 		var newRegistration = new Registration.model(),
 			updater = newRegistration.getUpdateHandler(req);
-		
+
 		var requiredFields = [
-			'nameFirst', 'nameLast', 'email', 'phone', 'address', 'gender', 'age', 
+			'nameFirst', 'nameLast', 'email', 'phone', 'address', 'gender', 'age',
 			'helmetModel', 'helmetColor', 'helmetSize', 'helmetSerial', 'helmetPurchaseLocation', 'helmetPricePaid',
 			'feedbackHowOften', 'feedbackRidingType', 'feedbackLastHelmet', 'feedbackWhyKali' ];
 		updater.process(req.body, {
@@ -50,8 +50,8 @@ exports = module.exports = function(req, res) {
 			}
 			next();
 		});
-		
+
 	});
 	view.render('register');
-	
+
 };
