@@ -292,6 +292,7 @@ module.exports = function() {
 			options.hash.widths.forEach(function(w, i){
 				options.hash.width = w;
 				var url = cloudinary.url(imageName, options.hash);
+				url = url.replace('http://', '//');
 				var source = '<source media="(max-width:' + screenWidths[i] + 'px)" srcset="' + url + ' 1x">';
 				
 				//url = url.replace('http://', '//');
