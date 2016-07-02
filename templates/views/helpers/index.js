@@ -287,8 +287,9 @@ module.exports = function() {
 			var srcset = '<picture>';
 			var screenWidths = [320,360,375,411,414,435,530, 630, 730, 768,992,1200];
 			var url = cloudinary.url(imageName, options.hash);
-			options.hash.width = options.hash.widths[0];
-			var origUrl = cloudinary.url(imageName, screenWidths[screenWidths.length-1]);
+			options.hash.width = options.hash.widths[options.hash.widths.length-1];
+			var origUrl = cloudinary.url(imageName, options.hash);
+			//options.hash.width = options.hash.widths[0];
 			options.hash.widths.forEach(function(w, i){
 				options.hash.width = w;
 				var url = cloudinary.url(imageName, options.hash);
