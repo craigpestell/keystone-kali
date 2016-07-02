@@ -388,8 +388,9 @@ End Product Page
 }
 
 .navbar-logo {
-  height: 50px;
-  padding-right: 15px;
+  width:150px; 
+  height:50px;
+  margin-right: 15px;
 }
 
 .navbar-right {
@@ -560,6 +561,13 @@ End Product Page
 }
 
 /* END product detail page */
+
+/* Register page */
+.register-content a:link, .register-content a:visited {
+  color: blue;
+}
+/* END Register page */
+
 
 .lazyload {
   opacity: 0;

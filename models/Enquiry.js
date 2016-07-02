@@ -21,6 +21,7 @@ Enquiry.add({
 		{ value: 'other', label: 'Something else...' }
 	] },
 	message: { type: Types.Markdown, required: true },
+	replied: {type: Types.Boolean},
 	createdAt: { type: Date, default: Date.now }
 });
 
@@ -51,9 +52,9 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 			to: admins,
 			from: {
 				name: 'kali',
-				email: 'contact@kali.com'
+				email: 'contact@kaliprotectives.com'
 			},
-			subject: 'New Enquiry for kali',
+			subject: 'New Inquiry on kaliprotectives.com',
 			enquiry: enquiry
 		}, callback);
 		

@@ -17,52 +17,50 @@
                        title="{{name}}" data-gallery>
                         <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto" quality="90"}}"
                              class="{{#if @first}}cld-responsive {{/if}}image-toggle"
-                             id="product-{{@index}}" alt="{{name}}"{{#unless @first}} 
-							 style="display:none;" {{/unless}}/>
+                             id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;"{{/unless}}/>
                     </a>
 				{{/each}}-->
 					<div class="hidden-xs text-right" style="height:0px;">
 						<img id="product-zoom-current"
 							 src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto" quality="85"}}"
-							 style="margin-top:-70px;margin-right:32px"/>
+							 style="margin-top:-70px;margin-right:32px" alt="zoom"/>
 					</div>
                 </div>
 				{{> product-gallery class="col-xs-12"}}
             </div>
 
-            <div class="col-md-5">
-                <div class="col-xs-12">
-					<div class="product-title">
-                    	<h1>{{product.name}}</h1>
-                    </div>
-                    <div class="product-description">
-                        <p>{{{product.description}}}</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 initialism">
-							{{{product.specs}}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 initialism">
-							{{{product.usageChart}}}
-                        </div>
-                    </div>
-                    <!--{{#if product.technologiesAndFeatures.length}}
-					<div class="row">
-						{{#each product.technologiesAndFeatures}}
-                            <img style="float:left;" class="lazyload img-responsive" src="{{{cloudinaryUrl iconImage width=70 height=70 format="jpg"}}}"/>
-						{{/each}}
+            <div class="col-xs-12 col-md-5">
+				<div class="product-title">
+					<h1>{{product.name}}</h1>
+				</div>
+				<div class="product-description">
+					<p>{{{product.description}}}</p>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 initialism">
+						{{{product.specs}}}
 					</div>
-					{{/if}}-->
-					{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="left"}}
-					
-                    <div class="row">
-                        <div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em">Find a Dealer</h3></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 initialism">
+						{{{product.usageChart}}}
+					</div>
+				</div>
+				<!--{{#if product.technologiesAndFeatures.length}}
+				<div class="row">
+					{{#each product.technologiesAndFeatures}}
+						<img style="float:left;" class="lazyload img-responsive" src="{{{cloudinaryUrl iconImage width=70 height=70 format="jpg"}}}"/>
+					{{/each}}
+				</div>
+				{{/if}}-->
+				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="left"}}
+				
+				<div class="row">
+					<div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em">Find a Dealer</h3></a>
+					</div>
+				</div>
+			</div>
+            
         </div>
         <!--<div class="product-section-nav-wrapper" style="min-height:65px">
 			<div class="container product-section-nav" style="height:50px">

@@ -21,26 +21,54 @@
         
          });*/
 
-
+		$('#blueimp-gallery.blueimp-gallery.blueimp-gallery-controls').on('slide', function(){
+            var label = $('.product-title>h1').text();
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Product Zoom Slide',
+                eventAction: 'click',
+                eventLabel: label
+            });
+		});
+		
         $('#product-zoom-current').click(function () {
             $('[data-gallery]').each(function (i, el) {
                 if ($(el).children('img').is(':visible')) {
                     $(el).click();
-                    return;
                 }
             });
         });
+
         $('.icon-toggler').on('click', function (e) {
             $('.icon-toggle').hide();
             $($(this).attr('data-icon-id')).show();
             $('.image-toggle').hide();
             $($(this).attr('data-image-id')).show();
+			
+			var label = $('.product-title>h1').text() + ': ' + $(this).attr('data-colorway');
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Color Swatches',
+                eventAction: 'click',
+                eventLabel: label
+            });
         });
 
 
         $('.image-toggler').on('click', function (e) {
             $('.image-toggle').hide();
             $($(this).attr('data-image-id')).show();
+
+			var prodId =$(this).attr('data-image-id').split('-')[1]; 
+            var label = $('.product-title>h1').text() + ': ' + prodId;
+			
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Alternate Image',
+                eventAction: 'click',
+                eventLabel: label
+            });
+
         });
     });
 </script>

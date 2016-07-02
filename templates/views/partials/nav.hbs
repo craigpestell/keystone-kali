@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <img class="navbar-logo" src="{{cloudinaryUrl siteSettings.nav-logo-large.imageValue width=130 }}" alt="Kali Protectives"/>
+				<div class="navbar-logo" style="background: url({{cloudinaryUrl siteSettings.nav-logo-large.imageValue format="jpg" width=150 }}); background: url({{cloudinaryUrl siteSettings.nav-logo-large.imageValue width=150 }});background-size: 150px 50px;"></div>
             </a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-main">
@@ -30,13 +30,12 @@
 			            <li class="{{#ifeq key ../../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 					{{/if}}
 				{{else}}
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
-				</ul>
+		</ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
+		</ul>
 				{{/unless}}
 			{{/each}}
-        </ul>
         </div>
     </div>
 </nav>

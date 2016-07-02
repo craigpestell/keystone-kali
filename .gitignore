@@ -1,8 +1,5 @@
 public/styles/site.css
+public/styles/site.css.map
 node_modules
 .env
 .idea
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml

@@ -4,8 +4,8 @@
 			{{#if registrationSubmitted}}
                 <h3>Thanks for registering.</h3>
 			{{else}}
-                <h2>Why register your Kali?</h2>
-                <div class="container">{{{data.page.contentHtml}}}</div>
+                <h2>{{data.page.title}}</h2>
+                <div class="container register-content">{{{data.page.contentHtml}}}</div>
                 <hr/>
                 <h3>Personal Information</h3>
                 <form method="post" role="form" class="">
@@ -203,20 +203,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        /*$('.input-group.date').datepicker({})
-                .on('changeDate', function (e) {
-                    // Set the value for the date input
-                    $(this).val($(this).datepicker('getFormattedDate'));
-                    //$("#birthDatePicker").val($(this).datepicker('getFormattedDate'));
-                    $("#birthDate").val($(this).datepicker('getFormattedDate'));
-
-                    // Revalidate it
-                    //$('#eventForm').formValidation('revalidateField', 'selectedDate');
-                });
-        ;*/
-    });
-</script>

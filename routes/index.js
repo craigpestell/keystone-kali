@@ -20,6 +20,7 @@
 
 var keystone = require('keystone');
 var restful = require('restful-keystone')(keystone);
+var map = require('express-sitemap');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
 
@@ -72,11 +73,65 @@ exports = module.exports = function(app) {
 
 	app.get('/moto', routes.views['moto-splash']);
 
-	app.get('/:page', routes.views.page);
-
-
 		
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
+
+	/*
+	 * sitemap
+	 */
+	var url = 'kaliprotectives.com';
+	var mapConfig = {
+		http: 'https',
+		url: 'kaliprotectives.com',
+		sitemapSubmission: '/sitemap.xml',
+		map:{
+			'/technology':['get'],
+			'/helmets':['get'],
+			'/armor':['get'],
+			'/moto':['get'],
+			'/dealers':['get'],
+			'/contact':['get'],
+			'/register':['get'],
+		},
+		route: {
+			'ALL': {
+				lastmod: '2016-06-23',
+				changefreq: 'always',
+				priority: 1.0,
+			},
+		},
+	};
 	
+	
+	if (keystone.get('env') != 'production'){
+		mapConfig.url = 'dev.' + mapConfig.url;
+		mapConfig.disallow = true;
+		mapConfig.route['ALL'].disallow = true;
+	}
+
+	var sitemap = map(mapConfig);
+
+	app.get('/robots.txt', function(req, res){
+		sitemap.TXTtoWeb(res);
+	});
+	app.get('/sitemap.xml', function(req, res){
+		keystone.list('Product').model.find()
+			.populate('mainCategory subCategory')
+			.exec(function (err, results, next) {
+				results.forEach(function(product){
+					var categoryUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug;
+					var productUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug + '/' + product.slug ;
+					if(sitemap.map[categoryUrl] == undefined)
+						sitemap.map[categoryUrl] = ['get'];
+					sitemap.map[productUrl] = ['get'];
+
+				});
+				sitemap.XMLtoWeb(res);
+			});
+		
+	});
+
+
+	app.get('/:page', routes.views.page);
 };

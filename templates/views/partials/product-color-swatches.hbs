@@ -3,6 +3,7 @@
         <div id="product-color-swatches" class="col-xs-12" style="text-align:{{align}}">
 			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
                 <div data-icon-id="#product-icon-{{productIndex}}"
+					 data-colorway="{{colorway}} {{color}}"
                      data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch">
                     <div class="circle">
 						{{#ifCond split.length ">" 1}}
