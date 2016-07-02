@@ -19,11 +19,11 @@
 					<div data-image-id="#product-{{n}}" class="image-toggler" style="display: inline-block;">
 						<div style="width:80px;display:inline-block;">
 							{{#ifCond page ">=" 1}}
-								<img data-src="{{cloudinaryUrl this width=80 format="jpg" quality="80"}}" 
+								<img data-src="{{cloudinaryUrl this width=80 format="jpg" quality="auto"}}" 
 									 class="product-thumb cld-responsive" 
 									 alt="{{../../product.name}} - {{#with (lookup ../../product.galleryColorwaysArray page)}}{{colorway}}{{/with}}"/>
 							{{else}}
-								<img src="{{cloudinaryUrl this width=80 format="jpg" quality="80"}}"
+								<img src="{{cloudinaryUrl this width=80 format="jpg" quality="auto"}}"
 									class="product-thumb"
 									alt="{{../../product.name}} - {{#with (lookup ../../product.galleryColorwaysArray page)}}{{colorway}}{{/with}}"/>
 							{{/ifCond}}
