@@ -18,9 +18,15 @@
 					
 					<div data-image-id="#product-{{n}}" class="image-toggler" style="display: inline-block;">
 						<div style="width:80px;display:inline-block;">
-							<img data-src="{{cloudinaryUrl this width=80 format="jpg" quality="80"}}" 
-								 class="product-thumb{{#ifCond page '<' 1}} cld-responsive{{/ifCond}}" 
-								 alt="{{../../product.name}} - {{#with (lookup ../../product.galleryColorwaysArray page)}}{{colorway}}{{/with}}"/>
+							{{#ifCond page ">=" 1}}
+								<img data-src="{{cloudinaryUrl this width=80 format="jpg" quality="80"}}" 
+									 class="product-thumb cld-responsive" 
+									 alt="{{../../product.name}} - {{#with (lookup ../../product.galleryColorwaysArray page)}}{{colorway}}{{/with}}"/>
+							{{else}}
+								<img src="{{cloudinaryUrl this width=80 format="jpg" quality="80"}}"
+									class="product-thumb"
+									alt="{{../../product.name}} - {{#with (lookup ../../product.galleryColorwaysArray page)}}{{colorway}}{{/with}}"/>
+							{{/ifCond}}
 						</div>
 					</div>
 				{{/ifCond}}

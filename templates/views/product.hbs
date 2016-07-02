@@ -5,12 +5,23 @@
         <div id="product-main" class="row">
             <div class="col-xs-12 col-md-7">
                 <div id="links">
+					<!--[536,652,720]-->
 				{{#each product.gallery}}
-                    <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
-                       title="{{name}}" data-gallery>
-						{{{cloudinaryImgSrcSet widths="[536,652,720]" format="jpg" quality="90"}}}
-                        
-                    </a>
+					{{#if @index}}
+                        <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
+                           title="{{name}}" data-gallery>
+                            <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto" quality="90"}}"
+                                 class="cld-responsive image-toggle"
+                                 id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;"{{/unless}}/>
+                        </a>
+					{{else}}
+                        <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
+                           title="{{name}}" data-gallery>
+							{{{cloudinaryImgSrcSet widths="[290,330,345,381,384,405,738,720,536,652]" format="jpg" quality="90" class="image-toggle" index=@index}}}
+
+                        </a>
+					{{/if}}
+                    
 				{{/each}}
 				<!--{{#each product.gallery}}
 					<a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"

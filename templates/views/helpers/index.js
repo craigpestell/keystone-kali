@@ -258,24 +258,54 @@ module.exports = function() {
 		}
 		//console.log('options:', options);
 		var smallestW = options.hash.widths[0];
-		var largestW = options.hash.widths[options.hash.widths.length-1];
-		var srcset = '<picture> <img sizes="(max-width: "' + largestW + 'px) 100vw, ' + largestW + 'px" srcset="';
+		//var largestW = options.hash.widths[options.hash.widths.length-1];
+		
 		
 		if ((context) && (context.public_id)) {
+			console.log(context);
 			var imageName = context.public_id.concat('.',context.format);
 			if(options.hash.format !== undefined){
 				imageName = imageName.substr(0, imageName.lastIndexOf('.'));
 			}
 			var imgs = [];
-			options.hash.widths.forEach(function(w){
+			/*
+			* <picture>
+
+			 <source media="(max-width: 20em)" srcset="images/small/space-needle.jpg 1x,
+			 images/small/space-needle-2x.jpg 2x, images/small/space-needle-hd.jpg 3x">
+
+			 <source media="(max-width: 40em)" srcset="images/medium/space-needle.jpg 1x,
+			 images/medium/space-needle-2x.jpg 2x, images/medium/space-needle-hd.jpg 3x">
+
+			 <img src="space-needle.jpg" alt="Space Needle">
+
+			 </picture>*/
+			var style = '';
+			if(options.hash.index){
+				style = ' style="display:none"';
+			}
+			var srcset = '<picture>';
+			var screenWidths = [320,360,375,411,414,435,768,992,1200];
+			var url = cloudinary.url(imageName, options.hash);
+			options.hash.width = options.hash.widths[0];
+			var origUrl = cloudinary.url(imageName, screenWidths[screenWidths.length-1]);
+			options.hash.widths.forEach(function(w, i){
 				options.hash.width = w;
 				var url = cloudinary.url(imageName, options.hash);
-				url = url.replace('http://', '//');
-				var src = url + ' ' + w + 'w';
-				imgs.push(src);
+				var source = '<source media="(max-width:' + screenWidths[i] + 'px)" srcset="' + url + ' 1x">';
+				
+				//url = url.replace('http://', '//');
+				// https://res.cloudinary.com/CLOUD_NAME/image/upload/w_386,c_pad,ar_1/sample.jpg
+				//var url = 'http://res.cloudinary.com/kaliprotectives-com/image/upload/';
+				//var src = url + '_c_scale,' + 'w_'+ w + '.jpg ' + w + 'w';
+				//src = url + ' ' + screenWidths[i] + 'w';
+				
+				//source += '</source>';
+				imgs.push(source);
 			});	
-			srcset += imgs.join(', ');
-			srcset += '" src="' + cloudinary.url(imageName, options.hash) + '" alt="">	</picture>';
+			srcset += imgs.join('\n');
+			//srcset += '" src="' + cloudinary.url(imageName, options.hash) + '">';
+			srcset += '<img class="image-toggle"  id="product-' + options.hash.index + '"' + style + 'src="' + origUrl + '" ></picture>';
 			//if (window.location.protocol != "https:")
 			
 			return srcset;
