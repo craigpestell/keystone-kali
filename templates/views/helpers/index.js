@@ -285,7 +285,7 @@ module.exports = function() {
 				style = ' style="display:none"';
 			}
 			var srcset = '<picture>';
-			var screenWidths = [320,360,375,411,414,435,530, 630, 730, 768,992,1200];
+			var screenWidths = [320,360,375,411,414,435,530, 630, 730, 768,992,1200,3840];
 			var url = cloudinary.url(imageName, options.hash);
 			options.hash.width = options.hash.widths[options.hash.widths.length-1];
 			var origUrl = cloudinary.url(imageName, options.hash);
