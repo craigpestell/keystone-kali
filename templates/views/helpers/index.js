@@ -285,7 +285,7 @@ module.exports = function() {
 				style = ' style="display:none"';
 			}
 			var srcset = '<picture>';
-			var screenWidths = [320,360,375,411,414,435,768,992,1200];
+			var screenWidths = [320,360,375,411,414,435,530, 630, 730, 768,992,1200];
 			var url = cloudinary.url(imageName, options.hash);
 			options.hash.width = options.hash.widths[0];
 			var origUrl = cloudinary.url(imageName, screenWidths[screenWidths.length-1]);
@@ -306,7 +306,7 @@ module.exports = function() {
 			});	
 			srcset += imgs.join('\n');
 			//srcset += '" src="' + cloudinary.url(imageName, options.hash) + '">';
-			srcset += '<img class="image-toggle"  id="product-' + options.hash.index + '"' + style + 'src="' + origUrl + '" ></picture>';
+			srcset += '<img class="image-toggle" style="width:100%;" id="product-' + options.hash.index + '"' + style + 'src="' + origUrl + '" ></picture>';
 			//if (window.location.protocol != "https:")
 			
 			return srcset;
