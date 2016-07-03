@@ -1,17 +1,40 @@
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#product-0').one("load", function () {
+		var lazyLoad = function(el){
+            var dataSrcSet = $(el).data('srcset');
+            //console.log('data-src',dataSrcSet);
+            if(dataSrcSet) {
+                $(el).attr('srcset', dataSrcSet);
+            }
+		}
+
+        var onImgLoad = function(selector, callback){
+            $(selector).each(function(){
+                if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
+                    callback.apply(this);
+                }
+                else {
+                    $(this).one('load', function(){
+                        callback.apply(this);
+                    });
+                }
+            });
+        };
+		onImgLoad('#product-0', function(){
+            $('source').each(function(){
+                lazyLoad(this);
+            });
+            $.cloudinary.responsive();
+		});
+		
+        /*$('#product-0').one("load", function () {
             //$(this).removeClass('cld-responsive');
-            $('.gallery-icon:not(.cld-responsive), .product-thumb:not(.cld-responsive)').addClass('cld-responsive');
+            //$('.gallery-icon:not(.cld-responsive), .product-thumb:not(.cld-responsive)').addClass('cld-responsive');
 			$('source').each(function(){
-				var dataSrcSet = $(this).data('srcset');
-				//console.log('data-src',dataSrcSet);
-				if(dataSrcSet) {
-					$(this).attr('srcset', dataSrcSet);
-				}
+				lazyLoad(this);
 			});
             $.cloudinary.responsive();
-        });
+        });*/
 
         $.cloudinary.responsive({responsive_resize: false});
         //$.cloudinary.responsive();
