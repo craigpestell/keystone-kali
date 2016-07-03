@@ -291,10 +291,19 @@ module.exports = function() {
 			var origUrl = cloudinary.url(imageName, options.hash);
 			//options.hash.width = options.hash.widths[0];
 			options.hash.widths.forEach(function(w, i){
-				options.hash.width = w;
-				var url = cloudinary.url(imageName, options.hash);
-				url = url.replace('http://', '//');
-				var source = '<source media="(max-width:' + screenWidths[i] + 'px)" srcset="' + url + ' 1x">';
+				//options.hash.width = w;
+				
+				var dpr = [1,2,3];
+				var dprSrcSet = [];
+				dpr.forEach(function(pr){
+					options.hash.width = w * pr;
+					var url = cloudinary.url(imageName, options.hash);
+					url = url.replace('http://', '//');
+					
+					dprSrcSet.push(url + ' ' + pr + 'x');
+				});
+				
+				var source = '<source media="(max-width:' + screenWidths[i] + 'px)" srcset="' + dprSrcSet.join(', ') +'">';
 				
 				//url = url.replace('http://', '//');
 				// https://res.cloudinary.com/CLOUD_NAME/image/upload/w_386,c_pad,ar_1/sample.jpg
