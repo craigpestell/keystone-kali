@@ -279,7 +279,7 @@ module.exports = function() {
 			}
 			var srcset = '<picture>'; //[290,330,345,381,384,405,500,600,700,738,720,536,652,652]
 			var screenWidths = options.hash.screenWidths;
-			//options.hash.width = options.hash.widths[options.hash.widths.length-1];
+			options.hash.width = options.hash.widths[options.hash.widths.length-1];
 			var origUrl = cloudinary.url(imageName, options.hash);
 			origUrl = origUrl.replace('http://', '//');
 			//options.hash.width = options.hash.widths[0];
