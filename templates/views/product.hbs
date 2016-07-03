@@ -10,14 +10,19 @@
 					{{#if @index}}
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
                            title="{{name}}" data-gallery>
-                            <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto" quality="90"}}"
-                                 class="cld-responsive image-toggle"
-                                 id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;"{{/unless}}/>
+							{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+							widths="[290,330,345,381,384,405,500,600,700,738,720,536,652]"
+							format="jpg" quality="90" class="image-toggle cld-responsive" index=@index id="product-"
+							onlyShowFirst=true dataSrc=true}}}
+                            
                         </a>
 					{{else}}
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
                            title="{{name}}" data-gallery>
-							{{{cloudinaryImgSrcSet widths="[290,330,345,381,384,405,500,600,700,738,720,536,652]" format="jpg" quality="90" class="image-toggle" index=@index}}}
+							{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]" 
+							                       widths="[290,330,345,381,384,405,500,600,700,738,720,536,652]" 
+							                       format="jpg" quality="90" class="image-toggle" index=@index id="product-"
+							                       onlyShowFirst=true}}}
 
                         </a>
 					{{/if}}

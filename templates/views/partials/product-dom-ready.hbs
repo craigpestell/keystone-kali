@@ -2,7 +2,7 @@
     $(document).ready(function () {
         $('#product-0').one("load", function () {
             //$(this).removeClass('cld-responsive');
-            $('.gallery-icon:not(.cld-responsive), .image-toggle:not(.cld-responsive), .product-thumb:not(.cld-responsive)').addClass('cld-responsive');
+            $('.gallery-icon:not(.cld-responsive), .product-thumb:not(.cld-responsive)').addClass('cld-responsive');
             $.cloudinary.responsive();
         });
 

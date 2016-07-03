@@ -249,49 +249,40 @@ module.exports = function() {
 
 		// safe guard to ensure context is never null
 		context = context === null ? undefined : context;
-		//console.log('context:',context);
-		
+
 		if(options.hash.widths !== undefined){
 			options.hash.widths = JSON.parse(options.hash.widths)
 		}else{
 			return;
 		}
-		//console.log('options:', options);
-		var smallestW = options.hash.widths[0];
-		//var largestW = options.hash.widths[options.hash.widths.length-1];
-		
-		
+		if(options.hash.screenWidths !== undefined){
+			options.hash.screenWidths = JSON.parse(options.hash.screenWidths)
+		}else{
+			return;
+		}
+		if(options.hash.index !== undefined){
+			options.hash.index = Math.floor(options.hash.index);
+		}
+
 		if ((context) && (context.public_id)) {
-			console.log(context);
+
 			var imageName = context.public_id.concat('.',context.format);
 			if(options.hash.format !== undefined){
 				imageName = imageName.substr(0, imageName.lastIndexOf('.'));
 			}
 			var imgs = [];
-			/*
-			* <picture>
-
-			 <source media="(max-width: 20em)" srcset="images/small/space-needle.jpg 1x,
-			 images/small/space-needle-2x.jpg 2x, images/small/space-needle-hd.jpg 3x">
-
-			 <source media="(max-width: 40em)" srcset="images/medium/space-needle.jpg 1x,
-			 images/medium/space-needle-2x.jpg 2x, images/medium/space-needle-hd.jpg 3x">
-
-			 <img src="space-needle.jpg" alt="Space Needle">
-
-			 </picture>*/
+		
 			var style = '';
-			if(options.hash.index){
+			
+			if(options.hash.index && (options.hash.onlyShowFirst !== undefined && options.hash.onlyShowFirst)){
 				style = ' style="display:none"';
 			}
 			var srcset = '<picture>'; //[290,330,345,381,384,405,500,600,700,738,720,536,652,652]
-			var screenWidths = [320,360,375,411,414,435,530,630,730,768,992,1200,3840];
-			var url = cloudinary.url(imageName, options.hash);
-			options.hash.width = options.hash.widths[options.hash.widths.length-1];
+			var screenWidths = options.hash.screenWidths;
+			//options.hash.width = options.hash.widths[options.hash.widths.length-1];
 			var origUrl = cloudinary.url(imageName, options.hash);
 			//options.hash.width = options.hash.widths[0];
 			options.hash.widths.forEach(function(w, i){
-				//options.hash.width = w;
 				
 				var dpr = [1,2,3];
 				var dprSrcSet = [];
@@ -305,38 +296,32 @@ module.exports = function() {
 				
 				var source = '<source media="(max-width:' + screenWidths[i] + 'px)" srcset="' + dprSrcSet.join(', ') +'">';
 				
-				//url = url.replace('http://', '//');
-				// https://res.cloudinary.com/CLOUD_NAME/image/upload/w_386,c_pad,ar_1/sample.jpg
-				//var url = 'http://res.cloudinary.com/kaliprotectives-com/image/upload/';
-				//var src = url + '_c_scale,' + 'w_'+ w + '.jpg ' + w + 'w';
-				//src = url + ' ' + screenWidths[i] + 'w';
-				
-				//source += '</source>';
 				imgs.push(source);
 			});	
 			srcset += imgs.join('\n');
-			//srcset += '" src="' + cloudinary.url(imageName, options.hash) + '">';
-			srcset += '<img class="image-toggle" style="width:100%;" id="product-' + options.hash.index + '"' + style + 'src="' + origUrl + '" ></picture>';
-			//if (window.location.protocol != "https:")
+			var id = '';
+			if(options.hash.id !== undefined){
+				id = options.hash.id;
+			}
+			
+			if(options.hash.index !== undefined){
+				console.log('index:',options.hash.index);
+				id += options.hash.index;
+			}
+			srcset += '<img class="' + options.hash.class + '" ' + style + ' style="width:100%;"';
+			if(id){
+				srcset +=' id="' + id +'" ';
+			}		
+			if(options.hash.dataSrc !== undefined && options.hash.dataSrc) {
+				srcset += 'data-';
+			}
+			srcset += 'src="' + origUrl + '" ></picture>';
 			
 			return srcset;
 		}
 		else {
 			return null;
 		}
-		/*<picture>
-		 <img
-		 sizes="(max-width: 1400px) 100vw, 1400px"
-		 srcset="
-		 shiva-polished_byykrd_c_scale,w_200.jpg 200w,
-		 shiva-polished_byykrd_c_scale,w_592.jpg 592w,
-		 shiva-polished_byykrd_c_scale,w_857.jpg 857w,
-		 shiva-polished_byykrd_c_scale,w_1066.jpg 1066w,
-		 shiva-polished_byykrd_c_scale,w_1269.jpg 1269w,
-		 shiva-polished_byykrd_c_scale,w_1400.jpg 1400w"
-		 src="shiva-polished_byykrd_c_scale,w_1400.jpg"
-		 alt="">
-		 </picture>*/
 	};
 	
 	// ### Content Url Helpers
