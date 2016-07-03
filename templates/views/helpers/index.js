@@ -281,7 +281,7 @@ module.exports = function() {
 			var screenWidths = options.hash.screenWidths;
 			//options.hash.width = options.hash.widths[options.hash.widths.length-1];
 			var origUrl = cloudinary.url(imageName, options.hash);
-			origUrl = url.replace('http://', '//');
+			origUrl = origUrl.replace('http://', '//');
 			//options.hash.width = options.hash.widths[0];
 			options.hash.widths.forEach(function(w, i){
 				
