@@ -3,7 +3,6 @@
     <div class="{{class}}">
         <div class="row" style="margin-top: 5px; margin-bottom: 15px;">
             <div class="col-xs-12" style="text-align:center">
-            	
 				{{#everyNth product.gallery product.imagesPerColorSwatch}}
 				{{#if isModZeroNotFirst}}
 					</div>
@@ -15,11 +14,8 @@
 						{{/with}}
 				{{/if}}
 				{{#ifCond ../product.imagesPerColorSwatch '>' 1}}
-					
 					<div data-image-id="#product-{{n}}" class="image-toggler" style="display: inline-block;">
 						<div style="width:80px;display:inline-block;">
-							                            <!--[320,360,375,411,414,435,530,630,730,768,992,1200,3840]-->
-							
 							{{#ifCond page ">=" 1}}
 								{{{cloudinaryImgSrcSet screenWidths="[3840]" widths="[80]" format="jpg" quality="90" 
 								                       class="product-thumb cld-responsive" dataSrc=true index=page}}}
@@ -34,7 +30,6 @@
 					</div>
 				{{/if}}
 				{{/everyNth}}
-            
         	</div>
     	</div>
 	

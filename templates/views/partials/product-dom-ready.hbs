@@ -3,6 +3,13 @@
         $('#product-0').one("load", function () {
             //$(this).removeClass('cld-responsive');
             $('.gallery-icon:not(.cld-responsive), .product-thumb:not(.cld-responsive)').addClass('cld-responsive');
+			$('source').each(function(){
+				var dataSrcSet = $(this).data('srcset');
+				//console.log('data-src',dataSrcSet);
+				if(dataSrcSet) {
+					$(this).attr('srcset', dataSrcSet);
+				}
+			});
             $.cloudinary.responsive();
         });
 

@@ -293,8 +293,12 @@ module.exports = function() {
 					
 					dprSrcSet.push(url + ' ' + pr + 'x');
 				});
-				
-				var source = '<source media="(max-width:' + screenWidths[i] + 'px)" srcset="' + dprSrcSet.join(', ') +'">';
+				var srcSet = 'srcset="' + dprSrcSet.join(', ') +'"';
+				console.log('dataSrc:', options.hash.dataSrc);
+				if(options.hash.dataSrc !== undefined && options.hash.dataSrc) {
+					srcSet = 'data-' + srcSet;
+				}
+				var source = '<source media="(max-width:' + screenWidths[i] + 'px)" ' + srcSet + '>';
 				
 				imgs.push(source);
 			});	
@@ -304,18 +308,17 @@ module.exports = function() {
 				id = options.hash.id;
 			}
 			
-			if(options.hash.index !== undefined){
-				console.log('index:',options.hash.index);
+			if(id && options.hash.index !== undefined){
 				id += options.hash.index;
 			}
-			srcset += '<img class="' + options.hash.class + '" ' + style + ' style="width:100%;"';
+			srcset += '<img class="' + options.hash.class + '" ' + style + ' style="width:100%;" ';
 			if(id){
-				srcset +=' id="' + id +'" ';
+				srcset +='id="' + id +'" ';
 			}		
 			if(options.hash.dataSrc !== undefined && options.hash.dataSrc) {
 				srcset += 'data-';
 			}
-			srcset += 'src="' + origUrl + '" ></picture>';
+			srcset += 'src="' + origUrl + '"></picture>';
 			
 			return srcset;
 		}
