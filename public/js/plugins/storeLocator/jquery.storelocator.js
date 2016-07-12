@@ -179,7 +179,7 @@
 		'querystringParams'        : false,
 		'debug'                    : false,
 		'sessionStorage'           : false,
-		'markerCluster'            : null,
+		'markerCluster'            : true,
 		'callbackNotify'           : null,
 		'callbackBeforeSend'       : null,
 		'callbackSuccess'          : null,
