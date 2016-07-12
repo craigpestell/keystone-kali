@@ -239,6 +239,95 @@ module.exports = function() {
 		}		
 	};
 	
+	_helpers.cloudinaryImgSrcSet = function(context, options){
+		if (!options && context.hasOwnProperty('hash')) {
+			// strategy is to place context kwargs into options
+			options = context;
+			// bind our default inherited scope into context
+			context = this;
+		}
+
+		// safe guard to ensure context is never null
+		context = context === null ? undefined : context;
+
+		if(options.hash.widths !== undefined){
+			options.hash.widths = JSON.parse(options.hash.widths)
+		}else{
+			return;
+		}
+		if(options.hash.screenWidths !== undefined){
+			options.hash.screenWidths = JSON.parse(options.hash.screenWidths)
+		}else{
+			return;
+		}
+		if(options.hash.index !== undefined){
+			options.hash.index = Math.floor(options.hash.index);
+		}
+
+		if ((context) && (context.public_id)) {
+
+			var imageName = context.public_id.concat('.',context.format);
+			if(options.hash.format !== undefined){
+				imageName = imageName.substr(0, imageName.lastIndexOf('.'));
+			}
+			var imgs = [];
+		
+			var style = '';
+			
+			if(options.hash.index && (options.hash.onlyShowFirst !== undefined && options.hash.onlyShowFirst)){
+				style = ' style="display:none"';
+			}
+			var srcset = '<picture>'; //[290,330,345,381,384,405,500,600,700,738,720,536,652,652]
+			var screenWidths = options.hash.screenWidths;
+			options.hash.width = options.hash.widths[options.hash.widths.length-1];
+			var origUrl = cloudinary.url(imageName, options.hash);
+			origUrl = origUrl.replace('http://', '//');
+			//options.hash.width = options.hash.widths[0];
+			options.hash.widths.forEach(function(w, i){
+				
+				var dpr = [1,2,3];
+				var dprSrcSet = [];
+				dpr.forEach(function(pr){
+					options.hash.width = w * pr;
+					var url = cloudinary.url(imageName, options.hash);
+					url = url.replace('http://', '//');
+					
+					dprSrcSet.push(url + ' ' + pr + 'x');
+				});
+				var srcSet = 'srcset="' + dprSrcSet.join(', ') +'"';
+				console.log('dataSrc:', options.hash.dataSrc);
+				if(options.hash.dataSrc !== undefined && options.hash.dataSrc) {
+					srcSet = 'data-' + srcSet;
+				}
+				var source = '<source media="(max-width:' + screenWidths[i] + 'px)" ' + srcSet + '>';
+				
+				imgs.push(source);
+			});	
+			srcset += imgs.join('\n');
+			var id = '';
+			if(options.hash.id !== undefined){
+				id = options.hash.id;
+			}
+			
+			if(id && options.hash.index !== undefined){
+				id += options.hash.index;
+			}
+			srcset += '<img class="' + options.hash.class + '" ' + style + ' style="width:100%;" ';
+			if(id){
+				srcset +='id="' + id +'" ';
+			}		
+			if(options.hash.dataSrc !== undefined && options.hash.dataSrc) {
+				srcset += 'data-';
+			}
+			srcset += 'src="' + origUrl + '"></picture>';
+			
+			return srcset;
+		}
+		else {
+			return null;
+		}
+	};
+	
 	// ### Content Url Helpers
 	// KeystoneJS url handling so that the routes are in one place for easier
 	// editing.  Should look at Django/Ghost which has an object layer to access

@@ -5,14 +5,37 @@
         <div id="product-main" class="row">
             <div class="col-xs-12 col-md-7">
                 <div id="links">
+					<!--[536,652,720]-->
 				{{#each product.gallery}}
-                    <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
+					{{#if @index}}
+                        <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
+                           title="{{name}}" data-gallery>
+							{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+							widths="[290,330,345,381,384,405,500,600,700,738,720,536,652]"
+							format="jpg" quality="auto" class="image-toggle cld-responsive" index=@index id="product-"
+							onlyShowFirst=true dataSrc=true}}}
+                            
+                        </a>
+					{{else}}
+                        <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
+                           title="{{name}}" data-gallery>
+							{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]" 
+							                       widths="[290,330,345,381,384,405,500,600,700,738,720,536,652]" 
+							                       format="jpg" quality="auto" class="image-toggle" index=@index id="product-"
+							                       onlyShowFirst=true}}}
+
+                        </a>
+					{{/if}}
+                    
+				{{/each}}
+				<!--{{#each product.gallery}}
+					<a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
                        title="{{name}}" data-gallery>
                         <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto" quality="90"}}"
                              class="{{#if @first}}cld-responsive {{/if}}image-toggle"
                              id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;"{{/unless}}/>
                     </a>
-				{{/each}}
+				{{/each}}-->
 					<div class="hidden-xs text-right" style="height:0px;">
 						<img id="product-zoom-current"
 							 src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto" quality="85"}}"

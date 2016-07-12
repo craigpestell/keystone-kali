@@ -1,4 +1,4 @@
-/*! jQuery Google Maps Store Locator - v2.5.0 - 2016-03-06
+/*! jQuery Google Maps Store Locator - v2.6.1 - 2016-07-02
 * http://www.bjornblog.com/web/jquery-store-locator-plugin
 * Copyright (c) 2016 Bjorn Holine; Licensed MIT */
 
@@ -71,9 +71,6 @@
 		return;
 	}
 
-	
-	
-	
 	// Variables used across multiple methods
 	var $this, listTemplate, infowindowTemplate, dataTypeRead, originalOrigin, originalData, originalZoom, dataRequest, searchInput, addressInput, olat, olng, storeNum, directionsDisplay, directionsService, prevSelectedMarkerBefore, prevSelectedMarkerAfter, firstRun;
 	var featuredset = [], locationset = [], normalset = [], markers = [];
@@ -126,9 +123,10 @@
 		'catMarkers'               : null,
 		'selectedMarkerImg'        : null,
 		'selectedMarkerImgDim'     : null,
+		'disableAlphaMarkers'      : false,
 		'lengthUnit'               : 'm',
 		'storeLimit'               : 26,
-		'distanceAlert'            : 60,
+		'distanceAlert'            : -1,
 		'dataType'                 : 'xml',
 		'dataLocation'             : 'data/locations.xml',
 		'dataRaw'                  : null,
@@ -149,12 +147,13 @@
 		'defaultLat'               : null,
 		'defaultLng'               : null,
 		'autoComplete'             : false,
+		'autoCompleteOptions'      : {},
 		'autoGeocode'              : false,
 		'geocodeID'                : null,
 		'maxDistance'              : false,
 		'maxDistanceID'            : 'bh-sl-maxdistance',
 		'fullMapStart'             : false,
-		'fullMapStartBlank'        : true,
+		'fullMapStartBlank'        : false,
 		'fullMapStartListLimit'    : false,
 		'noForm'                   : false,
 		'loading'                  : false,
@@ -180,6 +179,7 @@
 		'querystringParams'        : false,
 		'debug'                    : false,
 		'sessionStorage'           : false,
+		'markerCluster'            : null,
 		'callbackNotify'           : null,
 		'callbackBeforeSend'       : null,
 		'callbackSuccess'          : null,
@@ -225,6 +225,7 @@
 		 * Init function
 		 */
 		init: function () {
+			var _this = this;
 			this.writeDebug('init');
 			// Calculate geocode distance functions
 			if (this.settings.lengthUnit === 'km') {
@@ -280,7 +281,14 @@
 			// Set up Google Places autocomplete if it's set to true
 			if (this.settings.autoComplete === true) {
 				var searchInput = document.getElementById(this.settings.addressID);
-				var autoPlaces = new google.maps.places.Autocomplete(searchInput);
+				var autoPlaces = new google.maps.places.Autocomplete(searchInput, this.settings.autoCompleteOptions);
+
+				// Add listener when autoComplete selection changes.
+				if (this.settings.autoComplete === true) {
+					autoPlaces.addListener('place_changed', function(e) {
+						_this.processForm(e);
+					});
+				}
 			}
 
 			// Load the templates and continue from there
@@ -350,6 +358,9 @@
 					$('.' + this.settings.locationList + ' ul').fadeIn();
 				}
 				$(document).off('click', '.' + this.settings.locationList + ' li .loc-directions a');
+			}
+			if(this.settings.pagination === true) {
+				$(document).off('click.'+pluginName, '.bh-sl-pagination li');
 			}
 		},
 
@@ -517,15 +528,26 @@
 		 * @param lat {number} latitude
 		 * @param lng {number} longitude
 		 * @param address {string} street address
+		 * @param geocodeData {object} full Google geocode results object
 		 * @returns {Object} deferred object
 		 */
-		_getData: function (lat, lng, address) {
+		_getData: function (lat, lng, address, geocodeData ) {
 			this.writeDebug('_getData',arguments);
-			var _this = this;
+			var _this = this,
+				northEast = '',
+				southWest = '',
+				formattedAddress = '';
+
+			// Define extra geocode result info
+			if ( typeof geocodeData !== 'undefined' && typeof geocodeData.geometry.bounds !== 'undefined') {
+				formattedAddress = geocodeData.formatted_address;
+				northEast = JSON.stringify( geocodeData.geometry.bounds.getNorthEast() );
+				southWest = JSON.stringify( geocodeData.geometry.bounds.getSouthWest() );
+			}
 
 			// Before send callback
 			if (this.settings.callbackBeforeSend) {
-				this.settings.callbackBeforeSend.call(this, lat, lng, address);
+				this.settings.callbackBeforeSend.call(this, lat, lng, address, formattedAddress, northEast, southWest);
 			}
 
 			// Raw data
@@ -546,7 +568,7 @@
 					else {
 						return [];
 					}
-						
+
 				}
 			}
 			// Remote data
@@ -562,15 +584,18 @@
 				$.ajax({
 					type         : 'GET',
 					url          : this.settings.dataLocation + (this.settings.dataType === 'jsonp' ? (this.settings.dataLocation.match(/\?/) ? '&' : '?') + 'callback=?' : ''),
-					// Passing the lat, lng, and address with the AJAX request so they can optionally be used by back-end languages
+					// Passing the lat, lng, address, formatted address and bounds with the AJAX request so they can optionally be used by back-end languages
 					data: {
 						'origLat' : lat,
 						'origLng' : lng,
-						'origAddress': address
+						'origAddress': address,
+						'formattedAddress': formattedAddress,
+						'boundsNorthEast' : northEast,
+						'boundsSouthWest' : southWest
 					},
 					dataType     : dataTypeRead,
 					jsonpCallback: (this.settings.dataType === 'jsonp' ? this.settings.callbackJsonp : null)
-				}).done(function (p) {
+				}).done(function(p) {
 					d.resolve(p);
 
 					// Loading remove
@@ -589,15 +614,16 @@
 			this.writeDebug('_start');
 			var _this = this,
 					doAutoGeo = this.settings.autoGeocode,
-					latlng;
-			
+					latlng,
+					originAddress;
+
 			// Full map blank start
 			if (_this.settings.fullMapStartBlank !== false) {
 				var $mapDiv = $('#' + _this.settings.mapID);
 				$mapDiv.addClass('bh-sl-map-open');
 				var myOptions = _this.settings.mapSettings;
 				myOptions.zoom = _this.settings.fullMapStartBlank;
-				
+
 				latlng = new google.maps.LatLng(this.settings.defaultLat, this.settings.defaultLng);
 				myOptions.center = latlng;
 
@@ -618,21 +644,7 @@
 			else {
 				// If a default location is set
 				if (this.settings.defaultLoc === true) {
-					// The address needs to be determined for the directions link
-					var r = new this.reverseGoogleGeocode(this);
-					latlng = new google.maps.LatLng(this.settings.defaultLat, this.settings.defaultLng);
-					r.geocode({'latLng': latlng}, function (data) {
-						if (data !== null) {
-							var originAddress = data.address;
-							olat = mappingObj.lat = _this.settings.defaultLat;
-							olng = mappingObj.lng = _this.settings.defaultLng;
-							mappingObj.origin = originAddress;
-							_this.mapping(mappingObj);
-						} else {
-							// Unable to geocode
-							_this.notify(_this.settings.addressErrorAlert);
-						}
-					});
+					this.defaultLocation();
 				}
 
 				// If there is already have a value in the address bar
@@ -718,6 +730,7 @@
 						var result = {};
 						result.latitude = results[0].geometry.location.lat();
 						result.longitude = results[0].geometry.location.lng();
+						result.geocodeResult = results[0];
 						callbackFunction(result);
 					} else {
 						callbackFunction(null);
@@ -1016,11 +1029,6 @@
 			var marker, markerImg, letterMarkerImg;
 			var categories = [];
 
-			// Remove any spaces from category value
-			if(typeof category !== 'undefined' && category.length) {
-				category = category.replace(/\s+/g, '');
-			}
-
 			// Custom multi-marker image override (different markers for different categories
 			if(this.settings.catMarkers !== null) {
 				if(typeof category !== 'undefined') {
@@ -1031,14 +1039,14 @@
 						// With multiple categories the color will be determined by the last matched category in the data
 						for(var i = 0; i < categories.length; i++) {
 							if(categories[i] in this.settings.catMarkers) {
-								markerImg = this.markerImage(this.settings.catMarkers[categories[i]][0], this.settings.catMarkers[categories[i]][1], this.settings.catMarkers[categories[i]][2]);
+								markerImg = this.markerImage(this.settings.catMarkers[categories[i]][0], parseInt(this.settings.catMarkers[categories[i]][1]), parseInt(this.settings.catMarkers[categories[i]][2]));
 							}
 						}
 					}
 					// Single category
 					else {
 						if(category in this.settings.catMarkers) {
-							markerImg = this.markerImage(this.settings.catMarkers[category][0], this.settings.catMarkers[category][1], this.settings.catMarkers[category][2]);
+							markerImg = this.markerImage(this.settings.catMarkers[category][0], parseInt(this.settings.catMarkers[category][1]), parseInt(this.settings.catMarkers[category][2]));
 						}
 					}
 				}
@@ -1055,7 +1063,7 @@
 			}
 
 			// Create the default markers
-			if (this.settings.storeLimit === -1 || this.settings.storeLimit > 26 || this.settings.catMarkers !== null || this.settings.markerImg !== null || (this.settings.fullMapStart === true && firstRun === true && (isNaN(this.settings.fullMapStartListLimit) || this.settings.fullMapStartListLimit > 26 || this.settings.fullMapStartListLimit === -1))) {
+			if (this.settings.disableAlphaMarkers === true || this.settings.storeLimit === -1 || this.settings.storeLimit > 26 || this.settings.catMarkers !== null || this.settings.markerImg !== null || (this.settings.fullMapStart === true && firstRun === true && (isNaN(this.settings.fullMapStartListLimit) || this.settings.fullMapStartListLimit > 26 || this.settings.fullMapStartListLimit === -1))) {
 				marker = new google.maps.Marker({
 					position : point,
 					map      : map,
@@ -1077,6 +1085,7 @@
 					draggable: false
 				});
 			}
+
 			return marker;
 		},
 
@@ -1114,7 +1123,7 @@
 			// Set up alpha character
 			var markerId = currentMarker.get('id');
 			// Use dot markers instead of alpha if there are more than 26 locations
-			if (this.settings.storeLimit === -1 || this.settings.storeLimit > 26 || (this.settings.fullMapStart === true && firstRun === true && (isNaN(this.settings.fullMapStartListLimit) || this.settings.fullMapStartListLimit > 26 || this.settings.fullMapStartListLimit === -1))) {
+			if (this.settings.disableAlphaMarkers === true || this.settings.storeLimit === -1 || this.settings.storeLimit > 26 || (this.settings.fullMapStart === true && firstRun === true && (isNaN(this.settings.fullMapStartListLimit) || this.settings.fullMapStartListLimit > 26 || this.settings.fullMapStartListLimit === -1))) {
 				indicator = markerId + 1;
 			}
 			else {
@@ -1156,7 +1165,7 @@
 
 		/**
 		 * Change the selected marker image
-		 * 
+		 *
 		 * @param marker {Object} Google Maps marker object
 		 */
 		changeSelectedMarker: function (marker) {
@@ -1197,6 +1206,7 @@
 			var _this = this;
 			// Define the location data
 			var locations = this._defineLocationData(marker, storeStart, page);
+
 			// Set up the infowindow template with the location data
 			var formattedAddress = infowindowTemplate(locations);
 
@@ -1228,7 +1238,7 @@
 					// Focus on the list
 					var markerId = marker.get('id');
 					var $selectedLocation = $('.' + _this.settings.locationList + ' li[data-markerid=' + markerId + ']');
-					
+
 					if ($selectedLocation.length > 0) {
 						// Marker click callback
 						if (_this.settings.callbackMarkerClick) {
@@ -1260,17 +1270,45 @@
 		 */
 		autoGeocodeQuery: function (position) {
 			this.writeDebug('autoGeocodeQuery',arguments);
-			var _this = this;
-			var mappingObj = {};
+			var _this = this,
+				distance = null,
+				$distanceInput = $('#' + this.settings.maxDistanceID),
+				originAddress;
+
+			// Query string parameters
+			if(this.settings.querystringParams === true) {
+				// Check for distance query string parameters
+				if(this.getQueryString(this.settings.maxDistanceID)){
+					distance = this.getQueryString(this.settings.maxDistanceID);
+
+					if($distanceInput.val() !== '') {
+						distance = $distanceInput.val();
+					}
+				}
+				else{
+					// Get the distance if set
+					if (this.settings.maxDistance === true) {
+						distance = $distanceInput.val() || '';
+					}
+				}
+			}
+			else {
+				// Get the distance if set
+				if (this.settings.maxDistance === true) {
+					distance = $distanceInput.val() || '';
+				}
+			}
+
 			// The address needs to be determined for the directions link
 			var r = new this.reverseGoogleGeocode(this);
 			var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 			r.geocode({'latLng': latlng}, function (data) {
 				if (data !== null) {
-					var originAddress = data.address;
+					originAddress = addressInput = data.address;
 					olat = mappingObj.lat = position.coords.latitude;
 					olng = mappingObj.lng = position.coords.longitude;
 					mappingObj.origin = originAddress;
+					mappingObj.distance = distance;
 					_this.mapping(mappingObj);
 				} else {
 					// Unable to geocode
@@ -1287,6 +1325,58 @@
 			this.writeDebug('_autoGeocodeError');
 			// If automatic detection doesn't work show an error
 			//this.notify(this.settings.autoGeocodeErrorAlert);
+		},
+
+		/**
+		 * Default location method
+		 */
+		defaultLocation: function() {
+			this.writeDebug('defaultLocation');
+			var _this = this,
+				distance = null,
+				$distanceInput = $('#' + this.settings.maxDistanceID),
+				originAddress;
+
+			// Query string parameters
+			if(this.settings.querystringParams === true) {
+				// Check for distance query string parameters
+				if(this.getQueryString(this.settings.maxDistanceID)){
+					distance = this.getQueryString(this.settings.maxDistanceID);
+
+					if($distanceInput.val() !== '') {
+						distance = $distanceInput.val();
+					}
+				}
+				else{
+					// Get the distance if set
+					if (this.settings.maxDistance === true) {
+						distance = $distanceInput.val() || '';
+					}
+				}
+			}
+			else {
+				// Get the distance if set
+				if (this.settings.maxDistance === true) {
+					distance = $distanceInput.val() || '';
+				}
+			}
+
+			// The address needs to be determined for the directions link
+			var r = new this.reverseGoogleGeocode(this);
+			var latlng = new google.maps.LatLng(this.settings.defaultLat, this.settings.defaultLng);
+			r.geocode({'latLng': latlng}, function (data) {
+				if (data !== null) {
+					originAddress = addressInput = data.address;
+					olat = mappingObj.lat = _this.settings.defaultLat;
+					olng = mappingObj.lng = _this.settings.defaultLng;
+					mappingObj.distance = distance;
+					mappingObj.origin = originAddress;
+					_this.mapping(mappingObj);
+				} else {
+					// Unable to geocode
+					_this.notify(_this.settings.addressErrorAlert);
+				}
+			});
 		},
 
 		/**
@@ -1332,14 +1422,14 @@
 		clearMarkers: function() {
 			this.writeDebug('clearMarkers');
 			var locationsLimit = null;
-			
+
 			if (locationset.length < this.settings.storeLimit) {
 				locationsLimit = locationset.length;
 			}
 			else {
 				locationsLimit = this.settings.storeLimit;
 			}
-			
+
 			for (var i = 0; i < locationsLimit; i++) {
 				markers[i].setMap(null);
 			}
@@ -1367,7 +1457,7 @@
 				$('.' + this.settings.locationList + ' ul').hide();
 				// Remove the markers
 				this.clearMarkers();
-				
+
 				// Clear the previous directions request
 				if(directionsDisplay !== null && typeof directionsDisplay !== 'undefined') {
 					directionsDisplay.setMap(null);
@@ -1376,7 +1466,7 @@
 
 				directionsDisplay = new google.maps.DirectionsRenderer();
 				directionsService = new google.maps.DirectionsService();
-				
+
 				// Directions request
 				directionsDisplay.setMap(map);
 				directionsDisplay.setPanel($('.bh-sl-directions-panel').get(0));
@@ -1411,7 +1501,7 @@
 
 			// Remove the close icon, remove the directions, add the list back
 			this.reset();
-			
+
 			if ((olat) && (olng)) {
 				if (this.countFilters() === 0) {
 					this.settings.mapSettings.zoom = originalZoom;
@@ -1513,6 +1603,7 @@
 							mappingObj.origin = addressInput;
 							mappingObj.name = searchInput;
 							mappingObj.distance = distance;
+							mappingObj.geocodeResult = data.geocodeResult;
 							_this.mapping(mappingObj);
 						} else {
 							// Unable to geocode
@@ -1545,7 +1636,7 @@
 			}
 
 			// Create the array
-			if (this.settings.maxDistance === true && firstRun !== true && typeof maxDistance !== 'undefined' && maxDistance !== null) {
+			if (this.settings.maxDistance === true && typeof maxDistance !== 'undefined' && maxDistance !== null) {
 				if (data.distance <= maxDistance) {
 					locationset.push( data );
 				}
@@ -1810,11 +1901,16 @@
 				if(map.getBounds().contains(marker.getPosition())) {
 					// Define the location data
 					_this.listSetup(marker, 0, 0);
+
 					// Set up the list template with the location data
 					listHtml = listTemplate(locations);
 					$('.' + _this.settings.locationList + ' ul').append(listHtml);
 				}
 			});
+
+			// Re-add the list background colors
+			//$('.' + this.settings.locationList + ' ul li:even').css('background', this.settings.listColor1);
+			//$('.' + this.settings.locationList + ' ul li:odd').css('background', this.settings.listColor2);
 		},
 
 		/**
@@ -1828,7 +1924,9 @@
 				newCenterCoords,
 				_this = this;
 
-			mappingObj = {};
+			// Save the new zoom setting
+			this.settings.mapSettings.zoom = map.getZoom();
+
 			olat = mappingObj.lat = newCenter.lat();
 			olng = mappingObj.lng = newCenter.lng();
 
@@ -1837,13 +1935,52 @@
 			newCenterCoords = new google.maps.LatLng(mappingObj.lat, mappingObj.lng);
 			newAddress.geocode({'latLng': newCenterCoords}, function (data) {
 				if (data !== null) {
-					mappingObj.origin = data.address;
+					mappingObj.origin = addressInput = data.address;
 					_this.mapping(mappingObj);
 				} else {
 					// Unable to geocode
 					_this.notify(_this.settings.addressErrorAlert);
 				}
 			});
+		},
+
+		/**
+		 * Handle no results
+		 */
+		emptyResult: function() {
+			this.writeDebug('emptyResult',arguments);
+			var center,
+				locList =  $('.' + this.settings.locationList + ' ul'),
+				myOptions = this.settings.mapSettings,
+				noResults;
+
+			// Create the map
+			var map = new google.maps.Map(document.getElementById(this.settings.mapID), myOptions);
+
+			// Callback
+			if (this.settings.callbackNoResults) {
+				this.settings.callbackNoResults.call(this, map, myOptions);
+			}
+
+			// Empty the location list
+			locList.empty();
+
+			// Append the no results message
+			noResults = $('<li><div class="bh-sl-noresults-title">' + this.settings.noResultsTitle +  '</div><br><div class="bh-sl-noresults-desc">' + this.settings.noResultsDesc + '</li>').hide().fadeIn();
+			locList.append(noResults);
+
+			// Center on the original origin or 0,0 if not available
+			if ((olat) && (olng)) {
+				center = new google.maps.LatLng(olat, olng);
+			} else {
+				center = new google.maps.LatLng(0, 0);
+			}
+
+			map.setCenter(center);
+
+			if (originalZoom) {
+				map.setZoom(originalZoom);
+			}
 		},
 
 		/**
@@ -1854,14 +1991,15 @@
 		mapping: function (mappingObject) {
 			this.writeDebug('mapping',mappingObject);
 			var _this = this;
-			var orig_lat, orig_lng, origin, originPoint, page;
+			var orig_lat, orig_lng, geocodeData, origin, originPoint, page;
 			if (!this.isEmptyObject(mappingObject)) {
 				orig_lat = mappingObject.lat;
 				orig_lng = mappingObject.lng;
+				geocodeData = mappingObject.geocodeResult;
 				origin = mappingObject.origin;
 				page = mappingObject.page;
 			}
-			
+
 			// Set the initial page to zero if not set
 			if ( _this.settings.pagination === true ) {
 				if (typeof page === 'undefined' || originalOrigin !== addressInput ) {
@@ -1884,7 +2022,7 @@
 				}
 				else {
 					// Do the data request - doing this in mapping so the lat/lng and address can be passed over and used if needed
-					dataRequest = _this._getData(olat, olng, origin);
+					dataRequest = _this._getData(olat, olng, origin, geocodeData);
 				}
 			}
 
@@ -1919,7 +2057,8 @@
 			this.writeDebug('processData',mappingObject);
 			var _this = this;
 			var i = 0;
-			var orig_lat, orig_lng, origin, name, maxDistance, marker, bounds, storeStart, storeNumToShow, myOptions, noResults, distError;
+			var orig_lat, orig_lng, origin, name, maxDistance, marker, bounds, storeStart, storeNumToShow, myOptions, distError, openMap;
+			var taxFilters = {};
 			if (!this.isEmptyObject(mappingObject)) {
 				orig_lat = mappingObject.lat;
 				orig_lng = mappingObject.lng;
@@ -1934,15 +2073,23 @@
 
 			// Save data and origin separately so we can potentially avoid multiple AJAX requests
 			originalData = dataRequest;
-			originalOrigin = origin;
+			if ( typeof origin !== 'undefined' ) {
+				originalOrigin = origin;
+			}
 
 			// Callback
 			if (_this.settings.callbackSuccess) {
 				_this.settings.callbackSuccess.call(this);
 			}
 
+			openMap = $mapDiv.hasClass('bh-sl-map-open');
+
 			// Set a variable for fullMapStart so we can detect the first run
-			if (_this.settings.fullMapStart === true && $mapDiv.hasClass('bh-sl-map-open') === false) {
+			if (
+				( _this.settings.fullMapStart === true && openMap === false ) ||
+				( _this.settings.autoGeocode === true && openMap === false ) ||
+				( _this.settings.defaultLoc === true && openMap === false )
+			) {
 				firstRun = true;
 			}
 			else {
@@ -2012,7 +2159,6 @@
 
 			// Taxonomy filtering setup
 			if (_this.settings.taxonomyFilters !== null || _this.settings.nameSearch === true) {
-				var taxFilters = {};
 
 				for(var k in filters) {
 					if (filters.hasOwnProperty(k) && filters[k].length > 0) {
@@ -2032,24 +2178,6 @@
 						return _this.filterData(val, taxFilters);
 					});
 				}
-			}
-
-			// Handle no results
-			if (_this.isEmptyObject(locationset)) {
-				// Callback
-				if (_this.settings.callbackNoResults) {
-					_this.settings.callbackNoResults.call(this);
-				}
-
-				// Append the no results message
-				noResults = $('<li><div class="bh-sl-noresults-title">' + _this.settings.noResultsTitle +  '</div><br><div class="bh-sl-noresults-desc">' + _this.settings.noResultsDesc + '</li>').hide().fadeIn();
-
-				// Setup a no results location
-				locationset[0] = {
-					'distance': 0,
-					'lat' : 0,
-					'lng': 0
-				};
 			}
 
 			// Sort the multi-dimensional array by distance
@@ -2075,27 +2203,39 @@
 			}
 
 			// Check the closest marker
-			if (_this.settings.maxDistance === true && firstRun !== true && maxDistance) {
-				if (typeof locationset[0] === 'undefined' || locationset[0].distance > maxDistance) {
-					//_this.notify(_this.settings.distanceErrorAlert + maxDistance + ' ' + distUnit);
-					return;
+			if (_this.isEmptyObject(taxFilters)) {
+				if (_this.settings.maxDistance === true && firstRun !== true && maxDistance) {
+					if (typeof locationset[0] === 'undefined' || locationset[0].distance > maxDistance) {
+						_this.notify(_this.settings.distanceErrorAlert + maxDistance + ' ' + distUnit);
+					}
 				}
-			}
-			else {
-				if (_this.settings.distanceAlert !== -1 && locationset[0].distance > _this.settings.distanceAlert) {
-					//_this.notify(_this.settings.distanceErrorAlert + _this.settings.distanceAlert + ' ' + distUnit);
-					distError = true;
+				else {
+					if (typeof locationset[0] !== 'undefined') {
+						if (_this.settings.distanceAlert !== -1 && locationset[0].distance > _this.settings.distanceAlert) {
+							_this.notify(_this.settings.distanceErrorAlert + _this.settings.distanceAlert + ' ' + distUnit);
+							distError = true;
+						}
+					}
+					else {
+						throw new Error('No locations found. Please check the dataLocation setting and path.');
+					}
 				}
-			}
-
-			// Output page numbers if pagination setting is true
-			if (_this.settings.pagination === true) {
-				_this.paginationSetup(page);
 			}
 
 			// Slide in the map container
 			if (_this.settings.slideMap === true) {
 				$this.slideDown();
+			}
+
+			// Handle no results
+			if (_this.isEmptyObject(locationset)) {
+				_this.emptyResult();
+				return;
+			}
+
+			// Output page numbers if pagination setting is true
+			if (_this.settings.pagination === true) {
+				_this.paginationSetup(page);
 			}
 
 			// Set up the modal window
@@ -2199,11 +2339,7 @@
 			if (_this.settings.originMarker === true) {
 				var originImg = '';
 
-				// If fullMapStart is on and it's the first run there is no origin
-				if(_this.settings.fullMapStart === false && firstRun === true) {
-					return;
-				}
-				else{
+				if ( typeof origin !== 'undefined' ) {
 					if(_this.settings.originMarkerImg !== null) {
 						if(_this.settings.originMarkerDim === null) {
 							originImg = _this.markerImage(_this.settings.originMarkerImg);
@@ -2228,7 +2364,8 @@
 			}
 
 			// Handle pagination
-			$(document).on('click.'+pluginName, '.bh-sl-pagination li', function () {
+			$(document).on('click.'+pluginName, '.bh-sl-pagination li', function (e) {
+				e.preventDefault();
 				// Run paginationChange
 				_this.paginationChange($(this).attr('data-page'));
 			});
@@ -2267,9 +2404,7 @@
 					bounds.extend(point);
 				}
 				// Pass variables to the pop-up infowindows
-				if (typeof noResults === 'undefined') {
-					_this.createInfowindow(marker, null, infowindow, storeStart, page);
-				}
+				_this.createInfowindow(marker, null, infowindow, storeStart, page);
 			}
 
 			// Center and zoom if no origin or zoom was provided, or distance of first marker is greater than distanceAlert
@@ -2280,69 +2415,67 @@
 			// Create the links that focus on the related marker
 			var locList =  $('.' + _this.settings.locationList + ' ul');
 			locList.empty();
-			// Check the locationset and continue with the list setup or show no results message
-			if(locationset[0].lat === 0 && locationset[0].lng === 0) {
-				locList.append(noResults);
-			}
-			else {
-				// Set up the location list markup
-				if (firstRun && _this.settings.fullMapStartListLimit !== false && !isNaN(_this.settings.fullMapStartListLimit) && _this.settings.fullMapStartListLimit !== -1) {
-					for (var m = 0; m < _this.settings.fullMapStartListLimit; m++) {
-						var currentMarker = markers[m];
-						_this.listSetup(currentMarker, storeStart, page);
-					}
-				} else {
-					$(markers).each(function (x) {
-						var currentMarker = markers[x];
-						_this.listSetup(currentMarker, storeStart, page);
-					});
+
+			// Set up the location list markup
+			if (firstRun && _this.settings.fullMapStartListLimit !== false && !isNaN(_this.settings.fullMapStartListLimit) && _this.settings.fullMapStartListLimit !== -1) {
+				for (var m = 0; m < _this.settings.fullMapStartListLimit; m++) {
+					var currentMarker = markers[m];
+					_this.listSetup(currentMarker, storeStart, page);
 				}
-			}
-
-			// Handle clicks from the list
-			if (typeof noResults === 'undefined') {
-				$(document).on('click.' + pluginName, '.' + _this.settings.locationList + ' li', function () {
-					var markerId = $(this).data('markerid');
-					var selectedMarker = markers[markerId];
-
-					// List click callback
-					if (_this.settings.callbackListClick) {
-						_this.settings.callbackListClick.call(this, markerId, selectedMarker);
-					}
-
-					// Focus on the list
-					$('.' + _this.settings.locationList + ' li').removeClass('list-focus');
-					$('.' + _this.settings.locationList + ' li[data-markerid=' + markerId + ']').addClass('list-focus');
-
-					map.panTo(selectedMarker.getPosition());
-					var listLoc = 'left';
-					if (_this.settings.bounceMarker === true) {
-						selectedMarker.setAnimation(google.maps.Animation.BOUNCE);
-						setTimeout(function () {
-								selectedMarker.setAnimation(null);
-								_this.createInfowindow(selectedMarker, listLoc, infowindow, storeStart, page);
-							}, 700
-						);
-					}
-					else {
-						_this.createInfowindow(selectedMarker, listLoc, infowindow, storeStart, page);
-					}
-
-					// Custom selected marker override
-					if (_this.settings.selectedMarkerImg !== null) {
-						_this.changeSelectedMarker(selectedMarker);
-					}
+			} else {
+				$(markers).each(function (x) {
+					var currentMarker = markers[x];
+					_this.listSetup(currentMarker, storeStart, page);
 				});
 			}
 
+			// MarkerClusterer setup
+			if ( typeof MarkerClusterer !== 'undefined' && _this.settings.markerCluster !== null ) {
+				var markerCluster = new MarkerClusterer(map, markers, _this.settings.markerCluster);
+			}
+
+			// Handle clicks from the list
+			$(document).on('click.' + pluginName, '.' + _this.settings.locationList + ' li', function () {
+				var markerId = $(this).data('markerid');
+				var selectedMarker = markers[markerId];
+
+				// List click callback
+				if (_this.settings.callbackListClick) {
+					_this.settings.callbackListClick.call(this, markerId, selectedMarker);
+				}
+
+				map.panTo(selectedMarker.getPosition());
+				var listLoc = 'left';
+				if (_this.settings.bounceMarker === true) {
+					selectedMarker.setAnimation(google.maps.Animation.BOUNCE);
+					setTimeout(function () {
+							selectedMarker.setAnimation(null);
+							_this.createInfowindow(selectedMarker, listLoc, infowindow, storeStart, page);
+						}, 700
+					);
+				}
+				else {
+					_this.createInfowindow(selectedMarker, listLoc, infowindow, storeStart, page);
+				}
+
+				// Custom selected marker override
+				if (_this.settings.selectedMarkerImg !== null) {
+					_this.changeSelectedMarker(selectedMarker);
+				}
+
+				// Focus on the list
+				$('.' + _this.settings.locationList + ' li').removeClass('list-focus');
+				$('.' + _this.settings.locationList + ' li[data-markerid=' + markerId + ']').addClass('list-focus');
+			});
+
 			// Prevent bubbling from list content links
-			$(document).on('click.'+pluginName, '.' + _this.settings.locationList + ' li a', function (e) {
+			$(document).on('click.'+pluginName, '.' + _this.settings.locationList + ' li a', function(e) {
 				e.stopPropagation();
 			});
 
 			// Add the list li background colors - this wil be dropped in a future version in favor of CSS
-			$('.' + _this.settings.locationList + ' ul li:even').css('background', _this.settings.listColor1);
-			$('.' + _this.settings.locationList + ' ul li:odd').css('background', _this.settings.listColor2);
+			//$('.' + _this.settings.locationList + ' ul li:even').css('background', _this.settings.listColor1);
+			//$('.' + _this.settings.locationList + ' ul li:odd').css('background', _this.settings.listColor2);
 
 			// Visible markers list
 			if(_this.settings.visibleMarkersList === true) {
@@ -2375,7 +2508,7 @@
 
 		/**
 		 * console.log helper function
-		 * 
+		 *
 		 * http://www.briangrinstead.com/blog/console-log-helper-function
 		 */
 		writeDebug: function () {

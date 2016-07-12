@@ -18,7 +18,10 @@
 					<div class="product-category-item">
                         <div class="col-xs-6 col-lg-12">
 							<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-								<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg" fetch_format="auto" quality="90"}}" class="cld-responsive"/>
+								{{{cloudinaryImgSrcSet this.heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								widths="[100,121,128,145,147,158,205,255,305,315,315,425,320]" format="jpg" quality="auto"
+								class="product-thumb" index=page}}}
+								<!--<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg" fetch_format="auto" quality="90"}}" class="cld-responsive"/>-->
 								<div class="product-category-item-overlay hidden-xs hidden-sm hidden-md">
 									<h2>{{this.name}}</h2>
 									{{{shortDescription}}}
