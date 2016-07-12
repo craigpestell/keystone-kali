@@ -179,7 +179,10 @@
 		'querystringParams'        : false,
 		'debug'                    : false,
 		'sessionStorage'           : false,
-		'markerCluster'            : true,
+		'markerCluster'            : {
+			imagePath: '../img/marker-cluster/m'
+			,minimumClusterSize:5
+		},
 		'callbackNotify'           : null,
 		'callbackBeforeSend'       : null,
 		'callbackSuccess'          : null,
