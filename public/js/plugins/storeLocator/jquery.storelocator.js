@@ -183,7 +183,7 @@
 			imagePath: '../img/marker-cluster/m'
 			//,minimumClusterSize:5
 			,averageCenter: true
-			,gridSize: 60
+			,gridSize: 40
 		},
 		'callbackNotify'           : null,
 		'callbackBeforeSend'       : null,
