@@ -181,7 +181,9 @@
 		'sessionStorage'           : false,
 		'markerCluster'            : {
 			imagePath: '../img/marker-cluster/m'
-			,minimumClusterSize:5
+			//,minimumClusterSize:5
+			,averageCenter: true
+			,gridSize: 60
 		},
 		'callbackNotify'           : null,
 		'callbackBeforeSend'       : null,
