@@ -1909,8 +1909,8 @@
 			});
 
 			// Re-add the list background colors
-			$('.' + this.settings.locationList + ' ul li:even').css('background', this.settings.listColor1);
-			$('.' + this.settings.locationList + ' ul li:odd').css('background', this.settings.listColor2);
+			//$('.' + this.settings.locationList + ' ul li:even').css('background', this.settings.listColor1);
+			//$('.' + this.settings.locationList + ' ul li:odd').css('background', this.settings.listColor2);
 		},
 
 		/**
@@ -2474,8 +2474,8 @@
 			});
 
 			// Add the list li background colors - this wil be dropped in a future version in favor of CSS
-			$('.' + _this.settings.locationList + ' ul li:even').css('background', _this.settings.listColor1);
-			$('.' + _this.settings.locationList + ' ul li:odd').css('background', _this.settings.listColor2);
+			//$('.' + _this.settings.locationList + ' ul li:even').css('background', _this.settings.listColor1);
+			//$('.' + _this.settings.locationList + ' ul li:odd').css('background', _this.settings.listColor2);
 
 			// Visible markers list
 			if(_this.settings.visibleMarkersList === true) {
