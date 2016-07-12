@@ -24,8 +24,9 @@
             $('source').each(function(){
                 lazyLoad(this);
             });
+            $('.gallery-icon:not(.cld-responsive)').addClass('cld-responsive');
             $.cloudinary.responsive();
-		});
+        });
 		
         /*$('#product-0').one("load", function () {
             //$(this).removeClass('cld-responsive');
