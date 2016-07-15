@@ -14,6 +14,7 @@ Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
 	//type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
+	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 	mainCategory: { type: Types.Relationship, ref: 'ProductCategory', required: true, initial: true},
 	subCategory: { type: Types.Relationship, ref: 'ProductSubCategory', required: true, initial: true},
 	technologies: { type: Types.Relationship, ref: 'ProductTechnology', many: true },
