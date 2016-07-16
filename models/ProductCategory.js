@@ -12,7 +12,8 @@ var ProductCategory = new keystone.List('ProductCategory', {
 ProductCategory.relationship({ path: 'products', ref: 'Product', refPath: 'categories' });
 ProductCategory.add({
 	name: { type: String, required: true, default: '' },
-	slug: { type: String, required: true, initial: true}
+	slug: { type: String, required: true, initial: true},
+	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 });
 
 // Virtuals

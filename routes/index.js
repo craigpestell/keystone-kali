@@ -20,7 +20,10 @@
 
 var keystone = require('keystone');
 var restful = require('restful-keystone')(keystone);
+
+var subdomain = require('subdomain');
 var map = require('express-sitemap');
+
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
 
@@ -57,16 +60,23 @@ exports = module.exports = function(app) {
 		Dealer : true
 	}).start();
 	
+	app.use(subdomain({base: 'localhost', removeWWW: true}));
+
+	app.all('/subdomain/:discipline(bike|moto)/', routes.views.index);
+	
 	app.get('/', routes.views.index);
 	app.all('/register', routes.views.registration);
 	app.all('/contact', routes.views.contact);
 	
-	app.get('/gallery', routes.views.gallery);
-
 	
 	app.get('/:category(helmets|armor)?', routes.views['product-category']);
+	app.get('/subdomain/:discipline(bike|moto)/:category(helmets|armor)?', routes.views['product-category']);
+	
 	app.get('/:category(helmets|armor)/:subCategory?', routes.views['product-category']);
+	app.get('/subdomain/bike/:category(helmets|armor)/:subCategory?', routes.views['product-category']);
+
 	app.get('/:category(helmets|armor)/:subCategory/:product?', routes.views.product);
+	app.get('/subdomain/bike/:category(helmets|armor)/:subCategory/:product?', routes.views.product);
 
 	app.get('/dealers', routes.views['dealer-locator']);
 	app.get('/technology', routes.views.technology);

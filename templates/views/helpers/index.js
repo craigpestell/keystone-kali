@@ -295,7 +295,6 @@ module.exports = function() {
 					dprSrcSet.push(url + ' ' + pr + 'x');
 				});
 				var srcSet = 'srcset="' + dprSrcSet.join(', ') +'"';
-				console.log('dataSrc:', options.hash.dataSrc);
 				if(options.hash.dataSrc !== undefined && options.hash.dataSrc) {
 					srcSet = 'data-' + srcSet;
 				}

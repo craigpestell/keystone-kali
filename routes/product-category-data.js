@@ -3,7 +3,7 @@ var async = require('async');
 /**
  * Get all subcategories and products in main category
  * */
-module.exports.getProductCategoryData = function (category, subCategory, productDataCb){
+module.exports.getProductCategoryData = function (discipline, category, subCategory, productDataCb){
 	var categoryWhere = {};
 	if(category) {
 		categoryWhere = {slug:category};
