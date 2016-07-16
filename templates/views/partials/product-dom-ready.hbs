@@ -64,7 +64,7 @@
 		
         $('#product-zoom-current').click(function () {
             $('[data-gallery]').each(function (i, el) {
-                if ($(el).children('img').is(':visible')) {
+                if ($(el).children('picture').children('source').is(':visible')) {
                     $(el).click();
                 }
             });
