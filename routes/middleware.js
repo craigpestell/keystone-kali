@@ -22,7 +22,6 @@ function getSiteSettings(cb) {
 	});
 }
 
-
 /*
 * Get all Main categories
 * Get al sub categories
@@ -30,7 +29,8 @@ function getSiteSettings(cb) {
 * Join products to sub categories, sub categories to main categories
 * */
 
-function getNavData(navDataCb){
+function getNavData(discipline, navDataCb){
+	console.log('discipline',discipline);
 	async.parallel({
 			categories: function(callback){
 				keystone.list('ProductCategory').model.find().exec(callback);
@@ -43,6 +43,7 @@ function getNavData(navDataCb){
 			}
 		},
 		function massage(err, results){
+			//console.log(results.categories);
 			var returnData = {};
 			returnData.categories = {};
 			results.categories.forEach(function(cat){
@@ -82,13 +83,11 @@ function getNavData(navDataCb){
  or replace it with your own templates / logic.
  */
 exports.initLocals = function (req, res, next) {
-
-	
-	
 	var locals = res.locals;
+	var discipline = req.params.discipline || null;
 	
 	getSiteSettings(function(err, siteSettings){
-		getNavData(function(err, data){
+		getNavData(discipline, function(err, data){
 			locals.siteSettings = siteSettings;
 			locals.year = new Date().getFullYear();
 			locals.navLinks = [

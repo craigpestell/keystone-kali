@@ -38,7 +38,16 @@ var routes = {
 
 // Setup Route Bindings
 exports = module.exports = function(app) {
-	
+	/*get query param slugs and convert to ids for mongo where clauses.*/
+	function getQueryParamIdsFromSlugs(params){
+		if(params.category){
+			keystone.list('ProductCategory').model.find().where({slug:params.category}).exec(function (err, data) {
+
+			})
+		}
+	}
+
+
 	// Views
 	/*app.all('*', function(req, res, next) {
 			console.log('all routes middleware');
@@ -60,17 +69,16 @@ exports = module.exports = function(app) {
 		Dealer : true
 	}).start();
 	
-	app.use(subdomain({base: 'localhost', removeWWW: true}));
+	app.use(subdomain({base: 'localhost', removeWWW: true, debug: true}));
 
-	app.all('/subdomain/:discipline(bike|moto)/', routes.views.index);
+	//app.all('/subdomain/:discipline(bike|moto)/', routes.views.index);
 	
 	app.get('/', routes.views.index);
 	app.all('/register', routes.views.registration);
 	app.all('/contact', routes.views.contact);
 	
-	
+	app.get('/subdomain/:discipline/:category(helmets|armor)?', routes.views['product-category']);
 	app.get('/:category(helmets|armor)?', routes.views['product-category']);
-	app.get('/subdomain/:discipline(bike|moto)/:category(helmets|armor)?', routes.views['product-category']);
 	
 	app.get('/:category(helmets|armor)/:subCategory?', routes.views['product-category']);
 	app.get('/subdomain/bike/:category(helmets|armor)/:subCategory?', routes.views['product-category']);

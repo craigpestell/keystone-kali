@@ -15,6 +15,7 @@
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
     "restful-keystone": "^0.3.0",
+    "subdomain": "^1.2.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

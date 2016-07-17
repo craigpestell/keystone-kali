@@ -1,7 +1,22 @@
 var keystone = require('keystone');
 var async = require('async');
 
-module.exports.getProductNavigationData = function (discipline, category, productDataCb){
+
+
+module.exports.getProductNavigationData = function (params, productDataCb){
+	console.log('getProductNavigationData discipline param:', params.discipline);
+	console.log('getProductNavigationData category param:', params.category);
+	var getDocumentIdsFromParams = function(params){
+		if(params.category){
+			
+		}
+	};
+	
+	var disciplineWhere = {slug: ''};
+	if(params.discipline){
+		disciplineWhere.slug = params.discipline;
+	}
+	
 	var categoryWhere = {slug:"helmets"};
 	/*if(category) {
 		categoryWhere.slug = category;
@@ -10,7 +25,12 @@ module.exports.getProductNavigationData = function (discipline, category, produc
 	async.parallel({
 			categories: function(callback){
 				console.log(categoryWhere);
-				keystone.list('ProductCategory').model.find().where(categoryWhere).exec(callback);
+				keystone.list('Discipline').model.find().where(disciplineWhere).exec(function(err, data){
+					console.log('discipline data:', data);
+					console.log('discipline _id: ', data[0]._id);
+					//keystone.list('ProductCategory').model.find({discipline:data[0]._id}).exec(callback);
+					keystone.list('ProductCategory').model.find({disciplines:data[0]._id}).exec(callback);
+				});
 			},
 			subcategories: function(callback){
 				keystone.list('ProductSubCategory').model.find().populate('parentCategory').sort('sortOrder').exec(callback);
@@ -21,7 +41,7 @@ module.exports.getProductNavigationData = function (discipline, category, produc
 		},
 		function massage(err, results){
 			var returnData = {categories:results.categories, subCategories:[]};
-			
+			console.log('categories', results.categories);
 			if(results.categories) {
 				results.categories.forEach(function(cat){
 					results.subcategories.forEach(function(subCat, j){

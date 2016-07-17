@@ -5,7 +5,7 @@ var navigationData = require('../product-navigation-data');
 var productCategoryData = require('../product-category-data');
 
 exports = module.exports = function(req, res) {
-
+	console.log('req params inside productCategory', req.params);
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	// Set locals
@@ -22,8 +22,8 @@ exports = module.exports = function(req, res) {
 	locals.productSubCategory = req.params.subCategory;
 	
 	//console.log(req.params);
-	navigationData.getProductNavigationData(req.param.discipline, req.params.category, function (err, navigationData) {
-		productCategoryData.getProductCategoryData(req.param.discipline, req.params.category, req.params.subCategory, 
+	navigationData.getProductNavigationData(req.params, function (err, navigationData) {
+		productCategoryData.getProductCategoryData(locals.discipline, locals.productCategory, locals.productSubCategory, 
 			function (err, productCategoryData) {
 			
 				locals.navProducts = navigationData;
@@ -32,7 +32,7 @@ exports = module.exports = function(req, res) {
 					keystone.list('ProductCategory').model.findOne({slug:req.params.category}).exec(function(err, data){
 						locals.data.page.title = data.name + ' - ' + locals.data.page.title;
 	
-						if (req.params.subCategory) {
+						if (locals.productSubCategory) {
 							keystone.list('ProductSubCategory').model.findOne({slug:req.params.subCategory}).exec(function(err, data){
 								locals.data.page.title = data.name + ' - ' + locals.data.page.title;
 								// Render the view
