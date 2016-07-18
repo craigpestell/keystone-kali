@@ -9,6 +9,7 @@ Slide.defaultColumns='name';
 Slide.add(
 	{
 		name: { type: String, required: true, default: '', readonly: true },
+		disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 		image: {type: Types.CloudinaryImage,  autoCleanup : true},
 		href: {type: String, note: 'relative path to page (e.g. "/helmets")'},
 		overlayHtml: {type: Types.Html, note: 'use {{overlayImage}} for overlay image placeholder'},

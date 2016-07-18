@@ -2,7 +2,7 @@
 <nav id="nav-product-categories" class="navbar navbar-static-top hidden-xs subnav" role="navigation">
 	<div class="container">
 		<ul class="navbar navbar-nav">
-		{{#each this.subCategories}}
+		{{#each this}}
 			{{#if name}}
 			<li class="{{#ifeq key ../../subCategory}}active{{/ifeq}}">
 				<a class="nav-anchor text-uppercase text-nowrap" href="/{{parentCategory.slug}}#{{slug}}">{{name}}</a>

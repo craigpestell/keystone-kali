@@ -9,9 +9,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 
 var paths = {
-	'src':['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json']
+	'src': ['./models/**/*.js', './routes/**/*.js', 'keystone.js', 'package.json']
 
-,
+	,
 	'style': {
 		all: './public/styles/**/*.scss',
 		output: './public/styles/'
@@ -20,7 +20,7 @@ var paths = {
 };
 
 // gulp lint
-gulp.task('lint', function(){
+gulp.task('lint', function () {
 	gulp.src(paths.src)
 		.pipe(jshint())
 		.pipe(jshint.reporter(jshintReporter));
@@ -36,7 +36,7 @@ gulp.task('watch:sass', function () {
 	gulp.watch(paths.style.all, ['sass']);
 });
 
-gulp.task('sass', function(){
+gulp.task('sass', function () {
 	var sassOptions = {
 		//errLogToConsole: true,
 		outputStyle: 'compressed'
@@ -53,9 +53,9 @@ gulp.task('sass', function(){
 gulp.task('runKeystone', shell.task('node keystone.js'));
 gulp.task('watch', [
 
-  'watch:sass',
+	'watch:sass',
 
-  'watch:lint'
+	'watch:lint'
 ]);
 
 gulp.task('default', ['watch', 'runKeystone']);

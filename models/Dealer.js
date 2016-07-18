@@ -10,10 +10,11 @@ var Dealer = new keystone.List('Dealer');
 
 Dealer.add({
 	name: { type: String, required: true, index: true },
+	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 	location:{ type: Types.Location, initial: true, required: true, enableMapsAPI: true},
 	phone: {type: Types.Text},
 	web: {type: Types.Url},
-	email: {type: Types.Email}
+	email: {type: Types.Email},
 });
 
 /*Dealer.schema.pre('save', function(next) {

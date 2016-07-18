@@ -14,8 +14,8 @@ var ProductSubCategory = new keystone.List('ProductSubCategory', {
 ProductSubCategory.add({
 	name: { type: String, required: true, default: '' },
 	slug: { type: String, required: true, initial: true},
-	parentCategory:{ type: Types.Relationship, ref: 'ProductCategory'}
-	
+	parentCategory:{ type: Types.Relationship, ref: 'ProductCategory'},
+	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true }
 });
 
 ProductSubCategory.relationship({ path: 'products', ref: 'Product', refPath: 'subCategory'});

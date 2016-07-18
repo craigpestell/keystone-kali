@@ -84,53 +84,12 @@ function getNavData(discipline, navDataCb){
  */
 exports.initLocals = function (req, res, next) {
 	var locals = res.locals;
-	var discipline = req.params.discipline || null;
+	
 	
 	getSiteSettings(function(err, siteSettings){
-		getNavData(discipline, function(err, data){
-			locals.siteSettings = siteSettings;
-			locals.year = new Date().getFullYear();
-			locals.navLinks = [
-				{
-					label: 'Technology',
-					key: 'technology',
-					href: '/technology'/*,
-					dropdown:[
-						{label: 'Overview', key: 'composite-fusion', href: '/composite-fusion'},
-						{label: 'Kali Design', key: 'kali-design', href: '/kali-design'},
-						{label: 'Cutting Edge Safety', key: 'safety', href: '/safety'},
-						{label: 'The White Papers', key: 'white-papers', href: '/white-papers'}
-					]*/
-				}
-				,{
-					label: 'Helmets', key: 'helmets', href: '/helmets',
-					products: data.categories.helmets,
-					categories: data.categories.helmets.subCategories,
-					dropdown: data.categories.helmets.subCategories
-				}
-				,{
-					label: 'Armor', key: 'armor', href: '/armor',
-					products: data.categories.armor,
-					categories: data.categories.armor.subCategories,
-					dropdown: data.categories.armor.subCategories
-				}
-				,{
-					label: 'Moto', key: 'moto', href: '/moto'
-				}/*,
-				{	label: 'Powersports', key: 'powersports', href: '/product-category/powersports',
-					products: data.categories.powersports,
-					categories: data.categories.powersports.subCategories
-				}*/
-				,{
-					label: 'Dealers', key: 'dealer-locator', href: '/dealers',
-				}
-			];
-			
-	
-			locals.user = req.user;
-	
-			next();
-		});
+		locals.siteSettings = siteSettings;
+		locals.user = req.user;
+		next();
 	});
 
 };
