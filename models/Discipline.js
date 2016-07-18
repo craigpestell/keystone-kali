@@ -7,11 +7,12 @@ var Types = keystone.Field.Types;
  */
 
 var Discipline = new keystone.List('Discipline', {
-	autokey: { from: 'name', path: 'key', unique: true }
+	autokey: { from: 'slug', path: 'key', unique: true },
+	map: { name: 'slug' }
 });
 Discipline.relationship({ path: 'products', ref: 'Product', refPath: 'disciplines' });
 Discipline.add({
-	name: { type: String, required: true, default: '' },
+	name: { type: String, required: true, default: '', initial :true },
 	slug: { type: String, required: true, default: '', initial: true},
 	//description: { type: Types.Html, default: '' },
 	//iconImage: { type: Types.CloudinaryImage,  autoCleanup : true},
