@@ -606,6 +606,14 @@ End Product Page
   padding: 0;
 }
 
+.social-icon .outer-shape{
+  fill: $brand-grey;
+}
+.social-icon:hover > .outer-shape{
+  fill: $brand-primary;
+}
+
+
 /* Google Maps overrides */
 a[href^="http://maps.google.com/maps"] {
   display: none !important;
