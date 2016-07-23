@@ -606,6 +606,10 @@ End Product Page
   padding: 0;
 }
 
+.social-icon:hover {
+  cursor: pointer;
+  cursor: hand;
+}
 .social-icon .outer-shape{
   fill: $brand-grey;
 }
