@@ -128,15 +128,39 @@
 		});
 		
 		$('.social-icon-facebook').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Facebook"
+            });
 			window.open('https://www.facebook.com/kaliprotectives');
 		});
         $('.social-icon-instagram').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Instagram"
+            });
             window.open('https://www.instagram.com/kaliprotectives/');
         });
         $('.social-icon-twitter').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Twitter"
+            });
             window.open('https://twitter.com/kaliprotectives');
         });
         $('.social-icon-youtube').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Youtube"
+            });
             window.open('https://www.youtube.com/channel/UC4pufeowh1MBv3YXM-fuhhw');
         });
 	
