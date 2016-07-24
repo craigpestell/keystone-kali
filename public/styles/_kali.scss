@@ -611,7 +611,7 @@ End Product Page
   cursor: hand;
 }
 .social-icon .outer-shape{
-  fill: $brand-grey;
+  fill: darken($brand-grey, 15%);
 }
 .social-icon:hover > .outer-shape{
   fill: $brand-primary;
