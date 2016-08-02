@@ -129,6 +129,38 @@
 			}
 		});
 		
+		$('.social-icon-facebook').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Facebook"
+            });
+		});
+        $('.social-icon-instagram').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Instagram"
+            });
+        });
+        $('.social-icon-twitter').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Twitter"
+            });
+        });
+        $('.social-icon-youtube').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Youtube"
+            });
+        });
 	
     });
 </script>

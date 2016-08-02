@@ -580,10 +580,10 @@ End Product Page
 }
 
 #footer {
-  padding-bottom:10px;
+  padding-bottom:30px;
 }
 #footer ul {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 #footer, #footer a {
@@ -605,6 +605,18 @@ End Product Page
   list-style: none;
   padding: 0;
 }
+
+.social-icon:hover {
+  cursor: pointer;
+  cursor: hand;
+}
+.social-icon .outer-shape{
+  fill: #000;
+}
+.social-icon:hover > .outer-shape{
+  fill: $brand-primary;
+}
+
 
 /* Google Maps overrides */
 a[href^="http://maps.google.com/maps"] {
