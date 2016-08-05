@@ -14,7 +14,7 @@
             </div>
             
 			{{#each this.products}}
-				<div class="col-xs-12 col-lg-4">
+				<div class="col-xs-12 col-lg-4 product-category-href" data-href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 					<div class="product-category-item">
                         <div class="col-xs-6 col-lg-12">
 							<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
