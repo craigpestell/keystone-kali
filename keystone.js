@@ -43,7 +43,7 @@ keystone.init({
 	},
 	'embedly api key': 'e9763d8cbe1c468fb6b5b10b5ac87e98',
 	//'mongo': process.env.DO ? '10.134.0.166:27017/kali' : '162.243.149.37:27017/kali'
-	'mongo': 'mongodb://162.243.149.37:27017/kali',
+	'mongo': 'mongodb://104.236.132.193:27017/kali',
 	'ga_key': process.env.GOOGLE_TRACKING_KEY
 	
 });
