@@ -4,39 +4,37 @@
 
     <div class="container products">
 		{{#each products}}
+			
             
-            <div class="row">
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                     <div class="product-category-title">
 						<a id="{{slug}}" class="product-category-anchor"><h1>{{name}}</h1></a>
 					</div>
 				</div>
-            </div>
+            
             
 			{{#each this.products}}
-				<div class="col-xs-12 col-lg-4">
-					<div class="product-category-item">
-                        <div class="col-xs-6 col-lg-12">
-							<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-								{{{cloudinaryImgSrcSet this.heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								widths="[100,121,128,145,147,158,205,255,305,315,315,425,320]" format="jpg" quality="auto"
-								class="product-thumb" index=page}}}
-								<!--<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg" fetch_format="auto" quality="90"}}" class="cld-responsive"/>-->
-								<div class="product-category-item-overlay hidden-xs hidden-sm hidden-md">
-									<h2>{{this.name}}</h2>
-									{{{shortDescription}}}
-								</div>
-							</a>
-						</div>
-						
-                        <div class="col-xs-6 visible-xs visible-sm visible-md">
-                            <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-								<h4>{{this.name}}</h4>
+            <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+			<div class="col-xs-12 col-lg-4 product-category-href" data-href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+				<div class="product-category-item">
+					<div class="col-xs-6 col-lg-12">
+							{{{cloudinaryImgSrcSet this.heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+							widths="[100,121,128,145,147,158,205,255,305,315,315,425,320]" format="jpg" quality="auto"
+							class="product-thumb" index=page}}}
+							<!--<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg" fetch_format="auto" quality="90"}}" class="cld-responsive"/>-->
+							<div class="product-category-item-overlay hidden-xs hidden-sm hidden-md">
+								<h2>{{this.name}}</h2>
 								{{{shortDescription}}}
-							</a>
-                        </div>
+							</div>
+					</div>
+					
+					<div class="col-xs-6 visible-xs visible-sm visible-md">
+							<h4>{{this.name}}</h4>
+							{{{shortDescription}}}
 					</div>
 				</div>
+			</div>
+			</a>
 			{{/each}}
             
 		{{/each}}
