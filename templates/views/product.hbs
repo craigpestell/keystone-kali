@@ -93,10 +93,8 @@
 			</div>
         </div>
 		<div id="technology">
-		{{#each product.technologiesAndFeatures}}
-			{{> product-technology}}
-		{{/each}}
-        </div>
+			{{> product-technology product.technologiesAndFeatures}}
+		</div>
         <!--{{> product-sizing-guide}}-->
     </div>
 	

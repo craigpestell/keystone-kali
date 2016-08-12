@@ -14,7 +14,11 @@ ProductFeature.add({
 	name: { type: String, required: true, default: '' },
 	description: { type: Types.Html, default: '' },
 	iconImage: { type: Types.CloudinaryImage,  autoCleanup : true},
-	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true}
+	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	primaryImage:  { type: Types.CloudinaryImage,  autoCleanup : true},
+	secondaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	tertiaryImage: { type: Types.CloudinaryImage,  autoCleanup : true}
+
 });
 
 ProductFeature.register();

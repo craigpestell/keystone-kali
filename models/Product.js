@@ -58,7 +58,14 @@ Product.schema.virtual('technologiesAndFeatures').get(function(){
 	if(this.features[0] !== undefined){
 		this.features[0].featureAnchor = true;
 	}
-	return this.technologies.concat(this.features);
+	var techAndFeat = this.technologies.concat(this.features);
+	techAndFeat = techAndFeat.map(function(item, i){
+		item.layout = ((i+1) % 3) || 3;
+		console.log('item:', item);
+		return item;
+	});
+	//console.log(techAndFeat);
+	return techAndFeat;
 });
 
 Product.schema.virtual('galleryColorwaysArray').get(function(){
