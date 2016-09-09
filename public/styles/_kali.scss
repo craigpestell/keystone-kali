@@ -20,6 +20,12 @@
   display: table;
 }
 
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
 @font-face {
   font-family: 'Gotham-Light';
   src: url('/fonts/Gotham-Light.eot');
