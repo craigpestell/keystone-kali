@@ -84,7 +84,7 @@
 					<ul>
 						{{#if product.technologies}}<li><a class="nav-anchor" href="#technology">Technology</a></li>{{/if}}
 			{{#if product.features}}<li><a class="nav-anchor" href="#features">Features</a></li>{{/if}}
-						<li><a class="nav-anchor" href="#product-sizing-guide">Sizing</a></li>
+						<li><a class="nav-anchor" href="#sizing-chart">Sizing</a></li>
 					</ul>
                     <ul style="position:absolute;right:0;top:0;">
                         <li><a class="nav-anchor" href="#nav-main">{{product.name}}</a></li>
@@ -95,6 +95,10 @@
 		<div id="technology">
 			{{> product-technology product.technologiesAndFeatures}}
 		</div>
+		{{#if product.sizingChart}}
+            <div class="col-xs-12 text-center"><h2 id="sizing-chart">Sizing Chart</h2></div>
+			{{{product.sizingChart.html}}}
+		{{/if}}
         <!--{{> product-sizing-guide}}-->
     </div>
 	

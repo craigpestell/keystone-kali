@@ -28,6 +28,7 @@ Product.add({
 	//galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
 	imagesPerColorSwatch: {type: Number, note: 'Number of images for each color swatch.'},
 	colorways: {type: String, default: '', note: 'semi-colon delimited list of colorways'},
+	sizingChart: { type: Types.Relationship, ref: 'SizingChart' },
 	extra: { type: Types.Html, wysiwyg: true }
 });
 
