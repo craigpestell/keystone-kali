@@ -72,26 +72,26 @@
 				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="left"}}
 				
 				<div class="row">
-					<div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em">Find a Dealer</h3></a>
+					<div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em;font-family:Gotham-Black">Find a Dealer</h3></a>
 					</div>
 				</div>
 			</div>
             
         </div>
+	{{#ifCond product.technologies "&&" product.features}}
         <div class="row" style="">
-			<div class="container product-section-nav" style="height:50px">
-				<div class="col-xs-12 text-center text-uppercase" style="position:relative;">
-					<ul>
-						{{#if product.technologies}}<li><a class="nav-anchor" href="#technology">Technology</a></li>{{/if}}
-			{{#if product.features}}<li><a class="nav-anchor" href="#features">Features</a></li>{{/if}}
-						<li><a class="nav-anchor" href="#sizing-chart">Sizing</a></li>
-					</ul>
-                    <ul style="position:absolute;right:0;top:0;">
-                        <li><a class="nav-anchor" href="#nav-main">{{product.name}}</a></li>
-                    </ul>
-				</div>
+			<div class="col-xs-12 product-section-nav text-center text-uppercase" style="">
+				<ul style="margin-bottom:0">
+					{{#if product.technologies}}<li><a class="nav-anchor" href="#technology">Technology</a></li>{{/if}}
+					{{#if product.features}}<li><a class="nav-anchor" href="#features">Features</a></li>{{/if}}
+					{{#if product.sizingChart}}<li><a class="nav-anchor" href="#sizing-chart">Sizing</a></li>{{/if}}
+				</ul>
+				<ul style="position:absolute;right:0;top:0;margin-bottom:0">
+					<li><a class="nav-anchor" href="#nav-main">{{product.name}}</a></li>
+				</ul>
 			</div>
         </div>
+	{{/ifCond}}
 		<div id="technology">
 			{{> product-technology product.technologiesAndFeatures}}
 		</div>
