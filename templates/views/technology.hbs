@@ -4,10 +4,11 @@
 	   dataSrc=true}}}
 {{#each technology}}
 <div class="col-xs-2">
-	{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+	<div>{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 						   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 						   format="jpg" quality="auto" class="cld-responsive"
-						   dataSrc=true}}}
+						   dataSrc=true}}}</div>
+    <div><h4>{{name}}</h4><p>{{shortDescription}}</p></div>
 </div>
 {{/each}}
 <!--<div class="container">
@@ -20,7 +21,6 @@
 					   format="jpg" quality="auto" class="cld-responsive"
 					   dataSrc=true}}}
 </div>
-<div><h4>{{title}}</h4><p>{{shortDescription}}</p></div>
 <div class="container">
     <div class="row"> {{#if featureAnchor}}<a id="features"></a>{{/if}}</div>
     <div class="row"><div class="col-xs-12 text-center"><h2>{{name}}</h2></div></div>
