@@ -23,7 +23,7 @@ exports = module.exports = function(req, res) {
 
 		q.exec(function(err, result) {
 			locals.data.page = result;
-			locals.data.page.title = locals.data.page.title + ' - Kali Proctectives';
+			locals.data.page.title = locals.data.page.title + '';
 			next(err);
 		});
 
