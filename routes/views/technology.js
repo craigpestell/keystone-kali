@@ -29,7 +29,7 @@ exports = module.exports = function(req, res) {
 
 	});
 
-	view.query('technology', keystone.list('ProductTechnology').model.find()).then(function (err, results, next) {
+	view.query('technology', keystone.list('ProductTechnology').model.find().sort('sortOrder')).then(function (err, results, next) {
 		if (err) return next(err);
 		next();
 	});
