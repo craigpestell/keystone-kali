@@ -78,28 +78,6 @@
 			</div>
             
         </div>
-	{{#ifCond product.technologies "&&" product.features}}
-        <div class="row" style="">
-			<div class="col-xs-12 product-section-nav text-center text-uppercase" style="">
-				<ul style="margin-bottom:0">
-					{{#if product.technologies}}<li><a class="nav-anchor" href="#technology">Technology</a></li>{{/if}}
-					{{#if product.features}}<li><a class="nav-anchor" href="#features">Features</a></li>{{/if}}
-					{{#if product.sizingChart}}<li><a class="nav-anchor" href="#sizing-chart">Sizing</a></li>{{/if}}
-				</ul>
-				<ul style="position:absolute;right:0;top:0;margin-bottom:0">
-					<li><a class="nav-anchor" href="#nav-main">{{product.name}}</a></li>
-				</ul>
-			</div>
-        </div>
-	{{/ifCond}}
-		<div id="technology">
-			{{> product-technology product.technologiesAndFeatures}}
-		</div>
-		{{#if product.sizingChart}}
-            <div class="col-xs-12 text-center"><h2 id="sizing-chart">Sizing Chart</h2></div>
-			{{{product.sizingChart.html}}}
-		{{/if}}
-        <!--{{> product-sizing-guide}}-->
     </div>
 	
 	{{> product-blueimp-gallery-dom}}
