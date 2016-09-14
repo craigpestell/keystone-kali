@@ -1,20 +1,32 @@
-{{{cloudinaryImgSrcSet data.page.heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+{{{cloudinaryImgSrcSet data.page.bannerImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 	   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 	   format="jpg" quality="auto" class="cld-responsive"
 	   dataSrc=true}}}
+{{#each technology}}
+<div class="col-xs-2">
+	{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+						   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+						   format="jpg" quality="auto" class="cld-responsive"
+						   dataSrc=true}}}
+</div>
+{{/each}}
 <!--<div class="container">
 	<div class="col-xs-12 text-center"><h2>{{{data.page.title}}}</h2><p>{{{data.page.contentHtml}}}</p></div>
 </div>-->
 {{#each technology}}
-{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+<div>
+	{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 					   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 					   format="jpg" quality="auto" class="cld-responsive"
 					   dataSrc=true}}}
+</div>
+<div><h4>{{title}}</h4><p>{{shortDescription}}</p></div>
 <div class="container">
     <div class="row"> {{#if featureAnchor}}<a id="features"></a>{{/if}}</div>
     <div class="row"><div class="col-xs-12 text-center"><h2>{{name}}</h2></div></div>
     <div class="row"><div class="col-xs-12 text-center">{{this.description}}</div></div>
     <div class="row"><div class="col-xs-12 ">
+		<!--TODO: adjust image sizes to fit in container-->
 		{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 							   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 							   format="jpg" quality="auto" class="cld-responsive"

@@ -11,9 +11,11 @@ var Technology = new keystone.List('Technology', {
 });
 Technology.add({
 	name: { type: String, required: true, default: '' },
+	shortDescription: { type: Types.Html, default: '' },
 	description: { type: Types.Html, default: '' },
 	//iconImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	bannerImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	logo: { type: Types.CloudinaryImage,  autoCleanup : true},
 	primaryImage:  { type: Types.CloudinaryImage,  autoCleanup : true},
 	secondaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
