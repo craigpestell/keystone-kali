@@ -575,6 +575,32 @@ End Product Page
 }
 /* END Register page */
 
+/* Technology page */
+#technology .banner-overlay {
+  position: absolute;
+  top: 30%;
+  left: 15px;
+  width: 26%;
+  color: white;
+}
+#technology .banner-overlay h1{
+  font-size:30px;
+  margin-bottom:0;
+  height:36px;
+  line-height:36px;
+  letter-spacing:6px;
+}
+
+.technology-icon-nav h4.title{
+  font-size: 11px;
+  margin-bottom:2px;
+}
+.technology-icon-nav p{
+  font-size: 11px;
+}
+
+/* END Technology page*/
+
 
 .lazyload {
   opacity: 0;

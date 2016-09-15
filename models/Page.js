@@ -11,6 +11,7 @@ BasePage.add(
 		slug: { type: String, readonly: true },
 		heroImage: {type: Types.CloudinaryImage,  autoCleanup : true},
 		bannerImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+		bannerOverlayHtml: { type: Types.Html, default: '' },
 		carousel: {type: Types.CloudinaryImages,  autoCleanup : true},
 		slides: { type: Types.Relationship, ref: 'Slide', many: true },
 		contentHtml: {type: Types.Html}

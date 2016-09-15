@@ -1,48 +1,72 @@
+<div id="technology">
+<!--{{{data.page.bannerOverlayHtml}}}-->
+<div class="banner-overlay" style="top:20%; left:110px; width:100%">
+	<div style="display: inline-block; border-top: 2px solid white; border-bottom: 2px solid white; padding:20px 15px 15px 15px; margin-bottom:115px">
+    	<h1>THE FUTURE OF PROTECTIVES</h1>
+    </div>
+    <p class="hidden-xs" style="margin-left:-20px; font-size: 18px;width:650px;font-weight: bold">What started in a test lab a decade ago as a quest to evolve traditional helmet construction is now the benchmark in helmet engineering.<br>We call it Composite Fusion™</p>
+    <p class="hidden-xs" style="margin-left:-20px; font-size: 20px;width:650px;font-weight: bold; text-transform: uppercase;">WELCOME TO THE FUTURE</p>
+</div>
 {{{cloudinaryImgSrcSet data.page.bannerImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-	   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-	   format="jpg" quality="auto" class="cld-responsive"
-	   dataSrc=true}}}
+   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+   format="jpg" quality="auto" class="cld-responsive"
+}}}
 <div class="container">
+	<div class="row">
 {{#each technology}}
-	<div class="col-xs-2">
-		<div style="border-bottom:3px solid grey"><h4>{{year}}</h4>{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-							   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-							   format="jpg" quality="auto" class="cld-responsive"
-							   dataSrc=true}}}</div>
-		<div><h4><img src="{{{cloudinaryUrl iconImage width=20 height=20}}}" width="20" height="20"/> {{name}}</h4><p>{{shortDescription}}</p></div>
-	</div>
+	<a class="" href="/{{../data.page.slug}}#{{slug}}">
+		<div class="col-xs-2 technology-icon-nav">
+			<div style="border-bottom:3px solid grey"><div style="text-align:center"><h4>{{year}}</h4></div>{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   format="jpg" quality="auto" class="cld-responsive"
+								   }}}</div>
+			<div style="display:inline-block;float:left;">
+				<img src="{{{cloudinaryUrl iconImage width=30 height=30}}}" width="30" height="30" style="margin-right:2px;"/>
+			</div>
+			<div style="display:inline-block;float:left; max-width:130px;">
+				<h4 class="title" style="padding-top:5px;">{{name}}</h4>
+				<p style="">{{shortDescription}}</p>
+			</div>
+			
+		</div>
+    </a>
 {{/each}}
+    </div>
 </div>
 <!--<div class="container">
 	<div class="col-xs-12 text-center"><h2>{{{data.page.title}}}</h2><p>{{{data.page.contentHtml}}}</p></div>
 </div>-->
 {{#each technology}}
 <div>
+    <a id="{{slug}}">
 	{{{bannerOverlayHtml}}}
 	{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-					   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-					   format="jpg" quality="auto" class="cld-responsive"
-					   dataSrc=true}}}
+	   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+	   format="jpg" quality="auto" class="cld-responsive"
+	   dataSrc=true}}}
+    </a>
 </div>
 <div class="container">
-    <div class="row"> {{#if featureAnchor}}<a id="features"></a>{{/if}}</div>
     <div class="row"><div class="col-xs-12 text-center"><h2>{{name}}</h2></div></div>
     <div class="row">
-        <div class="col-xs-3">
+        <div class="col-xs-3 vcenter">
             <div>{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-										widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-										format="jpg" quality="auto" class="cld-responsive"
-										dataSrc=true}}}</div>
-        </div>
-		<div class="col-xs-6">{{this.description}}</div></div>
-    <div class="row"><div class="col-xs-12 ">
-		<!--TODO: adjust image sizes to fit in container-->
-		{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-							   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-							   format="jpg" quality="auto" class="cld-responsive"
-							   dataSrc=true}}}
-	</div></div>
-	
+				widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+				format="jpg" quality="auto" class="cld-responsive"
+				dataSrc=true}}}
+			</div>
+        </div><!--
+		--><div class="col-xs-6 vcenter">{{this.description}}</div></div>
+    <div class="row" style="margin-bottom:30px">
+		<div class="col-xs-12 ">
+			<!--TODO: adjust image sizes to fit in container-->
+			{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+			   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+			   format="jpg" quality="auto" class="cld-responsive"
+			   dataSrc=true}}}
+		</div>
+	</div>
 </div>
 {{/each}}
 
+</div><!-- end #technology -->
