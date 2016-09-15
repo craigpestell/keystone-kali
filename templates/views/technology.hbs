@@ -25,9 +25,9 @@
 			</div>
 			<div style="display:inline-block;float:left; max-width:130px;">
 				<h4 class="title" style="padding-top:5px;">{{name}}</h4>
-				<p style="">{{shortDescription}}</p>
+				<p class="hidden-xs">{{shortDescription}}</p>
+				<div class="row visible-xs"></div>
 			</div>
-			
 		</div>
     </a>
 {{/each}}
@@ -49,14 +49,8 @@
 <div class="container">
     <div class="row"><div class="col-xs-12 text-center"><h2>{{name}}</h2></div></div>
     <div class="row">
-        <div class="col-xs-3 vcenter">
-            <div>{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-				widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-				format="jpg" quality="auto" class="cld-responsive"
-				dataSrc=true}}}
-			</div>
-        </div><!--
-		--><div class="col-xs-6 vcenter">{{this.description}}</div></div>
+		<div class="col-xs-3"></div><div class="col-xs-6">{{this.description}}</div>
+	</div>
     <div class="row" style="margin-bottom:30px">
 		<div class="col-xs-12 ">
 			<!--TODO: adjust image sizes to fit in container-->
