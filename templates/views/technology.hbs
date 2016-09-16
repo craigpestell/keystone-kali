@@ -47,17 +47,21 @@
     </a>
 </div>
 <div class="container">
-    <div class="row"><div class="col-xs-12 text-center"><h2>{{name}}</h2></div></div>
     <div class="row">
         <div class="col-xs-3 vcenter">
-            <div>{{{cloudinaryImgSrcSet iconImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-										widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-										format="jpg" quality="auto" class="cld-responsive"
-										dataSrc=true}}}
-            </div>
-        </div><!--
-		--><div class="col-xs-6 vcenter">{{this.description}}</div></div>
+			{{{cloudinaryImgSrcSet iconImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+																  widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+																  format="jpg" quality="auto" class="cld-responsive"
+																  dataSrc=true}}}
+		</div><!--
+        --><div class="col-xs-6 vcenter text-center">
+            <h2>{{name}}</h2>
+        </div>
 	</div>
+    <div class="row" style="padding-bottom:30px">
+        <div class="col-xs-3"></div><div class="col-xs-6">{{this.description}}</div>
+	</div>
+    
     <div class="row" style="margin-bottom:30px">
 		<div class="col-xs-12 ">
 			<!--TODO: adjust image sizes to fit in container-->
