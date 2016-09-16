@@ -21,10 +21,10 @@
 								   format="jpg" quality="auto" class="cld-responsive"
 								   }}}</div>
 			<div style="display:inline-block;float:left;">
-				<img src="{{{cloudinaryUrl iconImage width=30 height=30}}}" width="30" height="30" style="margin-right:2px;"/>
+				<img src="{{{cloudinaryUrl iconImage width=30 quality=90}}}" width="30" style="margin-right:2px; margin-top:3px;"/>
 			</div>
 			<div style="display:inline-block;float:left; max-width:130px;">
-				<h4 class="title" style="padding-top:5px;">{{name}}</h4>
+				<h4 class="title" style="padding-top:6px;">{{name}}</h4>
 				<p class="hidden-xs">{{shortDescription}}</p>
 				<div class="row visible-xs"></div>
 			</div>
@@ -47,20 +47,24 @@
     </a>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-xs-3 vcenter">
-			{{{cloudinaryImgSrcSet iconImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-																  widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-																  format="jpg" quality="auto" class="cld-responsive"
-																  dataSrc=true}}}
-		</div><!--
-        --><div class="col-xs-6 vcenter text-center">
-            <h2>{{name}}</h2>
-			{{this.description}}
+    <div class="row" style="margin-top:30px">
+        <div class="col-xs-3" style="">
+			<div style="">
+				{{{cloudinaryImgSrcSet iconImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+				  widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+				  format="jpg" quality="auto" class="cld-responsive"
+				  dataSrc=true style="margin-top:-50%;position:relative;display:inline-block;"}}}
+            </div>
+		</div>
+		<div class="col-xs1"></div>
+		<div class="col-xs-8" style="margin-top:-15px">
+			<div class="col-xs-10">
+				<h2>{{name}}</h2>
+			    <p>{{this.description}}</p>
+            </div>
         </div>
 	</div>
-    
-    <div class="row" style="margin-bottom:30px">
+	<div class="row" style="margin-bottom:30px">
 		<div class="col-xs-12 ">
 			<!--TODO: adjust image sizes to fit in container-->
 			{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
