@@ -78,6 +78,22 @@ body {
   .slide-overlay {
 	font-size: 0.8em;
   }
+  
+  #technology .heading{
+	width: 360px;
+  }
+  
+  #technology .banner-overlay h1{
+	font-size:16px;
+	height:16px;
+	line-height:12px;
+	letter-spacing:3px;
+	margin:5px 0px 0px 0px;
+  }
+  #technology .intro {
+	font-size: 12px;
+	width:360px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -93,6 +109,22 @@ body {
   .slide-overlay {
 	font-size: 0.8em;
   }
+
+  #technology .heading{
+	width: 480px;
+  }
+  
+  #technology .banner-overlay h1{
+	font-size:20px;
+	height:20px;
+	line-height:20px;
+	letter-spacing:5px;
+	margin:4px 0px 2px 0px;
+  }
+  #technology .intro {
+	font-size: 14px;
+	width:480px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -105,6 +137,22 @@ body {
   .slide-overlay {
 	font-size: 1em;
   }
+
+  #technology .heading{
+	width: 560px;
+  }
+  
+  #technology .banner-overlay h1{
+	font-size:24px;
+	height:24px;
+	line-height:24px;
+	letter-spacing:6px;
+	margin:6px 0px 5px 0px;
+  }
+  #technology .intro {
+	font-size: 16px;
+	width:560px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -113,6 +161,22 @@ body {
   }
   .slide-overlay {
 	font-size: 1.2em;
+  }
+
+  #technology .heading{
+	width: 700px;
+  }
+
+  #technology .banner-overlay h1{
+	font-size:30px;
+	height:30px;
+	line-height:30px;
+	letter-spacing:6px;
+	margin:8px 0px 4px 0px;
+  }
+  #technology .intro {
+	font-size: 20px;
+	width:700px;
   }
 }
 
@@ -577,18 +641,32 @@ End Product Page
 
 /* Technology page */
 #technology .banner-overlay {
-  position: absolute;
-  top: 30%;
-  left: 15px;
-  width: 26%;
   color: white;
+  //position:absolute; top:25%; left:110px; width:100%
 }
-#technology .banner-overlay h1{
-  font-size:30px;
+#technology .heading {
+  display: inline-block; 
+  border-top: 2px solid white; 
+  border-bottom: 2px solid white;
+  position:absolute;
+  top: 30%;
+  left: 4%;
+}
+#technology .intro {
+  position:absolute;
+  left:4%;
+  //width:60%;
+  bottom: 5%;
+  font-weight: bold;
+}
+
+#technology .banner-overlay .intro h1{
+  //font-size:30px;
   margin-bottom:0;
-  height:36px;
-  line-height:36px;
-  letter-spacing:6px;
+  width:90%;
+  //height:36px;
+  //line-height:36px;
+  //letter-spacing:6px;
 }
 
 .technology-icon-nav h4.title{
