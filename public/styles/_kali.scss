@@ -94,6 +94,10 @@ body {
 	font-size: 12px;
 	width:360px;
   }
+  
+  #technology .description {
+	height:150px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -125,6 +129,12 @@ body {
 	font-size: 14px;
 	width:480px;
   }
+  .technology-icon-nav title {
+	height:20px;
+  }
+  #technology .description {
+	height:160px;
+  }  
 }
 
 @media (min-width: 992px) {
@@ -152,6 +162,9 @@ body {
   #technology .intro {
 	font-size: 16px;
 	width:560px;
+  }
+  #technology .description {
+	height:auto;
   }
 }
 
@@ -640,6 +653,9 @@ End Product Page
 /* END Register page */
 
 /* Technology page */
+#technology a, #technology a:visited, #technology a:hover {
+  text-decoration: none;
+}
 #technology .banner-overlay {
   color: white;
   //position:absolute; top:25%; left:110px; width:100%
@@ -659,6 +675,12 @@ End Product Page
   bottom: 5%;
   font-weight: bold;
 }
+.technology-icon-nav .title h4 {
+  font-size: 10px;
+}
+#technology .description {
+  font-size:0.8em;
+}
 
 #technology .banner-overlay .intro h1{
   //font-size:30px;
@@ -669,9 +691,19 @@ End Product Page
   //letter-spacing:6px;
 }
 
+.technology-icon-nav .tertiary-container {
+  border-bottom: 3px solid $brand-grey;
+}
+.technology-icon-nav h4.year{
+  font-size:12px;
+  font-family: Gotham-Black;
+}
 .technology-icon-nav h4.title{
-  font-size: 12px;
+  //font-size: 12px;
   margin-bottom:2px;
+}
+.technology-icon-nav h5.title{
+  font-size:10px;
 }
 .technology-icon-nav p{
   font-size: 11px;

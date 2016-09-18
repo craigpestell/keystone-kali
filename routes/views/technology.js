@@ -7,6 +7,7 @@ exports = module.exports = function(req, res) {
 
 	// Set locals
 	locals.page = 'technology';
+	locals.section = 'technology';
 	
 	locals.filters = {
 		page: 'technology'

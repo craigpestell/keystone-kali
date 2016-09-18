@@ -87,6 +87,7 @@
     <script type="text/javascript">var apiKey = "AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY";</script>
     <script src="/js/plugins/storeLocator/jquery.storelocator.js"></script>
 {{/ifCond}}
+
 <!--{{{isAdminEditorJS user}}}-->
 {{#ifCond section '==' 'products' }}
     <script type="text/javascript">
@@ -141,6 +142,28 @@
 				
 			}
 		});
+
+        $('a.banner-anchor[href*="#"]:not([href="#"])').click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var label = $(this).attr('href');
+                /*ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Product category nav scroll',
+                    eventAction: 'click',
+                    eventLabel: label
+                });*/
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+
+            }
+        });
 		
 		$('.social-icon-facebook').click(function(e){
             ga('send', {
