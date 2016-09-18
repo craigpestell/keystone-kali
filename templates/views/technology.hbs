@@ -47,7 +47,10 @@
 	<div class="container">
 		<div class="row" style="margin-top:30px">
 			<div class="col-xs-3" style="">
-                <img data-src="{{cloudinaryUrl iconImage  width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" style="margin-top:-50%;line-height:0;position:relative;display:inline-block;"/>
+				{{{cloudinaryImgSrcSet iconImage screenWidths="[265]"
+									   widths="[265]"
+									   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"
+									   dataSrc=true style="margin-top:-50%;line-height:0;position:relative;display:inline-block;"}}}
 			</div>
 			<div class="col-xs1"></div>
 			<div class="col-xs-8">
