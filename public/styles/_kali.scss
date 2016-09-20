@@ -71,6 +71,7 @@ body {
   //padding-top:120px;
 }
 
+
 @media (min-width: 0px) {
   .bh-sl-container .bh-sl-map{
 	height:300px;
@@ -96,7 +97,7 @@ body {
   }
   
   #technology .description {
-	height:150px;
+	height:170px;
   }
 }
 
@@ -692,8 +693,7 @@ End Product Page
 }
 
 .technology-icon-nav .tertiary-container {
-  border-bottom: 3px solid $brand-grey;
-}
+  border-bottom: 3px solid $brand-grey;}
 .technology-icon-nav h4.year{
   font-size:12px;
   font-family: Gotham-Black;
@@ -707,6 +707,19 @@ End Product Page
 }
 .technology-icon-nav p{
   font-size: 11px;
+}
+
+.technology-icon-nav .timeline{
+  border-bottom:2px solid $brand-primary;
+}
+
+.technology-icon-nav .timeline-end {
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background-color:$brand-primary;
 }
 
 /* END Technology page*/
