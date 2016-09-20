@@ -693,7 +693,7 @@ End Product Page
 }
 
 .technology-icon-nav .tertiary-container {
-  border-bottom: 3px solid $brand-grey;}
+  border-bottom: 3px solid $brand-grey;padding-bottom:2px;}
 .technology-icon-nav h4.year{
   font-size:12px;
   font-family: Gotham-Black;
@@ -720,6 +720,13 @@ End Product Page
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   background-color:$brand-primary;
+}
+
+.technology-icon-nav .tertiary-image{
+  padding: 2px;
+}
+.technology-icon-nav .tertiary-image:hover{
+  padding: 0px;
 }
 
 /* END Technology page*/
