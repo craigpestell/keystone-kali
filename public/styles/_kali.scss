@@ -720,17 +720,17 @@ End Product Page
 }
 
 .technology-icon-nav .technology-icon-nav-item .tertiary-image{
-  padding: 2px;
+  padding: 0px;
 }
 .technology-icon-nav .technology-icon-nav-item .tertiary-image img{
-  padding: 0px;
+  padding: 2px;
 }
 
 .technology-icon-nav .technology-icon-nav-item:hover .tertiary-image{
-  padding: 0px;
+  padding: -2px;
 }
 .technology-icon-nav .technology-icon-nav-item:hover .tertiary-image img{
-  padding: -2px;
+  padding: 0px;
 }
 
 /* END Technology page*/
