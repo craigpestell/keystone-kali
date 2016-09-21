@@ -1,19 +1,50 @@
 <div class="col-xs-4 col-sm-2 technology-icon-nav-item">
-	<a class="" href="/{{../data.page.slug}}#{{slug}}">
-        <div class="tertiary-container">
-            <div class="text-center"><h4 class="year">{{year}}</h4></div>
-			{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   widths="[72,  85, 90,102,102,110,110,142,175,221,132,132,  165]"
-								   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
+    <a class="banner-anchor" href="/{{../data.page.slug}}#{{slug}}">
+        <div class="tertiary-container text-center">
+			{{#if @first}}
+                <div class="visible-xs">
+                    <h4 class="year">{{year}}</h4>
+                </div>
+                <div class="hidden-xs">
+                    <!--spacer--><div class="" style="float:left;width:30%;margin-top:8px;margin-right:-15px;"></div>
+                    <div style="display:inline-block; width:20%;"><h4 class="year">{{year}}</h4></div>
+                    <div class="timeline" style="float:right;width:30%;margin-right:-15px;"></div>
+                    <div class="timeline-end" style="float:right;"></div>
+                </div>
+			{{else}}
+				{{#if @last}}
+                    <div class="visible-xs">
+                        <h4 class="year">{{year}}</h4>
+                    </div>
+                    <div class="hidden-xs">
+                        <div class="timeline" style="float:left;width:30%;margin-left:-15px;"></div>
+                        <div class="timeline-end" style="float:left;"></div>
+                        <div style="display:inline-block"><h4 class="year">{{year}}</h4></div>
+                        <!--spacer--><div class="" style="float:right;width:30%;margin-top:8px;margin-left:-15px;"></div>
+                    </div>
+				{{else}}
+                    <div class="visible-xs">
+                        <h4 class="year">{{year}}</h4>
+                    </div>
+                    <div class="hidden-xs">
+                        <div class="timeline" style="float:left;width:40%;margin-left:-15px;"></div>
+                        <div style="display:inline-block"><h4 class="year">{{year}}</h4></div>
+                        <div class="timeline" style="float:right;width:40%;margin-right:-15px;"></div>
+                    </div>
+				{{/if}}
+			{{/if}}
+            <div class="tertiary-image">
+                <img data-src="{{cloudinaryUrl tertiaryImage  width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive"/>
+            </div>
         </div>
         <div class="text-center" style="margin:5px 0px 5px 0px;">
             <img src="{{{cloudinaryUrl iconImage width=30 quality=90}}}" width="30"/>
         </div>
-        <div style="margin-top:5px;">
-            <h4 class="title">{{name}}</h4>
+        <div class="title text-center" style="margin-top:8px;">
+            <h4>{{name}}</h4>
         </div>
-        <div class="description" style="">
-			{{shortDescription}}
+        <div class="description">
+			{{{shortDescription}}}
         </div>
     </a>
 </div>
