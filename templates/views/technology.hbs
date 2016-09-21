@@ -22,9 +22,11 @@
 					{{#if isModZero}}
                     <div class="row">
 					{{/if}}
-                    
-                        {{> technology-icon-nav-item}}
-                    
+					<div class="col-xs-4 col-sm-2 technology-icon-nav-item">
+						<a class="banner-anchor" href="/{{../data.page.slug}}#{{slug}}">
+							{{> technology-icon-nav-item}}
+						</a>
+					</div>                    
 					{{#if isLast}}
                     </div>
 					{{/if}}
@@ -32,7 +34,11 @@
 			</div>
 			<div class="hidden-xs">
 			{{#each technology}}
-				{{> technology-icon-nav-item}}
+                <div class="col-xs-4 col-sm-2 technology-icon-nav-item">
+                    <a class="banner-anchor" href="/{{../data.page.slug}}#{{slug}}">
+						{{> technology-icon-nav-item}}
+                    </a>
+                </div>
 			{{/each}}
             </div>
 		</div>
