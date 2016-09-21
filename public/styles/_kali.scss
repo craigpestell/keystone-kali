@@ -711,15 +711,17 @@ End Product Page
 
 .technology-icon-nav .timeline{
   border-bottom:2px solid $brand-primary;
+  margin-top:9px;
 }
 
 .technology-icon-nav .timeline-end {
-  height: 7px;
-  width: 7px;
-  border-radius: 7px;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
+  height: 6px;
+  width: 6px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
   background-color:$brand-primary;
+  margin-top:7px;
 }
 
 .technology-icon-nav .tertiary-image{
