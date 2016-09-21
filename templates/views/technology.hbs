@@ -1,5 +1,5 @@
 <div id="technology">
-	<div class="banner" style="position: relative;width:100%">
+	<div class="banner" style="position: relative">
 		<div class="banner-overlay">
 			<div class="heading text-center">
 				<h1>THE FUTURE OF PROTECTIVES</h1>
@@ -9,7 +9,9 @@
 				<p style="text-transform: uppercase;">WELCOME TO THE FUTURE</p>
 			</div>
 		</div>
-		<img data-src="{{cloudinaryUrl data.page.bannerImage width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive"/>
+		{{{cloudinaryImgSrcSet data.page.bannerImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+                                                        widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+                                                        format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
 		
 	</div>
 	<div class="container">
@@ -48,7 +50,9 @@
 	<div style="margin-top:30px;">
 		{{{bannerOverlayHtml}}}
         <a id="{{slug}}"></a>
-        <img data-src="{{cloudinaryUrl heroImage  width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive"/>
+	{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+						widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+						format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
     </div>
 	<div class="container">
 		<div class="row hidden-xs">
