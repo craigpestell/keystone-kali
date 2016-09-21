@@ -81,15 +81,14 @@ body {
   }
   
   #technology .heading{
-	width: 360px;
+	width: 90%;
+	top: 20%;
   }
   
   #technology .banner-overlay h1{
 	font-size:16px;
-	height:16px;
-	line-height:12px;
 	letter-spacing:3px;
-	margin:5px 0px 0px 0px;
+	margin:3px 0px 1px 0px;
   }
   #technology .intro {
 	font-size: 12px;
@@ -115,6 +114,7 @@ body {
 
   #technology .heading{
 	width: 480px;
+	top: 30%;
   }
   
   #technology .banner-overlay h1{
@@ -661,7 +661,6 @@ End Product Page
   border-top: 2px solid white; 
   border-bottom: 2px solid white;
   position:absolute;
-  top: 30%;
   left: 4%;
 }
 #technology .intro {
