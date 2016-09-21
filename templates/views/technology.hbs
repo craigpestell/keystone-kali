@@ -72,13 +72,14 @@
 		<div class="col-xs-12 text-center"><h2>{{{data.page.title}}}</h2><p>{{{data.page.contentHtml}}}</p></div>
 	</div>-->
 {{#each technology}}
-	<div class="row">
+	<div style="margin-top:30px;">
 		{{{bannerOverlayHtml}}}
         <a id="{{slug}}"></a>
         <img data-src="{{cloudinaryUrl heroImage  width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive"/>
-	</div>
+    </div>
+	
 	<div class="container">
-		<div class="row" style="margin-top:30px">
+		<div class="row">
 			<div class="col-xs-3" style="">
 				{{{cloudinaryImgSrcSet iconImage screenWidths="[265]"
 									   widths="[265]"
