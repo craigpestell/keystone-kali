@@ -30,9 +30,9 @@
                             </div>
 						{{else}}
 							{{#if @last}}
-                                <div class="visible-xs">
-                                    <h4 class="year">{{year}}</h4>
-                                </div>
+							<div class="visible-xs">
+								<h4 class="year">{{year}}</h4>
+							</div>
                             <div class="hidden-xs">    
                                 <div class="timeline" style="float:left;width:30%;margin-left:-15px;"></div>
                                 <div class="timeline-end" style="float:left;"></div>
@@ -48,8 +48,7 @@
                                 <div style="display:inline-block"><h4 class="year">{{year}}</h4></div>
                                 <div class="timeline" style="float:right;width:40%;margin-right:-15px;"></div>
 							</div>
-							{{/if}}	
-                            
+							{{/if}}
 						{{/if}}
 						<div class="tertiary-image">
                         	<img data-src="{{cloudinaryUrl tertiaryImage  width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive"/>
