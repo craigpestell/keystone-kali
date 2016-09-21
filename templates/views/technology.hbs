@@ -85,7 +85,9 @@
 		<div class="row" style="margin-bottom:15px">
 			<div class="col-xs-12 ">
 				<!--TODO: adjust image sizes to fit in container-->
-                <img data-src="{{cloudinaryUrl primaryImage  width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive"/>
+				{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
 			</div>
 		</div>
 	</div>
