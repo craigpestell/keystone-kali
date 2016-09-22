@@ -50,7 +50,7 @@
 	<div style="margin-top:30px;">
 		{{{bannerOverlayHtml}}}
         <a id="{{slug}}"></a>
-	{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+		{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 						widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 						format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
     </div>
@@ -72,16 +72,15 @@
 		</div>
         <div class="row visible-xs">
 			<div class="col-xs-4">
-				{{{cloudinaryImgSrcSet iconImage screenWidths="[265]"
-									   widths="[265]"
-									   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"
-									   dataSrc=true style=""}}}
+				{{{cloudinaryImgSrcSet iconImage screenWidths="[3840]" widths="[265]"
+									   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
 			</div>
 			<div class="col-xs-8">
 				<h2>{{name}}</h2>
 				<p>{{this.description}}</p>
             </div>
         </div>
+		{{#if primaryImage}}
 		<div class="row" style="margin-bottom:15px">
 			<div class="col-xs-12 ">
 				<!--TODO: adjust image sizes to fit in container-->
@@ -90,6 +89,7 @@
 									   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
 			</div>
 		</div>
+		{{/if}}
 	</div>
 {{/each}}
 

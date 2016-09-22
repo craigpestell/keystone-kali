@@ -32,7 +32,9 @@
 		{{/if}}
 	{{/if}}
 	<div class="tertiary-image">
-		<img data-src="{{cloudinaryUrl tertiaryImage  width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive"/>
+		{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[3840]"
+							   widths="[100]"
+							   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
 	</div>
 </div>
 <div class="text-center" style="margin:5px 0px 5px 0px;">

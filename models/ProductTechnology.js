@@ -22,7 +22,8 @@ ProductTechnology.add({
 	bannerOverlayHtml: { type: Types.Html, default: '' },
 	primaryImage:  { type: Types.CloudinaryImage,  autoCleanup : true},
 	secondaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
-	tertiaryImage: { type: Types.CloudinaryImage,  autoCleanup : true}
+	tertiaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	contentHtml: { type: Types.Html, default: '' }
 });
 
 ProductTechnology.register();
