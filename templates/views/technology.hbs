@@ -9,9 +9,7 @@
 				<p style="text-transform: uppercase;">WELCOME TO THE FUTURE</p>
 			</div>
 		</div>
-		{{{cloudinaryImgSrcSet data.page.bannerImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-                                                        widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
-                                                        format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
+        <img data-src="{{cloudinaryUrl data.page.bannerImage width="auto" format="jpg" flags="progressive"}}" class="cld-responsive" src=""/>
 		
 	</div>
 	<div class="container">
@@ -50,9 +48,7 @@
 	<div style="margin-top:30px;">
 		{{{bannerOverlayHtml}}}
         <a id="{{slug}}"></a>
-		{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-						widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
-						format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
+        <img data-src="{{cloudinaryUrl heroImage width="auto" format="jpg" flags="progressive" fetch_format="auto"}}" class="cld-responsive" src=""/>
     </div>
 	<div class="container">
 		<div class="row hidden-xs">
@@ -84,9 +80,7 @@
 		<div class="row" style="margin-bottom:15px">
 			<div class="col-xs-12 ">
 				<!--TODO: adjust image sizes to fit in container-->
-				{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-									   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
-									   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
+                <img data-src="{{cloudinaryUrl primaryImage width="auto" format="jpg" flags="progressive" fetch_format="auto"}}" class="cld-responsive" src=""/>
 			</div>
 		</div>
 		{{/if}}
@@ -97,17 +91,13 @@
                 </div><!--
 					--><div class="col-xs-12 col-sm-7 vcenter">
                 <!--TODO: adjust image sizes to fit in container-->
-				{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-									   widths="[320,360,375,411,414,435,530,630,730,768,408,536,653]"
-									   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
+                <img data-src="{{cloudinaryUrl secondaryImage width="auto" format="jpg" flags="progressive" fetch_format="auto"}}" class="cld-responsive" src=""/>
             </div>
             </div>
             <div class="row visible-xs">
                 <div class="col-xs-12 col-sm-7 vcenter" style="margin-top:15px">
                 <!--TODO: adjust image sizes to fit in container-->
-				{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-									   widths="[320,360,375,411,414,435,530,630,730,722,535,653,653]"
-									   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
+                    <img data-src="{{cloudinaryUrl secondaryImage width="auto" format="jpg" flags="progressive" fetch_format="auto"}}" class="cld-responsive" src=""/>
             	</div><!--
 					--><div class="col-xs-12 col-sm-5 vcenter" style="margin-top:30px">
 					{{{contentHtml}}}
