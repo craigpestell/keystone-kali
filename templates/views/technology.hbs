@@ -50,7 +50,7 @@
 	<div style="margin-top:30px;">
 		{{{bannerOverlayHtml}}}
         <a id="{{slug}}"></a>
-        <img data-src="{{cloudinaryUrl heroImage width="auto" format="jpg" flags="progressive" fetch_format="auto"}}" class="cld-responsive banner" src=""/>
+        <img data-src="{{cloudinaryUrl heroImage width="auto" format="jpg" flags="progressive" quality="auto"}}" class="cld-responsive banner" src=""/>
     </div>
 	<div class="container">
 		<div class="row hidden-xs">
@@ -71,7 +71,7 @@
         <div class="row visible-xs">
 			<div class="col-xs-4">
 				{{{cloudinaryImgSrcSet iconImage screenWidths="[3840]" widths="[265]"
-									   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
+									   format="jpg" flags="progressive"  quality="auto" class="cld-responsive"}}}
 			</div>
 			<div class="col-xs-8">
 				<h2>{{name}}</h2>
@@ -82,7 +82,7 @@
 		<div class="row" style="margin-bottom:15px">
 			<div class="col-xs-12 ">
 				<!--TODO: adjust image sizes to fit in container-->
-                <img data-src="{{cloudinaryUrl primaryImage width="auto" format="jpg" flags="progressive" fetch_format="auto"}}" class="cld-responsive" src=""/>
+                <img data-src="{{cloudinaryUrl primaryImage width="auto" format="jpg" flags="progressive" quality="auto"}}" class="cld-responsive" src=""/>
 			</div>
 		</div>
 		{{/if}}
@@ -93,13 +93,13 @@
                 </div><!--
 					--><div class="col-xs-12 col-sm-7 vcenter">
                 <!--TODO: adjust image sizes to fit in container-->
-                <img data-src="{{cloudinaryUrl secondaryImage width="auto" format="jpg" flags="progressive" fetch_format="auto"}}" class="cld-responsive" src=""/>
+                <img data-src="{{cloudinaryUrl secondaryImage width="auto" format="jpg" flags="progressive" quality="auto"}}" class="cld-responsive" src=""/>
             </div>
             </div>
             <div class="row visible-xs">
                 <div class="col-xs-12 col-sm-7 vcenter" style="margin-top:15px">
                 <!--TODO: adjust image sizes to fit in container-->
-                    <img data-src="{{cloudinaryUrl secondaryImage width="auto" format="jpg" flags="progressive" fetch_format="auto"}}" class="cld-responsive" src=""/>
+                    <img data-src="{{cloudinaryUrl secondaryImage width="auto" format="jpg" flags="progressive" quality="auto"}}" class="cld-responsive" src=""/>
             	</div><!--
 					--><div class="col-xs-12 col-sm-5 vcenter" style="margin-top:30px">
 					{{{contentHtml}}}

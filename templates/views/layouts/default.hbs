@@ -108,9 +108,9 @@
             $(".technology-banner").one("load", function() {
                 // do stuff
                 $.cloudinary.responsive();
-                if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
-                    callback.apply(this);
-                }
+                //if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
+                //    callback.apply(this);
+                //}
             }).each(function() {
                 if(this.complete) $(this).load();
             });
