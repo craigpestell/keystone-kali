@@ -102,22 +102,6 @@
     </script>
 
 {{/ifCond}}
-{{#ifCond section '==' 'technology' }}
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".technology-banner").one("load", function() {
-                // do stuff
-                $.cloudinary.responsive();
-                //if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
-                //    callback.apply(this);
-                //}
-            }).each(function() {
-                if(this.complete) $(this).load();
-            });
-        });
-    </script>
-
-{{/ifCond}}
 {{#ifCond section '==' 'product' }}
 	{{> product-dom-ready}}
 {{/ifCond}}
@@ -128,7 +112,7 @@
     $(document).ready(function () {
         var section = '{{section}}';
         //console.log('section: ', section);
-        if (section !== 'product' && section !== 'technology') {
+        if (section !== 'product') {
             $.cloudinary.responsive();
         }
         /*$('.product-section-nav').affix({
