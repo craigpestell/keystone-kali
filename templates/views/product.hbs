@@ -58,10 +58,12 @@
 				{{#if product.technologies.length}}
                     <div class="row technology">
 						{{#each product.technologies}}
-						<div class="col-xs-5 text-center">
+						<div class="col-xs-5">
 							<a href="/technology#{{slug}}">
-								<img class="" src="{{{cloudinaryUrl iconImage width=70 format="jpg"}}}"/>
-								<h4 style="margin-top:10px">{{name}}</h4>
+								<div class="text-center" style="display:inline-block;">
+                                    <img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto" }}}" width="70"/>
+									<h4 style="margin-top:10px">{{name}}</h4>
+                                </div>
                             </a>
 						</div>
 						<div class="col-xs-7">
