@@ -55,11 +55,14 @@
 					</div>
 				</div>
 				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="left"}}
-				{{#if product.technologiesAndFeatures.length}}
-                    <div class="row">
-						{{#each product.technologiesAndFeatures}}
-						<div class="col-xs-5">
-							<img class="" src="{{{cloudinaryUrl iconImage width=70 format="jpg"}}}"/>
+				{{#if product.technologies.length}}
+                    <div class="row technology">
+						{{#each product.technologies}}
+						<div class="col-xs-5 text-center">
+							<a href="/technology#{{slug}}">
+								<img class="" src="{{{cloudinaryUrl iconImage width=70 format="jpg"}}}"/>
+								<h4 style="margin-top:10px">{{name}}</h4>
+                            </a>
 						</div>
 						<div class="col-xs-7">
 							{{shortDescription}}
@@ -67,6 +70,17 @@
 						{{/each}}
                     </div>
 				{{/if}}
+				<!--{{#if product.features.length}}
+                    <div class="row feature">
+						<div class="col-xs-12">
+							<ul>
+						{{#each product.features}}
+                             <li><h4>{{name}}</h4></li>
+						{{/each}}
+                            </ul>
+						</div>
+                    </div>
+				{{/if}}-->
 				<div class="row">
 					<div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em;font-family:Gotham-Black">Find a Dealer</h3></a>
 					</div>
