@@ -44,6 +44,21 @@
 				<div class="product-description">
 					<p>{{{product.description}}}</p>
 				</div>
+				{{#if product.technologies.length}}
+                    <div class="row technology">
+						{{#each product.technologies}}
+                            <div class="col-xs-5 initialism"><strong>Technology</strong></div>
+                            <div class="col-xs-7">
+                                <a href="/technology">
+                                    <div class="text-center" style="display:inline-block;">
+                                        <img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
+                                        <h4 style="margin-top:10px">{{name}}</h4>
+                                    </div>
+                                </a>
+                            </div>
+						{{/each}}
+                    </div>
+				{{/if}}
 				<div class="row">
 					<div class="col-xs-12 initialism">
 						{{{product.specs}}}
@@ -55,23 +70,7 @@
 					</div>
 				</div>
 				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="left"}}
-				{{#if product.technologies.length}}
-                    <div class="row technology">
-						{{#each product.technologies}}
-						<div class="col-xs-5">
-							<a href="/technology">
-								<div class="text-center" style="display:inline-block;">
-                                    <img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto" }}}" width="70"/>
-									<h4 style="margin-top:10px">{{name}}</h4>
-                                </div>
-                            </a>
-						</div>
-						<div class="col-xs-7">
-							{{shortDescription}}
-						</div>
-						{{/each}}
-                    </div>
-				{{/if}}
+				
 				<!--{{#if product.features.length}}
                     <div class="row feature">
 						<div class="col-xs-12">
