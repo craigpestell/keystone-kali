@@ -48,7 +48,7 @@
 				<div class="row technology">
                     <div class="col-xs-12">
 						{{#each product.technologies}}
-						<a href="/technology">
+						<a href="/technology#{{slug}}">
 							<div class="text-center" style="display:inline-block;{{#unless @last}}margin-right:15px;{{/unless}}">
 								<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
 								<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
