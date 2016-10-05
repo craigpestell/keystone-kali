@@ -15,6 +15,7 @@ ProductSubCategory.add({
 	name: { type: String, required: true, default: '' },
 	slug: { type: String, required: true, initial: true},
 	parentCategory:{ type: Types.Relationship, ref: 'ProductCategory'},
+	sizingDiagram: { type: Types.CloudinaryImage,  autoCleanup : true },
 	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true }
 });
 

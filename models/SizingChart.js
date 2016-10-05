@@ -9,7 +9,8 @@ SizingChart.defaultColumns='name';
 SizingChart.add(
 	{
 		name: { type: String, required: true, default: ''},
-		html: {type: Types.Html, note: ''},
+		text:{ type: String, default: ''},
+		html: {type: Types.Html, note: ''}
 	}
 );
 
