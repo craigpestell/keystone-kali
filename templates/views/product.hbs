@@ -87,29 +87,30 @@
 					</div>
 				</div>
 			</div>
-			{{#if product.sizingChart}}
-            
-			<div class="col-xs-12">
-				<h4>Sizing Chart</h4>
-				<p>{{{product.sizingChart.text}}}</p>
-			</div>
-	
-			{{#if product.subCategory.sizingDiagram.url}}
-				<div class="col-xs-12 col-sm-5">
-					<img data-src="{{cloudinaryUrl product.subCategory.sizingDiagram width="auto" format="jpg" flags="progressive" quality="auto"}}" class="cld-responsive" src=""/>
+		</div>
+		{{#if product.sizingChart}}
+			<div class="row">
+				<div class="col-xs-12 col-md-7 text-center">
+					<h3>Sizing Chart</h3>
+					<p>{{{product.sizingChart.text}}}</p>
 				</div>
-				<div class="col-xs-12 col-sm-7">
+			</div>
+			<div class="row">
+			{{#if product.subCategory.sizingDiagram.url}}
+				<div class="col-xs-12 col-md-3 vcenter text-center">
+					<img data-src="{{cloudinaryUrl product.subCategory.sizingDiagram width="auto" format="jpg" flags="progressive" quality="auto"}}" class="cld-responsive" src="" style="max-width:263px;"/>
+				</div><!--
+				--><div class="col-xs-12 col-md-4 sizing-chart-table initialism vcenter">
 					{{{product.sizingChart.html}}}
 				</div>
 			{{else}}
-				<div class="col-xs-12">
+				<div class="col-xs-12 col-md-7">
 					{{{product.sizingChart.html}}}
 				</div>
 			{{/if}}
-
-	
-			{{/if}}
-        </div>
+			</div>
+		{{/if}}
+        
     </div>
 	
 	{{> product-blueimp-gallery-dom}}

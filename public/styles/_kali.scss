@@ -636,6 +636,23 @@ End Product Page
   font-size: $font-size-base;
 }
 
+.sizing-chart-table table {
+  border-collapse: collapse;
+  width:100%;
+}
+.sizing-chart-table table, .sizing-chart-table th, .sizing-chart-table td {
+  border: 1px solid black;
+  text-align:center;
+}
+.sizing-chart-table th, .sizing-chart-table td {
+  padding:3px 5px;
+}
+.sizing-chart-table th {
+  color: #FFF;
+  background-color: #000;
+}
+
+
 .colorway {
   text-transform: uppercase;
   text-align: center;
