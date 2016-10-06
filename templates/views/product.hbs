@@ -46,16 +46,16 @@
 				</div>
 				{{#if product.technologies.length}}
 				<div class="row technology">
-                    <div class="col-xs-12">
-						{{#each product.technologies}}
+					{{#each product.technologies}}
+					<div class="col-xs-3">
 						<a href="/technology#{{slug}}">
-							<div class="text-center" style="display:inline-block;{{#unless @last}}margin-right:15px;{{/unless}}">
+							<div class="text-center" style="display:inline-block;">
 								<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
 								<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
 							</div>
 						</a>
-						{{/each}}
-                    </div>
+					</div>
+					{{/each}}
 				</div>
 				{{/if}}
 				<div class="row">
