@@ -13,10 +13,11 @@ Dealer.add({
 	location:{ type: Types.Location, initial: true, required: true, enableMapsAPI: true},
 	phone: {type: Types.Text},
 	web: {type: Types.Url},
-	email: {type: Types.Email}
+	email: {type: Types.Email},
+	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 });
 
-/*Dealer.schema.pre('save', function(next) {
+Dealer.schema.pre('save', function(next) {
 	var self = this;
 	setTimeout(function(){
 		
@@ -31,7 +32,7 @@ Dealer.add({
 		});		
 	}, 1000);
 
- });*/
+ });
 /*
  "id": "9",
  "name": "Chipotle Minnetonka",
