@@ -1902,8 +1902,11 @@
 
 			// Empty the location list
 			$('.' + this.settings.locationList + ' ul').empty();
-
+			if(map.zoom < 10) {
+				return;
+			}
 			// Set up the new list
+			var count = 0;
 			$(markers).each(function(x, marker){
 				if(map.getBounds().contains(marker.getPosition())) {
 					// Define the location data
@@ -1913,6 +1916,7 @@
 					listHtml = listTemplate(locations);
 					$('.' + _this.settings.locationList + ' ul').append(listHtml);
 				}
+				count++;
 			});
 
 			// Re-add the list background colors
