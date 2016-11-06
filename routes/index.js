@@ -96,7 +96,7 @@ exports = module.exports = function(app) {
 		},
 		route: {
 			'ALL': {
-				lastmod: '2016-10-01',
+				lastmod: '2016-11-01',
 				changefreq: 'always',
 				priority: 1.0,
 			},
