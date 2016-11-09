@@ -63,6 +63,15 @@ exports = module.exports = function(app) {
 	
 	app.get('/gallery', routes.views.gallery);
 
+	//app.get('/country', routes.views.country);
+	app.get('/cf-ipcountry', function(req, res){
+		var country = 'US';
+		if(req.headers['cf-ipcountry']){
+			country = req.headers['cf-ipcountry']
+		}
+		res.json({country:country}).end();
+		//console.log(req.headers);
+	});
 	
 	app.get('/:category(helmets|armor)?', routes.views['product-category']);
 	app.get('/:category(helmets|armor)/:subCategory?', routes.views['product-category']);
@@ -92,15 +101,15 @@ exports = module.exports = function(app) {
 			'/moto':['get'],
 			'/dealers':['get'],
 			'/contact':['get'],
-			'/register':['get'],
+			'/register':['get']
 		},
 		route: {
 			'ALL': {
 				lastmod: '2016-11-01',
 				changefreq: 'always',
-				priority: 1.0,
-			},
-		},
+				priority: 1.0
+			}
+		}
 	};
 	
 	
@@ -131,7 +140,6 @@ exports = module.exports = function(app) {
 			});
 		
 	});
-
-
+	
 	app.get('/:page', routes.views.page);
 };
