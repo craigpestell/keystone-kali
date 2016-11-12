@@ -10,6 +10,9 @@
 				url:'/cf-ipcountry',
 				success: function(result){
 					console.log(result);
+					if(result.country == "US") {
+						$('#rowEcwidCan').show();
+					}
 				}
 			});
 		}
