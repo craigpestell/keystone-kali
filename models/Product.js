@@ -29,6 +29,9 @@ Product.add({
 	imagesPerColorSwatch: {type: Number, note: 'Number of images for each color swatch.'},
 	colorways: {type: String, default: '', note: 'semi-colon delimited list of colorways'},
 	sizingChart: { type: Types.Relationship, ref: 'SizingChart' },
+	ecwidCanProductId: {type: String},
+	ecwidUkProductId: {type: String},
+	ecwidUsProductId: {type: String},
 	extra: { type: Types.Html, wysiwyg: true }
 });
 
