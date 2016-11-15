@@ -580,6 +580,8 @@
 			// Reset button trigger
 			if ($('.bh-sl-reset').length && $('#' + this.settings.mapID).length) {
 				$(document).on('click.' + pluginName, '.bh-sl-reset', function () {
+					$('#bh-sl-search').val("");
+					$('#bh-sl-address').val("");
 					_this.mapReload();
 				});
 			}
