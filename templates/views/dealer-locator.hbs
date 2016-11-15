@@ -10,7 +10,12 @@
 			<div class="bh-sl-form-container">
 				<form id="bh-sl-user-location" method="post" action="#">
 					<div class="form-input">
-						<label for="bh-sl-address">Enter Address or Zip Code:</label>
+						Search by
+						<select id="dealer-search-type">
+							<option value="address">Address or Zip Code</option>
+							<option value="name">Dealer Name</option>
+						</select>
+						<input type="text" id="bh-sl-search" name="bh-sl-search" style="display:none"/>
 						<input type="text" id="bh-sl-address" name="bh-sl-address"/>
 					</div>
 

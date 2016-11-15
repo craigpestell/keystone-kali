@@ -1,6 +1,10 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		
+		$('#dealer-search-type').change(function(){
+		    
+		   $('#bh-sl-address').toggle().val("");
+		   $('#bh-sl-search').toggle().val("");
+		});
         $('#importDealers').click(function () {
             var dealers = [
             
@@ -84,7 +88,7 @@
                     dataRaw: mapDealers,
                     fullMapStart: true,
                     fullMapStartBlank: false,
-                    fullMapStartListLimit: true,
+                    fullMapStartListLimit: 100,
                     loading: true,
                     storeLimit: mapDealers.length,
                     slideMap: false,
