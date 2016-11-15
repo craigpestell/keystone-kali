@@ -2672,6 +2672,11 @@
 			// Center and zoom if no origin or zoom was provided, or distance of first marker is greater than distanceAlert
 			if ((_this.settings.fullMapStart === true && firstRun === true) || (_this.settings.mapSettings.zoom === 0) || (typeof origin === 'undefined') || (distError === true)) {
 				map.fitBounds(bounds);
+				
+				// zoom out a bit
+				if(map.getZoom() > 16)
+					map.setZoom(16);
+				
 			}
 
 			// Create the links that focus on the related marker
