@@ -32,8 +32,10 @@
             success: function (data) {
 //console.log(data.dealers);
                 var mapDealers = [];
+                var autoCompleteNames = [];
                 data.dealers.forEach(function (dealer, i) {
                     if (dealer.location) {
+                        autoCompleteNames.push(data.dealers[i].name);
                         data.dealers[i].address = dealer.location.street1;
                         data.dealers[i].address2 = dealer.location.street2;
                         data.dealers[i].city = dealer.location.suburb;
@@ -45,6 +47,9 @@
                             mapDealers.push(data.dealers[i]);
                         }
                     }
+					$( "#bh-sl-search" ).autocomplete({
+						source: autoCompleteNames
+					});
                 });
 
                 /*{"id":"1",
@@ -83,6 +88,7 @@
                     }
                 ];
                 var options = {
+                    autoComplete: true,
                     autoGeocode: true,
                     dataType: 'json',
                     dataRaw: mapDealers,
