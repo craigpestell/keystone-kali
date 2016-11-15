@@ -47,7 +47,9 @@
                             mapDealers.push(data.dealers[i]);
                         }
                     }
-                    autoCompleteNames.sort();
+					autoCompleteNames = autoCompleteNames.sort().filter(function(elem, index, self) {
+						return index == self.indexOf(elem);
+					})
 					$( "#bh-sl-search" ).autocomplete({
 						source: autoCompleteNames
 					});
