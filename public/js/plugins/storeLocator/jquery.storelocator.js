@@ -2473,7 +2473,7 @@
 							if (!taxFilters[k]) {
 								taxFilters[k] = [];
 							}
-							taxFilters[k][z] = '(?=.*\\b' + filters[k][z].replace(/([^\x00-\x7F]|[.*+?^=!:${}()|\[\]\/\\])/g, '') + '\\b)';
+							taxFilters[k][z] = '(?=.*\\b' + filters[k][z].replace(/([^\x00-\x7F]|[*+?^=!:${}()|\[\]\/\\])/g, '') + '\\b)';
 						}
 					}
 				}
