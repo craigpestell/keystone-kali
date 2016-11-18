@@ -73,5 +73,5 @@ Registration.schema.methods.sendNotificationEmail = function(callback) {
 };
 
 Registration.defaultSort = '-createdAt';
-Registration.defaultColumns = 'name, email, registrationType, createdAt';
+Registration.defaultColumns = 'email, createdAt';
 Registration.register();
