@@ -793,6 +793,17 @@ End Product Page
   fill: $brand-primary;
 }
 
+#buy-now{
+  background: #eb1f11;
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  border-radius: 12px;
+  color:#FFF;
+  border: 0;
+  padding:5px 10px;
+}
+#buy-now:focus { outline-style: none; }
+
 
 /* Google Maps overrides */
 a[href^="http://maps.google.com/maps"] {
