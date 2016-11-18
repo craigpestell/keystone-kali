@@ -11,6 +11,10 @@
 				success: function(result){
 					console.log(result);
 					if(result.country == "CA") {
+					    $('#buy-now').click(function(){
+							window.open('//shop-ca.kaliprotectives.com/#!/p/' + ecwidCanProductId);
+							return false;
+						});
 						$('#rowEcwidCan').show();
 					}
 				}

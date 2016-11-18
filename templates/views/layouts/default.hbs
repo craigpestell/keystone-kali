@@ -28,14 +28,12 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
     <meta name="google-site-verification" content="dI-RltPLU3KpavtHz3jFnU2daR9kCYpOsxYOM5s-Wh8" />
 </head>
 <body>
 <div class="container">
 	{{> nav}}
 </div>
-
 <div id="body" class="clearfix">
 	{{#if messages}}
         <div id="flash-messages" class="container">
@@ -61,6 +59,7 @@
 			{{/if}}
         </div>
 	{{/if}}
+
 	{{{body}}}
 </div>
 {{> footer}}
