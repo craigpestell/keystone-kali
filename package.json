@@ -14,6 +14,9 @@
     "moment": "^2.10.6",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
     "restful-keystone": "^0.3.0",
     "underscore": "^1.8.3"
   },
