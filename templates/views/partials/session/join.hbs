@@ -1,0 +1,31 @@
+<!--<div class="social-signup-buttons">
+	<div class="signup-button"><a href="/auth/github?target=/" title="Sign in with Github" class="btn btn-link-github btn-block"><span class="entypo-social entypo-github"></span><span class="signup-button__text"> Github</span></a></div>
+	<div class="signup-button"><a href="/auth/facebook?target=/" title="Sign in with Facebook" class="btn btn-link-facebook btn-block"><span class="entypo-social entypo-s-facebook"></span><span class="signup-button__text"> Facebook</span></a></div>
+	<div class="signup-button"><a href="/auth/google?target=/" title="Sign in with Google" class="btn btn-link-google btn-block"><span class="entypo-social entypo-google"></span><span class="signup-button__text"> Google</span></a></div>
+	<div class="signup-button"><a href="/auth/twitter?target=/" title="Sign in with Twitter" class="btn btn-link-twitter btn-block"><span class="entypo-social entypo-twitter"></span><span class="signup-button__text"> Twitter</span></a></div>
+</div>
+<p class="auth-form-divider"><span class="auth-form-divider-text">or</span></p>-->
+<form method="post" action="/join" autocomplete="off" novalidate="novalidate" class="auth-form">
+	<input type="hidden" name="action" value="join">
+	<input type="hidden" name="target" value="/">
+	<div class="form-groups">
+		<div class="form-group">
+			<label for="firstname" class="sr-only">First name</label>
+			<input type="text" name="firstname" placeholder="First name" class="form-control form-control--first">
+		</div>
+		<div class="form-group">
+			<label for="lastname" class="sr-only">Last name</label>
+			<input type="text" name="lastname" placeholder="Last name" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="email" class="sr-only">Email</label>
+			<input type="email" name="email" placeholder="Email" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="password" class="sr-only">Password</label>
+			<input type="password" name="password" placeholder="Password" class="form-control">
+		</div>
+	</div>
+	<button type="submit" class="btn btn-block btn-primary btn-submit">Join</button>
+</form>
+

@@ -34,12 +34,14 @@
     <meta name="google-site-verification" content="dI-RltPLU3KpavtHz3jFnU2daR9kCYpOsxYOM5s-Wh8" />
 </head>
 <body>
+{{> modals}}
 <div class="container">
 	{{> nav}}
 </div>
 
 <div id="body" class="clearfix">
 	{{#if messages}}
+		{{json messages}}
         <div id="flash-messages" class="container">
 			{{#if messages.info}}
                 <div class="alert alert-info">
@@ -216,9 +218,9 @@
                 eventLabel: "Youtube"
             });
         });
-	
     });
 </script>
+<script src="/js/ui.js"></script>
 <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
     ga('create', '{{ga_key}}', 'auto');

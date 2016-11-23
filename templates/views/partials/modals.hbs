@@ -1,0 +1,69 @@
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-auth">Open Modal</button>
+<div id="modal-auth" tabindex="-1" role="dialog" aria-labelledby="signin" aria-hidden="true" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="auth-box modal-pane-signin hidden">
+				<div class="modal-header">
+					<button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+					<h4 class="modal-title">Sign into SydJS</h4>
+				</div>
+				<div class="modal-body">
+					<div class="social-signup-buttons">
+						<div class="signup-button"><a href="/auth/facebook?target=/" title="Sign in with Facebook" class="btn btn-link-facebook btn-block"><span class="entypo-social entypo-s-facebook"></span><span class="signup-button__text"> Facebook</span></a></div>
+						<div class="signup-button"><a href="/auth/google?target=/" title="Sign in with Google" class="btn btn-link-google btn-block"><span class="entypo-social entypo-google"></span><span class="signup-button__text"> Google</span></a></div>
+						<div class="signup-button"><a href="/auth/twitter?target=/" title="Sign in with Twitter" class="btn btn-link-twitter btn-block"><span class="entypo-social entypo-twitter"></span><span class="signup-button__text"> Twitter</span></a></div>
+					</div>
+					<p class="auth-form-divider"><span class="auth-form-divider-text">or</span></p>
+					<form method="post" action="/signin" role="signin" novalidate="novalidate" class="auth-form">
+						<input type="hidden" name="action" value="signin">
+						<input type="hidden" name="target" value="/">
+						<div class="form-groups">
+							<div class="form-group">
+								<label for="signin-email" class="sr-only">Email</label>
+								<input type="email" name="email" placeholder="Email" id="signin-email" class="form-control form-control--first">
+							</div>
+							<div class="form-group">
+								<label for="signin-password" class="sr-only">Password</label>
+								<input type="password" name="password" placeholder="Password" id="signin-password" value="" class="form-control form-control--last">
+							</div>
+						</div>
+						<button type="submit" class="btn btn-block btn-primary btn-submit">Sign in</button>
+					</form>
+					<div class="row text-muted mt-3">
+						<div class="col-sm-8">Don't have an account? <a href="javascript:;" rel="modal-pane" data-modal-pane="join">Join SydJS</a></div>
+						<div class="col-sm-4 text-right"><a href="javascript:;" rel="modal-pane" data-modal-pane="password">Forgot password?</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="auth-box modal-pane-join">
+				<div class="modal-header">
+					<button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+					<h4 class="modal-title">Join SydJS</h4>
+				</div>
+				<div class="modal-body">
+					{{> session/join}}
+				</div>
+			</div>
+			<div class="auth-box modal-pane-password hidden">
+				<div class="modal-header">
+					<button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+					<h4 class="modal-title">Forgotten your password?</h4>
+				</div>
+				<div class="modal-body">
+					<form method="post" action="/forgot-password" role="password-retrieval" novalidate="novalidate" class="form-password auth-form">
+						<input type="hidden" name="action" value="forgot-password">
+						<div class="form-groups">
+							<div class="form-group">
+								<label for="email" class="sr-only">Email address</label>
+								<input type="email" name="email" id="email" placeholder="Email address" class="form-control form-control--first form-control--last">
+							</div>
+						</div>
+						<button type="submit" data-loading-text="Sending..." class="btn btn-block btn-primary btn-submit">Send reset link</button>
+					</form>
+					<p class="text-center text-muted mt-3">I remember, <a href="javascript:;" rel="modal-pane" data-modal-pane="signin">sign in</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p class="text-center text-muted mt-3">Already have an account? <a href="javascript:;" rel="modal-pane" data-modal-pane="signin">Sign in</a></p>
+</div>
