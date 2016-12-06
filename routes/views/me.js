@@ -2,8 +2,8 @@ var keystone = require('keystone'),
 	_ = require('lodash'),
 	moment = require('moment');
 
-var Meetup = keystone.list('Meetup'),
-	RSVP = keystone.list('RSVP');
+/*var Meetup = keystone.list('Meetup'),
+	RSVP = keystone.list('RSVP');*/
 
 exports = module.exports = function(req, res) {
 	
@@ -11,9 +11,10 @@ exports = module.exports = function(req, res) {
 		locals = res.locals;
 	
 	locals.section = 'me';
-	locals.page.title = 'Settings - SydJS';
+	locals.data = {page:{title:'Kali Protectives - My Profile'}};
+	//locals.page.title = 'Profile - Kali Protectives';
 	
-	view.query('nextMeetup',
+	/*view.query('nextMeetup',
 		Meetup.model.findOne()
 			.where('state', 'active')
 			.sort('startDate')
@@ -26,7 +27,7 @@ exports = module.exports = function(req, res) {
 			.populate('meetup')
 			.sort('-createdAt')
 	);
-	
+	*/
 	view.on('post', { action: 'profile.details' }, function(next) {
 	
 		req.user.getUpdateHandler(req).process(req.body, {
@@ -98,6 +99,6 @@ exports = module.exports = function(req, res) {
 	
 	});
 	
-	view.render('site/me');
+	view.render('profile');
 	
 }

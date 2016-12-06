@@ -96,6 +96,11 @@ exports = module.exports = function(app) {
 	app.all('/auth/app', routes.auth.app);
 	app.all('/auth/:service', routes.auth.service);
 
+	// User
+	app.all('/profile*', middleware.requireUser);
+	app.all('/profile', routes.views.me);
+//	app.all('/me/create/post', routes.views.createPost);
+//	app.all('/me/create/link', routes.views.createLink);
 
 
 
