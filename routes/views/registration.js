@@ -23,6 +23,10 @@ exports = module.exports = function(req, res) {
 		q.exec(function(err, result) {
 			locals.data.page = result;
 			locals.data.page.title = locals.data.page.title;
+
+			locals.data.subnav = [
+				{key:'register', name:'Lifetime Crash Replacement Registration'},
+				{key: 'lifetime-crash-replacement-guidelines',name:'Lifetime Crash Replacement Guidelines'}];
 			next(err);
 		});
 

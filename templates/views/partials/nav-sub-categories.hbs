@@ -1,0 +1,18 @@
+<!-- subnav here -->
+<nav id="nav-sub-categories" class="navbar navbar-static-top hidden-xs nav subnav" role="navigation">
+	<div class="container">
+		<ul class="navbar navbar-nav">
+		{{#each this}}
+			{{#if name}}
+			<li class="{{#ifeq key ../../subCategory}}active{{/ifeq}}">
+				{{#if parentCategory}}
+					<a class="nav-anchor text-uppercase text-nowrap" href="/{{parentCategory.slug}}#{{slug}}">{{name}}</a>
+				{{else}}
+					<a class="nav-anchor text-uppercase text-nowrap" href="/{{key}}">{{name}}</a>
+				{{/if}}
+			</li>
+			{{/if}}
+		{{/each}}
+		</ul>
+    </div>
+</nav>

@@ -22,12 +22,23 @@ exports = module.exports = function(req, res) {
 		});//.populate('author categories');
 
 		q.exec(function(err, result) {
-			console.log('result:',result);
+
 			if(result) {
-				console.log('results exist');
 				locals.data.page = result;
 				locals.data.page.title = locals.data.page.title + ' - Kali Protectives';
-				console.log('page title:', locals.data.page.title);
+				
+				
+				
+				// set subnav
+				if(locals.filters.page == 'lifetime-crash-replacement-guidelines') {
+					locals.data.subnav = [
+						{key:'register', name:'Lifetime Crash Replacement Registration'},
+						{key: 'lifetime-crash-replacement-guidelines',name:'Lifetime Crash Replacement Guidelines'}];
+				}
+				
+				
+				
+				
 				next(err);
 				/*res.status(404).send(view.render('page'));/*.send('<html><head><meta charset=\'utf-8\'><title>Error</title>' +
 					'<link rel=\'stylesheet\' href=\'/keystone/styles/error.css\'>' +
@@ -53,7 +64,6 @@ exports = module.exports = function(req, res) {
 		});
 
 	}, function(next){
-		console.log('view on render called');
 		console.log(next);
 	});
 
@@ -70,7 +80,6 @@ exports = module.exports = function(req, res) {
 	});*/
 
 	// Render the view
-	console.log('calling render on page view');
 	view.render('page');
 
 };
