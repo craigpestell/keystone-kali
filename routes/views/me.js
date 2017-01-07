@@ -4,6 +4,7 @@ var keystone = require('keystone'),
 
 /*var Meetup = keystone.list('Meetup'),
 	RSVP = keystone.list('RSVP');*/
+var LCRProduct = keystone.list('UserLCRProduct');
 
 exports = module.exports = function(req, res) {
 	
@@ -13,6 +14,12 @@ exports = module.exports = function(req, res) {
 	locals.section = 'me';
 	locals.data = {page:{title:'Kali Protectives - My Profile'}};
 	//locals.page.title = 'Profile - Kali Protectives';
+	view.query('UserLCRProduct',
+		LCRProduct.model.find()
+			.where('who', req.user)
+			//.populate('meetup')
+			.sort('-createdAt')
+	);
 	
 	/*view.query('nextMeetup',
 		Meetup.model.findOne()
@@ -47,7 +54,35 @@ exports = module.exports = function(req, res) {
 		});
 	
 	});
-	
+
+	// On POST requests, add the Registration item to the database
+	view.on('post', { action: 'profile.register' }, function(next) {
+
+		var newLCRProduct = new UserLCRProduct.model(),
+			updater = newLCRProduct.getUpdateHandler(req);
+
+		var requiredFields = [
+			'model', 'color', 'size', 'serial', 'purchaseLocation', 'pricePaid', 'who'
+		];
+		req.body.who = req.user;
+
+		updater.process(req.body, {
+			flashErrors: true,
+			fields: requiredFields.join(', '),
+			errorMessage: 'There was a problem registering your product:'
+		}, function(err) {
+			console.log('updater.process');
+			if (err) {
+				locals.validationErrors = err.errors;
+			} else {
+				locals.registrationSubmitted = true;
+			}
+			next();
+		});
+
+	});
+
+
 	view.on('init', function(next) {
 	
 		if (!_.has(req.query, 'disconnect')) return next();
@@ -70,7 +105,7 @@ exports = module.exports = function(req, res) {
 			}
 			
 			req.flash('success', serviceName + ' has been successfully disconnected.');
-			return res.redirect('/me');
+			return res.redirect('/profile');
 		
 		});
 	

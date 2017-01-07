@@ -1,0 +1,65 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			{{#if registrationSubmitted}}
+				<h3>Product registered.</h3>
+			{{/if}}
+				<h2>{{data.page.title}}</h2>
+
+				<form method="post" role="form" class="">
+					<input type="hidden" name="action" value="profile.register">
+					<h3>Helmet Info</h3>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group {{#if validationErrors.model}}has-error{{/if}}">
+								<label>Model</label>
+								<input type="text" name="model" class="form-control"
+									   value="{{formData.model}}">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group {{#if validationErrors.color}}has-error{{/if}}">
+								<label>Color</label>
+								<input type="text" name="color" class="form-control"
+									   value="{{formData.color}}">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group {{#if validationErrors.size}}has-error{{/if}}">
+								<label>Size</label>
+								<input type="text" name="size" class="form-control"
+									   value="{{formData.size}}">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group {{#if validationErrors.serial}}has-error{{/if}}">
+								<label>Serial Number (YYYY/MM NNNNNN)</label>
+								<input type="text" name="serial" class="form-control"
+									   value="{{formData.serial}}">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group {{#if validationErrors.purchaseLocation}}has-error{{/if}}">
+								<label>Where did you purchase your helmet?</label>
+								<input type="text" name="purchaseLocation" class="form-control"
+									   value="{{formData.purchaseLocation}}">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group {{#if validationErrors.pricePaid}}has-error{{/if}}">
+								<label>Price Paid</label>
+								<input type="text" name="pricePaid" class="form-control"
+									   value="{{formData.pricePaid}}">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>
+		</div>
+	</div>
+</div>

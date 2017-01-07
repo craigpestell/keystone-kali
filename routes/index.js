@@ -98,6 +98,7 @@ exports = module.exports = function(app) {
 
 	// User
 	app.all('/profile*', middleware.requireUser);
+	app.all('/profile/register', routes.views['me-lcr-product']);
 	app.all('/profile', routes.views.me);
 //	app.all('/me/create/post', routes.views.createPost);
 //	app.all('/me/create/link', routes.views.createLink);

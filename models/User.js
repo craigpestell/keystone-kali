@@ -21,12 +21,29 @@ User.schema.virtual('canAccessKeystone').get(function() {
 	return this.isAdmin;
 });
 
-
 /**
- * Relationships
+ * Methods
+ * =======
  */
 
-User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
+User.schema.methods.resetPassword = function(callback) {
+	var user = this;
+	user.resetPasswordKey = keystone.utils.randomString([16,24]);
+	user.save(function(err) {
+		if (err) return callback(err);
+		new keystone.Email('forgotten-password').send({
+			user: user,
+			link: '/reset-password/' + user.resetPasswordKey,
+			subject: 'Reset your SydJS Password',
+			to: user.email,
+			from: {
+				name: 'SydJS',
+				email: 'contact@sydjs.com'
+			}
+		}, callback);
+	});
+};
+
 
 
 /**

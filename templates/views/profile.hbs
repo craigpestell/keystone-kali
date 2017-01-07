@@ -1,1 +1,13 @@
-Profile page...
+{{registrationSubmitted	}}
+<div id="user-profile" class="container">
+	Profile page...
+
+	<a href="/profile/register">Register a product</a>
+
+	<table>
+		<thead><th>Model</th><th>Serial</th><th>Size</th><th>Price Paid</th><th>Purchase Location</th></thead>
+	{{#each UserLCRProduct}}
+		<tr><td>{{model}}</td><td>{{serial}}</td><td>{{size}}</td><td>{{pricePaid}}</td><td>{{purchaseLocation}}</td><td><button>Delete</button><button>Claim a replacement</button></td></tr>
+	{{/each}}
+	</table>
+</div>
