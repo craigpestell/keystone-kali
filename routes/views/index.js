@@ -16,7 +16,7 @@ exports = module.exports = function(req, res) {
 		if(discipline.length > 0) {
 			disciplineWhere = {disciplines: discipline[0]._id};
 		}
-		view.query('slides', keystone.list('Slide').model.find().where(disciplineWhere));
+		view.query('slides', keystone.list('Slide').model.find().where(disciplineWhere).sort('sortOrder'));
 	
 		// Render the view
 		view.render('index');
