@@ -27,14 +27,6 @@
 					{{/if}}
                     
 				{{/each}}
-				<!--{{#each product.gallery}}
-					<a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
-                       title="{{name}}" data-gallery>
-                        <img data-src="{{cloudinaryUrl width="auto" format="jpg" fetch_format="auto" quality="90"}}"
-                             class="{{#if @first}}cld-responsive {{/if}}image-toggle"
-                             id="product-{{@index}}" alt="{{name}}"{{#unless @first}} style="display:none;"{{/unless}}/>
-                    </a>
-				{{/each}}-->
 					<div class="hidden-xs text-right" style="height:0px;">
 						<img id="product-zoom-current"
 							 src="{{cloudinaryUrl @root.siteSettings.zoom-icon.imageValue width=40 format="jpg" fetch_format="auto" quality="85"}}"
@@ -51,6 +43,20 @@
 				<div class="product-description">
 					<p>{{{product.description}}}</p>
 				</div>
+				{{#if product.technologies.length}}
+				<div class="row technology">
+					{{#each product.technologies}}
+					<div class="col-xs-4 col-sm-3">
+						<a href="/technology#{{slug}}">
+							<div class="text-center" style="display:inline-block;">
+								<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
+								<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
+							</div>
+						</a>
+					</div>
+					{{/each}}
+				</div>
+				{{/if}}
 				<div class="row">
 					<div class="col-xs-12 initialism">
 						{{{product.specs}}}
@@ -60,43 +66,33 @@
 					<div class="col-xs-12 initialism">
 						{{{product.usageChart}}}
 					</div>
+                    <div class="percentage-end" style="display:none;"></div>
 				</div>
-				<!--{{#if product.technologiesAndFeatures.length}}
-				<div class="row">
-					{{#each product.technologiesAndFeatures}}
-						<img style="float:left;" class="lazyload img-responsive" src="{{{cloudinaryUrl iconImage width=70 height=70 format="jpg"}}}"/>
-					{{/each}}
-				</div>
-				{{/if}}-->
 				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="left"}}
 				
+				<!--{{#if product.features.length}}
+                    <div class="row feature">
+						<div class="col-xs-12">
+							<ul>
+						{{#each product.features}}
+                             <li><h4>{{name}}</h4></li>
+						{{/each}}
+                            </ul>
+						</div>
+                    </div>
+				{{/if}}-->
 				<div class="row">
-					<div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em">Find a Dealer</h3></a>
+					<div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em;font-family:Gotham-Black">Find a Dealer</h3></a>
 					</div>
 				</div>
+				{{#if product.ecwidCanProductId}}
+				<!--<div id="rowEcwidCan" class="row" style="display:none;">
+                    <div class="ecwid ecwid-SingleProduct-v2 ecwid-Product ecwid-Product-product.{{product.ecwidCanProductId}}" itemscope itemtype="http://schema.org/Product" data-single-product-id="{{product.ecwidCanProductId}}"><div customprop="addtobag"></div></div><script type="text/javascript" src="https://app.ecwid.com/script.js?10415396&data_platform=singleproduct" charset="utf-8"></script><script type="text/javascript">xProduct()</script>
+				</div>-->
+				{{/if}}
 			</div>
             
         </div>
-        <!--<div class="product-section-nav-wrapper" style="min-height:65px">
-			<div class="container product-section-nav" style="height:50px">
-				<div class="col-xs-12 text-center text-uppercase" style="position:relative;">
-					<ul>
-						{{#if product.technologies}}<li><a class="nav-anchor" href="#technology">Technology</a></li>{{/if}}
-			{{#if product.features}}<li><a class="nav-anchor" href="#features">Features</a></li>{{/if}}
-						<li><a class="nav-anchor" href="#product-sizing-guide">Sizing</a></li>
-					</ul>
-                    <ul style="position:absolute;right:0;top:0;">
-                        <li><a class="nav-anchor" href="#nav-main">{{product.name}}</a></li>
-                    </ul>
-				</div>
-			</div>
-        </div>
-		<div id="technology">
-		{{#each product.technologiesAndFeatures}}
-			{{> product-technology}}
-		{{/each}}
-        </div>-->
-        <!--{{> product-sizing-guide}}-->
     </div>
 	
 	{{> product-blueimp-gallery-dom}}

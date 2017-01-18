@@ -14,10 +14,21 @@
   zoom: 1; /* ie 6/7 */
 }
 
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+
 .center-block {
   margin-left: auto;
   margin-right: auto;
   display: table;
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
 }
 
 @font-face {
@@ -60,6 +71,7 @@ body {
   //padding-top:120px;
 }
 
+
 @media (min-width: 0px) {
   .bh-sl-container .bh-sl-map{
 	height:300px;
@@ -67,6 +79,23 @@ body {
   .slide-overlay {
 	font-size: 0.8em;
   }
+  
+  #technology .heading{
+	width: 90%;
+	top: 20%;
+  }
+  
+  #technology .banner-overlay h1{
+	font-size:16px;
+	letter-spacing:3px;
+	margin:3px 0px 1px 0px;
+  }
+  #technology .intro {
+	font-size: 12px;
+	width:360px;
+  }
+  
+  
 }
 
 @media (min-width: 768px) {
@@ -82,6 +111,27 @@ body {
   .slide-overlay {
 	font-size: 0.8em;
   }
+
+  #technology .heading{
+	width: 480px;
+	top: 30%;
+  }
+  
+  #technology .banner-overlay h1{
+	font-size:20px;
+	height:20px;
+	line-height:20px;
+	letter-spacing:5px;
+	margin:4px 0px 2px 0px;
+  }
+  #technology .intro {
+	font-size: 14px;
+	width:480px;
+  }
+  .technology-icon-nav title {
+	height:20px;
+  }
+   
 }
 
 @media (min-width: 992px) {
@@ -94,6 +144,22 @@ body {
   .slide-overlay {
 	font-size: 1em;
   }
+
+  #technology .heading{
+	width: 560px;
+  }
+  
+  #technology .banner-overlay h1{
+	font-size:24px;
+	height:24px;
+	line-height:24px;
+	letter-spacing:6px;
+	margin:6px 0px 5px 0px;
+  }
+  #technology .intro {
+	font-size: 16px;
+	width:560px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -103,13 +169,31 @@ body {
   .slide-overlay {
 	font-size: 1.2em;
   }
+
+  #technology .heading{
+	width: 700px;
+  }
+
+  #technology .banner-overlay h1{
+	font-size:30px;
+	height:30px;
+	line-height:30px;
+	letter-spacing:6px;
+	margin:8px 0px 4px 0px;
+  }
+  #technology .intro {
+	font-size: 20px;
+	width:700px;
+  }
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: Gotham-Black, Arial, SansSerif;
   text-transform: uppercase;
   margin-top: 0;
 }
+
+h4 {text-transform: none;}
 
 .slide-overlay {
   position: absolute;
@@ -205,10 +289,6 @@ hr {
   border-top: 1px solid $brand-grey;
   margin: 1em 0;
   padding: 0;
-}
-
-.products .row {
-  //padding: 15px 0px 15px 0px;
 }
 
 .products .row ul {
@@ -335,7 +415,7 @@ hr {
   margin: 0;
 }
 
-.product-description {
+.product-description, .lcr-description {
   background-color: lighten($brand-grey, 15%);
   padding: 10px;
 }
@@ -383,6 +463,14 @@ a.product-category-anchor:hover, a.product-category-anchor:active {
 End Product Page
 */
 
+
+#lcr-guidelines p{
+  margin-left:30px;
+}
+#lcr-guidelines p.lcr-description{
+  margin-left:0;
+}
+
 .navbar-brand {
   padding: 0;
 }
@@ -416,32 +504,35 @@ End Product Page
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent; }*/
-.percentage {
-  /*background: repeating-linear-gradient(
-				  to right,
-				  #ddd,
-				  #ddd 1px,
-				  #fff 1px,
-				  #fff 3%
-  );*/
-  background: linear-gradient(to right, $brand-grey, white);
-}
 
-.percentage:after {
-  content: "";
-  display: block;
-  background-color: $brand-primary;
-  line-height: 15px;
-}
+/*.percentage{
+  border-bottom:2px solid $brand-primary;
+  margin-top:8px;
+}*/
+
 
 @for $i from 1 through 100 {
-  .percentage-#{$i}:after {
+  .percentage-#{$i} {
+	border-bottom:2px solid $brand-primary;
+	margin-top:8px;
+	float:left;
 	$value: ($i * 1%);
 	width: $value;
 	content: '\00a0';
   }
 }
 
+.percentage-end {
+  height: 6px;
+  width: 6px;
+  float:left;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-color:$brand-primary;
+  margin-top:6px;
+  margin-left:-6px;	
+}
 .row {
   margin-top: 15px;
 }
@@ -560,6 +651,13 @@ End Product Page
   font-weight: bold;
 }
 
+#product-main .technology h4 {
+  font-size: 10px;
+}
+#product-main .technology a:hover{
+  text-decoration:none;
+}
+
 /* END product detail page */
 
 /* Register page */
@@ -567,6 +665,92 @@ End Product Page
   color: blue;
 }
 /* END Register page */
+
+/* Technology page */
+#technology a, #technology a:visited, #technology a:hover {
+  text-decoration: none;
+}
+#technology .banner-overlay {
+  color: white;
+  //position:absolute; top:25%; left:110px; width:100%
+}
+#technology .heading {
+  display: inline-block; 
+  border-top: 2px solid white; 
+  border-bottom: 2px solid white;
+  position:absolute;
+  left: 4%;
+}
+#technology .intro {
+  position:absolute;
+  left:4%;
+  //width:60%;
+  bottom: 5%;
+  font-weight: bold;
+}
+.technology-icon-nav .title h4 {
+  font-size: 10px;
+}
+#technology .description {
+  font-size:0.8em;
+}
+
+#technology .banner-overlay .intro h1{
+  //font-size:30px;
+  margin-bottom:0;
+  width:90%;
+  //height:36px;
+  //line-height:36px;
+  //letter-spacing:6px;
+}
+
+.technology-icon-nav .tertiary-container {
+  border-bottom: 3px solid $brand-grey;padding-bottom:2px;}
+.technology-icon-nav h4.year{
+  font-size:12px;
+  font-family: Gotham-Black;
+}
+.technology-icon-nav h4.title{
+  //font-size: 12px;
+  margin-bottom:2px;
+}
+.technology-icon-nav h5.title{
+  font-size:10px;
+}
+.technology-icon-nav p{
+  font-size: 11px;
+}
+
+.technology-icon-nav .timeline{
+  border-bottom:2px solid $brand-primary;
+  margin-top:8px;
+}
+
+.technology-icon-nav .timeline-end {
+  height: 6px;
+  width: 6px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-color:$brand-primary;
+  margin-top:6px;
+}
+
+.technology-icon-nav .technology-icon-nav-item .tertiary-image{
+  padding: 0px;
+}
+.technology-icon-nav .technology-icon-nav-item .tertiary-image img{
+  padding: 2px;
+}
+
+.technology-icon-nav .technology-icon-nav-item:hover .tertiary-image{
+  padding: -2px;
+}
+.technology-icon-nav .technology-icon-nav-item:hover .tertiary-image img{
+  padding: 0px;
+}
+
+/* END Technology page*/
 
 
 .lazyload {
@@ -580,10 +764,10 @@ End Product Page
 }
 
 #footer {
-  padding-bottom:10px;
+  padding-bottom:30px;
 }
 #footer ul {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 #footer, #footer a {
@@ -605,6 +789,18 @@ End Product Page
   list-style: none;
   padding: 0;
 }
+
+.social-icon:hover {
+  cursor: pointer;
+  cursor: hand;
+}
+.social-icon .outer-shape{
+  fill: #000;
+}
+.social-icon:hover > .outer-shape{
+  fill: $brand-primary;
+}
+
 
 /* Google Maps overrides */
 a[href^="http://maps.google.com/maps"] {

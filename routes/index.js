@@ -114,6 +114,15 @@ exports = module.exports = function(app) {
 	app.get(['/subdomain/:discipline/register', '/register'], routes.views.registration);
 	app.get(['/subdomain/:discipline/contact', '/contact'], routes.views.contact);
 
+	//app.get('/country', routes.views.country);
+	app.get('/cf-ipcountry', function(req, res){
+		var country = 'US';
+		if(req.headers['cf-ipcountry']){
+			country = req.headers['cf-ipcountry']
+		}
+		res.json({country:country}).end();
+		//console.log(req.headers);
+	});
 	
 	var domainAndPort = keystone.get('domain') + (keystone.get('port')?':' + keystone.get('port'):'');
 	app.get(['/:category/:params?'], function(req, res){
@@ -121,6 +130,35 @@ exports = module.exports = function(app) {
 		
 		res.redirect(redirect + '/' + req.params.category);
 	});
+
+	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
+	// app.get('/protected', middleware.requireUser, routes.views.protected);
+
+	/*
+	 * sitemap
+	 */
+	var url = 'kaliprotectives.com';
+	var mapConfig = {
+		http: 'https',
+		url: 'kaliprotectives.com',
+		sitemapSubmission: '/sitemap.xml',
+		map:{
+			'/technology':['get'],
+			'/helmets':['get'],
+			'/armor':['get'],
+			'/moto':['get'],
+			'/dealers':['get'],
+			'/contact':['get'],
+			'/register':['get']
+		},
+		route: {
+			'ALL': {
+				lastmod: '2016-11-01',
+				changefreq: 'always',
+				priority: 1.0
+			}
+		}
+	};
 	
 	app.get([
 		'/subdomain/:discipline/:category',
@@ -190,4 +228,5 @@ exports = module.exports = function(app) {
     });
 
     app.get('/:page', routes.views.page);
+
 };

@@ -85,6 +85,11 @@
     padding: 6px 12px;
     white-space: nowrap;
     -webkit-border-radius: 4px; }
+  .bh-sl-container .form-input select, .bh-sl-container .form-input option {
+	color: white;
+	background-color: black;
+	font-weight: bold;
+  }
   .bh-sl-container .bh-sl-loading {
     background: url(../img/ajax-loader.gif) no-repeat;
     float: left;

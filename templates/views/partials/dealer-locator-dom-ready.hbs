@@ -1,10 +1,14 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		
+		$('#dealer-search-type').change(function(){
+		    
+		   $('#bh-sl-address').toggle().val("");
+		   $('#bh-sl-search').toggle().val("");
+		});
         $('#importDealers').click(function () {
             var dealers = [
-            
-            ];
+
+			];
             dealers.forEach(function(d){
                 var data = {};
                 data.location = {};
@@ -28,8 +32,10 @@
             success: function (data) {
 //console.log(data.dealers);
                 var mapDealers = [];
+                var autoCompleteNames = [];
                 data.dealers.forEach(function (dealer, i) {
                     if (dealer.location) {
+                        autoCompleteNames.push(data.dealers[i].name);
                         data.dealers[i].address = dealer.location.street1;
                         data.dealers[i].address2 = dealer.location.street2;
                         data.dealers[i].city = dealer.location.suburb;
@@ -41,6 +47,16 @@
                             mapDealers.push(data.dealers[i]);
                         }
                     }
+					autoCompleteNames = autoCompleteNames.sort().filter(function(elem, index, self) {
+						return index == self.indexOf(elem);
+					})
+					$( "#bh-sl-search" ).autocomplete({
+						source: autoCompleteNames
+					}).keyup(function (e) {
+						if(e.which === 13) {
+							$("#bh-sl-search").autocomplete('close');
+						};
+					});
                 });
 
                 /*{"id":"1",
@@ -79,12 +95,13 @@
                     }
                 ];
                 var options = {
+                    autoComplete: true,
                     autoGeocode: true,
                     dataType: 'json',
                     dataRaw: mapDealers,
                     fullMapStart: true,
                     fullMapStartBlank: false,
-                    fullMapStartListLimit: true,
+                    fullMapStartListLimit: 100,
                     loading: true,
                     storeLimit: mapDealers.length,
                     slideMap: false,

@@ -25,9 +25,13 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/manifest.json">
+	
+	
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+
+    <meta name="google-site-verification" content="dI-RltPLU3KpavtHz3jFnU2daR9kCYpOsxYOM5s-Wh8" />
 </head>
 <body>
 <div class="container">
@@ -81,13 +85,44 @@
 {{#ifCond section "==" "dealer-locator"}}
     <script src="/js/handlebars/handlebars.min.js"></script>
     <script src="/js/markerclusterer/markerclusterer.js"></script>
-    <script src="//maps.googleapis.com/maps/api/js?v=3&amp;file=api&amp;&amp;key=AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY"></script>
+	<script src="/js/jquery-ui/jquery-ui.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?v=3&amp;file=api&amp;&amp;key=AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY&libraries=places"></script>
     <script type="text/javascript">var apiKey = "AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY";</script>
     <script src="/js/plugins/storeLocator/jquery.storelocator.js"></script>
 {{/ifCond}}
+
 <!--{{{isAdminEditorJS user}}}-->
+{{#ifCond section '==' 'products' }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.product-category-href').on('click', function (e) {
+
+                var href =$(this).attr('data-href');
+                window.location = href;
+
+            });
+        });
+    </script>
+
+{{/ifCond}}
+{{#ifCond section '==' 'technology' }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".technology-banner").one("load", function() {
+                // do stuff
+                $.cloudinary.responsive();
+                //if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
+                //    callback.apply(this);
+                //}
+            }).each(function() {
+                if(this.complete) $(this).load();
+            });
+        });
+    </script>
+
+{{/ifCond}}
 {{#ifCond section '==' 'product' }}
-	{{> product-dom-ready}}
+	{{> product-dom-ready product=product}}
 {{/ifCond}}
 {{#ifCond section '==' 'dealer-locator' }}
 	{{> dealer-locator-dom-ready}}
@@ -96,7 +131,7 @@
     $(document).ready(function () {
         var section = '{{section}}';
         //console.log('section: ', section);
-        if (section !== 'product') {
+        if (section !== 'product' && section !== 'technology') {
             $.cloudinary.responsive();
         }
         /*$('.product-section-nav').affix({
@@ -126,7 +161,61 @@
 				
 			}
 		});
+
+        $('a.banner-anchor[href*="#"]:not([href="#"])').click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var label = $(this).attr('href');
+                /*ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Product category nav scroll',
+                    eventAction: 'click',
+                    eventLabel: label
+                });*/
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+
+            }
+        });
 		
+		$('.social-icon-facebook').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Facebook"
+            });
+		});
+        $('.social-icon-instagram').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Instagram"
+            });
+        });
+        $('.social-icon-twitter').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Twitter"
+            });
+        });
+        $('.social-icon-youtube').click(function(e){
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Footer Social Icon',
+                eventAction: 'click',
+                eventLabel: "Youtube"
+            });
+        });
 	
     });
 </script>

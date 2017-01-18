@@ -10,8 +10,9 @@ exports = module.exports = function (req, res) {
 
 	// Set locals
 	locals.section = 'product';
-	view.query('product', keystone.list('Product').model.findOne({slug: req.params.product})
-		.populate('technologies features mainCategory subCategory'))
+	
+	view.query('product', keystone.list('Product').model.findOne({slug:req.params.product})
+		.populate('technologies features mainCategory subCategory sizingChart'))
 		.then(function (err, results, next) {
 			//console.log('results', results);
 

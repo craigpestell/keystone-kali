@@ -7,6 +7,7 @@ exports = module.exports = function(req, res) {
 
 	// Set locals
 	locals.page = 'technology';
+	locals.section = 'technology';
 	
 	locals.filters = {
 		page: 'technology'
@@ -23,13 +24,13 @@ exports = module.exports = function(req, res) {
 
 		q.exec(function(err, result) {
 			locals.data.page = result;
-			locals.data.page.title = locals.data.page.title + ' - Kali Proctectives';
+			locals.data.page.title = locals.data.page.title + '';
 			next(err);
 		});
 
 	});
 
-	view.query('technology', keystone.list('Technology').model.find()).then(function (err, results, next) {
+	view.query('technology', keystone.list('ProductTechnology').model.find().sort('sortOrder')).then(function (err, results, next) {
 		if (err) return next(err);
 		next();
 	});

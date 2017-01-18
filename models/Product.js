@@ -28,6 +28,10 @@ Product.add({
 	//galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
 	imagesPerColorSwatch: {type: Number, note: 'Number of images for each color swatch.'},
 	colorways: {type: String, default: '', note: 'semi-colon delimited list of colorways'},
+	sizingChart: { type: Types.Relationship, ref: 'SizingChart' },
+	ecwidCanProductId: {type: String},
+	ecwidUkProductId: {type: String},
+	ecwidUsProductId: {type: String},
 	extra: { type: Types.Html, wysiwyg: true }
 });
 
@@ -58,7 +62,10 @@ Product.schema.virtual('technologiesAndFeatures').get(function(){
 	if(this.features[0] !== undefined){
 		this.features[0].featureAnchor = true;
 	}
-	return this.technologies.concat(this.features);
+	return this.technologies.concat(this.features).map(function(item, i){
+		item.layout = ((i+1) % 3) || 3;
+		return item;
+	});
 });
 
 Product.schema.virtual('galleryColorwaysArray').get(function(){
