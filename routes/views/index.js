@@ -1,7 +1,11 @@
 var keystone = require('keystone');
 
 exports = module.exports = function(req, res) {
-	console.log('inside routes/views/index');	
+	var disciplineWhere = {};
+	if (res.locals.params.discipline) {
+		disciplineWhere.slug = res.locals.params.discipline.slug;
+	}
+
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 	locals.data = {page:{title:'Kali Protectives'}};
@@ -11,7 +15,7 @@ exports = module.exports = function(req, res) {
 	locals.section = 'home';
 	
 	//popuplate Home page data.
-	keystone.list('Discipline').model.find().where({slug: 'bike'}).exec(function (err, discipline) {
+	keystone.list('Discipline').model.find().where(disciplineWhere).exec(function (err, discipline) {
 		var disciplineWhere = {};
 		if(discipline.length > 0) {
 			disciplineWhere = {disciplines: discipline[0]._id};
@@ -21,5 +25,5 @@ exports = module.exports = function(req, res) {
 		// Render the view
 		view.render('index');
 	});
-	
+
 };
