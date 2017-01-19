@@ -25,6 +25,8 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/manifest.json">
+	
+	
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -83,7 +85,8 @@
 {{#ifCond section "==" "dealer-locator"}}
     <script src="/js/handlebars/handlebars.min.js"></script>
     <script src="/js/markerclusterer/markerclusterer.js"></script>
-    <script src="//maps.googleapis.com/maps/api/js?v=3&amp;file=api&amp;&amp;key=AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY"></script>
+	<script src="/js/jquery-ui/jquery-ui.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?v=3&amp;file=api&amp;&amp;key=AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY&libraries=places"></script>
     <script type="text/javascript">var apiKey = "AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY";</script>
     <script src="/js/plugins/storeLocator/jquery.storelocator.js"></script>
 {{/ifCond}}
@@ -119,7 +122,7 @@
 
 {{/ifCond}}
 {{#ifCond section '==' 'product' }}
-	{{> product-dom-ready}}
+	{{> product-dom-ready product=product}}
 {{/ifCond}}
 {{#ifCond section '==' 'dealer-locator' }}
 	{{> dealer-locator-dom-ready}}

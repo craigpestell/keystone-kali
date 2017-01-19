@@ -24,7 +24,7 @@ exports = module.exports = function(req, res) {
 		q.exec(function(err, result) {
 			console.log('result:',result);
 			if(result) {
-				console.log('reults exist');
+				console.log('results exist');
 				locals.data.page = result;
 				locals.data.page.title = locals.data.page.title + ' - Kali Protectives';
 				console.log('page title:', locals.data.page.title);

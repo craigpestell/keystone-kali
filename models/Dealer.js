@@ -16,13 +16,15 @@ Dealer.add({
 	email: {type: Types.Email}
 });
 
-/*Dealer.schema.pre('save', function(next) {
+Dealer.schema.pre('save', function(next) {
 	var self = this;
 	setTimeout(function(){
 		
 		self._.location.googleLookup("France", "overwrite", function(err, location, result){
-			//console.log(location);
-			//console.log(result);
+			console.log('location:');
+			console.log(location);
+			console.log('result:');
+			console.log(result);
 			if(location !== undefined){
 				self.location = location;
 				console.log(location);
@@ -31,7 +33,7 @@ Dealer.add({
 		});		
 	}, 1000);
 
- });*/
+ });
 /*
  "id": "9",
  "name": "Chipotle Minnetonka",

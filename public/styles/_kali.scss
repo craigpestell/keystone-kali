@@ -415,7 +415,7 @@ hr {
   margin: 0;
 }
 
-.product-description {
+.product-description, .lcr-description {
   background-color: lighten($brand-grey, 15%);
   padding: 10px;
 }
@@ -462,6 +462,14 @@ a.product-category-anchor:hover, a.product-category-anchor:active {
 /*
 End Product Page
 */
+
+
+#lcr-guidelines p{
+  margin-left:30px;
+}
+#lcr-guidelines p.lcr-description{
+  margin-left:0;
+}
 
 .navbar-brand {
   padding: 0;
