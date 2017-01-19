@@ -21,8 +21,10 @@ Dealer.schema.pre('save', function(next) {
 	setTimeout(function(){
 		
 		self._.location.googleLookup("France", "overwrite", function(err, location, result){
-			//console.log(location);
-			//console.log(result);
+			console.log('location:');
+			console.log(location);
+			console.log('result:');
+			console.log(result);
 			if(location !== undefined){
 				self.location = location;
 				console.log(location);
