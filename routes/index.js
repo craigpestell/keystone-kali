@@ -54,7 +54,7 @@ exports = module.exports = function(app) {
 
 	// /api/dealers
 	restful.expose({
-		Dealer : true
+		Dealer : {methods: ["list", "create"]}
 	}).start();
 	
 	app.get('/', routes.views.index);
