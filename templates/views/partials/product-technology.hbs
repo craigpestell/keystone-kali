@@ -4,86 +4,54 @@
     <div class="row"> {{#if this.featureAnchor}}<a id="features"></a>{{/if}}</div>
 	<div class="row"><div class="col-xs-12 text-center product-technology"><h2>{{name}}</h2></div></div>
 {{#ifeq layout 1}}
-	<div class="row">
-		<div class="col-xs-12 product-technology">
-			{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   format="jpg" quality="auto" class="cld-responsive" 
-								   dataSrc=true}}}
-			
-		</div>
-    </div>
+
 	<div class="row">
 		<div class="col-xs-5 product-technology vcenter">
-			{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
-								   format="jpg" quality="auto" class="cld-responsive"
-								   dataSrc=true}}}
+			{{#ifeq productPageImage "primary"}}
+				{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+									   format="jpg" quality="auto" class="cld-responsive"
+									   dataSrc=true}}}
+				{{#ifeq productPageImage "secondary"}}
+					{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+										   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+										   format="jpg" quality="auto" class="cld-responsive"
+										   dataSrc=true}}}
+				{{/ifeq}}
+				{{#ifeq productPageImage "tertiary"}}
+					{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+										   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+										   format="jpg" quality="auto" class="cld-responsive"
+										   dataSrc=true}}}
+				{{/ifeq}}
+			{{/ifeq}}
 		</div><!--
     --><div class="col-xs-7 product-technology vcenter">{{this.description}}</div>
     </div>
-	<div class="row">
-		<div class="col-xs-12 product-technology">
-			{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   format="jpg" quality="auto" class="cld-responsive"
-								   dataSrc=true}}}
-		</div>
-    </div>
 {{/ifeq}}
 {{#ifeq layout 2}}
-    <div class="row">
-        <div class="col-xs-12 product-technology">
-			{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   format="jpg" quality="auto" class="cld-responsive"
-								   dataSrc=true}}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-5 product-technology vcenter">
-			{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+	<div class="row">
+		<div class="col-xs-7 product-technology vcenter">{{this.description}}</div><!--
+    --><div class="col-xs-5 product-technology vcenter">
+		{{#ifeq productPageImage "primary"}}
+			{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 								   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
 								   format="jpg" quality="auto" class="cld-responsive"
 								   dataSrc=true}}}
-        </div><!--
-    --><div class="col-xs-7 product-technology vcenter">{{this.description}}</div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 product-technology">
-			{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   format="jpg" quality="auto" class="cld-responsive"
-								   dataSrc=true}}}
-        </div>
-    </div>
-{{/ifeq}}
-{{#ifeq layout 3}}
-    <div class="row">
-        <div class="col-xs-12 product-technology">
-			{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   format="jpg" quality="auto" class="cld-responsive"
-								   dataSrc=true}}}
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-7 product-technology vcenter">{{this.description}}</div><!--
-    --><div class="col-xs-5 product-technology vcenter">
-		{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-							   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
-							   format="jpg" quality="auto" class="cld-responsive"
-							   dataSrc=true}}}
-    	</div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 product-technology">
-			{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   format="jpg" quality="auto" class="cld-responsive"
-								   dataSrc=true}}}
-        </div>
-    </div>
+			{{#ifeq productPageImage "secondary"}}
+				{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+									   format="jpg" quality="auto" class="cld-responsive"
+									   dataSrc=true}}}
+			{{/ifeq}}
+			{{#ifeq productPageImage "tertiary"}}
+				{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+									   format="jpg" quality="auto" class="cld-responsive"
+									   dataSrc=true}}}
+			{{/ifeq}}
+		{{/ifeq}}
+	</div>
+	</div>
 {{/ifeq}}
 {{/each}}

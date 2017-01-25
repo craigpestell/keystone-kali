@@ -63,7 +63,7 @@ Product.schema.virtual('technologiesAndFeatures').get(function(){
 		this.features[0].featureAnchor = true;
 	}
 	return this.technologies.concat(this.features).map(function(item, i){
-		item.layout = ((i+1) % 3) || 3;
+		item.layout = ((i+1) % 2) || 2;
 		return item;
 	});
 });

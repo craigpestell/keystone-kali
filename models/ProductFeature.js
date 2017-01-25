@@ -17,8 +17,12 @@ ProductFeature.add({
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	primaryImage:  { type: Types.CloudinaryImage,  autoCleanup : true},
 	secondaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
-	tertiaryImage: { type: Types.CloudinaryImage,  autoCleanup : true}
-
+	tertiaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	productPageImage: { type: Types.Select, options: [
+		{ value: 'primary', label: 'Primary' },
+		{ value: 'secondary', label: 'Secondary' },
+		{ value: 'tertiary', label: 'Tertiary' }
+	]}
 });
 
 ProductFeature.register();
