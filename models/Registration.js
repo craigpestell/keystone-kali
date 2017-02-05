@@ -1,5 +1,6 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
+var Email = require('keystone-email');
 
 /**
  * Registration Model
@@ -57,8 +58,25 @@ Registration.schema.methods.sendNotificationEmail = function(callback) {
 	keystone.list('User').model.find().where('isAdmin', true).exec(function(err, admins) {
 
 		if (err) return callback(err);
+		
+		var emailOptions = { transport: 'mailgun', engine: keystone.get('custom engine'), root: 'templates/views' };
+		var template = 'lcr-registration-email.hbs';
+		var options = {
+			apiKey: 'key-a794c169b0a26890783f7313cae20c68',
+			domain: 'sandbox6ae3a194d71a48609a8806c091a05558.mailgun.org',
+			from: 'webmaster@kaliprotectives.com',
+			to: 'webmaster@kaliprotectives.com'
+		};
 
-		new keystone.Email('registration-notification').send({
+		registration.layout = false;
+		new Email(template, emailOptions).send(registration,options, function(err){
+			if(err) {
+				console.log(err);
+				callback(err);
+			}
+		});
+		
+		/*new keystone.Email('registration-notification').send({
 			to: admins,
 			from: {
 				name: 'kali',
@@ -66,7 +84,7 @@ Registration.schema.methods.sendNotificationEmail = function(callback) {
 			},
 			subject: 'New Registration for kali',
 			registration: registration
-		}, callback);
+		}, callback);*/
 
 	});
 
