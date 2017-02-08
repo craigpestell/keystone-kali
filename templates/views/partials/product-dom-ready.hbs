@@ -1,9 +1,9 @@
 <script type="text/javascript">
     $(document).ready(function () {
 		
-        var shopifyId = "{{product.shopifyId}}" || null;
+        var shopifyIdCan = "{{product.shopifyIdCan}}" || null;
 				
-		if(shopifyId) {
+		if(shopifyIdCan) {
 			$.ajax({
 				url:'/cf-ipcountry',
 				success: function(result){

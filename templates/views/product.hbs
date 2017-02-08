@@ -82,7 +82,7 @@
 						</div>
                     </div>
 				{{/if}}-->
-				{{#if product.shopifyId}}
+				{{#if product.shopifyIdCan}}
 					<div id="rowShopifyCan"><span style="color:red">Canada Visitor Detected</span></div>
 					<div id="shopify-buy-now"></div>
 				{{/if}}
@@ -100,6 +100,6 @@
 {{else}}
     <h3 class="text-muted">Product does not exist.</h3>
 {{/if}}
-{{#if product.shopifyId}}
-	{{> product-shopify-buy-button}}
+{{#if product.shopifyIdCan}}
+	{{> product-shopify-buy-button shopifyId=product.shopifyIdCan}}
 {{/if}}

@@ -13,7 +13,7 @@ Product.defaultColumns = 'name,subCategory';
 Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
-	shopifyId: {type: Number},
+	shopifyIdCan: {type: Number, label: 'Shopify Id Canada'},
 	//type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
 	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 	mainCategory: { type: Types.Relationship, ref: 'ProductCategory', required: true, initial: true},
