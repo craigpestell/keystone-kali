@@ -1,17 +1,15 @@
 <script type="text/javascript">
     $(document).ready(function () {
 		
-        var ecwidCanProductId = "{{product.ecwidCanProductId}}" || null;
-        var ecwidUkProductId = "{{product.ecwidUkProductId}}" || null;
-        var ecwidUsProductId = "{{product.ecwidUsProductId}}" || null;
+        var shopifyId = "{{product.shopifyId}}" || null;
 				
-		if(ecwidCanProductId) {
+		if(shopifyId) {
 			$.ajax({
 				url:'/cf-ipcountry',
 				success: function(result){
 					console.log(result);
 					if(result.country == "CA") {
-						//$('#rowEcwidCan').show();
+						$('#rowShopifyCan').show();
 					}
 				}
 			});
