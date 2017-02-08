@@ -58,11 +58,14 @@ Product.schema.virtual('colorwaysArray').get(function(){
 	return colorways;
 });
 
-Product.schema.virtual('technologiesAndFeatures').get(function(){
-	if(this.features[0] !== undefined){
-		this.features[0].featureAnchor = true;
-	}
-	return this.technologies.concat(this.features).map(function(item, i){
+Product.schema.virtual('technologiesLayout').get(function(){
+	return this.technologies.map(function(item, i){
+		item.layout = ((i+1) % 2) || 2;
+		return item;
+	});
+});
+Product.schema.virtual('featuresLayout').get(function(){
+	return this.features.map(function(item, i){
 		item.layout = ((i+1) % 2) || 2;
 		return item;
 	});

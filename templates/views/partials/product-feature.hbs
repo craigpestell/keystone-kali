@@ -1,0 +1,57 @@
+
+
+{{#each this}}
+
+    <div class="row"> {{#if this.featureAnchor}}<a id="features"></a>{{/if}}</div>
+	<div class="row"><div class="col-xs-12 text-center product-technology"><h2>{{name}}</h2></div></div>
+	<div>layout:{{layout}}</div>
+{{#ifeq layout 1}}
+
+	<div class="row">
+		<div class="col-xs-5 product-technology vcenter">
+			
+				{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+									   format="jpg" quality="auto" class="cld-responsive"
+									   dataSrc=true}}}
+		</div><!--
+    --><div class="col-xs-7 product-technology vcenter">
+		{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+							   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+							   format="jpg" quality="auto" class="cld-responsive"
+							   dataSrc=true}}}
+		<div style="display:inline-block;width:30%">
+			{{{cloudinaryImgSrcSet iconImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+							   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+							   format="jpg" quality="auto" class="cld-responsive"
+							   dataSrc=true}}}
+		</div>
+		{{#if this.shortDescription}}{{this.shortDescription}}{{else}}{{this.description}}{{/if}}</div>
+    </div>
+{{/ifeq}}
+{{#ifeq layout 2}}
+	<div class="row">
+		<div class="col-xs-7 product-technology vcenter">
+			{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+								   format="jpg" quality="auto" class="cld-responsive"
+								   dataSrc=true}}}
+
+			<div style="display:inline-block;width:30%"
+			{{{cloudinaryImgSrcSet iconImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+								   format="jpg" quality="auto" class="cld-responsive"
+								   dataSrc=true}}}
+		</div>
+			{{#if this.shortDescription}}{{this.shortDescription}}{{else}}{{this.description}}{{/if}}</div><!--
+    --><div class="col-xs-5 product-technology vcenter">
+
+				{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   widths="[133,150,156,172,172,181,221,263,304,320,413,500,1600]"
+								   format="jpg" quality="auto" class="cld-responsive"
+								   dataSrc=true}}}
+
+	</div>
+	</div>
+{{/ifeq}}
+{{/each}}
