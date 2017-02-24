@@ -84,7 +84,9 @@ body {
 	width: 90%;
 	top: 20%;
   }
-  
+  #technology .banner-overlay {
+	top: calc(50% - 24px); //24px is font size of H1 I assume
+  }
   #technology .banner-overlay h1{
 	font-size:16px;
 	letter-spacing:3px;
@@ -94,7 +96,6 @@ body {
 	font-size: 12px;
 	width:360px;
   }
-  
   
 }
 
@@ -115,6 +116,9 @@ body {
   #technology .heading{
 	width: 480px;
 	top: 30%;
+  }
+  #technology .banner-overlay {
+	top: calc(50% - 74px); //24px is font size of H1 I assume
   }
   
   #technology .banner-overlay h1{
@@ -670,23 +674,34 @@ End Product Page
 #technology a, #technology a:visited, #technology a:hover {
   text-decoration: none;
 }
+#technology .banner{
+  position: relative;
+}
+
 #technology .banner-overlay {
   color: white;
+  position: absolute;
+   
+  left: 4%;
+  //text-align: center;
+  width: 100%;
   //position:absolute; top:25%; left:110px; width:100%
 }
+
 #technology .heading {
-  display: inline-block; 
+  //display: inline-block; 
   border-top: 2px solid white; 
   border-bottom: 2px solid white;
-  position:absolute;
-  left: 4%;
+  //position:absolute;
+  //left: 4%;
+  margin-bottom: 10px;
 }
 #technology .intro {
-  position:absolute;
-  left:4%;
+  //position:absolute;
+  //left:4%;
   //width:60%;
-  bottom: 5%;
-  font-weight: bold;
+  //bottom: 5%;
+  //font-weight: bold;
 }
 .technology-icon-nav .title h4 {
   font-size: 10px;
