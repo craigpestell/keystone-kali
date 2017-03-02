@@ -1,0 +1,1 @@
+{"version":3,"sources":["fullpage-custom.scss"],"names":[],"mappings":"AAAA,gDACE,UAAW,CACZ","file":"fullpage-custom.css","sourcesContent":["#fp-nav ul li a span, .fp-slidesNav ul li a span {\n  color:#FFF;\n}\n"]}
