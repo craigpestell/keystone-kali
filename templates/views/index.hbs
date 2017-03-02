@@ -1,11 +1,11 @@
 <div id="fullpage">
 {{#each slides}}
-	<div class="section fp-auto-height-responsive" style="background-color:#000;padding: 15px 0;">
+	<div class="section" style="background-color:#000;padding: 15px 0;">
 		<div class="container">
 			<div style="width:100%; position:relative">
 	
 			{{{parsedOverlay}}}
-				<a href="{{href}}"><img data-src="{{cloudinaryUrl image width="auto" format="jpg" fetch_format="auto" quality="auto"}}" style="width:100%" src=""/></a>
+				<a href="{{href}}"><img data-src="{{cloudinaryUrl image width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" style="width:100%" src=""/></a>
 	
 			</div>
 		</div>
