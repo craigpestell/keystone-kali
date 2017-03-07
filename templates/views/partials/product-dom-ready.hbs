@@ -1,19 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		
-        var shopifyIdCan = "{{product.shopifyIdCan}}" || null;
-				
-		if(shopifyIdCan) {
-			$.ajax({
-				url:'/cf-ipcountry',
-				success: function(result){
-					console.log(result);
-					if(result.country == "CA") {
-						$('#rowShopifyCan').show();
-					}
-				}
-			});
-		}
+
 		
 		var lazyLoad = function(el){
             var dataSrcSet = $(el).data('srcset');
@@ -121,3 +108,4 @@
 
     });
 </script>
+{{> product-shopify-buy-button product=product}}

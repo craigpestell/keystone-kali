@@ -14,6 +14,7 @@ Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
 	shopifyIdCan: {type: Number, label: 'Shopify Id Canada'},
+	shopifyIdUS: {type: Number, label: 'Shopify Id US'},
 	//type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
 	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 	mainCategory: { type: Types.Relationship, ref: 'ProductCategory', required: true, initial: true},
