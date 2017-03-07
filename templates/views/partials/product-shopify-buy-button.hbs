@@ -131,12 +131,16 @@
 				success: function (result) {
 					console.log(result);
 					if (result.country == "CA") {
-						shopifyButton("kali", "3e327001331e481f2be66f85eba4c4f8", shopifyIdCan);
-						$('#rowShopifyCan').show();
+					    if(shopifyIdCan) {
+							shopifyButton("kali", "3e327001331e481f2be66f85eba4c4f8", shopifyIdCan);
+							$('#rowShopifyCan').show();
+						}
 					}
 					if (result.country == "US") {
-						shopifyButton("kali-usa", "7ae67513f9d1aca4d7f349ba6580e436", shopifyIdUS);
-						$('#rowShopifyUS').show();
+					    if(shopifyIdUS){
+							shopifyButton("kali-usa", "7ae67513f9d1aca4d7f349ba6580e436", shopifyIdUS);
+							$('#rowShopifyUS').show();
+						}
 					}
 				}
 			});
