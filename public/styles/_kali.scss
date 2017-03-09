@@ -552,6 +552,24 @@ End Product Page
 
 /* END Bootstrap overrides */
 
+.home h2 {
+  color: white;
+  background-color:black;
+  display:inline-block;
+  padding:2px 4px;
+}
+
+  .home h3.technology {
+  display:inline;
+  margin-bottom:0;
+  
+}
+.home .technology{
+  background-color: white;
+  display:inline-block;
+  border:0;
+}
+
 /* Product category */
 .product-category-item {
   position: relative;

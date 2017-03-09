@@ -1,10 +1,11 @@
 <textarea>{{json products}}</textarea>
-<div id="fullpage">
+<div id="fullpage" class="home">
 	{{#each products}}
 		<div class="section" style="background-color:{{#if heroColor}}{{heroColor}}{{else}}#000{{/if}};padding: 15px 0;">
 			<div class="container">
 				<div class="col-xs-12 col-md-7">
-					<img data-src="{{cloudinaryUrl heroImage width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" style="width:100%" src=""/>
+					<img data-src="{{cloudinaryUrl heroImage width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" src="" style="z-index:10;position:relative"/>
+					<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto" fetch_format="auto" quality="auto"}}}" class="cld-responsive" src="" style="margin-top:-20%;z-index:1;"/>
 				</div>
 				<div class="col-xs-12 col-md-5">
 					<h2>{{name}}</h2>
@@ -12,24 +13,26 @@
 					<p>{{{description}}}</p>
 					<h3 class="technology">Technology</h3>
 					{{#if technologies.length}}
-							<div class="row technology">
-								{{#each technologies}}
-									<div class="col-xs-4 col-sm-3">
-										<a href="/technology#{{slug}}">
-											<div class="text-center" style="display:inline-block;">
-												<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
-												<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
-											</div>
-										</a>
-									</div>
-								{{/each}}
-							</div>
+
+						<div class="technology">
+							{{#each technologies}}
+								<a href="/technology#{{slug}}">
+									<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
+								</a>
+							{{/each}}
+							{{#each features}}
+								<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
+							{{/each}}
+							
+						</div>
+							
 					{{/if}}
 					<div class="row">
-						<div class="col-xs-12"><span>more info</span><button>buy now</button></div>
+						<div class="col-xs-5">more info</div><div class="col-xs-7"><button>buy now</button></div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="col-xs-7"></div>
+						<div class="col-xs-5">
 							<img data-src="{{cloudinaryUrl heroWireImage width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" src=""/>		
 						</div>
 					</div>
