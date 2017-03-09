@@ -1,17 +1,48 @@
+<textarea>{{json products}}</textarea>
 <div id="fullpage">
-{{#each slides}}
-	<div class="section" style="background-color:#000;padding: 15px 0;">
-		<div class="container">
-			<div style="width:100%; position:relative">
-	
-			{{{parsedOverlay}}}
-				<a href="{{href}}"><img data-src="{{cloudinaryUrl image width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" style="width:100%" src=""/></a>
-	
+	{{#each products}}
+		<div class="section" style="background-color:{{#if heroColor}}{{heroColor}}{{else}}#000{{/if}};padding: 15px 0;">
+			<div class="container">
+				<div class="col-xs-12 col-md-7">
+					<img data-src="{{cloudinaryUrl heroImage width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" style="width:100%" src=""/>
+				</div>
+				<div class="col-xs-12 col-md-5">
+					<h2>{{name}}</h2>
+					<h3>{{{heroBlurb}}}</h3>
+					<p>{{{description}}}</p>
+					<h3 class="technology">Technology</h3>
+					{{#if technologies.length}}
+							<div class="row technology">
+								{{#each technologies}}
+									<div class="col-xs-4 col-sm-3">
+										<a href="/technology#{{slug}}">
+											<div class="text-center" style="display:inline-block;">
+												<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
+												<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
+											</div>
+										</a>
+									</div>
+								{{/each}}
+							</div>
+					{{/if}}
+					<div class="row">
+						<div class="col-xs-12"><span>more info</span><button>buy now</button></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<img data-src="{{cloudinaryUrl heroWireImage width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" src=""/>		
+						</div>
+					</div>
+			</div>
 			</div>
 		</div>
-	</div>
-{{/each}}
+	{{/each}}
+	
 	<div class="fp-auto-height section">
 		{{> footer}}
 	</div>
 </div>
+<div class="arrowDown">
+
+</div>
+

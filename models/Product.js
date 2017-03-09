@@ -17,13 +17,19 @@ Product.add({
 	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 	mainCategory: { type: Types.Relationship, ref: 'ProductCategory', required: true, initial: true},
 	subCategory: { type: Types.Relationship, ref: 'ProductSubCategory', required: true, initial: true},
+	
+	heroColor: {type: String, default: '', note: 'Homepage slide color'},
+	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true, note: 'Homepage slide color' },
+	heroBlurb: { type: Types.Html, default: ''},
+	heroWireImage: { type: Types.CloudinaryImage,  autoCleanup : true, note: 'Homepage slide wire image' },
+	
 	technologies: { type: Types.Relationship, ref: 'ProductTechnology', many: true },
 	features: { type: Types.Relationship, ref: 'ProductFeature', many: true },
 	shortDescription: { type: Types.Html, default: '' },
 	description: { type: Types.Html, default: '' },
 	specs: { type: Types.Html, default: '' },
 	usageChart: { type: Types.Html, default: '' },
-	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },
+	
 	gallery: { type: Types.CloudinaryImages,  autoCleanup : true },
 	//galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
 	imagesPerColorSwatch: {type: Number, note: 'Number of images for each color swatch.'},

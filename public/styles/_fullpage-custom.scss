@@ -1,3 +1,19 @@
 #fp-nav ul li a span, .fp-slidesNav ul li a span {
   background-color:#FFF;
 }
+
+.arrowDown{
+  position:fixed;
+  z-index:99;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  margin-left: -38px;
+  left: 50%;
+}
+.arrowDown{
+  bottom: 20px;
+  border-width: 38.5px 34px 0 38.5px;
+  border-color: #fff transparent transparent transparent;
+}

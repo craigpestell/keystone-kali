@@ -12,8 +12,7 @@ BasePage.add(
 		heroImage: {type: Types.CloudinaryImage,  autoCleanup : true},
 		bannerImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 		bannerOverlayHtml: { type: Types.Html, default: '' },
-		carousel: {type: Types.CloudinaryImages,  autoCleanup : true},
-		slides: { type: Types.Relationship, ref: 'Slide', many: true },
+		products: { type: Types.Relationship, ref: 'Product', many: true },
 		contentHtml: {type: Types.Html}
 	}
 );
