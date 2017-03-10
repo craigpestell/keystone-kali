@@ -587,17 +587,23 @@ End Product Page
   font-size: 24px;
   text-align: center;
   padding: 5px 8px;
-  background-color: $brand-grey;
-  font-weight: bold;
+  background-color: lighten($brand-grey, 15%);
+  font-weight: normal;
   font-family: Gotham-Black;
 }
 
 .home .buy-button {
   background-color: $brand-primary;
   color:white;
-  font-family: Gotham-Black;
-  
+  font-weight: bold;  
 }
+/* Scale up the box */
+.home .more-info:hover, .home .buy-button:hover {
+  transform: scale(1.1, 1.1);
+}
+
+
+
 @mixin alpha-attribute($attribute, $color, $background) {
   $percent: alpha($color) * 100%;
   $opaque: opacify($color, 1);
