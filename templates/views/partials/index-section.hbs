@@ -54,14 +54,15 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-6">
+				<div class="col-xs-6 col-sm-12 col-md-6" style="margin-bottom:15px;">
 					<a href="{{buyNowUrl}}" target="_blank">
 						<div class="col-xs-12 text-center buy-button">
 							buy now
 						</div>
 					</a>
 				</div>
-				<div class="col-xs-6">
+				
+				<div class="col-xs-6 col-sm-12 col-md-6">
 					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 						<div class="col-xs-12 more-info text-center">
 							more info
@@ -70,24 +71,23 @@
 				</div>
 			</div>
 			<div class="row"></div>
-		</div>
-		<div class="col-xs-12 col-sm-5 hidden-xs">
-			<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-				<div class="row">
-					{{#each gallery}}
-						{{#ifCond @index "<=" ../homeSlideAlternateEnd}}
-							{{#ifCond @index ">=" ../../homeSlideAlternateStart}}
-								<div class="col-xs-6">
-									<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}"
-										 class="cld-responsive" src=""/>
-								</div>
+			<div class="col-xs-12 hidden-xs">
+				<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+					<div class="row">
+						{{#each gallery}}
+							{{#ifCond @index "<=" ../homeSlideAlternateEnd}}
+								{{#ifCond @index ">=" ../../homeSlideAlternateStart}}
+									<div class="col-xs-6">
+										<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}"
+											 class="cld-responsive" src=""/>
+									</div>
+								{{/ifCond}}
 							{{/ifCond}}
-						{{/ifCond}}
-					{{/each}}
-				</div>
-			</a>
-
-
+						{{/each}}
+					</div>
+				</a>
+			</div>
 		</div>
+		
 	</div>
 </div>
