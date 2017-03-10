@@ -571,12 +571,6 @@ End Product Page
   padding-bottom: 8px;
   margin-bottom: 15px;
 }
-.home h3.technology {
-  display:inline;
-  margin-bottom:0;
-  
-}
-
 
 .home .col-xs-12.more-info {
   //background-color: white;
@@ -584,12 +578,13 @@ End Product Page
 
 .home .more-info, .home .buy-button {
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
   padding: 5px 8px;
   background-color: lighten($brand-grey, 15%);
   font-weight: normal;
   font-family: Gotham-Black;
+  padding: 8px 11px;
 }
 
 .home .buy-button {

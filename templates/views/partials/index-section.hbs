@@ -32,30 +32,23 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
+					{{#if technologies.length}}
 					<div class="row">
 						<div class="col-xs-12">
 							<h3 class="technology">Technology</h3>
-						</div>
-					</div>
-				<div class="row">
-				<div class="col-xs-12">
-
-					{{#if technologies.length}}
-
-						<div class="technology">
-							{{#each technologies}}
-								<a href="/technology#{{slug}}">
+							<div class="technology">
+								{{#each technologies}}
+									<a href="/technology#{{slug}}">
+										<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}"
+											 width="70"/>
+									</a>
+								{{/each}}
+								{{#each features}}
 									<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}"
 										 width="70"/>
-								</a>
-							{{/each}}
-							{{#each features}}
-								<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}"
-									 width="70"/>
-							{{/each}}
+								{{/each}}
+							</div>
 						</div>
-
-					</div>
 					</div>
 					{{/if}}
 				</div>
