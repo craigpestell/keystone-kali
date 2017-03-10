@@ -585,6 +585,10 @@ End Product Page
   border:0;
 }
 
+.home .col-xs-12.more-info {
+  background-color: white;
+}
+
 .home .more-info {
   background-color: white;
   text-transform: uppercase;
@@ -593,12 +597,18 @@ End Product Page
   padding: 2px 4px;
   font-weight: bold;
 }
-.home .buy-button{
+
+.home .col-xs-12.buy-button {
   background-color: $brand-grey;
+}
+
+.home .buy-button{
+  
   text-transform: uppercase;
   font-size: 20px;
   text-align: center;
   padding: 5px 8px;
+  display:inline-block;
   
 }
 

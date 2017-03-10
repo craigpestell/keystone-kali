@@ -1,51 +1,16 @@
-<textarea>{{json products}}</textarea>
+<!--space for fixed header on mobile-->
+<div class="visible-xs" style="height:50px"></div>
+
 <div id="fullpage" class="home">
 	{{#each products}}
-		<div class="section" style="background-color:{{#if heroColor}}{{heroColor}}{{else}}#000{{/if}};padding: 15px 0;">
-			<div class="container">
-				<div class="col-xs-12 col-md-7">
-					<img data-src="{{cloudinaryUrl heroImage width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" src="" style="z-index:10;position:relative"/>
-					<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto" fetch_format="auto" quality="auto"}}}" class="cld-responsive" src="" style="margin-top:-20%;z-index:1;"/>
-				</div>
-				<div class="col-xs-12 col-md-5">
-					<div class="product-title"><h2>{{name}}</h2></div>
-					<h3>{{{heroBlurb}}}</h3>
-					<p>{{{description}}}</p>
-					<h3 class="technology">Technology</h3>
-					{{#if technologies.length}}
-
-						<div class="technology">
-							{{#each technologies}}
-								<a href="/technology#{{slug}}">
-									<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
-								</a>
-							{{/each}}
-							{{#each features}}
-								<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
-							{{/each}}
-							
-						</div>
-							
-					{{/if}}
-					<div class="row">
-						<div class="col-xs-5"><div class="more-info"><a href="">more info</a></div></div><div class="col-xs-7"><div class="buy-button">buy now</div></div>
-					</div>
-					<div class="row">
-						<div class="col-xs-7"></div>
-						<div class="col-xs-5">
-							<img data-src="{{cloudinaryUrl heroWireImage width="auto" format="jpg" fetch_format="auto" quality="auto"}}" class="cld-responsive" src=""/>		
-						</div>
-					</div>
-			</div>
-			</div>
-		</div>
+		{{> index-section}}
 	{{/each}}
-	
+
 	<div class="fp-auto-height section">
 		{{> footer}}
 	</div>
 </div>
-<div class="arrowDown">
-
+<div class="arrowDown hidden-xs">
+	<span class="glyphicon glyphicon-menu-down" aria-hidden="true" style="font-size:50px;"></span>
 </div>
 
