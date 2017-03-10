@@ -8,7 +8,7 @@
 					<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto" fetch_format="auto" quality="auto"}}}" class="cld-responsive" src="" style="margin-top:-20%;z-index:1;"/>
 				</div>
 				<div class="col-xs-12 col-md-5">
-					<h2>{{name}}</h2>
+					<div class="product-title"><h2>{{name}}</h2></div>
 					<h3>{{{heroBlurb}}}</h3>
 					<p>{{{description}}}</p>
 					<h3 class="technology">Technology</h3>
@@ -28,7 +28,7 @@
 							
 					{{/if}}
 					<div class="row">
-						<div class="col-xs-5">more info</div><div class="col-xs-7"><button>buy now</button></div>
+						<div class="col-xs-5"><div class="more-info"><a href="">more info</a></div></div><div class="col-xs-7"><div class="buy-button">buy now</div></div>
 					</div>
 					<div class="row">
 						<div class="col-xs-7"></div>

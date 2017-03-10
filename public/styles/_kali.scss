@@ -554,20 +554,52 @@ End Product Page
 
 .home h2 {
   color: white;
+  font-family: Gotham-Medium, Arial, SansSerif;
+  font-size: 30px;
   background-color:black;
   display:inline-block;
-  padding:2px 4px;
+  
+  margin:0;
+  
 }
 
-  .home h3.technology {
+.home .product-title{
+  color: #FFF;
+  background-color: #000;
+  display: inline-block;
+  padding: 10px;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+.home h3.technology {
   display:inline;
   margin-bottom:0;
   
+}
+.home div.technology{
+  margin-top: -2px;
 }
 .home .technology{
   background-color: white;
   display:inline-block;
   border:0;
+}
+
+.home .more-info {
+  background-color: white;
+  text-transform: uppercase;
+  text-align: center;
+  display: inline-block;
+  padding: 2px 4px;
+  font-weight: bold;
+}
+.home .buy-button{
+  background-color: $brand-grey;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px 8px;
+  
 }
 
 /* Product category */
