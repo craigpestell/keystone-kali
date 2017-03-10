@@ -38,9 +38,14 @@ exports = module.exports = function(req, res) {
 			});
 		}
 		var productWhere = {_id : {$in: productIds}};
-		keystone.list('Product').model.find().where(productWhere).populate('technologies mainCategory subCategory').exec(function(err, products){
+		keystone.list('Product').model.find().where(productWhere).populate('technologies mainCategory subCategory gallery').exec(function(err, products){
 			//sort by homePage products
 			orderProducts(productIds, products);
+			products.forEach(function(product, i, products){
+				
+				products[i].homeSlideAlternateEnd = product.imagesPerColorSwatch - 1;
+				products[i].homeSlideAlternateStart = products[i].homeSlideAlternateEnd - 1;
+			});
 			locals.products = products;
 			// Render the view
 			view.render('index');

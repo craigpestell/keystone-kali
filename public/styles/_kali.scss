@@ -581,36 +581,40 @@ End Product Page
   display: inline-block;
 }
 .home .technology{
-  background-color: white;
+  
   
   border:0;
 }
 
 .home .col-xs-12.more-info {
-  background-color: white;
+  //background-color: white;
 }
 
-.home .more-info {
-  background-color: white;
+.home .more-info, .home .buy-button {
   text-transform: uppercase;
-  text-align: center;
-  display: inline-block;
-  padding: 2px 4px;
-  font-weight: bold;
-}
-
-.home .col-xs-12.buy-button {
-  background-color: $brand-grey;
-}
-
-.home .buy-button{
-  
-  text-transform: uppercase;
-  font-size: 20px;
+  font-size: 24px;
   text-align: center;
   padding: 5px 8px;
-  display:inline-block;
+  background-color: $brand-grey;
+  font-weight: bold;
+  font-family: Gotham-Black;
+}
+
+.home .buy-button {
+  background-color: $brand-primary;
+  color:white;
+  font-family: Gotham-Black;
   
+}
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+.home .alpha{
+  @include alpha-attribute('background-color', rgba(white, 0.8), white);
 }
 
 /* Product category */
