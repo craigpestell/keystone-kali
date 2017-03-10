@@ -150,10 +150,6 @@
 					responsiveWidth:768,
 					onLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
 					    var length = $('.fp-section').length;
-					    console.log(arguments);
-					    console.log('length', $('.fp-section').length);
-					    
-					    console.log('index', index, 'slideIndex', slideIndex);
 					    if(index == length){
 					        $('.arrowDown').css({color:'#FFF'});
 						}else{
@@ -267,6 +263,16 @@
                 eventLabel: "Youtube"
             });
         });
+
+		$('.home .buy-button').click(function(e){
+		    var href = $(e.target).parent().attr('href');
+			ga('send', {
+				hitType: 'event',
+				eventCategory: 'Home Buy Button',
+				eventAction: 'click',
+				eventLabel: "Url: " + href
+			});
+		});
 	
     });
 </script>
