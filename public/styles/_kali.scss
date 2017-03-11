@@ -592,11 +592,14 @@ End Product Page
   font-weight: bold;  
 }
 /* Scale up the box */
-.home .more-info:hover, .home .buy-button:hover {
+.home .technology img:hover, .home .more-info:hover, .home .buy-button:hover {
   transform: scale(1.1, 1.1);
 }
 
-
+.home .technology {
+  display: inline-block;
+  padding: 10px;
+}
 
 @mixin alpha-attribute($attribute, $color, $background) {
   $percent: alpha($color) * 100%;
@@ -605,8 +608,9 @@ End Product Page
   #{$attribute}: $solid-color;
   #{$attribute}: $color;
 }
+
 .home .alpha{
-  @include alpha-attribute('background-color', rgba(white, 0.8), white);
+  @include alpha-attribute('background-color', rgba(white, 0.3), white);
 }
 
 /* Product category */
