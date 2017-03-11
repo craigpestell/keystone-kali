@@ -610,7 +610,7 @@ End Product Page
 }
 
 .home .alpha{
-  @include alpha-attribute('background-color', rgba(white, 0.3), white);
+  @include alpha-attribute('background-color', rgba(white, 0.5), white);
 }
 
 /* Product category */
