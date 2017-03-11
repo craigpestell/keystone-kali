@@ -596,10 +596,7 @@ End Product Page
   transform: scale(1.1, 1.1);
 }
 
-.home .technology {
-  display: inline-block;
-  padding: 10px;
-}
+
 
 @mixin alpha-attribute($attribute, $color, $background) {
   $percent: alpha($color) * 100%;

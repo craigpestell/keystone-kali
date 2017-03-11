@@ -35,28 +35,28 @@
 					<div class="col-xs-12">
 						<h3 class="slide-label">Technology</h3><div style="clear:both;"></div>
 					</div>		
-						{{#each technologies}}
-							<div class="col-xs-3">
-								<div class="alpha"  style="padding:10px;">
-								<a href="/technology#{{slug}}">
-									{{#if flatIconImage.url}}
-									<img data-src="{{{cloudinaryUrl flatIconImage width="auto" fetch_format="auto" quality="auto"}}}"
+					{{#each technologies}}
+						<div class="col-xs-3">
+							<div class="alpha"  style="padding:10px;">
+							<a href="/technology#{{slug}}">
+								{{#if flatIconImage.url}}
+								<img data-src="{{{cloudinaryUrl flatIconImage width="auto" fetch_format="auto" quality="auto"}}}"
+									 src="" class="cld-responsive"/>
+								{{else}}
+									<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
 										 src="" class="cld-responsive"/>
-									{{else}}
-										<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
-											 src="" class="cld-responsive"/>
-										
-									{{/if}}
-								</a>
-								</div>
+									
+								{{/if}}
+							</a>
 							</div>
-						{{/each}}
-					
-						{{#each features}}
-							<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
-								 src="" class="cld-responsive"/>
-						{{/each}}
-					
+						</div>
+					{{/each}}
+				
+					{{#each features}}
+						<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
+							 src="" class="cld-responsive"/>
+					{{/each}}
+				
 				</div>
 			{{/if}}
 			<div class="row">
