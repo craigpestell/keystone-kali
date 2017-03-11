@@ -1,21 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		
-        var ecwidCanProductId = "{{product.ecwidCanProductId}}" || null;
-        var ecwidUkProductId = "{{product.ecwidUkProductId}}" || null;
-        var ecwidUsProductId = "{{product.ecwidUsProductId}}" || null;
-				
-		if(ecwidCanProductId) {
-			$.ajax({
-				url:'/cf-ipcountry',
-				success: function(result){
-					console.log(result);
-					if(result.country == "CA") {
-						//$('#rowEcwidCan').show();
-					}
-				}
-			});
-		}
+
 		
 		var lazyLoad = function(el){
             var dataSrcSet = $(el).data('srcset');
@@ -123,3 +108,4 @@
 
     });
 </script>
+{{> product-shopify-buy-button product=product}}

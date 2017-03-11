@@ -13,6 +13,8 @@ Product.defaultColumns = 'name,subCategory';
 Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
+	shopifyIdCan: {type: Number, label: 'Shopify Id Canada'},
+	shopifyIdUS: {type: Number, label: 'Shopify Id US'},
 	//type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
 	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 	mainCategory: { type: Types.Relationship, ref: 'ProductCategory', required: true, initial: true},
@@ -35,9 +37,9 @@ Product.add({
 	imagesPerColorSwatch: {type: Number, note: 'Number of images for each color swatch.'},
 	colorways: {type: String, default: '', note: 'semi-colon delimited list of colorways'},
 	sizingChart: { type: Types.Relationship, ref: 'SizingChart' },
-	ecwidCanProductId: {type: String},
+	/*ecwidCanProductId: {type: String},
 	ecwidUkProductId: {type: String},
-	ecwidUsProductId: {type: String},
+	ecwidUsProductId: {type: String},*/
 	extra: { type: Types.Html, wysiwyg: true }
 });
 
