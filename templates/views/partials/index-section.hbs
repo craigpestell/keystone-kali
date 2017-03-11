@@ -33,23 +33,21 @@
 			{{#if technologies.length}}
 				<div class="row">
 					<div class="col-xs-12">
-				
-							<h3>Technology</h3>
-							<div class="row">
-								{{#each technologies}}
-									<div class="col col-xs-3 alpha" style="padding:10px;margin:5px;">
-										<a href="/technology#{{slug}}">
-											<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
-												 src="" class="cld-responsive"/>
-										</a>
-									</div>
-								{{/each}}
+						<h3>Technology</h3>
+							
+						{{#each technologies}}
+							<div class="col-xs-3 alpha" style="padding:10px;margin:5px;">
+								<a href="/technology#{{slug}}">
+									<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
+										 src="" class="cld-responsive"/>
+								</a>
 							</div>
-							{{#each features}}
-								<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
-									 src="" class="cld-responsive"/>
-							{{/each}}
-				
+						{{/each}}
+					
+						{{#each features}}
+							<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
+								 src="" class="cld-responsive"/>
+						{{/each}}
 					</div>
 				</div>
 			{{/if}}
