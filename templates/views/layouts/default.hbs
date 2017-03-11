@@ -143,11 +143,11 @@
 				$('#fullpage').fullpage({
 					//sectionsColor: ['#f2f2f2','#4BBFC3','#7BAABE','whitesmoke'],
 					css3: true,
-					menu: "#nav-main",
 					navigation: false,
 					lazyLoading: false,
 					loopBottom: true,
 					responsiveWidth:768,
+					scrollBar: true,
 					onLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
 					    var length = $('.fp-section').length;
 					    if(index == length){
@@ -155,7 +155,8 @@
 						}else{
 							$('.arrowDown').css({color:'#000'});
 						}
-					}
+					},
+					
 					//interlockedSlides: true,
 					//responsiveSlides: true
 				});
