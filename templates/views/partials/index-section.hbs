@@ -33,11 +33,11 @@
 			{{#if technologies.length}}
 				<div class="row">
 					<div class="col-xs-12">
-						<div class="technology">
+				
 							<h3>Technology</h3>
 							<div class="row">
 								{{#each technologies}}
-									<div class=" col-xs-3 alpha" style="padding:10px;margin:5px;">
+									<div class="col col-xs-3 alpha" style="padding:10px;margin:5px;">
 										<a href="/technology#{{slug}}">
 											<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
 												 src="" class="cld-responsive"/>
@@ -49,7 +49,7 @@
 								<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
 									 src="" class="cld-responsive"/>
 							{{/each}}
-						</div>
+				
 					</div>
 				</div>
 			{{/if}}
