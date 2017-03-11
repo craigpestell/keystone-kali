@@ -613,6 +613,17 @@ End Product Page
   @include alpha-attribute('background-color', rgba(white, 0.5), white);
 }
 
+.home h3.slide-label{
+  color: #FFF;
+  background-color: #000;
+  padding: 10px;
+  padding-bottom: 8px;
+  font-family: Gotham-Medium, Arial, SansSerif;
+  font-size: 16px;
+  display:inline-block;
+}
+
+
 /* Product category */
 .product-category-item {
   position: relative;
