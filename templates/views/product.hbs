@@ -82,14 +82,13 @@
 						</div>
                     </div>
 				{{/if}}-->
-				{{#if product.shopifyIdCan}}
-					<div id="rowShopifyCan"><span style="color:red">Canada Visitor Detected</span></div>
-					<div id="shopify-buy-now-kali"></div>
-				{{/if}}
-				{{#if product.shopifyIdUS}}
-					<div id="rowShopifyUS"><span style="color:red">US Visitor Detected</span></div>
-					<div id="shopify-buy-now-kali-usa"></div>
-				{{/if}}
+				<div class="row">
+					<a href="" target="_blank">
+						<div class="col-xs-12 text-center buy-button" data-shopifyid-us="{{product.shopifyIdUS}}" data-shopifyid-can="{{product.shopifyIdCan}}" style="display:none">
+							buy now
+						</div>
+					</a>
+				</div>
 
 				<div class="row">
 					<div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em;font-family:Gotham-Black">Find a Dealer</h3></a>
