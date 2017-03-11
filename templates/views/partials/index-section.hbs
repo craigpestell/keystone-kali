@@ -31,12 +31,13 @@
 				</div>
 			</div>
 			{{#if technologies.length}}
-				<div class="row">
+				<div class="row technology">
 					<div class="col-xs-12">
-						<h3 class="slide-label">Technology</h3><div style="clean:both;"></div>
-							
+						<h3 class="slide-label">Technology</h3><div style="clear:both;"></div>
+					</div>		
 						{{#each technologies}}
-							<div class="col-xs-3 alpha" style="padding:10px;margin:5px;">
+							<div class="col-xs-3">
+								<div class="alpha"  style="padding:10px;">
 								<a href="/technology#{{slug}}">
 									{{#if flatIconImage.url}}
 									<img data-src="{{{cloudinaryUrl flatIconImage width="auto" fetch_format="auto" quality="auto"}}}"
@@ -47,6 +48,7 @@
 										
 									{{/if}}
 								</a>
+								</div>
 							</div>
 						{{/each}}
 					
@@ -54,7 +56,7 @@
 							<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
 								 src="" class="cld-responsive"/>
 						{{/each}}
-					</div>
+					
 				</div>
 			{{/if}}
 			<div class="row">
