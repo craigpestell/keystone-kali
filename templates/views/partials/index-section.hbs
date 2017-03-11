@@ -38,8 +38,14 @@
 						{{#each technologies}}
 							<div class="col-xs-3 alpha" style="padding:10px;margin:5px;">
 								<a href="/technology#{{slug}}">
-									<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
+									{{#if flatIconImage}}
+									<img data-src="{{{cloudinaryUrl flatIconImage width="auto" fetch_format="auto" quality="auto"}}}"
 										 src="" class="cld-responsive"/>
+									{{else}}
+										<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
+											 src="" class="cld-responsive"/>
+										
+									{{/if}}
 								</a>
 							</div>
 						{{/each}}
