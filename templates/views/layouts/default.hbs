@@ -107,6 +107,18 @@
 {{/ifCond}}
 
 <!--{{{isAdminEditorJS user}}}-->
+
+	<script type="text/javascript">
+		$('.buy-button').on('click', function(){
+			ga('send', {
+				hitType: 'event',
+				eventCategory: 'Buy Button',
+				eventAction: 'click',
+				eventLabel: "Buy Button"
+			});
+		});
+
+	</script>
 {{#ifCond section '==' 'products' }}
     <script type="text/javascript">
         $(document).ready(function () {
