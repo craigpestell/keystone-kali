@@ -65,11 +65,7 @@
 		});
 		
         $('#product-zoom-current').click(function () {
-            $('[data-gallery]').each(function (i, el) {
-                if ($(el).children('picture').children('source').is(':visible')) {
-                    $(el).click();
-                }
-            });
+            $('#product-main [data-gallery] img:visible').click();
         });
 
         $('.icon-toggler').on('click', function (e) {
