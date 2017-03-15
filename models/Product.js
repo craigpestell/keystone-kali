@@ -22,7 +22,7 @@ Product.add({
 	
 	heroColor: {type: String, default: '', note: 'Homepage slide color'},
 	heroBlurb: { type: Types.Html, default: ''},
-	heroWireImage: { type: Types.CloudinaryImage,  autoCleanup : true, note: 'Homepage slide wire image' },
+	heroBackgroundImage: { type: Types.CloudinaryImage,  autoCleanup : true, note: 'Homepage slide background image' },
 	buyNowUrl: {type: String, default: ''},
 	
 	technologies: { type: Types.Relationship, ref: 'ProductTechnology', many: true },
