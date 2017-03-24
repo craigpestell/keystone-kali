@@ -21,6 +21,7 @@ Product.add({
 	subCategory: { type: Types.Relationship, ref: 'ProductSubCategory', required: true, initial: true},
 	
 	heroColor: {type: String, default: '', note: 'Homepage slide color'},
+	darkColor:{type: Boolean},
 	heroBlurb: { type: Types.Html, default: ''},
 	heroWireImage: { type: Types.CloudinaryImage,  autoCleanup : true, note: 'Homepage slide wire image' },
 	buyNowUrl: {type: String, default: ''},

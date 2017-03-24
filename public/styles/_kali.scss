@@ -208,6 +208,15 @@ h4 {text-transform: none;}
   top: 0px;
   z-index: 10;
 }
+
+.section.dark {
+  color:white;
+}
+.section.dark .product-title, .section.dark h2, .section.dark .slide-label {
+  background-color: white;
+  color: black;
+}
+
 .slide-overlay {
   position: absolute;
   top: 30%;
