@@ -58,12 +58,16 @@
 				country = result.country;
 				if (result.country == "CA") {
 					{{#each products}}
-					shopifyButton("kali", "3e327001331e481f2be66f85eba4c4f8", "{{shopifyIdCan}}" || 0);
+						if({{shopifyIdCan}}) {
+							shopifyButton("kali", "3e327001331e481f2be66f85eba4c4f8", "{{shopifyIdCan}}" || 0);
+						}
 					{{/each}}
 				}
 				if (result.country == "US") {
 					{{#each products}}
-						shopifyButton("kali-usa", "7ae67513f9d1aca4d7f349ba6580e436", "{{shopifyIdUS}}" || 0);
+						if({{shopifyIdUS}}) {
+							shopifyButton("kali-usa", "7ae67513f9d1aca4d7f349ba6580e436", "{{shopifyIdUS}}" || 0);
+						}
 					{{/each}}
 				}
 			}
