@@ -214,7 +214,11 @@ h4 {text-transform: none;}
 }
 
 .section .dark-to-white {
-  fill: white;
+  fill: white !important;
+}
+
+.section .light-to-black{
+  fill: black !important;
 }
 
 .slide-overlay {
