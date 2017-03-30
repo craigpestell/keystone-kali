@@ -606,7 +606,7 @@ End Product Page
   font-weight: bold;  
 }
 /* Scale up the box */
-.home .technology img:hover, .home .more-info:hover, .home .buy-button:hover {
+.home .technology img:hover, .home .technology svg:hover, .home .more-info:hover, .home .buy-button:hover {
   transform: scale(1.1, 1.1);
 }
 
