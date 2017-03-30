@@ -1,25 +1,5 @@
 <script type="text/javascript">
     $(document).ready(function () {
-<<<<<<< HEAD
-		
-        var ecwidCanProductId = "{{product.ecwidCanProductId}}" || null;
-        var ecwidUkProductId = "{{product.ecwidUkProductId}}" || null;
-        var ecwidUsProductId = "{{product.ecwidUsProductId}}" || null;
-				
-		if(ecwidCanProductId) {
-			$.ajax({
-				url:'/cf-ipcountry',
-				success: function(result){
-					console.log(result);
-					if(result.country == "CA") {
-						//$('#rowEcwidCan').show();
-					}
-				}
-			});
-		}
-=======
-
->>>>>>> 08672b6516d4a308df75a32315526e66db941b70
 		
 		var lazyLoad = function(el){
             var dataSrcSet = $(el).data('srcset');
