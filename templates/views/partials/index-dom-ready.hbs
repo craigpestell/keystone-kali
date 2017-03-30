@@ -1,0 +1,81 @@
+<div id='product-component-00e6544e425'></div>
+<script type="text/javascript">
+	/*<![CDATA[*/
+	$(document).ready(function () {
+	    var country = "";
+		var shopifyButton = function (domain, apiKey, shopifyId, preOrder) {
+			var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+			if (window.ShopifyBuy) {
+				if (window.ShopifyBuy.UI) {
+					ShopifyBuyInit();
+				} else {
+					loadScript();
+				}
+			} else {
+				loadScript();
+			}
+
+			function loadScript() {
+				var script = document.createElement('script');
+				script.async = true;
+				script.src = scriptURL;
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+				script.onload = ShopifyBuyInit;
+			}
+
+			function ShopifyBuyInit() {
+				var client = ShopifyBuy.buildClient({
+					domain: domain + '.myshopify.com',
+					apiKey: apiKey,
+					appId: '6',
+				});
+				client.fetchProduct(shopifyId).then(function(product){
+				   	var buySelector = '.buy-button[data-shopifyid-';
+					var domain;
+					if(country == "CA") {
+					    domain = 'shop-ca';
+						buySelector += 'can=';
+					}
+					if(country == "US") {
+					    domain = 'shop-usa';
+						buySelector += 'us=';
+					}
+					buySelector += '"' + product.id + '"]';
+					if(preOrder){
+					    $(buySelector).html('Preorder');
+					}
+					$(buySelector).css({'display':'block'});
+					$(buySelector).parent('a').attr('href','http://' + domain + '.kaliprotectives.com/products/' + product.attrs.handle);
+				});
+				/*ShopifyBuy.UI.onReady(client).then(function (ui) {
+					console.log(ui);
+					
+					
+				});*/
+			}
+		};
+
+		$.ajax({
+			url: '/cf-ipcountry',
+			success: function (result) {
+				country = result.country;
+				if (result.country == "CA") {
+					{{#each products}}
+						if("{{shopifyIdCan}}") {
+							shopifyButton("kali", "3e327001331e481f2be66f85eba4c4f8", "{{shopifyIdCan}}" || 0, "{{preOrderCan}}");
+						}
+					{{/each}}
+				}
+				if (result.country == "US") {
+					{{#each products}}
+						if("{{shopifyIdUS}}") {
+							shopifyButton("kali-usa", "7ae67513f9d1aca4d7f349ba6580e436", "{{shopifyIdUS}}" || 0, "{{preOrderUS}}");
+						}
+					{{/each}}
+				}
+			}
+		});
+		
+	});
+	/*]]>*/
+</script>

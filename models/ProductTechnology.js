@@ -17,6 +17,8 @@ ProductTechnology.add({
 	description: { type: Types.Html, default: '' },
 	year:{ type: Types.Number },
 	iconImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	flatIconImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	rawIconImage: { type: String},
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	bannerImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	bannerOverlayHtml: { type: Types.Html, default: '' },

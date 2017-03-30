@@ -1,5 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
+<<<<<<< HEAD
 		
         var ecwidCanProductId = "{{product.ecwidCanProductId}}" || null;
         var ecwidUkProductId = "{{product.ecwidUkProductId}}" || null;
@@ -16,6 +17,9 @@
 				}
 			});
 		}
+=======
+
+>>>>>>> 08672b6516d4a308df75a32315526e66db941b70
 		
 		var lazyLoad = function(el){
             var dataSrcSet = $(el).data('srcset');
@@ -80,11 +84,7 @@
 		});
 		
         $('#product-zoom-current').click(function () {
-            $('[data-gallery]').each(function (i, el) {
-                if ($(el).children('picture').children('source').is(':visible')) {
-                    $(el).click();
-                }
-            });
+            $('#product-main [data-gallery] img:visible').click();
         });
 
         $('.icon-toggler').on('click', function (e) {
@@ -123,3 +123,4 @@
 
     });
 </script>
+{{> product-shopify-buy-button product=product}}

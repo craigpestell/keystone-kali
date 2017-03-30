@@ -14,6 +14,7 @@ BasePage.add(
 		bannerOverlayHtml: { type: Types.Html, default: '' },
 		carousel: {type: Types.CloudinaryImages,  autoCleanup : true},
 		slides: { type: Types.Relationship, ref: 'Slide', many: true },
+		products: { type: Types.Relationship, ref: 'Product', many: true },
 		contentHtml: {type: Types.Html}
 	}
 );

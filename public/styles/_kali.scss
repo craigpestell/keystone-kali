@@ -1,4 +1,6 @@
 @import 'bootstrap/bootstrap/variables';
+@import '/js/fullpage.js/dist/jquery.fullpage.css';
+@import '_fullpage-custom.scss';
 
 .clearfix:before,
 .clearfix:after {
@@ -84,7 +86,9 @@ body {
 	width: 90%;
 	top: 20%;
   }
-  
+  #technology .banner-overlay {
+	top: calc(50% - 24px); //24px is font size of H1 I assume
+  }
   #technology .banner-overlay h1{
 	font-size:16px;
 	letter-spacing:3px;
@@ -94,7 +98,6 @@ body {
 	font-size: 12px;
 	width:360px;
   }
-  
   
 }
 
@@ -115,6 +118,9 @@ body {
   #technology .heading{
 	width: 480px;
 	top: 30%;
+  }
+  #technology .banner-overlay {
+	top: calc(50% - 74px); //24px is font size of H1 I assume
   }
   
   #technology .banner-overlay h1{
@@ -194,6 +200,26 @@ h1, h2, h3, h4 {
 }
 
 h4 {text-transform: none;}
+
+.fullpage-nav {
+  position:fixed;
+  width:100%;
+  background-color:#FFF;
+  top: 0px;
+  z-index: 10;
+}
+
+.section.dark {
+  color:white;
+}
+
+.section.dark .dark-to-white {
+  fill: white !important;
+}
+
+.section.dark .light-to-black{
+  fill: black !important;
+}
 
 .slide-overlay {
   position: absolute;
@@ -539,6 +565,76 @@ End Product Page
 
 /* END Bootstrap overrides */
 
+.home h2 {
+  color: white;
+  font-family: Gotham-Medium, Arial, SansSerif;
+  font-size: 30px;
+  background-color:black;
+  display:inline-block;
+  
+  margin:0;
+  
+}
+.home h3{margin-bottom:0;}
+
+.home .product-title{
+  color: #FFF;
+  background-color: #000;
+  display: inline-block;
+  padding: 10px;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.home .col-xs-12.more-info {
+  //background-color: white;
+}
+
+.home .more-info, .home .buy-button, #product-main .buy-button {
+  text-transform: uppercase;
+  font-size: 18px;
+  text-align: center;
+  background-color: lighten($brand-grey, 15%);
+  font-weight: normal;
+  font-family: Gotham-Black;
+  padding: 8px 11px;
+}
+
+.home .buy-button, #product-main .buy-button {
+  background-color: $brand-primary;
+  color:white;
+  font-weight: bold;  
+}
+/* Scale up the box */
+.home .technology img:hover, .home .technology svg:hover, .home .more-info:hover, .home .buy-button:hover {
+  transform: scale(1.1, 1.1);
+}
+
+
+
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+.home .alpha{
+  @include alpha-attribute('background-color', rgba(white, 0.5), white);
+}
+
+.home h3.slide-label{
+  color: #FFF;
+  background-color: #000;
+  padding: 10px;
+  padding-bottom: 8px;
+  font-family: Gotham-Medium, Arial, SansSerif;
+  font-size: 16px;
+  display:inline-block;
+}
+
+
 /* Product category */
 .product-category-item {
   position: relative;
@@ -658,6 +754,10 @@ End Product Page
   text-decoration:none;
 }
 
+#rowShopifyCan,#rowShopifyUS {
+  display:none;
+}
+
 /* END product detail page */
 
 /* Register page */
@@ -670,23 +770,34 @@ End Product Page
 #technology a, #technology a:visited, #technology a:hover {
   text-decoration: none;
 }
+#technology .banner{
+  position: relative;
+}
+
 #technology .banner-overlay {
   color: white;
+  position: absolute;
+   
+  left: 4%;
+  //text-align: center;
+  width: 100%;
   //position:absolute; top:25%; left:110px; width:100%
 }
+
 #technology .heading {
-  display: inline-block; 
+  //display: inline-block; 
   border-top: 2px solid white; 
   border-bottom: 2px solid white;
-  position:absolute;
-  left: 4%;
+  //position:absolute;
+  //left: 4%;
+  margin-bottom: 10px;
 }
 #technology .intro {
-  position:absolute;
-  left:4%;
+  //position:absolute;
+  //left:4%;
   //width:60%;
-  bottom: 5%;
-  font-weight: bold;
+  //bottom: 5%;
+  //font-weight: bold;
 }
 .technology-icon-nav .title h4 {
   font-size: 10px;

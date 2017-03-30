@@ -10,15 +10,18 @@
 
 			];
             dealers.forEach(function(d){
+                setTimeout(function(){ })
                 var data = {};
                 data.location = {};
                 data.name = d["name"];
-                data.location.street1 = d["address"];
+				data.location.street1 = d["address"];
+				data.location.street2 = d["address2"];
                 data.location.suburb = d["city"];
-                //data.location.state = d["Mailing State/Province"];
+                data.location.state = d["state"];
                 data.location.country = d["country"];
                 data.location.postcode = d["zip"];
-                data.phone = d["phone"];
+				data.phone = d["phone"];
+				data.email = d["email"];
                 if(d["web"])data.web = d["web"];
 				console.log('data',d);
                 $.post('/api/dealers', data, function(responseData, textStatus){

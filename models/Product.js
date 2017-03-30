@@ -13,25 +13,33 @@ Product.defaultColumns = 'name,subCategory';
 Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
+	shopifyIdCan: {type: Number, label: 'Shopify Id Canada'},
+	preOrderCan: {type: Boolean, note: 'Show Preorder button instead of Buy Now - Canada'},
+	shopifyIdUS: {type: Number, label: 'Shopify Id US'},
+	preOrderUS: {type: Boolean, note: 'Show Preorder button instead of Buy Now - US'},
 	//type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
 	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 	mainCategory: { type: Types.Relationship, ref: 'ProductCategory', required: true, initial: true},
 	subCategory: { type: Types.Relationship, ref: 'ProductSubCategory', required: true, initial: true},
+	
+	heroColor: {type: String, default: '', note: 'Homepage slide color'},
+	darkColor:{type: Boolean},
+	heroBlurb: { type: Types.Html, default: ''},
+	heroBackgroundImage: { type: Types.CloudinaryImage,  autoCleanup : true, note: 'Homepage slide background image' },
+	buyNowUrl: {type: String, default: ''},
+	
 	technologies: { type: Types.Relationship, ref: 'ProductTechnology', many: true },
 	features: { type: Types.Relationship, ref: 'ProductFeature', many: true },
 	shortDescription: { type: Types.Html, default: '' },
 	description: { type: Types.Html, default: '' },
 	specs: { type: Types.Html, default: '' },
 	usageChart: { type: Types.Html, default: '' },
-	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true },
+	
 	gallery: { type: Types.CloudinaryImages,  autoCleanup : true },
 	//galleryColorSwatches: {type: String, default: '', note: 'semi-colon delimited list of html color values corresponding to each gallery image'},
 	imagesPerColorSwatch: {type: Number, note: 'Number of images for each color swatch.'},
 	colorways: {type: String, default: '', note: 'semi-colon delimited list of colorways'},
 	sizingChart: { type: Types.Relationship, ref: 'SizingChart' },
-	ecwidCanProductId: {type: String},
-	ecwidUkProductId: {type: String},
-	ecwidUsProductId: {type: String},
 	extra: { type: Types.Html, wysiwyg: true }
 });
 

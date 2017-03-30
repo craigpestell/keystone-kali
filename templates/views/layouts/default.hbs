@@ -7,6 +7,9 @@
     <title>{{data.page.title}}</title>
     <link href="/styles/site.css" rel="stylesheet">
 	<!--{{{isAdminEditorCSS user}}}-->
+	<!--{{#ifCond section "==" "home"}}
+		<link href="/js/fullpage.js/dist/jquery.fullpage.css" rel="stylesheet">
+	{{/ifCond}}-->
     <!--[if lt IE 9]>
 	<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
 	<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -34,7 +37,7 @@
     <meta name="google-site-verification" content="dI-RltPLU3KpavtHz3jFnU2daR9kCYpOsxYOM5s-Wh8" />
 </head>
 <body>
-<div class="container">
+<div class="container{{#ifCond section "==" "home"}} fullpage-nav{{/ifCond}}">
 	{{> nav}}
 </div>
 
@@ -65,13 +68,25 @@
 	{{/if}}
 	{{{body}}}
 </div>
-{{> footer}}
+{{#ifCond section "!=" "home"}}
+	{{> footer}}	
+{{/ifCond}}
+
 <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script>
 <script src="/js/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.min.js"></script>
 <script type="text/javascript">
     $.cloudinary.config({cloud_name: 'kaliprotectives-com', api_key: "277924468792588"});
 </script>
+
+{{#ifCond section "==" "home"}}
+<script src="/js/jquery.easing/js/jquery.easing.js"></script>
+<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+<script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.js"></script>
+<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.extensions.min.js"></script>
+{{/ifCond}}
+
 {{#ifCond section "==" "product"}}
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 {{/ifCond}}
@@ -92,6 +107,18 @@
 {{/ifCond}}
 
 <!--{{{isAdminEditorJS user}}}-->
+
+	<script type="text/javascript">
+		$('.buy-button').on('click', function(){
+			ga('send', {
+				hitType: 'event',
+				eventCategory: 'Buy Button',
+				eventAction: 'click',
+				eventLabel: "Buy Button"
+			});
+		});
+
+	</script>
 {{#ifCond section '==' 'products' }}
     <script type="text/javascript">
         $(document).ready(function () {
@@ -121,6 +148,41 @@
     </script>
 
 {{/ifCond}}
+{{#ifCond section "==" "home"}}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			if(screen.width > 480) {
+				$('#fullpage').fullpage({
+					//sectionsColor: ['#f2f2f2','#4BBFC3','#7BAABE','whitesmoke'],
+					css3: true,
+					navigation: false,
+					lazyLoading: false,
+					loopBottom: true,
+					responsiveWidth:768,
+					//scrollBar: true,
+					onLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
+					    var length = $('.fp-section').length;
+					    if(index == length){
+					        $('.arrowDown').css({color:'#FFF'});
+						}else{
+							$('.arrowDown').css({color:'#000'});
+						}
+					},
+					
+					//interlockedSlides: true,
+					//responsiveSlides: true
+				});
+				$('.arrowDown').click(function () {
+					$.fn.fullpage.moveSectionDown();
+				});
+			}
+		});
+	</script>
+	
+	{{> index-dom-ready}}
+
+{{/ifCond}}
+
 {{#ifCond section '==' 'product' }}
 	{{> product-dom-ready product=product}}
 {{/ifCond}}
@@ -216,6 +278,16 @@
                 eventLabel: "Youtube"
             });
         });
+
+		$('.home .buy-button').click(function(e){
+		    var href = $(e.target).parent().attr('href');
+			ga('send', {
+				hitType: 'event',
+				eventCategory: 'Home Buy Button',
+				eventAction: 'click',
+				eventLabel: "Url: " + href
+			});
+		});
 	
     });
 </script>

@@ -1,20 +1,20 @@
 /*jshint node:true */
 /**
  * This file is where you define your application routes and controllers.
- * 
+ *
  * Start by including the middleware you want to run for every request;
  * you can attach middleware to the pre('routes') and pre('render') events.
- * 
+ *
  * For simplicity, the default setup for route controllers is for each to be
  * in its own file, and we import all the files in the /routes/views directory.
- * 
+ *
  * Each of these files is a route controller, and is responsible for all the
  * processing that needs to happen for the route (e.g. loading data, handling
  * form submissions, rendering the view template, etc).
- * 
+ *
  * Bind each route pattern your application should respond to in the function
  * that is exported from this module, following the examples below.
- * 
+ *
  * See the Express application routing documentation for more information:
  * http://expressjs.com/api.html#app.VERB
  */
@@ -34,15 +34,15 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-    views: importRoutes('./views')
+	views: importRoutes('./views')
 };
 
 // Setup Route Bindings
 exports = module.exports = function(app) {
-    // /api/dealers
-    restful.expose({
-        Dealer : true
-    }).start();
+	// /api/dealers
+	restful.expose({
+		Dealer : true
+	}).start();
 	app.all('*', function(req, res, next){
 		console.log('init local params');
 		res.locals.params = {};
@@ -91,8 +91,8 @@ exports = module.exports = function(app) {
 			next();
 		});
 	});
-	
-    app.use(subdomain({base: keystone.get('domain'), removeWWW: true, debug: true}));
+
+	app.use(subdomain({base: keystone.get('domain'), removeWWW: true, debug: true}));
 
 	//navigation for all routes.
 	var navRouteHandler = require('./nav');
@@ -104,9 +104,9 @@ exports = module.exports = function(app) {
 		'/',
 		'/:category',
 		'/:category/:subCategory'
-		], navRouteHandler);
-	    
-    //index page for main home page and discipline home pages.
+	], navRouteHandler);
+
+	//index page for main home page and discipline home pages.
 	app.get(['/subdomain/:discipline/', '/'], routes.views.index);
 
 	app.get(['/subdomain/:discipline/dealers', '/dealers'], routes.views['dealer-locator']);
@@ -123,11 +123,11 @@ exports = module.exports = function(app) {
 		res.json({country:country}).end();
 		//console.log(req.headers);
 	});
-	
+
 	var domainAndPort = keystone.get('domain') + (keystone.get('port')?':' + keystone.get('port'):'');
 	app.get(['/:category/:params?'], function(req, res){
 		var redirect = '//bike.'  + domainAndPort;
-		
+
 		res.redirect(redirect + '/' + req.params.category);
 	});
 
@@ -159,74 +159,74 @@ exports = module.exports = function(app) {
 			}
 		}
 	};
-	
+
 	app.get([
 		'/subdomain/:discipline/:category',
 		'/subdomain/:discipline/:category/:subCategory'
 	], routes.views['product-category']);
-    
+
 	app.get([
 		'/subdomain/:discipline/:category/:subCategory/:product'
-		], routes.views.product);
-	
+	], routes.views.product);
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
-    // app.get('/protected', middleware.requireUser, routes.views.protected);
+	// app.get('/protected', middleware.requireUser, routes.views.protected);
 
-    /*
-     * sitemap
-     */
-    var url = 'kaliprotectives.com';
-    var mapConfig = {
-        http: 'https',
-        url: 'kaliprotectives.com',
-        sitemapSubmission: '/sitemap.xml',
-        map:{
-            '/technology':['get'],
-            '/helmets':['get'],
-            '/armor':['get'],
-            '/moto':['get'],
-            '/dealers':['get'],
-            '/contact':['get'],
-            '/register':['get'],
-        },
-        route: {
-            'ALL': {
-                lastmod: '2016-06-23',
-                changefreq: 'always',
-                priority: 1.0,
-            },
-        },
-    };
-    
-    
-    if (keystone.get('env') != 'production'){
-        mapConfig.url = 'dev.' + mapConfig.url;
-        mapConfig.disallow = true;
-        mapConfig.route['ALL'].disallow = true;
-    }
+	/*
+	 * sitemap
+	 */
+	var url = 'kaliprotectives.com';
+	var mapConfig = {
+		http: 'https',
+		url: 'kaliprotectives.com',
+		sitemapSubmission: '/sitemap.xml',
+		map:{
+			'/technology':['get'],
+			'/helmets':['get'],
+			'/armor':['get'],
+			'/moto':['get'],
+			'/dealers':['get'],
+			'/contact':['get'],
+			'/register':['get'],
+		},
+		route: {
+			'ALL': {
+				lastmod: '2016-06-23',
+				changefreq: 'always',
+				priority: 1.0,
+			},
+		},
+	};
 
-    var sitemap = map(mapConfig);
 
-    app.get('/robots.txt', function(req, res){
-        sitemap.TXTtoWeb(res);
-    });
-    app.get('/sitemap.xml', function(req, res){
-        keystone.list('Product').model.find()
-            .populate('mainCategory subCategory')
-            .exec(function (err, results, next) {
-                results.forEach(function(product){
-                    var categoryUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug;
-                    var productUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug + '/' + product.slug ;
-                    if(sitemap.map[categoryUrl] == undefined)
-                        sitemap.map[categoryUrl] = ['get'];
-                    sitemap.map[productUrl] = ['get'];
+	if (keystone.get('env') != 'production'){
+		mapConfig.url = 'dev.' + mapConfig.url;
+		mapConfig.disallow = true;
+		mapConfig.route['ALL'].disallow = true;
+	}
 
-                });
-                sitemap.XMLtoWeb(res);
-            });
-        
-    });
+	var sitemap = map(mapConfig);
 
-    app.get('/:page', routes.views.page);
+	app.get('/robots.txt', function(req, res){
+		sitemap.TXTtoWeb(res);
+	});
+	app.get('/sitemap.xml', function(req, res){
+		keystone.list('Product').model.find()
+			.populate('mainCategory subCategory')
+			.exec(function (err, results, next) {
+				results.forEach(function(product){
+					var categoryUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug;
+					var productUrl = '/' + product.mainCategory.slug + '/' + product.subCategory.slug + '/' + product.slug ;
+					if(sitemap.map[categoryUrl] == undefined)
+						sitemap.map[categoryUrl] = ['get'];
+					sitemap.map[productUrl] = ['get'];
+
+				});
+				sitemap.XMLtoWeb(res);
+			});
+
+	});
+
+	app.get('/:page', routes.views.page);
 
 };

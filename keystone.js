@@ -48,7 +48,6 @@ keystone.init({
 	'mongo': process.env.DO ? 'mongodb://10.134.12.9:27017/kali' : 'mongodb://localhost:27017/kali',
 	'ga_key': process.env.GOOGLE_TRACKING_KEY,
 	'port': process.env.PORT
-
 });
 
 if(process.env.DO){
