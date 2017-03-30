@@ -45,11 +45,11 @@ exports = module.exports = function(app) {
 	}).start();
 	app.all('*', function(req, res, next){
 		console.log('init local params');
-		res.locals.params = {};
+		res.locals.params = {discipline:'bike'};
 		next();
 	});
 	app.param('discipline', function(req, res, next, discipline){
-		console.log('discipline param: ', discipline);
+		
 		keystone.list('Discipline').model.findOne({slug: discipline}).exec(function(err, data){
 			if (err) return next(err);
 			if (!data) return next(new Error('Nothing is found'));
@@ -103,7 +103,8 @@ exports = module.exports = function(app) {
 		'/subdomain/:discipline/:category/:subCategory/:product',
 		'/',
 		'/:category',
-		'/:category/:subCategory'
+		'/:category/:subCategory',
+		'/:category/:subCategory/:product'
 	], navRouteHandler);
 
 	//index page for main home page and discipline home pages.
@@ -114,6 +115,19 @@ exports = module.exports = function(app) {
 	app.get(['/subdomain/:discipline/register', '/register'], routes.views.registration);
 	app.get(['/subdomain/:discipline/contact', '/contact'], routes.views.contact);
 
+	app.get([
+		'/:category/:subCategory/:product',
+		'/subdomain/:discipline/:category/:subCategory/:product'
+	], routes.views.product);
+
+	app.get([
+		'/:category',
+		'/:category/:subCategory',
+		'/subdomain/:discipline/:category',
+		'/subdomain/:discipline/:category/:subCategory'
+	], routes.views['product-category']);
+
+	
 	//app.get('/country', routes.views.country);
 	app.get('/cf-ipcountry', function(req, res){
 		var country = 'US';
@@ -160,14 +174,6 @@ exports = module.exports = function(app) {
 		}
 	};
 
-	app.get([
-		'/subdomain/:discipline/:category',
-		'/subdomain/:discipline/:category/:subCategory'
-	], routes.views['product-category']);
-
-	app.get([
-		'/subdomain/:discipline/:category/:subCategory/:product'
-	], routes.views.product);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

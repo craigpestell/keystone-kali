@@ -72,8 +72,8 @@ var getNavData = function(params, navDataCb) {
 };
 
 var navRouteHandler = function (req, res, next) {
-	console.log('inside nav route');
-	console.log('ROUTE: ', req.route);
+	//console.log('inside nav route');
+	//console.log('ROUTE: ', req.route);
 	//console.log('PARAMS: ', req.params);
 	var locals = res.locals;
 	var domain = keystone.get('domain');
