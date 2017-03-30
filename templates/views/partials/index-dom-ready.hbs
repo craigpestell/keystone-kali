@@ -3,7 +3,7 @@
 	/*<![CDATA[*/
 	$(document).ready(function () {
 	    var country = "";
-		var shopifyButton = function (domain, apiKey, shopifyId) {
+		var shopifyButton = function (domain, apiKey, shopifyId, preOrder) {
 			var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
 			if (window.ShopifyBuy) {
 				if (window.ShopifyBuy.UI) {
@@ -41,6 +41,9 @@
 						buySelector += 'us=';
 					}
 					buySelector += '"' + product.id + '"]';
+					if(preOrder){
+					    $(buySelector).html('Preorder');
+					}
 					$(buySelector).css({'display':'block'});
 					$(buySelector).parent('a').attr('href','http://' + domain + '.kaliprotectives.com/products/' + product.attrs.handle);
 				});
@@ -59,14 +62,14 @@
 				if (result.country == "CA") {
 					{{#each products}}
 						if("{{shopifyIdCan}}") {
-							shopifyButton("kali", "3e327001331e481f2be66f85eba4c4f8", "{{shopifyIdCan}}" || 0);
+							shopifyButton("kali", "3e327001331e481f2be66f85eba4c4f8", "{{shopifyIdCan}}" || 0, "{{preOrderCan}}");
 						}
 					{{/each}}
 				}
 				if (result.country == "US") {
 					{{#each products}}
 						if("{{shopifyIdUS}}") {
-							shopifyButton("kali-usa", "7ae67513f9d1aca4d7f349ba6580e436", "{{shopifyIdUS}}" || 0);
+							shopifyButton("kali-usa", "7ae67513f9d1aca4d7f349ba6580e436", "{{shopifyIdUS}}" || 0, "{{preOrderUS}}");
 						}
 					{{/each}}
 				}
