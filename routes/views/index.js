@@ -34,14 +34,19 @@ exports = module.exports = function(req, res) {
 	
 	//popuplate Home page data.
 	keystone.list('Discipline').model.find().where(disciplineWhere).exec(function (err, discipline) {
+			//console.log('DISCIPLINE:', discipline);
 			var disciplineWhere = {};
+			var homepageSlug = 'home';
 			if (discipline.length > 0) {
 				disciplineWhere = {disciplines: discipline[0]._id};
+				if(discipline[0].slug === 'moto') {
+					homepageSlug = 'moto-home';
+				}
 			}
 			view.query('slides', keystone.list('Slide').model.find().where(disciplineWhere).sort('sortOrder'));
 
 
-			keystone.list('BasePage').model.find().where({slug: 'home'}).populate('products').exec(function (err, homePage) {
+			keystone.list('BasePage').model.find().where({slug: homepageSlug}).populate('products').exec(function (err, homePage) {
 				//get Base Page == home Products
 				var productIds = [];
 				if (homePage[0].products.length) {
