@@ -44,7 +44,7 @@ exports = module.exports = function(app) {
 		Dealer : true
 	}).start();
 	app.all('*', function(req, res, next){
-		console.log('init local params');
+		
 		res.locals.params = {discipline:'bike'};
 		next();
 	});
@@ -54,40 +54,33 @@ exports = module.exports = function(app) {
 			if (err) return next(err);
 			if (!data) return next(new Error('Nothing is found'));
 			res.locals.params.discipline = data;
-			console.log('discipline: ', data.slug);
 			next();
 		});
 	});
 	app.param('category', function(req, res, next, category){
-		console.log('category param: ', category);
 		keystone.list('ProductCategory').model.findOne({slug: category}).exec(function(err, data){
 			if (err) return next(err);
 			//if (!data) return next(new Error('Nothing is found'));
 			if(!data) return next();
 			res.locals.params.category = data;
-			console.log('category:', data.slug);
 			next();
 		});
 	});
 	app.param('subCategory', function(req, res, next, subCategory){
-		console.log('subcategory param: ', subCategory);
 		keystone.list('ProductSubCategory').model.findOne({slug: subCategory}).exec(function(err, data){
 			if (err) return next(err);
 			//if (!data) return next(new Error('Nothing is found'));
 			if(!data) return next();
 			res.locals.params.subCategory = data;
-			console.log('subcategory:', data.slug);
 			next();
 		});
 	});
 	app.param('product', function(req, res, next, product){
-		console.log('product param: ', product);
 		keystone.list('Product').model.findOne({slug: product}).populate('mainCategory subCategory technologies').exec(function(err, data){
 			if (err) return next(err);
 			//if (!data) return next(new Error('Nothing is found'));
 			if(!data) return next();
 			res.locals.params.product = data;
-			console.log('product:', data.slug);
 			next();
 		});
 	});
@@ -109,16 +102,10 @@ exports = module.exports = function(app) {
 
 	//index page for main home page and discipline home pages.
 	app.get(['/subdomain/:discipline/', '/'], routes.views.index);
-
 	app.get(['/subdomain/:discipline/dealers', '/dealers'], routes.views['dealer-locator']);
 	app.get(['/subdomain/:discipline/technology', '/technology'], routes.views.technology);
 	app.get(['/subdomain/:discipline/register', '/register'], routes.views.registration);
 	app.get(['/subdomain/:discipline/contact', '/contact'], routes.views.contact);
-
-	app.get([
-		'/:category/:subCategory/:product',
-		'/subdomain/:discipline/:category/:subCategory/:product'
-	], routes.views.product);
 
 	app.get([
 		'/:category',
@@ -127,6 +114,10 @@ exports = module.exports = function(app) {
 		'/subdomain/:discipline/:category/:subCategory'
 	], routes.views['product-category']);
 
+	app.get([
+		'/:category/:subCategory/:product',
+		'/subdomain/:discipline/:category/:subCategory/:product'
+	], routes.views.product);
 	
 	//app.get('/country', routes.views.country);
 	app.get('/cf-ipcountry', function(req, res){

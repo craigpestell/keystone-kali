@@ -18,7 +18,7 @@ var productCategoryData = function (params, productDataCb){
 	if(params.subCategory) {
 		subCategoryWhere = {slug:params.subCategory.slug};
 	}
-	console.log('disciplineWhere', disciplineWhere);
+	
 	keystone.list('Discipline').model.find().where(disciplineWhere).exec(function (err, discipline) {
 		
 		var disciplineWhere = {};
@@ -41,7 +41,6 @@ var productCategoryData = function (params, productDataCb){
 				}
 			},
 			function massage(err, results) {
-				console.log('results:', results);
 				var returnData = [];
 
 				results.categories.forEach(function (cat) {
@@ -73,7 +72,6 @@ var productCategoryData = function (params, productDataCb){
 
 
 exports = module.exports = function (req, res, next) {
-	console.log('inside product-category route');
 	//console.log('ROUTE: ', req.route);
 	//console.log('PARAMS: ', req.params);
 	//console.log('res.locals', res.locals);
@@ -87,7 +85,7 @@ exports = module.exports = function (req, res, next) {
     };
 
     locals.section = 'products';
-    console.log('params:', res.locals.params);
+    
 	if (res.locals.params.category) {
 		//console.log('params:', res.locals.params);
 		productCategoryData(res.locals.params, function (err, productCategoryData) {
