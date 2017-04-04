@@ -139,12 +139,14 @@ var navRouteHandler = function (req, res, next) {
 		});
 
 		if(req.params.category){
-			data.subCategories.forEach(function(subCategory){
-				//if category is specified show sub categories.
-				if(subCategory.parentCategory.slug == req.params.category){
-					locals.navSubLinks.push(subCategory);
-				}
-			});
+			if(data.subCategories.length > 1) {
+				data.subCategories.forEach(function(subCategory){
+					//if category is specified show sub categories.
+					if(subCategory.parentCategory.slug == req.params.category){
+						locals.navSubLinks.push(subCategory);
+					}
+				});
+			}
 		}
 		next();
 	});
