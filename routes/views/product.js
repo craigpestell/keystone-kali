@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
 	locals.section = 'product';
 	console.log('slug:', req.params.product);
 	view.query('product', keystone.list('Product').model.findOne({slug:req.params.product})
-		.populate('technologies features mainCategory subCategory sizingChart'))
+		.populate('canonicalDiscipline technologies features mainCategory subCategory sizingChart'))
 		.then(function (err, results, next) {
 			//console.log('results', results);
 

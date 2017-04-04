@@ -19,6 +19,7 @@ Product.add({
 	preOrderUS: {type: Boolean, note: 'Show Preorder button instead of Buy Now - US'},
 	//type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
 	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
+	canonicalDiscipline: { type: Types.Relationship, ref: 'Discipline', many: false, note: 'The default Discipline for this product'},
 	mainCategory: { type: Types.Relationship, ref: 'ProductCategory', required: true, initial: true},
 	subCategory: { type: Types.Relationship, ref: 'ProductSubCategory', required: true, initial: true},
 	
