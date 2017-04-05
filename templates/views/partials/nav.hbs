@@ -25,7 +25,7 @@
 		
 		<ul class="nav navbar-nav navbar-right">
 			{{#if ../../params.discipline}}
-			<li>
+			<li class="hidden-xs">
 				<div id="nav-discipline">
 					<ul>
 						{{#ifCond ../../../params.discipline.slug "==" "bike"}}
@@ -41,6 +41,11 @@
 					</ul>
 				</div>
 			</li>
+		{{#ifCond ../../../params.discipline.slug "==" "bike"}}
+			<li class="visible-xs"><a href="//moto.{{../../../../domainAndPort}}">Bike</a></li>
+		{{else}}
+			<li class="visible-xs"><a href="//bike.{{../../../../domainAndPort}}">Bike</a></li>
+		{{/ifCond}}
 			{{/if}}
             <li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 		</ul>
