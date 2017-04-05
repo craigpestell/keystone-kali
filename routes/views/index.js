@@ -4,6 +4,8 @@ exports = module.exports = function(req, res) {
 	var disciplineWhere = {};
 	if (res.locals.params.discipline) {
 		disciplineWhere.slug = res.locals.params.discipline.slug;
+	}else{
+		disciplineWhere.slug = 'no-discipline';
 	}
 
 	var view = new keystone.View(req, res);
@@ -31,12 +33,12 @@ exports = module.exports = function(req, res) {
 		//change the array
 		Array.prototype.splice.apply(array_to_order, [0, len_copy].concat(ordered_array));
 	}
-	
 	//popuplate Home page data.
 	keystone.list('Discipline').model.find().where(disciplineWhere).exec(function (err, discipline) {
-			//console.log('DISCIPLINE:', discipline);
+			
 			var disciplineWhere = {};
 			var homepageSlug = 'home';
+			
 			if (discipline.length > 0) {
 				disciplineWhere = {disciplines: discipline[0]._id};
 				if(discipline[0].slug === 'moto') {
