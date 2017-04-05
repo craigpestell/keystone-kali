@@ -42,7 +42,7 @@ exports = module.exports = function(req, res) {
 				if(discipline[0].slug === 'moto') {
 					homepageSlug = 'moto-home';
 				}else if(discipline[0].slug === 'bike') {
-					homepageSlug = 'moto-home';
+					homepageSlug = 'bike-home';
 				}
 			}
 			view.query('slides', keystone.list('Slide').model.find().where(disciplineWhere).sort('sortOrder'));
