@@ -55,7 +55,7 @@ exports = module.exports = function(req, res) {
 					});
 				}
 				var productWhere = {_id: {$in: productIds}};
-				keystone.list('Product').model.find().where(productWhere).populate('technologies mainCategory subCategory gallery').exec(function (err, products) {
+				keystone.list('Product').model.find().where(productWhere).populate('canonicalDiscipline technologies mainCategory subCategory gallery').exec(function (err, products) {
 					//sort by homePage products
 					orderProducts(productIds, products);
 					products.forEach(function (product, i, products) {
