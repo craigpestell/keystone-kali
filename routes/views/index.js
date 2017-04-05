@@ -41,6 +41,8 @@ exports = module.exports = function(req, res) {
 				disciplineWhere = {disciplines: discipline[0]._id};
 				if(discipline[0].slug === 'moto') {
 					homepageSlug = 'moto-home';
+				}else if(discipline[0].slug === 'bike') {
+					homepageSlug = 'moto-home';
 				}
 			}
 			view.query('slides', keystone.list('Slide').model.find().where(disciplineWhere).sort('sortOrder'));
