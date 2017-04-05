@@ -417,6 +417,42 @@ hr {
   background-color: lighten($brand-grey, 15%);
 }
 
+#nav-discipline {
+  padding: 0;
+  margin: 14px 0;
+  border: 2px solid black;
+}
+
+#nav-discipline ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0;
+}
+
+#nav-discipline li {
+  font-size: 12px;
+  padding: 0px 10px;
+  margin: 0px;
+  display: inline-block;
+}
+
+#nav-discipline li:not(.active):hover {
+  background-color: $brand-grey;
+}
+
+#nav-discipline li a:hover{
+  text-decoration: none;
+}
+
+#nav-discipline li.active {
+  background-color: black;
+}
+#nav-discipline li.active{
+  color: white;
+}
+
+
+
 #nav-product-categories li.active {
   font-weight: bold;
 }

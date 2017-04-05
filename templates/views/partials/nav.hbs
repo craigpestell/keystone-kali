@@ -17,21 +17,29 @@
 				{{#unless @last}}
 					{{#if dropdown}}
 						<li class="{{#ifeq key ../../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
-                        <!--<li class="dropdown visible-xs{{#ifeq key ../../../page}} active{{/ifeq}}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-							   aria-haspopup="true" aria-expanded="false">{{label}}<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-								{{#each dropdown}}
-                                    <li><a href="{{href}}">{{label}}</a></li>
-								{{/each}}
-                            </ul>
-                        </li>-->
 					{{else}}
 			            <li class="{{#ifeq key ../../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 					{{/if}}
 				{{else}}
 		</ul>
-        <ul class="nav navbar-nav navbar-right">
+		
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<div id="nav-discipline">
+					<ul>
+						{{#ifCond ../../params.discipline.slug "==" "bike"}}
+							<li class="active">Bike</li>
+						{{else}}
+							<li><a href="//bike.{{../../../domainAndPort}}">Bike</a></li>
+						{{/ifCond}}
+						{{#ifCond ../../params.discipline.slug "==" "moto"}}
+							<li class="active">Moto</li>
+						{{else}}
+							<li><a href="//moto.{{../../../domainAndPort}}">Moto</a></li>
+						{{/ifCond}}
+					</ul>
+				</div>
+			</li>
             <li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 		</ul>
 				{{/unless}}
