@@ -128,7 +128,7 @@ exports = module.exports = function(app) {
 	], routes.views.product);
 	
 	//app.get('/country', routes.views.country);
-	app.get('/cf-ipcountry', function(req, res){
+	app.get(['/cf-ipcountry', '/subdomain/cf-ipcountry'], function(req, res){
 		var country = 'US';
 		if(req.headers['cf-ipcountry']){
 			country = req.headers['cf-ipcountry']
@@ -232,6 +232,6 @@ exports = module.exports = function(app) {
 
 	});
 
-	app.get('/:page', routes.views.page);
+	app.get(['/:page', '/subdomain/:discipline/:page'], routes.views.page);
 
 };
