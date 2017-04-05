@@ -55,7 +55,17 @@ exports = module.exports = function(app) {
 	});
 	
 	app.use(favicon(path.join(__dirname, '..', 'public', 'img', 'favicon.ico')));
-	
+	app.get(['/cf-ipcountry',
+		'/subdomain/:discipline/cf-ipcountry'], function(req, res){
+		var country = 'US';
+		if(req.headers['cf-ipcountry']){
+			country = req.headers['cf-ipcountry']
+		}
+		res.json({country:country}).end();
+		//console.log(req.headers);
+	});
+
+
 	app.param('discipline', function(req, res, next, discipline){
 		
 		keystone.list('Discipline').model.findOne({slug: discipline}).exec(function(err, data){
@@ -94,15 +104,6 @@ exports = module.exports = function(app) {
 	});
 
 	app.use(subdomain({base: keystone.get('domain'), removeWWW: true, debug: true}));
-	app.get(['/cf-ipcountry',
-		'/subdomain/:discipline/cf-ipcountry'], function(req, res){
-		var country = 'US';
-		if(req.headers['cf-ipcountry']){
-			country = req.headers['cf-ipcountry']
-		}
-		res.json({country:country}).end();
-		//console.log(req.headers);
-	});
 	
 	//navigation for all routes.
 	var navRouteHandler = require('./nav');
