@@ -57,6 +57,10 @@
 
 		$.ajax({
 			url: 'https://kaliprotectives.com/cf-ipcountry',
+			crossDomain: true,
+			xhrFields: {
+				withCredentials: true
+			},
 			success: function (result) {
 				country = result.country;
 				if (result.country == "CA") {

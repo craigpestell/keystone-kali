@@ -53,15 +53,20 @@ exports = module.exports = function(app) {
 		//res.locals.params = {discipline:'bike'};
 		next();
 	});
+	app.all('/cf-ipcountry', keystone.middleware.cors);
 	
 	app.use(favicon(path.join(__dirname, '..', 'public', 'img', 'favicon.ico')));
 	app.get(['/cf-ipcountry',
 		'/subdomain/:discipline/cf-ipcountry'], function(req, res){
-		console.log('route /cf-ipcountry');
+		//console.log('route /cf-ipcountry');
 		var country = 'US';
 		if(req.headers['cf-ipcountry']){
 			country = req.headers['cf-ipcountry']
 		}
+		console.log('setting custom header');
+		res.header('Access-Control-Allow-Origin', '*');
+		res.header('Access-Control-Allow-Methods', 'GET');
+		res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 		res.json({country:country}).end();
 		//console.log(req.headers);
 	});

@@ -56,6 +56,10 @@
 
 		if (shopifyIdCan || shopifyIdUS) {
 			$.ajax({
+				crossDomain: true,
+				xhrFields: {
+					withCredentials: true
+				},
 				url: 'https://kaliprotectives.com/cf-ipcountry',
 				success: function (result) {
 					country = result.country;
