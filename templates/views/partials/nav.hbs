@@ -24,22 +24,24 @@
 		</ul>
 		
 		<ul class="nav navbar-nav navbar-right">
+			{{#if ../../params.discipline}}
 			<li>
 				<div id="nav-discipline">
 					<ul>
-						{{#ifCond ../../params.discipline.slug "==" "bike"}}
+						{{#ifCond ../../../params.discipline.slug "==" "bike"}}
 							<li class="active">Bike</li>
 						{{else}}
-							<li><a href="//bike.{{../../../domainAndPort}}">Bike</a></li>
+							<li><a href="//bike.{{../../../../domainAndPort}}">Bike</a></li>
 						{{/ifCond}}
-						{{#ifCond ../../params.discipline.slug "==" "moto"}}
+						{{#ifCond ../../../params.discipline.slug "==" "moto"}}
 							<li class="active">Moto</li>
 						{{else}}
-							<li><a href="//moto.{{../../../domainAndPort}}">Moto</a></li>
+							<li><a href="//moto.{{../../../../domainAndPort}}">Moto</a></li>
 						{{/ifCond}}
 					</ul>
 				</div>
 			</li>
+			{{/if}}
             <li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 		</ul>
 				{{/unless}}

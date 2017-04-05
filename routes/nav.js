@@ -12,7 +12,7 @@ var getNavData = function(params, navDataCb) {
     //console.log('category param:', req.params.category);
 
     var disciplineWhere = {slug: ''};
-    if (params.discipline) {
+    if (params && params.discipline) {
         disciplineWhere.slug = params.discipline.slug;
     }
 
@@ -118,14 +118,14 @@ var navRouteHandler = function (req, res, next) {
 				}
 			});
 		});
-		var discParam = res.locals.params.discipline || null;
+		var discParam = res.locals.params && res.locals.params.discipline || null;
 
 		data.disciplines.forEach(function(disc){
 			
 			//console.log('port',keystone.get('port'));
 			//console.log('discParam:', discParam);
 			//console.log('disc',disc);
-			if(!discParam || disc.slug !== discParam.slug) {
+			if(!discParam) {
 				locals.navLinks.push({
 					label: disc.name,
 					key: disc.key,

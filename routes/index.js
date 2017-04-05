@@ -44,8 +44,10 @@ exports = module.exports = function(app) {
 		Dealer : true
 	}).start();
 	app.all('*', function(req, res, next){
-		
-		res.locals.params = {discipline:'bike'};
+		if(!res.locals.params){
+			res.locals.params = {}
+		}
+		//res.locals.params = {discipline:'bike'};
 		next();
 	});
 	app.param('discipline', function(req, res, next, discipline){
