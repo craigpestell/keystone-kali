@@ -419,7 +419,7 @@ hr {
 
 #nav-discipline {
   padding: 0;
-  margin: 14px 0;
+  margin: 14px 10px 14px 0;
   border: 2px solid black;
 }
 
@@ -437,10 +437,11 @@ hr {
 }
 
 #nav-discipline li:not(.active):hover {
-  background-color: $brand-grey;
+  background-color: $brand-primary;
 }
 
 #nav-discipline li a:hover{
+  background-color: $brand-primary;
   text-decoration: none;
 }
 
