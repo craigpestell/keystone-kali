@@ -140,8 +140,8 @@ exports = module.exports = function(app) {
 	], routes.views['product-category']);
 
 	app.get([
-		'/:category/:subCategory/:product',
-		'/subdomain/:discipline/:category/:subCategory/:product'
+		'/subdomain/:discipline/:category/:subCategory/:product',
+		'/:category/:subCategory/:product'
 	], routes.views.product);
 	
 	

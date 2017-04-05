@@ -79,7 +79,7 @@ var navRouteHandler = function (req, res, next) {
 	var domain = keystone.get('domain');
 	var domainAndPort = domain + (keystone.get('port')?':' + keystone.get('port'):'');
 	locals.domainAndPort = domainAndPort;
-	
+	console.log('nav route handler');
 	getNavData(res.locals.params, function (err, data) {
 		//console.log('nav data:', data);
 		locals.navLinks = [

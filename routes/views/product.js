@@ -10,7 +10,7 @@ exports = module.exports = function (req, res) {
 
 	// Set locals
 	locals.section = 'product';
-	console.log('slug:', req.params.product);
+	console.log('product slug:', req.params.product);
 	view.query('product', keystone.list('Product').model.findOne({slug:req.params.product})
 		.populate('canonicalDiscipline technologies features mainCategory subCategory sizingChart'))
 		.then(function (err, results, next) {
