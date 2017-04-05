@@ -28,6 +28,9 @@ var map = require('express-sitemap');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
 
+var favicon = require('serve-favicon');
+var path = require('path');
+
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
@@ -50,6 +53,9 @@ exports = module.exports = function(app) {
 		//res.locals.params = {discipline:'bike'};
 		next();
 	});
+	
+	app.use(favicon(path.join(__dirname, '..', 'public', 'img', 'favicon.ico')));
+	
 	app.param('discipline', function(req, res, next, discipline){
 		
 		keystone.list('Discipline').model.findOne({slug: discipline}).exec(function(err, data){

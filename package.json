@@ -14,7 +14,9 @@
     "moment": "^2.10.6",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
+    "path": "^0.12.7",
     "restful-keystone": "^0.3.0",
+    "serve-favicon": "^2.4.2",
     "subdomain": "^1.2.0",
     "underscore": "^1.8.3"
   },
