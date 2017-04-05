@@ -440,7 +440,7 @@ hr {
   background-color: $brand-primary;
 }
 
-#nav-discipline li a:hover{
+#nav-discipline li a:hover, #nav-discipline li a:active{
   background-color: $brand-primary;
   text-decoration: none;
 }
