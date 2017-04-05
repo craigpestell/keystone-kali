@@ -139,7 +139,7 @@ var navRouteHandler = function (req, res, next) {
 		});
 
 		if(req.params.category){
-			if(data.subCategories.length > 1) {
+			if(data.subCategories.length > 3) {
 				data.subCategories.forEach(function(subCategory){
 					//if category is specified show sub categories.
 					if(subCategory.parentCategory.slug == req.params.category){
