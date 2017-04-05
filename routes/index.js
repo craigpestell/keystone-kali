@@ -108,6 +108,16 @@ exports = module.exports = function(app) {
 		'/:category/:subCategory/:product'
 	], navRouteHandler);
 
+	//app.get('/country', routes.views.country);
+	app.get(['/cf-ipcountry', '/subdomain/:discipline/cf-ipcountry'], function(req, res){
+		var country = 'US';
+		if(req.headers['cf-ipcountry']){
+			country = req.headers['cf-ipcountry']
+		}
+		res.json({country:country}).end();
+		//console.log(req.headers);
+	});
+	
 	//index page for main home page and discipline home pages.
 	app.get(['/subdomain/:discipline/', '/'], routes.views.index);
 	app.get(['/subdomain/:discipline/dealers', '/dealers'], routes.views['dealer-locator']);
@@ -127,16 +137,7 @@ exports = module.exports = function(app) {
 		'/subdomain/:discipline/:category/:subCategory/:product'
 	], routes.views.product);
 	
-	//app.get('/country', routes.views.country);
-	app.get(['/cf-ipcountry', '/subdomain/:discipline/cf-ipcountry'], function(req, res){
-		var country = 'US';
-		if(req.headers['cf-ipcountry']){
-			country = req.headers['cf-ipcountry']
-		}
-		res.json({country:country}).end();
-		//console.log(req.headers);
-	});
-
+	
 	var domainAndPort = keystone.get('domain') + (keystone.get('port')?':' + keystone.get('port'):'');
 	app.get(['/:category/:params?'], function(req, res){
 		var redirect = '//bike.'  + domainAndPort;
