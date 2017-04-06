@@ -90,8 +90,12 @@
 				</div>
 				
 				<div class="col-xs-6 col-sm-12 col-md-6">
+				{{#if @root.params.discipline}}
 					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-						<div class="col-xs-12 more-info text-center">
+				{{else}}
+					<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+				{{/if}}
+					<div class="col-xs-12 more-info text-center">
 							more info
 						</div>
 					</a>
