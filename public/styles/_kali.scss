@@ -436,7 +436,9 @@ hr {
   margin: 0px;
   display: inline-block;
 }
-
+#nav-discipline li.active, #nav-discipline li.active a:hover{
+  cursor: default;
+}
 #nav-discipline li:not(.active):hover {
   background-color: $brand-grey;
 }
