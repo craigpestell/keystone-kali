@@ -79,7 +79,7 @@ var navRouteHandler = function (req, res, next) {
 	var domain = keystone.get('domain');
 	var domainAndPort = domain + (keystone.get('port')?':' + keystone.get('port'):'');
 	locals.domainAndPort = domainAndPort;
-	console.log('nav route handler');
+	
 	getNavData(res.locals.params, function (err, data) {
 		//console.log('nav data:', data);
 		locals.navLinks = [
@@ -118,25 +118,32 @@ var navRouteHandler = function (req, res, next) {
 				}
 			});
 		});
+
+		locals.navLinks.push({
+			label: 'Dealers', key: 'dealer-locator', href: '/dealers', positionRight:true
+		});
+
 		var discParam = res.locals.params && res.locals.params.discipline || null;
 
-		data.disciplines.forEach(function(disc){
+		data.disciplines.reverse().forEach(function(disc){
 			
 			//console.log('port',keystone.get('port'));
 			//console.log('discParam:', discParam);
 			//console.log('disc',disc);
-			if(!discParam) {
-				locals.navLinks.push({
-					label: disc.name,
-					key: disc.key,
-					href: '//' + disc.slug + '.' + domainAndPort
-				});
+			//if(!discParam) {
+			var disciplineNav = {
+				label: disc.name,
+				key: disc.key,
+				href: '//' + disc.slug + '.' + domainAndPort,
+				positionRight: true
+			};
+			if(discParam && discParam === disciplineNav.key){
+				disciplineNav.active = true;
 			}
+				locals.navLinks.push(disciplineNav);
+			//}
 		});
 
-		locals.navLinks.push({
-			label: 'Dealers', key: 'dealer-locator', href: '/dealers'
-		});
 
 		if(req.params.category){
 			if(data.subCategories.length > 3) {

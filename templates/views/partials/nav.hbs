@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-main">
         <ul class="nav navbar-nav">
 			{{# each navLinks}}
-				{{#unless @last}}
+				{{#unless positionRight}}
 					{{#if dropdown}}
 						<li class="{{#ifeq key ../../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 					{{else}}
@@ -25,22 +25,7 @@
 		
 		<ul class="nav navbar-nav navbar-right">
 			{{#if ../../params.discipline}}
-			<li class="hidden-xs">
-				<div id="nav-discipline">
-					<ul>
-						{{#ifCond ../../../params.discipline.slug "==" "bike"}}
-							<li class="active">Bike</li>
-						{{else}}
-							<a href="//bike.{{../../../../domainAndPort}}"><li>Bike</li></a>
-						{{/ifCond}}
-						{{#ifCond ../../../params.discipline.slug "==" "moto"}}
-							<li class="active">Moto</li>
-						{{else}}
-							<a href="//moto.{{../../../../domainAndPort}}"><li>Moto</li></a>
-						{{/ifCond}}
-					</ul>
-				</div>
-			</li>
+			
 		{{#ifCond ../../../params.discipline.slug "==" "bike"}}
 			<li class="visible-xs"><a href="//moto.{{../../../../domainAndPort}}">Moto</a></li>
 		{{else}}
