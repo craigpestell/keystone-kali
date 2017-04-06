@@ -31,18 +31,18 @@
 						{{#ifCond ../../../params.discipline.slug "==" "bike"}}
 							<li class="active">Bike</li>
 						{{else}}
-							<li><a href="//bike.{{../../../../domainAndPort}}">Bike</a></li>
+							<a href="//bike.{{../../../../domainAndPort}}"><li>Bike</li></a>
 						{{/ifCond}}
 						{{#ifCond ../../../params.discipline.slug "==" "moto"}}
 							<li class="active">Moto</li>
 						{{else}}
-							<li><a href="//moto.{{../../../../domainAndPort}}">Moto</a></li>
+							<a href="//moto.{{../../../../domainAndPort}}"><li>Moto</li></a>
 						{{/ifCond}}
 					</ul>
 				</div>
 			</li>
 		{{#ifCond ../../../params.discipline.slug "==" "bike"}}
-			<li class="visible-xs"><a href="//moto.{{../../../../domainAndPort}}">Bike</a></li>
+			<li class="visible-xs"><a href="//moto.{{../../../../domainAndPort}}">Moto</a></li>
 		{{else}}
 			<li class="visible-xs"><a href="//bike.{{../../../../domainAndPort}}">Bike</a></li>
 		{{/ifCond}}
