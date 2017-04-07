@@ -45,7 +45,7 @@ var productCategoryData = function (params, productDataCb){
 
 				results.categories.forEach(function (cat) {
 					results.subcategories.forEach(function (subCat, j) {
-						if (subCat.products == undefined) {
+						if (subCat.products === undefined) {
 							subCat.products = [];
 						}
 						//get all products for sub category

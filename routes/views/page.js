@@ -6,6 +6,7 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 
 	// Set locals
+	console.log('params:', req.params);
 	locals.page = req.params.page;
 	locals.filters = {
 		page: req.params.page
@@ -22,12 +23,10 @@ exports = module.exports = function(req, res) {
 		});//.populate('author categories');
 
 		q.exec(function(err, result) {
-			console.log('result:',result);
+			
 			if(result) {
-				console.log('results exist');
 				locals.data.page = result;
 				locals.data.page.title = locals.data.page.title + ' - Kali Protectives';
-				console.log('page title:', locals.data.page.title);
 				next(err);
 				/*res.status(404).send(view.render('page'));/*.send('<html><head><meta charset=\'utf-8\'><title>Error</title>' +
 					'<link rel=\'stylesheet\' href=\'/keystone/styles/error.css\'>' +
@@ -43,18 +42,12 @@ exports = module.exports = function(req, res) {
 				q.exec(function(err, result) {
 					locals.data.page.title = "404 - Page not found - Kali Protectives";
 					locals.data.page.contentHtml = result.contentHtml;
-
-					console.log('404');
 					res.status(404);
 					next(404);
 
 				});
 			}
 		});
-
-	}, function(next){
-		console.log('view on render called');
-		console.log(next);
 	});
 
 	// Load other posts
@@ -69,8 +62,6 @@ exports = module.exports = function(req, res) {
 
 	});*/
 
-	// Render the view
-	console.log('calling render on page view');
 	view.render('page');
 
 };
