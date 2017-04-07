@@ -144,6 +144,8 @@ exports = module.exports = function(app) {
 		'/subdomain/:discipline/:category/:subCategory'
 	], routes.views['product-category']);
 
+	app.get(['/:page', '/subdomain/:discipline/:page'], routes.views.page);
+	
 	app.get([
 		'/subdomain/:discipline/:category/:subCategory/:product',
 		'/:category/:subCategory/:product'
@@ -245,6 +247,6 @@ exports = module.exports = function(app) {
 
 	});
 
-	app.get(['/:page', '/subdomain/:discipline/:page'], routes.views.page);
+	
 
 };
