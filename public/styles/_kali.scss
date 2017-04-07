@@ -349,6 +349,7 @@ hr {
   text-transform: uppercase;
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 1;
+  position: relative;
 }
 .navbar:after{
   content: none;
@@ -356,6 +357,12 @@ hr {
 .navbar>.container:after {
   content: none;
 }
+
+.navbar .nav > li {
+  z-index: 2000;
+  background-color: white;
+}
+
 .navbar.subnav ul.navbar:after {
   content: none; 
   display: none;
@@ -377,7 +384,11 @@ hr {
     //border: 1px solid red;
     padding: 0 0 5px 0;
   }*/
+.subnav {
+  z-index: 100;
+}
 .subnav .navbar {
+  
   background-color: rgba(255, 255, 255, 0);
 }
 
@@ -496,7 +507,7 @@ hr {
 
 .product-section-nav {
   top: 0px;
-  z-index: 1020;
+  //z-index: 1020;
   background-color: rgb(247, 247, 247);
   border-bottom: 1px solid #E1E1E1;
   padding: 8px 0px 0px 0px;
