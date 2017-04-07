@@ -11,7 +11,7 @@
 		{{else}}
 			<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 		{{/if}}
-			<div class="col-xs-12 col-sm-6 col-md-7">
+			<div class="col col-xs-12 col-sm-6 col-md-7">
 				<img data-src="{{cloudinaryUrl gallery.[0] width="auto" fetch_format="auto"
 											   quality="auto"}}" class="cld-responsive" src=""
 					 style="z-index:2;position:relative;"/>
@@ -23,9 +23,9 @@
 			</div>
 		</a>
 
-		<div class="col-xs-12 col-sm-6 col-md-5 ">
+		<div class="col col-xs-12 col-sm-6 col-md-5 ">
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col col-xs-12">
 				{{#if @root.params.discipline}}
 					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 				{{else}}
@@ -37,25 +37,25 @@
 			</div>
 			{{#if heroBlurb}}
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col col-xs-12">
 						<h3>{{{heroBlurb}}}</h3>
 					</div>
 				</div>
 			{{/if}}
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col col-xs-12">
 					<p>{{{description}}}</p>
 				</div>
 			</div>
 			{{#if technologies.length}}
 				<div class="row technology">
-					<div class="col-xs-12">
+					<div class="col col-xs-12">
 						<h3 class="slide-label">Technology</h3><div style="clear:both;"></div>
 					</div>		
 				</div>
 				<div class="row technology">
 					{{#each technologies}}
-						<div class="col-xs-3">
+						<div class="col col-xs-3">
 							<a href="/technology#{{slug}}">
 								{{#if rawIconImage}}
 									{{{rawIconImage}}}
@@ -81,34 +81,34 @@
 				</div>
 			{{/if}}
 			<div class="row">
-				<div class="col-xs-6 col-sm-12 col-md-6">
+				<div class="col col-xs-6 col-sm-12 col-md-6">
 					<a href="" target="_blank">
-						<div class="col-xs-12 text-center buy-button" data-shopifyid-us="{{shopifyIdUS}}" data-shopifyid-can="{{shopifyIdCan}}" style="display:none">
+						<div class="col col-xs-12 text-center buy-button" data-shopifyid-us="{{shopifyIdUS}}" data-shopifyid-can="{{shopifyIdCan}}" style="display:none">
 							buy now
 						</div>
 					</a>
 				</div>
 				
-				<div class="col-xs-6 col-sm-12 col-md-6">
+				<div class="col col-xs-6 col-sm-12 col-md-6">
 				{{#if @root.params.discipline}}
 					<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 				{{else}}
 					<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 				{{/if}}
-					<div class="col-xs-12 more-info text-center">
+					<div class="col col-xs-12 more-info text-center">
 							more info
 						</div>
 					</a>
 				</div>
 			</div>
 			<div class="row"></div>
-			<div class="col-xs-12 hidden-xs">
+			<div class="col col-xs-12 hidden-xs">
 				<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 					<div class="row">
 						{{#each gallery}}
 							{{#ifCond @index "<=" ../homeSlideAlternateEnd}}
 								{{#ifCond @index ">=" ../../homeSlideAlternateStart}}
-									<div class="col-xs-6">
+									<div class="col col-xs-6">
 										<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}"
 											 class="cld-responsive" src=""/>
 									</div>
