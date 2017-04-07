@@ -11,8 +11,7 @@
 		</div>
 
 {{#ifCond @root.params.discipline.slug "===" "moto"}}
-	{{#if heroImageMoto.url}}
-		{{{cloudinaryImgSrcSet data.page.heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300,3400, 3500, 3600, 3700, 3840]"
+	{{{cloudinaryImgSrcSet data.page.heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300,3400, 3500, 3600, 3700, 3840]"
 							   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300,3400, 3500, 3600, 3700, 3840]"
 							   format="jpg" flags="progressive" quality="auto" class="cld-responsive technology-banner"}}}
 	{{else}}
@@ -20,16 +19,7 @@
 							   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300,3400, 3500, 3600, 3700, 3840]"
 							   format="jpg" flags="progressive" quality="auto" class="cld-responsive technology-banner"}}}
 	{{/if}}
-	
-{{else}}
-	{{{cloudinaryImgSrcSet data.page.bannerImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300,3400, 3500, 3600, 3700, 3840]"
-						   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300,3400, 3500, 3600, 3700, 3840]"
-						   format="jpg" flags="progressive" quality="auto" class="cld-responsive technology-banner"}}}
 {{/ifCond}}
-		
-		{{{cloudinaryImgSrcSet data.page.bannerImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300,3400, 3500, 3600, 3700, 3840]"
-							   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300,3400, 3500, 3600, 3700, 3840]"
-							   format="jpg" flags="progressive" quality="auto" class="cld-responsive technology-banner"}}}
 		
 	</div>
 	<div class="container">
@@ -69,15 +59,10 @@
 		{{{bannerOverlayHtml}}}
         <a id="{{slug}}"></a>
 		{{#ifCond @root.params.discipline.slug "===" "moto"}}
-			{{#if heroImageMoto.url}}
-				{{{cloudinaryImgSrcSet heroImageMoto screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-									   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
-									   format="jpg" flags="progressive" quality="auto" class="cld-responsive"}}}
-			{{else}}
-				{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-									   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
-									   format="jpg" flags="progressive" quality="auto" class="cld-responsive"}}}
-			{{/if}}
+			{{{cloudinaryImgSrcSet heroImageMoto screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
+								   format="jpg" flags="progressive" quality="auto" class="cld-responsive"}}}
+			
 		{{else}}
 			{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
 								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
