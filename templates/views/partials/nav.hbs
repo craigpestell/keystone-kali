@@ -50,23 +50,23 @@
 					   aria-haspopup="true" aria-expanded="false">{{@root.params.discipline.slug }}<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						{{#each navLinks}}
-							{{#unless @last}}
 							{{#if positionRight}}
 								{{#if discipline}}
-									<li class="{{#ifeq key @root.params.discipline.slug}}  active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
-								{{else}}
-									<li class="{{#ifeq key ../../page}} active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+									{{#ifeq key @root.params.discipline.slug}}
+									{{else}}
+										<li class="{{#ifeq key @root.params.discipline.slug}}  active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+									{{/ifeq}}
 								{{/if}}
 							{{/if}}
-							{{/unless}}
+
 						{{/each}}
 					</ul>
-					</a>
 					{{#each navLinks}}
 						{{#if @last}}
 							<li class="{{#ifeq key ../../page}} active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
 						{{/if}}
 					{{/each}}
+					
 				</li>
 			</ul>	
 		{{/unless}}
