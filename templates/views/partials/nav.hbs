@@ -13,29 +13,42 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-main">
         <ul class="nav navbar-nav">
-			{{# each navLinks}}
+			{{#each navLinks}}
 				{{#unless positionRight}}
-					{{#if dropdown}}
-						<li class="{{#ifeq key ../../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
-					{{else}}
-			            <li class="{{#ifeq key ../../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
-					{{/if}}
-				{{else}}
-		</ul>
-		
-		<ul class="nav navbar-nav navbar-right">
-			{{#if ../../params.discipline}}
-			
-		{{#ifCond ../../../params.discipline.slug "==" "bike"}}
-			<li class="visible-xs"><a href="//moto.{{../../../../domainAndPort}}">Moto</a></li>
-		{{else}}
-			<li class="visible-xs"><a href="//bike.{{../../../../domainAndPort}}">Bike</a></li>
-		{{/ifCond}}
-			{{/if}}
-            <li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
-		</ul>
+					<li class="{{#ifeq key @root.page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 				{{/unless}}
 			{{/each}}
-        </div>
+		</ul>
+		<ul class="nav navbar-nav navbar-right hidden-sm">
+			{{#each navLinks}}
+				{{#if positionRight}}
+					{{#if discipline}}
+						<li class="{{#ifeq key @root.params.discipline.slug}} hidden-xs active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+					{{else}}
+						<li class="{{#ifeq key ../../page}} active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>	
+					{{/if}}
+				{{/if}}
+			{{/each}}
+		</ul>
+		<ul class="nav navbar-nav navbar-right visible-sm">
+			<li>
+			<a class="dropdown-toggle"  data-toggle="dropdown" role="button"
+			   aria-haspopup="true" aria-expanded="false">{{@root.params.discipline.slug }}<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					{{#each navLinks}}
+						{{#if positionRight}}
+							{{#if discipline}}
+								<li class="{{#ifeq key @root.params.discipline.slug}}  active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+							{{else}}
+								<li class="{{#ifeq key ../../page}} active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+							{{/if}}
+						{{/if}}
+					{{/each}}
+				</ul>
+			</a>
+			</li>
+		</ul>
+		
+		</div>
     </div>
 </nav>

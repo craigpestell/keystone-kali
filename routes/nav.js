@@ -119,13 +119,9 @@ var navRouteHandler = function (req, res, next) {
 			});
 		});
 
-		locals.navLinks.push({
-			label: 'Dealers', key: 'dealer-locator', href: '/dealers', positionRight:true
-		});
-
 		var discParam = res.locals.params && res.locals.params.discipline || null;
 
-		data.disciplines.reverse().forEach(function(disc){
+		data.disciplines.forEach(function(disc){
 			
 			//console.log('port',keystone.get('port'));
 			//console.log('discParam:', discParam);
@@ -134,6 +130,7 @@ var navRouteHandler = function (req, res, next) {
 			var disciplineNav = {
 				label: disc.name,
 				key: disc.key,
+				discipline: disc.key, // used for nav active
 				href: '//' + disc.slug + '.' + domainAndPort,
 				positionRight: true
 			};
@@ -142,6 +139,10 @@ var navRouteHandler = function (req, res, next) {
 			}
 				locals.navLinks.push(disciplineNav);
 			//}
+		});
+
+		locals.navLinks.push({
+			label: 'Dealers', key: 'dealer-locator', href: '/dealers', positionRight:true
 		});
 
 
