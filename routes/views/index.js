@@ -36,43 +36,42 @@ exports = module.exports = function(req, res) {
 	//popuplate Home page data.
 	keystone.list('Discipline').model.find().where(disciplineWhere).exec(function (err, discipline) {
 			
-			var disciplineWhere = {};
-			var homepageSlug = 'home';
-			
-			if (discipline.length > 0) {
-				disciplineWhere = {disciplines: discipline[0]._id};
-				if(discipline[0].slug === 'moto') {
-					homepageSlug = 'moto-home';
-				}else if(discipline[0].slug === 'bike') {
-					homepageSlug = 'bike-home';
-				}
+		var disciplineWhere = {};
+		var homepageSlug = 'home';
+		
+		if (discipline.length > 0) {
+			disciplineWhere = {disciplines: discipline[0]._id};
+			if(discipline[0].slug === 'moto') {
+				homepageSlug = 'moto-home';
+			}else if(discipline[0].slug === 'bike') {
+				homepageSlug = 'bike-home';
 			}
-			view.query('slides', keystone.list('Slide').model.find().where(disciplineWhere).sort('sortOrder'));
+		}
+		view.query('slides', keystone.list('Slide').model.find().where(disciplineWhere).sort('sortOrder'));
 
 
-			keystone.list('BasePage').model.find().where({slug: homepageSlug}).populate('products').exec(function (err, homePage) {
-				//get Base Page == home Products
-				var productIds = [];
-				if (homePage[0].products.length) {
-					homePage[0].products.forEach(function (product) {
-						productIds.push(product._id);
-					});
-				}
-				var productWhere = {_id: {$in: productIds}};
-				keystone.list('Product').model.find().where(productWhere).populate('canonicalDiscipline technologies mainCategory subCategory gallery').exec(function (err, products) {
-					//sort by homePage products
-					orderProducts(productIds, products);
-					products.forEach(function (product, i, products) {
-
-						products[i].homeSlideAlternateEnd = product.imagesPerColorSwatch - 1;
-						products[i].homeSlideAlternateStart = products[i].homeSlideAlternateEnd - 1;
-					});
-					locals.products = products;
-					// Render the view
-					view.render('index');
+		keystone.list('BasePage').model.find().where({slug: homepageSlug}).populate('products').exec(function (err, homePage) {
+			//get Base Page == home Products
+			var productIds = [];
+			if (homePage[0].products.length) {
+				homePage[0].products.forEach(function (product) {
+					productIds.push(product._id);
 				});
+			}
+			var productWhere = {_id: {$in: productIds}};
+			keystone.list('Product').model.find().where(productWhere).populate('canonicalDiscipline technologies mainCategory subCategory gallery').exec(function (err, products) {
+				//sort by homePage products
+				orderProducts(productIds, products);
+				products.forEach(function (product, i, products) {
 
+					products[i].homeSlideAlternateEnd = product.imagesPerColorSwatch - 1;
+					products[i].homeSlideAlternateStart = products[i].homeSlideAlternateEnd - 1;
+				});
+				locals.products = products;
+				// Render the view
+				view.render('index');
 			});
-		});
 
+		});
+	});
 };
