@@ -22,7 +22,6 @@ ProductTechnology.add({
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	heroImageMoto: { type: Types.CloudinaryImage,  autoCleanup : true},
 	bannerImage: { type: Types.CloudinaryImage,  autoCleanup : true},
-	bannerImageMoto: { type: Types.CloudinaryImage,  autoCleanup : true},
 	bannerOverlayHtml: { type: Types.Html, default: '' },
 	primaryImage:  { type: Types.CloudinaryImage,  autoCleanup : true},
 	secondaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
