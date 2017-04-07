@@ -6,7 +6,6 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 
 	// Set locals
-	console.log('params:', req.params);
 	locals.page = req.params.page;
 	locals.filters = {
 		page: req.params.page
