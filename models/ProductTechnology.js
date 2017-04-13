@@ -20,6 +20,7 @@ ProductTechnology.add({
 	flatIconImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	rawIconImage: { type: String},
 	heroImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	heroImageMoto: { type: Types.CloudinaryImage,  autoCleanup : true},
 	bannerImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	bannerOverlayHtml: { type: Types.Html, default: '' },
 	primaryImage:  { type: Types.CloudinaryImage,  autoCleanup : true},

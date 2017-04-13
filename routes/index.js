@@ -134,8 +134,8 @@ exports = module.exports = function(app) {
 	app.get(['/subdomain/:discipline/', '/'], routes.views.index);
 	app.get(['/subdomain/:discipline/dealers', '/dealers'], routes.views['dealer-locator']);
 	app.get(['/subdomain/:discipline/technology', '/technology'], routes.views.technology);
-	app.get(['/subdomain/:discipline/register', '/register'], routes.views.registration);
-	app.get(['/subdomain/:discipline/contact', '/contact'], routes.views.contact);
+	app.all(['/subdomain/:discipline/register', '/register'], routes.views.registration);
+	app.all(['/subdomain/:discipline/contact', '/contact'], routes.views.contact);
 
 	app.get([
 		'/:category',
@@ -144,6 +144,8 @@ exports = module.exports = function(app) {
 		'/subdomain/:discipline/:category/:subCategory'
 	], routes.views['product-category']);
 
+	app.get(['/:page', '/subdomain/:discipline/:page'], routes.views.page);
+	
 	app.get([
 		'/subdomain/:discipline/:category/:subCategory/:product',
 		'/:category/:subCategory/:product'
@@ -245,6 +247,6 @@ exports = module.exports = function(app) {
 
 	});
 
-	app.get(['/:page', '/subdomain/:discipline/:page'], routes.views.page);
+	
 
 };

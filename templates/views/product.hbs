@@ -45,17 +45,22 @@
 				</div>
 				{{#if product.technologies.length}}
 				<div class="row technology">
-					{{#each product.technologies}}
-					<div class="col-xs-4 col-sm-3">
+					<div class="col col-xs-5 initialism">
+						<strong>Technology</strong>
+					</div>
+				{{#each product.technologies}}
+					<div class="col-xs-3">
 						<a href="/technology#{{slug}}">
 							<div class="text-center" style="display:inline-block;">
-								<img src="{{{cloudinaryUrl iconImage width=70 fetch_format="auto" quality="auto"}}}" width="70"/>
+								<img data-src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
+									 src="" class="cld-responsive"/>
 								<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
 							</div>
 						</a>
 					</div>
-					{{/each}}
+				{{/each}}
 				</div>
+				
 				{{/if}}
 				<div class="row">
 					<div class="col-xs-12 initialism">
