@@ -5,14 +5,17 @@
 				<p><a href="/blog">&larr; back to the blog</a></p>
 				<hr>
 				<header>
-					<h1>{{data.post.title}}</h1>
+					<h1>{{post.name}}</h1>
 					<h5>
-						{{{categoryList data.post.categories prefix="Posted in "}}}
-						{{#if author.name.first}}by {{author.name.first}}{{/if}}
+						{{{categoryList post.categories prefix="Posted in "}}}
 					</h5>
 				</header>
 				<div class="post">
-					{{{data.post.content.extended}}}
+					{{#if post.content.markdown.html}}
+						{{{post.content.markdown.html}}}
+					{{else}}
+						{{{post.content.extended}}}
+					{{/if}}
 				</div>
 			</article>
 		</div>

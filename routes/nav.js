@@ -86,14 +86,14 @@ var navRouteHandler = function (req, res, next) {
 			{
 				label: 'Technology',
 				key: 'technology',
-				href: '/technology'/*,
-			 dropdown:[
-			 {label: 'Overview', key: 'composite-fusion', href: '/composite-fusion'},
-			 {label: 'Kali Design', key: 'kali-design', href: '/kali-design'},
-			 {label: 'Cutting Edge Safety', key: 'safety', href: '/safety'},
-			 {label: 'The White Papers', key: 'white-papers', href: '/white-papers'}
-			 ]*/
-			}];
+				href: '/technology'
+			},
+			{
+				label: 'Republik',
+				key: 'blog',
+				href: '/blog'
+			},
+		];
 		locals.navSubLinks = [];
 		/*locals.navLinks.push({
 		 label: 'Helmets', key: 'helmets', href: '/helmets',

@@ -134,6 +134,9 @@ exports = module.exports = function(app) {
 	app.get(['/subdomain/:discipline/', '/'], routes.views.index);
 	app.get(['/subdomain/:discipline/dealers', '/dealers'], routes.views['dealer-locator']);
 	app.get(['/subdomain/:discipline/technology', '/technology'], routes.views.technology);
+	app.get(['/subdomain/:discipline/blog/:category?', '/blog/:category?'], routes.views.blog);
+	app.all(['/subdomain/:discipline/blog/post/:post', '/blog/post/:post'], routes.views.post);
+	
 	app.all(['/subdomain/:discipline/register', '/register'], routes.views.registration);
 	app.all(['/subdomain/:discipline/contact', '/contact'], routes.views.contact);
 

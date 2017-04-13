@@ -4,8 +4,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{data.page.title}}</title>
-    <link href="/styles/site.css" rel="stylesheet">
+    
+	{{#if data.post}}
+		{{#if data.post.meta.title}}
+			<title>{{data.post.meta.title}}</title>
+			<meta property="og:title" content="{{data.post.meta.title}}">
+			<meta name="twitter:title" content="{{data.post.meta.title}}">
+		{{else}}
+			<title>{{data.post.title}}</title>
+			<meta property="og:title" content="{{data.post.title}}">
+			<meta name="twitter:title" content="{{data.post.title}}">
+		{{/if}}
+		{{#if data.post.meta.description}}
+			<meta name="description" content="{{data.post.meta.description}}">
+			<meta property="og:description" content="{{data.post.meta.description}}">
+			<meta name="twitter:description" content="{{data.post.meta.description}}">
+		{{else}}
+			<meta name="description" content="{{data.post.content.brief}}">
+			<meta property="og:description" content="{{data.post.content.brief}}">
+			<meta name="twitter:description" content="{{data.post.content.brief}}">
+		{{/if}}
+		<meta property="og:type" content="article">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="og:image" content="{{data.post.image.url}}">
+		<meta name="twitter:image:src" content="{{data.post.image.url}}">
+		<meta property="og:url" content="{{data.post.fullposturl}}">
+		<meta name="twitter:url" content="{{data.post.fullposturl}}">
+		<meta property="article:published_time" content="{{data.post.publisheddate}}">
+		{{# each data.post.categories}}
+			<meta property="article:tag" content="{{name}}">
+		{{/each}}
+		<meta name="keywords" content="{{# each data.post.categories}}{{name}}, {{/each}}">
+	{{else}}
+		<title>{{data.page.title}}</title>
+		<meta name="description" content="{{@root.siteSettings.metaDescription}}">
+		<meta property="og:image" content="{{baseurl}}/images/logo.png">
+		<meta name="twitter:image:src" content="{{baseurl}}/images/logo.png">
+		<meta name="keywords" content="node.js, development, api">
+	{{/if}}
+
+	<link href="/styles/site.css" rel="stylesheet">
 	<!--{{{isAdminEditorCSS user}}}-->
 	<!--{{#ifCond section "==" "home"}}
 		<link href="/js/fullpage.js/dist/jquery.fullpage.css" rel="stylesheet">
