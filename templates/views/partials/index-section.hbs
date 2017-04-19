@@ -4,12 +4,19 @@
 	
 	
 	<div class="container">
-		{{#if @root.params.discipline}}
+
+	{{#if @root.params.discipline}}
 		<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 		{{else}}
 			<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 		{{/if}}
-			<div class="col col-xs-12 col-sm-6 col-md-7">
+			<div class="col col-xs-12 col-sm-8 col-md-8">
+		{{#if featureVideo}}
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item" src="{{this.featureVideo}}"></iframe>
+			</div>
+		{{else}}
+				
 				<img data-src="{{cloudinaryUrl gallery.[0] width="auto" fetch_format="auto"
 											   quality="auto"}}" class="cld-responsive" src=""
 					 style="z-index:2;position:relative;"/>
@@ -18,10 +25,11 @@
 												fetch_format="auto" quality="auto"}}}" class="cld-responsive" src=""
 					 style="margin-top:-20%;z-index:1;position:relative;"/>
 				{{/unless}}
+		{{/if}}
 			</div>
 		</a>
 
-		<div class="col col-xs-12 col-sm-6 col-md-5 ">
+		<div class="col col-xs-12 col-sm-4 col-md-4 ">
 			<div class="row">
 				<div class="col col-xs-12">
 				{{#if @root.params.discipline}}
@@ -117,6 +125,5 @@
 				</a>
 			</div>
 		</div>
-		
 	</div>
 </div>
