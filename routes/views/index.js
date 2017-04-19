@@ -67,9 +67,6 @@ exports = module.exports = function(req, res) {
 					products[i].homeSlideAlternateEnd = product.imagesPerColorSwatch - 1;
 					products[i].homeSlideAlternateStart = products[i].homeSlideAlternateEnd - 1;
 					
-					if(product.featureVideoEmbedly.exists){
-						console.log(product.featureVideoEmbedly);
-					}
 				});
 				locals.products = products;
 				// Render the view
