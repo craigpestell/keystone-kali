@@ -1,4 +1,50 @@
+var async = require('async');
+
 var keystone = require('keystone');
+var handlebars = keystone.get('handlebars instance').handlebars;
+console.log('handlebars instance:', handlebars);
+
+var parseContentHtml = function(slide, parseCb){
+	
+	var postId = slide.post;
+	var productId = slide.product;
+	//console.log('postId:', postId);
+
+	async.parallel({
+			post: function (callback) {
+				keystone.list('Post').model.findById(postId)
+					.exec(callback);
+			},
+			product: function (callback) {
+				keystone.list('Product').model.findById(productId)
+					.populate('canonicalDiscipline technologies features mainCategory subCategory')
+					.exec(callback);
+			}
+		},
+		function parse(err, results) {
+			//console.log('results...', results);
+			//console.log('parsing...', _this);
+			var parsed = slide.contentHtml;
+			if(parsed){
+				console.log('parsing slide:', parsed);
+				var template = handlebars.compile(parsed, {compat: true});
+				
+				parsed = template(results);
+				
+			}
+			console.log('parsed:', parsed);
+			slide.parsedContentHtml = parsed;
+
+			parseCb();
+		}
+	);
+};
+
+var parseSlides = function(slides, cb){
+	async.each(slides, parseContentHtml, function(err){
+		cb()
+	});
+};
 
 exports = module.exports = function(req, res) {
 	var disciplineWhere = {};
@@ -16,7 +62,7 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'home';
 
-	function orderProducts(array_with_order, array_to_order) {
+	function orderSlides(array_with_order, array_to_order) {
 		var ordered_array = [],
 			len = array_to_order.length,
 			len_copy = len,
@@ -47,29 +93,35 @@ exports = module.exports = function(req, res) {
 				homepageSlug = 'bike-home';
 			}
 		}
-		view.query('slides', keystone.list('Slide').model.find().where(disciplineWhere).sort('sortOrder'));
+		/*view.query('slides', keystone.list('Slide').model.find().where(disciplineWhere).populate('product post').exec(function(err, slides){			
+			
+			slides.forEach(function(){
+				
+			});
+			view.render('index');
+		}));*/
 
 
 		keystone.list('BasePage').model.find().where({slug: homepageSlug}).populate('products').exec(function (err, homePage) {
-			//get Base Page == home Products
-			var productIds = [];
-			if (homePage[0].products.length) {
-				homePage[0].products.forEach(function (product) {
-					productIds.push(product._id);
+			//get Base Page == home Slides
+			/*var slideIds = [];
+			if (homePage[0].slides.length) {
+				homePage[0].slides.forEach(function (slide) {
+					slideIds.push(slide._id);
 				});
 			}
-			var productWhere = {_id: {$in: productIds}};
-			keystone.list('Product').model.find().where(productWhere).populate('canonicalDiscipline technologies mainCategory subCategory gallery').exec(function (err, products) {
-				//sort by homePage products
-				orderProducts(productIds, products);
-				products.forEach(function (product, i, products) {
-
-					products[i].homeSlideAlternateEnd = product.imagesPerColorSwatch - 1;
-					products[i].homeSlideAlternateStart = products[i].homeSlideAlternateEnd - 1;
-				});
-				locals.products = products;
-				// Render the view
-				view.render('index');
+			var slideWhere = {_id: {$in: slideIds}};*/
+			
+			keystone.list('Slide').model.find().where(disciplineWhere).populate('products posts').exec(function (err, slides) {
+				//sort by homePage slides
+				//orderSlides(slideIds, slides);
+				//console.log('slides:', slides);
+				locals.slides = slides;
+				parseSlides(slides, function(){
+					// Render the view
+					view.render('index');
+				});//parseContentHtml(slide);
+			
 			});
 
 		});

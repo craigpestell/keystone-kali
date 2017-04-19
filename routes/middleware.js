@@ -84,8 +84,8 @@ function getNavData(discipline, navDataCb){
  */
 exports.initLocals = function (req, res, next) {
 	var locals = res.locals;
-	
-	
+
+	locals.baseUrl = keystone.get('baseUrl');
 	getSiteSettings(function(err, siteSettings){
 		locals.siteSettings = siteSettings;
 		locals.user = req.user;

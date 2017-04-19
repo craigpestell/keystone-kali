@@ -1,3 +1,5 @@
+var async = require('async');
+
 var keystone = require('keystone');
 var cloudinary = require('cloudinary');
 
@@ -6,14 +8,19 @@ var Types = keystone.Field.Types;
 var Slide = new keystone.List('Slide',{
 	autokey: { from: 'name', path: 'key', unique: true}, sortable: true});
 Slide.defaultColumns='name';
+
 Slide.add(
 	{
-		name: { type: String, required: true, default: '', readonly: true },
-		disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
-		image: {type: Types.CloudinaryImage,  autoCleanup : true},
+		name: { type: String, required: true, default: ''},
+		post: { type: Types.Relationship, ref: 'Post' },
+		product: { type: Types.Relationship, ref: 'Product' },
+		youtube: {type: Types.Url},
+		embedly: { type: Types.Embedly, from: 'youtube' },
+		
 		href: {type: String, note: 'relative path to page (e.g. "/helmets")'},
-		overlayHtml: {type: Types.Html, note: 'use {{overlayImage}} for overlay image placeholder'},
-		overlayImage: {type: Types.CloudinaryImage,  autoCleanup : true}
+		contentHtml: {type: Types.Html},
+		//overlayHtml: {type: Types.Html, note: 'use {{overlayImage}} for overlay image placeholder'},
+		//overlayImage: {type: Types.CloudinaryImage,  autoCleanup : true}
 	}
 );
 

@@ -10,6 +10,14 @@ var handlebars = require('express-handlebars');
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
+var handlebarsInstance = handlebars.create({
+	layoutsDir: 'templates/views/layouts',
+	partialsDir: 'templates/views/partials',
+	defaultLayout: 'default',
+	helpers: new require('./templates/views/helpers')(),
+	extname: '.hbs'
+});
+
 keystone.init({
 
 	'name': 'kali',
@@ -21,14 +29,8 @@ keystone.init({
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'hbs',
-
-	'custom engine': handlebars.create({
-		layoutsDir: 'templates/views/layouts',
-		partialsDir: 'templates/views/partials',
-		defaultLayout: 'default',
-		helpers: new require('./templates/views/helpers')(),
-		extname: '.hbs'
-	}).engine,
+	'handlebars instance': handlebarsInstance,
+	'custom engine': handlebarsInstance.engine,
 
 	'emails': 'templates/emails',
 
@@ -78,6 +80,7 @@ keystone.set('locals', {
 	'ga_key': keystone.get('ga_key')
 });
 
+keystone.set('baseUrl', (keystone.get('env') == 'production') ? 'https://kaliprotectives.com/' : 'http://localhost:3000/');
 // Load your project's Routes
 
 keystone.set('routes', require('./routes'));
