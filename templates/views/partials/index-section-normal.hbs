@@ -1,0 +1,20 @@
+{{#if @root.params.discipline}}
+<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+{{else}}
+<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+{{/if}}
+	<div class="col col-xs-12 col-sm-6 col-md-7">
+		<img data-src="{{cloudinaryUrl gallery.[0] width="auto" fetch_format="auto"
+									   quality="auto"}}" class="cld-responsive" src=""
+			 style="z-index:2;position:relative;"/>
+		{{#unless darkColor}}
+			<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto"
+											fetch_format="auto" quality="auto"}}}" class="cld-responsive" src=""
+				 style="margin-top:-20%;z-index:1;position:relative;"/>
+		{{/unless}}
+	</div>
+</a>
+
+<div class="col col-xs-12 col-sm-6 col-md-5">
+	{{> index-section-product-data}}
+</div>

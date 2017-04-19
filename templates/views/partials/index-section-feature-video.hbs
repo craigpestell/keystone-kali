@@ -1,0 +1,15 @@
+<div class="col col-xs-12 col-sm-8 col-md-8 vcenter">
+	{{#if @root.params.discipline}}
+	<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+	{{else}}
+	<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+	{{/if}}
+
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" src="{{this.featureVideo}}"  allowfullscreen="allowfullscreen"></iframe>
+		</div>
+	</a>
+</div><!--
+--><div class="col col-xs-12 col-sm-4 col-md-4 vcenter">
+	{{> index-section-product-data}}
+</div>
