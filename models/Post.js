@@ -1,3 +1,4 @@
+
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
@@ -17,6 +18,7 @@ Post.add({
 	gallery: { type: Types.CloudinaryImages},
 	youtube: {type: Types.Url},
 	embedly: { type: Types.Embedly, from: 'youtube' },
+	product: { type: Types.Relationship, ref: 'Product' },
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
@@ -24,6 +26,7 @@ Post.add({
 	},
 	categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
 });
+
 
 Post.schema.virtual('fullPostUrl').get(function() {
 	return keystone.get('baseUrl') + 'blog/post/' + this.key;
