@@ -23,14 +23,16 @@ exports = module.exports = function (req, res) {
 		}).populate('author categories');
 
 		q.exec(function (err, result) {
-			console.log('post:', result);
+			
 			var  q = Product.model.findOne({_id: result.product}).populate('technologies mainCategory subCategory');
 			
 			q.exec(function(err, product){
+				console.log('product:', product);
 				locals.product = product;
+				locals.post = result;
+				next(err);
 			})
-			locals.post = result;
-			next(err);
+			
 		});
 
 	});

@@ -3,23 +3,35 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-8 col-md-9">
+		<div class="col-xs-12">
 			<h4 class="text-weight-normal">Showing {{ data.posts.results.length}} post{{#ifCond data.posts.results.length ">" 1}}s{{/ifCond}}.</h4>
 			<div class="blog">
 				{{# each data.posts.results}}
 				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
 					<h2><a href="{{postUrl key}}">{{{name}}}</a></h2>
-					<p class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
+					<!--<p class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
 							{{#if author.name.first}}by {{author.name.first}}{{/if}}
-					</p>
-					<p>{{{content.extended}}}</p>
+					</p>-->
+					{{#if content.markdown.html}}
+						{{{content.markdown.html}}}
+					{{else}}
+						{{{content.extended}}}
+					{{/if}}
+					{{#if product}}
+						{{> post-layouts/slide-one }}
+					{{/if}}
+					{{#if post.youtube}}
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" src="{{post.youtube}}"  allowfullscreen="allowfullscreen"></iframe>
+						</div>
+					{{/if}}
 					<p class="read-more"><a href="{{postUrl key}}">Read more...</a></p>
 				</div>
 					{{> blog-social post=this}}
 				{{/each}}
 			</div>
 		</div>
-		<div class="col-sm-4 col-md-3">
+		<!--<div class="col-sm-4 col-md-3">
 			<h2>Categories</h2>
 			<div style="margin-top: 70px;" class="list-group">
 				<a href="/blog" class="active list-group-item">All Categories</a>
@@ -27,7 +39,7 @@
 				<a href="{{categoryUrl key}}" class="false list-group-item">{{name}}</a>
 				{{/each}}
 			</div>
-		</div>
+		</div>-->
 	</div>
 	{{>pagination}}
 </div>

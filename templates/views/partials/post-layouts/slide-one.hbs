@@ -1,20 +1,30 @@
-<div class="container">
+
+<div class="row product-main" style="border: 1px solid green">	
 	{{#if @root.params.discipline}}
 	<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 	{{else}}
 	<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 	{{/if}}
 	<div class="col col-xs-12 col-sm-6 col-md-7">
-		<img data-src="{{cloudinaryUrl product.gallery.[0] width="auto" fetch_format="auto"
-									   quality="auto"}}" class="cld-responsive" src=""
-			 style="z-index:2;position:relative;"/>
-		{{#unless darkColor}}
-			<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto"
-											fetch_format="auto" quality="auto"}}}" class="cld-responsive" src=""
-				 style="margin-top:-20%;z-index:1;position:relative;"/>
-		{{/unless}}
+		
+		{{#if youtube}}
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
+			</div>
+		{{else}}
+		
+			<img data-src="{{cloudinaryUrl product.gallery.[0] width="auto" fetch_format="auto"
+										   quality="auto"}}" class="cld-responsive" src=""
+				 style="z-index:2;position:relative;"/>
+			{{#unless darkColor}}
+				<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto"
+												fetch_format="auto" quality="auto"}}}" class="cld-responsive" src=""
+					 style="margin-top:-20%;z-index:1;position:relative;"/>
+			{{/unless}}
+		{{/if}}
+
 	</div>
-</a>
+	</a>
 
 	<div class="col col-xs-12 col-sm-6 col-md-5 ">
 		<div class="row">
@@ -24,7 +34,7 @@
 				{{else}}
 				<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 				{{/if}}
-				<div class="product-title"><h2>{{name}}</h2></div>
+				<div class="product-title"><h2>{{product.name}}</h2></div>
 			</a>
 			</div>
 		</div>
@@ -37,7 +47,11 @@
 		{{/if}}
 		<div class="row">
 			<div class="col col-xs-12">
-				<p>{{{product.description}}}</p>
+				{{#if content.markdown.html}}
+					{{{content.markdown.html}}}
+				{{else}}
+					{{{content.extended}}}
+				{{/if}}
 			</div>
 		</div>
 		{{#if product.technologies.length}}
@@ -50,14 +64,14 @@
 				{{#each product.technologies}}
 					<div class="col col-xs-3">
 						<a href="//{{../../canonicalDiscipline.slug}}.{{@root.domainAndPort}}/technology#{{slug}}">
-							{{#if product.rawIconImage}}
-								{{{product.rawIconImage}}}
+							{{#if rawIconImage}}
+								{{{rawIconImage}}}
 							{{else}}
-								{{#if product.flatIconImage.url}}
-									<img data-src="{{{cloudinaryUrl product.flatIconImage fetch_format="auto" }}}"
+								{{#if flatIconImage.url}}
+									<img data-src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
 										 src="" class="cld-responsive"/>
 								{{else}}
-									<img data-src="{{{cloudinaryUrl product.iconImage fetch_format="auto" }}}"
+									<img data-src="{{{cloudinaryUrl iconImage fetch_format="auto" }}}"
 										 src="" class="cld-responsive"/>
 
 								{{/if}}
@@ -67,7 +81,7 @@
 				{{/each}}
 
 				{{#each features}}
-					<img data-src="{{{cloudinaryUrl product.iconImage width="auto" fetch_format="auto" quality="auto"}}}"
+					<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}"
 						 src="" class="cld-responsive"/>
 				{{/each}}
 
@@ -81,7 +95,7 @@
 					</div>
 				</a>
 			</div>
-
+			
 			<div class="col col-xs-6 col-sm-12 col-md-6">
 				{{#if @root.params.discipline}}
 				<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
@@ -91,26 +105,24 @@
 				<div class="col col-xs-12 more-info text-center">
 					more info
 				</div>
-			</a>
+				</a>
 			</div>
 		</div>
+		{{#if product}}
 		<div class="row"></div>
 		<div class="col col-xs-12 hidden-xs">
 			<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 				<div class="row">
-					{{#each product.gallery}}
-						{{#ifCond @index "<=" ../product.homeSlideAlternateEnd}}
-							{{#ifCond @index ">=" ../../product.homeSlideAlternateStart}}
-								<div class="col col-xs-6">
-									<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}"
-										 class="cld-responsive" src=""/>
-								</div>
-							{{/ifCond}}
-						{{/ifCond}}
+					{{#each galleryImages}}
+						<div class="col col-xs-6">
+							<img data-src="{{cloudinaryUrl  width="auto" fetch_format="auto" quality="auto"}}"
+								 class="cld-responsive" src=""/>
+						</div>
+					
 					{{/each}}
 				</div>
 			</a>
 		</div>
+		{{/if}}
 	</div>
-
 </div>

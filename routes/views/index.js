@@ -4,19 +4,17 @@ var keystone = require('keystone');
 var handlebars = keystone.get('handlebars instance').handlebars;
 
 var _ = require('underscore');
-console.log('handlebars instance:', handlebars);
 
-var getSlides = function(slideWhere, parseCb){
+var getPosts = function(postWhere, parseCb){
 	
-	/*var postId = slide.post;
-	var productId = slide.product;*/
+	/*var postId = post.post;
+	var productId = post.product;*/
 	//console.log('postId:', postId);
 
 	async.parallel({
-			slides: function(callback){
-				keystone.list('Slide').model.find()
-				.populate('post')
-				.where(slideWhere).exec(callback)
+			posts: function(callback){
+				keystone.list('Post').model.find()
+				.where(postWhere).exec(callback)
 			},
 			/*post: function (callback) {
 				keystone.list('Post').model.findById(postId)
@@ -29,22 +27,26 @@ var getSlides = function(slideWhere, parseCb){
 			}
 		},
 		function parse(err, results) {
-			results.slides.forEach(function(slide, i, slides){
-				results.products.forEach(function(product, j, products){
-					
-					if(slide.post && (""+product._id) === (""+slide.post.product)){
-						results.slides[i].product = product;
-					}
+			
+			if(results.posts && results.products){
+				results.posts.forEach(function(post, i, posts){
+					results.products.forEach(function(product, j, products){
+						
+						if((""+product._id) === (""+post.product)){
+							
+							results.posts[i]._doc.product = product;
+							
+						}
+					});
 				});
-			});
-
+			}
 			parseCb(results);
 		}
 	);
 };
 
 
-function orderSlides(array_with_order, array_to_order) {
+function orderPosts(array_with_order, array_to_order) {
 	var ordered_array = [],
 		len = array_to_order.length,
 		len_copy = len,
@@ -64,7 +66,6 @@ function orderSlides(array_with_order, array_to_order) {
 
 exports = module.exports = function(req, res) {
 	
-		
 	var disciplineWhere = {};
 	if (res.locals.params.discipline) {
 		disciplineWhere.slug = res.locals.params.discipline.slug;
@@ -72,7 +73,7 @@ exports = module.exports = function(req, res) {
 		disciplineWhere.slug = 'no-discipline';
 	}
 
-	var view = new keystone.View(req, res);
+	
 	var locals = res.locals;
 	locals.data = {page:{title:'Kali Protectives'}};
 	
@@ -99,18 +100,22 @@ exports = module.exports = function(req, res) {
 
 		keystone.list('BasePage').model.find().where({slug: homepageSlug}).exec(function (err, homePage) {
 		
-			//get Base Page == home Slides
-			var slideIds = [];
+			//get Base Page == home Posts
+			var postIds = [];
 			
-			if (homePage[0].slides.length) {
-				homePage[0].slides.forEach(function (slide) {
-					slideIds.push(slide);
+			if (homePage[0].posts.length) {
+				homePage[0].posts.forEach(function (post) {
+					postIds.push(post);
 				});
 			}
-			var slideWhere = {_id: {$in: slideIds}};
-			getSlides(res.locals.params, function(data){
-				console.log('data:', data.slides[0].product);
-				res.locals.slides = data.slides;
+			
+			var postWhere = {_id: {$in: postIds}};
+			
+			getPosts(postWhere, function(posts){
+				//console.log('data:', posts.posts);
+
+				orderPosts(postIds, posts.posts);
+				res.locals.posts = posts.posts;
 				view.render('index');
 			});
 

@@ -616,7 +616,7 @@ End Product Page
 
 /* END Bootstrap overrides */
 
-.home h2 {
+.home h2, .product-main h2 {
   color: white;
   font-family: Gotham-Medium, Arial, SansSerif;
   font-size: 30px;
@@ -637,11 +637,7 @@ End Product Page
   margin-bottom: 15px;
 }
 
-.home .col-xs-12.more-info {
-  //background-color: white;
-}
-
-.home .more-info, .home .buy-button, #product-main .buy-button {
+.blog .more-info, .blog .buy-button, .product-main .buy-button {
   text-transform: uppercase;
   font-size: 18px;
   text-align: center;
@@ -651,7 +647,7 @@ End Product Page
   padding: 8px 11px;
 }
 
-.home .buy-button, #product-main .buy-button {
+.blog .buy-button, .product-main .buy-button {
   background-color: $brand-primary;
   color:white;
   font-weight: bold;  
@@ -798,10 +794,10 @@ End Product Page
   font-weight: bold;
 }
 
-#product-main .technology h4 {
+.product-main .technology h4 {
   font-size: 10px;
 }
-#product-main .technology a:hover{
+.product-main .technology a:hover{
   text-decoration:none;
 }
 

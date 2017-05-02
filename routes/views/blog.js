@@ -45,10 +45,12 @@ exports = module.exports = function(req, res) {
 	
 	// Load the current category filter
 	view.on('init', function(next) {
-		
+		req.params.category = 'Republik';
+		locals.filters.category = 'Republik';
 		if (req.params.category) {
 			keystone.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
-				locals.data.category = result;
+				console.log('result:',result);
+				locals.data.category = '5906d1c12042902f521ac8c7'; //Republik;
 				next(err);
 			});
 		} else {
@@ -67,7 +69,7 @@ exports = module.exports = function(req, res) {
 			})
 			.where('state', 'published')
 			.sort('-publishedDate')
-			.populate('author categories');
+			.populate('author categories product');
 		
 		if (locals.data.category) {
 			q.where('categories').in([locals.data.category]);
