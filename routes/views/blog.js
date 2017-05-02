@@ -50,7 +50,7 @@ exports = module.exports = function(req, res) {
 		if (req.params.category) {
 			keystone.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
 				//console.log('result:',result);
-				locals.data.category = '5906d1c12042902f521ac8c7'; //Republik;
+				locals.data.category = '590804bee4027ba1787c6575'; //Republik;
 				next(err);
 			});
 		} else {
