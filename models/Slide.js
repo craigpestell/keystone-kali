@@ -1,5 +1,3 @@
-var mongoose = require('mongoose');
-var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 var keystone = require('keystone');
 var cloudinary = require('cloudinary');
@@ -9,8 +7,6 @@ var Types = keystone.Field.Types;
 var Slide = new keystone.List('Slide',{
 	autokey: { from: 'name', path: 'key', unique: true}, sortable: true});
 Slide.defaultColumns='name';
-
-Slide.schema.plugin(deepPopulate);
 
 Slide.add(
 	{

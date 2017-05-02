@@ -49,7 +49,7 @@ exports = module.exports = function(req, res) {
 		locals.filters.category = 'Republik';
 		if (req.params.category) {
 			keystone.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
-				console.log('result:',result);
+				//console.log('result:',result);
 				locals.data.category = '5906d1c12042902f521ac8c7'; //Republik;
 				next(err);
 			});
