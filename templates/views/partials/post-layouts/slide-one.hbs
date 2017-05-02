@@ -1,5 +1,5 @@
 
-<div class="row product-main" style="border: 1px solid green">	
+<div class="row product-main" style="">	
 	{{#if @root.params.discipline}}
 	<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 	{{else}}
@@ -47,6 +47,7 @@
 		{{/if}}
 		<div class="row">
 			<div class="col col-xs-12">
+				{{}}
 				{{#if content.markdown.html}}
 					{{{content.markdown.html}}}
 				{{else}}

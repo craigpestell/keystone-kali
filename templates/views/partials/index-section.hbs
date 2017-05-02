@@ -1,4 +1,4 @@
-<div class="section{{#if product.darkColor}} dark{{/if}}" style="background-color:{{#if heroColor}}{{heroColor}}{{else}}#FFF{{/if}};{{#if heroBackgroundImage}}background-size:cover;background-image:url({{cloudinaryUrl heroBackgroundImage width="auto" format="jpg" flags="progressive"  quality="75"}});{{/if}};">
+<div class="section{{#if product.darkColor}} dark{{/if}}" style="background-color:{{#if product.heroColor}}{{product.heroColor}}{{else}}#FFF{{/if}};{{#if product.heroBackgroundImage}}background-size:cover;background-image:url({{cloudinaryUrl product.heroBackgroundImage width="auto" format="jpg" flags="progressive"  quality="75"}});{{/if}};">
 	<!--space for fixed header on mobile-->
 	<div class="" style="height:70px"></div>
 	<div class="container">
