@@ -1,0 +1,30 @@
+<div class="widget widget-{{type}}" id="widget-{{key}}">
+{{#ifCond type "==" "image"}}
+	{{#if href}}<a href="{{href}}">{{/if}}
+	{{#if contentHtml}}{{{contentHtml}}}{{/if}}
+	<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto"}}}"
+		 src="" class="cld-responsive"/>
+	{{#if href}}</a>{{/if}}
+{{/ifCond}}
+{{#ifCond type "==" "html"}}
+	{{{contentHtml}}}
+{{/ifCond}}
+{{#ifCond type "==" "youtube"}}
+	<div class="embed-responsive embed-responsive-16by9">
+		<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
+	</div>
+{{/ifCond}}
+{{#ifCond type "==" "embedly"}}
+	{{{embedly}}}
+{{/ifCond}}
+{{#ifCond type "==" "carousel"}}
+	<div class="owl-carousel">
+		{{#each carousel.widgets}}
+			<div data-post-gallery-id="{{../key}}-{{@index}}">
+				{{../key}}-{{@index}}
+				{{> widget}}
+			</div>
+		{{/each}}
+	</div>
+{{/ifCond}}
+</div>

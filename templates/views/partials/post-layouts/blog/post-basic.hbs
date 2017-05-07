@@ -1,0 +1,20 @@
+
+<div class="row ">
+
+	<div class="col col-xs-12">
+		
+		{{#if content.markdown.html}}
+			{{{content.markdown.html}}}
+		{{else}}
+			{{{content.extended}}}
+		{{/if}}
+		{{#if product}}
+			<img data-src="{{{cloudinaryUrl product.gallery.[0] fetch_format="auto" }}}"
+				 src="" class="cld-responsive"/>
+		{{/if}}
+	</div>
+	
+	{{#if gallery}}
+		{{> post-layouts/blog/gallery}}
+	{{/if}}
+</div>

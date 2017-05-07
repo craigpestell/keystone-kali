@@ -1,0 +1,23 @@
+<script type="text/javascript">
+	
+	$(document).ready(function () {
+		$(".owl-carousel").owlCarousel();
+		{{#each data.posts.results}}
+			{{#each gallery.widgets}}
+			{{#ifCond this.key "!=" "null"}}
+			$(function() {
+				var {{key}} = {{{widget}}};
+				//console.log("{{../../key}}-{{@index}}");
+				if({{key}}){
+					var $container = $('[data-post-gallery-id="{{../../key}}-{{@index}}"]');
+					//console.log($container);
+					$('<div></div>')
+							.appendTo( $container )
+							.{{key}}({ value: 20 });
+				}
+			});
+			{{/ifCond}}
+			{{/each}}
+		{{/each}}		
+	});
+</script>

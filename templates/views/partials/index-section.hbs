@@ -2,6 +2,14 @@
 	<!--space for fixed header on mobile-->
 	<div class="" style="height:70px"></div>
 	<div class="container">
-	{{> post-layouts/slide-one}}
+		{{#ifCond postLayout.key "==" "slide-one"}}
+			{{> post-layouts/blog/slide-one}}
+		{{else}}
+			{{#ifCond postLayout.key "==" "youtube-full"}}
+				{{> post-layouts/blog/youtube-full}}
+			{{else}}
+				{{> post-layouts/blog/post-basic}}
+			{{/ifCond}}
+		{{/ifCond}}
 	</div>
 </div>

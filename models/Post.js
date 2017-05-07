@@ -16,11 +16,16 @@ Post.add({
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true },
 	postLayout: { type: Types.Relationship, ref: 'PostLayout'},
-	gallery: { type: Types.CloudinaryImages},
+	gallery: 
+		{
+			widgets: {type: Types.Relationship, ref: 'Widget', many: true},
+			layout: { type: Types.Select, options: 'basic, blocks, carousel', dependsOn: {'gallery.widgets' : true} }
+		},
+	
 	youtube: {type: Types.Url},
 	embedly: { type: Types.Embedly, from: 'youtube' },
 	product: { type: Types.Relationship, ref: 'Product' },
-	showGalleryImages: { type: String, note: 'comma-delimited indexes of gallery images (e.g.: "2,3,5"'},
+	showGalleryImages: { type: String, note: 'comma-delimited indexes of Product gallery images (e.g.: "2,3,5"', dependsOn: {product:true}},
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },

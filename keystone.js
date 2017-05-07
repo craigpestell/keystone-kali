@@ -132,6 +132,7 @@ keystone.set('nav', {
 	'products': ['products', 'product-categories', 'product-sub-categories', 'product-features', 'product-technologies'],
 	'dealers': 'dealers',
 	'posts': ['posts', 'post-categories'],
+	'widgets': 'widgets'
 });
 
 // Start Keystone to connect to your database and initialise the web server

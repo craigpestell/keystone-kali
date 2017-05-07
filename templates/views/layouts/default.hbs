@@ -119,7 +119,9 @@
 <script type="text/javascript">
     $.cloudinary.config({cloud_name: 'kaliprotectives-com', api_key: "277924468792588"});
 </script>
+<script src="/js/jquery-ui/jquery-ui.js"></script>
 
+<script src="/js/owl.carousel/dist/owl.carousel.js"></script>
 {{#ifCond section "==" "home"}}
 <script src="/js/jquery.easing/js/jquery.easing.js"></script>
 <!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
@@ -141,7 +143,6 @@
 {{#ifCond section "==" "dealer-locator"}}
     <script src="/js/handlebars/handlebars.min.js"></script>
     <script src="/js/markerclusterer/markerclusterer.js"></script>
-	<script src="/js/jquery-ui/jquery-ui.js"></script>
     <script src="//maps.googleapis.com/maps/api/js?v=3&amp;file=api&amp;&amp;key=AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY&libraries=places"></script>
     <script type="text/javascript">var apiKey = "AIzaSyC9sIhHuSUCau1Gqvp2MAm4HqmUgho7joY";</script>
     <script src="/js/plugins/storeLocator/jquery.storelocator.js"></script>
@@ -160,6 +161,9 @@
 		});
 
 	</script>
+	{{> blog-dom-ready}}
+
+
 {{#ifCond section '==' 'products' }}
     <script type="text/javascript">
         $(document).ready(function () {

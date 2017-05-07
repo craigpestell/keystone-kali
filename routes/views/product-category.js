@@ -63,7 +63,7 @@ var productCategoryData = function (params, productDataCb){
 				});
 				//console.log("MASSAGED RESULTS: ", returnData);
 				//console.log(returnData.categories.bike.subCategories);
-				//productDataCb(null, returnData);
+				productDataCb(null, returnData);
 			}
 		);
 	});

@@ -1,0 +1,29 @@
+{{#ifCond gallery.layout "==" "carousel" }}
+	<div class="col col-xs-12">
+		{{key}}
+		{{> post-layouts/blog/gallery-carousel this}}
+	</div>
+{{else}}
+	
+	{{#ifCond gallery.layout "==" "blocks"}}
+		{{#each gallery.widgets}}
+			<div class="col col-xs-4">
+				
+				{{../key}}-{{@index}}
+				<div data-post-gallery-id="{{../key}}-{{@index}}">
+					{{> widget}}
+				</div>
+			</div>
+		{{/each}}
+	{{else}}
+		<div class="col col-xs-12">
+			{{#each gallery.widgets}}
+				{{../key}}-{{@index}}
+				<div data-post-gallery-id="{{../key}}-{{@index}}">
+					{{> widget}}
+				</div>
+			{{/each}}
+		</div>
+	{{/ifCond}}
+{{/ifCond}}
+		
