@@ -25,13 +25,29 @@
 							<!--<img data-src="{{cloudinaryUrl this.heroImage width="auto" format="jpg" fetch_format="auto" quality="90"}}" class="cld-responsive"/>-->
 							<div class="product-category-item-overlay hidden-xs hidden-sm hidden-md">
 								<h2>{{this.name}}</h2>
-								{{{shortDescription}}}
+								{{#ifCond @root.params.discipline.slug "==" "bike"}}
+									{{#if motoShortDescription}}
+										{{{motoShortDescription}}}
+									{{else}}
+										{{{shortDescription}}}
+									{{/if}}
+								{{else}}
+									{{{shortDescription}}}
+								{{/ifCond}}
 							</div>
 					</div>
 					
 					<div class="col-xs-6 visible-xs visible-sm visible-md">
 							<h4>{{this.name}}</h4>
-							{{{shortDescription}}}
+							{{#ifCond @root.params.discipline.slug "==" "bike"}}
+								{{#if motoShortDescription}}
+									{{{motoShortDescription}}}
+								{{else}}
+									{{{shortDescription}}}
+								{{/if}}
+							{{else}}
+								{{{shortDescription}}}
+							{{/ifCond}}
 					</div>
 				</div>
 			</div>

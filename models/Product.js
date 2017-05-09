@@ -26,13 +26,17 @@ Product.add({
 	heroColor: {type: String, default: '', note: 'Homepage slide color'},
 	darkColor:{type: Boolean},
 	heroBlurb: { type: Types.Html, default: ''},
+	motoHeroBlurb: { type: Types.Html, default: ''},
+	
 	heroBackgroundImage: { type: Types.CloudinaryImage,  autoCleanup : true, note: 'Homepage slide background image' },
 	buyNowUrl: {type: String, default: ''},
 	
 	technologies: { type: Types.Relationship, ref: 'ProductTechnology', many: true },
 	features: { type: Types.Relationship, ref: 'ProductFeature', many: true },
 	shortDescription: { type: Types.Html, default: '' },
+	motoShortDescription: { type: Types.Html, default: '' },
 	description: { type: Types.Html, default: '' },
+	motoDescription: { type: Types.Html, default: '' },
 	specs: { type: Types.Html, default: '' },
 	usageChart: { type: Types.Html, default: '' },
 	

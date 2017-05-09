@@ -41,7 +41,15 @@
 					<h1>{{product.name}}</h1>
 				</div>
 				<div class="product-description">
-					<p>{{{product.description}}}</p>
+					<p>{{#ifCond @root.params.discipline.slug "==" "bike"}}
+						{{#if motoDescription}}
+							{{{motoDescription}}}
+						{{else}}
+							{{{description}}}
+						{{/if}}
+					{{else}}
+						{{{description}}}
+					{{/ifCond}}</p>
 				</div>
 				{{#if product.technologies.length}}
 				<div class="row technology">
