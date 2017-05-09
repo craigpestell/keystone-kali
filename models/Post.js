@@ -19,7 +19,7 @@ Post.add({
 	gallery: 
 		{
 			widgets: {type: Types.Relationship, ref: 'Widget', many: true},
-			layout: { type: Types.Select, options: 'basic, blocks, carousel', dependsOn: {'gallery.widgets' : true} }
+			layout: { type: Types.Select, options: 'basic, blocks, left, right, carousel', dependsOn: {'gallery.widgets' : true} }
 		},
 	
 	youtube: {type: Types.Url},

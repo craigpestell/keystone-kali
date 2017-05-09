@@ -1,23 +1,42 @@
 <script type="text/javascript">
 	
 	$(document).ready(function () {
-		$(".owl-carousel").owlCarousel();
+		//$(".owl-carousel").owlCarousel();
 		{{#each data.posts.results}}
 			{{#each gallery.widgets}}
 			{{#ifCond this.key "!=" "null"}}
 			$(function() {
 				var {{key}} = {{{widget}}};
 				//console.log("{{../../key}}-{{@index}}");
-				if({{key}}){
-					var $container = $('[data-post-gallery-id="{{../../key}}-{{@index}}"]');
+				
+				if('{{type}}' === 'carousel'){
+					var $container = $('#widget-{{key}} > .owl-carousel');
 					//console.log($container);
-					$('<div></div>')
+					/*$('<div></div>')
 							.appendTo( $container )
-							.{{key}}({ value: 20 });
+							.{{key}}();*/
+					$container.owlCarousel({{{carousel.settings}}});
+
+					{{#each carousel.widgets}}
+					if('{{type}}' === 'carousel') {
+						$container = $('#widget-{{key}} > .owl-carousel');
+						$container.owlCarousel({{{carousel.settings}}});
+					}
+					{{/each}}
 				}
 			});
 			{{/ifCond}}
 			{{/each}}
-		{{/each}}		
+		{{/each}}
+
+		function stopOwlPropagation(element) {
+			jQuery(element).on('to.owl.carousel', function(e) { e.stopPropagation(); });
+			jQuery(element).on('next.owl.carousel', function(e) { e.stopPropagation(); });
+			jQuery(element).on('prev.owl.carousel', function(e) { e.stopPropagation(); });
+			jQuery(element).on('destroy.owl.carousel', function(e) { e.stopPropagation(); });
+		}
+		stopOwlPropagation('.owl-carousel');
+
+		$.cloudinary.responsive();
 	});
 </script>

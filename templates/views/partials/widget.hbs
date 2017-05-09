@@ -1,4 +1,5 @@
 <div class="widget widget-{{type}}" id="widget-{{key}}">
+	<h1>{{key}}</h1>
 {{#ifCond type "==" "image"}}
 	{{#if href}}<a href="{{href}}">{{/if}}
 	{{#if contentHtml}}{{{contentHtml}}}{{/if}}
@@ -18,12 +19,9 @@
 	{{{embedly}}}
 {{/ifCond}}
 {{#ifCond type "==" "carousel"}}
-	<div class="owl-carousel">
+	<div class="owl-carousel owl-theme">
 		{{#each carousel.widgets}}
-			<div data-post-gallery-id="{{../key}}-{{@index}}">
-				{{../key}}-{{@index}}
 				{{> widget}}
-			</div>
 		{{/each}}
 	</div>
 {{/ifCond}}

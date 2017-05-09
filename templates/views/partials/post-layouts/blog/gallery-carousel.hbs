@@ -1,9 +1,5 @@
-<div class="owl-carousel">
+<div class="owl-carousel owl-theme">
 	{{#each this.gallery.widgets}}
-		
-	<div data-post-gallery-id="{{../key}}-{{@index}}">
-		{{../key}}-{{@index}}
 		{{> widget}}
-	</div>
 	{{/each}}
 </div>

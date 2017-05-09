@@ -8,14 +8,34 @@
 	{{#ifCond gallery.layout "==" "blocks"}}
 		{{#each gallery.widgets}}
 			<div class="col col-xs-4">
-				
 				{{../key}}-{{@index}}
 				<div data-post-gallery-id="{{../key}}-{{@index}}">
 					{{> widget}}
 				</div>
 			</div>
 		{{/each}}
-	{{else}}
+	{{/ifCond}}
+	{{#ifCond gallery.layout "==" "left"}}
+		{{#each gallery.widgets}}
+			{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
+				{{../key}}-{{@index}}
+				<div data-post-gallery-id="{{../key}}-{{@index}}">
+					{{> widget}}
+				</div>
+			</div>
+		{{/each}}
+	{{/ifCond}}
+	{{#ifCond gallery.layout "==" "right"}}
+		{{#each gallery.widgets}}
+			{{#if @first}}<div class="col col-xs-4">{{else}}<div class="col col-xs-8">{{/if}}
+			{{../key}}-{{@index}}
+				<div data-post-gallery-id="{{../key}}-{{@index}}">
+					{{> widget}}
+				</div>
+			</div>
+		{{/each}}
+	{{/ifCond}}
+	{{#ifCond gallery.layout "==" "basic"}}
 		<div class="col col-xs-12">
 			{{#each gallery.widgets}}
 				{{../key}}-{{@index}}
