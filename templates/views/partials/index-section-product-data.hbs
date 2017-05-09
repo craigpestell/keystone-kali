@@ -12,13 +12,29 @@
 {{#if heroBlurb}}
 	<div class="row">
 		<div class="col col-xs-12">
-			<h3>{{{heroBlurb}}}</h3>
+			<h3>{{#ifCond @root.params.discipline.slug "==" "moto"}}
+				{{#if motoHeroBlurb}}
+					{{{motoHeroBlurb}}}
+				{{else}}
+					{{{heroBlurb}}}
+				{{/if}}
+			{{else}}
+				{{{heroBlurb}}}
+			{{/ifCond}}</h3>
 		</div>
 	</div>
 {{/if}}
 <div class="row">
 	<div class="col col-xs-12">
-		<p>{{{description}}}</p>
+		<p>{{#ifCond @root.params.discipline.slug "==" "moto"}}
+			{{#if motoDescription}}
+				{{{motoDescription}}}
+			{{else}}
+				{{{description}}}
+			{{/if}}
+		{{else}}
+			{{{description}}}
+		{{/ifCond}}</p>
 	</div>
 </div>
 {{#if technologies.length}}
