@@ -13,7 +13,6 @@
 							widths="[290,330,345,381,384,405,500,600,700,738,720,536,652]"
 							format="jpg" quality="auto" class="image-toggle cld-responsive" index=@index id="product-"
 							onlyShowFirst=true dataSrc=true}}}
-                            
                         </a>
 					{{else}}
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
@@ -22,7 +21,6 @@
 							                       widths="[290,330,345,381,384,405,500,600,700,738,720,536,652]" 
 							                       format="jpg" quality="auto" class="image-toggle" index=@index id="product-"
 							                       onlyShowFirst=true}}}
-
                         </a>
 					{{/if}}
                     
@@ -41,13 +39,14 @@
 					<h1>{{product.name}}</h1>
 				</div>
 				<div class="product-description">
-					<p>{{#ifCond @root.params.discipline.slug "==" "bike"}}
-						{{#if motoDescription}}
-							{{{motoDescription}}}
+					<p>{{#ifCond @root.params.discipline.slug "==" "moto"}}
+						{{#if product.motoDescription}}
+							{{{product.motoDescription}}}
 						{{else}}
-							{{{description}}}
+							{{{product.description}}}
 						{{/if}}
 					{{else}}
+						bike
 						{{{description}}}
 					{{/ifCond}}</p>
 				</div>

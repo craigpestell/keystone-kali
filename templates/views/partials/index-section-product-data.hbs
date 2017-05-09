@@ -12,7 +12,7 @@
 {{#if heroBlurb}}
 	<div class="row">
 		<div class="col col-xs-12">
-			<h3>{{#ifCond @root.params.discipline.slug "==" "bike"}}
+			<h3>{{#ifCond @root.params.discipline.slug "==" "moto"}}
 				{{#if motoHeroBlurb}}
 					{{{motoHeroBlurb}}}
 				{{else}}
@@ -26,7 +26,7 @@
 {{/if}}
 <div class="row">
 	<div class="col col-xs-12">
-		<p>{{#ifCond @root.params.discipline.slug "==" "bike"}}
+		<p>{{#ifCond @root.params.discipline.slug "==" "moto"}}
 			{{#if motoDescription}}
 				{{{motoDescription}}}
 			{{else}}
