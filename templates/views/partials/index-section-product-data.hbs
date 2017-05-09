@@ -77,7 +77,11 @@
 </div>
 <div class="row"></div>
 <div class="col col-xs-12 hidden-xs">
+	{{#if @root.params.discipline}}
 	<a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+	{{else}}
+	<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+	{{/if}}
 		<div class="row">
 			{{#each gallery}}
 				{{#ifCond @index "<=" ../homeSlideAlternateEnd}}
