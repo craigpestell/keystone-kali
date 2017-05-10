@@ -32,7 +32,7 @@
 	</a>
 
 	<div class="col col-xs-12 col-sm-6 col-md-5 ">
-		<div class="row">
+		<div class="row" style="margin-top:0px">
 			<div class="col col-xs-12">
 				{{#if @root.params.discipline}}
 				<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
@@ -46,17 +46,28 @@
 		{{#if product.heroBlurb}}
 			<div class="row">
 				<div class="col col-xs-12">
-					<h3>{{{product.heroBlurb}}}</h3>
+					
+					<h3>
+						{{{product.heroBlurb}}}</h3>
 				</div>
 			</div>
 		{{/if}}
 		<div class="row">
 			<div class="col col-xs-12">
-				{{#if content.markdown.html}}
-					{{{content.markdown.html}}}
-				{{else}}
+				{{#if content.extended}}
 					{{{content.extended}}}
+				{{else}}
+					{{#ifCond @root.params.discipline.slug "==" "moto"}}
+						{{#if product.motoDescription}}
+							{{{product.motoDescription}}}
+						{{else}}
+							{{{product.description}}}
+						{{/if}}
+					{{else}}
+						{{{product.description}}}
+					{{/ifCond}}
 				{{/if}}
+				
 			</div>
 		</div>
 		{{#if product.technologies.length}}
@@ -116,8 +127,12 @@
 		{{#if product}}
 		<div class="row"></div>
 		<div class="col col-xs-12 hidden-xs">
+			{{#if @root.params.discipline}}
 			<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
-				<div class="row">
+			{{else}}
+			<a href="//{{product.canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
+			{{/if}}
+			<div class="row">
 					{{#each galleryImages}}
 						<div class="col col-xs-6">
 							<img data-src="{{cloudinaryUrl  width="auto" fetch_format="auto" quality="auto"}}"
