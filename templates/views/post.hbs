@@ -1,27 +1,17 @@
 <div class="container">
-	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-			<article>
-				<p><a href="/blog">&larr; Back to the Republik</a></p>
-				<hr>
-				<header>
-					<h1>{{post.name}}</h1>
-					<h5>
-						{{{categoryList post.categories prefix="Posted in "}}}
-					</h5>
-				</header>
-				<div class="post">
-					{{#if post.content.markdown.html}}
-						{{{post.content.markdown.html}}}
-					{{else}}
-						{{{post.content.extended}}}
-					{{/if}}
-				</div>
-				{{#if product}}
-					{{> post-layouts/slide-one}}
-				{{/if}}
-
-			</article>
+	<div class="row" style="padding-bottom: 15px">
+		<div class="col col-xs-12">
+			<p><a href="/blog">&larr; Back to the Republik</a></p>
+			<hr>
+			{{#ifCond postLayout.key "==" "slide-one"}}
+				{{> post-layouts/blog/slide-one post}}
+			{{else}}
+				{{#ifCond postLayout.key "==" "youtube-full"}}
+					{{> post-layouts/blog/youtube-full post}}
+				{{else}}
+					{{> post-layouts/blog/post-basic post}}
+				{{/ifCond}}
+			{{/ifCond}}
 		</div>
 	</div>
 </div>

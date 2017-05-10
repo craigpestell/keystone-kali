@@ -12,7 +12,7 @@ Widget.add({
 		settings:{ type: Types.Code, dependsOn: {'type': 'carousel'}},
 		widgets: {type: Types.Relationship, many: true, ref: 'Widget', dependsOn: {'type': 'carousel'}}
 	},
-	image: { type: Types.CloudinaryImage, dependsOn: {'type' : 'image'} },
+	image: { type: Types.CloudinaryImage, dependsOn: {'type' : 'image'},  autoCleanup : true  },
 	youtube: {type: Types.Url, dependsOn: {'type' : 'youtube'} },
 	embedly: { type: Types.Embedly, from: 'youtube', dependsOn: {'type' : 'embedly'}  },
 	href: {type: String, note: 'relative path to page (e.g. "/helmets")', dependsOn: {'type' : 'image'} },

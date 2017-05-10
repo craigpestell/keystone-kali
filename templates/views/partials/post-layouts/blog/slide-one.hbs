@@ -1,7 +1,6 @@
-
 <div class="row product-main" style="">
 	<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
-		<h3><a href="{{postUrl key}}">{{{name}}}</a></h3>
+		<!--<h3><a href="{{postUrl key}}">{{{name}}}</a></h3>-->
 		<!--<p class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
 			{{#if author.name.first}}by {{author.name.first}}{{/if}}
 					</p>-->
@@ -13,7 +12,6 @@
 	<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 	{{/if}}
 	<div class="col col-xs-12 col-sm-6 col-md-7">
-		<H1>SLIDE ONE</H1>
 		{{#if youtube}}
 			<div class="embed-responsive embed-responsive-16by9">
 				<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
@@ -137,7 +135,6 @@
 			<iframe class="embed-responsive-item" src="{{post.youtube}}"  allowfullscreen="allowfullscreen"></iframe>
 		</div>
 	{{/if}}
-	<p class="read-more"><a href="{{postUrl key}}">Read more...</a></p>
-</div>
-{{> blog-social post=this}}
+	</div>
+<!--{{> blog-social post=this}}-->
 </div>

@@ -638,7 +638,7 @@ End Product Page
   margin-bottom: 15px;
 }
 
-.blog .more-info, .blog .buy-button, .product-main .buy-button {
+.product-main .more-info, .blog .buy-button, .product-main .buy-button {
   text-transform: uppercase;
   font-size: 18px;
   text-align: center;
@@ -654,7 +654,7 @@ End Product Page
   font-weight: bold;  
 }
 /* Scale up the box */
-.home .technology img:hover, .home .technology svg:hover, .home .more-info:hover, .home .buy-button:hover {
+.home .technology img:hover, .home .technology svg:hover, .product-main .more-info:hover, .product-main .buy-button:hover {
   transform: scale(1.1, 1.1);
 }
 

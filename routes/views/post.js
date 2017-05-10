@@ -3,6 +3,8 @@ var Post = keystone.list('Post');
 var Product = keystone.list('Product');
 //var PostComment = keystone.list('PostComment');
 
+var populatePost = require('../populate-post');
+
 exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
@@ -20,21 +22,20 @@ exports = module.exports = function (req, res) {
 		var q = Post.model.findOne({
 			state: 'published',
 			key: locals.filters.post,
-		}).populate('author categories');
+		}).populate('author categories gallery.widgets');
 
 		q.exec(function (err, result) {
 			
 			var  q = Product.model.findOne({_id: result.product}).populate('technologies mainCategory subCategory');
 			
 			q.exec(function(err, product){
-				console.log('product:', product);
 				locals.product = product;
-				locals.post = result;
-				next(err);
+				populatePost(result, function(){
+					locals.post = result;
+					next(err);					
+				});
 			})
-			
 		});
-
 	});
 
 	// Load other posts

@@ -4,6 +4,7 @@ var keystone = require('keystone');
 var handlebars = keystone.get('handlebars instance').handlebars;
 
 var _ = require('underscore');
+var populatePost = require('../populate-post');
 
 var getPosts = function(postWhere, parseCb){
 	
@@ -14,7 +15,7 @@ var getPosts = function(postWhere, parseCb){
 	async.parallel({
 			posts: function(callback){
 				keystone.list('Post').model.find()
-				.where(postWhere).exec(callback)
+				.where(postWhere).populate('postLayout gallery.widgets').exec(callback)
 			},
 			/*post: function (callback) {
 				keystone.list('Post').model.findById(postId)
@@ -115,8 +116,24 @@ exports = module.exports = function(req, res) {
 				//console.log('data:', posts.posts);
 
 				orderPosts(postIds, posts.posts);
-				res.locals.posts = posts.posts;
-				view.render('index');
+				res.locals.posts = [];
+				async.forEachOf(posts.posts, function (post, i, cb) {
+
+						populatePost(post, cb);
+						//console.log(post);
+						res.locals.posts.push(post);
+						
+					},
+					function (err) {
+						if (err) {
+							console.log('error', err);
+						}
+						console.log('done async 1');
+						view.render('index');
+						//next(err);
+					}
+				);
+
 			});
 
 		});

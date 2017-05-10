@@ -1,6 +1,8 @@
 var keystone = require('keystone');
 var async = require('async');
 
+var populatePost = require('../populate-post');
+
 exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
@@ -80,56 +82,10 @@ exports = module.exports = function (req, res) {
 			//console.log('here:', results);
 			locals.data.posts = results;
 
-
 			async.forEachOf(results.results, function (post, i, cb) {
-					if (post.gallery && post.gallery.widgets) {
-						async.forEachOf(post.gallery.widgets, function (widget, j, cb2) {
-								//console.log(widget.carousel.widgets);
-								if (widget.type === 'carousel') {
-									keystone.list('widgets').model.find()
-										.where({_id: {$in: widget.carousel.widgets}}).exec(function (err, data) {
-
-										locals.data.posts.results[i]._doc.gallery.widgets[j]._doc.carousel.widgets = data;
-
-										async.forEachOf(data, function (widget, k, cb3) {
-												if (widget.carousel && widget.carousel.widgets.length) {
-													//console.log('widget filter:', widget.carousel.widgets);
-													keystone.list('widgets').model.find()
-														.where({_id: {$in: widget.carousel.widgets}}).exec(function (err, data) {
-														//console.log('data:', data);
-														//console.log(locals.data.posts.results[i]._doc.gallery.widgets[j]._doc.carousel.widgets[k]);
-														locals.data.posts.results[i]._doc.gallery.widgets[j]._doc.carousel.widgets[k]._doc.carousel.widgets = data;
-														//console.log(locals.data.posts.results[i]._doc.gallery.widgets[j]._doc.carousel.widgets[k]);
-														cb3();
-													});
-												} else {
-													cb3();
-												}
-											},
-											function (err) {
-												if (err) {
-													console.log('error', err);
-												}
-												console.log('done async 3');
-												cb2();
-											});
-									});
-								} else {
-									cb2();
-								}
-
-							},
-							function (err) {
-								if (err) {
-									console.log('error', err);
-								}
-								console.log('done async 2');
-								cb();
-							}
-						);
-					} else {
-						cb();
-					}
+					
+					populatePost(post, cb);
+					locals.data.posts[i] = post;
 				},
 				function (err) {
 					if (err) {
