@@ -9,6 +9,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	// Init locals
+	locals.page = 'republik';
 	locals.section = 'republik';
 	locals.filters = {
 		category: req.params.category
