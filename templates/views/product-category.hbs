@@ -5,15 +5,21 @@
 
     <div class="container products">
 		{{#each products}}
-			
-            
-                <div class="col-xs-12">
-                    <div class="product-category-title">
+			<div class="col-xs-12">
+				<div class="product-category-title">
+				{{#ifCond @root.params.discipline.slug "==" "moto"}}
+					{{#ifCond ../name "==" "Full Face"}}
+						<a id="{{slug}}" class="product-category-anchor"><h1>MX</h1></a>
+					{{else}}
 						<a id="{{slug}}" class="product-category-anchor"><h1>{{name}}</h1></a>
-					</div>
+					{{/ifCond}}
+				{{else}}
+					<a id="{{slug}}" class="product-category-anchor"><h1>{{name}}</h1></a>
+				{{/ifCond}}
 				</div>
-            
-            
+			</div>
+
+
 			{{#each this.products}}
             <a href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
 			<div class="col-xs-12 col-lg-4 product-category-href" data-href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
