@@ -9,7 +9,7 @@
 	{{#if @root.params.discipline}}
 	<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 	{{else}}
-	<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
+	<a href="//{{product.canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 	{{/if}}
 	<div class="col col-xs-12 col-sm-6 col-md-7">
 		{{#if youtube}}
@@ -37,7 +37,7 @@
 				{{#if @root.params.discipline}}
 				<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 				{{else}}
-				<a href="//{{canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
+				<a href="//{{product.canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
 				{{/if}}
 				<div class="product-title"><h2>{{product.name}}</h2></div>
 			</a>
