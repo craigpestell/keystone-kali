@@ -368,7 +368,9 @@ hr {
   content: none; 
   display: none;
 }
-.navbar .navbar-right {
+.navbar-right .dropdown-menu.discipline{
+  right: auto;
+  min-width: initial;
   //	margin-right: 0px;
 }
 
