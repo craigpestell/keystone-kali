@@ -47,13 +47,11 @@ exports = module.exports = function (req, res) {
 
 	// Load the current category filter
 	view.on('init', function (next) {
-		req.params.category = 'Republik';
-		locals.filters.category = 'Republik';
+		req.params.category = 'republik';
+		locals.filters.category = 'republik';
 		if (req.params.category) {
-			keystone.list('PostCategory').model.findOne({key: locals.filters.category}).exec(function (err, result) {
-				console.log('result:',result);
-				locals.data.category = '5906d1c12042902f521ac8c7' || '590804bee4027ba1787c6575'; //Republik;
-				//locals.data.category = '590804bee4027ba1787c6575'; //Republik;
+			keystone.list('PostCategory').model.findOne({key: locals.filters.category}).populate('category').exec(function (err, result) {
+				locals.data.category = result._id;
 				next(err);
 			});
 		} else {
