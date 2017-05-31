@@ -15,7 +15,7 @@ var populatePost = function (post, cb) {
 							if (widget.carousel && widget.carousel.widgets.length) {
 								keystone.list('widgets').model.find()
 									.where({_id: {$in: widget.carousel.widgets}}).exec(function (err, data) {
-										console.log('DATA', data);
+										//console.log('DATA', data);
 									post._doc.gallery.widgets[j]._doc.carousel.widgets[k]._doc.carousel.widgets = data;
 									cb3();
 								});

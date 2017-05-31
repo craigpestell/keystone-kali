@@ -9,7 +9,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	// Init locals
-	locals.section = 'blog';
+	locals.section = 'republik';
 	locals.filters = {
 		category: req.params.category
 	};
@@ -51,9 +51,9 @@ exports = module.exports = function (req, res) {
 		locals.filters.category = 'Republik';
 		if (req.params.category) {
 			keystone.list('PostCategory').model.findOne({key: locals.filters.category}).exec(function (err, result) {
-				//console.log('result:',result);
-				//locals.data.category = '5906d1c12042902f521ac8c7' || '590804bee4027ba1787c6575'; //Republik;
-				locals.data.category = '590804bee4027ba1787c6575'; //Republik;
+				console.log('result:',result);
+				locals.data.category = '5906d1c12042902f521ac8c7' || '590804bee4027ba1787c6575'; //Republik;
+				//locals.data.category = '590804bee4027ba1787c6575'; //Republik;
 				next(err);
 			});
 		} else {
@@ -72,7 +72,7 @@ exports = module.exports = function (req, res) {
 		})
 			.where('state', 'published')
 			.sort('-publishedDate')
-			.populate('author categories product postLayout gallery.widgets');
+			.populate('author categories product postLayout gallery.widgets product product');
 
 		if (locals.data.category) {
 			q.where('categories').in([locals.data.category]);
@@ -86,6 +86,7 @@ exports = module.exports = function (req, res) {
 					
 					populatePost(post, cb);
 					locals.data.posts[i] = post;
+					
 				},
 				function (err) {
 					if (err) {

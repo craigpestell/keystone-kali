@@ -82,18 +82,28 @@ var navRouteHandler = function (req, res, next) {
 	
 	getNavData(res.locals.params, function (err, data) {
 		//console.log('nav data:', data);
+		
 		locals.navLinks = [
 			{
 				label: 'Technology',
 				key: 'technology',
 				href: '/technology'
-			},
-			{
-				label: 'Republik',
-				key: 'blog',
-				href: '/blog'
-			},
+			}
 		];
+		var showRepublik = true;
+		
+		if (res.locals.params && res.locals.params.discipline && res.locals.params.discipline.slug === 'moto') {
+			showRepublik = false;
+		}
+		if(showRepublik){
+			locals.navLinks.push({
+				label: 'Republik',
+				key: 'republik',
+				href: '/republik'
+			});
+		}
+			
+		
 		locals.navSubLinks = [];
 		/*locals.navLinks.push({
 		 label: 'Helmets', key: 'helmets', href: '/helmets',
