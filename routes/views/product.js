@@ -19,36 +19,41 @@ exports = module.exports = function (req, res) {
 	// Load the posts
 	var loadPosts = function(productId, next){
 
-		keystone.list('categories').model.findOne()
-		var q = keystone.list('Post')
-			.where('state', 'published')
-			.sort('-publishedDate')
-			.populate('author categories product postLayout gallery.widgets product product');
-		q.where('categories').in([locals.data.category])//.findOne({product:productId});
-		
+		keystone.list('PostCategory').model.findOne({key: 'product-detail'})
+			.exec(function(err, category){
+				console.log('args:', arguments);
+				var q = keystone.list('Post').model
+					.where('state', 'published')
+					.sort('-publishedDate')
+					.populate('author categories product postLayout gallery.widgets product product');
+				q.where('categories').in([category._id]).where({product:productId});
 
-		q.exec(function (err, results) {
-			//console.log('here:', results);
-			locals.data.posts = results;
-			if(results){
-				async.forEachOf(results.results, function (post, i, cb) {
-	
-						populatePost(post, cb);
-						locals.data.posts[i] = post;
-						
-					},
-					function (err) {
-						if (err) {
-							console.log('error', err);
-						}
-						console.log('done async 1');
-						next(err);
+
+				q.exec(function (err, results) {
+					console.log('posts:', results);
+					locals.data.posts = results;
+					if(results){
+						async.forEachOf(results.results, function (post, i, cb) {
+
+								populatePost(post, cb);
+								locals.data.posts[i] = post;
+
+							},
+							function (err) {
+								if (err) {
+									console.log('error', err);
+								}
+								console.log('done async 1');
+								next(err);
+							}
+						);
+					}else{
+						next();
 					}
-				);
-			}else{
-				next();
-			}
-		});
+				});			
+			
+			});
+
 	};
 
 	view.query('product', keystone.list('Product').model.findOne({slug:req.params.product})
