@@ -17,20 +17,24 @@ exports = module.exports = function (req, res) {
 
 
 	// Load the posts
-	var loadPosts = function(productId, next){
-
-		keystone.list('PostCategory').model.findOne({key: 'product-detail'})
+	var loadPosts = function(product, next){
+		var categoryWhere = {key: 'product-detail'};
+		if(product.canonicalDiscipline){
+			categoryWhere.key = 'product-detail-' + product.canonicalDiscipline.slug;
+		}
+		console.log('catWhere', categoryWhere);
+		keystone.list('PostCategory').model.findOne(categoryWhere)
 			.exec(function(err, category){
-				console.log('args:', arguments);
+				
 				var q = keystone.list('Post').model
 					.where('state', 'published')
 					.sort('-publishedDate')
 					.populate('author categories product postLayout gallery.widgets product product');
-				q.where('categories').in([category._id]).where({product:productId});
+				q.where('categories').in([category._id]).where({product:product._id});
 
 
 				q.exec(function (err, results) {
-					console.log('posts:', results);
+					
 					locals.data.posts = results;
 					if(results){
 						async.forEachOf(results.results, function (post, i, cb) {
@@ -43,7 +47,6 @@ exports = module.exports = function (req, res) {
 								if (err) {
 									console.log('error', err);
 								}
-								console.log('done async 1');
 								next(err);
 							}
 						);
@@ -74,7 +77,7 @@ exports = module.exports = function (req, res) {
 			
 				if (err) return next(err);
 				
-				loadPosts(results._id, next);
+				loadPosts(results, next);
 			}
 		});
 	
