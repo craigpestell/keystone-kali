@@ -19,8 +19,8 @@ exports = module.exports = function (req, res) {
 	// Load the posts
 	var loadPosts = function(product, next){
 		var categoryWhere = {key: 'product-detail'};
-		if(product.canonicalDiscipline){
-			categoryWhere.key = 'product-detail-' + product.canonicalDiscipline.slug;
+		if(req.params.discipline){
+			categoryWhere.key = 'product-detail-' + req.params.discipline;
 		}
 		console.log('catWhere', categoryWhere);
 		keystone.list('PostCategory').model.findOne(categoryWhere)
