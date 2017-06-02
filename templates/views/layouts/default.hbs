@@ -78,7 +78,7 @@
     <meta name="google-site-verification" content="dI-RltPLU3KpavtHz3jFnU2daR9kCYpOsxYOM5s-Wh8" />
 </head>
 <body>
-<div class="container{{#ifCond section "==" "home"}} fullpage-nav{{/ifCond}}">
+<div class="container{{#ifCond section "==" "home"}} fullpage-nav{{/ifCond}}{{#ifCond section "==" "technology"}} fullpage-nav{{/ifCond}}">
 	{{> nav}}
 </div>
 
@@ -110,7 +110,9 @@
 	{{{body}}}
 </div>
 {{#ifCond section "!=" "home"}}
-	{{> footer}}	
+	{{#ifCond section "!=" "technology"}}
+		{{> footer}}	
+	{{/ifCond}}
 {{/ifCond}}
 
 <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -123,11 +125,18 @@
 
 <script src="/js/owl.carousel/dist/owl.carousel.js"></script>
 {{#ifCond section "==" "home"}}
-<script src="/js/jquery.easing/js/jquery.easing.js"></script>
-<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
-<script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.js"></script>
-<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.extensions.min.js"></script>
+	<script src="/js/jquery.easing/js/jquery.easing.js"></script>
+	<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+	<script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+	<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.js"></script>
+	<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.extensions.min.js"></script>
+{{/ifCond}}
+{{#ifCond section "==" "technology"}}
+	<script src="/js/jquery.easing/js/jquery.easing.js"></script>
+	<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
+	<script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+	<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.js"></script>
+	<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.extensions.min.js"></script>
 {{/ifCond}}
 
 {{#ifCond section "==" "product"}}
@@ -180,15 +189,33 @@
 {{#ifCond section '==' 'technology' }}
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".technology-banner").one("load", function() {
-                // do stuff
-                $.cloudinary.responsive();
-                //if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
-                //    callback.apply(this);
-                //}
-            }).each(function() {
-                if(this.complete) $(this).load();
-            });
+			if(screen.width > 480) {
+				$('#fullpage').fullpage({
+					//sectionsColor: ['#f2f2f2','#4BBFC3','#7BAABE','whitesmoke'],
+					css3: true,
+					
+					slidesNavigation: true,
+					slidesNavPosition: 'top',
+					lazyLoading: false,
+					loopBottom: true,
+					responsiveWidth:768,
+					//scrollBar: true,
+					onLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
+						var length = $('.fp-section').length;
+						if(index == length){
+							$('.arrowDown').css({color:'#FFF'});
+						}else{
+							$('.arrowDown').css({color:'#000'});
+						}
+					},
+
+					//interlockedSlides: true,
+					//responsiveSlides: true
+				});
+				$('.arrowDown').click(function () {
+					$.fn.fullpage.moveSectionDown();
+				});
+			}
         });
     </script>
 

@@ -1,0 +1,80 @@
+<div class="slide">
+	<!--space for fixed header on mobile-->
+	<div class="" style="height:70px"></div>
+	<div class="container">
+		<div style="margin-top:30px;">
+			{{{bannerOverlayHtml}}}
+			<a id="{{slug}}"></a>
+			{{#ifCond @root.params.discipline.slug "===" "moto"}}
+				{{{cloudinaryImgSrcSet heroImageMoto screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
+									   format="jpg" flags="progressive" quality="auto" class="cld-responsive"}}}
+
+			{{else}}
+				{{{cloudinaryImgSrcSet heroImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
+									   format="jpg" flags="progressive" quality="auto" class="cld-responsive"}}}
+			{{/ifCond}}
+
+
+		</div>
+		<div class="container">
+			<div class="row hidden-xs">
+				<div class="col-xs-3" style="">
+					{{{cloudinaryImgSrcSet iconImage screenWidths="[265]"
+										   widths="[265]" quality="auto" class="cld-responsive"
+										   style="margin-top:-50%;line-height:0;position:relative;display:inline-block;"}}}
+				</div>
+				<div class="col-xs-1"></div>
+				<div class="col-xs-8">
+					<div class="col-xs-10">
+						<div class="text-center"><h2>{{name}}</h2></div>
+						<p>{{this.description}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="row visible-xs">
+				<div class="col-xs-4">
+					{{{cloudinaryImgSrcSet iconImage screenWidths="[3840]" widths="[265]"
+										   format="jpg" flags="progressive" quality="auto"  class="cld-responsive"}}}
+				</div>
+				<div class="col-xs-8">
+					<h2>{{name}}</h2>
+					<p>{{this.description}}</p>
+				</div>
+			</div>
+			{{#if primaryImage.url}}
+				<div class="row" style="margin-bottom:15px">
+					<div class="col-xs-12 ">
+						{{{cloudinaryImgSrcSet primaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+											   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,1920]"
+											   format="jpg" flags="progressive" quality="auto" class="cld-responsive"}}}
+					</div>
+				</div>
+			{{/if}}
+			{{#if secondaryImage.url}}
+				<div class="row hidden-xs">
+					<div class="col-xs-12 col-sm-5 vcenter">
+						{{{contentHtml}}}
+					</div><!--
+					--><div class="col-xs-12 col-sm-7 vcenter">
+					<!--TODO: adjust image sizes to fit in container-->
+					{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+										   widths="[320,360,375,411,414,435,530,630,730,768,408,536,653]"
+										   format="jpg" flags="progressive" quality="auto"  class="cld-responsive"}}}
+				</div>
+				</div>
+				<div class="row visible-xs">
+					<div class="col-xs-12 col-sm-7 vcenter" style="margin-top:15px">
+						{{{cloudinaryImgSrcSet secondaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+											   widths="[320,360,375,411,414,435,530,630,730,722,535,653,653]"
+											   format="jpg" flags="progressive" quality="auto"  class="cld-responsive"}}}
+					</div><!--
+					--><div class="col-xs-12 col-sm-5 vcenter" style="margin-top:30px">
+					{{{contentHtml}}}
+				</div>
+				</div>
+			{{/if}}
+		</div>
+	</div>
+</div>
