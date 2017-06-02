@@ -30,11 +30,11 @@
 			client.fetchProduct(shopifyId).then(function(product){
 				var buySelector = '.buy-button[data-shopifyid-';
 				var domain;
-				if(country == "CA") {
+				if(country === "CA") {
 					domain = 'shop-ca';
 					buySelector += 'can=';
 				}
-				if(country == "US") {
+				if(country === "US") {
 					domain = 'shop-usa';
 					buySelector += 'us=';
 				}
@@ -59,17 +59,31 @@
 			crossDomain: true,
 			success: function (result) {
 				country = result.country;
-				if (result.country == "CA") {
+				if (result.country === "CA") {
 					{{#each posts}}
 						if("{{product.shopifyIdCan}}" !== "") {
-							shopifyButton("kali", "3e327001331e481f2be66f85eba4c4f8", "{{product.shopifyIdCan}}" || 0, "{{product.preOrderCan}}");
+						    var preOrder = "{{product.preOrderCan}}";
+							if(!preOrder || preOrder === "false"){
+								preOrder = false;
+							}else{
+								preOrder = true;
+							}
+							shopifyButton("kali", "3e327001331e481f2be66f85eba4c4f8", "{{product.shopifyIdCan}}" || 0, 
+									preOrder);
 						}
 					{{/each}}
 				}
-				if (result.country == "US") {
+				if (result.country === "US") {
 					{{#each posts}}
 						if("{{product.shopifyIdUS}}" !== "") {
-							shopifyButton("kali-usa", "7ae67513f9d1aca4d7f349ba6580e436", "{{product.shopifyIdUS}}" || 0, "{{product.preOrderUS}}");
+							var preOrder = "{{product.preOrderUS}}";
+							if(!preOrder || preOrder === "false"){
+							    preOrder = false;
+							}else{
+							    preOrder = true;
+							}
+							shopifyButton("kali-usa", "7ae67513f9d1aca4d7f349ba6580e436", "{{product.shopifyIdUS}}" || 0,
+									preOrder);
 						}
 					{{/each}}
 				}
