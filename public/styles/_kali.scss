@@ -22,6 +22,10 @@
   width: 100%;
 }
 
+.container-fluid {
+  max-width: 1170px;
+}
+
 .center-block {
   margin-left: auto;
   margin-right: auto;
@@ -145,6 +149,7 @@ body {
   body {
 	//background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
   }
+  
   .bh-sl-container .bh-sl-map{
 	height:530px;
   }
@@ -173,6 +178,7 @@ body {
   body {
 	//background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
   }
+
   .slide-overlay {
 	font-size: 1.2em;
   }
