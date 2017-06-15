@@ -1,15 +1,11 @@
-
 <div class="row ">
-
 	<div class="col col-xs-12">
-		
 		{{#if content.markdown.html}}
 			{{{content.markdown.html}}}
 		{{else}}
 			{{{content.extended}}}
 		{{/if}}
 	</div>
-	
 	{{#if gallery}}
 		{{> post-layouts/blog/gallery}}
 	{{/if}}
