@@ -1,47 +1,54 @@
+{{#ifCond gallery.layout "==" "republik-1" }}
+	<div class="col col-xs-12">
+		{{key}}
+		{{> post-layouts/blog/gallery-republik-1 this}}
+	</div>
+{{/ifCond}}
+
 {{#ifCond gallery.layout "==" "carousel" }}
 	<div class="col col-xs-12">
 		{{key}}
 		{{> post-layouts/blog/gallery-carousel this}}
 	</div>
-{{else}}
-	
-	{{#ifCond gallery.layout "==" "blocks"}}
-		{{#each gallery.widgets}}
-			<div class="col col-xs-4">
-				<div data-post-gallery-id="{{../key}}-{{@index}}">
-					{{> widget}}
-				</div>
-			</div>
-		{{/each}}
-	{{/ifCond}}
-	{{#ifCond gallery.layout "==" "left"}}
-		{{#each gallery.widgets}}
-			{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
-				<div data-post-gallery-id="{{../key}}-{{@index}}">
-					{{> widget}}
-				</div>
-			</div>
-		{{/each}}
-	{{/ifCond}}
-	{{#ifCond gallery.layout "==" "right"}}
-		{{#each gallery.widgets}}
-			{{#if @first}}<div class="col col-xs-4">{{else}}<div class="col col-xs-8">{{/if}}
-				<div data-post-gallery-id="{{../key}}-{{@index}}">
-					{{> widget}}
-				</div>
-			</div>
-		{{/each}}
-	{{/ifCond}}
-	{{#ifCond gallery.layout "==" "basic"}}
-		<div class="col col-xs-12">
-			{{#each gallery.widgets}}
-			<div class="row">
-				<div data-post-gallery-id="{{../key}}-{{@index}}">
-					{{> widget}}
-				</div>
-			</div>
-			{{/each}}
-		</div>
-	{{/ifCond}}
 {{/ifCond}}
+
+{{#ifCond gallery.layout "==" "blocks"}}
+	{{#each gallery.widgets}}
+		<div class="col col-xs-4">
+			<div data-post-gallery-id="{{../key}}-{{@index}}">
+				{{> widget}}
+			</div>
+		</div>
+	{{/each}}
+{{/ifCond}}
+{{#ifCond gallery.layout "==" "left"}}
+	{{#each gallery.widgets}}
+		{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
+			<div data-post-gallery-id="{{../key}}-{{@index}}">
+				{{> widget}}
+			</div>
+		</div>
+	{{/each}}
+{{/ifCond}}
+{{#ifCond gallery.layout "==" "right"}}
+	{{#each gallery.widgets}}
+		{{#if @first}}<div class="col col-xs-4">{{else}}<div class="col col-xs-8">{{/if}}
+			<div data-post-gallery-id="{{../key}}-{{@index}}">
+				{{> widget}}
+			</div>
+		</div>
+	{{/each}}
+{{/ifCond}}
+{{#ifCond gallery.layout "==" "basic"}}
+	<div class="col col-xs-12">
+		{{#each gallery.widgets}}
+		<div class="row">
+			<div data-post-gallery-id="{{../key}}-{{@index}}">
+				{{> widget}}
+			</div>
+		</div>
+		{{/each}}
+	</div>
+{{/ifCond}}
+
 		

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+	<div class="col-xs-12 col-sm-8">
+		
+		<div class="row">
+			{{#if this.gallery.widgets.[0]}}
+			{{> widget this.gallery.widgets.[0]}}
+			{{/if}}
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				{{#if this.gallery.widgets.[1]}}
+					{{> widget this.gallery.widgets.[1]}}
+				{{/if}}
+			</div>
+			<div class="col-xs-6">
+				{{#if this.gallery.widgets.[2]}}
+					{{> widget this.gallery.widgets.[2]}}
+				{{/if}}
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-4">
+		{{#if this.gallery.widgets.[3]}}
+			{{> widget this.gallery.widgets.[3]}}
+		{{/if}}
+		{{#if this.gallery.widgets.[4]}}
+			{{> widget this.gallery.widgets.[4]}}
+		{{/if}}
+	</div>
+	
+</div>
