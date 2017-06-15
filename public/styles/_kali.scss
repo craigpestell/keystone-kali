@@ -22,10 +22,6 @@
   width: 100%;
 }
 
-.container-fluid {
-  max-width: 1170px;
-}
-
 .center-block {
   margin-left: auto;
   margin-right: auto;
@@ -625,7 +621,7 @@ End Product Page
 
 /* END Bootstrap overrides */
 
-.home h2, .product-main h2 {
+.home h2, .product-main h2, .blog h2.black-block {
   color: white;
   font-family: Gotham-Medium, Arial, SansSerif;
   font-size: 30px;
