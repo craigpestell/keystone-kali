@@ -621,15 +621,13 @@ End Product Page
 
 /* END Bootstrap overrides */
 
-.home h2, .product-main h2, .blog h2.black-block {
+.home h2, .product-main h2, .blog h2.black-block, .blog h2.black-block a {
   color: white;
   font-family: Gotham-Medium, Arial, SansSerif;
   font-size: 30px;
   background-color:black;
   display:inline-block;
-  
   margin:0;
-  
 }
 .home h3{margin-bottom:0;}
 

@@ -23,7 +23,7 @@
 {{/ifCond}}
 {{#ifCond gallery.layout "==" "left"}}
 	{{#each gallery.widgets}}
-		{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
+		{{#if @first}}<div class="col col-xs-8">{{else}}<div class="row"><div class="col col-xs-4"></div>{{/if}}
 			<div data-post-gallery-id="{{../key}}-{{@index}}">
 				{{> widget}}
 			</div>
