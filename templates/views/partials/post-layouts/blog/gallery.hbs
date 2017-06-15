@@ -24,10 +24,8 @@
 {{#ifCond gallery.layout "==" "left"}}
 	{{#each gallery.widgets}}
 		{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
-			<div class="row">
 			<div data-post-gallery-id="{{../key}}-{{@index}}">
 				{{> widget}}
-			</div>
 			</div>
 		</div>
 	{{/each}}
