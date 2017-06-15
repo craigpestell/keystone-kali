@@ -655,6 +655,9 @@ End Product Page
   color:white;
   font-weight: bold;  
 }
+.blog a{
+  text-decoration: underline;
+}
 /* Scale up the box */
 .home .technology img:hover, .home .technology svg:hover, .product-main .more-info:hover, .product-main .buy-button:hover {
   transform: scale(1.1, 1.1);
