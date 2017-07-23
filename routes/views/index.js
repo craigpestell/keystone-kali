@@ -67,6 +67,7 @@ function orderPosts(array_with_order, array_to_order) {
 
 exports = module.exports = function(req, res) {
 	
+	
 	var disciplineWhere = {};
 	if (res.locals.params.discipline) {
 		disciplineWhere.slug = res.locals.params.discipline.slug;
@@ -76,11 +77,18 @@ exports = module.exports = function(req, res) {
 
 	
 	var locals = res.locals;
+	console.log('params');
+	console.log(res.locals.params);
+	if(res.locals.params.discipline){
+		locals.discipline = res.locals.params.discipline.slug;
+	}
+
 	locals.data = {page:{title:'Kali Protectives'}};
 	
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'home';
+	
 
 	var view = new keystone.View(req, res);
 
