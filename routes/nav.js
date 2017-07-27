@@ -144,6 +144,10 @@ var navRouteHandler = function (req, res, next) {
 				href: '//' + disc.slug + '.' + domainAndPort,
 				positionRight: true
 			};
+			//point to shopify
+			if(disc.slug === 'moto') {
+				disciplineNav.href = 'https://kali-moto.myshopify.com';
+			}
 			if(discParam && discParam === disciplineNav.key){
 				disciplineNav.active = true;
 			}
