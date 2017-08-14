@@ -9,6 +9,68 @@
 		return;
 	}
 
+
+	var ZoomControl = function (google, controlDiv, map) {
+
+		// Creating divs & styles for custom zoom control
+		controlDiv.style.padding = '5px';
+
+		// Set CSS for the control wrapper
+		var controlWrapper = document.createElement('div');
+		controlWrapper.style.backgroundColor = 'transparent';
+
+		controlWrapper.style.cursor = 'pointer';
+		controlWrapper.style.textAlign = 'center';
+		controlWrapper.style.width = '48px';
+		controlWrapper.style.height = '74px';
+		controlDiv.appendChild(controlWrapper);
+
+		// Set CSS for the zoomIn
+		var zoomInButton = document.createElement('div');
+		zoomInButton.style.width = '48px';
+		zoomInButton.style.height = '48px';
+		/* Change this to be the .png image you want to use */
+		zoomInButton.style.backgroundImage = 'url("/img/map-plus.png")';
+		zoomInButton.style.backgroundSize = "48px";
+		zoomInButton.style.marginBottom = "5px";
+
+
+		controlWrapper.appendChild(zoomInButton);
+
+		// Set CSS for the zoomOut
+		var zoomOutButton = document.createElement('div');
+		zoomOutButton.style.width = '48px';
+		zoomOutButton.style.height = '48px';
+		/* Change this to be the .png image you want to use */
+		zoomOutButton.style.backgroundImage = 'url("/img/map-minus.png")';
+		zoomOutButton.style.backgroundSize = "48px";
+		zoomOutButton.style.marginTop = "5px";
+		controlWrapper.appendChild(zoomOutButton);
+
+		// Setup the click event listener - zoomIn
+		google.maps.event.addDomListener(zoomInButton, 'click', function() {
+			map.setZoom(map.getZoom() + 1);
+		});
+
+		// Setup the click event listener - zoomOut
+		google.maps.event.addDomListener(zoomOutButton, 'click', function() {
+			map.setZoom(map.getZoom() - 1);
+		});
+
+	};
+	var customizeZoomIcons = function(map){
+		// Create the DIV to hold the control and call the ZoomControl() constructor
+		// passing in this DIV.
+		var zoomControlDiv = document.createElement('div');
+		var zoomControl = new ZoomControl(google, zoomControlDiv, map);
+
+		zoomControlDiv.index = 1;
+		map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(zoomControlDiv);
+
+	};
+	
+	
+	
 	// Variables used across multiple methods
 	var $this, map, listTemplate, infowindowTemplate, dataTypeRead, originalOrigin, originalData, originalZoom, dataRequest, searchInput, addressInput, olat, olng, storeNum, directionsDisplay, directionsService, prevSelectedMarkerBefore, prevSelectedMarkerAfter, firstRun;
 	var featuredset = [], locationset = [], normalset = [], markers = [];
@@ -2577,7 +2639,7 @@
 
 			// Create the map
 			_this.map = new google.maps.Map(document.getElementById(_this.settings.mapID), myOptions);
-
+			customizeZoomIcons(_this.map);
 			// Re-center the map when the browser is re-sized
 			google.maps.event.addDomListener(window, 'resize', function() {
 				var center = _this.map.getCenter();
