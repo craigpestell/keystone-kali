@@ -2,65 +2,6 @@
 ;(function ($, window, document, undefined) {
 	'use strict';
 
-	var ZoomControl = function (google, controlDiv, map) {
-
-		// Creating divs & styles for custom zoom control
-		controlDiv.style.padding = '5px';
-
-		// Set CSS for the control wrapper
-		var controlWrapper = document.createElement('div');
-		controlWrapper.style.backgroundColor = 'transparent';
-		
-		controlWrapper.style.cursor = 'pointer';
-		controlWrapper.style.textAlign = 'center';
-		controlWrapper.style.width = '48px';
-		controlWrapper.style.height = '74px';
-		controlDiv.appendChild(controlWrapper);
-
-		// Set CSS for the zoomIn
-		var zoomInButton = document.createElement('div');
-		zoomInButton.style.width = '48px';
-		zoomInButton.style.height = '48px';
-		/* Change this to be the .png image you want to use */
-		zoomInButton.style.backgroundImage = 'url("/img/map-plus.png")';
-		zoomInButton.style.backgroundSize = "48px";
-		zoomInButton.style.marginBottom = "5px";
-		
-		
-		controlWrapper.appendChild(zoomInButton);
-
-		// Set CSS for the zoomOut
-		var zoomOutButton = document.createElement('div');
-		zoomOutButton.style.width = '48px';
-		zoomOutButton.style.height = '48px';
-		/* Change this to be the .png image you want to use */
-		zoomOutButton.style.backgroundImage = 'url("/img/map-minus.png")';
-		zoomOutButton.style.backgroundSize = "48px";
-		zoomOutButton.style.marginTop = "5px";
-		controlWrapper.appendChild(zoomOutButton);
-
-		// Setup the click event listener - zoomIn
-		google.maps.event.addDomListener(zoomInButton, 'click', function() {
-			map.setZoom(map.getZoom() + 1);
-		});
-
-		// Setup the click event listener - zoomOut
-		google.maps.event.addDomListener(zoomOutButton, 'click', function() {
-			map.setZoom(map.getZoom() - 1);
-		});
-
-	};
-	var customizeZoomIcons = function(map){
-		// Create the DIV to hold the control and call the ZoomControl() constructor
-		// passing in this DIV.
-		var zoomControlDiv = document.createElement('div');
-		var zoomControl = new ZoomControl(google, zoomControlDiv, map);
-
-		zoomControlDiv.index = 1;
-		map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(zoomControlDiv);
-		
-	};
-	
 	var pluginName = 'storeLocator';
 
 	// Only allow for one instantiation of this script and make sure Google Maps API is included
@@ -69,147 +10,117 @@
 	}
 
 	// Variables used across multiple methods
-	var $this, listTemplate, infowindowTemplate, dataTypeRead, originalOrigin, originalData, originalZoom, dataRequest, searchInput, addressInput, olat, olng, storeNum, directionsDisplay, directionsService, prevSelectedMarkerBefore, prevSelectedMarkerAfter, firstRun;
+	var $this, map, listTemplate, infowindowTemplate, dataTypeRead, originalOrigin, originalData, originalZoom, dataRequest, searchInput, addressInput, olat, olng, storeNum, directionsDisplay, directionsService, prevSelectedMarkerBefore, prevSelectedMarkerAfter, firstRun;
 	var featuredset = [], locationset = [], normalset = [], markers = [];
 	var filters = {}, locationData = {}, GeoCodeCalc = {}, mappingObj = {};
 
 	// Create the defaults once. DO NOT change these settings in this file - settings should be overridden in the plugin call
-    var stylesArray = [
-    {
-        featureType: "all",
-        stylers: [
-        { saturation: -60 }
-        ]
-    },{
-        featureType: "road.arterial",
-        elementType: "geometry",
-        stylers: [
-        { hue: "#00ffee" },
-        { saturation: 50 }
-        ]
-    },{
-        featureType: "poi.business",
-        elementType: "labels",
-        stylers: [
-        { visibility: "off" }
-        ]
-    }
-    ];
 	var defaults = {
-		'mapID'                    : 'bh-sl-map',
-		'locationList'             : 'bh-sl-loc-list',
-		'formContainer'            : 'bh-sl-form-container',
-		'formID'                   : 'bh-sl-user-location',
-		'addressID'                : 'bh-sl-address',
-		'regionID'                 : 'bh-sl-region',
-		'mapSettings'              : {
-			zoom     : 6,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-            disableDefaultUI: true, // a way to quickly hide all controls
-            //mapTypeControl: true,
-            //scaleControl: true,
-            zoomControl: false,
-            /*zoomControlOptions: {
-            style: google.maps.ZoomControlStyle.LARGE 
-            },*/
-            styles: stylesArray,
-            scrollwheel: false
+		'mapID'                      : 'bh-sl-map',
+		'locationList'               : 'bh-sl-loc-list',
+		'formContainer'              : 'bh-sl-form-container',
+		'formID'                     : 'bh-sl-user-location',
+		'addressID'                  : 'bh-sl-address',
+		'regionID'                   : 'bh-sl-region',
+		'mapSettings'                : {
+			mapTypeId      : google.maps.MapTypeId.ROADMAP,
+			zoom           : 12
 		},
-		'markerImg'                : '/img/marker.png',
-		'markerDim'                : null,
-		'catMarkers'               : null,
-		'selectedMarkerImg'        : null,
-		'selectedMarkerImgDim'     : null,
-		'disableAlphaMarkers'      : false,
-		'lengthUnit'               : 'm',
-		'storeLimit'               : 26,
-		'distanceAlert'            : -1,
-		'dataType'                 : 'xml',
-		'dataLocation'             : 'data/locations.xml',
-		'dataRaw'                  : null,
-		'xmlElement'               : 'marker',
-		'listColor1'               : '#ffffff',
-		'listColor2'               : '#eeeeee',
-		'originMarker'             : false,
-		'originMarkerImg'          : null,
-		'originMarkerDim'          : null,
-		'bounceMarker'             : true,
-		'slideMap'                 : true,
-		'modal'                    : false,
-		'overlay'                  : 'bh-sl-overlay',
-		'modalWindow'              : 'bh-sl-modal-window',
-		'modalContent'             : 'bh-sl-modal-content',
-		'closeIcon'                : 'bh-sl-close-icon',
-		'defaultLoc'               : false,
-		'defaultLat'               : null,
-		'defaultLng'               : null,
-		'autoComplete'             : false,
-		'autoCompleteOptions'      : {},
-		'autoGeocode'              : false,
-		'geocodeID'                : null,
-		'maxDistance'              : false,
-		'maxDistanceID'            : 'bh-sl-maxdistance',
-		'fullMapStart'             : false,
-		'fullMapStartBlank'        : false,
-		'fullMapStartListLimit'    : false,
-		'noForm'                   : false,
-		'loading'                  : false,
-		'loadingContainer'         : 'bh-sl-loading',
-		'featuredLocations'        : false,
-		'pagination'               : false,
-		'locationsPerPage'         : 10,
-		'inlineDirections'         : false,
-		'nameSearch'               : true,
-		'searchID'                 : 'bh-sl-search',
-		'nameAttribute'            : 'name',
-		'visibleMarkersList'       : true,
-		'dragSearch'               : false,
+		'markerImg'                  : null,
+		'markerDim'                  : null,
+		'catMarkers'                 : null,
+		'selectedMarkerImg'          : null,
+		'selectedMarkerImgDim'       : null,
+		'disableAlphaMarkers'        : false,
+		'lengthUnit'                 : 'm',
+		'storeLimit'                 : 26,
+		'distanceAlert'              : -1,
+		'dataType'                   : 'xml',
+		'dataLocation'               : 'data/locations.xml',
+		'dataRaw'                    : null,
+		'xmlElement'                 : 'marker',
+		'listColor1'                 : '#ffffff',
+		'listColor2'                 : '#eeeeee',
+		'originMarker'               : false,
+		'originMarkerImg'            : null,
+		'originMarkerDim'            : null,
+		'bounceMarker'               : true,
+		'slideMap'                   : true,
+		'modal'                      : false,
+		'overlay'                    : 'bh-sl-overlay',
+		'modalWindow'                : 'bh-sl-modal-window',
+		'modalContent'               : 'bh-sl-modal-content',
+		'closeIcon'                  : 'bh-sl-close-icon',
+		'defaultLoc'                 : false,
+		'defaultLat'                 : null,
+		'defaultLng'                 : null,
+		'autoComplete'               : false,
+		'autoCompleteOptions'        : {},
+		'autoCompleteDisableListener': false,
+		'autoGeocode'                : false,
+		'geocodeID'                  : null,
+		'maxDistance'                : false,
+		'maxDistanceID'              : 'bh-sl-maxdistance',
+		'fullMapStart'               : false,
+		'fullMapStartBlank'          : false,
+		'fullMapStartListLimit'      : false,
+		'noForm'                     : false,
+		'loading'                    : false,
+		'loadingContainer'           : 'bh-sl-loading',
+		'featuredLocations'          : false,
+		'pagination'                 : false,
+		'locationsPerPage'           : 10,
+		'inlineDirections'           : false,
+		'nameSearch'                 : false,
+		'searchID'                   : 'bh-sl-search',
+		'nameAttribute'              : 'name',
+		'visibleMarkersList'         : false,
+		'dragSearch'                 : false,
 		'infowindowTemplatePath'   : '/js/plugins/storeLocator/templates/infowindow-description.html',
 		'listTemplatePath'         : '/js/plugins/storeLocator/templates/location-list-description.html',
 		'KMLinfowindowTemplatePath': '/js/plugins/storeLocator/templates/kml-infowindow-description.html',
 		'KMLlistTemplatePath'      : '/js/plugins/storeLocator/templates/kml-location-list-description.html',
-		'listTemplateID'           : null,
-		'infowindowTemplateID'     : null,
-		'taxonomyFilters'          : null,
-		'taxonomyFiltersContainer' : 'bh-sl-filters-container',
-		'exclusiveFiltering'       : false,
-		'querystringParams'        : false,
-		'debug'                    : false,
-		'sessionStorage'           : false,
-		'markerCluster'            : {
-			imagePath: '../img/marker-cluster/m'
-			//,minimumClusterSize:5
-			,averageCenter: true
-			,gridSize: 40
-		},
-		'callbackNotify'           : null,
-		'callbackBeforeSend'       : null,
-		'callbackSuccess'          : null,
-		'callbackModalOpen'        : null,
-		'callbackModalReady'       : null,
-		'callbackModalClose'       : null,
-		'callbackJsonp'            : null,
-		'callbackCreateMarker'     : null,
-		'callbackPageChange'       : null,
-		'callbackDirectionsRequest': null,
-		'callbackCloseDirections'  : null,
-		'callbackNoResults'        : null,
-		'callbackListClick'        : null,
-		'callbackMarkerClick'      : null,
-		'callbackFilters'          : null,
-		'callbackMapSet'           : null,
+		'listTemplateID'             : null,
+		'infowindowTemplateID'       : null,
+		'taxonomyFilters'            : null,
+		'taxonomyFiltersContainer'   : 'bh-sl-filters-container',
+		'exclusiveFiltering'         : false,
+		'exclusiveTax'               : null,
+		'querystringParams'          : false,
+		'debug'                      : false,
+		'sessionStorage'             : false,
+		'markerCluster'              : null,
+		'infoBubble'                 : null,
+		// Callbacks
+		'callbackNotify'             : null,
+		'callbackRegion'             : null,
+		'callbackBeforeSend'         : null,
+		'callbackSuccess'            : null,
+		'callbackModalOpen'          : null,
+		'callbackModalReady'         : null,
+		'callbackModalClose'         : null,
+		'callbackJsonp'              : null,
+		'callbackCreateMarker'       : null,
+		'callbackPageChange'         : null,
+		'callbackDirectionsRequest'  : null,
+		'callbackCloseDirections'    : null,
+		'callbackNoResults'          : null,
+		'callbackListClick'          : null,
+		'callbackMarkerClick'        : null,
+		'callbackFilters'            : null,
+		'callbackMapSet'             : null,
 		// Language options
-		'addressErrorAlert'        : 'Unable to find address',
-		'autoGeocodeErrorAlert'    : 'Automatic location detection failed. Please fill in your address or zip code.',
-		'distanceErrorAlert'       : 'Unfortunately, our closest location is more than ',
-		'mileLang'                 : 'mile',
-		'milesLang'                : 'miles',
-		'kilometerLang'            : 'kilometer',
-		'kilometersLang'           : 'kilometers',
-		'noResultsTitle'           : 'No results',
-		'noResultsDesc'            : 'No locations were found with the given criteria. Please modify your selections or input.',
-		'nextPage'                 : 'Next &raquo;',
-		'prevPage'                 : '&laquo; Prev'
+		'addressErrorAlert'          : 'Unable to find address',
+		'autoGeocodeErrorAlert'      : 'Automatic location detection failed. Please fill in your address or zip code.',
+		'distanceErrorAlert'         : 'Unfortunately, our closest location is more than ',
+		'mileLang'                   : 'mile',
+		'milesLang'                  : 'miles',
+		'kilometerLang'              : 'kilometer',
+		'kilometersLang'             : 'kilometers',
+		'noResultsTitle'             : 'No results',
+		'noResultsDesc'              : 'No locations were found with the given criteria. Please modify your selections or input.',
+		'nextPage'                   : 'Next &raquo;',
+		'prevPage'                   : '&laquo; Prev'
 	};
 
 	// Plugin constructor
@@ -288,7 +199,7 @@
 				var autoPlaces = new google.maps.places.Autocomplete(searchInput, this.settings.autoCompleteOptions);
 
 				// Add listener when autoComplete selection changes.
-				if (this.settings.autoComplete === true) {
+				if (this.settings.autoComplete === true && this.settings.autoCompleteDisableListener !== true) {
 					autoPlaces.addListener('place_changed', function(e) {
 						_this.processForm(e);
 					});
@@ -469,6 +380,15 @@
 		},
 
 		/**
+		 * Get google.maps.Map instance
+		 *
+		 * @returns {Object} google.maps.Map instance
+		 */
+		getMap: function() {
+			return this.map;
+		},
+
+		/**
 		 * Load templates via Handlebars templates in /templates or inline via IDs - private
 		 */
 		_loadTemplates: function () {
@@ -580,8 +500,6 @@
 			// Reset button trigger
 			if ($('.bh-sl-reset').length && $('#' + this.settings.mapID).length) {
 				$(document).on('click.' + pluginName, '.bh-sl-reset', function () {
-					$('#bh-sl-search').val("");
-					$('#bh-sl-address').val("");
 					_this.mapReload();
 				});
 			}
@@ -678,9 +596,9 @@
 		_start: function () {
 			this.writeDebug('_start');
 			var _this = this,
-				doAutoGeo = this.settings.autoGeocode,
-				latlng,
-				originAddress;
+					doAutoGeo = this.settings.autoGeocode,
+					latlng,
+					originAddress;
 
 			// Full map blank start
 			if (_this.settings.fullMapStartBlank !== false) {
@@ -693,13 +611,13 @@
 				myOptions.center = latlng;
 
 				// Create the map
-				var map = new google.maps.Map(document.getElementById(_this.settings.mapID), myOptions);
+				_this.map = new google.maps.Map(document.getElementById(_this.settings.mapID), myOptions);
 
 				// Re-center the map when the browser is re-sized
 				google.maps.event.addDomListener(window, 'resize', function() {
-					var center = map.getCenter();
-					google.maps.event.trigger(map, 'resize');
-					map.setCenter(center);
+					var center = _this.map.getCenter();
+					google.maps.event.trigger(_this.map, 'resize');
+					_this.map.setCenter(center);
 				});
 
 				// Only do this once
@@ -864,17 +782,17 @@
 		 */
 		hasEmptyObjectVals: function (obj) {
 			this.writeDebug('hasEmptyObjectVals',arguments);
-			var objTest = true;
+				var objTest = true;
 
-			for(var key in obj) {
-				if(obj.hasOwnProperty(key)) {
-					if(obj[key] !== '' && obj[key].length !== 0) {
-						objTest = false;
+				for(var key in obj) {
+					if(obj.hasOwnProperty(key)) {
+						if(obj[key] !== '' && obj[key].length !== 0) {
+							objTest = false;
+						}
 					}
 				}
-			}
 
-			return objTest;
+				return objTest;
 		},
 
 		/**
@@ -941,7 +859,6 @@
 		 * @returns {boolean}
 		 */
 		filterData: function (data, filters) {
-			
 			this.writeDebug('filterData',arguments);
 			var filterTest = true;
 
@@ -949,12 +866,14 @@
 				if (filters.hasOwnProperty(k)) {
 
 					// Exclusive filtering
-					if(this.settings.exclusiveFiltering === true) {
+					if(this.settings.exclusiveFiltering === true || (this.settings.exclusiveTax !== null && Array.isArray(this.settings.exclusiveTax) && this.settings.exclusiveTax.indexOf(k) !== -1)) {
 						var filterTests = filters[k];
 						var exclusiveTest = [];
 
-						for(var l = 0; l < filterTests.length; l++) {
-							exclusiveTest[l] = new RegExp(filterTests[l], 'i').test(data[k].replace(/[^\x00-\x7F]/g, ''));
+						if(typeof data[k] !== 'undefined') {
+							for (var l = 0; l < filterTests.length; l++) {
+								exclusiveTest[l] = new RegExp(filterTests[l], 'i').test(data[k].replace(/([^\x00-\x7F]|[.*+?^=!:${}()|\[\]\/\\])/g, ''));
+							}
 						}
 
 						if(exclusiveTest.indexOf(true) === -1) {
@@ -963,7 +882,7 @@
 					}
 					// Inclusive filtering
 					else {
-						if (typeof data[k] === 'undefined' || !(new RegExp(filters[k].join(''), 'i').test(data[k].replace(/[^\x00-\x7F]/g, '')))) {
+						if (typeof data[k] === 'undefined' || !(new RegExp(filters[k].join(''), 'i').test(data[k].replace(/([^\x00-\x7F]|[.*+?^=!:${}()|\[\]\/\\])/g, '')))) {
 							filterTest = false;
 						}
 					}
@@ -1241,7 +1160,7 @@
 
 			// Set up the list template with the location data
 			var listHtml = listTemplate(locations);
-			$('.' + this.settings.locationList + ' ul').append(listHtml);
+			$('.' + this.settings.locationList + ' > ul').append(listHtml);
 		},
 
 		/**
@@ -1308,7 +1227,7 @@
 					if ($selectedLocation.length > 0) {
 						// Marker click callback
 						if (_this.settings.callbackMarkerClick) {
-							_this.settings.callbackMarkerClick.call(this, marker, markerId, $selectedLocation);
+							_this.settings.callbackMarkerClick.call(this, marker, markerId, $selectedLocation, locationset[markerId]);
 						}
 
 						$('.' + _this.settings.locationList + ' li').removeClass('list-focus');
@@ -1390,7 +1309,7 @@
 		_autoGeocodeError: function () {
 			this.writeDebug('_autoGeocodeError');
 			// If automatic detection doesn't work show an error
-			//this.notify(this.settings.autoGeocodeErrorAlert);
+			this.notify(this.settings.autoGeocodeErrorAlert);
 		},
 
 		/**
@@ -1587,18 +1506,21 @@
 		 * @param e {Object} event
 		 */
 		processForm: function (e) {
-			
 			this.writeDebug('processForm',arguments);
-			var _this = this;
-			var distance = null;
-			var $addressInput = $('#' + this.settings.addressID);
-			var $searchInput = $('#' + this.settings.searchID);
-			var $distanceInput = $('#' + this.settings.maxDistanceID);
+			var _this = this,
+				distance = null,
+				$addressInput = $('#' + this.settings.addressID),
+				$searchInput = $('#' + this.settings.searchID),
+				$distanceInput = $('#' + this.settings.maxDistanceID),
+				region = '';
 
 			// Stop the form submission
 			if(typeof e !== 'undefined' && e !== null) {
 				e.preventDefault();
 			}
+
+			// Blur any form field to hide mobile keyboards.
+			$('.' + _this.settings.formContainer +' input, .' + _this.settings.formContainer + ' select').blur();
 
 			// Query string parameters
 			if(this.settings.querystringParams === true) {
@@ -1639,8 +1561,14 @@
 				}
 			}
 
-			// Get the region setting if set
-			var region = $('#' + this.settings.regionID).val();
+			// Region
+			if (this.settings.callbackRegion) {
+				// Region override callback
+				region = this.settings.callbackRegion.call(this, addressInput, searchInput, distance);
+			} else {
+				// Region setting
+				region = $('#' + this.settings.regionID).val();
+			}
 
 			if (addressInput === '' && searchInput === '') {
 				this._start();
@@ -1680,8 +1608,12 @@
 				}
 			}
 			else if(searchInput !== '') {
+				// Check for existing origin and remove if address input is blank.
+				if ( addressInput === '' ) {
+					delete mappingObj.origin;
+				}
+
 				mappingObj.name = searchInput;
-				mappingObj.origin = undefined;
 				_this.mapping(mappingObj);
 			}
 		},
@@ -1821,21 +1753,69 @@
 		},
 
 		/**
+		 * Select the indicated values from query string parameters.
+		 *
+		 * @param taxonomy {string} Current taxonomy.
+		 * @param value {array} Query string array values.
+		 */
+		selectQueryStringFilters: function( taxonomy, value ) {
+			this.writeDebug('selectQueryStringFilters', arguments);
+
+			var $taxGroupContainer = $('#' + this.settings.taxonomyFilters[taxonomy]);
+
+			// Handle checkboxes.
+			if ( $taxGroupContainer.find('input[type="checkbox"]').length ) {
+
+				for ( var i = 0; i < value.length; i++ ) {
+					$taxGroupContainer.find('input:checkbox[value="' + value[i] + '"]').prop('checked', true);
+				}
+			}
+
+			// Handle select fields.
+			if ( $taxGroupContainer.find('select').length ) {
+				// Only expecting one value for select fields.
+				$taxGroupContainer.find('option[value="' + value[0] + '"]').prop('selected', true);
+			}
+
+			// Handle radio buttons.
+			if ( $taxGroupContainer.find('input[type="radio"]').length ) {
+				// Only one value for radio button.
+				$taxGroupContainer.find('input:radio[value="' + value[0] + '"]').prop('checked', true);
+			}
+		},
+
+		/**
 		 * Check query string parameters for filter values.
 		 */
 		checkQueryStringFilters: function () {
 			this.writeDebug('checkQueryStringFilters',arguments);
+
 			// Loop through the filters.
 			for(var key in filters) {
 				if(filters.hasOwnProperty(key)) {
 					var filterVal = this.getQueryString(key);
 
+					// Check for multiple values separated by comma.
+					if ( filterVal.indexOf( ',' ) !== -1 ) {
+						filterVal = filterVal.split( ',' );
+					}
+
 					// Only add the taxonomy id if it doesn't already exist
 					if (typeof filterVal !== 'undefined' && filterVal !== '' && filters[key].indexOf(filterVal) === -1) {
-						filters[key] = [filterVal];
+						if ( Array.isArray( filterVal ) ) {
+							filters[key] = filterVal;
+						} else {
+							filters[key] = [filterVal];
+						}
+					}
+
+					// Select the filters indicated in the query string.
+					if ( filters[key].length ) {
+						this.selectQueryStringFilters( key, filters[key] );
 					}
 				}
 			}
+
 		},
 
 		/**
@@ -1994,11 +1974,8 @@
 
 			// Empty the location list
 			$('.' + this.settings.locationList + ' ul').empty();
-			if(map.zoom < 10 && markers.length > 100 ) {
-				return;
-			}
+
 			// Set up the new list
-			var count = 0;
 			$(markers).each(function(x, marker){
 				if(map.getBounds().contains(marker.getPosition())) {
 					// Define the location data
@@ -2006,14 +1983,13 @@
 
 					// Set up the list template with the location data
 					listHtml = listTemplate(locations);
-					$('.' + _this.settings.locationList + ' ul').append(listHtml);
+					$('.' + _this.settings.locationList + ' > ul').append(listHtml);
 				}
-				count++;
 			});
 
 			// Re-add the list background colors
-			//$('.' + this.settings.locationList + ' ul li:even').css('background', this.settings.listColor1);
-			//$('.' + this.settings.locationList + ' ul li:odd').css('background', this.settings.listColor2);
+			$('.' + this.settings.locationList + ' ul li:even').css('background', this.settings.listColor1);
+			$('.' + this.settings.locationList + ' ul li:odd').css('background', this.settings.listColor2);
 		},
 
 		/**
@@ -2058,11 +2034,11 @@
 				noResults;
 
 			// Create the map
-			var map = new google.maps.Map(document.getElementById(this.settings.mapID), myOptions);
+			this.map = new google.maps.Map(document.getElementById(this.settings.mapID), myOptions);
 
 			// Callback
 			if (this.settings.callbackNoResults) {
-				this.settings.callbackNoResults.call(this, map, myOptions);
+				this.settings.callbackNoResults.call(this, this.map, myOptions);
 			}
 
 			// Empty the location list
@@ -2079,10 +2055,10 @@
 				center = new google.maps.LatLng(0, 0);
 			}
 
-			map.setCenter(center);
+			this.map.setCenter(center);
 
 			if (originalZoom) {
-				map.setZoom(originalZoom);
+				this.map.setZoom(originalZoom);
 			}
 		},
 
@@ -2181,7 +2157,7 @@
 
 				// List click callback
 				if (_this.settings.callbackListClick) {
-					_this.settings.callbackListClick.call(this, markerId, selectedMarker);
+					_this.settings.callbackListClick.call(this, markerId, selectedMarker, locationset[markerId]);
 				}
 
 				map.panTo(selectedMarker.getPosition());
@@ -2475,7 +2451,7 @@
 							if (!taxFilters[k]) {
 								taxFilters[k] = [];
 							}
-							taxFilters[k][z] = '(?=.*\\b' + filters[k][z].replace(/([^\x00-\x7F]|[*+?^=!:${}()|\[\]\/\\])/g, '') + '\\b)';
+							taxFilters[k][z] = '(?=.*\\b' + filters[k][z].replace(/([^\x00-\x7F]|[.*+?^=!:${}()|\[\]\/\\])/g, '') + '\\b)';
 						}
 					}
 				}
@@ -2549,7 +2525,7 @@
 			_this.modalWindow();
 
 			// Avoid error if number of locations is less than the default of 26
-			if (_this.settings.storeLimit === -1 || locationset.length < _this.settings.storeLimit || (this.settings.fullMapStart === true && firstRun === true && (isNaN(this.settings.fullMapStartListLimit) || this.settings.fullMapStartListLimit > 26 || this.settings.fullMapStartListLimit === -1))) {
+			if (_this.settings.storeLimit === -1 || locationset.length < _this.settings.storeLimit || (this.settings.fullMapStart === true && firstRun === true && (!isNaN(this.settings.fullMapStartListLimit) || this.settings.fullMapStartListLimit > 26 || this.settings.fullMapStartListLimit === -1))) {
 				storeNum = locationset.length;
 			}
 			else {
@@ -2577,7 +2553,7 @@
 			_this.resultsTotalCount(locationset.length);
 
 			// Google maps settings
-			if ((_this.settings.fullMapStart === true && firstRun === true) || (_this.settings.mapSettings.zoom === 0) || (typeof origin === 'undefined') || (distError === true)) {
+			if ((_this.settings.fullMapStart === true && firstRun === true && _this.settings.querystringParams !== true) || (_this.settings.mapSettings.zoom === 0) || (typeof origin === 'undefined') || (distError === true)) {
 				myOptions = _this.settings.mapSettings;
 				bounds = new google.maps.LatLngBounds();
 			}
@@ -2600,35 +2576,35 @@
 			}
 
 			// Create the map
-			var map = new google.maps.Map(document.getElementById(_this.settings.mapID), myOptions);
-			customizeZoomIcons(map);
+			_this.map = new google.maps.Map(document.getElementById(_this.settings.mapID), myOptions);
+
 			// Re-center the map when the browser is re-sized
 			google.maps.event.addDomListener(window, 'resize', function() {
-				var center = map.getCenter();
-				google.maps.event.trigger(map, 'resize');
-				map.setCenter(center);
+				var center = _this.map.getCenter();
+				google.maps.event.trigger(_this.map, 'resize');
+				_this.map.setCenter(center);
 			});
 
 
 			// Add map drag listener if setting is enabled and re-search on drag end
 			if (_this.settings.dragSearch === true ) {
-				map.addListener('dragend', function() {
-					_this.dragSearch(map);
+				_this.map.addListener('dragend', function() {
+					_this.dragSearch(_this.map);
 				});
 			}
 
 			// Load the map
-			$this.data(_this.settings.mapID.replace('#', ''), map);
+			$this.data(_this.settings.mapID.replace('#', ''), _this.map);
 
 			// Map set callback.
 			if (_this.settings.callbackMapSet) {
-				_this.settings.callbackMapSet.call(this, map, originPoint, originalZoom, myOptions);
+				_this.settings.callbackMapSet.call(this, _this.map, originPoint, originalZoom, myOptions);
 			}
 
 			// Initialize the infowondow
 			if ( typeof InfoBubble !== 'undefined' && _this.settings.infoBubble !== null ) {
 				var infoBubbleSettings = _this.settings.infoBubble;
-				infoBubbleSettings.map = map;
+				infoBubbleSettings.map = _this.map;
 
 				infowindow = new InfoBubble(infoBubbleSettings);
 			} else {
@@ -2637,7 +2613,7 @@
 
 
 			// Add origin marker if the setting is set
-			_this.originMarker(origin,originPoint,map);
+			_this.originMarker(_this.map, origin, originPoint);
 
 			// Handle pagination
 			$(document).on('click.'+pluginName, '.bh-sl-pagination li', function (e) {
@@ -2647,7 +2623,7 @@
 			});
 
 			// Inline directions
-			_this.inlineDirections(map, origin);
+			_this.inlineDirections(_this.map, origin);
 
 			// Add markers and infowindows loop
 			for (var y = 0; y <= storeNumToShow - 1; y++) {
@@ -2661,10 +2637,10 @@
 				}
 
 				var point = new google.maps.LatLng(locationset[y].lat, locationset[y].lng);
-				marker = _this.createMarker(point, locationset[y].name, locationset[y].address, letter, map, locationset[y].category);
+				marker = _this.createMarker(point, locationset[y].name, locationset[y].address, letter, _this.map, locationset[y].category);
 				marker.set('id', y);
 				markers[y] = marker;
-				if ((_this.settings.fullMapStart === true && firstRun === true) || (_this.settings.mapSettings.zoom === 0) || (typeof origin === 'undefined') || (distError === true)) {
+				if ((_this.settings.fullMapStart === true && firstRun === true && _this.settings.querystringParams !== true) || (_this.settings.mapSettings.zoom === 0) || (typeof origin === 'undefined') || (distError === true)) {
 					bounds.extend(point);
 				}
 				// Pass variables to the pop-up infowindows
@@ -2672,13 +2648,8 @@
 			}
 
 			// Center and zoom if no origin or zoom was provided, or distance of first marker is greater than distanceAlert
-			if ((_this.settings.fullMapStart === true && firstRun === true) || (_this.settings.mapSettings.zoom === 0) || (typeof origin === 'undefined') || (distError === true)) {
-				map.fitBounds(bounds);
-				
-				// zoom out a bit
-				if(map.getZoom() > 16)
-					map.setZoom(16);
-				
+			if ((_this.settings.fullMapStart === true && firstRun === true && _this.settings.querystringParams !== true) || (_this.settings.mapSettings.zoom === 0) || (typeof origin === 'undefined') || (distError === true)) {
+				_this.map.fitBounds(bounds);
 			}
 
 			// Create the links that focus on the related marker
@@ -2700,18 +2671,18 @@
 
 			// MarkerClusterer setup
 			if ( typeof MarkerClusterer !== 'undefined' && _this.settings.markerCluster !== null ) {
-				var markerCluster = new MarkerClusterer(map, markers, _this.settings.markerCluster);
+				var markerCluster = new MarkerClusterer(_this.map, markers, _this.settings.markerCluster);
 			}
 
 			// Handle clicks from the list
-			_this.listClick(map, infowindow, storeStart, page);
+			_this.listClick(_this.map, infowindow, storeStart, page);
 
 			// Add the list li background colors - this wil be dropped in a future version in favor of CSS
 			$('.' + _this.settings.locationList + ' ul > li:even').css('background', _this.settings.listColor1);
 			$('.' + _this.settings.locationList + ' ul > li:odd').css('background', _this.settings.listColor2);
 
 			// Visible markers list
-			_this.visibleMarkersList(map, markers);
+			_this.visibleMarkersList(_this.map, markers);
 
 			// Modal ready callback
 			if (_this.settings.modal === true && _this.settings.callbackModalReady) {
@@ -2760,7 +2731,6 @@
 				if (!$.data(this, 'plugin_' + pluginName)) {
 					// If it has no instance, create a new one, pass options to our plugin constructor, and store the plugin instance in the elements jQuery data object.
 					$.data(this, 'plugin_' + pluginName, new Plugin( this, options ));
-					
 				}
 			});
 			// Treat this as a call to a public method
