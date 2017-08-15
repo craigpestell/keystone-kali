@@ -139,6 +139,16 @@
 					}
 				}
 
+				locationList.sort(function(a, b) {
+					var aLower = a.name.toLowerCase();
+					var bLower = b.name.toLowerCase();
+					if (aLower < bLower) //sort string ascending
+						return -1;
+					if (aLower > bLower)
+						return 1;
+					return 0
+
+				});
 				//$('#location-list').toggleClass('in', locationList.length > 0);
 
 				locationList.forEach(function (marker) {
