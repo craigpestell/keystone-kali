@@ -123,24 +123,40 @@
 		};
 
 		var updateLocationList = function(map, markers){
+			//console.log('zoom level:', map.getZoom());
 			$('#location-list > ul').empty('');
-			var locationList = [];
-			for (var i=0; i < map.markers.length; i++){
-				if(map.markers[i].getVisible()) {
-					if (map.map.getBounds().contains(map.markers[i].getPosition())) {
-						// code for showing your object, associated with markers[i]
-						locationList.push(markers[i]);
+			
+			if(map.getZoom() > 9) {
+				var locationList = [];
+				for (var i = 0; i < map.markers.length; i++) {
+					if (map.markers[i].getVisible()) {
+						if (map.map.getBounds().contains(map.markers[i].getPosition())) {
+							// code for showing your object, associated with markers[i]
+							locationList.push(markers[i]);
 
+						}
 					}
 				}
-			}
-			locationList.forEach(function(marker){
-				$('#location-list > ul').append('<li>' + marker.name + '<br/>' + formatAddress(marker) + '</li>');
-			})
 
+				//$('#location-list').toggleClass('in', locationList.length > 0);
+
+				locationList.forEach(function (marker) {
+					$('#location-list > ul').append('<li>' + marker.name + '<br/>' + formatAddress(marker) + '</li>');
+				})
+				if($('#location-list .in').length > 1){
+					$('#location-list').collapse('show');
+				}
+			}else{
+				$('#location-list').collapse('hide');
+			}
+			
+
+
+			
 		};
 
 		initMapSize();
+		$(window).resize(initMapSize);
 
 		var map, markerCluster;
 		map = new GMaps({
@@ -245,7 +261,7 @@
 
 				//map.map.addListener('center_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}))
 				map.map.addListener('bounds_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}));
-				
+								
 			}
 		});
     });
