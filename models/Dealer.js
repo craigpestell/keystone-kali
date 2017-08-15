@@ -15,6 +15,17 @@ Dealer.add({
 	phone: {type: Types.Text},
 	web: {type: Types.Url},
 	email: {type: Types.Email},
+	distributor: {type: Boolean}
+});
+Dealer.schema.methods.category = function(){
+	var cat = "dealer";
+	if(this.distributor){
+		cat = 'distributor';
+	}
+	return cat;
+};
+Dealer.schema.virtual('xxx').get(function(){
+	return 'yyy';
 });
 
 /*Dealer.schema.pre('save', function(next) {
