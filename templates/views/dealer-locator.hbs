@@ -1,37 +1,26 @@
-<div class="bh-sl-container">
-	<div class="container">
-
-		<div class="col-xs-12">
-
-			<!--<div id="page-header">
-				<h1 class="bh-sl-title">Locate a dealer</h1>
-
-			</div>-->
-			<div class="bh-sl-form-container">
-				<form id="bh-sl-user-location" method="post" action="#">
-					<div class="form-input">
-						Search by
-						<select id="dealer-search-type">
-							<option value="address">Address or Zip Code</option>
-							<option value="name">Dealer Name</option>
-						</select>
-						<input type="text" id="bh-sl-search" name="bh-sl-search" style="display:none" />
-						<input type="text" id="bh-sl-address" name="bh-sl-address"/>
-					</div>
-
-					<button id="bh-sl-submit" class="btn btn-primary" type="submit">Submit</button>
-					<button id="bh-sl-reset" class="btn btn-primary bh-sl-reset" type="button" style="margin-left:15px">Reset</button>
-				</form>
-			</div>
+<div class="row" style="position:relative;">
+	<div class="col-xs-9">
+		<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+		<ul id="category-filters-container1" class="bh-sl-filters">
+			<li>
+				<label>
+					<input type="checkbox" name="category" value="dealer" checked> Dealers
+				</label>
+			</li>
+			<li>
+				<label>
+					<input type="checkbox" name="category" value="distributor" checked> Distributors
+				</label>
+			</li>
+		</ul>
+		<div id="map"></div>
+	</div>
+	<div class="col-xs-3">
+		<div style="position:relative; right:0px; top: 100px;">
+		<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#location-list">Locations<span class="caret"></span></button>
+		<div id="location-list" class="collapse in"><ul></ul></div>
 		</div>
 	</div>
-
-    <div id="bh-sl-map-container" class="bh-sl-map-container">
-        <div id="bh-sl-map" class="bh-sl-map"></div>
-        <div class="bh-sl-loc-list">
-            <ul class="list"></ul>
-        </div>
-    </div>
 </div>
 <button id="importDealers" style="display:none">Import Dealers</button>
 

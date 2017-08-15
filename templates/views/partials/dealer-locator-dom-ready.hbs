@@ -1,129 +1,252 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		$('#dealer-search-type').change(function(){
-		    
-		   $('#bh-sl-address').toggle().val("");
-		   $('#bh-sl-search').toggle().val("");
+
+		var initAutocomplete = function (map) {
+
+			// Create the search box and link it to the UI element.
+			var input = document.getElementById('pac-input');
+			var searchBox = new google.maps.places.SearchBox(input);
+			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+			// Bias the SearchBox results towards current map's viewport.
+			map.addListener('bounds_changed', function() {
+				searchBox.setBounds(map.getBounds());
+			});
+
+			var markers = [];
+			// Listen for the event fired when the user selects a prediction and retrieve
+			// more details for that place.
+			searchBox.addListener('places_changed', function() {
+				var places = searchBox.getPlaces();
+
+				if (places.length == 0) {
+					return;
+				}
+
+				// Clear out the old markers.
+				markers.forEach(function(marker) {
+					marker.setMap(null);
+				});
+				markers = [];
+
+				// For each place, get the icon, name and location.
+				var bounds = new google.maps.LatLngBounds();
+				places.forEach(function(place) {
+					if (!place.geometry) {
+						console.log("Returned place contains no geometry");
+						return;
+					}
+					var icon = {
+						url: place.icon,
+						size: new google.maps.Size(71, 71),
+						origin: new google.maps.Point(0, 0),
+						anchor: new google.maps.Point(17, 34),
+						scaledSize: new google.maps.Size(25, 25)
+					};
+
+					// Create a marker for each place.
+					markers.push(new google.maps.Marker({
+						map: map,
+						icon: icon,
+						title: place.name,
+						position: place.geometry.location
+					}));
+
+					if (place.geometry.viewport) {
+						// Only geocodes have viewport.
+						bounds.union(place.geometry.viewport);
+					} else {
+						bounds.extend(place.geometry.location);
+					}
+				});
+				map.fitBounds(bounds);
+			});
+		};
+
+		var filterMarkers = function (markers, category) {
+			var newMarkers = [];
+			for (i = 0; i < markers.length; i++) {
+				marker = markers[i];
+				// If is same category or category not picked
+				if((category === "both") || (category === "distributor" && marker.category === 'distributor' ) || (marker.category === 'dealer'&& category === 'dealer')){
+					marker.setVisible(true);
+					newMarkers.push(marker);
+				}
+				// Categories don't match 
+				else {
+					marker.setVisible(false);
+				}
+				
+			}
+			markerCluster.clearMarkers();
+			markerCluster.addMarkers(newMarkers);
+			
+		};
+
+
+		var initFilters = function(map, markers){
+			//var input = document.getElementById('category-filters-container1');
+			$('#category-filters-container1  input[name="category"]').change(function(){
+				console.log('changing filters');
+				var category = 'both';
+				if($('#category-filters-container1 [value="dealer"]:checked').length && !$('#category-filters-container1 :checkbox[value="distributor"]:checked').length){
+					category = "dealer";
+				}else if($('#category-filters-container1 [value="distributor"]:checked').length && !$('#category-filters-container1 :checkbox[value="dealer"]:checked').length){
+					category = "distributor";
+				}else if(!$('#category-filters-container1 [value="distributor"]:checked').length && !$('#category-filters-container1 :checkbox[value="dealer"]:checked').length){
+					category = null;
+				}
+				console.log('category:', category);
+				filterMarkers(map.markers, category);
+				updateLocationList(map, markers);
+			})
+		};
+		
+		var initMapSize = function(){
+			var width = $(window).width();
+			var height = $(window).height() - 500;
+			$('#map').css({width:width, height: height});
+			$('#location-list').css({'max-height':height-550});
+		};
+
+		var formatAddress = function(location){
+			var formattedAddress = "";
+			// Set up formatted address
+			if(location.address){ formattedAddress += location.address + ' '; }
+			if(location.address2){ formattedAddress += location.address2 + ' '; }
+			if(location.city){ formattedAddress += location.city + ', '; }
+			if(location.state){ formattedAddress += location.state + ' '; }
+			if(location.postal){ formattedAddress += location.postal + ' '; }
+			if(location.country){ formattedAddress += location.country + ' '; }
+
+			return formattedAddress;
+		};
+
+		var updateLocationList = function(map, markers){
+			$('#location-list > ul').empty('');
+			var locationList = [];
+			for (var i=0; i < map.markers.length; i++){
+				if(map.markers[i].getVisible()) {
+					if (map.map.getBounds().contains(map.markers[i].getPosition())) {
+						// code for showing your object, associated with markers[i]
+						locationList.push(markers[i]);
+
+					}
+				}
+			}
+			locationList.forEach(function(marker){
+				$('#location-list > ul').append('<li>' + marker.name + '<br/>' + formatAddress(marker) + '</li>');
+			})
+
+		};
+
+		initMapSize();
+
+		var map, markerCluster;
+		map = new GMaps({
+			el: '#map',
+			lat: 37.773972,
+			lng: -40.431297,
+			
 		});
-        $('#importDealers').click(function () {
-            var dealers = [
+		map.setZoom(3);
+		initAutocomplete(map.map);
+		
+		// Try HTML5 geolocation.
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var pos = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
+				
+				map.setCenter(pos);
+				map.setZoom(10);
+			}, function() {
+				
+			});
+		} else {
+			// Browser doesn't support Geolocation
+		
+		}
+	
 
-			];
-            dealers.forEach(function(d){
-                setTimeout(function(){ })
-                var data = {};
-                data.location = {};
-                data.name = d["name"];
-				data.location.street1 = d["address"];
-				data.location.street2 = d["address2"];
-                data.location.suburb = d["city"];
-                data.location.state = d["state"];
-                data.location.country = d["country"];
-                data.location.postcode = d["zip"];
-				data.phone = d["phone"];
-				data.email = d["email"];
-                if(d["web"])data.web = d["web"];
-				console.log('data',d);
-                $.post('/api/dealers', data, function(responseData, textStatus){
-                    console.log(textStatus);
-                })
-            });
-            
-
-        });
-        $.ajax('/api/dealers', {
-            success: function (data) {
+		
+		
+		
+		$.ajax('/api/dealers', {
+			success: function (data) {
 //console.log(data.dealers);
-                var mapDealers = [];
-                var autoCompleteNames = [];
-                data.dealers.forEach(function (dealer, i) {
-                    if (dealer.location) {
-                        autoCompleteNames.push(data.dealers[i].name);
-                        data.dealers[i].address = dealer.location.street1;
-                        data.dealers[i].address2 = dealer.location.street2;
-                        data.dealers[i].city = dealer.location.suburb;
-                        data.dealers[i].state = dealer.location.state;
-                        data.dealers[i].postal = dealer.location.postcode;
-                        if (dealer.location.geo) {
-                            data.dealers[i].lng = parseFloat(dealer.location.geo[0]);
-                            data.dealers[i].lat = parseFloat(dealer.location.geo[1]);
-                            mapDealers.push(data.dealers[i]);
-                        }
-                    }
-					autoCompleteNames = autoCompleteNames.sort().filter(function(elem, index, self) {
+				var mapDealers = [];
+				var autoCompleteNames = [];
+				data.dealers.forEach(function (dealer, i) {
+					if (dealer.location) {
+						autoCompleteNames.push(data.dealers[i].name);
+						data.dealers[i].address = dealer.location.street1;
+						data.dealers[i].address2 = dealer.location.street2;
+						data.dealers[i].city = dealer.location.suburb;
+						data.dealers[i].state = dealer.location.state;
+						data.dealers[i].postal = dealer.location.postcode;
+						data.dealers[i].category = 'dealer';
+						if(dealer.distributor){
+							data.dealers[i].category= 'distributor';
+						}
+						if (dealer.location.geo) {
+							data.dealers[i].lng = parseFloat(dealer.location.geo[0]);
+							data.dealers[i].lat = parseFloat(dealer.location.geo[1]);
+							mapDealers.push(data.dealers[i]);
+							var currentDealer = mapDealers[mapDealers.length-1]; 
+							map.addMarker({
+								lat: currentDealer.lat,
+								lng: currentDealer.lng,
+								title: dealer.name,
+								category: currentDealer.category,
+								infoWindow: {
+									content: '<div style="overflow: auto;"><div class="loc-name">' + currentDealer.name + '</div>\n' +
+									formatAddress(currentDealer.location) +
+									'<div>'+ currentDealer.phone +'</div>\n' +
+									'<div><a href="" target="_blank"></a></div>\n' +
+									'<div><a href="http://maps.google.com/?q='+ formatAddress(currentDealer.location) +'" target="_blank"><img style="width:24px;" src="//res.cloudinary.com/kaliprotectives-com/image/upload/w_24/v1484794710/dluwwr6oor2qlhfqbumq.png"></a></div>\n' +
+									'</div>'
+								}
+								/*click: function(e) {
+									alert('You clicked in this marker');
+								}*/
+							});
+						}
+					}
+					
+					
+					autoCompleteNames = autoCompleteNames.sort().filter(function (elem, index, self) {
 						return index == self.indexOf(elem);
 					})
-					$( "#bh-sl-search" ).autocomplete({
+					$("#bh-sl-search").autocomplete({
 						source: autoCompleteNames
 					}).keyup(function (e) {
-						if(e.which === 13) {
+						if (e.which === 13) {
 							$("#bh-sl-search").autocomplete('close');
-						};
+						}
+						;
 					});
-                });
+				});
+				var styles = [
+					{ url: '../img/marker-cluster/m1.png', height: 56, width: 55},
+					{ url: '../img/marker-cluster/m2.png', height: 56, width: 55},
+					{ url: '../img/marker-cluster/m3.png', height: 56, width: 55},
+					{ url: '../img/marker-cluster/m4.png', height: 56, width: 55},
+					{ url: '../img/marker-cluster/m5.png', height: 56, width: 55}
+						
+				];
+				markerCluster = new MarkerClusterer(map.map, map.markers, {styles:styles});
+				setTimeout(function(){initFilters(map, mapDealers);}, 250);
+				
 
-                /*{"id":"1",
-                 "name":"Chipotle Minneapolis",
-                 "lat":"44.947464",
-                 "lng":"-93.320826",
-                 "address":"3040 Excelsior Blvd",
-                 "address2":"",
-                 "city":"Minneapolis",
-                 "state":"MN",
-                 "postal":"55416",
-                 "phone":"612-922-6662",
-                 "web":"http:\/\/www.chipotle.com",
-                 "hours1":"Mon-Sun 11am-10pm",
-                 "hours2":"",
-                 "hours3":""}*/
-                var stylesArray = [
-                    {
-                        featureType: "all",
-                        stylers: [
-                            {saturation: -80}
-                        ]
-                    }, {
-                        featureType: "road.arterial",
-                        elementType: "geometry",
-                        stylers: [
-                            {hue: "#00ffee"},
-                            {saturation: 50}
-                        ]
-                    }, {
-                        featureType: "poi.business",
-                        elementType: "labels",
-                        stylers: [
-                            {visibility: "off"}
-                        ]
-                    }
-                ];
-                var options = {
-                    autoComplete: true,
-                    autoGeocode: true,
-                    dataType: 'json',
-                    dataRaw: mapDealers,
-                    fullMapStart: true,
-                    fullMapStartBlank: false,
-                    fullMapStartListLimit: 100,
-                    loading: true,
-                    storeLimit: mapDealers.length,
-                    slideMap: false,
-                    mapSettings: {
-                        zoom: 10,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP,
-                        disableDefaultUI: true, // a way to quickly hide all controls
-//mapTypeControl: true,
-//scaleControl: true,
-//zoomControl: true,
-                        /*zoomControlOptions: {
-                         style: google.maps.ZoomControlStyle.LARGE
-                         },*/
-                        styles: stylesArray,
-                        scrollwheel: false
-                    }
-                };
-                $('#bh-sl-map-container').storeLocator(options);
-            }
-        });
+				var infowindow = new google.maps.InfoWindow();
+
+				//map.map.addListener('center_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}))
+				map.map.addListener('bounds_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}));
+				
+			}
+		});
     });
 </script>
