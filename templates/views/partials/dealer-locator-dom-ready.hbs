@@ -199,12 +199,8 @@
 				var autoCompleteNames = [];
 				var image = {
 					url: '../img/marker.png',
-					// This marker is 20 pixels wide by 32 pixels high.
-					size: new google.maps.Size(56, 55),
-					// The origin for this image is (0, 0).
-					origin: new google.maps.Point(0, 0),
-					// The anchor for this image is the base of the flagpole at (0, 32).
-					anchor: new google.maps.Point(0, 32)
+					size: new google.maps.Size(32, 32),
+					scaledSize: new google.maps.Size(32, 32)
 				};
 				data.dealers.forEach(function (dealer, i) {
 					if (dealer.location) {
@@ -231,7 +227,7 @@
 								lng: currentDealer.lng,
 								title: dealer.name,
 								category: currentDealer.category,
-								//icon: currentDealer.icon,
+								icon: currentDealer.icon,
 								infoWindow: {
 									content: '<div style="overflow: auto;"><div class="loc-name">' + currentDealer.name + '</div>\n' +
 									formatAddress(currentDealer.location) +
