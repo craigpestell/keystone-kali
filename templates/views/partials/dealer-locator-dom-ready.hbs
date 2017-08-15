@@ -6,7 +6,7 @@
 			// Create the search box and link it to the UI element.
 			var input = document.getElementById('pac-input');
 			var searchBox = new google.maps.places.SearchBox(input);
-			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+			//map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
 			// Bias the SearchBox results towards current map's viewport.
 			map.addListener('bounds_changed', function() {
@@ -132,6 +132,7 @@
 					if (map.markers[i].getVisible()) {
 						if (map.map.getBounds().contains(map.markers[i].getPosition())) {
 							// code for showing your object, associated with markers[i]
+							markers[i].index = i;
 							locationList.push(markers[i]);
 
 						}
@@ -141,17 +142,18 @@
 				//$('#location-list').toggleClass('in', locationList.length > 0);
 
 				locationList.forEach(function (marker) {
-					$('#location-list > ul').append('<li>' + marker.name + '<br/>' + formatAddress(marker) + '</li>');
+					$('#location-list > ul').append('<li data-markerid="' + marker.index + '">' + marker.name + '<br/>' + formatAddress(marker) + '</li>');
 				});
 				
 				$('#location-list').collapse('show');
 				
 			}else{
 				$('#location-list').collapse('hide');
+				setTimeout(function(){
+					$('#location-list > ul').append('<li>Zoom in for location list</li>');	
+				}, 250);
+				
 			}
-			
-
-
 			
 		};
 
@@ -195,6 +197,15 @@
 //console.log(data.dealers);
 				var mapDealers = [];
 				var autoCompleteNames = [];
+				var image = {
+					url: '../img/marker.png',
+					// This marker is 20 pixels wide by 32 pixels high.
+					size: new google.maps.Size(56, 55),
+					// The origin for this image is (0, 0).
+					origin: new google.maps.Point(0, 0),
+					// The anchor for this image is the base of the flagpole at (0, 32).
+					anchor: new google.maps.Point(0, 32)
+				};
 				data.dealers.forEach(function (dealer, i) {
 					if (dealer.location) {
 						autoCompleteNames.push(data.dealers[i].name);
@@ -204,8 +215,11 @@
 						data.dealers[i].state = dealer.location.state;
 						data.dealers[i].postal = dealer.location.postcode;
 						data.dealers[i].category = 'dealer';
+						data.dealers[i].icon = image;
+						data.dealers[i].icon.url = '../img/marker.png';
 						if(dealer.distributor){
 							data.dealers[i].category= 'distributor';
+							data.dealers[i].icon.url = '../img/marker-orange.png';
 						}
 						if (dealer.location.geo) {
 							data.dealers[i].lng = parseFloat(dealer.location.geo[0]);
@@ -217,6 +231,7 @@
 								lng: currentDealer.lng,
 								title: dealer.name,
 								category: currentDealer.category,
+								//icon: currentDealer.icon,
 								infoWindow: {
 									content: '<div style="overflow: auto;"><div class="loc-name">' + currentDealer.name + '</div>\n' +
 									formatAddress(currentDealer.location) +
@@ -255,7 +270,13 @@
 						
 				];
 				markerCluster = new MarkerClusterer(map.map, map.markers, {styles:styles});
-				setTimeout(function(){initFilters(map, mapDealers);}, 250);
+				initFilters(map, mapDealers);
+				$(document).on('click', '#location-list li', function(e){
+					console.log($(e.target).data('markerid'));
+					map.map.panTo(map.markers[$(e.target).data('markerid')].getPosition());
+					if(map.map.getZoom() < 14)
+						map.map.setZoom(14);
+				});
 				
 
 				var infowindow = new google.maps.InfoWindow();
