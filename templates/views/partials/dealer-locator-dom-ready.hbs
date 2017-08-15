@@ -10,7 +10,7 @@
 			var locationListContainer = document.getElementById('location-list-container');
 			map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(filters);
-			map.controls[google.maps.ControlPosition.LEFT_CENTER].push(locationListContainer);
+			map.controls[google.maps.ControlPosition.TOP_LEFT].push(locationListContainer);
 
 			// Bias the SearchBox results towards current map's viewport.
 			map.addListener('bounds_changed', function() {
