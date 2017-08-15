@@ -165,7 +165,27 @@
 			el: '#map',
 			lat: 37.773972,
 			lng: -40.431297,
-			
+			styles: [
+				{
+					featureType: "all",
+					stylers: [
+						{saturation: -80}
+					]
+				}, {
+					featureType: "road.arterial",
+					elementType: "geometry",
+					stylers: [
+						{hue: "#00ffee"},
+						{saturation: 50}
+					]
+				}, {
+					featureType: "poi.business",
+					elementType: "labels",
+					stylers: [
+						{visibility: "off"}
+					]
+				}
+			]
 		});
 		map.setZoom(3);
 		initAutocomplete(map.map);
@@ -267,15 +287,19 @@
 				];
 				markerCluster = new MarkerClusterer(map.map, map.markers, {styles:styles});
 				initFilters(map, mapDealers);
+				var infowindow = new google.maps.InfoWindow();
+
 				$(document).on('click', '#location-list li', function(e){
 					console.log($(e.target).data('markerid'));
-					map.map.panTo(map.markers[$(e.target).data('markerid')].getPosition());
+					var gotoMarker = map.markers[$(e.target).data('markerid')];
+					map.map.panTo(gotoMarker.getPosition());
+					google.maps.event.trigger(gotoMarker, 'click');
+					
 					if(map.map.getZoom() < 14)
 						map.map.setZoom(14);
 				});
 				
 
-				var infowindow = new google.maps.InfoWindow();
 
 				//map.map.addListener('center_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}))
 				map.map.addListener('bounds_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}));

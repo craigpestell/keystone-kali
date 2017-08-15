@@ -1055,6 +1055,15 @@ End Product Page
   background-color: #FFF;
   overflow-y: scroll;
 }
+#location-list ul {
+  padding: 5px;
+  list-style: none;
+}
+#location-list ul li {
+  padding: 5px;
+  border-bottom: 1px solid $gray-lighter;
+  cursor: pointer;
+}
 /* End Dealer map */
 
 .lazyload {
