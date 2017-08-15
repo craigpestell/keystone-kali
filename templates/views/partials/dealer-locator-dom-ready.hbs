@@ -245,9 +245,6 @@
 						;
 					});*/
 				});
-				google.maps.event.addListenerOnce(map, 'idle', function() {
-					updateLocationList(map,mapDealers);
-				});
 
 				var styles = [
 					{ url: '../img/marker-cluster/m1.png', height: 56, width: 55},
@@ -265,6 +262,7 @@
 
 				//map.map.addListener('center_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}))
 				map.map.addListener('bounds_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}));
+				map.map.addListener('idle',$.debounce(function(){ updateLocationList(map, mapDealers)}));
 								
 			}
 		});
