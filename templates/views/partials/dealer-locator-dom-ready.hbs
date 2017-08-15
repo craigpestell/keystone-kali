@@ -233,7 +233,7 @@
 					}
 					
 					
-					autoCompleteNames = autoCompleteNames.sort().filter(function (elem, index, self) {
+					/*autoCompleteNames = autoCompleteNames.sort().filter(function (elem, index, self) {
 						return index == self.indexOf(elem);
 					})
 					$("#bh-sl-search").autocomplete({
@@ -243,8 +243,12 @@
 							$("#bh-sl-search").autocomplete('close');
 						}
 						;
-					});
+					});*/
 				});
+				google.maps.event.addListenerOnce(map, 'idle', function() {
+					updateLocationList(map,mapDealers);
+				});
+
 				var styles = [
 					{ url: '../img/marker-cluster/m1.png', height: 56, width: 55},
 					{ url: '../img/marker-cluster/m2.png', height: 56, width: 55},
