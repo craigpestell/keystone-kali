@@ -127,8 +127,8 @@
 		};
 
 		var updateLocationList = function(map, markers){
-			console.log('zoom level:', map.getZoom());
-			$('#location-list > ul').empty('');
+			
+			$('#location-list > ul').empty();
 			
 			if(map.getZoom() > 11) {
 				var locationList = [];
@@ -164,7 +164,7 @@
 			}else{
 				$('#location-list').collapse('hide');
 				setTimeout(function(){
-					$('#location-list > ul').append('<li>Zoom in for location list</li>');	
+					$('#location-list > ul').html('<li>Zoom in for location list</li>');	
 				}, 250);
 				
 			}
