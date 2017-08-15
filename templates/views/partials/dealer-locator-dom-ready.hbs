@@ -123,10 +123,10 @@
 		};
 
 		var updateLocationList = function(map, markers){
-			//console.log('zoom level:', map.getZoom());
+			console.log('zoom level:', map.getZoom());
 			$('#location-list > ul').empty('');
 			
-			if(map.getZoom() > 9) {
+			if(map.getZoom() > 11) {
 				var locationList = [];
 				for (var i = 0; i < map.markers.length; i++) {
 					if (map.markers[i].getVisible()) {
@@ -142,10 +142,10 @@
 
 				locationList.forEach(function (marker) {
 					$('#location-list > ul').append('<li>' + marker.name + '<br/>' + formatAddress(marker) + '</li>');
-				})
-				if($('#location-list .in').length > 1){
-					$('#location-list').collapse('show');
-				}
+				});
+				
+				$('#location-list').collapse('show');
+				
 			}else{
 				$('#location-list').collapse('hide');
 			}
@@ -158,7 +158,7 @@
 		initMapSize();
 		$(window).resize(initMapSize);
 
-		var map, markerCluster;
+		var map, markerCluster, locationListToggled = false;
 		map = new GMaps({
 			el: '#map',
 			lat: 37.773972,
@@ -177,7 +177,7 @@
 				};
 				
 				map.setCenter(pos);
-				map.setZoom(10);
+				map.setZoom(12);
 			}, function() {
 				
 			});
