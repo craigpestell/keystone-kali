@@ -6,7 +6,11 @@
 			// Create the search box and link it to the UI element.
 			var input = document.getElementById('pac-input');
 			var searchBox = new google.maps.places.SearchBox(input);
-			//map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+			var filters = document.getElementById('category-filters-container1');
+			var locationListContainer = document.getElementById('location-list-container');
+			map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(filters);
+			map.controls[google.maps.ControlPosition.LEFT_CENTER].push(locationListContainer);
 
 			// Bias the SearchBox results towards current map's viewport.
 			map.addListener('bounds_changed', function() {
@@ -175,6 +179,10 @@
 			el: '#map',
 			lat: 37.773972,
 			lng: -40.431297,
+			zoomControl: true,
+			zoomControlOptions: {
+				position: google.maps.ControlPosition.RIGHT_CENTER
+			},
 			styles: [
 				{
 					featureType: "all",
@@ -260,7 +268,7 @@
 								icon: currentDealer.icon,
 								infoWindow: {
 									content: '<div style="overflow: auto;"><div class="loc-name">' + currentDealer.name + '</div>\n' +
-									formatAddress(currentDealer.location) +
+									'<div>' + formatAddress(currentDealer.location) + '</div>' +
 									'<div>'+ currentDealer.phone +'</div>\n' +
 									'<div><a href="" target="_blank"></a></div>\n' +
 									'<div><a href="http://maps.google.com/?q='+ formatAddress(currentDealer.location) +'" target="_blank"><img style="width:24px;" src="//res.cloudinary.com/kaliprotectives-com/image/upload/w_24/v1484794710/dluwwr6oor2qlhfqbumq.png"></a></div>\n' +

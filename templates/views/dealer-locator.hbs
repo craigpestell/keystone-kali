@@ -1,27 +1,23 @@
-<div class="row" style="position:relative;">
-	<div class="col-xs-7 col-sm-8 col-md-9">
-		<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-		<ul id="category-filters-container1" class="bh-sl-filters">
-			<li>
-				<label>
-					<input type="checkbox" name="category" value="dealer" checked> Dealers
-				</label>
-			</li>
-			<li>
-				<label>
-					<input type="checkbox" name="category" value="distributor" checked> Distributors
-				</label>
-			</li>
-		</ul>
-		<div id="map"></div>
-	</div>
-	<div class="col-xs-5 col-sm-4 col-md-3">
-		<div style="position:relative; top: 100px; width:400px" class="pull-right hidden-xs">
-		<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#location-list">Locations<span class="caret"></span></button>
-		<div id="location-list" class="collapse in" style="width:400px"><ul></ul></div>
-		</div>
-	</div>
+
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<ul id="category-filters-container1" class="bh-sl-filters">
+	<li>
+		<label>
+			<input type="checkbox" name="category" value="dealer" checked> Dealers
+		</label>
+	</li>
+	<li>
+		<label>
+			<input type="checkbox" name="category" value="distributor" checked> Distributors
+		</label>
+	</li>
+</ul>
+<div id="map"></div>
+<div id="location-list-container">
+	<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#location-list">Locations<span class="caret"></span></button>
+	<div id="location-list" class="collapse in" style="width:400px"><ul></ul></div>
 </div>
+
 <button id="importDealers" style="display:none">Import Dealers</button>
 
 <script type="text/javascript">
