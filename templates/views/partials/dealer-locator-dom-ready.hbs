@@ -262,7 +262,7 @@
 
 				//map.map.addListener('center_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}))
 				map.map.addListener('bounds_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}));
-				map.map.addListener('idle',function(){ updateLocationList(map, mapDealers)});
+				updateLocationList(map, mapDealers);
 								
 			}
 		});
