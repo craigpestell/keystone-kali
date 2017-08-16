@@ -1036,7 +1036,11 @@ End Product Page
   font-weight: 300;
 }
 
-#pac-input {
+#pac-input-selector {
+  font-size: 20px;
+  font-weight: bold;
+}
+#pac-input, #pac-input-name {
   background-color: #fff;
   //font-family: Roboto;
   font-size: 20px;
@@ -1045,6 +1049,10 @@ End Product Page
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
   width: 400px;
+}
+
+#pac-input, #pac-input-name {
+  display:none;
 }
 
 #pac-input:focus {

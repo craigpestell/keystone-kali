@@ -1,5 +1,14 @@
 
-<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<div id="pac-input-container">
+	<select id="pac-input-selector">
+		<option value="address">Search by address</option>
+		<option value="name">Dealer name</option>
+	</select>
+	<input id="pac-input" name="pac_input" class="controls" type="text" placeholder="Address or Postal/Zip">
+	<input id="pac-input-name" name="pac_input_name" class="controls" type="text" placeholder="Dealer name">
+	<!--<button id="pac-input-go" name="pac_input_go" class="controls">Search</button>-->
+	<button id="pac-input-reset" name="pac_input_reset" class="controls">Reset</button>
+</div>
 <ul id="category-filters-container1" class="bh-sl-filters">
 	<li>
 		<label>

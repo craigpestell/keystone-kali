@@ -1,17 +1,39 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-		var initAutocomplete = function (map) {
+		var initControls = function (map) {
 
+			var inputContainer = document.getElementById('pac-input-container');
+			var inputSelector = document.getElementById('pac-input-selector');
+			var $inputSelector = $('#pac-input-selector');
+			var inputName = document.getElementById('pac-input-name');
+			var $inputName = $('#pac-input-name');
+			$inputSelector.on('change', function(e){
+				
+				var val = $(e.target).val();
+				if(val === 'name'){
+					$('#pac-input').css({'display': 'none'});
+					$('#pac-input-name').css({'display': 'inline'});
+				}else{
+					$('#pac-input').css({'display': 'inline'});
+					$('#pac-input-name').css({'display': 'none'});
+				}
+					
+			});
 			// Create the search box and link it to the UI element.
+			var $input = $('#pac-input');
 			var input = document.getElementById('pac-input');
 			var searchBox = new google.maps.places.SearchBox(input);
+			$input.css({'display': 'inline'});
 			var filters = document.getElementById('category-filters-container1');
 			var locationListContainer = document.getElementById('location-list-container');
-			map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+			
+			map.controls[google.maps.ControlPosition.TOP_CENTER].push(inputContainer);
+			//map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+			//map.controls[google.maps.ControlPosition.TOP_CENTER].push(inputName);
 			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(filters);
 			map.controls[google.maps.ControlPosition.TOP_LEFT].push(locationListContainer);
-
+			
 			// Bias the SearchBox results towards current map's viewport.
 			map.addListener('bounds_changed', function() {
 				searchBox.setBounds(map.getBounds());
@@ -68,22 +90,58 @@
 		};
 
 		var filterMarkers = function (markers, category) {
-			var newMarkers = [];
-			for (i = 0; i < markers.length; i++) {
+			var categoryMarkers = [];
+			var marker;
+			
+			for (var i = 0; i < markers.length; i++) {
 				marker = markers[i];
 				// If is same category or category not picked
 				if((category === "both") || (category === "distributor" && marker.category === 'distributor' ) || (marker.category === 'dealer'&& category === 'dealer')){
 					marker.setVisible(true);
-					newMarkers.push(marker);
+					categoryMarkers.push(marker);
 				}
 				// Categories don't match 
 				else {
 					marker.setVisible(false);
 				}
-				
 			}
+			var nameMarkers = [];
+			if($('#pac-input-name:visible').length > 0 && $('#pac-input-name').val()){
+				
+				var nameVal = ($('#pac-input-name').val()).toLowerCase();
+				
+				for (var i = 0; i < categoryMarkers.length; i++) {
+					marker = categoryMarkers[i];
+					// If is same category or category not picked
+					console.log('name:', nameVal, 'title:', marker.title.toLowerCase() );
+					var markerName = marker.title.toLowerCase();
+					console.log(markerName.indexOf(nameVal));
+					if(markerName.indexOf(nameVal)> -1){
+						marker.setVisible(true);
+						nameMarkers.push(marker);
+					}
+					// Categories don't match 
+					else {
+						marker.setVisible(false);
+					}
+				}
+			}
+			var markersToDisplay = categoryMarkers;
+			if(nameMarkers.length > 0) {
+				markersToDisplay = nameMarkers;
+			}
+			var bounds = new google.maps.LatLngBounds();
+			for (var i = 0; i < markersToDisplay.length; i++) {
+				bounds.extend(markersToDisplay[i].getPosition());
+			}
+
 			markerCluster.clearMarkers();
-			markerCluster.addMarkers(newMarkers);
+			map.fitBounds(bounds);
+			console.log(markersToDisplay);
+			setTimeout(function(){
+					markerCluster.addMarkers(markersToDisplay);
+					markerCluster.resetViewport();
+			}, 100);
 			
 		};
 
@@ -91,7 +149,7 @@
 		var initFilters = function(map, markers){
 			//var input = document.getElementById('category-filters-container1');
 			$('#category-filters-container1  input[name="category"]').change(function(){
-				console.log('changing filters');
+				//console.log('changing filters');
 				var category = 'both';
 				if($('#category-filters-container1 [value="dealer"]:checked').length && !$('#category-filters-container1 :checkbox[value="distributor"]:checked').length){
 					category = "dealer";
@@ -100,17 +158,24 @@
 				}else if(!$('#category-filters-container1 [value="distributor"]:checked').length && !$('#category-filters-container1 :checkbox[value="dealer"]:checked').length){
 					category = null;
 				}
-				console.log('category:', category);
+				//console.log('category:', category);
 				filterMarkers(map.markers, category);
 				updateLocationList(map, markers);
+			});
+			$('#pac-input-name').keypress(function(e){
+				if(e.which === 13){
+					filterMarkers(map.markers, 'both');
+					updateLocationList(map, markers);
+				}
 			})
 		};
+
 		
 		var initMapSize = function(){
 			var width = $(window).width();
-			var height = $(window).height() - 500;
+			var height = $(window).height() - 400;
 			$('#map').css({width:width, height: height});
-			$('#location-list').css({'max-height':height-550});
+			$('#location-list').css({'max-height':height-150});
 		};
 
 		var formatAddress = function(location){
@@ -207,7 +272,7 @@
 			]
 		});
 		map.setZoom(3);
-		initAutocomplete(map.map);
+		initControls(map.map);
 		
 		// Try HTML5 geolocation.
 		if (navigator.geolocation) {
@@ -269,10 +334,10 @@
 								icon: currentDealer.icon,
 								infoWindow: {
 									content: '<div style="overflow: auto;"><div class="loc-name">' + currentDealer.name + '</div>\n' +
-									'<div>' + formatAddress(currentDealer.location) + '</div>' +
+									'<div>' + formatAddress(currentDealer) + '</div>' +
 									'<div>'+ currentDealer.phone +'</div>\n' +
 									'<div><a href="" target="_blank"></a></div>\n' +
-									'<div><a href="http://maps.google.com/?q='+ formatAddress(currentDealer.location) +'" target="_blank"><img style="width:24px;" src="//res.cloudinary.com/kaliprotectives-com/image/upload/w_24/v1484794710/dluwwr6oor2qlhfqbumq.png"></a></div>\n' +
+									'<div><a href="http://maps.google.com/?q='+ formatAddress(currentDealer) +'" target="_blank"><img style="width:24px;" src="//res.cloudinary.com/kaliprotectives-com/image/upload/w_24/v1484794710/dluwwr6oor2qlhfqbumq.png"></a></div>\n' +
 									'</div>'
 								}
 								/*click: function(e) {
@@ -283,17 +348,22 @@
 					}
 					
 					
-					/*autoCompleteNames = autoCompleteNames.sort().filter(function (elem, index, self) {
+					autoCompleteNames = autoCompleteNames.sort().filter(function (elem, index, self) {
 						return index == self.indexOf(elem);
 					})
-					$("#bh-sl-search").autocomplete({
+					$("#pac-input-name").autocomplete({
 						source: autoCompleteNames
 					}).keyup(function (e) {
 						if (e.which === 13) {
-							$("#bh-sl-search").autocomplete('close');
+							$("#pac-input-name").autocomplete('close');
+							e.stopPropagation();
 						}
-						;
-					});*/
+					});
+					/*$( "#pac-input-name" ).on( "autocompleteclose", function( event, ui ) {
+						event.stopPropagation();
+						filterMarkers(map.markers, 'both');
+						updateLocationList(map, mapDealers);
+					} );*/
 				});
 
 				var styles = [
@@ -309,7 +379,7 @@
 				var infowindow = new google.maps.InfoWindow();
 
 				$(document).on('click', '#location-list li', function(e){
-					console.log($(e.target).data('markerid'));
+					//console.log($(e.target).data('markerid'));
 					var gotoMarker = map.markers[$(e.target).data('markerid')];
 					map.map.panTo(gotoMarker.getPosition());
 					google.maps.event.trigger(gotoMarker, 'click');
@@ -317,9 +387,25 @@
 					if(map.map.getZoom() < 14)
 						map.map.setZoom(14);
 				});
+				$('#pac-input-reset').on('click', function(){
+					$('#pac-input-name').val('');
+					$('#category-filters-container1 input:checkbox').prop('checked', true);
+					filterMarkers(map.markers, 'both');
+					updateLocationList(map, mapDealers);
+				});
+				$('#pac-input-go').on('click', function(){
+					if($('pac-input-name:visible').length > 0){
+						filterMarkers(map.markers, 'both');
+						updateLocationList(map, mapDealers);						
+					}else{
+						
+						/*var keypress = jQuery.Event("keydown");
+						keypress.which = 13;
+						$('#pac-input').trigger(keypress);*/
+					}
+
+				});
 				
-
-
 				//map.map.addListener('center_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}))
 				map.map.addListener('bounds_changed',$.debounce(function(){ updateLocationList(map, mapDealers)}));
 				updateLocationList(map, mapDealers);
