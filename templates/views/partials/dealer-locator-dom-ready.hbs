@@ -138,11 +138,12 @@
 			markerCluster.clearMarkers();
 			if(fitBounds) {
 				map.fitBounds(bounds);
+				markerCluster.resetViewport();
 			}
 			
 			setTimeout(function(){
 					markerCluster.addMarkers(markersToDisplay);
-					markerCluster.resetViewport();
+					
 			}, 100);
 			
 		};
@@ -226,10 +227,10 @@
 					$('#location-list > ul').append('<li data-markerid="' + marker.index + '">' + marker.name + '<br/>' + formatAddress(marker) + '</li>');
 				});
 				
-				$('#location-list').collapse('show');
+				$('#location-list:not(.clicked)').collapse('show');
 				
 			}else{
-				$('#location-list').collapse('hide');
+				$('#location-list:not(.clicked)').collapse('hide');
 				setTimeout(function(){
 					$('#location-list > ul').html('<li>Zoom in for location list</li>');	
 				}, 250);
@@ -380,6 +381,9 @@
 				initFilters(map, mapDealers);
 				var infowindow = new google.maps.InfoWindow();
 
+				$('button[data-target="#location-list"]').on('click', function(e){
+					$('#location-list').addClass('clicked');
+				});
 				$(document).on('click', '#location-list li', function(e){
 					//console.log($(e.target).data('markerid'));
 					var gotoMarker = map.markers[$(e.target).data('markerid')];
