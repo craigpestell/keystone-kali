@@ -89,7 +89,7 @@
 			});
 		};
 
-		var filterMarkers = function (markers, category) {
+		var filterMarkers = function (markers, category, fitBounds) {
 			var categoryMarkers = [];
 			var marker;
 			
@@ -136,8 +136,10 @@
 			}
 
 			markerCluster.clearMarkers();
-			map.fitBounds(bounds);
-			console.log(markersToDisplay);
+			if(fitBounds) {
+				map.fitBounds(bounds);
+			}
+			
 			setTimeout(function(){
 					markerCluster.addMarkers(markersToDisplay);
 					markerCluster.resetViewport();
@@ -159,12 +161,12 @@
 					category = null;
 				}
 				//console.log('category:', category);
-				filterMarkers(map.markers, category);
+				filterMarkers(map.markers, category, true);
 				updateLocationList(map, markers);
 			});
 			$('#pac-input-name').keypress(function(e){
 				if(e.which === 13){
-					filterMarkers(map.markers, 'both');
+					filterMarkers(map.markers, 'both', true);
 					updateLocationList(map, markers);
 				}
 			})
@@ -356,7 +358,7 @@
 					}).keyup(function (e) {
 						if (e.which === 13) {
 							$("#pac-input-name").autocomplete('close');
-							e.stopPropagation();
+							//e.stopPropagation()
 						}
 					});
 					/*$( "#pac-input-name" ).on( "autocompleteclose", function( event, ui ) {

@@ -1031,24 +1031,29 @@ End Product Page
 }
 
 .pac-controls label {
-  font-family: Roboto;
+  //font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
 }
 
-#pac-input-selector {
-  font-size: 20px;
-  font-weight: bold;
+#pac-input-selector, #pac-input-reset {
+  font-size: 16px;
+  text-transform:uppercase;
+  color: #FFF;
+  background-color: black;
+  padding:4px 6px;
+  border: 0;
 }
+
 #pac-input, #pac-input-name {
   background-color: #fff;
   //font-family: Roboto;
   font-size: 20px;
   font-weight: 300;
-  margin-left: 12px;
+  //margin-left: 12px;
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
-  width: 400px;
+  width: 300px;
 }
 
 #pac-input, #pac-input-name {
