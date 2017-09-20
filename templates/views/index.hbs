@@ -1,12 +1,37 @@
-<div id="fullpage" class="home">
-	{{#each posts}}
-		{{> index-section}}
-	{{/each}}
-
-	<div class="fp-auto-height section">
-		{{> footer}}
+{{#unless discipline}}
+	<div class="wrapper">
+		{{#with posts.[0].gallery.widgets.[0]}}
+			
+			<a href="{{href}}">
+				<div class="parent">
+					<div class="child" style="background-image:url({{cloudinaryUrl this.image width="auto" format="jpg" flags="progressive"  quality="75"}});">
+						<div class="label-container"><div class="lbl">{{contentHtml}}</div></div>
+					</div>
+				</div>
+			</a>
+		{{/with}}
+		{{#with posts.[0].gallery.widgets.[1]}}
+			<a href="{{href}}">
+				<div class="parent right">
+					<div class="child" style="background-image:url({{cloudinaryUrl this.image width="auto" format="jpg" flags="progressive"  quality="75"}});">
+						<div class="label-container"><div class="lbl">{{contentHtml}}</div></div>
+					</div>
+				</div>
+			</a>
+		{{/with}}
 	</div>
-</div>
-<div class="arrowDown hidden-xs">
-	<span class="glyphicon glyphicon-menu-down" aria-hidden="true" style="font-size:50px;"></span>
-</div>
+
+{{else}}
+	<div id="fullpage" class="home">
+		{{#each posts}}
+			{{> index-section}}
+		{{/each}}
+
+		<div class="fp-auto-height section">
+			{{> footer}}
+		</div>
+	</div>
+	<div class="arrowDown hidden-xs">
+		<span class="glyphicon glyphicon-menu-down" aria-hidden="true" style="font-size:50px;"></span>
+	</div>
+{{/unless}}

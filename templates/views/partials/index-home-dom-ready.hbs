@@ -1,0 +1,15 @@
+<script type="text/javascript">
+	/*<![CDATA[*/
+	$(document).ready(function () {
+		//window height - nav height
+		var navHeight = $('nav').outerHeight();
+		var windowHeight = $(window).height();
+		if($(window).width() > 960) {
+			$('.wrapper').css({height: windowHeight - navHeight + 'px'});
+		} else{
+			$('.wrapper').css({height: (windowHeight - navHeight)/2 + 'px'});
+		}
+	});
+	/*]]>*/
+</script>
+

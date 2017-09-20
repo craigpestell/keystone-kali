@@ -303,6 +303,91 @@ h4 {text-transform: none;}
 }
 
 /* end bootstrap 3 variable overrides */
+
+/* home landing */
+.wrapper {
+  height:100%;
+}
+.wrapper .parent {
+  width: 50%;
+  margin: 0px;
+  height: 100%;
+  //border: 1px solid blue;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.wrapper .parent .child {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+  position:relative;
+}
+.wrapper .parent .child .label-container{
+  position:absolute;
+  top: 50%;
+  width:100%;
+  text-align: center;
+}
+.wrapper .parent .child .label-container .lbl {
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+  padding:10px;
+  display: inline;
+}
+
+.parent:hover .child, .parent:focus .child {
+  -ms-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.parent:hover .child:before, .parent:focus .child:before {
+  display: none;
+}
+
+.parent:hover a, .parent:focus a {
+  display: block;
+}
+
+.child {
+  filter: grayscale(100%);
+}
+.parent:hover .child, .parent:focus .child{
+  filter: grayscale(0%);
+} 
+
+.child:before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  //background-color: rgba(66,66,66,0.75);
+  
+}
+
+/* Media Queries */
+@media screen and (max-width: 960px) {
+  .parent {width: 100%; margin: 20px 0px}
+  .wrapper {padding: 20px 20px;}
+}
+/* end home landing*/
+
+
 .blueimp-gallery {
   background-color: #FFF;
 }
@@ -833,7 +918,7 @@ End Product Page
    
   left: 4%;
   //text-align: center;
-  width: 100%;
+  width: 90%;
   //position:absolute; top:25%; left:110px; width:100%
 }
 
