@@ -228,7 +228,7 @@
 
 {{/ifCond}}
 {{#ifCond section "==" "home"}}
-	{{#if discipline}}
+	{{#unless discipline}}
 		<script type="text/javascript">
 			$(document).ready(function() {
 				if(screen.width > 480) {
@@ -258,11 +258,13 @@
 				}
 			});
 		</script>
-		
-		{{> index-dom-ready}}
-	{{else}}
 		{{> index-home-dom-ready}}
-	{{/if}}
+
+	{{else}}
+
+		{{> index-dom-ready}}
+
+	{{/unless}}
 {{/ifCond}}
 
 {{#ifCond section '==' 'product' }}
