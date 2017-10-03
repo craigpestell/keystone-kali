@@ -99,7 +99,7 @@ var navRouteHandler = function (req, res, next) {
 			locals.navLinks.push({
 				label: 'Republik',
 				key: 'republik',
-				href: '/republik'
+				href: 'https://www.kalirepublik.com/'
 			});
 		}
 			
