@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row" style="padding-bottom: 15px">
 		<div class="col col-xs-12">
-			<p><a href="/blog">&larr; Back to the Republik</a></p>
+			<p><a href="/republik">&larr; Back to the Republik</a></p>
 			<hr>
 			{{#ifCond postLayout.key "==" "slide-one"}}
 				{{> post-layouts/blog/slide-one post}}
@@ -14,4 +14,8 @@
 			{{/ifCond}}
 		</div>
 	</div>
+	<div class="row">
+		{{>blog-index}}
+	</div>
+
 </div>

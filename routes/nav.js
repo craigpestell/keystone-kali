@@ -148,6 +148,10 @@ var navRouteHandler = function (req, res, next) {
 			if(disc.slug === 'moto') {
 				disciplineNav.href = 'https://kali-moto.myshopify.com';
 			}
+			//point bike to helmets index
+			if(disc.slug === 'bike') {
+				disciplineNav.href = 'https://bike.kaliprotectives.com/';
+			}
 			if(discParam && discParam === disciplineNav.key){
 				disciplineNav.active = true;
 			}

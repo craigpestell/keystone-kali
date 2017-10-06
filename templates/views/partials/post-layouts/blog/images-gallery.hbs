@@ -1,0 +1,58 @@
+
+{{#ifCond imagesGallery.layout "==" "republik-1" }}
+	<div class="col col-xs-12">
+		{{key}}
+		{{> post-layouts/blog/gallery-republik-1 this}}
+	</div>
+{{/ifCond}}
+
+{{#ifCond imagesGallery.layout "==" "carousel" }}
+	<div class="col col-xs-12">
+		{{key}}
+		{{> post-layouts/blog/gallery-carousel this}}
+	</div>
+{{/ifCond}}
+
+{{#ifCond imagesGallery.layout "==" "blocks"}}
+	{{#each imagesGallery}}
+		<div class="col col-xs-4">
+			{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   format="jpg" quality="auto" class="cld-responsive"
+								   dataSrc=true}}}
+		</div>
+	{{/each}}
+{{/ifCond}}
+{{#ifCond imagesGallery.layout "==" "left"}}
+	{{#each imagesGallery}}
+		{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
+		{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+							   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+							   format="jpg" quality="auto" class="cld-responsive"
+							   dataSrc=true}}}
+				
+		</div>
+	{{/each}}
+{{/ifCond}}
+{{#ifCond imagesGallery.layout "==" "right"}}
+	{{#each imagesGallery}}
+		{{#if @first}}<div class="col col-xs-4">{{else}}<div class="col col-xs-8">{{/if}}
+		{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+							   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+							   format="jpg" quality="auto" class="cld-responsive"
+							   dataSrc=true}}}
+		</div>
+	{{/each}}
+{{/ifCond}}
+{{#ifCond imagesGallery.layout "==" "basic"}}
+		{{#each imagesGallery.images}}
+		<div class="row"{{#if @first}} style="margin-top:0"{{/if}}>
+			<div class="col col-xs-12">
+				{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+									   format="jpg" quality="auto" class="cld-responsive"
+									   dataSrc=true}}}
+			</div>
+		</div>
+		{{/each}}
+{{/ifCond}}

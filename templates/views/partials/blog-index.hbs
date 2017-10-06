@@ -1,0 +1,11 @@
+{{# each data.posts.results}}
+	<div class="col-xs-12 col-sm-4 product-technology" style="position:relative">
+		<a href="/republik/post/{{key}}">
+			<p style="position:absolute;color:white">{{name}}</p>
+			{{{cloudinaryImgSrcSet mainImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
+								   format="jpg" quality="auto" class="cld-responsive"
+								   dataSrc=true}}}
+		</a>
+	</div>
+{{/each}}

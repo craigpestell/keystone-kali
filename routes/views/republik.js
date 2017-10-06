@@ -83,15 +83,14 @@ exports = module.exports = function (req, res) {
 
 			async.forEachOf(results.results, function (post, i, cb) {
 					
-					populatePost(post, cb);
-					locals.data.posts[i] = post;
+				populatePost(post, cb);
+				locals.data.posts[i] = post;
 					
 				},
 				function (err) {
 					if (err) {
 						console.log('error', err);
 					}
-					console.log('done async 1');
 					next(err);
 				}
 			);
