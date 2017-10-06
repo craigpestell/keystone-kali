@@ -1,11 +1,10 @@
 {{# each data.posts.results}}
-	<div class="col-xs-12 col-sm-4 blog-main-image">
+	<div class="col-xs-12 col-sm-4">
 		<a href="/republik/post/{{key}}">
-			<p>{{name}}</p>
-			{{{cloudinaryImgSrcSet mainImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   widths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-								   format="jpg" quality="auto" class="cld-responsive"
-								   dataSrc=true}}}
+			<div class="blog-main-image">
+				<div class="blog-main-image-overlay"><p>{{name}}</p></div>
+				<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+			</div>
 		</a>
 	</div>
 {{/each}}

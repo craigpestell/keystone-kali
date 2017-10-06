@@ -745,21 +745,30 @@ End Product Page
 }
 
 .blog-main-image{
-  position:relative;
+	position:relative
 }
-.blog-main-image p{
+
+.blog-main-image .blog-main-image-overlay {
+  position:absolute;
+  width:100%;
+  height:100%;
   display:none;
+  background: rgba(0,0,0,.5);
+}
+
+.blog-main-image .blog-main-image-overlay p{
   color: white;
   text-transform: uppercase;
   font-size: 20px;
+
   position:absolute;
   top: 50%;
   left:50%;
   text-align:center;
   transform: translateX(-50%) translateY(-50%);
 }
-.blog-main-image:hover p{
-  display:inline;
+.blog-main-image:hover .blog-main-image-overlay {
+  display:block;
 }
 /* Scale up the box */
 .home .technology img:hover, .home .technology svg:hover, .product-main .more-info:hover, .product-main .buy-button:hover {
