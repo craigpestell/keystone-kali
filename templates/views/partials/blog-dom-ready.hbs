@@ -6,7 +6,7 @@
 			{{#each gallery.widgets}}
 			{{#ifCond this.key "!=" "null"}}
 			$(function() {
-				var {{key}} = {{{widget}}};
+				var widget = {{{widget}}};
 				//console.log("{{../../key}}-{{@index}}");
 				
 				if('{{type}}' === 'carousel'){

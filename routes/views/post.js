@@ -17,6 +17,8 @@ exports = module.exports = function (req, res) {
 		post: req.params.post,
 	};
 
+	console.log(req.originalUrl);
+	
 	// Load the current post
 	view.on('init', function (next) {
 
@@ -50,15 +52,20 @@ exports = module.exports = function (req, res) {
 			.where('state', 'published')
 			.sort('-publishedDate')
 			.populate('author categories product postLayout gallery.widgets product product');
-
-		/*if (locals.data.category) {
+		if(req.originalUrl.indexOf('/republik/post/') === 0){
+			locals.data.category = '590804bee4027ba1787c6575';
+		}
+		if (locals.data.category) {
 			q.where('categories').in([locals.data.category]);
-		}*/
+		}
 
 		q.exec(function (err, results) {
 			//console.log('here:', results);
 			locals.data.posts = results;
-
+			if(!results){
+				next(err);
+				return;
+			}
 			async.forEachOf(results.results, function (post, i, cb) {
 
 					populatePost(post, cb);

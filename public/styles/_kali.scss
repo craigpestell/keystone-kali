@@ -743,6 +743,24 @@ End Product Page
 .blog a{
   text-decoration: underline;
 }
+
+.blog-main-image{
+  position:relative;
+}
+.blog-main-image p{
+  display:none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 20px;
+  position:absolute;
+  top: 50%;
+  left:50%;
+  text-align:center;
+  transform: translateX(-50%) translateY(-50%);
+}
+.blog-main-image:hover p{
+  display:inline;
+}
 /* Scale up the box */
 .home .technology img:hover, .home .technology svg:hover, .product-main .more-info:hover, .product-main .buy-button:hover {
   transform: scale(1.1, 1.1);
