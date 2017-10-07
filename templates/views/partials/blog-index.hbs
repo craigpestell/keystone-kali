@@ -1,3 +1,4 @@
+<!--blog-index mobile-->
 {{#each data.posts.results}}
 <div class="row visible-xs">
 	<div class="col-xs-12">
@@ -10,6 +11,8 @@
 	</div>
 </div>
 {{/each}}
+<!--//end blog-index mobile-->
+<!--blog-index sm-md-lg-->
 {{#everyNth data.posts.results 3}}
 	{{#if isModZeroNotFirst}}
 		</div>
@@ -29,3 +32,4 @@
 		</div>
 	{{/if}}
 {{/everyNth}}
+<!--//end blog-index sm-md-lg-->
