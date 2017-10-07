@@ -28,16 +28,23 @@ exports = module.exports = function (req, res) {
 		}).populate('author categories gallery.widgets');
 
 		q.exec(function (err, result) {
-			
-			var  q = Product.model.findOne({_id: result.product}).populate('technologies mainCategory subCategory');
-			
-			q.exec(function(err, product){
-				locals.product = product;
+			if(result.product){
+				var  q = Product.model.findOne({_id: result.product}).populate('technologies mainCategory subCategory');
+
+				q.exec(function(err, product){
+					locals.product = product;
+					populatePost(result, function(){
+						locals.post = result;
+						next(err);
+					});
+				})			
+			}else{
 				populatePost(result, function(){
 					locals.post = result;
-					next(err);					
+					next(err);
 				});
-			})
+			}
+	
 		});
 	});
 
