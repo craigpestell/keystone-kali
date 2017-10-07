@@ -36,7 +36,7 @@
 {{/ifCond}}
 {{#ifCond imagesGallery.layout "==" "basic"}}
 		{{#each imagesGallery.images}}
-		<div class="row"{{#if @first}} style="margin-top:0"{{/if}}>
+		<div class="row">
 			<div class="col col-xs-12">
 				<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
 			</div>
