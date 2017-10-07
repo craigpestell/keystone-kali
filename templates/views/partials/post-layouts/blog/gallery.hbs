@@ -1,3 +1,4 @@
+<!--gallery-->
 {{#ifCond gallery.layout "==" "republik-1" }}
 	<div class="col col-xs-12">
 		{{key}}
@@ -40,13 +41,14 @@
 	{{/each}}
 {{/ifCond}}
 {{#ifCond gallery.layout "==" "basic"}}
-	<div class="col col-xs-12">
-		{{#each gallery.widgets}}
-		<div class="row">
+	{{#each gallery.widgets}}
+	<div class="row">
+		<div class="col col-xs-12">
 			<div data-post-gallery-id="{{../key}}-{{@index}}">
 				{{> widget}}
 			</div>
 		</div>
-		{{/each}}
 	</div>
+	{{/each}}
 {{/ifCond}}
+<!--//end gallery-->

@@ -1,9 +1,13 @@
-<div class="row ">
+<div class="row">
 	<div class="col col-xs-12 col-sm-3">
-		<h3>{{{name}}}</h3>
-		{{#if content.extended}}
-			{{{content.extended}}}
-		{{/if}}
+		<div class="row">
+			<div class="col col-xs-12">
+				<h3>{{{name}}}</h3>
+				{{#if content.extended}}
+					{{{content.extended}}}
+				{{/if}}
+			</div>
+		</div>
 	</div>
 	<div class="col col-xs-12 col-sm-9">
 		{{#if gallery.widgets}}
