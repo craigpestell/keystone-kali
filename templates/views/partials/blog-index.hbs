@@ -1,9 +1,21 @@
+{{#each data.posts.results}}
+<div class="row visible-xs">
+	<div class="col-xs-12">
+		<a href="/republik/post/{{key}}">
+			<div class="blog-main-image">
+				<div class="blog-main-image-overlay"><p>{{name}}</p></div>
+				<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+			</div>
+		</a>
+	</div>
+</div>
+{{/each}}
 {{#everyNth data.posts.results 3}}
 	{{#if isModZeroNotFirst}}
 		</div>
 	{{/if}}
 	{{#if isModZero}}
-		<div class="row">
+		<div class="row hidden-xs">
 	{{/if}}
 	<div class="col-xs-12 col-sm-4">
 		<a href="/republik/post/{{key}}">
