@@ -1,4 +1,10 @@
-{{# each data.posts.results}}
+{{#everyNth data.posts.results 3}}
+	{{#if isModZeroNotFirst}}
+		</div>
+	{{/if}}
+	{{#if isModZero}}
+		<div class="row">
+	{{/if}}
 	<div class="col-xs-12 col-sm-4">
 		<a href="/republik/post/{{key}}">
 			<div class="blog-main-image">
@@ -7,4 +13,7 @@
 			</div>
 		</a>
 	</div>
-{{/each}}
+	{{#if isLast}}
+		</div>
+	{{/if}}
+{{/everyNth}}
