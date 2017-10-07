@@ -44,11 +44,16 @@
                         data.dealers[i].city = dealer.location.suburb;
                         data.dealers[i].state = dealer.location.state;
                         data.dealers[i].postal = dealer.location.postcode;
+						data.dealers[i].category = 'dealer';
+						if(dealer.distributor){
+							data.dealers[i].category= 'distributor';
+						}
                         if (dealer.location.geo) {
                             data.dealers[i].lng = parseFloat(dealer.location.geo[0]);
                             data.dealers[i].lat = parseFloat(dealer.location.geo[1]);
                             mapDealers.push(data.dealers[i]);
                         }
+                        
                     }
 					autoCompleteNames = autoCompleteNames.sort().filter(function(elem, index, self) {
 						return index == self.indexOf(elem);
@@ -98,6 +103,10 @@
                     }
                 ];
                 var options = {
+					catMarkers : {
+						'dealer' : ['/img/marker.png', 32, 32],
+						'distributor' : ['/img/marker-orange.png', 32, 32]
+					},
                     autoComplete: true,
                     autoGeocode: true,
                     dataType: 'json',
@@ -120,7 +129,17 @@
                          },*/
                         styles: stylesArray,
                         scrollwheel: false
-                    }
+                    },
+					markerCluster: {
+						imagePath: '../img/marker-cluster/m'
+						//,minimumClusterSize:5
+						,averageCenter: true
+						,gridSize: 40
+					},
+					taxonomyFilters : {
+						category : 'category-filters-container1'
+						
+					}
                 };
                 $('#bh-sl-map-container').storeLocator(options);
             }
