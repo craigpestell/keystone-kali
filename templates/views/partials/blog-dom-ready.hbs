@@ -36,11 +36,7 @@
 			jQuery(element).on('destroy.owl.carousel', function(e) { e.stopPropagation(); });
 		}
 		stopOwlPropagation('.owl-carousel');
-		salvattore['recreateColumns']($("#blog-columns")[0]);
-		setTimeout(function(){
-			$.cloudinary.responsive();			
-		}, 500);
-
+		$.cloudinary.responsive();
 	});
 </script>
 
