@@ -18,29 +18,21 @@
 	</div>
 {{/each}}
 
-{{#everyNth data.posts.results 3}}
-	{{#if isModZeroNotFirst}}
-		</div>
-	{{/if}}
-	{{#if isModZero}}
-		<div class="row hidden-xs">
-	{{/if}}
-		<div class="col col-sm-4">
-			<div class="blog-index-item">
-				<a href="/republik/post/{{key}}">
-					<div class="blog-main-image">
-						<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
-					</div>
-					<h3>{{name}}</h3>
-					<div class="blog-main-content">
-						{{{content.brief}}}
-					</div>
-				</a>
-				<hr/>
+
+
+<div id="blog-columns" data-columns class="hidden-xs">
+{{#each data.posts.results}}
+	<div class="blog-index-item">
+		<a href="/republik/post/{{key}}">
+			<div class="blog-main-image">
+				<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
 			</div>
-		</div>
-	{{#if isLast}}
-		</div>
-	{{/if}}
-{{/everyNth}}
-<!--//end blog-index-->
+			<h3>{{name}}</h3>
+			<div class="blog-main-content">
+				{{{content.brief}}}
+			</div>
+		</a>
+		<hr/>
+	</div>
+{{/each}}
+</div>

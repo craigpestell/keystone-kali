@@ -779,7 +779,21 @@ End Product Page
 .blog-index-item>a{
   text-decoration:none;
 }
-
+@media screen and (min-width: 1px) and (max-width: 767px){
+  #blog-columns[data-columns]::before {
+	content: '2 .col-xs-6';
+  }
+}
+@media screen and (min-width:768px) and (max-width: 991px){
+  #blog-columns[data-columns]::before {
+	content: '3 .col-sm-4';
+  }
+}
+@media screen and (min-width:992px) and (max-width: 9999px){
+  #blog-columns[data-columns]::before {
+	content: '3 .col-md-4';
+  }
+}
 //end blog
 
 /* Scale up the box */
