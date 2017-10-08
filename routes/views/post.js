@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
 	locals.data = {};
 
 	// Init locals
-	locals.section = 'blog';
+	locals.section = 'republik';
 	locals.filters = {
 		post: req.params.post,
 	};
