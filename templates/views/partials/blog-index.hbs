@@ -1,38 +1,39 @@
 <!--blog-index-->
-{{#each data.posts.results}}
-	<div class="row visible-xs">
-		<div class="col col-xs-12">
-			<div class="blog-index-item">
-				<a href="/republik/post/{{key}}">
-					<div class="">
-						<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
-					</div>
-					<h3>{{name}}</h3>
-					<div class="blog-main-content">
-						{{{content.brief}}}
-					</div>
-				</a>
-				<hr/>
+<div id="blog-index">
+	{{#each data.posts.results}}
+		<div class="row visible-xs">
+			<div class="col col-xs-12">
+				<div class="blog-index-item">
+					<a href="/republik/post/{{key}}">
+						<div class="">
+							<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+						</div>
+						<h3>{{name}}</h3>
+						<div class="blog-main-content">
+							{{{content.brief}}}
+						</div>
+					</a>
+					<hr/>
+				</div>
 			</div>
 		</div>
-	</div>
-{{/each}}
-
-
-
-<div id="blog-columns" data-columns class="row hidden-xs">
-{{#each data.posts.results}}
-	<div class="blog-index-item">
+	{{/each}}
+	
+	
+	<div id="blog-columns" data-columns class="row hidden-xs">
+	{{#each data.posts.results}}
 		<a href="/republik/post/{{key}}">
-			<div class="blog-main-image">
-				<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
-			</div>
-			<h3>{{name}}</h3>
-			<div class="blog-main-content">
-				{{{content.brief}}}
+			<div class="blog-index-item">
+				<div class="blog-main-image">
+					<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+				</div>
+				<h3>{{name}}</h3>
+				<div class="blog-main-content">
+					{{{content.brief}}}
+				</div>
+				<hr/>
 			</div>
 		</a>
-		<hr/>
+	{{/each}}
 	</div>
-{{/each}}
 </div>
