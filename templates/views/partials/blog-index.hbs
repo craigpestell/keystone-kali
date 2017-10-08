@@ -1,18 +1,23 @@
-<!--blog-index mobile-->
+<!--blog-index-->
 {{#each data.posts.results}}
-<div class="row visible-xs">
-	<div class="col-xs-12">
-		<a href="/republik/post/{{key}}">
-			<div class="blog-main-image">
-				<div class="blog-main-image-overlay"><p>{{name}}</p></div>
-				<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+	<div class="row visible-xs">
+		<div class="col col-xs-12">
+			<div class="blog-index-item">
+				<a href="/republik/post/{{key}}">
+					<div class="">
+						<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+					</div>
+					<h3>{{name}}</h3>
+					<div class="blog-main-content">
+						{{{content.brief}}}
+					</div>
+				</a>
+				<hr/>
 			</div>
-		</a>
+		</div>
 	</div>
-</div>
 {{/each}}
-<!--//end blog-index mobile-->
-<!--blog-index sm-md-lg-->
+
 {{#everyNth data.posts.results 3}}
 	{{#if isModZeroNotFirst}}
 		</div>
@@ -20,16 +25,20 @@
 	{{#if isModZero}}
 		<div class="row hidden-xs">
 	{{/if}}
-	<div class="col-xs-12 col-sm-4">
-		<a href="/republik/post/{{key}}">
-			<div class="blog-main-image">
-				<div class="blog-main-image-overlay"><p>{{name}}</p></div>
-				<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
-			</div>
-		</a>
-	</div>
+		<div class="col col-sm-4">
+			<a href="/republik/post/{{key}}">
+				<div class="blog-main-image">
+					<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+				</div>
+				<h3>{{name}}</h3>
+				<div class="blog-main-content">
+					{{{content.brief}}}
+				</div>
+			</a>
+			<hr/>
+		</div>
 	{{#if isLast}}
 		</div>
 	{{/if}}
 {{/everyNth}}
-<!--//end blog-index sm-md-lg-->
+<!--//end blog-index-->
