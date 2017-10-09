@@ -7,13 +7,13 @@
     
 	{{#if post}}
 		{{#if post.meta.title}}
-			<title>Kali Protectives - {{post.meta.title}}</title>
-			<meta property="og:title" content="Kali Protectives - {{post.meta.title}}">
-			<meta name="twitter:title" content="Kali Protectives - {{post.meta.title}}">
+			<title>{{post.meta.title}} - Kali Protectives</title>
+			<meta property="og:title" content="{{post.meta.title}} - Kali Protectives">
+			<meta name="twitter:title" content="{{post.meta.title}} - Kali Protectives">
 		{{else}}
-			<title>Kali Protectives - {{post.name}}</title>
-			<meta property="og:title" content="Kali Protectives - {{post.name}}">
-			<meta name="twitter:title" content="Kali Protectives - {{post.name}}">
+			<title>{{post.name}} - Kali Protectives</title>
+			<meta property="og:title" content="{{post.name}} - Kali Protectives">
+			<meta name="twitter:title" content="{{post.name}} - Kali Protectives">
 		{{/if}}
 		{{#if post.meta.description}}
 			<meta name="description" content="{{post.meta.description}}">

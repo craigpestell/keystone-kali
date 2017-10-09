@@ -15,6 +15,7 @@ exports = module.exports = function (req, res) {
 		category: req.params.category
 	};
 	locals.data = {
+		page: {title: 'Republik - Kali Protectives'},
 		posts: [],
 		categories: []
 	};
