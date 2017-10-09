@@ -14,6 +14,7 @@ Enquiry.add({
 	name: { type: Types.Name, required: true, noedit: true },
 	email: { type: Types.Email, required: true, noedit: true },
 	phone: { type: String, noedit: true },
+	emailTo: { type: Types.Relationship, ref: 'EnquiryEmail'},
 	enquiryType: { type: Types.Select, options: [
 		{ value: 'message', label: 'Just leaving a message' },
 		{ value: 'question', label: 'I\'ve got a question' },
@@ -42,13 +43,11 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 	}
 	
 	var enquiry = this;
-	
-	keystone.list('User').model.find().where('isAdmin', true).exec(function(err, admins) {
+	keystone.list('EnquiryEmail').model.find().where({'_id': enquiry.emailTo}).exec(function(err, enquiryEmail) {
 		
 		if (err) return callback(err);
-		
 		new keystone.Email('enquiry-notification').send({
-			to: admins,
+			to: enquiryEmail[0].email,
 			from: {
 				name: 'kali',
 				email: 'contact@kaliprotectives.com'
@@ -56,9 +55,7 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 			subject: 'New Inquiry on kaliprotectives.com',
 			enquiry: enquiry
 		}, callback);
-		
 	});
-	
 };
 
 Enquiry.defaultSort = '-createdAt';
