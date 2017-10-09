@@ -32,7 +32,6 @@ exports = module.exports = function(req, res) {
 		
 		var newEnquiry = new Enquiry.model(),
 			updater = newEnquiry.getUpdateHandler(req);
-		console.log('req.body', req.body);
 		updater.process(req.body, {
 			flashErrors: true,
 			fields: 'name, email, phone, emailTo, message',

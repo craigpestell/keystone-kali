@@ -32,7 +32,9 @@ Enquiry.schema.pre('save', function(next) {
 
 Enquiry.schema.post('save', function() {
 	if (this.wasNew) {
-		this.sendNotificationEmail();
+		this.sendNotificationEmail(function(){
+			console.log(arguments);
+		});
 	}
 });
 
@@ -46,6 +48,8 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 	keystone.list('EnquiryEmail').model.find().where({'_id': enquiry.emailTo}).exec(function(err, enquiryEmail) {
 		
 		if (err) return callback(err);
+		
+		console.log('email:', enquiryEmail[0].email);
 		new keystone.Email('enquiry-notification').send({
 			to: enquiryEmail[0].email,
 			from: {
@@ -55,7 +59,9 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 			subject: 'New Inquiry on kaliprotectives.com',
 			enquiry: enquiry
 		}, callback);
+		
 	});
+	
 };
 
 Enquiry.defaultSort = '-createdAt';
