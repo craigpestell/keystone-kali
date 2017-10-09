@@ -1,5 +1,7 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
+var Email = require('keystone-email');
+var hbs = require('hbs');
 
 /**
  * Enquiry Model
@@ -50,16 +52,27 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 		
 		if (err) return callback(err);
 		if(!enquiryEmail) return callback(err);
-		new keystone.Email('enquiry-notification').send({
+		
+		var emailLocals = {
+			layout: false,
 			to: enquiryEmail[0].email,
 			enquiryEmail:enquiryEmail,
 			from: {
-				name: 'kali',
+				name: 'Kali Protectives',
 				email: 'contact@kaliprotectives.com'
 			},
 			subject: 'Enquiry on kaliprotectives.com',
 			enquiry: enquiry
-		}, callback);
+		};
+		var options = {
+			from: 'contact@kaliprotectives.com',
+			to: enquiryEmail[0].email
+			
+		};
+		new Email('templates/emails/enquiry-notification/email', { transport: 'mailgun', engine: 'hbs' }).send(emailLocals, options, function(err){
+			console.log('error:', err);
+			console.log('email sent')/* sent */ 
+		});
 		
 	});
 	
