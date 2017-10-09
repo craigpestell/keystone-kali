@@ -18,7 +18,7 @@ exports = module.exports = function(req, res) {
 	// Get enquiry names / emails for dropdown
 	view.on('init', function (next) {
 
-		var q = keystone.list('EnquiryEmail').model.find();
+		var q = keystone.list('EnquiryEmail').model.find().populate('emailTo');
 			
 		q.exec(function (err, results) {
 			locals.enquiryEmails = results;

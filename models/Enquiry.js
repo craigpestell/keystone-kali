@@ -32,14 +32,15 @@ Enquiry.schema.pre('save', function(next) {
 
 Enquiry.schema.post('save', function() {
 	if (this.wasNew) {
-		this.sendNotificationEmail(function(){
-			console.log(arguments);
+		this.sendNotificationEmail(function(err, email){
+			if(err){
+				console.error(err);
+			}
 		});
 	}
 });
 
 Enquiry.schema.methods.sendNotificationEmail = function(callback) {
-	
 	if ('function' !== typeof callback) {
 		callback = function() {};
 	}
@@ -48,15 +49,15 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 	keystone.list('EnquiryEmail').model.find().where({'_id': enquiry.emailTo}).exec(function(err, enquiryEmail) {
 		
 		if (err) return callback(err);
-		
-		console.log('email:', enquiryEmail[0].email);
+		if(!enquiryEmail) return callback(err);
 		new keystone.Email('enquiry-notification').send({
 			to: enquiryEmail[0].email,
+			enquiryEmail:enquiryEmail,
 			from: {
 				name: 'kali',
 				email: 'contact@kaliprotectives.com'
 			},
-			subject: 'New Inquiry on kaliprotectives.com',
+			subject: 'Enquiry on kaliprotectives.com',
 			enquiry: enquiry
 		}, callback);
 		
