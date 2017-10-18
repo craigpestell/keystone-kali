@@ -34,14 +34,14 @@
 			</ul>
 		{{else}}
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="https://kali-moto.myshopify.com" target="_blank">Moto</a></li>
+				
 					
 					<!--mobile-->
 					{{#each navLinks}}
 						{{#if discipline}}
 							{{#ifeq key @root.params.discipline.slug}}
 							{{else}}
-								<li class="visible-xs">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+								<li>{{../../page}}<a href="{{href}}">{{label}}</a></li>
 							{{/ifeq}}
 						{{/if}}
 					{{/each}}
