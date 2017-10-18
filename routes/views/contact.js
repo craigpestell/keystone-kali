@@ -15,6 +15,12 @@ exports = module.exports = function(req, res) {
 	locals.validationErrors = {};
 	locals.enquirySubmitted = false;
 
+
+	var domain = keystone.get('domain');
+	var domainAndPort = domain + (keystone.get('port')?':' + keystone.get('port'):'');
+	locals.domainAndPort = domainAndPort;
+
+
 	// Get enquiry names / emails for dropdown
 	view.on('init', function (next) {
 
