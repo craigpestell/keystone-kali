@@ -22,7 +22,7 @@ exports = module.exports = function (req, res) {
 		if(req.params.discipline){
 			categoryWhere.key = 'product-detail-' + req.params.discipline;
 		}
-		console.log('catWhere', categoryWhere);
+		//console.log('catWhere', categoryWhere);
 		keystone.list('PostCategory').model.findOne(categoryWhere)
 			.exec(function(err, category){
 				
