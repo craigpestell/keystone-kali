@@ -45,9 +45,9 @@
 
 	<link href="/styles/site.css" rel="stylesheet">
 	<!--{{{isAdminEditorCSS user}}}-->
-	<!--{{#ifCond section "==" "home"}}
+	{{#ifCond section "==" "home"}}
 		<link href="/js/fullpage.js/dist/jquery.fullpage.css" rel="stylesheet">
-	{{/ifCond}}-->
+	{{/ifCond}}
     <!--[if lt IE 9]>
 	<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
 	<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -130,13 +130,13 @@
 
 <script src="/js/owl.carousel/dist/owl.carousel.js"></script>
 {{#ifCond section "==" "home"}}
-	{{#unless discipline}}
+	{{#if discipline}}
 		<script src="/js/jquery.easing/js/jquery.easing.js"></script>
 		<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
 		<script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
 		<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.js"></script>
 		<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.extensions.min.js"></script>
-	{{/unless}}
+	{{/if}}
 {{/ifCond}}
 {{#ifCond section "==" "technology"}}
 	<script src="/js/jquery.easing/js/jquery.easing.js"></script>
@@ -232,8 +232,13 @@
     </script>
 
 {{/ifCond}}
+
 {{#ifCond section "==" "home"}}
 	{{#unless discipline}}
+		
+		{{> index-home-dom-ready}}
+
+	{{else}}
 		<script type="text/javascript">
 			$(document).ready(function() {
 				if(screen.width > 480) {
@@ -253,7 +258,7 @@
 								$('.arrowDown').css({color:'#000'});
 							}
 						},
-						
+
 						//interlockedSlides: true,
 						//responsiveSlides: true
 					});
@@ -263,10 +268,6 @@
 				}
 			});
 		</script>
-		{{> index-home-dom-ready}}
-
-	{{else}}
-
 		{{> index-dom-ready}}
 
 	{{/unless}}
