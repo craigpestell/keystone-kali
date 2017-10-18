@@ -34,14 +34,11 @@
 			</ul>
 		{{else}}
 			<ul class="nav navbar-nav navbar-right">
-				
-					
-					<!--mobile-->
 					{{#each navLinks}}
 						{{#if discipline}}
 							{{#ifeq key @root.params.discipline.slug}}
 							{{else}}
-								<li>{{../../page}}<a href="{{href}}">{{label}}</a></li>
+								<li>{{../../page}}<a href="{{href}}"{{#if _blank}} target="_blank"{{/if}}>{{label}}</a></li>
 							{{/ifeq}}
 						{{/if}}
 					{{/each}}

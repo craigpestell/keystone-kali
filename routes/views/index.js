@@ -77,8 +77,8 @@ exports = module.exports = function(req, res) {
 
 	
 	var locals = res.locals;
-	console.log('params');
-	console.log(res.locals.params);
+	//console.log('params');
+	//console.log(res.locals.params);
 	if(res.locals.params.discipline){
 		locals.discipline = res.locals.params.discipline.slug;
 	}

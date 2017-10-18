@@ -147,6 +147,7 @@ var navRouteHandler = function (req, res, next) {
 			//point to shopify
 			if(disc.slug === 'moto') {
 				disciplineNav.href = 'https://kali-moto.myshopify.com';
+				disciplineNav._blank = true;
 			}
 			//point bike to helmets index
 			if(disc.slug === 'bike') {
