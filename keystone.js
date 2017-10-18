@@ -60,7 +60,8 @@ if(process.env.PRODUCTION){
 	keystone.set('env', 'production');
 	keystone.set('domain', 'kaliprotectives.com');
 }
-
+keystone.Email.defaults.templateExt = 'hbs';
+keystone.Email.defaults.templateEngine = require('handlebars');
 
 // Load your project's Models
 
