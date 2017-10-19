@@ -23,10 +23,7 @@
 				 style="z-index:2;position:relative;"/>
 			{{#unless darkColor}}
 				<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto"
-												fetch_format="auto" quality="auto"}}}" class="cld-responsive hidden-xs" src=""
-					 style="margin-top:-20%;z-index:1;position:absolute;"/>
-				<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto"
-												fetch_format="auto" quality="auto"}}}" class="cld-responsive visible-xs" src=""
+												fetch_format="auto" quality="auto"}}}" class="cld-responsive" src=""
 					 style="margin-top:-20%;z-index:1;position:relative;"/>
 			{{/unless}}
 		{{/if}}
