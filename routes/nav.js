@@ -75,10 +75,18 @@ var navRouteHandler = function (req, res, next) {
 	//console.log('inside nav route');
 	//console.log('ROUTE: ', req.route);
 	//console.log('PARAMS: ', req.params);
+	
+	
 	var locals = res.locals;
 	var domain = keystone.get('domain');
 	var domainAndPort = domain + (keystone.get('port')?':' + keystone.get('port'):'');
 	locals.domainAndPort = domainAndPort;
+
+
+	//detect dev site
+	if(req.headers.host.indexOf('dev.') === 0){
+		locals.devSite = true;
+	}
 	
 	getNavData(res.locals.params, function (err, data) {
 		//console.log('nav data:', data);
