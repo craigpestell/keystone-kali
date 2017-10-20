@@ -25,9 +25,10 @@ exports = module.exports = function (req, res) {
 		var q = Post.model.findOne({
 			//state: 'published',
 			key: locals.filters.post
-		}).populate('author categories gallery.widgets');
+		}).populate('author categories product gallery.widgets');
 
 		q.exec(function (err, result) {
+			
 			if(result.product){
 				var  q = Product.model.findOne({_id: result.product}).populate('technologies mainCategory subCategory');
 
@@ -47,6 +48,37 @@ exports = module.exports = function (req, res) {
 	
 		});
 	});
+	
+	// Load products
+	view.on('init', function (next) {
+
+		var q = Post.model.findOne({
+			//state: 'published',
+			key: locals.filters.post
+		}).populate('products');
+
+		q.exec(function (err, result) {
+
+			if(result.products){
+				var  q = Product.model.find({_id: result.product}).populate('technologies mainCategory subCategory');
+
+				q.exec(function(err, product){
+					locals.product = product;
+					populatePost(result, function(){
+						locals.post = result;
+						next(err);
+					});
+				})
+			}else{
+				populatePost(result, function(){
+					//locals.post = result;
+					next(err);
+				});
+			}
+
+		});
+	});
+
 
 	// Load the posts
 	view.on('init', function (next) {
