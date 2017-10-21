@@ -16,12 +16,18 @@ Post.add({
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true },
 	postLayout: { type: Types.Relationship, ref: 'PostLayout'},
-	gallery: 
+	mainImage: { type: Types.CloudinaryImage,  autoCleanup : true, note: 'blog index / thumbnail' },
+	gallery:
 		{
-			widgets: {type: Types.Relationship, ref: 'Widget', many: true},
-			layout: { type: Types.Select, options: 'basic, blocks, left, right, carousel, republik-1, home-landing', dependsOn: {'gallery.widgets' : true} }
+			widgets: {type: Types.Relationship, ref: 'Widget', many: true, label: 'Widgets Gallery'},
+			layout: { type: Types.Select, options: 'basic, blocks, left, right, carousel, republik-1, home-landing', dependsOn: {'gallery.widgets' : true}, default: "basic" }
 		},
-	
+	imagesGallery:
+		{
+			images: { type: Types.CloudinaryImages,  autoCleanup : true, label: 'Images Gallery' },
+			layout: { type: Types.Select, options: 'basic, blocks, left, right, carousel, republik-1, home-landing', dependsOn: {'imagesGallery.images' : true}, default: "basic" }
+		},
+
 	youtube: {type: Types.Url},
 	embedly: { type: Types.Embedly, from: 'youtube' },
 	product: { type: Types.Relationship, ref: 'Product' },

@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="//{{domainAndPort}}">
+			<a class="navbar-brand" href="//{{#if @root.params.discipline.slug}}{{@root.params.discipline.slug}}.{{/if}}{{domainAndPort}}">
 				<div class="navbar-logo" style="background: url({{cloudinaryUrl siteSettings.nav-logo-large.imageValue format="jpg" width=150 }}); background: url({{cloudinaryUrl siteSettings.nav-logo-large.imageValue width=150 }});background-size: 150px 50px;"></div>
             </a>
         </div>
@@ -34,27 +34,11 @@
 			</ul>
 		{{else}}
 			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a class="dropdown-toggle hidden-xs"  data-toggle="dropdown" role="button"
-					   aria-haspopup="true" aria-expanded="false">{{@root.params.discipline.slug }}<span class="caret"></span></a>
-					<ul class="dropdown-menu hidden-xs discipline">
-						{{#each navLinks}}
-							{{#if positionRight}}
-								{{#if discipline}}
-									{{#ifeq key @root.params.discipline.slug}}
-									{{else}}
-										<li class="{{#ifeq key @root.params.discipline.slug}}  active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
-									{{/ifeq}}
-								{{/if}}
-							{{/if}}
-						{{/each}}
-					</ul>
-					<!--mobile-->
 					{{#each navLinks}}
 						{{#if discipline}}
 							{{#ifeq key @root.params.discipline.slug}}
 							{{else}}
-								<li class="visible-xs">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+								<li>{{../../page}}<a href="{{href}}"{{#if _blank}} target="_blank"{{/if}}>{{label}}</a></li>
 							{{/ifeq}}
 						{{/if}}
 					{{/each}}

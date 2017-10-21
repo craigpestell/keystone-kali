@@ -429,6 +429,35 @@ hr {
   margin: 0;
 }
 
+
+//make nav items smaller on this screen size so everything fits!
+@media (min-width: 768px){
+  #nav-main {
+	font-size: 1.0em;
+  }
+  #nav-main .navbar-nav > li {
+	margin-top:5px;
+  }
+  #nav-main .navbar-nav > li > a {
+	padding: 10px;
+  }
+}
+//reset to original size
+@media (min-width: 992px) {
+  #nav-main {
+	font-size: 1.1em;
+	
+  }
+  #nav-main .navbar-nav > li {
+	margin-top:0px;
+  }
+  #nav-main .navbar-nav > li > a {
+	padding: 15px;
+	
+  }
+}
+
+
 .navbar {
   border: 0;
   border-radius: 0;
@@ -740,9 +769,44 @@ End Product Page
   color:white;
   font-weight: bold;  
 }
+.blog {
+  font-family: Gotham-Light, Arial, SansSerif;
+}
 .blog a{
   text-decoration: underline;
 }
+.blog-index-item{
+  
+}
+.blog-index-item:hover{
+  
+}
+.blog-index-item h3{
+  margin-top:10px;
+}
+#blog-index a{
+  text-decoration:none;
+}
+#blog-index a:hover h3 {
+  text-decoration:underline
+}
+@media screen and (min-width: 1px) and (max-width: 767px){
+  #blog-columns[data-columns]::before {
+	content: '1 .col-xs-12';
+  }
+}
+@media screen and (min-width:768px) and (max-width: 991px){
+  #blog-columns[data-columns]::before {
+	content: '2 .col-sm-6';
+  }
+}
+@media screen and (min-width:992px) and (max-width: 9999px){
+  #blog-columns[data-columns]::before {
+	content: '3 .col-md-4';
+  }
+}
+//end blog
+
 /* Scale up the box */
 .home .technology img:hover, .home .technology svg:hover, .product-main .more-info:hover, .product-main .buy-button:hover {
   transform: scale(1.1, 1.1);

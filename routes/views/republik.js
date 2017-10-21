@@ -15,6 +15,7 @@ exports = module.exports = function (req, res) {
 		category: req.params.category
 	};
 	locals.data = {
+		page: {title: 'Republik - Kali Protectives'},
 		posts: [],
 		categories: []
 	};
@@ -64,11 +65,12 @@ exports = module.exports = function (req, res) {
 	// Load the posts
 	view.on('init', function (next) {
 
-		var q = keystone.list('Post').paginate({
+		/*var q = keystone.list('Post').paginate({
 			page: req.query.page || 1,
 			perPage: 10,
 			maxPages: 10
-		})
+		})*/
+		var q = keystone.list('Post').model.find()
 			.where('state', 'published')
 			.sort('-publishedDate')
 			.populate('author categories product postLayout gallery.widgets product product');
@@ -81,17 +83,16 @@ exports = module.exports = function (req, res) {
 			//console.log('here:', results);
 			locals.data.posts = results;
 
-			async.forEachOf(results.results, function (post, i, cb) {
+			async.forEachOf(results, function (post, i, cb) {
 					
-					populatePost(post, cb);
-					locals.data.posts[i] = post;
+				populatePost(post, cb);
+				locals.data.posts[i] = post;
 					
 				},
 				function (err) {
 					if (err) {
 						console.log('error', err);
 					}
-					console.log('done async 1');
 					next(err);
 				}
 			);

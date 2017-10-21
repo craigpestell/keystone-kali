@@ -1,12 +1,20 @@
-<div class="row ">
-	<div class="col col-xs-12">
-		{{#if content.markdown.html}}
-			{{{content.markdown.html}}}
-		{{else}}
-			{{{content.extended}}}
+<div class="row">
+	<div class="col col-xs-12 col-sm-3">
+		<div class="row">
+			<div class="col col-xs-12">
+				<h3>{{{name}}}</h3>
+				{{#if content.extended}}
+					{{{content.extended}}}
+				{{/if}}
+			</div>
+		</div>
+	</div>
+	<div class="col col-xs-12 col-sm-9">
+		{{#if gallery.widgets}}
+			{{> post-layouts/blog/gallery}}
+		{{/if}}
+		{{#if imagesGallery}}
+			{{> post-layouts/blog/images-gallery}}
 		{{/if}}
 	</div>
-	{{#if gallery}}
-		{{> post-layouts/blog/gallery}}
-	{{/if}}
 </div>

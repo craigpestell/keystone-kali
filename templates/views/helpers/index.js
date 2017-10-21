@@ -274,10 +274,10 @@ module.exports = function() {
 			}
 			var imgs = [];
 		
-			var style = '';
 			
+			var styles = [];
 			if(options.hash.index && (options.hash.onlyShowFirst !== undefined && options.hash.onlyShowFirst)){
-				style = ' style="display:none"';
+				styles.push("display:none");
 			}
 			var srcset = '<picture>'; //[290,330,345,381,384,405,500,600,700,738,720,536,652,652]
 			if(options.hash.style){
@@ -316,7 +316,13 @@ module.exports = function() {
 			if(id && options.hash.index !== undefined){
 				id += options.hash.index;
 			}
-			srcset += '<img class="' + options.hash.class + '" ' + style + ' style="width:100%;" ';
+			styles.push("width:100%");
+			var style = "style='";
+			styles.forEach(function(s){
+				style += s + ';';
+			});
+			style+= "'";
+			srcset += '<img class="' + options.hash.class + '" ' + style;
 			if(id){
 				srcset +='id="' + id +'" ';
 			}		

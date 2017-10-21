@@ -6,7 +6,7 @@
 			{{#each gallery.widgets}}
 			{{#ifCond this.key "!=" "null"}}
 			$(function() {
-				var {{key}} = {{{widget}}};
+				var widget = {{{widget}}};
 				//console.log("{{../../key}}-{{@index}}");
 				
 				if('{{type}}' === 'carousel'){
@@ -36,7 +36,6 @@
 			jQuery(element).on('destroy.owl.carousel', function(e) { e.stopPropagation(); });
 		}
 		stopOwlPropagation('.owl-carousel');
-
 		$.cloudinary.responsive();
 	});
 </script>

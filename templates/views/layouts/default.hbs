@@ -4,37 +4,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-	{{#if data.post}}
-		{{#if data.post.meta.title}}
-			<title>{{data.post.meta.title}}</title>
-			<meta property="og:title" content="{{data.post.meta.title}}">
-			<meta name="twitter:title" content="{{data.post.meta.title}}">
+	{{#if devSite}}
+		<meta name="robots" content="noindex">
+	{{/if}}    
+	{{#if post}}
+		{{#if post.meta.title}}
+			<title>{{post.meta.title}} - Kali Protectives</title>
+			<meta property="og:title" content="{{post.meta.title}} - Kali Protectives">
+			<meta name="twitter:title" content="{{post.meta.title}} - Kali Protectives">
 		{{else}}
-			<title>{{data.post.title}}</title>
-			<meta property="og:title" content="{{data.post.title}}">
-			<meta name="twitter:title" content="{{data.post.title}}">
+			<title>{{post.name}} - Kali Protectives</title>
+			<meta property="og:title" content="{{post.name}} - Kali Protectives">
+			<meta name="twitter:title" content="{{post.name}} - Kali Protectives">
 		{{/if}}
-		{{#if data.post.meta.description}}
-			<meta name="description" content="{{data.post.meta.description}}">
-			<meta property="og:description" content="{{data.post.meta.description}}">
-			<meta name="twitter:description" content="{{data.post.meta.description}}">
+		{{#if post.meta.description}}
+			<meta name="description" content="{{post.meta.description}}">
+			<meta property="og:description" content="{{post.meta.description}}">
+			<meta name="twitter:description" content="{{post.meta.description}}">
 		{{else}}
-			<meta name="description" content="{{data.post.content.brief}}">
-			<meta property="og:description" content="{{data.post.content.brief}}">
-			<meta name="twitter:description" content="{{data.post.content.brief}}">
+			<meta name="description" content="{{post.content.brief}}">
+			<meta property="og:description" content="{{post.content.brief}}">
+			<meta name="twitter:description" content="{{post.content.brief}}">
 		{{/if}}
 		<meta property="og:type" content="article">
 		<meta name="twitter:card" content="summary_large_image">
-		<meta property="og:image" content="{{data.post.image.url}}">
-		<meta name="twitter:image:src" content="{{data.post.image.url}}">
-		<meta property="og:url" content="{{data.post.fullposturl}}">
-		<meta name="twitter:url" content="{{data.post.fullposturl}}">
-		<meta property="article:published_time" content="{{data.post.publisheddate}}">
-		{{# each data.post.categories}}
+		<meta property="og:image" content="{{post.image.url}}">
+		<meta name="twitter:image:src" content="{{post.image.url}}">
+		<meta property="og:url" content="{{post.fullposturl}}">
+		<meta name="twitter:url" content="{{post.fullposturl}}">
+		<meta property="article:published_time" content="{{post.publisheddate}}">
+		{{# each post.categories}}
 			<meta property="article:tag" content="{{name}}">
 		{{/each}}
-		<meta name="keywords" content="{{# each data.post.categories}}{{name}}, {{/each}}">
+		<meta name="keywords" content="{{# each post.categories}}{{name}}, {{/each}}">
 	{{else}}
 		<title>{{data.page.title}}</title>
 		<meta name="description" content="{{@root.siteSettings.metaDescription}}">
@@ -45,9 +47,9 @@
 
 	<link href="/styles/site.css" rel="stylesheet">
 	<!--{{{isAdminEditorCSS user}}}-->
-	<!--{{#ifCond section "==" "home"}}
+	{{#ifCond section "==" "home"}}
 		<link href="/js/fullpage.js/dist/jquery.fullpage.css" rel="stylesheet">
-	{{/ifCond}}-->
+	{{/ifCond}}
     <!--[if lt IE 9]>
 	<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
 	<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -130,13 +132,13 @@
 
 <script src="/js/owl.carousel/dist/owl.carousel.js"></script>
 {{#ifCond section "==" "home"}}
-	{{#unless discipline}}
+	{{#if discipline}}
 		<script src="/js/jquery.easing/js/jquery.easing.js"></script>
 		<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
 		<script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
 		<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.js"></script>
 		<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.extensions.min.js"></script>
-	{{/unless}}
+	{{/if}}
 {{/ifCond}}
 {{#ifCond section "==" "technology"}}
 	<script src="/js/jquery.easing/js/jquery.easing.js"></script>
@@ -147,8 +149,13 @@
 {{/ifCond}}
 
 {{#ifCond section "==" "product"}}
-    <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 {{/ifCond}}
+
+{{#ifCond section "==" "republik"}}
+	<script src="/js/salvattore/dist/salvattore.min.js"></script>
+{{/ifCond}}
+
 
 <!--bootstrap 3.3.6 -->
 <!--<script src="/js/bootstrap/dist/js/bootstrap.min.js"></script>-->
@@ -228,8 +235,13 @@
     </script>
 
 {{/ifCond}}
+
 {{#ifCond section "==" "home"}}
-	{{#if discipline}}
+	{{#unless discipline}}
+		
+		{{> index-home-dom-ready}}
+
+	{{else}}
 		<script type="text/javascript">
 			$(document).ready(function() {
 				if(screen.width > 480) {
@@ -249,7 +261,7 @@
 								$('.arrowDown').css({color:'#000'});
 							}
 						},
-						
+
 						//interlockedSlides: true,
 						//responsiveSlides: true
 					});
@@ -259,11 +271,9 @@
 				}
 			});
 		</script>
-		
 		{{> index-dom-ready}}
-	{{else}}
-		{{> index-home-dom-ready}}
-	{{/if}}
+
+	{{/unless}}
 {{/ifCond}}
 
 {{#ifCond section '==' 'product' }}
@@ -374,12 +384,6 @@
 	
     });
 </script>
-<style>.async-hide { opacity: 0 !important} </style>
-<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-	h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-	(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-})(window,document.documentElement,'async-hide','dataLayer',4000,
-		{'GTM-P8CT57G':true});</script>
 <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
     ga('create', '{{ga_key}}', 'auto');

@@ -1,5 +1,7 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
+var Email = require('keystone-email');
+var hbs = require('hbs');
 
 /**
  * Enquiry Model
@@ -14,6 +16,7 @@ Enquiry.add({
 	name: { type: Types.Name, required: true, noedit: true },
 	email: { type: Types.Email, required: true, noedit: true },
 	phone: { type: String, noedit: true },
+	emailTo: { type: Types.Relationship, ref: 'EnquiryEmail'},
 	enquiryType: { type: Types.Select, options: [
 		{ value: 'message', label: 'Just leaving a message' },
 		{ value: 'question', label: 'I\'ve got a question' },
@@ -31,31 +34,45 @@ Enquiry.schema.pre('save', function(next) {
 
 Enquiry.schema.post('save', function() {
 	if (this.wasNew) {
-		this.sendNotificationEmail();
+		this.sendNotificationEmail(function(err, email){
+			if(err){
+				console.error(err);
+			}
+		});
 	}
 });
 
 Enquiry.schema.methods.sendNotificationEmail = function(callback) {
-	
 	if ('function' !== typeof callback) {
 		callback = function() {};
 	}
 	
 	var enquiry = this;
-	
-	keystone.list('User').model.find().where('isAdmin', true).exec(function(err, admins) {
+	keystone.list('EnquiryEmail').model.find().where({'_id': enquiry.emailTo}).exec(function(err, enquiryEmail) {
 		
 		if (err) return callback(err);
+		if(!enquiryEmail) return callback(err);
 		
-		new keystone.Email('enquiry-notification').send({
-			to: admins,
+		var emailLocals = {
+			layout: false,
+			to: enquiryEmail[0].email,
+			enquiryEmail:enquiryEmail,
 			from: {
-				name: 'kali',
+				name: 'Kali Protectives',
 				email: 'contact@kaliprotectives.com'
 			},
-			subject: 'New Inquiry on kaliprotectives.com',
+			subject: 'Enquiry on kaliprotectives.com',
 			enquiry: enquiry
-		}, callback);
+		};
+		var options = {
+			from: 'contact@kaliprotectives.com',
+			to: enquiryEmail[0].email
+			
+		};
+		new Email('templates/emails/enquiry-notification/email', { transport: 'mailgun', engine: 'hbs' }).send(emailLocals, options, function(err){
+			console.log('error:', err);
+			console.log('email sent')/* sent */ 
+		});
 		
 	});
 	
