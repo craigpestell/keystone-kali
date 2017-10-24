@@ -84,7 +84,7 @@ var navRouteHandler = function (req, res, next) {
 
 
 	//detect dev site
-	if(req.headers.host.indexOf('dev.') === 0){
+	if(req.headers.host.indexOf('dev.') === 0 || req.headers.host.indexOf('.dev.') > 0){
 		locals.devSite = true;
 	}
 	
