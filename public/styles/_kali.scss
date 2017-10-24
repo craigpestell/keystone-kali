@@ -1066,6 +1066,92 @@ End Product Page
 /* END Technology page*/
 
 
+/* Dealer map */
+
+#map {
+  width:1500px;
+  height:1500px;
+}
+
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
+
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
+
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.pac-controls label {
+  //font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#pac-input-selector, #pac-input-reset {
+  font-size: 16px;
+  text-transform:uppercase;
+  color: #FFF;
+  background-color: black;
+  padding:4px 6px;
+  border: 0;
+}
+
+#pac-input, #pac-input-name {
+  background-color: #fff;
+  //font-family: Roboto;
+  font-size: 20px;
+  font-weight: 300;
+  //margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input, #pac-input-name {
+  display:none;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+#location-list {
+  width: 220px;
+  background-color: #FFF;
+  overflow-y: scroll;
+}
+#location-list ul {
+  padding: 5px;
+  list-style: none;
+}
+#location-list ul li {
+  padding: 5px;
+  border-bottom: 1px solid $gray-lighter;
+  cursor: pointer;
+}
+#category-filters-container1{
+  background-color: white;
+  opacity: .8;
+  list-style: none;
+  padding: 5px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+/* End Dealer map */
+
 .lazyload {
   opacity: 0;
 }
