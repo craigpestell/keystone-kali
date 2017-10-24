@@ -49,33 +49,27 @@ var populatePostWidgets = function (post, cb) {
 };
 
 var populatePostProducts = function (post, cb) {
-	console.log('popProducts');
+	//console.log('popProducts');
 	if (post.products) {
-		async.forEachOf(post.products, function (product, j, cb2) {
+		console.log('post.products:', post.products);
+		
 
-				keystone.list('products').model.find()
-					.where({_id: product._id}).exec(function (err, data) {
-					post._doc.products[j] = data;
-					cb2();
-				});
-			},
-			function (err) {
-				if (err) {
-					console.log('error', err);
-				}
-				cb();
-			}
-		);
+		keystone.list('products').model.find()
+			.where({_id: {$in: post.products}}).populate('mainCategory subCategory').exec(function (err, data) {
+			post._doc.products = data;
+			cb();
+		});
+		
 	} else {
 		cb();
 	}
 };
 
 var populatePost = function (post, cb) {
-	console.log('popPost');
+	//console.log('popPost');
 	populatePostWidgets(post, function(){
 		populatePostProducts(post, function(){
-			console.log(post._doc);
+			//console.log(post._doc);
 			cb();
 		});
 	});
