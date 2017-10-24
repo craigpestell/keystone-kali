@@ -12,8 +12,18 @@
 					{{> post-layouts/blog/post-basic post}}
 				{{/ifCond}}
 			{{/ifCond}}
+			{{#if post.products}}
+			<div class="row">
+				<div class="col-xs-12 products">
+					{{#each post.products}}
+						{{> product-category-product}}
+					{{/each}}
+				</div>
+			</div>
+			{{/if}}
 		</div>
 	</div>
+	
 	<div class="row" style="margin-top:0">
 		<div class="col col-xs-12"><hr style="margin-bottom: 0px"/></div>
 		<div class="col col-xs-12">{{>blog-index}}</div>

@@ -25,9 +25,10 @@ exports = module.exports = function (req, res) {
 		var q = Post.model.findOne({
 			//state: 'published',
 			key: locals.filters.post
-		}).populate('author categories gallery.widgets');
+		}).populate('author categories product gallery.widgets');
 
 		q.exec(function (err, result) {
+			
 			if(result.product){
 				var  q = Product.model.findOne({_id: result.product}).populate('technologies mainCategory subCategory');
 
@@ -47,6 +48,27 @@ exports = module.exports = function (req, res) {
 	
 		});
 	});
+	
+	// Load products
+	view.on('init', function (next) {
+
+		var q = Post.model.findOne({
+			//state: 'published',
+			key: locals.filters.post
+		});//.populate('products');
+
+		q.exec(function (err, result) {
+
+			
+			populatePost(result, function(){
+				//locals.post = result;
+				next(err);
+			});
+		
+
+		});
+	});
+
 
 	// Load the posts
 	view.on('init', function (next) {
@@ -59,7 +81,7 @@ exports = module.exports = function (req, res) {
 		var q = keystone.list('Post').model.find()
 			.where('state', 'published')
 			.sort('-publishedDate')
-			.populate('author categories product postLayout gallery.widgets product product');
+			.populate('author categories product postLayout gallery.widgets');
 		if(req.originalUrl.indexOf('/republik/post/') === 0){
 			locals.data.category = '590804bee4027ba1787c6575';
 		}
