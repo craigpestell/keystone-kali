@@ -177,6 +177,9 @@
 		var initMapSize = function(){
 			var width = $(window).width();
 			var height = $(window).height() - 400;
+			if(height < 320) {
+				height = 320;
+			}
 			$('#map').css({width:width, height: height});
 			$('#location-list').css({'max-height':height-150});
 		};
