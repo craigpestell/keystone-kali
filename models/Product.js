@@ -16,7 +16,7 @@ Product.add({
 	shopifyIdCan: {type: Number, label: 'Shopify Id Canada', hidden: true},
 	preOrderCan: {type: Boolean, note: 'Show Preorder button instead of Buy Now - Canada', hidden: true},
 	shopifyIdUS: {type: Number, label: 'Shopify Id'},
-	preOrderUS: {type: Boolean, note: 'Show Preorder button instead of Buy Now'},
+	preOrderUS: {type: Boolean, note: 'Show Preorder button instead of Buy Now', label: 'Pre Order'},
 	//type: { type: Types.Relationship, ref: 'ProductType', required: true, initial: true},
 	disciplines: { type: Types.Relationship, ref: 'Discipline', many: true },
 	canonicalDiscipline: { type: Types.Relationship, ref: 'Discipline', many: false, note: 'The default Discipline for this product'},
