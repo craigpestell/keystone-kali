@@ -2,7 +2,7 @@ var keystone = require('keystone');
 var async = require('async');
 
 var populatePostWidgets = function (post, cb) {
-	console.log('popWidgets');
+	//console.log('popWidgets');
 	if (post.gallery && post.gallery.widgets) {
 		async.forEachOf(post.gallery.widgets, function (widget, j, cb2) {
 				if (widget.type === 'carousel') {
@@ -51,7 +51,7 @@ var populatePostWidgets = function (post, cb) {
 var populatePostProducts = function (post, cb) {
 	//console.log('popProducts');
 	if (post.products) {
-		console.log('post.products:', post.products);
+		//console.log('post.products:', post.products);
 		
 
 		keystone.list('products').model.find()

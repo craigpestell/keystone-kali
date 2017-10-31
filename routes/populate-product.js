@@ -2,7 +2,7 @@ var keystone = require('keystone');
 var async = require('async');
 
 var populateProduct = function (product, cb) {
-	console.log('populateProduct');
+	//console.log('populateProduct');
 	//get posts with product
 	keystone.list('posts').model.find()
 		.where({products: {$in: product._id}}).exec(function(err, data){
