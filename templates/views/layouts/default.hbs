@@ -128,9 +128,9 @@
 <script type="text/javascript">
     $.cloudinary.config({cloud_name: 'kaliprotectives-com', api_key: "277924468792588"});
 </script>
-<script src="/js/jquery-ui/jquery-ui.js"></script>
+<script src="/js/jquery-ui/jquery-ui.js" defer></script>
 
-<script src="/js/owl.carousel/dist/owl.carousel.js"></script>
+<script src="/js/owl.carousel/dist/owl.carousel.js" defer></script>
 {{#ifCond section "==" "home"}}
 	{{#if discipline}}
 		<script src="/js/jquery.easing/js/jquery.easing.js"></script>
@@ -149,12 +149,12 @@
 {{/ifCond}}
 
 {{#ifCond section "==" "product"}}
-	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-	<script src="/js/salvattore/dist/salvattore.min.js"></script>
+	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js" defer></script>
+	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 
 {{#ifCond section "==" "republik"}}
-	<script src="/js/salvattore/dist/salvattore.min.js"></script>
+	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 
 
@@ -162,7 +162,7 @@
 <!--<script src="/js/bootstrap/dist/js/bootstrap.min.js"></script>-->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous" defer></script>
 
 {{#ifCond section "==" "dealer-locator"}}
     <script src="/js/handlebars/handlebars.min.js"></script>
