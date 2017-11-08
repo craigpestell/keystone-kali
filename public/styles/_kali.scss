@@ -40,8 +40,9 @@
   src: url('/fonts/Gotham-Light.eot?#iefix') format('embedded-opentype'),
   url('/fonts/Gotham-Light.woff2') format('woff2'),
   url('/fonts/Gotham-Light.ttf') format('truetype');
-  font-weight: 300;
+  font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 
 @font-face {
@@ -50,8 +51,9 @@
   src: url('/fonts/GothamBlack.eot?#iefix') format('embedded-opentype'),
   url('/fonts/GothamBlack.woff2') format('woff2'),
   url('/fonts/GothamBlack.ttf') format('truetype');
-  font-weight: 300;
+  font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 
 @font-face {
@@ -60,8 +62,9 @@
   src: url('/fonts/GothamMedium.eot?#iefix') format('embedded-opentype'),
   url('/fonts/GothamMedium.woff2') format('woff2'),
   url('/fonts/GothamMedium.ttf') format('truetype');
-  font-weight: 300;
+  font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 
 html {
