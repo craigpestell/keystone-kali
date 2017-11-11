@@ -1,8 +1,19 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		$('.technology.banner, .technology.technology-icon-nav').imagesLoaded(function(){
-            //$('.gallery-icon:not(.cld-responsive)').addClass('cld-responsive');
-            //$.cloudinary.responsive();
+		$(".technology.owl-carousel").owlCarousel({
+			items: 1, 
+			nav: true,
+			//margin:10,
+			//autoWidth:false,
+			navText : ["<i class='glyphicon glyphicon-circle-arrow-left'></i>","<i class='glyphicon glyphicon-circle-arrow-right'></i>"]
 		});
+		
+		$(".technology-sub.owl-carousel").owlCarousel({items: 1});
+		$(".technology-sub-nav div").click(function(e){
+			console.log(e.target);
+			var slide = $(e.target).data('slide');
+			$('.technology-sub.owl-carousel').trigger('to.owl.carousel', slide);
+		});
+		
     });
 </script>

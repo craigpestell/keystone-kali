@@ -1067,6 +1067,46 @@ End Product Page
   padding: 0px;
 }
 
+#technology .technology.owl-carousel {
+  position: relative;
+}
+
+#technology .technology.owl-carousel .owl-prev,
+#technology .technology.owl-carousel .owl-next {
+  position: absolute;
+  top: 50%;
+  margin-top: -10px; // Half of the prev/next buttons height here in negatives to center them perfectly
+}
+
+#technology .technology.owl-carousel .owl-prev {
+  left: 0;
+}
+
+#technology .technology.owl-carousel .owl-next {
+  right: 0;
+}
+/*#technology .owl-prev {
+  width: 15px;
+  height: 100px;
+  position: absolute;
+  top: 40%;
+  margin-left: -20px;
+  display: block;
+  border:0px solid black;
+}
+
+#technology .owl-next {
+  width: 15px;
+  height: 100px;
+  position: absolute;
+  top: 40%;
+  right: -25px;
+  display: block;
+  border:0px solid black;
+}*/
+
+//#technology .owl-prev i, #technology .owl-next i {transform : scale(1,6); color: #ccc;}
+
 /* END Technology page*/
 
 
