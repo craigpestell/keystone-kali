@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#4cbb17"/>
 	{{#if devSite}}
 		<meta name="robots" content="noindex">
 	{{/if}}    
@@ -68,7 +69,32 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="manifest" href="/favicon/manifest.json">
+	<!--<script>
+		var font = new FontFace("Gotham-Light", "url(/fonts/Gotham-Light.woff2) format('woff2'), url(/fonts/Gotham-Light.woff) format('woff'), url(/fonts/Gotham-Light.eot) format('eot')", {
+			style: 'normal', unicodeRange: 'U+000-5FF', weight: '400'
+		});
+		// don't wait for the render tree, initiate an immediate fetch!
+		font.load().then(function() {
+			document.fonts.add(font);
+		});
+		
+		font = new FontFace("Gotham-Black", "url(/fonts/GothamBlack.woff2) format('woff2'), url(/fonts/GothamBlack.woff) format('woff'), url(/fonts/GothamBlack.eot) format('eot')", {
+			style: 'normal', unicodeRange: 'U+000-5FF', weight: '400'
+		});
+		// don't wait for the render tree, initiate an immediate fetch!
+		font.load().then(function() {
+			document.fonts.add(font);
+		});
+		
+		font = new FontFace("Gotham-Medium", "url(/fonts/GothamMedium.woff2) format('woff2'), url(/fonts/GothamMedium.woff) format('woff'), url(/fonts/GothamMedium.eot) format('eot')", {
+			style: 'normal', unicodeRange: 'U+000-5FF', weight: '400'
+		});
+		// don't wait for the render tree, initiate an immediate fetch!
+		font.load().then(function() {
+			document.fonts.add(font);
+		});
 
+	</script>-->
 {{#ifCond section "==" "product"}}	
 	<link rel="canonical" href="https://{{#if product.canonicalDiscipline}}{{product.canonicalDiscipline.slug}}.{{/if}}kaliprotectives.com/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}"/>
 {{/ifCond}}
@@ -346,12 +372,13 @@
 	
     });
 </script>
+<!-- Google Analytics -->
 <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', '{{ga_key}}', 'auto');
-	ga('require', 'GTM-P8CT57G');
-    ga('send', 'pageview');
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '{{ga_key}}', 'auto');
+	ga('send', 'pageview');
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
 </body>
 </html>
