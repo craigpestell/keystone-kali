@@ -18,7 +18,8 @@ Technology.add({
 	logo: { type: Types.CloudinaryImage,  autoCleanup : true},
 	primaryImage:  { type: Types.CloudinaryImage,  autoCleanup : true},
 	secondaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
-	tertiaryImage: { type: Types.CloudinaryImage,  autoCleanup : true}
+	tertiaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
+	
 });
 
 Technology.register();

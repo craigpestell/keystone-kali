@@ -3,32 +3,32 @@
 		<div class="technology owl-carousel owl-theme">
 			{{#each technology}}
 			<div>
-				<a class="" href="/{{../data.page.slug}}#{{slug}}">
-					{{{bannerOverlayHtml}}}
-					<img data-src="{{{cloudinaryUrl heroImage width="auto" fetch_format="auto" quality="auto"}}}" src="" class="cld-responsive"/>
-				</a>
+				{{{bannerOverlayHtml}}}
+				<img data-src="{{{cloudinaryUrl heroImage width="auto" fetch_format="auto" quality="auto"}}}" src="" class="cld-responsive"/>
 			</div>
 			{{/each}}
-			<div>test</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row hidden-xs">
 		<div class="technology-sub-nav">
-			<div data-slide="0" class="col-xs-4 text-center">Composite Fusion</div>
+			<div data-slide="0" class="col-xs-4 text-center active">Composite Fusion</div>
 			<div data-slide="1" class="col-xs-4 text-center">Low Density Layer</div>
 			<div data-slide="2" class="col-xs-4 text-center">Nano Fusion</div>
 		</div>
 	</div>
-	<div class="row" style="margin-top:0">
-		<div class="technology-sub owl-carousel owl-theme">
-			{{#each technology}}
-				<div>
-					<img data-src="{{{cloudinaryUrl primaryImage width="auto" fetch_format="auto" quality="auto"}}}" src="" class="cld-responsive"/>
-						<h2>{{name}}</h2>
-						<p>{{this.description}}</p>
-				
-				</div>
-			{{/each}}
+	<div class="row hidden-xs">
+		<div class="col-xs-12">
+			<div class="technology-sub owl-carousel owl-theme">
+				{{#each technology}}
+					{{> technology-section}}
+				{{/each}}
+			</div>
 		</div>
+	</div>
+	{{#each technology}}
+		<div class="visible-xs">
+			{{> technology-section}}
+		</div>
+	{{/each}}
 	</div>
 </div><!-- end #technology -->

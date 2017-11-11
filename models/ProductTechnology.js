@@ -26,7 +26,8 @@ ProductTechnology.add({
 	primaryImage:  { type: Types.CloudinaryImage,  autoCleanup : true},
 	secondaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
 	tertiaryImage: { type: Types.CloudinaryImage,  autoCleanup : true},
-	contentHtml: { type: Types.Html, default: '' }
+	contentHtml: { type: Types.Html, default: '' },
+	post:{ type: Types.Relationship, ref: 'Post'}
 });
 
 ProductTechnology.register();

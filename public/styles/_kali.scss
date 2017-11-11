@@ -1067,6 +1067,21 @@ End Product Page
   padding: 0px;
 }
 
+
+#technology .technology-sub-nav div{
+  cursor: default;
+  text-transform: uppercase;
+  padding:10px;
+  background-color: $brand-primary;
+  border: 1px solid #FFF;
+  color: #FFF;
+  font-family: Gotham-Light;
+}
+#technology .technology-sub-nav div:hover, #technology .technology-sub-nav div.active{
+  background-color: #FFF;
+  color: #000;
+}
+
 #technology .technology.owl-carousel {
   position: relative;
 }

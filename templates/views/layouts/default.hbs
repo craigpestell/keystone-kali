@@ -112,9 +112,7 @@
 	{{{body}}}
 </div>
 {{#ifCond section "!=" "home"}}
-	{{#ifCond section "!=" "technology"}}
-		{{> footer}}
-	{{/ifCond}}
+	{{> footer}}
 {{/ifCond}}
 {{#ifCond section "==" "home"}}
 	{{#unless discipline}}
