@@ -1,33 +1,23 @@
-<div class="container blog">
-	<div class="row" style="">
-		<div class="col col-xs-12">
-			<p><a href="/{{section}}">&larr; Back to <span style="text-transform:uppercase">{{section}}</span></a></p>
-			<hr style="margin-bottom:-15px;">
-			{{#ifCond postLayout.key "==" "slide-one"}}
-				{{> post-layouts/blog/slide-one post}}
-			{{else}}
-				{{#ifCond postLayout.key "==" "youtube-full"}}
-					{{> post-layouts/blog/youtube-full post}}
-				{{else}}
-					{{> post-layouts/blog/post-basic post}}
-				{{/ifCond}}
-			{{/ifCond}}
-			{{#if post.products}}
-			<div class="row">
-				<div class="col-xs-12 products">
-					{{#each post.products}}
-						{{> product-category-product}}
-					{{/each}}
-				</div>
-			</div>
-			{{/if}}
-		</div>
-	</div>
-	{{#if data.posts}}
-	<div class="row" style="margin-top:0">
-		<div class="col col-xs-12"><hr style="margin-bottom: 0px"/></div>
-		<div class="col col-xs-12">{{>blog-index}}</div>
-	</div>
-	{{/if}}
 
+{{#ifCond postLayout.key "==" "slide-one"}}
+	{{> post-layouts/blog/slide-one post}}
+{{else}}
+	{{#ifCond postLayout.key "==" "youtube-full"}}
+		{{> post-layouts/blog/youtube-full post}}
+	{{else}}
+		{{#ifCond postLayout.key "==" "technology"}}
+			{{> post-layouts/blog/technology post}}
+		{{else}}
+			{{> post-layouts/blog/post-basic post}}
+		{{/ifCond}}
+	{{/ifCond}}
+{{/ifCond}}
+{{#if post.products}}
+<div class="row">
+	<div class="col-xs-12 products">
+		{{#each post.products}}
+			{{> product-category-product}}
+		{{/each}}
+	</div>
 </div>
+{{/if}}

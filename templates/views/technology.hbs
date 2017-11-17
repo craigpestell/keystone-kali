@@ -1,34 +1,50 @@
-<div id="technology" class="container-fluid">
-	<div class="row">
-		<div class="technology owl-carousel owl-theme">
-			{{#each technology}}
-			<div>
-				{{{bannerOverlayHtml}}}
-				<img data-src="{{{cloudinaryUrl heroImage width="auto" fetch_format="auto" quality="auto"}}}" src="" class="cld-responsive"/>
+<div id="technology" class="container-fluid blog">
+		<div class="row" style="">
+			<div class="col col-xs-12">
+				<p><a href="/{{section}}">&larr; Back to <span style="text-transform:uppercase">{{section}}</span></a></p>
+				<hr style="margin-bottom:-15px;">
+				
+				<div class="row">
+					<div class="col col-xs-12">
+						{{#if post.content.markdown.html}}
+							{{{post.content.markdown.html}}}
+						{{else}}
+							{{{post.content.extended}}}
+						{{/if}}
+					</div>
+					{{#if post.youtube}}
+						<div class="col col-xs-12">
+							<div class="embed-responsive embed-responsive-16by9">
+								<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
+							</div>
+						</div>
+					{{/if}}
+					{{#if post.gallery}}
+						<div class="col col-xs-12">
+							{{#each post.gallery}}
+								<img data-src="{{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}}"
+									 src="" class="cld-responsive"/>
+							{{/each}}
+						</div>
+					{{/if}}
+					<div class="col col-xs-12">
+						{{#if post.gallery.widgets}}
+							{{> post-layouts/blog/gallery post}}
+						{{/if}}
+						{{#if imagesGallery}}
+							{{> post-layouts/blog/images-gallery post}}
+						{{/if}}
+					</div>
+				</div>
 			</div>
-			{{/each}}
 		</div>
-	</div>
-	<div class="row hidden-xs">
-		<div class="technology-sub-nav">
-			<div data-slide="0" class="col-xs-4 text-center active">Composite Fusion</div>
-			<div data-slide="1" class="col-xs-4 text-center">Low Density Layer</div>
-			<div data-slide="2" class="col-xs-4 text-center">Nano Fusion</div>
-		</div>
-	</div>
-	<div class="row hidden-xs">
-		<div class="col-xs-12">
-			<div class="technology-sub owl-carousel owl-theme">
-				{{#each technology}}
-					{{> technology-section}}
-				{{/each}}
+		{{#if data.posts}}
+			<div class="row" style="margin-top:0">
+				<div class="col col-xs-12"><hr style="margin-bottom: 0px"/></div>
+				<div class="col col-xs-12">{{>blog-index}}</div>
 			</div>
-		</div>
-	</div>
-	{{#each technology}}
-		<div class="visible-xs">
-			{{> technology-section}}
-		</div>
-	{{/each}}
+		{{/if}}
+
+	
 	</div>
 </div><!-- end #technology -->
