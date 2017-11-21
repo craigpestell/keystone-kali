@@ -15,7 +15,14 @@
                                     .appendTo( $container )
                                     .{{key}}();*/
 							$container.owlCarousel({{{carousel.settings}}});
-
+							$container.find('.owl-item.active .banner-overlay').addClass('active');
+							$container.on('changed.owl.carousel', function(event) {
+								setTimeout(function(){
+									$container.find('.owl-item.active .banner-overlay').addClass('active');
+								}, 100);
+									
+								
+							});
 							{{#each carousel.widgets}}
 								if('{{type}}' === 'carousel') {
 									$container = $('#widget-{{key}} > .owl-carousel');

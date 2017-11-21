@@ -91,8 +91,19 @@ body {
 	top: 20%;
   }
   #technology .banner-overlay {
+	font-family: Gotham-Black, Arial, SansSerif;
 	top: calc(50% - 24px); //24px is font size of H1 I assume
+	-webkit-transition-duration: 1s;
+	transition-duration: 1s;
+	margin-left:-100%;
+	font-size: 36px;
   }
+  
+  
+  #technology .banner-overlay.active {
+  	margin-left:0;
+  }
+  
   #technology .banner-overlay h1{
 	font-size:16px;
 	letter-spacing:3px;
@@ -1071,7 +1082,7 @@ End Product Page
 }
 
 
-#technology .technology-sub-nav div{
+#technology .technology-sub-nav .color{
   cursor: default;
   text-transform: uppercase;
   padding:10px;
@@ -1079,10 +1090,15 @@ End Product Page
   border: 1px solid #FFF;
   color: #FFF;
   font-family: Gotham-Light;
+  -webkit-transition-duration: 1s; /* Safari */
+  transition-duration: 1s;
 }
-#technology .technology-sub-nav div:hover, #technology .technology-sub-nav div.active{
-  background-color: #FFF;
+#technology .technology-sub-nav .color:hover, #technology .technology-sub-nav .color.active{
+  background-color: lighten($brand-grey, 15%);;
   color: #000;
+}
+#technology .technology-sub-nav .color.active {
+	background-color: #FFF;  
 }
 
 #technology .technology.owl-carousel {
