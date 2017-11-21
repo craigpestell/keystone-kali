@@ -108,7 +108,30 @@
 			</div>
             
         </div>
-    </div>
+		{{#if data.mainPost}}
+			{{#with data.mainPost}}
+				{{#ifCond postLayout.key "==" "slide-one"}}
+					{{> post-layouts/blog/slide-one }}
+				{{else}}
+					{{#ifCond postLayout.key "==" "youtube-full"}}
+						{{> post-layouts/blog/youtube-full }}
+					{{else}}
+						{{> post-layouts/blog/post-basic}}
+					{{/ifCond}}
+				{{/ifCond}}
+				{{#if post.products}}
+					<div class="row">
+						<div class="col-xs-12 products">
+							{{#each post.products}}
+								{{> product-category-product}}
+							{{/each}}
+						</div>
+					</div>
+				{{/if}}
+			{{/with}}
+		{{/if}}
+
+	</div>
 	{{> product-posts}}
 	{{> product-blueimp-gallery-dom}}
 

@@ -41,6 +41,7 @@ Product.add({
 	imagesPerColorSwatch: {type: Number, note: 'Number of images for each color swatch.'},
 	colorways: {type: String, default: '', note: 'semi-colon delimited list of colorways'},
 	sizingChart: { type: Types.Relationship, ref: 'SizingChart' },
+	mainPost: { type: Types.Relationship, ref: 'Post', note: 'Post for Lower content (extra images, videos)' },
 	extra: { type: Types.Html, wysiwyg: true }
 });
 
