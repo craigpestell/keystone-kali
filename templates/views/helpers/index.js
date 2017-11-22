@@ -521,5 +521,21 @@ module.exports = function() {
 			return scope.fn(this);
 	};
 
+	_helpers.switch = function(value, options) {
+		console.log('switch', value, options);
+		this._switch_value_ = value;
+		var html = options.fn(this); // Process the body of the switch block
+		delete this._switch_value_;
+		return html;
+	};
+
+	_helpers.case = function(value, options) {
+		console.log('case', value, options);
+		if (value == this._switch_value_) {
+			return options.fn(this);
+		}
+	};
+	
+
 	return _helpers;
 };
