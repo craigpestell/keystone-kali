@@ -108,7 +108,14 @@
 			</div>
             
         </div>
-    </div>
+		{{#if data.mainPost}}
+			{{#with data.mainPost}}
+				{{> post-layout}}
+			{{/with}}
+		{{/if}}
+
+	</div>
+	
 	{{> product-posts}}
 	{{> product-blueimp-gallery-dom}}
 

@@ -522,7 +522,6 @@ module.exports = function() {
 	};
 
 	_helpers.switch = function(value, options) {
-		console.log('switch', value, options);
 		this._switch_value_ = value;
 		var html = options.fn(this); // Process the body of the switch block
 		delete this._switch_value_;
@@ -530,7 +529,6 @@ module.exports = function() {
 	};
 
 	_helpers.case = function(value, options) {
-		console.log('case', value, options);
 		if (value == this._switch_value_) {
 			return options.fn(this);
 		}

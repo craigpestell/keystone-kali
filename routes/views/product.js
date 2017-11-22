@@ -15,6 +15,19 @@ exports = module.exports = function (req, res) {
 	locals.section = 'product';
 
 
+	var loadMainPost = function(product, next){
+		var q = keystone.list('Post').model.findOne()
+			.where({_id: {$in: [product.mainPost]}})
+			.sort('-publishedDate')
+			.populate('author categories product postLayout gallery.widgets');
+
+		q.exec(function (err, results) {
+			locals.data.mainPost = results;
+			//console.log('results:', results);
+			next();
+		});
+	};
+	
 
 	// Load the posts
 	var loadPosts = function(product, next){
@@ -33,17 +46,21 @@ exports = module.exports = function (req, res) {
 
 	view.query('product', keystone.list('Product').model.findOne({slug:req.params.product})
 		.populate('canonicalDiscipline technologies features mainCategory subCategory sizingChart'))
-		.then(function (err, results, next) {
-			if(!results) {
+		.then(function (err, product, next) {
+			if(!product) {
 				next();
 			}else{
-				locals.page = results.mainCategory.key;
-				locals.subCategory = results.subCategory.key;
-				locals.data.page.title = results.name + ' - Kali Protectives';
+				locals.page = product.mainCategory.key;
+				locals.subCategory = product.subCategory.key;
+				locals.data.page.title = product.name + ' - Kali Protectives';
 			
 				if (err) return next(err);
 				
-				loadPosts(results, next);
+				loadPosts(product, function(){
+					loadMainPost(product, function(){
+						populatePost(product, next);
+					});
+				});
 			}
 		});
 	

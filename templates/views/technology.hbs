@@ -3,8 +3,9 @@
 			<div class="col col-xs-12">
 				<p><a href="/{{section}}">&larr; Back to <span style="text-transform:uppercase">{{section}}</span></a></p>
 				<hr style="margin-bottom:-15px;">
-				
+				{{#with post}}
 				{{> post-layouts/blog/post-full-width}}
+				{{/with}}
 			</div>
 		</div>
 		{{#if data.posts}}

@@ -1,30 +1,23 @@
-{{#switch post.postLayout.key}}
-	{{#case "slide-one"}}
-		{{> post-layouts/blog/slide-one post}}
-	{{/case}}
-	{{#case "youtube-full"}}
-		{{> post-layouts/blog/youtube-full post}}
-	{{/case}}
-	{{#case "technology"}}
-		{{> post-layouts/blog/technology post}}
-	{{/case}}
-	{{#case "post-full-width"}}
-		{{> post-layouts/blog/post-full-width post}}
-	{{/case}}
-	{{#case "post-basic"}}
-		{{> post-layouts/blog/post-basic post}}
-	{{/case}}
-	{{#default}}
-		{{> post-layouts/blog/post-basic post}}
-	{{/default}}
-{{/switch}}
-
+<div class="container">
+{{#with post}}
+	{{> post-layout}}
+{{/with}}
+</div>
 {{#if post.products}}
-<div class="row">
-	<div class="col-xs-12 products">
-		{{#each post.products}}
-			{{> product-category-product}}
-		{{/each}}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 products">
+			{{#each post.products}}
+				{{> product-category-product}}
+			{{/each}}
+		</div>
 	</div>
 </div>
 {{/if}}
+
+<div class="container">
+	<div class="row" style="margin-top:0">
+		<div class="col col-xs-12"><hr style="margin-bottom: 0px"/></div>
+		<div class="col col-xs-12">{{>blog-index}}</div>
+	</div>
+</div>
