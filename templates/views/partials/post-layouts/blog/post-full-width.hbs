@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col col-xs-12">
+		{{#if post.content.markdown.html}}
+			{{{post.content.markdown.html}}}
+		{{else}}
+			{{{post.content.extended}}}
+		{{/if}}
+	</div>
+	{{#if post.youtube}}
+		<div class="col col-xs-12">
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
+			</div>
+		</div>
+	{{/if}}
+	{{#if post.gallery}}
+		<div class="col col-xs-12">
+			{{#each post.gallery}}
+				<img data-src="{{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}}"
+					 src="" class="cld-responsive"/>
+			{{/each}}
+		</div>
+	{{/if}}
+	<div class="col col-xs-12">
+		{{#if post.gallery.widgets}}
+			{{> post-layouts/blog/gallery post}}
+		{{/if}}
+		{{#if imagesGallery}}
+			{{> post-layouts/blog/images-gallery post}}
+		{{/if}}
+	</div>
+</div>

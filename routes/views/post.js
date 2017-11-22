@@ -25,7 +25,7 @@ exports = module.exports = function (req, res) {
 		var q = Post.model.findOne({
 			//state: 'published',
 			key: locals.filters.post
-		}).populate('author categories product gallery.widgets');
+		}).populate('author categories product gallery.widgets postLayout');
 
 		q.exec(function (err, result) {
 			

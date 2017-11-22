@@ -1,17 +1,24 @@
-
-{{#ifCond postLayout.key "==" "slide-one"}}
-	{{> post-layouts/blog/slide-one post}}
-{{else}}
-	{{#ifCond postLayout.key "==" "youtube-full"}}
+{{#switch post.postLayout.key}}
+	{{#case "slide-one"}}
+		{{> post-layouts/blog/slide-one post}}
+	{{/case}}
+	{{#case "youtube-full"}}
 		{{> post-layouts/blog/youtube-full post}}
-	{{else}}
-		{{#ifCond postLayout.key "==" "technology"}}
-			{{> post-layouts/blog/technology post}}
-		{{else}}
-			{{> post-layouts/blog/post-basic post}}
-		{{/ifCond}}
-	{{/ifCond}}
-{{/ifCond}}
+	{{/case}}
+	{{#case "technology"}}
+		{{> post-layouts/blog/technology post}}
+	{{/case}}
+	{{#case "post-full-width"}}
+		{{> post-layouts/blog/post-full-width post}}
+	{{/case}}
+	{{#case "post-basic"}}
+		{{> post-layouts/blog/post-basic post}}
+	{{/case}}
+	{{#default}}
+		{{> post-layouts/blog/post-basic post}}
+	{{/default}}
+{{/switch}}
+
 {{#if post.products}}
 <div class="row">
 	<div class="col-xs-12 products">
