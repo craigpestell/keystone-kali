@@ -16,15 +16,12 @@ exports = module.exports = function (req, res) {
 
 
 	var loadMainPost = function(product, next){
-		console.log(product.mainPost);
 		var q = keystone.list('Post').model.findOne()
 			.where({_id: {$in: [product.mainPost]}})
 			.sort('-publishedDate')
 			.populate('author categories product postLayout gallery.widgets');
 
 		q.exec(function (err, results) {
-			console.log('mainPost:', results);
-			
 			locals.data.mainPost = results;
 			//console.log('results:', results);
 			next();

@@ -17,7 +17,7 @@ exports = module.exports = function (req, res) {
 		post: req.params.post,
 	};
 
-	console.log(req.originalUrl);
+	//console.log(req.originalUrl);
 	
 	// Load the current post
 	view.on('init', function (next) {
