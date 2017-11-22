@@ -1,0 +1,20 @@
+{{#switch postLayout.key}}
+	{{#case "slide-one"}}
+		{{> post-layouts/blog/slide-one}}
+	{{/case}}
+	{{#case "youtube-full"}}
+		{{> post-layouts/blog/youtube-full}}
+	{{/case}}
+	{{#case "technology"}}
+		{{> post-layouts/blog/technology}}
+	{{/case}}
+	{{#case "post-full-width"}}
+		{{> post-layouts/blog/post-full-width}}
+	{{/case}}
+	{{#case "post-basic"}}
+		{{> post-layouts/blog/post-basic}}
+	{{/case}}
+	{{#default}}
+		{{> post-layouts/blog/post-basic}}
+	{{/default}}
+{{/switch}}
