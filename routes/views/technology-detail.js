@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
 	locals.data = {};
 
 	// Init locals
-	locals.section = 'technology';
+	locals.section = 'technology-detail';
 	locals.filters = {
 		technology: req.params.technology,
 	};

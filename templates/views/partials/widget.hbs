@@ -29,14 +29,14 @@
 
 {{#ifCond type "==" "technology-subnav"}}
 	<div class="row hidden-xs">
-		<div class="technology-sub-nav">
+		<div class="col col-xs-12 technology-sub-nav">
 			<div data-slide="0" class="col-xs-4 text-center color active">Composite Fusion</div>
 			<div data-slide="1" class="col-xs-4 text-center color">Low Density Layer</div>
 			<div data-slide="2" class="col-xs-4 text-center color">Nano Fusion</div>
 		</div>
 	</div>
 	<div class="row hidden-xs">
-		<div class="col-xs-12">
+		<div class="col col-xs-12">
 			<div class="technology-sub owl-carousel owl-theme">
 				{{#each @root.technology}}
 					{{> technology-section}}

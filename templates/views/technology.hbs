@@ -1,20 +1,16 @@
 <div id="technology" class="container-fluid blog">
-		<div class="row" style="">
-			<div class="col col-xs-12">
-				<p><a href="/{{section}}">&larr; Back to <span style="text-transform:uppercase">{{section}}</span></a></p>
-				<hr style="margin-bottom:-15px;">
-				{{#with post}}
-				{{> post-layouts/blog/post-full-width}}
-				{{/with}}
-			</div>
+	{{#ifCond section "==" "technology-detail"}}
+		<p><a href="/{{section}}">&larr; Back to <span style="text-transform:uppercase">{{section}}</span></a></p>
+		<hr style="margin-bottom:-15px;">
+	{{/ifCond}}
+	{{#with post}}
+		{{> post-layouts/blog/post-full-width}}
+	{{/with}}
+	{{#if data.posts}}
+		<div class="row" style="margin-top:0">
+			<div class="col col-xs-12"><hr style="margin-bottom: 0px"/></div>
+			<div class="col col-xs-12">{{>blog-index}}</div>
 		</div>
-		{{#if data.posts}}
-			<div class="row" style="margin-top:0">
-				<div class="col col-xs-12"><hr style="margin-bottom: 0px"/></div>
-				<div class="col col-xs-12">{{>blog-index}}</div>
-			</div>
-		{{/if}}
-
+	{{/if}}
 	
-	</div>
 </div><!-- end #technology -->
