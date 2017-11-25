@@ -997,11 +997,16 @@ End Product Page
 #technology .banner-overlay-container {
   color: white;
   position: absolute;
-   
-  
   //text-align: center;
   width: 100%;
   //position:absolute; top:25%; left:110px; width:100%
+}
+#technology .banner-overlay-brain{
+  font-size: 80px;
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
+  margin: -20px 15% 0;
+  padding: 20px;
 }
 
 #technology .heading {
