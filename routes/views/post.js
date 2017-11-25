@@ -29,7 +29,7 @@ exports = module.exports = function (req, res) {
 
 		q.exec(function (err, result) {
 			
-			if(result.product){
+			if(result && result.product){
 				var  q = Product.model.findOne({_id: result.product}).populate('technologies mainCategory subCategory');
 
 				q.exec(function(err, product){
@@ -39,11 +39,13 @@ exports = module.exports = function (req, res) {
 						next(err);
 					});
 				})			
-			}else{
+			}else if(result){
 				populatePost(result, function(){
 					locals.post = result;
 					next(err);
 				});
+			}else{
+				next(err);
 			}
 	
 		});
@@ -59,11 +61,14 @@ exports = module.exports = function (req, res) {
 
 		q.exec(function (err, result) {
 
-			
+			if(result){			
 			populatePost(result, function(){
 				//locals.post = result;
 				next(err);
 			});
+			}else{
+				next(err);
+			}
 		
 
 		});
