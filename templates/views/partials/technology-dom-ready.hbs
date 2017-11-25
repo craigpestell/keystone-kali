@@ -8,19 +8,25 @@
 						var widget = {{{widget}}};
 						//console.log("{{../../key}}-{{@index}}");
 
-						if('{{type}}' === 'carousel'){
-							var $container = $('#widget-{{key}} > .owl-carousel');
+						if('{{type}}' === 'technology-subnav'){
+							var $container = $('#widget-technology-main-carousel > .owl-carousel');
 							//console.log($container);
 							/*$('<div></div>')
                                     .appendTo( $container )
                                     .{{key}}();*/
 							$container.owlCarousel({{{carousel.settings}}});
-							$container.find('.owl-item.active .banner-overlay').addClass('active');
-							$container.on('changed.owl.carousel', function(event) {
+							//$container.find('.owl-item .banner-overlay').addClass('animated');
+							$container.on('change.owl.carousel', function(event) {
+								//hide all banners
+								$(event.target).find('.owl-item .banner-overlay').css('display', 'none');
+								
 								setTimeout(function(){
-									$container.find('.owl-item.active .banner-overlay').addClass('active');
-								}, 100);
-									
+									$current = $(event.target).find('.owl-item.active .banner-overlay');
+									if($current.length){
+										$current.css('display', 'block');
+									}
+								},100);
+										
 								
 							});
 							{{#each carousel.widgets}}

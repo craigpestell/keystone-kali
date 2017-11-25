@@ -93,16 +93,16 @@ body {
   #technology .banner-overlay {
 	font-family: Gotham-Black, Arial, SansSerif;
 	top: calc(50% - 24px); //24px is font size of H1 I assume
-	-webkit-transition-duration: 1s;
-	transition-duration: 1s;
-	margin-left:-100%;
+	//-webkit-transition-duration: 1s;
+	//transition-duration: 1s;
+	//margin-left:-100%;
 	font-size: 36px;
   }
   
   
-  #technology .banner-overlay.active {
+  /*#technology .banner-overlay.active {
   	margin-left:0;
-  }
+  }*/
   
   #technology .banner-overlay h1{
 	font-size:16px;
@@ -134,7 +134,7 @@ body {
 	width: 480px;
 	top: 30%;
   }
-  #technology .banner-overlay {
+  #technology .banner-overlay-container {
 	top: calc(50% - 74px); //24px is font size of H1 I assume
   }
   
@@ -994,13 +994,13 @@ End Product Page
   position: relative;
 }
 
-#technology .banner-overlay {
+#technology .banner-overlay-container {
   color: white;
   position: absolute;
    
-  left: 4%;
+  
   //text-align: center;
-  width: 90%;
+  width: 100%;
   //position:absolute; top:25%; left:110px; width:100%
 }
 
