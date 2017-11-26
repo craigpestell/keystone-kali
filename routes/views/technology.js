@@ -106,7 +106,11 @@ exports = module.exports = function (req, res) {
 			.where('state', 'published')
 			.sort('-publishedDate')
 			.populate('author categories product postLayout gallery.widgets');
-		locals.data.category = '5a1a28f4ecddff59637a740c';
+		if(process.env.DO) {
+			locals.data.category = '5a1a5061bc13d294547da833';
+		}else{
+			locals.data.category = '5a1a28f4ecddff59637a740c';
+		}
 
 		if (locals.data.category) {
 			q.where('categories').in([locals.data.category]);

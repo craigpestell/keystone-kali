@@ -94,7 +94,11 @@ exports = module.exports = function (req, res) {
 			locals.data.category = '590804bee4027ba1787c6575';
 		}
 		if(req.originalUrl.indexOf('/technology/post/') === 0){
-			locals.data.category = '5a1a28f4ecddff59637a740c';
+			if(process.env.DO) {
+				locals.data.category = '5a1a5061bc13d294547da833';
+			}else{
+				locals.data.category = '5a1a28f4ecddff59637a740c';
+			}
 		}
 		
 		if (locals.data.category) {
