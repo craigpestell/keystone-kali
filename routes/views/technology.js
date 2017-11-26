@@ -94,17 +94,22 @@ exports = module.exports = function (req, res) {
 		});
 	});
 
-	// Load the posts
-	/*view.on('init', function (next) {
+// Load the posts
+	view.on('init', function (next) {
 
-		
+		/*var q = keystone.list('Post').paginate({
+			page: req.query.page || 1,
+			perPage: 10,
+			maxPages: 10
+		})*/
 		var q = keystone.list('Post').model.find()
 			.where('state', 'published')
 			.sort('-publishedDate')
 			.populate('author categories product postLayout gallery.widgets');
+		locals.data.category = '5a1a28f4ecddff59637a740c';
 
-		if (locals.filters.key) {
-			q.where('categories').in([locals.data.key]);
+		if (locals.data.category) {
+			q.where('categories').in([locals.data.category]);
 		}
 
 		q.exec(function (err, results) {
@@ -130,7 +135,8 @@ exports = module.exports = function (req, res) {
 			);
 
 		});
-	});*/
+
+	});
 
 
 	// Render the view

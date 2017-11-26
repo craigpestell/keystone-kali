@@ -13,6 +13,9 @@ exports = module.exports = function (req, res) {
 
 	// Init locals
 	locals.section = 'republik';
+	if(req.originalUrl.indexOf('/technology/post/') === 0){
+		locals.section = 'technology-detail';
+	}
 	locals.filters = {
 		post: req.params.post,
 	};
@@ -90,6 +93,10 @@ exports = module.exports = function (req, res) {
 		if(req.originalUrl.indexOf('/republik/post/') === 0){
 			locals.data.category = '590804bee4027ba1787c6575';
 		}
+		if(req.originalUrl.indexOf('/technology/post/') === 0){
+			locals.data.category = '5a1a28f4ecddff59637a740c';
+		}
+		
 		if (locals.data.category) {
 			q.where('categories').in([locals.data.category]);
 		}
