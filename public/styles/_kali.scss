@@ -90,30 +90,18 @@ body {
 	width: 90%;
 	top: 20%;
   }
-  #technology .banner-overlay {
+  #technology .banner-overlay-container {
 	font-family: Gotham-Black, Arial, SansSerif;
-	top: calc(50% - 24px); //24px is font size of H1 I assume
-	//-webkit-transition-duration: 1s;
-	//transition-duration: 1s;
-	//margin-left:-100%;
-	font-size: 2vw;
+	top: calc(50% - 24px); 
+	font-size: 1.2em;
+	left: 10%;
   }
-  
-  
-  /*#technology .banner-overlay.active {
-  	margin-left:0;
-  }*/
-  
-  #technology .banner-overlay h1{
-	font-size:16px;
-	letter-spacing:3px;
-	margin:3px 0px 1px 0px;
+  #technology .banner-overlay-container-brain{
+	top: calc(45%);
+	left:0;
+	font-size: 2em;
   }
-  #technology .intro {
-	font-size: 12px;
-	width:360px;
-  }
-  
+
 }
 
 @media (min-width: 768px) {
@@ -130,34 +118,14 @@ body {
 	font-size: 0.8em;
   }
 
-  #technology .heading{
-	width: 480px;
-	top: 30%;
-  }
   #technology .banner-overlay-container {
 	top: calc(50% - 74px); //24px is font size of H1 I assume
-	left: 10%
+	font-size: 1.4em;
   }
-  
   #technology .banner-overlay-container-brain{
-	left:0;
+	top: calc(45%);
+	font-size: 2.4em;
   }
-  
-  #technology .banner-overlay h1{
-	font-size:20px;
-	height:20px;
-	line-height:20px;
-	letter-spacing:5px;
-	margin:4px 0px 2px 0px;
-  }
-  #technology .intro {
-	font-size: 14px;
-	width:480px;
-  }
-  .technology-icon-nav title {
-	height:20px;
-  }
-   
 }
 
 @media (min-width: 992px) {
@@ -175,17 +143,12 @@ body {
   #technology .heading{
 	width: 560px;
   }
-  
-  #technology .banner-overlay h1{
-	font-size:24px;
-	height:24px;
-	line-height:24px;
-	letter-spacing:6px;
-	margin:6px 0px 5px 0px;
+  #technology .banner-overlay-container{
+	font-size: 1.6em;
   }
-  #technology .intro {
-	font-size: 16px;
-	width:560px;
+  #technology .banner-overlay-container-brain{
+	top: calc(45%);
+	font-size: 3em;
   }
 }
 
@@ -202,16 +165,12 @@ body {
 	width: 700px;
   }
 
-  #technology .banner-overlay h1{
-	font-size:30px;
-	height:30px;
-	line-height:30px;
-	letter-spacing:6px;
-	margin:8px 0px 4px 0px;
+  #technology .banner-overlay-container{
+	font-size: 1.8em;
   }
-  #technology .intro {
-	font-size: 20px;
-	width:700px;
+  #technology .banner-overlay-container-brain{
+	top: calc(45%);
+	font-size: 4em;
   }
 }
 
@@ -1009,8 +968,7 @@ End Product Page
 
 
 #technology .banner-overlay-brain{
-  font-size: 16px;
-  font-size: 4vw;
+  //font-size: 4vw;
   border-top: 4px solid black;
   border-bottom: 4px solid black;
   margin: -20px 10% 0;
@@ -1127,13 +1085,13 @@ End Product Page
   position: absolute;
   top: 50%;
   margin-top: -27px; // Half of the prev/next buttons height here in negatives to center them perfectly
-  font-size: 2vw;
+  //font-size: 2vw;
   background-color: $brand-primary;
 }
 
 #technology .owl-carousel .owl-prev .glyphicon,
 #technology .owl-carousel .owl-next .glyphicon{
-  top:5px;
+  top:2px;
 }
 #technology .owl-carousel .owl-prev {
   left: 0;

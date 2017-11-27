@@ -14,14 +14,14 @@
 	</div>
 {{/if}}-->
 {{#if gallery.images}}
-<div class="container-fluid">
+<div class="container">
 	{{#each gallery}}
 		<img data-src="{{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}}"
 			 src="" class="cld-responsive"/>
 	{{/each}}
 </div>
 {{/if}}
-<div class="container-fluid">
+<div class="container">
 	{{#if gallery.widgets}}
 		{{> post-layouts/blog/gallery}}
 	{{/if}}
