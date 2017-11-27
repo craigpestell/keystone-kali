@@ -35,6 +35,7 @@
 	{{/each}}
 {{/ifCond}}
 {{#ifCond imagesGallery.layout "==" "basic"}}
+	<div class="container">
 		{{#each imagesGallery.images}}
 		<div class="row">
 			<div class="col col-xs-12">
@@ -42,5 +43,6 @@
 			</div>
 		</div>
 		{{/each}}
+	</div>
 {{/ifCond}}
 <!--//end images-gallery-->

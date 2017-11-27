@@ -1,25 +1,32 @@
-<div class="row">
-	<div class="col col-xs-12">
-		{{#if content.markdown.html}}
-			{{{content.markdown.html}}}
-		{{else}}
-			{{{content.extended}}}
-		{{/if}}
-	</div>
-	{{#if youtube}}
+{{#if content.extended}}
+	<div class="row">
 		<div class="col col-xs-12">
-			<div class="embed-responsive embed-responsive-16by9">
-				<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
-			</div>
+			{{{content.extended}}}
 		</div>
-	{{/if}}
-	
-	<div class="col col-xs-12">
-		{{#if gallery.widgets}}
-			{{> post-layouts/blog/gallery}}
-		{{/if}}
-		{{#if imagesGallery}}
-			{{> post-layouts/blog/images-gallery}}
-		{{/if}}
 	</div>
+{{/if}}
+	
+<!--{{#if youtube}}
+	<div class="col col-xs-12">
+		<div class="embed-responsive embed-responsive-16by9">
+			<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
+		</div>
+	</div>
+{{/if}}-->
+
+{{#if gallery.images}}
+<div class="container">
+	{{#each gallery}}
+		<img data-src="{{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}}"
+			 src="" class="cld-responsive"/>
+	{{/each}}
 </div>
+{{/if}}
+
+{{#if gallery.widgets}}
+	{{> post-layouts/blog/gallery}}
+{{/if}}
+
+{{#if imagesGallery}}
+	{{> post-layouts/blog/images-gallery}}
+{{/if}}

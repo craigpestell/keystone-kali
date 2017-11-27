@@ -533,7 +533,20 @@ module.exports = function() {
 			return options.fn(this);
 		}
 	};
-	
+
+	_helpers.container = function(_this, options){
+		var fn;
+		var container = "container";
+		if(arguments.length > 1 && typeof arguments[1].fn === "function"){
+			fn = arguments[1].fn;
+			
+			container = _this.container;
+		}else{
+			fn = _this.fn;
+		};
+		var output = '<div class="' + container + '">' + fn(this) + '</div>';
+		return new hbs.SafeString(output);
+	};
 
 	return _helpers;
 };

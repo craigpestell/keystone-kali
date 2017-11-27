@@ -1,8 +1,28 @@
 <div class="container">
+	{{#ifCond section "==" "technology-detail"}}
+		<div class="row">
+			<div class="col col-xs-12">
+				<p><a href="/technology">&larr; Back to Technology</a></p>
+				<hr/>				
+			</div>
+		</div>
+	{{/ifCond}}
+	{{#ifCond section "==" "republik"}}
+		<div class="row">
+			<div class="col col-xs-12">
+				<p><a href="/{{section}}">&larr; Back to Republik</a></p>
+				<hr/>
+			</div>
+		</div>
+
+	{{/ifCond}}
+</div>
+
 {{#with post}}
+	POST
 	{{> post-layout}}
 {{/with}}
-</div>
+
 {{#if post.products}}
 <div class="container">
 	<div class="row">

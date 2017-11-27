@@ -1,7 +1,8 @@
 <script type="text/javascript">
 	
 	$(document).ready(function () {
-		//$(".owl-carousel").owlCarousel();
+		//$(".technology.owl-carousel").owlCarousel({items: 1, nav: true});
+		//$(".technology-sub.owl-carousel").owlCarousel({items: 3, nav: true});
 		{{#each data.posts.results}}
 			{{#each gallery.widgets}}
 			{{#ifCond this.key "!=" "null"}}

@@ -12,67 +12,66 @@ exports = module.exports = function (req, res) {
 	locals.data = {};
 
 	// Init locals
-	locals.section = 'republik';
-	if(req.originalUrl.indexOf('/technology/post/') === 0){
-		locals.section = 'technology-detail';
-	}
+	locals.section = 'technology-detail';
 	locals.filters = {
-		post: req.params.post,
+		technology: req.params.technology,
 	};
 
 	//console.log(req.originalUrl);
-	
+
 	// Load the current post
 	view.on('init', function (next) {
 
 		var q = Post.model.findOne({
 			//state: 'published',
-			key: locals.filters.post
-		}).populate('author categories product gallery.widgets postLayout');
+			key: locals.filters.technology
+		}).populate('author categories product gallery.widgets');
 
 		q.exec(function (err, result) {
-			
-			if(result && result.product){
-				var  q = Product.model.findOne({_id: result.product}).populate('technologies mainCategory subCategory');
 
-				q.exec(function(err, product){
-					locals.product = product;
+			if(result){
+				if(result.product){
+					var  q = Product.model.findOne({_id: result.product}).populate('technologies mainTechnology subTechnology');
+	
+					q.exec(function(err, product){
+						locals.product = product;
+						populatePost(result, function(){
+							locals.post = result;
+							next(err);
+						});
+					})
+				}else{
 					populatePost(result, function(){
 						locals.post = result;
 						next(err);
 					});
-				})			
-			}else if(result){
-				populatePost(result, function(){
-					locals.post = result;
-					next(err);
-				});
+				}
 			}else{
 				next(err);
 			}
-	
+
 		});
 	});
-	
+
 	// Load products
 	view.on('init', function (next) {
 
 		var q = Post.model.findOne({
 			//state: 'published',
-			key: locals.filters.post
+			key: locals.filters.technology
 		});//.populate('products');
 
 		q.exec(function (err, result) {
 
-			if(result){			
-			populatePost(result, function(){
-				//locals.post = result;
-				next(err);
-			});
+			if(result){
+				populatePost(result, function(){
+					//locals.post = result;
+					next(err);
+				});
 			}else{
 				next(err);
 			}
-		
+
 
 		});
 	});
@@ -90,19 +89,9 @@ exports = module.exports = function (req, res) {
 			.where('state', 'published')
 			.sort('-publishedDate')
 			.populate('author categories product postLayout gallery.widgets');
-		if(req.originalUrl.indexOf('/republik/post/') === 0){
-			locals.data.category = '590804bee4027ba1787c6575';
-		}
-		if(req.originalUrl.indexOf('/technology/post/') === 0){
-			if(process.env.DO) {
-				locals.data.category = '5a1a5061bc13d294547da833';
-			}else{
-				locals.data.category = '5a1a28f4ecddff59637a740c';
-			}
-		}
 		
-		if (locals.data.category) {
-			q.where('categories').in([locals.data.category]);
+		if (locals.filters.technology) {
+			q.where('categories').in([locals.data.technology]);
 		}
 
 		q.exec(function (err, results) {
@@ -128,7 +117,6 @@ exports = module.exports = function (req, res) {
 			);
 
 		});
-
 	});
 
 

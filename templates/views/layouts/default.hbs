@@ -106,7 +106,7 @@
     <meta name="google-site-verification" content="dI-RltPLU3KpavtHz3jFnU2daR9kCYpOsxYOM5s-Wh8" />
 </head>
 <body>
-<div class="container{{#ifCond section "==" "home"}}{{#if discipline}} fullpage-nav{{/if}}{{/ifCond}}{{#ifCond section "==" "technology"}} fullpage-nav{{/ifCond}}">
+<div class="container{{#ifCond section "==" "home"}}{{#if discipline}} fullpage-nav{{/if}}{{/ifCond}}">
 	{{> nav}}
 </div>
 
@@ -138,9 +138,7 @@
 	{{{body}}}
 </div>
 {{#ifCond section "!=" "home"}}
-	{{#ifCond section "!=" "technology"}}
-		{{> footer}}
-	{{/ifCond}}
+	{{> footer}}
 {{/ifCond}}
 {{#ifCond section "==" "home"}}
 	{{#unless discipline}}
@@ -166,13 +164,6 @@
 		<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.extensions.min.js"></script>
 	{{/if}}
 {{/ifCond}}
-{{#ifCond section "==" "technology"}}
-	<script src="/js/jquery.easing/js/jquery.easing.js"></script>
-	<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
-	<script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
-	<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.js"></script>
-	<script type="text/javascript" src="/js/fullpage.js/dist/jquery.fullpage.extensions.min.js"></script>
-{{/ifCond}}
 
 {{#ifCond section "==" "product"}}
 	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js" defer></script>
@@ -180,6 +171,12 @@
 {{/ifCond}}
 
 {{#ifCond section "==" "republik"}}
+	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
+{{/ifCond}}
+{{#ifCond section "==" "technology"}}
+	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
+{{/ifCond}}
+{{#ifCond section "==" "technology-detail"}}
 	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 
@@ -228,38 +225,43 @@
     </script>
 
 {{/ifCond}}
-{{#ifCond section '==' 'technology' }}
-    <script type="text/javascript">
-        $(document).ready(function () {
-			if(screen.width > 480) {
-				$('#fullpage').fullpage({
-					//sectionsColor: ['#f2f2f2','#4BBFC3','#7BAABE','whitesmoke'],
-					css3: true,
-					
-					slidesNavigation: true,
-					slidesNavPosition: 'top',
-					lazyLoading: false,
-					loopBottom: true,
-					responsiveWidth:768,
-					//scrollBar: true,
-					onLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
-						var length = $('.fp-section').length;
-						if(index == length){
-							$('.arrowDown').css({color:'#FFF'});
-						}else{
-							$('.arrowDown').css({color:'#000'});
-						}
-					},
 
-					//interlockedSlides: true,
-					//responsiveSlides: true
-				});
-				$('.arrowDown').click(function () {
-					$.fn.fullpage.moveSectionDown();
-				});
-			}
-        });
-    </script>
+{{#ifCond section '==' 'technology' }}
+	{{> technology-dom-ready}}
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			//$(".technology.owl-carousel").owlCarousel({items: 1, nav: true});
+			//$(".technology-sub.owl-carousel").owlCarousel({items: 3, nav: true});
+			
+				{{#each post.gallery.widgets}}
+					{{#ifCond this.key "!=" "null"}}
+						$(function() {
+							var widget = {{{widget}}};
+							//console.log("{{../../key}}-{{@index}}");
+
+							if('{{type}}' === 'carousel'){
+								var $container = $('#widget-{{key}} > .owl-carousel');
+								//console.log($container);
+								/*$('<div></div>')
+                                        .appendTo( $container )
+                                        .{{key}}();*/
+								$container.owlCarousel({{{carousel.settings}}});
+
+								{{#each carousel.widgets}}
+									if('{{type}}' === 'carousel') {
+										$container = $('#widget-{{key}} > .owl-carousel');
+										$container.owlCarousel({{{carousel.settings}}});
+									}
+								{{/each}}
+							}
+						});
+					{{/ifCond}}
+				{{/each}}
+			
+		});
+	</script>
+
 
 {{/ifCond}}
 

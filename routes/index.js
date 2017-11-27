@@ -134,6 +134,8 @@ exports = module.exports = function(app) {
 	app.get(['/subdomain/:discipline/', '/'], routes.views.index);
 	app.get(['/subdomain/:discipline/dealers', '/dealers'], routes.views['dealer-locator']);
 	app.get(['/subdomain/:discipline/technology', '/technology'], routes.views.technology);
+	app.get(['/subdomain/:discipline/technology/:technology?', '/technology/:technology?'], routes.views['technology-detail']);
+	app.all(['/subdomain/:discipline/technology/post/:post', '/technology/post/:post'], routes.views.post);
 	app.get(['/subdomain/:discipline/republik/:category?', '/republik/:category?'], routes.views.republik);
 	app.all(['/subdomain/:discipline/republik/post/:post', '/republik/post/:post'], routes.views.post);
 	
@@ -222,7 +224,7 @@ exports = module.exports = function(app) {
 	};
 
 
-	if (keystone.get('env') != 'production'){
+	if (keystone.get('env') !== 'production'){
 		mapConfig.url = 'dev.' + mapConfig.url;
 		mapConfig.disallow = true;
 		mapConfig.route['ALL'].disallow = true;

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="container">
 	<div class="col col-xs-12 col-sm-3">
 		<div class="row">
 			<div class="col col-xs-12">
@@ -8,13 +8,183 @@
 				{{/if}}
 			</div>
 		</div>
+		
 	</div>
 	<div class="col col-xs-12 col-sm-9">
 		{{#if gallery.widgets}}
-			{{> post-layouts/blog/gallery}}
+			<!--gallery-->
+			{{#ifCond gallery.layout "==" "republik-1" }}
+				<div class="col col-xs-12">
+					{{key}}
+					{{> post-layouts/blog/gallery-republik-1}}
+				</div>
+			{{/ifCond}}
+
+			{{#ifCond gallery.layout "==" "carousel" }}
+				<!--carousel-->
+				<div class="col col-xs-12">
+					{{key}}
+					{{> post-layouts/blog/gallery-carousel}}
+				</div>
+			{{/ifCond}}
+
+			{{#ifCond gallery.layout "==" "blocks"}}
+				{{#each gallery.widgets}}
+					<div class="col col-xs-4">
+						<div data-post-gallery-id="{{../key}}-{{@index}}">
+							{{> widget}}
+						</div>
+					</div>
+				{{/each}}
+			{{/ifCond}}
+			{{#ifCond gallery.layout "==" "left"}}
+				{{#each gallery.widgets}}
+					{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
+					<div data-post-gallery-id="{{../key}}-{{@index}}">
+						{{> widget}}
+					</div>
+				</div>
+				{{/each}}
+			{{/ifCond}}
+			{{#ifCond gallery.layout "==" "right"}}
+				{{#each gallery.widgets}}
+					{{#if @first}}<div class="col col-xs-4">{{else}}<div class="col col-xs-8">{{/if}}
+					<div data-post-gallery-id="{{../key}}-{{@index}}">
+						{{> widget}}
+					</div>
+				</div>
+				{{/each}}
+			{{/ifCond}}
+			{{#ifCond gallery.layout "==" "basic"}}
+				<!--basic-->
+				{{#each gallery.widgets}}
+					<div class="row">
+						<div class="col-xs-12">
+							<div data-post-gallery-id="{{../key}}-{{@index}}">
+								<!--widget-->
+								<div class="widget widget-{{type}}" id="widget-{{key}}">
+									<!--<h1>{{key}}</h1>-->
+									{{#ifCond type "==" "image"}}
+										{{#if href}}<a href="{{href}}">{{/if}}
+										{{#if contentHtml}}{{{contentHtml}}}{{/if}}
+										<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto"}}}"
+											 src="" class="cld-responsive"/>
+										{{#if href}}</a>{{/if}}
+									{{/ifCond}}
+									{{#ifCond type "==" "html"}}
+										{{{contentHtml}}}
+									{{/ifCond}}
+									{{#ifCond type "==" "youtube"}}
+										<div class="embed-responsive embed-responsive-16by9">
+											<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
+										</div>
+									{{/ifCond}}
+
+									{{#ifCond type "==" "carousel"}}
+										<div class="owl-carousel owl-theme">
+											{{#each carousel.widgets}}
+												<div class="widget widget-{{type}}" id="widget-{{key}}">
+													{{#ifCond type "==" "image"}}
+														{{#if href}}<a href="{{href}}">{{/if}}
+														{{#if contentHtml}}{{{contentHtml}}}{{/if}}
+														<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto"}}}"
+															 src="" class="cld-responsive"/>
+														{{#if href}}</a>{{/if}}
+													{{/ifCond}}
+													{{#ifCond type "==" "html"}}
+														{{{contentHtml}}}
+													{{/ifCond}}
+													{{#ifCond type "==" "youtube"}}
+														<div class="embed-responsive embed-responsive-16by9">
+															<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
+														</div>
+													{{/ifCond}}
+												</div>
+											{{/each}}
+										</div>
+									{{/ifCond}}
+
+									{{#ifCond type "==" "technology-subnav"}}
+										<div class="row">
+											<div class="col col-xs-12 technology-sub-nav">
+												<div data-slide="0" class="col-xs-4 text-center color active">Composite Fusion</div>
+												<div data-slide="1" class="col-xs-4 text-center color">Low Density Layer</div>
+												<div data-slide="2" class="col-xs-4 text-center color">Nano Fusion</div>
+											</div>
+										</div>
+										<div class="container">
+											<div class="row">
+												<div class="col col-xs-12">
+													<div class="technology-sub owl-carousel owl-theme">
+														{{#each @root.technology}}
+															{{> technology-section}}
+														{{/each}}
+													</div>
+												</div>
+											</div>
+										</div>
+									{{/ifCond}}
+								</div>
+								<!--//end widget-->
+
+							</div>
+						</div>
+					</div>
+				{{/each}}
+			{{/ifCond}}
+			<!--//end gallery-->
+
 		{{/if}}
 		{{#if imagesGallery}}
-			{{> post-layouts/blog/images-gallery}}
+			<div class="row">
+			<!--images-gallery-->
+			{{#ifCond imagesGallery.layout "==" "republik-1" }}
+				<div class="col col-xs-12">
+					{{key}}
+					{{> post-layouts/blog/images-gallery-republik-1 this}}
+				</div>
+			{{/ifCond}}
+
+			{{#ifCond imagesGallery.layout "==" "carousel" }}
+				<div class="col col-xs-12">
+					{{key}}
+					{{> post-layouts/blog/images-gallery-carousel this}}
+				</div>
+			{{/ifCond}}
+
+			{{#ifCond imagesGallery.layout "==" "blocks"}}
+				{{#each imagesGallery}}
+					<div class="col col-xs-4">
+						<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+					</div>
+				{{/each}}
+			{{/ifCond}}
+			{{#ifCond imagesGallery.layout "==" "left"}}
+				{{#each imagesGallery}}
+					{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
+					<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+				</div>
+				{{/each}}
+			{{/ifCond}}
+			{{#ifCond imagesGallery.layout "==" "right"}}
+				{{#each imagesGallery}}
+					{{#if @first}}<div class="col col-xs-4">{{else}}<div class="col col-xs-8">{{/if}}
+					<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+				</div>
+				{{/each}}
+			{{/ifCond}}
+			{{#ifCond imagesGallery.layout "==" "basic"}}
+					{{#each imagesGallery.images}}
+						<div class="row">
+							<div class="col col-xs-12">
+								<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+							</div>
+						</div>
+					{{/each}}
+			{{/ifCond}}
+			</div>
+			<!--//end images-gallery-->
+
 		{{/if}}
 	</div>
 </div>

@@ -90,19 +90,18 @@ body {
 	width: 90%;
 	top: 20%;
   }
-  #technology .banner-overlay {
-	top: calc(50% - 24px); //24px is font size of H1 I assume
+  #technology .banner-overlay-container {
+	font-family: Gotham-Black, Arial, SansSerif;
+	top: calc(50% - 24px); 
+	font-size: 1.2em;
+	left: 10%;
   }
-  #technology .banner-overlay h1{
-	font-size:16px;
-	letter-spacing:3px;
-	margin:3px 0px 1px 0px;
+  #technology .banner-overlay-container-brain{
+	top: calc(45%);
+	left:0;
+	font-size: 2em;
   }
-  #technology .intro {
-	font-size: 12px;
-	width:360px;
-  }
-  
+
 }
 
 @media (min-width: 768px) {
@@ -119,29 +118,14 @@ body {
 	font-size: 0.8em;
   }
 
-  #technology .heading{
-	width: 480px;
-	top: 30%;
-  }
-  #technology .banner-overlay {
+  #technology .banner-overlay-container {
 	top: calc(50% - 74px); //24px is font size of H1 I assume
+	font-size: 1.4em;
   }
-  
-  #technology .banner-overlay h1{
-	font-size:20px;
-	height:20px;
-	line-height:20px;
-	letter-spacing:5px;
-	margin:4px 0px 2px 0px;
+  #technology .banner-overlay-container-brain{
+	top: calc(45%);
+	font-size: 2.4em;
   }
-  #technology .intro {
-	font-size: 14px;
-	width:480px;
-  }
-  .technology-icon-nav title {
-	height:20px;
-  }
-   
 }
 
 @media (min-width: 992px) {
@@ -159,17 +143,12 @@ body {
   #technology .heading{
 	width: 560px;
   }
-  
-  #technology .banner-overlay h1{
-	font-size:24px;
-	height:24px;
-	line-height:24px;
-	letter-spacing:6px;
-	margin:6px 0px 5px 0px;
+  #technology .banner-overlay-container{
+	font-size: 1.6em;
   }
-  #technology .intro {
-	font-size: 16px;
-	width:560px;
+  #technology .banner-overlay-container-brain{
+	top: calc(45%);
+	font-size: 3em;
   }
 }
 
@@ -186,16 +165,12 @@ body {
 	width: 700px;
   }
 
-  #technology .banner-overlay h1{
-	font-size:30px;
-	height:30px;
-	line-height:30px;
-	letter-spacing:6px;
-	margin:8px 0px 4px 0px;
+  #technology .banner-overlay-container{
+	font-size: 1.8em;
   }
-  #technology .intro {
-	font-size: 20px;
-	width:700px;
+  #technology .banner-overlay-container-brain{
+	top: calc(45%);
+	font-size: 4em;
   }
 }
 
@@ -232,7 +207,7 @@ h4 {text-transform: none;}
   top: 30%;
   left: 15px;
   width: 26%;
-  color: white;
+  //color: white;
   font-family: Gotham-Light, Arial, SansSerif;
 }
 
@@ -757,7 +732,7 @@ End Product Page
   margin-bottom: 15px;
 }
 
-.product-main .more-info, .blog .buy-button, .product-main .buy-button {
+#technology .more-info, .product-main .more-info, .blog .buy-button, .product-main .buy-button {
   text-transform: uppercase;
   font-size: 18px;
   text-align: center;
@@ -983,14 +958,24 @@ End Product Page
   position: relative;
 }
 
-#technology .banner-overlay {
+#technology .banner-overlay-container {
   color: white;
   position: absolute;
-   
-  left: 4%;
   //text-align: center;
-  width: 90%;
+  width: 100%;
   //position:absolute; top:25%; left:110px; width:100%
+}
+
+
+#technology .banner-overlay-brain{
+  //font-size: 4vw;
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
+  margin: -20px 10% 0;
+  //padding: 20px;
+  display:inline;
+  color: black;
+  white-space: nowrap;
 }
 
 #technology .heading {
@@ -1069,6 +1054,55 @@ End Product Page
 .technology-icon-nav .technology-icon-nav-item:hover .tertiary-image img{
   padding: 0px;
 }
+
+#technology .technology-sub-nav .color{
+  cursor: default;
+  text-transform: uppercase;
+  padding:10px;
+  background-color: $brand-primary;
+  border: 1px solid #FFF;
+  color: #FFF;
+  font-size: 1.2em;
+  font-family: Gotham-Light;
+  -webkit-transition-duration: 1s; /* Safari */
+  transition-duration: 1s;
+}
+#technology .technology-sub-nav .color:hover, #technology .technology-sub-nav .color.active{
+  background-color: lighten($brand-grey, 15%);;
+  color: #000;
+}
+#technology .technology-sub-nav .color.active {
+	background-color: #FFF;  
+}
+
+#technology .technology.owl-carousel {
+  position: relative;
+}
+
+#technology .owl-carousel .owl-prev,
+#technology .owl-carousel .owl-next {
+  position: absolute;
+  top: 50%;
+  margin-top: -27px; // Half of the prev/next buttons height here in negatives to center them perfectly
+  //font-size: 2vw;
+  background-color: $brand-primary;
+}
+
+#technology .owl-carousel .owl-prev .glyphicon,
+#technology .owl-carousel .owl-next .glyphicon{
+  top:2px;
+}
+#technology .owl-carousel .owl-prev {
+  left: 0;
+}
+
+#technology .owl-carousel .owl-next {
+  right: 0;
+}
+#technology .owl-theme .owl-dots .owl-dot.active span, #technology .owl-theme .owl-dots .owl-dot:hover span{
+  background-color: $brand-primary;
+}
+//#technology .owl-prev i, #technology .owl-next i {transform : scale(1,6); color: #ccc;}
 
 /* END Technology page*/
 

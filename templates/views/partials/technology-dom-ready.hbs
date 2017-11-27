@@ -1,8 +1,74 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		$('.technology.banner, .technology.technology-icon-nav').imagesLoaded(function(){
-            //$('.gallery-icon:not(.cld-responsive)').addClass('cld-responsive');
-            //$.cloudinary.responsive();
+		console.log('tech dom-ready');
+		{{#each post}}
+			{{#each gallery.widgets}}
+				{{#ifCond this.key "!=" "null"}}
+					$(function() {
+						var widget = {{{widget}}};
+						//console.log("{{../../key}}-{{@index}}");
+
+						var $container = $('#widget-technology-main-carousel > .owl-carousel');
+						//console.log($container);
+						/*$('<div></div>')
+								.appendTo( $container )
+								.{{key}}();*/
+						$container.owlCarousel({{{carousel.settings}}});
+						//$container.find('.owl-item .banner-overlay').addClass('animated');
+						$container.on('change.owl.carousel', function(event) {
+							//hide all banners
+							$(event.target).find('.owl-item .banner-overlay').css('display', 'none');
+							
+							setTimeout(function(){
+								$current = $(event.target).find('.owl-item.active .banner-overlay');
+								if($current.length){
+									$current.css('display', 'block');
+								}
+							},100);
+									
+							
+						});
+						{{#each carousel.widgets}}
+							if('{{type}}' === 'carousel') {
+								$container = $('#widget-{{key}} > .owl-carousel');
+								$container.owlCarousel({{{carousel.settings}}});
+							}else{
+								if('{{widget}}') {
+
+									{{{widget}}}
+								}
+							}
+						{{/each}}
+					
+					});
+				{{/ifCond}}
+			{{/each}}
+		{{/each}}
+
+
+		$("#widget-technology-main-carousel .owl-carousel").owlCarousel({
+			items: 1, 
+			nav: true,
+			dots: false,
+			//margin:10,
+			navText : ["<i class='glyphicon glyphicon-menu-left'></i>","<i class='glyphicon glyphicon-menu-right'></i>"]
 		});
+		
+		$(".technology-sub.owl-carousel").owlCarousel({
+				items: 1, 
+				dots: false,
+				mouseDrag: false,
+				touchDrag: true
+			});
+		$(".technology-sub-nav div").click(function(e){
+			var $target = $(e.target);
+			var slide = $target.data('slide');
+
+			$(".technology-sub-nav div").removeClass('active');
+			$target.addClass('active');
+			
+			$('.technology-sub.owl-carousel').trigger('to.owl.carousel', slide);
+		});
+		
     });
 </script>
