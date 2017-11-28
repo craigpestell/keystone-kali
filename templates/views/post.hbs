@@ -1,4 +1,4 @@
-<div class="container">
+{{#container}}
 	{{#ifCond section "==" "technology-detail"}}
 		<div class="row">
 			<div class="col col-xs-12">
@@ -16,15 +16,14 @@
 		</div>
 
 	{{/ifCond}}
-</div>
+{{/container}}
 
 {{#with post}}
-	POST
 	{{> post-layout}}
 {{/with}}
 
 {{#if post.products}}
-<div class="container">
+{{#container}}
 	<div class="row">
 		<div class="col-xs-12 products">
 			{{#each post.products}}
@@ -32,12 +31,12 @@
 			{{/each}}
 		</div>
 	</div>
-</div>
+{{/container}}
 {{/if}}
 
-<div class="container">
+{{#container}}
 	<div class="row" style="margin-top:0">
 		<div class="col col-xs-12"><hr style="margin-bottom: 0px"/></div>
 		<div class="col col-xs-12">{{>blog-index}}</div>
 	</div>
-</div>
+{{/container}}

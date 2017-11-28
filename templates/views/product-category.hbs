@@ -1,9 +1,8 @@
 <!-- if products -->
 {{#if products}}
-	{{json nav-sub-categories}}
 	{{> nav-sub-categories navSubLinks}}
-
-    <div class="container products">
+	{{#container}}
+    <div class="products">
 		{{#each products}}
 			<div class="col-xs-12">
 				<div class="product-category-title">
@@ -26,6 +25,7 @@
             
 		{{/each}}
     </div>
+	{{/container}}
 {{else}}
     <!-- else -->
     <h3 class="text-muted">No products exist.</h3>

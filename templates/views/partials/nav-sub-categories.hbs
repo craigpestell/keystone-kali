@@ -1,6 +1,7 @@
 <!-- subnav here -->
+<div class="container-fluid">
 <nav id="nav-product-categories" class="navbar navbar-static-top hidden-xs subnav" role="navigation">
-	<div class="container">
+	{{#container}}
 		<ul class="navbar navbar-nav">
 		{{#each this}}
 			{{#if name}}
@@ -10,5 +11,6 @@
 			{{/if}}
 		{{/each}}
 		</ul>
-    </div>
+	{{/container}}
 </nav>
+</div>

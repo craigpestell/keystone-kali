@@ -37,7 +37,9 @@
 				<div class="widget widget-{{type}}" id="widget-{{key}}">
 					{{#ifCond type "==" "image"}}
 						{{#if href}}<a href="{{href}}">{{/if}}
-						{{#if contentHtml}}{{{contentHtml}}}{{/if}}
+						{{#if contentHtml}}
+							{{{contentHtml}}}
+						{{/if}}
 						<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto"}}}"
 							 src="" class="cld-responsive"/>
 						{{#if href}}</a>{{/if}}
@@ -58,23 +60,22 @@
 {{/ifCond}}
 
 {{#ifCond type "==" "technology-subnav"}}
-	{{#container this}}
 	<div class="widget widget-{{type}}" id="widget-{{key}}">
-		<div class="row">
-			<div class="col col-xs-12 technology-sub-nav">
-				<div data-slide="0" class="col-xs-4 text-center color active">Composite Fusion</div>
-				<div data-slide="1" class="col-xs-4 text-center color">Low Density Layer</div>
-				<div data-slide="2" class="col-xs-4 text-center color">Nano Fusion</div>
-			</div>
+	{{#container this}}
+		<div class="technology-sub-nav">
+			<div data-slide="0" class="col-xs-4 text-center color active">Composite Fusion</div>
+			<div data-slide="1" class="col-xs-4 text-center color">Low Density Layer</div>
+			<div data-slide="2" class="col-xs-4 text-center color">Nano Fusion</div>
 		</div>
 	{{/container}}
+	
 	{{#container this}}
 		<div class="technology-sub owl-carousel owl-theme">
 			{{#each @root.technology}}
 				{{> technology-section}}
 			{{/each}}
 		</div>
-	</div>
 	{{/container}}
+	</div>
 {{/ifCond}}	
 <!--//end widget-->

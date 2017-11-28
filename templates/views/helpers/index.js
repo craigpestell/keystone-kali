@@ -545,6 +545,14 @@ module.exports = function() {
 			fn = _this.fn;
 		};
 		var output = '<div class="' + container + '">' + fn(this) + '</div>';
+		console.log('container:', container);
+		if(container === 'container') {
+			output = '<div class="container-fluid">' + 
+				'<div class="col col-md-1"></div><div class="col col-md-10">' + fn(this) + '</div>' +
+				'</div>';
+			
+		}
+		
 		return new hbs.SafeString(output);
 	};
 

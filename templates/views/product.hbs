@@ -1,6 +1,7 @@
 {{> nav-sub-categories navSubLinks}}
 {{#if product}}
-    <div class="container">
+	
+    {{#container}}
         <div class="product-main row">
             <div class="col-xs-12 col-md-7">
                 <div id="links">
@@ -10,7 +11,7 @@
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
                            title="{{name}}" data-gallery>
 							{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-							widths="[290,330,345,381,384,405,500,600,700,738,720,536,652]"
+							widths="[290,330,345,381,384,405,500,600,700,738,720,536,876]"
 							format="jpg" quality="auto" class="image-toggle cld-responsive" index=@index id="product-"
 							onlyShowFirst=true dataSrc=true}}}
                             
@@ -19,7 +20,7 @@
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
                            title="{{name}}" data-gallery>
 							{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]" 
-							                       widths="[290,330,345,381,384,405,500,600,700,738,720,536,652]" 
+							                       widths="[290,330,345,381,384,405,500,600,700,738,720,536,876]" 
 							                       format="jpg" quality="auto" class="image-toggle" index=@index id="product-"
 							                       onlyShowFirst=true}}}
 
@@ -108,13 +109,14 @@
 			</div>
             
         </div>
-		{{#if data.mainPost}}
-			{{#with data.mainPost}}
-				{{> post-layout}}
-			{{/with}}
-		{{/if}}
-
-	</div>
+	{{/container}}
+	{{#if data.mainPost}}
+		
+		{{#with data.mainPost}}
+			{{> post-layout}}
+		{{/with}}
+		
+	{{/if}}
 	
 	{{> product-posts}}
 	{{> product-blueimp-gallery-dom}}
