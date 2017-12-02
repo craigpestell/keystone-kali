@@ -76,13 +76,17 @@
 					},
 					onChanged: function(e){
 						$('.image-toggle').hide();
+						$('.icon-toggle').hide();
+						
 						var page = e.page.index;
 						if(page < 0){
 							page = 0;
 						}
+						
 						var imgsPerSwatch = '{{product.imagesPerColorSwatch}}' || 0;
 						var index = (page*{{product.imagesPerColorSwatch}});
 						$('#product-' + index).show();
+						$('#product-icon-' + index).show();
 					}
 				});
 		if (swatchCarousel.length === 0) {
