@@ -1,10 +1,10 @@
 {{#ifCond product.galleryColorwaysArray.length '>' 1}}
     <div class="row {{visibleClass}}">
-        <div id="product-color-swatches" class="col-xs-12" style="text-align:{{align}}">
+        <div id="product-color-swatches" class="col-xs-12 owl-dots" style="text-align:{{align}}">
 			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
                 <div data-icon-id="#product-icon-{{productIndex}}"
 					 data-colorway="{{colorway}} {{color}}"
-                     data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch">
+                     data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch owl-dot">
                     <div class="circle">
 						{{#ifCond split.length ">" 1}}
 							{{#each split}}
