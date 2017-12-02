@@ -421,7 +421,7 @@ hr {
   }
 }
 //reset to original size
-@media (min-width: 992px) {
+@media (min-width: 1254px) {
   #nav-main {
 	font-size: 1.1em;
 	
@@ -643,7 +643,12 @@ a.product-category-anchor:hover, a.product-category-anchor:active {
   background-color: #000;
   
 }
-
+.product-gallery-carousel.owl-carousel .owl-prev{
+  margin-right: 15px;
+}
+.product-gallery-carousel.owl-carousel .owl-next {
+	margin-left:15px;
+}
 .product-gallery-carousel.owl-carousel .owl-prev .glyphicon,
 .product-gallery-carousel.owl-carousel .owl-next .glyphicon{
   top:2px;
