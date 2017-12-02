@@ -74,9 +74,6 @@ exports = module.exports = function(app) {
 
 	app.param('discipline', function(req, res, next, discipline){
 		//console.log('param discipline', discipline);
-		if(discipline.indexOf('.')>-1){
-			discipline = discipline.split('.')[0];
-		}
 		keystone.list('Discipline').model.findOne({slug: discipline}).exec(function(err, data){
 			if (err) return next(err);
 			if (!data) return next(new Error('Nothing is found'));
