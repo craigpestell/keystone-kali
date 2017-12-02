@@ -60,20 +60,34 @@
 		var swatchCarousel = $('.product-gallery-carousel.owl-carousel')
 				.owlCarousel({
 					items: {{product.imagesPerColorSwatch}},
-					dotsContainer: "#product-color-swatches",
+					dotsContainer: ".product-color-swatches",
 					dotsSpeed: 10,
 					lazyLoad: false,
 					slideBy: 'page',
-					//nav:true,
+					nav:true,
+					touchDrag: false,
+					navText : ["<i class='glyphicon glyphicon-menu-left'></i>","<i class='glyphicon glyphicon-menu-right'></i>"],
 					onInitialized: function () {
 						$.cloudinary.responsive({responsive_resize: false});
-						console.log('init');
+					},
+					onChange: function(){
+						
+						
+					},
+					onChanged: function(e){
+						$('.image-toggle').hide();
+						var page = e.page.index;
+						if(page < 0){
+							page = 0;
+						}
+						var imgsPerSwatch = '{{product.imagesPerColorSwatch}}' || 0;
+						var index = (page*{{product.imagesPerColorSwatch}});
+						$('#product-' + index).show();
 					}
 				});
 		if (swatchCarousel.length === 0) {
 			$.cloudinary.responsive({responsive_resize: false});
 		}
-		console.log(typeof swatchCarousel);
 	
         $('.icon-toggler').on('click', function (e) {
             $('.icon-toggle').hide();

@@ -1,6 +1,6 @@
 {{#ifCond product.galleryColorwaysArray.length '>' 1}}
     <div class="row {{visibleClass}}">
-        <div id="product-color-swatches" class="col-xs-12 owl-dots" style="text-align:{{align}}">
+        <div class="product-color-swatches.product-color-swatches-xs col-xs-12 owl-dots" style="text-align:{{align}}">
 			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
                 <div data-icon-id="#product-icon-{{productIndex}}"
 					 data-colorway="{{colorway}} {{color}}"
