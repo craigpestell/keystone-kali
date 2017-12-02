@@ -21,6 +21,9 @@
   margin: 0 auto;
   width: 100%;
 }
+.container-fluid{
+  padding: 0;
+}
 
 .center-block {
   margin-left: auto;
@@ -1006,7 +1009,6 @@ End Product Page
   //padding: 20px;
   display:inline;
   color: black;
-  white-space: nowrap;
 }
 
 #technology .heading {
@@ -1086,15 +1088,19 @@ End Product Page
   padding: 0px;
 }
 
+#technology .technology-sub-nav {
+  //margin-top: -10px;
+  margin: -11px -1px 0 -1px;
+}
 #technology .technology-sub-nav .color{
   cursor: default;
   text-transform: uppercase;
-  padding:10px;
+  padding:20px 0;
   background-color: $brand-primary;
   border: 1px solid #FFF;
   color: #FFF;
   font-size: 1.2em;
-  font-family: Gotham-Light;
+  font-family: Gotham-Medium, Arial, SansSerif;
   -webkit-transition-duration: 1s; /* Safari */
   transition-duration: 1s;
 }
