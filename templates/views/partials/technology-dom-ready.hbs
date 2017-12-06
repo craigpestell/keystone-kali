@@ -1,21 +1,57 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		console.log('tech dom-ready');
+		function centerSlideImages( event ) {
+			var $slide = $(event.target);
+			var $conts = $slide.find('.owl-item');
+			$conts.each(function() {
+				var img = $(this).find('.widget-image');
+				var conRatio = $(this).width() / $(this).height();
+				var imgRatio = img.width() / img.height();
+				var mode = (conRatio > imgRatio) ? 'portrait' : 'landscape';
+				if( mode === 'portrait') {
+					$(this).removeClass('landscape');
+					$(this).addClass('portrait');
+					img.css({
+						marginTop: ($(this).height() - img.height()) / 2,
+						marginLeft: 0,
+					});
+				} else {
+					$(this).removeClass('portrait');
+					$(this).addClass('landscape');
+					img.css({
+						marginTop: 0,
+						marginLeft: ($(this).width() - img.width()) / 2,
+					});
+				};
+			});
+		}
+		
 		{{#each post}}
 			{{#each gallery.widgets}}
 				{{#ifCond this.key "!=" "null"}}
 					$(function() {
 						var widget = {{{widget}}};
-						//console.log("{{../../key}}-{{@index}}");
+						console.log("{{../../key}}-{{@index}}");
 
-						var $container = $('#widget-technology-main-carousel > .owl-carousel');
+						var $techCarousel = $('#widget-technology-main-carousel > .owl-carousel');
 						//console.log($container);
 						/*$('<div></div>')
 								.appendTo( $container )
 								.{{key}}();*/
-						$container.owlCarousel({{{carousel.settings}}});
+						$techCarousel.on('initialize.owl.carousel initialized.owl.carousel', function(e){
+							console.log('initialize, initialized', e);
+						});
+
+						var techCarousel = $techCarousel.owlCarousel({{{carousel.settings}}});
 						//$container.find('.owl-item .banner-overlay').addClass('animated');
-						$container.on('change.owl.carousel', function(event) {
+						
+						techCarousel.on('initialized.owl.carousel', function(){
+							console.log('drag, dragged');
+							$(this).trigger('play.owl.autoplay',[1000]);
+						});
+						
+						
+						$techCarousel.on('change.owl.carousel', function(event) {
 							//hide all banners
 							$(event.target).find('.owl-item .banner-overlay').css('display', 'none');
 							
@@ -30,7 +66,7 @@
 						});
 						{{#each carousel.widgets}}
 							if('{{type}}' === 'carousel') {
-								$container = $('#widget-{{key}} > .owl-carousel');
+								var $container = $('#widget-{{key}} > .owl-carousel');
 								$container.owlCarousel({{{carousel.settings}}});
 							}else{
 								if('{{widget}}') {
@@ -46,13 +82,13 @@
 		{{/each}}
 
 
-		$("#widget-technology-main-carousel .owl-carousel").owlCarousel({
+		/*$("#widget-technology-main-carousel .owl-carousel").owlCarousel({
 			items: 1, 
 			nav: true,
 			dots: false,
 			//margin:10,
 			navText : ["<i class='glyphicon glyphicon-menu-left'></i>","<i class='glyphicon glyphicon-menu-right'></i>"]
-		});
+		});*/
 		
 		$(".technology-sub.owl-carousel").owlCarousel({
 				items: 1, 

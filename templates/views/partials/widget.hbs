@@ -32,16 +32,19 @@
 {{#ifCond type "==" "carousel"}}
 	{{#container this}}
 		<div class="widget widget-{{type}}" id="widget-{{key}}">
-		<div class="owl-carousel owl-theme">
+		<div class="owl-carousel owl-theme{{#if carousel.fullscreen}} fs-slides{{/if}}">
 			{{#each carousel.widgets}}
-				<div class="widget widget-{{type}}" id="widget-{{key}}">
+				<div class="widget widget-{{type}}" id="widget-{{key}}" 
+					 style="{{#if ../../carousel.fullscreen}} background: url({{{cloudinaryUrl image width="auto" fetch_format="auto" quality=75}}}) center center; background-size: cover;height:100%;width:100%"{{/if}}">
 					{{#ifCond type "==" "image"}}
 						{{#if href}}<a href="{{href}}">{{/if}}
 						{{#if contentHtml}}
 							{{{contentHtml}}}
 						{{/if}}
+						{{#unless ../../carousel.fullscreen}}
 						<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto"}}}"
 							 src="" class="cld-responsive"/>
+						{{/unless}}
 						{{#if href}}</a>{{/if}}
 					{{/ifCond}}
 					{{#ifCond type "==" "html"}}
@@ -60,7 +63,7 @@
 {{/ifCond}}
 
 {{#ifCond type "==" "technology-subnav"}}
-	<div class="widget widget-{{type}}" id="widget-{{key}}">
+	<div class="widget widget-{{type}} hidden-xs" id="widget-{{key}}">
 	{{#container this}}
 		<div class="technology-sub-nav">
 			<div data-slide="0" class="col-xs-4 text-center color active">Composite Fusion</div>
@@ -70,12 +73,21 @@
 	{{/container}}
 	
 	{{#container this}}
-		<div class="technology-sub owl-carousel owl-theme">
+		<div class="technology-sub owl-carousel owl-theme hidden-xs">
 			{{#each @root.technology}}
 				{{> technology-section}}
 			{{/each}}
 		</div>
 	{{/container}}
+	</div>
+	
+	
+	<div class="container visible-xs">
+		{{#each @root.technology}}
+			<div class="row">
+			{{> technology-section}}
+			</div>
+		{{/each}}
 	</div>
 {{/ifCond}}	
 <!--//end widget-->

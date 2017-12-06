@@ -10,7 +10,8 @@ Widget.add({
 	type: { type: Types.Select, options: 'image, html, youtube, embedly, carousel, technology-subnav', initial: true, default: 'image', required: true},
 	carousel: {
 		settings:{ type: Types.Code, dependsOn: {'type': 'carousel'}},
-		widgets: {type: Types.Relationship, many: true, ref: 'Widget', dependsOn: {'type': 'carousel'}}
+		widgets: {type: Types.Relationship, many: true, ref: 'Widget', dependsOn: {'type': 'carousel'}},
+		fullscreen: {type: Boolean, dependsOn: {type: 'carousel'}}
 	},
 	image: { type: Types.CloudinaryImage, dependsOn: {'type' : 'image'},  autoCleanup : true  },
 	youtube: {type: Types.Url, dependsOn: {'type' : 'youtube'} },

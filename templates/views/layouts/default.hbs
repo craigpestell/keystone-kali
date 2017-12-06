@@ -175,6 +175,7 @@
 	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 {{#ifCond section "==" "technology"}}
+	<script src="/js/owl.carousel/src/js/owl.autoplay.js" defer></script>
 	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 {{#ifCond section "==" "technology-detail"}}
@@ -317,7 +318,7 @@
         var section = '{{section}}';
         //console.log('section: ', section);
         //if (section !== 'product' && section !== 'technology' && section !== 'republik') {
-		if (section !== 'product' ) {
+		if (section !== 'product' && section !== 'technology') {
             $.cloudinary.responsive();
         }
         /*$('.product-section-nav').affix({
