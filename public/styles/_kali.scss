@@ -1082,52 +1082,6 @@ End Product Page
   //letter-spacing:6px;
 }
 
-.technology-icon-nav .tertiary-container {
-  border-bottom: 3px solid $brand-grey;padding-bottom:2px;}
-.technology-icon-nav h4.year{
-  font-size:12px;
-  font-family: Gotham-Black;
-}
-.technology-icon-nav h4.title{
-  //font-size: 12px;
-  margin-bottom:2px;
-}
-.technology-icon-nav h5.title{
-  font-size:10px;
-}
-.technology-icon-nav p{
-  font-size: 11px;
-}
-
-.technology-icon-nav .timeline{
-  border-bottom:2px solid $brand-primary;
-  margin-top:8px;
-}
-
-.technology-icon-nav .timeline-end {
-  height: 6px;
-  width: 6px;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  background-color:$brand-primary;
-  margin-top:6px;
-}
-
-.technology-icon-nav .technology-icon-nav-item .tertiary-image{
-  padding: 0px;
-}
-.technology-icon-nav .technology-icon-nav-item .tertiary-image img{
-  padding: 2px;
-}
-
-.technology-icon-nav .technology-icon-nav-item:hover .tertiary-image{
-  padding: -2px;
-}
-.technology-icon-nav .technology-icon-nav-item:hover .tertiary-image img{
-  padding: 0px;
-}
-
 #technology{
   overflow-x: hidden;
 }
@@ -1183,8 +1137,153 @@ End Product Page
 #technology .owl-theme .owl-dots .owl-dot.active span, #technology .owl-theme .owl-dots .owl-dot:hover span{
   background-color: $brand-primary;
 }
-//#technology .owl-prev i, #technology .owl-next i {transform : scale(1,6); color: #ccc;}
 
+#technology .btn-cont {
+  //text-align: center;
+  margin-top: 20px;
+  
+  .button {
+	
+	position: relative;
+	padding: 20px 70px;
+	border: 1px solid white;
+	color: white;
+	text-decoration: none;
+	//font-size: em(18px);
+	//font-family: 'Open Sans', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	-webkit-font-smoothing: antialiased;
+
+	&:hover {
+	  border: none;
+
+	  .line-1 {
+		animation: move1 1500ms infinite ease;
+	  }
+
+	  .line-2 {
+		animation: move2 1500ms infinite ease;
+	  }
+
+	  .line-3 {
+		animation: move3 1500ms infinite ease;
+	  }
+
+	  .line-4 {
+		animation: move4 1500ms infinite ease;
+	  }
+	}
+  }
+  .button:hover{
+	background-color: #000;
+  }
+
+  .line-1 {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 1px;
+	background-color: white;
+	left: 0;
+	bottom: 0;
+  }
+  .line-2 {
+	content: "";
+	display: block;
+	position: absolute;
+	height: 1px;
+	background-color: white;
+	left: 0;
+	top: 0;
+  }
+  .line-3 {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 1px;
+	background-color: white;
+	right: 0;
+	top: 0;
+  }
+  .line-4 {
+	content: "";
+	display: block;
+	position: absolute;
+	height: 1px;
+	background-color: white;
+	right: 0;
+	bottom: 0;
+  }
+}
+
+@keyframes move1 {
+  0% {
+	height: 100%;
+	bottom: 0;
+  }
+  54% {
+	height: 0;
+	bottom: 100%;
+  }
+  55% {
+	height: 0;
+	bottom: 0;
+  }
+  100% {
+	height: 100%;
+	bottom: 0;
+  }
+}
+
+@keyframes move2 {
+  0% {
+	width: 0;
+	left: 0;
+  }
+  50% {
+	width: 100%;
+	left: 0;
+  }
+  100% {
+	width: 0;
+	left: 100%;
+  }
+}
+
+@keyframes move3 {
+  0% {
+	height: 100%;
+	top: 0;
+  }
+  54% {
+	height: 0;
+	top: 100%;
+  }
+  55% {
+	height: 0;
+	top: 0;
+  }
+  100% {
+	height: 100%;
+	top: 0;
+  }
+}
+
+@keyframes move4 {
+  0% {
+	width: 0;
+	right: 0;
+  }
+  55% {
+	width: 100%;
+	right: 0;
+  }
+  100% {
+	width: 0;
+	right: 100%;
+  }
+}
 /* END Technology page*/
 
 
