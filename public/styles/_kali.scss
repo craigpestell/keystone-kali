@@ -1030,19 +1030,25 @@ End Product Page
   color: white;
   position: absolute;
   //text-align: center;
-  width: 100%;
+  width: 65%;
   //position:absolute; top:25%; left:110px; width:100%
 }
 
+#technology .banner-overlay-container-brain{
+  color: white;
+  position: absolute;
+  width:100%;
+}
 
 #technology .banner-overlay-brain{
   //font-size: 4vw;
   border-top: 4px solid black;
   border-bottom: 4px solid black;
-  margin: -20px 10% 0;
+  margin: -20px 10% 0 10%;
   //padding: 20px;
   display:inline;
   color: black;
+  width:80%;
 }
 
 #technology .heading {
@@ -1122,9 +1128,13 @@ End Product Page
   padding: 0px;
 }
 
+#technology{
+  overflow-x: hidden;
+}
 #technology .technology-sub-nav {
   //margin-top: -10px;
   margin: -11px -1px 0 -1px;
+  
 }
 #technology .technology-sub-nav .color{
   cursor: default;
