@@ -96,8 +96,11 @@ body {
   #technology .banner-overlay-container {
 	font-family: Gotham-Black, Arial, SansSerif;
 	top: calc(50% - 24px); 
-	font-size: 1.2em;
+	font-size: 1.4em;
 	left: 10%;
+	h2{
+	  font-size: 1.2em;
+	}
   }
   #technology .banner-overlay-container-brain{
 	top: calc(45%);
@@ -123,7 +126,7 @@ body {
 
   #technology .banner-overlay-container {
 	top: calc(50% - 74px); //24px is font size of H1 I assume
-	font-size: 1.4em;
+	font-size: 1.6em;
   }
   #technology .banner-overlay-container-brain{
 	top: calc(45%);
@@ -154,7 +157,7 @@ body {
 	width: 560px;
   }
   #technology .banner-overlay-container{
-	font-size: 1.6em;
+	font-size: 1.8em;
   }
   #technology .banner-overlay-container-brain{
 	top: calc(45%);
@@ -177,7 +180,7 @@ body {
   }
 
   #technology .banner-overlay-container{
-	font-size: 1.8em;
+	font-size: 2em;
   }
   #technology .banner-overlay-container-brain{
 	top: calc(45%);
