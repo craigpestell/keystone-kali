@@ -35,14 +35,14 @@
 		<div class="owl-carousel owl-theme{{#if carousel.fullscreen}} fs-slides{{/if}}">
 			{{#each carousel.widgets}}
 				<div class="widget widget-{{type}}" id="widget-{{key}}" 
-					 style="{{#if ../../carousel.fullscreen}} background: url({{{cloudinaryUrl image width="auto" fetch_format="auto" quality=75}}}) center center; background-size: cover;height:100%;width:100%"{{/if}}">
+					 style="{{#if ../../carousel.fullscreen}} background: url({{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto"}}}) center center; background-size: cover;height:100%;width:100%"{{/if}}">
 					{{#ifCond type "==" "image"}}
 						{{#if href}}<a href="{{href}}">{{/if}}
 						{{#if contentHtml}}
 							{{{contentHtml}}}
 						{{/if}}
 						{{#unless ../../carousel.fullscreen}}
-						<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto" pixelate=true}}}"
+						<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto" }}}"
 							 src="" class="cld-responsive"/>
 						{{/unless}}
 						{{#if href}}</a>{{/if}}

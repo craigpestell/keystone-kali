@@ -1031,6 +1031,12 @@ End Product Page
   position: absolute;
   //text-align: center;
   width: 65%;
+  
+  //height: 50%;
+  //overflow: auto;
+  margin: auto;
+  position: absolute;
+  //top: 0; left: 0; bottom: 0; right: 0;
   //position:absolute; top:25%; left:110px; width:100%
 }
 
@@ -1038,17 +1044,21 @@ End Product Page
   color: white;
   position: absolute;
   width:100%;
+  vertical-align: middle;
 }
 
 #technology .banner-overlay-brain{
   //font-size: 4vw;
   border-top: 4px solid black;
   border-bottom: 4px solid black;
-  margin: -20px 10% 0 10%;
+  margin: 0 10% 0 10%;
   //padding: 20px;
   display:inline;
   color: black;
   width:80%;
+  p{
+	margin: 0 0 -4px 0;
+  }
 }
 
 #technology .heading {
@@ -1138,14 +1148,23 @@ End Product Page
   background-color: $brand-primary;
 }
 
+#technology .banner-overlay-container .btn-cont .button{
+  background-color: transparent;
+}
+#technology .banner-overlay-container .btn-cont.inverted .button{
+  background-color: black;
+
+}
 #technology .btn-cont {
   //text-align: center;
   margin-top: 20px;
   
   .button {
-	
+	background-color: #000;
+	font-family: Gotham-Black, Arial, SansSerif;
+	font-size: 14px;
 	position: relative;
-	padding: 20px 70px;
+	padding: 20px 50px;
 	border: 1px solid white;
 	color: white;
 	text-decoration: none;
@@ -1154,7 +1173,7 @@ End Product Page
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	-webkit-font-smoothing: antialiased;
-
+	
 	&:hover {
 	  border: none;
 
@@ -1175,6 +1194,10 @@ End Product Page
 	  }
 	}
   }
+  .button.inverted{
+	background-color: #000;
+  }
+  
   .button:hover{
 	background-color: #000;
   }
@@ -1216,6 +1239,7 @@ End Product Page
 	bottom: 0;
   }
 }
+
 
 @keyframes move1 {
   0% {

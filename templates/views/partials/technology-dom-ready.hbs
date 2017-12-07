@@ -1,30 +1,5 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		function centerSlideImages( event ) {
-			var $slide = $(event.target);
-			var $conts = $slide.find('.owl-item');
-			$conts.each(function() {
-				var img = $(this).find('.widget-image');
-				var conRatio = $(this).width() / $(this).height();
-				var imgRatio = img.width() / img.height();
-				var mode = (conRatio > imgRatio) ? 'portrait' : 'landscape';
-				if( mode === 'portrait') {
-					$(this).removeClass('landscape');
-					$(this).addClass('portrait');
-					img.css({
-						marginTop: ($(this).height() - img.height()) / 2,
-						marginLeft: 0,
-					});
-				} else {
-					$(this).removeClass('portrait');
-					$(this).addClass('landscape');
-					img.css({
-						marginTop: 0,
-						marginLeft: ($(this).width() - img.width()) / 2,
-					});
-				};
-			});
-		}
 		
 		{{#each post}}
 			{{#each gallery.widgets}}
@@ -104,6 +79,17 @@
 			$target.addClass('active');
 			
 			$('.technology-sub.owl-carousel').trigger('to.owl.carousel', slide);
+
+		});
+		var scrolled = false;
+		$(".technology-sub-nav div").one('click', function(e){
+			if(!scrolled){
+				$('html, body').animate({
+					scrollTop: $(e.target).offset().top+1
+				}, 1000);
+			}
+			scrolled = true;
+			
 		});
 		
     });
