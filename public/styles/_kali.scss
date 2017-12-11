@@ -130,7 +130,6 @@ body {
   }
   #technology .banner-overlay-container-brain{
 	top: calc(45%);
-	font-size: 2.4em;
   }
 
   .navbar>.container .navbar-brand, 
@@ -161,7 +160,6 @@ body {
   }
   #technology .banner-overlay-container-brain{
 	top: calc(45%);
-	font-size: 3em;
   }
 }
 
@@ -184,7 +182,6 @@ body {
   }
   #technology .banner-overlay-container-brain{
 	top: calc(45%);
-	font-size: 4em;
   }
 }
 
@@ -1034,7 +1031,7 @@ End Product Page
   position: absolute;
   //text-align: center;
   width: 65%;
-  
+  font-family: Gotham-Medium, Arial, SansSerif;
   //height: 50%;
   //overflow: auto;
   margin: auto;
@@ -1044,6 +1041,7 @@ End Product Page
 }
 
 #technology .banner-overlay-container-brain{
+  //font-family: Gotham-Black, Arial, SansSerif;
   color: white;
   position: absolute;
   width:100%;
@@ -1052,8 +1050,8 @@ End Product Page
 
 #technology .banner-overlay-brain{
   //font-size: 4vw;
-  border-top: 4px solid black;
-  border-bottom: 4px solid black;
+  //border-top: 4px solid black;
+  //border-bottom: 4px solid black;
   margin: 0 10% 0 10%;
   //padding: 20px;
   display:inline;
