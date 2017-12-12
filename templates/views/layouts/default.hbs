@@ -230,6 +230,41 @@
 
 {{#ifCond section '==' 'technology' }}
 	{{> technology-dom-ready}}
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			//$(".technology.owl-carousel").owlCarousel({items: 1, nav: true});
+			//$(".technology-sub.owl-carousel").owlCarousel({items: 3, nav: true});
+			
+				{{#each post.gallery.widgets}}
+					{{#ifCond this.key "!=" "null"}}
+						$(function() {
+							var widget = {{{widget}}};
+							//console.log("{{../../key}}-{{@index}}");
+
+							if('{{type}}' === 'carousel'){
+								var $container = $('#widget-{{key}} > .owl-carousel');
+								//console.log($container);
+								/*$('<div></div>')
+                                        .appendTo( $container )
+                                        .{{key}}();*/
+								$container.owlCarousel({{{carousel.settings}}});
+
+								{{#each carousel.widgets}}
+									if('{{type}}' === 'carousel') {
+										$container = $('#widget-{{key}} > .owl-carousel');
+										$container.owlCarousel({{{carousel.settings}}});
+									}
+								{{/each}}
+							}
+						});
+					{{/ifCond}}
+				{{/each}}
+			
+		});
+	</script>
+
+
 {{/ifCond}}
 
 {{#ifCond section "==" "home"}}
