@@ -1,6 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
-		
+		//technology-dom-ready
 		{{#each post}}
 			{{#each gallery.widgets}}
 				{{#ifCond this.key "!=" "null"}}
@@ -56,15 +56,6 @@
 			{{/each}}
 		{{/each}}
 
-
-		/*$("#widget-technology-main-carousel .owl-carousel").owlCarousel({
-			items: 1, 
-			nav: true,
-			dots: false,
-			//margin:10,
-			navText : ["<i class='glyphicon glyphicon-menu-left'></i>","<i class='glyphicon glyphicon-menu-right'></i>"]
-		});*/
-		
 		$(".technology-sub.owl-carousel").owlCarousel({
 				items: 1, 
 				dots: false,
