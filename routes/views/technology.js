@@ -79,12 +79,30 @@ exports = module.exports = function (req, res) {
 	// Load technologies
 	view.on('init', function (next) {
 
-		var q = keystone.list('ProductTechnology').model.find();
+		var q = keystone.list('Technology').model.find();
 
 		q.exec(function (err, result) {
 
 			if(result){
 				locals.technology = result;
+				next(err);
+			}else{
+				next(err);
+			}
+
+
+		});
+	});
+
+	// Load technologies
+	view.on('init', function (next) {
+
+		var q = keystone.list('ProductTechnology').model.find();
+
+		q.exec(function (err, result) {
+
+			if(result){
+				locals.productTechnology = result;
 				next(err);
 			}else{
 				next(err);
