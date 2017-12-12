@@ -239,11 +239,11 @@
 					{{#ifCond this.key "!=" "null"}}
 						$(function() {
 							var widget = {{{widget}}};
-							//console.log("{{../../key}}-{{@index}}");
+							console.log("{{key}}-{{@index}}");
 
 							if('{{type}}' === 'carousel'){
 								var $container = $('#widget-{{key}} > .owl-carousel');
-								if("{{../../key}}-{{@index}}" !== "technology-0"){
+								if("{{key}}-{{@index}}" !== "technology-main-carousel-0"){
 									$container.owlCarousel({{{carousel.settings}}});
 
 									{{#each carousel.widgets}}
