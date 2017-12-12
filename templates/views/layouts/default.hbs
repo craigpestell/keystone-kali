@@ -233,8 +233,7 @@
 	<script type="text/javascript">
 
 		$(document).ready(function () {
-			//$(".technology.owl-carousel").owlCarousel({items: 1, nav: true});
-			//$(".technology-sub.owl-carousel").owlCarousel({items: 3, nav: true});
+			//default.hbs technology-dom-ready
 			
 				{{#each post.gallery.widgets}}
 					{{#ifCond this.key "!=" "null"}}
@@ -244,10 +243,6 @@
 
 							if('{{type}}' === 'carousel'){
 								var $container = $('#widget-{{key}} > .owl-carousel');
-								//console.log($container);
-								/*$('<div></div>')
-                                        .appendTo( $container )
-                                        .{{key}}();*/
 								if("{{../../key}}-{{@index}}" !== "technology-0"){
 									$container.owlCarousel({{{carousel.settings}}});
 
