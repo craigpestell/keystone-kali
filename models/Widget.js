@@ -7,7 +7,7 @@ var Widget = new keystone.List('Widget', {
 
 Widget.add({
 	name: { type: Types.Key, required: true },
-	type: { type: Types.Select, options: 'image, html, youtube, embedly, carousel, technology-subnav', initial: true, default: 'image', required: true},
+	type: { type: Types.Select, options: 'image, html, youtube, embedly, carousel, technology-subnav, technology-timeline', initial: true, default: 'image', required: true},
 	carousel: {
 		settings:{ type: Types.Code, dependsOn: {'type': 'carousel'}},
 		widgets: {type: Types.Relationship, many: true, ref: 'Widget', dependsOn: {'type': 'carousel'}},

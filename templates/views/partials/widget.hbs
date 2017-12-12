@@ -62,6 +62,14 @@
 	{{/container}}
 {{/ifCond}}
 
+{{#ifCond type "==" "technology-timeline"}}
+	{{#each @root.productTechnology}}
+		<div class="col-xs-4 col-sm-2 technology-icon-nav-item">
+			{{> technology-icon-nav-item}}
+		</div>
+	{{/each}}
+{{/ifCond}}
+
 {{#ifCond type "==" "technology-subnav"}}
 	<div class="widget widget-{{type}} hidden-xs" id="widget-{{key}}">
 	{{#container this}}
