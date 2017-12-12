@@ -20,7 +20,7 @@ Post.add({
 	gallery:
 		{
 			widgets: {type: Types.Relationship, ref: 'Widget', many: true, label: 'Widgets Gallery'},
-			layout: { type: Types.Select, options: 'basic, blocks, left, right, carousel, republik-1, home-landing', dependsOn: {'gallery.widgets' : true}, default: "basic" }
+			layout: { type: Types.Select, options: 'basic, blocks, left, right, carousel, republik-1, home-landing, technology', dependsOn: {'gallery.widgets' : true}, default: "basic" }
 		},
 	imagesGallery:
 		{

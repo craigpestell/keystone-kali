@@ -2,7 +2,7 @@
 
 	<!--<h1>{{key}}</h1>-->
 {{#ifCond type "==" "image"}}
-	{{#container}}
+	{{#container this}}
 		<div class="widget widget-{{type}}" id="widget-{{key}}">
 		{{#if href}}<a href="{{href}}">{{/if}}
 		{{#if contentHtml}}{{{contentHtml}}}{{/if}}
@@ -63,11 +63,15 @@
 {{/ifCond}}
 
 {{#ifCond type "==" "technology-timeline"}}
+	{{#container this}}
+	<div class="technology-icon-nav">
 	{{#each @root.productTechnology}}
 		<div class="col-xs-4 col-sm-2 technology-icon-nav-item">
 			{{> technology-icon-nav-item}}
 		</div>
 	{{/each}}
+	</div>
+	{{/container}}
 {{/ifCond}}
 
 {{#ifCond type "==" "technology-subnav"}}
