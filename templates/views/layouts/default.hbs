@@ -248,14 +248,17 @@
 								/*$('<div></div>')
                                         .appendTo( $container )
                                         .{{key}}();*/
-								$container.owlCarousel({{{carousel.settings}}});
+								if("{{../../key}}-{{@index}}" !== "technology-0"){
+									$container.owlCarousel({{{carousel.settings}}});
 
-								{{#each carousel.widgets}}
-									if('{{type}}' === 'carousel') {
-										$container = $('#widget-{{key}} > .owl-carousel');
-										$container.owlCarousel({{{carousel.settings}}});
-									}
-								{{/each}}
+									{{#each carousel.widgets}}
+										if('{{type}}' === 'carousel') {
+											$container = $('#widget-{{key}} > .owl-carousel');
+											$container.owlCarousel({{{carousel.settings}}});
+										}
+									{{/each}}									
+								}
+
 							}
 						});
 					{{/ifCond}}
