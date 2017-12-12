@@ -56,7 +56,7 @@
 		<div class="container">
 			<div class="row hidden-xs">
 				<div class="col-xs-3">
-					<div style="height:263px;margin-top:-50%;margin-bottom:-50%;line-height:0;position:relative;display:inline-block;">
+					<div style="height:263px;margin-top:-50%;line-height:0;position:relative;display:inline-block;">
 						<img data-src="{{{cloudinaryUrl gallery.widgets.[1].image width="auto" fetch_format="auto" quality="auto"}}}"
 							 src="" class="cld-responsive" />
 					</div>
@@ -78,13 +78,20 @@
 				</div>
 			</div>
 			<div class="row hidden-xs">
+				{{#if gallery.widgets.[3].image.url}}
+					<div class="col col-xs-12">"
+					<img data-src="{{{cloudinaryUrl gallery.widgets.[4].image width="auto" fetch_format="auto" quality="auto"}}}"
+						 src="" class="cld-responsive"/>
+				{{/if}}
+				{{#if gallery.widgets.[4].image.url}}
 				<div class="col-xs-12 col-sm-5 vcenter">
 					{{{gallery.widgets.[3].contentHtml}}}
 				</div><!--
 					--><div class="col-xs-12 col-sm-7 vcenter">
-				<img data-src="{{{cloudinaryUrl gallery.widgets.[4].image width="auto" fetch_format="auto" quality="auto"}}}"
-					 src="" class="cld-responsive"/>
-			</div>
+					<img data-src="{{{cloudinaryUrl gallery.widgets.[4].image width="auto" fetch_format="auto" quality="auto"}}}"
+						src="" class="cld-responsive"/>
+				</div>
+				{{/if}}
 			</div>
 			<div class="row visible-xs">
 				<div class="col-xs-12 col-sm-7 vcenter" style="margin-top:15px">
