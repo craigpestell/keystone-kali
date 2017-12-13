@@ -52,7 +52,9 @@
 
 
 {{#ifCond gallery.layout "==" "technology"}}
-		{{> widget gallery.widgets.[0]}}
+		{{#container }}
+			{{> widget gallery.widgets.[0]}}
+		{{/container}}
 		<div class="container">
 			<div class="row hidden-xs">
 				<div class="col-xs-3">
