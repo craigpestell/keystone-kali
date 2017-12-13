@@ -545,7 +545,7 @@ module.exports = function() {
 			fn = _this.fn;
 		};
 		var output = '<div class="' + container + '">' + fn(this) + '</div>';
-		console.log('container:', container);
+		
 		if(container === 'container') {
 			output = '<div class="container-fluid">' + 
 				'<div class="col col-lg-2"></div><div class="col col-lg-8">' + fn(this) + '</div>' +

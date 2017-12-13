@@ -319,7 +319,12 @@
 		if (section !== 'product' ) {
             $.cloudinary.responsive();
         }
-        /*$('.product-section-nav').affix({
+        
+        // Set vcenter class since it's display:inline and cloudinary.responsive() needs to calculate the container 
+		// size for image dimensions on a display:block.  
+		$('.set-vcenter').addClass('vcenter');
+
+		/*$('.product-section-nav').affix({
             offset: {
                 top: $('.product-section-nav').height()
             }
