@@ -11,7 +11,7 @@
     "express-sitemap": "^1.6.3",
     "handlebars": "^2.0.0",
     "hbs": "^4.0.1",
-    "keystone": "^0.3.16",
+    "keystone": "^0.3.x",
     "keystone-email": "^1.0.5",
     "moment": "^2.10.6",
     "node-sass": "^3.3.2",
