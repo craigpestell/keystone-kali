@@ -150,6 +150,25 @@ exports = module.exports = function (req, res) {
 
 		});
 	});
+
+	// Load product technologies
+	view.on('init', function (next) {
+
+		var q = keystone.list('ProductTechnology').model.find();
+
+		q.exec(function (err, result) {
+
+			if(result){
+				locals.productTechnology= result;
+				next(err);
+			}else{
+				next(err);
+			}
+
+
+		});
+	});
+
 	// Load comments on the Post
 	/*view.on('init', function (next) {
 		PostComment.model.find()

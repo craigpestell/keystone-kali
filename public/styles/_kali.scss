@@ -1097,12 +1097,13 @@ End Product Page
 #technology{
   overflow-x: hidden;
 }
-#technology .technology-sub-nav {
+
+.technology-sub-nav {
   //margin-top: -10px;
   margin: -11px -1px 0 -1px;
   
 }
-#technology .technology-sub-nav .color{
+.technology-sub-nav .color{
   cursor: default;
   text-transform: uppercase;
   padding:20px 0;
@@ -1114,15 +1115,15 @@ End Product Page
   -webkit-transition-duration: 1s; /* Safari */
   transition-duration: 1s;
 }
-#technology .technology-sub-nav .color:hover, #technology .technology-sub-nav .color.active{
+.technology-sub-nav .color:hover, #technology .technology-sub-nav .color.active{
   background-color: lighten($brand-grey, 15%);;
   color: #000;
 }
-#technology .technology-sub-nav .color.active {
-	background-color: #FFF;  
+.technology-sub-nav .color.active {
+	//background-color: #FFF;  
 }
 
-#technology .technology.owl-carousel {
+.technology.owl-carousel {
   position: relative;
 }
 

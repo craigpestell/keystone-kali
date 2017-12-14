@@ -228,42 +228,40 @@
 
 {{/ifCond}}
 
-{{#ifCond section '==' 'technology' }}
-	
+
+
 	<script type="text/javascript">
 
 		$(document).ready(function () {
 			//default.hbs technology-dom-ready
-			
-				{{#each post.gallery.widgets}}
-					{{#ifCond this.key "!=" "null"}}
-						$(function() {
-							var widget = {{{widget}}};
-							console.log("{{key}}-{{@index}}");
 
-							if('{{type}}' === 'carousel'){
-								var $container = $('#widget-{{key}} > .owl-carousel');
-								if("{{key}}-{{@index}}" !== "tech-main-carousel-0"){
+			{{#each post.gallery.widgets}}
+				{{#ifCond this.key "!=" "null"}}
+					$(function() {
+						var widget = {{{widget}}};
+						//console.log({{{json this}}});
+
+						if('{{type}}' === 'carousel' || '{{type}}' === 'technology-subnav'){
+							var $container = $('#widget-{{key}} .owl-carousel').first();
+							
+							$container.owlCarousel({{{carousel.settings}}});
+
+							{{#each carousel.widgets}}
+								if('{{type}}' === 'carousel') {
+									$container = $('#widget-{{key}} > .owl-carousel');
 									$container.owlCarousel({{{carousel.settings}}});
-
-									{{#each carousel.widgets}}
-										if('{{type}}' === 'carousel') {
-											$container = $('#widget-{{key}} > .owl-carousel');
-											$container.owlCarousel({{{carousel.settings}}});
-										}
-									{{/each}}									
 								}
+							{{/each}}
+						
+						}
+					});
+				{{/ifCond}}
+			{{/each}}
 
-							}
-						});
-					{{/ifCond}}
-				{{/each}}
-			
 		});
 	</script>
 	{{> technology-dom-ready}}
 
-{{/ifCond}}
 
 {{#ifCond section "==" "home"}}
 	{{#unless discipline}}
