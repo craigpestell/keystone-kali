@@ -83,17 +83,6 @@
 				</div>
 				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="left"}}
 				
-				<!--{{#if product.features.length}}
-                    <div class="row feature">
-						<div class="col-xs-12">
-							<ul>
-						{{#each product.features}}
-                             <li><h4>{{name}}</h4></li>
-						{{/each}}
-                            </ul>
-						</div>
-                    </div>
-				{{/if}}-->
 				<div class="row">
 					<a href="" target="_blank">
 						<div class="col-xs-12 text-center buy-button" data-shopifyid-us="{{product.shopifyIdUS}}" data-shopifyid-can="{{product.shopifyIdCan}}" style="display:none">
@@ -109,6 +98,11 @@
             
         </div>
 	{{/container}}
+	
+	{{#if product.features.length}}
+		{{> product-features}}
+	{{/if}}
+
 	{{#if data.mainPost}}
 		
 		{{#with data.mainPost}}
