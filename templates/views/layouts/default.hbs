@@ -228,42 +228,40 @@
 
 {{/ifCond}}
 
-{{#ifCond section '==' 'technology' }}
-	
+
+
 	<script type="text/javascript">
 
 		$(document).ready(function () {
 			//default.hbs technology-dom-ready
-			
-				{{#each post.gallery.widgets}}
-					{{#ifCond this.key "!=" "null"}}
-						$(function() {
-							var widget = {{{widget}}};
-							console.log("{{key}}-{{@index}}");
 
-							if('{{type}}' === 'carousel'){
-								var $container = $('#widget-{{key}} > .owl-carousel');
-								if("{{key}}-{{@index}}" !== "tech-main-carousel-0"){
+			{{#each post.gallery.widgets}}
+				{{#ifCond this.key "!=" "null"}}
+					$(function() {
+						var widget = {{{widget}}};
+						//console.log({{{json this}}});
+
+						if('{{type}}' === 'carousel' || '{{type}}' === 'technology-subnav'){
+							var $container = $('#widget-{{key}} .owl-carousel').first();
+							
+							$container.owlCarousel({{{carousel.settings}}});
+
+							{{#each carousel.widgets}}
+								if('{{type}}' === 'carousel') {
+									$container = $('#widget-{{key}} > .owl-carousel');
 									$container.owlCarousel({{{carousel.settings}}});
-
-									{{#each carousel.widgets}}
-										if('{{type}}' === 'carousel') {
-											$container = $('#widget-{{key}} > .owl-carousel');
-											$container.owlCarousel({{{carousel.settings}}});
-										}
-									{{/each}}									
 								}
+							{{/each}}
+						
+						}
+					});
+				{{/ifCond}}
+			{{/each}}
 
-							}
-						});
-					{{/ifCond}}
-				{{/each}}
-			
 		});
 	</script>
 	{{> technology-dom-ready}}
 
-{{/ifCond}}
 
 {{#ifCond section "==" "home"}}
 	{{#unless discipline}}
@@ -427,5 +425,24 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- End Google Analytics -->
+
+<!-- Facebook Pixel Code -->
+<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+			n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+		if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+		n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];
+		s.parentNode.insertBefore(t,s)}(window, document,'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '1226138120837257');
+	fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+			   src="https://www.facebook.com/tr?id=1226138120837257&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
 </body>
 </html>

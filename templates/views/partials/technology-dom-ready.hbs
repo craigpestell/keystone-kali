@@ -1,90 +1,14 @@
 <script type="text/javascript">
     $(document).ready(function () {
 		//technology-dom-ready
-		{{#each post}}
-			{{#each gallery.widgets}}
-				{{#ifCond this.key "!=" "null"}}
-					$(function() {
-						var widget = {{{widget}}};
-						//console.log("{{../../key}}-{{@index}}");
-						if("{{../../key}}-{{@index}}" === "technology-0"){
-							
-							var navigateToAnchor = function(){
-								var hash = window.location.hash.substr(1);
-								if(hash.indexOf('composite') > -1){
-									$('html, body').animate({
-										scrollTop: $(".technology-sub-nav").offset().top+1
-									}, 1000);			
-								}
-								if(hash.indexOf('low-density') > -1){
-									$('html, body').animate({
-										scrollTop: $(".technology-sub-nav").offset().top+1
-									}, 1000);
-									$($(".technology-sub-nav div")[1]).trigger('click');
-									
-								}
-								if(hash.indexOf('nano') > -1){
-									$('html, body').animate({
-										scrollTop: $(".technology-sub-nav").offset().top+1
-									}, 1000);
-									$($(".technology-sub-nav div")[2]).trigger('click');
-
-								}
-							};
-							var $techCarousel = $('#widget-tech-main-carousel > .owl-carousel');
-							//console.log($container);
-							/*$('<div></div>')
-									.appendTo( $container )
-									.{{key}}();*/
-							$techCarousel.on('initialize.owl.carousel initialized.owl.carousel', function(e){
-								navigateToAnchor();
-							});
-	
-							var techCarousel = $techCarousel.owlCarousel({{{carousel.settings}}});
-							//$container.find('.owl-item .banner-overlay').addClass('animated');
-							
-							techCarousel.on('initialized.owl.carousel', function(){
-								//$(this).trigger('play.owl.autoplay',[1000]);
-							});
-							
-							
-							$techCarousel.on('change.owl.carousel', function(event) {
-								//hide all banners
-								$(event.target).find('.owl-item .banner-overlay').css('display', 'none');
-								
-								setTimeout(function(){
-									$current = $(event.target).find('.owl-item.active .banner-overlay');
-									if($current.length){
-										$current.css('display', 'block');
-									}
-								},100);
-										
-								
-							});
-							{{#each carousel.widgets}}
-								if('{{type}}' === 'carousel') {
-									var $container = $('#widget-{{key}} > .owl-carousel');
-									$container.owlCarousel({{{carousel.settings}}});
-								}else{
-									if('{{widget}}') {
-	
-										{{{widget}}}
-									}
-								}
-							{{/each}}
-						}
-					
-					});
-				{{/ifCond}}
-			{{/each}}
-		{{/each}}
-
+		
+		
 		$(".technology-sub.owl-carousel").owlCarousel({
 				items: 1, 
 				dots: false,
 				mouseDrag: false,
 				touchDrag: true
-			});
+		});
 		$(".technology-sub-nav div").click(function(e){
 			var $target = $(e.target);
 			var slide = $target.data('slide');

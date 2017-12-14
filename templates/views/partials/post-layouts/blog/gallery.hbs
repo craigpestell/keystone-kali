@@ -52,59 +52,62 @@
 
 
 {{#ifCond gallery.layout "==" "technology"}}
-		{{#container }}
-			{{> widget gallery.widgets.[0]}}
-		{{/container}}
-		<div class="container">
-			<div class="row hidden-xs">
-				<div class="col-xs-3">
-					<div style="height:263px;margin:-50% 0;line-height:0;position:relative;display:inline-block;">
-						<img data-src="{{{cloudinaryUrl gallery.widgets.[1].image width="auto" fetch_format="auto" quality="auto"}}}"
-							 src="" class="cld-responsive" />
+		
+		{{> widget gallery.widgets.[0]}}
+		
+		<div class="container-fluid">
+			<div class="col col-md-2"></div>
+			<div class="col col-md-8">
+				<div class="row hidden-xs">
+					<div class="col-xs-3">
+						<div style="margin:-50% 0 0;line-height:0;position:relative;display:inline-block;">
+							<img data-src="{{{cloudinaryUrl gallery.widgets.[1].image width="auto" fetch_format="auto" quality="auto"}}}"
+								 src="" class="cld-responsive" />
+						</div>
+					</div>
+					<div class="col-xs-1"></div>
+					<div class="col-xs-8">
+						<div class="col-xs-10">
+							{{{gallery.widgets.[2].contentHtml}}}
+						</div>
 					</div>
 				</div>
-				<div class="col-xs-1"></div>
-				<div class="col-xs-8">
-					<div class="col-xs-10">
+				<div class="row visible-xs">
+					<div class="col-xs-4">
+						<img data-src="{{{cloudinaryUrl gallery.widgets.[1].image width="auto" fetch_format="auto" quality="auto"}}}"
+							 src="" class="cld-responsive"/>
+					</div>
+					<div class="col-xs-8">
 						{{{gallery.widgets.[2].contentHtml}}}
 					</div>
 				</div>
-			</div>
-			<div class="row visible-xs">
-				<div class="col-xs-4">
-					<img data-src="{{{cloudinaryUrl gallery.widgets.[1].image width="auto" fetch_format="auto" quality="auto"}}}"
-						 src="" class="cld-responsive"/>
+				<div class="row hidden-xs">
+					{{#if gallery.widgets.[3].image.url}}
+						<div class="col col-xs-12">
+							<img data-src="{{{cloudinaryUrl gallery.widgets.[3].image width="auto" fetch_format="auto" quality="auto"}}}"
+								src="" class="cld-responsive"/>
+						</div>
+					{{/if}}
+					{{#if gallery.widgets.[4].image.url}}
+					<div class="col-xs-12 col-sm-5 vcenter">
+						{{{gallery.widgets.[3].contentHtml}}}
+					</div><!--
+						--><div class="col-xs-12 col-sm-7 vcenter">
+						<img data-src="{{{cloudinaryUrl gallery.widgets.[4].image width="auto" fetch_format="auto" quality="auto"}}}"
+							src="" class="cld-responsive"/>
+					</div>
+					{{/if}}
 				</div>
-				<div class="col-xs-8">
+				<div class="row visible-xs">
+					<div class="col-xs-12 col-sm-7 vcenter" style="margin-top:15px">
+						<img data-src="{{{cloudinaryUrl gallery.widgets.[4].image width="auto" fetch_format="auto" quality="auto"}}}"
+							 src="" class="cld-responsive"/>
+					</div><!--
+						--><div class="col-xs-12 col-sm-5 vcenter" style="margin-top:30px">
 					{{{gallery.widgets.[2].contentHtml}}}
 				</div>
 			</div>
-			<div class="row hidden-xs">
-				{{#if gallery.widgets.[3].image.url}}
-					<div class="col col-xs-12">
-						<img data-src="{{{cloudinaryUrl gallery.widgets.[3].image width="auto" fetch_format="auto" quality="auto"}}}"
-							src="" class="cld-responsive"/>
-					</div>
-				{{/if}}
-				{{#if gallery.widgets.[4].image.url}}
-				<div class="col-xs-12 col-sm-5 vcenter">
-					{{{gallery.widgets.[3].contentHtml}}}
-				</div><!--
-					--><div class="col-xs-12 col-sm-7 vcenter">
-					<img data-src="{{{cloudinaryUrl gallery.widgets.[4].image width="auto" fetch_format="auto" quality="auto"}}}"
-						src="" class="cld-responsive"/>
-				</div>
-				{{/if}}
-			</div>
-			<div class="row visible-xs">
-				<div class="col-xs-12 col-sm-7 vcenter" style="margin-top:15px">
-					<img data-src="{{{cloudinaryUrl gallery.widgets.[4].image width="auto" fetch_format="auto" quality="auto"}}}"
-						 src="" class="cld-responsive"/>
-				</div><!--
-					--><div class="col-xs-12 col-sm-5 vcenter" style="margin-top:30px">
-				{{{gallery.widgets.[2].contentHtml}}}
-			</div>
-			</div>
+			
 		</div>
 {{/ifCond}}
 <!--//end gallery-->

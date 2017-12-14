@@ -32,13 +32,15 @@
 		{{/if}}
 	{{/if}}
 	<div class="tertiary-image">
-		{{{cloudinaryImgSrcSet tertiaryImage screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-							   widths="[78,91,96,108,109,116,148,181,215,227,95,161,161]"
-							   format="jpg" fetch_format="auto" quality="auto" class="cld-responsive"}}}
+		<img data-src="{{{cloudinaryUrl tertiaryImage width="auto" fetch_format="auto" quality="auto"}}}" src="" class="cld-responsive"/>
+		
 	</div>
 </div>
-<div class="text-center" style="margin:5px 0px 5px 0px;">
-	<img src="{{{cloudinaryUrl flatIconImage width=70 fetch_format="auto" quality="auto" }}}" width="70"/>
+<div class="row">
+	<div class="col col-md-2"></div>
+	<div class="col col-md-8 text-center">
+		<img data-src="{{{cloudinaryUrl flatIconImage width="auto" fetch_format="auto" quality="auto"}}}" src="" class="cld-responsive"/>
+	</div>
 </div>
 <div class="title text-center" style="margin-top:8px;">
 	<h4>{{name}}</h4>
