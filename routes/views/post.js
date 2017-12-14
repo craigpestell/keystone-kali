@@ -133,6 +133,23 @@ exports = module.exports = function (req, res) {
 
 
 
+	// Load technologies
+	view.on('init', function (next) {
+
+		var q = keystone.list('Technology').model.find();
+
+		q.exec(function (err, result) {
+
+			if(result){
+				locals.technology = result;
+				next(err);
+			}else{
+				next(err);
+			}
+
+
+		});
+	});
 	// Load comments on the Post
 	/*view.on('init', function (next) {
 		PostComment.model.find()
