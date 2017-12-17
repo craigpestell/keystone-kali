@@ -89,7 +89,7 @@
 						</div>
 					{{/if}}
 					{{#if gallery.widgets.[4].image.url}}
-					<div class="col-xs-12 col-sm-5 vcenter">
+					<div class="col-xs-12 col-sm-5 vcenter ">
 						{{{gallery.widgets.[3].contentHtml}}}
 					</div><!--
 						--><div class="col-xs-12 col-sm-7 vcenter">
@@ -98,16 +98,24 @@
 					</div>
 					{{/if}}
 				</div>
+				
+				{{#if gallery.widgets.[3].image.url}}
 				<div class="row visible-xs">
-					<div class="col-xs-12 col-sm-7 vcenter" style="margin-top:15px">
+					<div class="col col-xs-12">
+						<img data-src="{{{cloudinaryUrl gallery.widgets.[3].image width="auto" fetch_format="auto" quality="auto"}}}"
+							 src="" class="cld-responsive"/>
+					</div>
+				</div>
+				{{/if}}
+				{{#if gallery.widgets.[4].image.url}}
+				<div class="row visible-xs">
+					<div class="col-xs-12 col-sm-5 vcenter ">
 						<img data-src="{{{cloudinaryUrl gallery.widgets.[4].image width="auto" fetch_format="auto" quality="auto"}}}"
 							 src="" class="cld-responsive"/>
-					</div><!--
-						--><div class="col-xs-12 col-sm-5 vcenter" style="margin-top:30px">
-					{{{gallery.widgets.[2].contentHtml}}}
+					</div>
 				</div>
+				{{/if}}
 			</div>
-			
 		</div>
 {{/ifCond}}
 <!--//end gallery-->
