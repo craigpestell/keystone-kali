@@ -142,10 +142,6 @@ body {
 }
 
 @media (min-width: 992px) {
-  body {
-	//background: url("http://griddle.it/940px-4-30px") repeat-y center top !important;
-  }
-  
   .bh-sl-container .bh-sl-map{
 	height:530px;
   }
@@ -166,10 +162,6 @@ body {
 
 
 @media (min-width: 1200px) {
-  body {
-	//background: url("http://griddle.it/1140px-4-30px") repeat-y center top !important;
-  }
-
   .slide-overlay {
 	font-size: 1.2em;
   }
@@ -455,15 +447,18 @@ hr {
 	margin-top:5px;
   }
   #nav-main .navbar-nav > li > a {
-	padding: 10px;
+	padding: 8px;
   }
 }
 //reset to original size
-@media (min-width: 1254px) {
+@media (min-width: 1250px) {
   #nav-main {
 	font-size: 1.1em;
-	
+
   }
+
+}
+@media (min-width: 1350px) {
   #nav-main .navbar-nav > li {
 	margin-top:0px;
   }
