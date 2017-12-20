@@ -56,10 +56,10 @@
 		$('#product-zoom-current').click(function () {
 			$('.product-main [data-gallery] img:visible').click();
 		});
-
+		var imagesPerColorSwatch = parseInt('{{product.imagesPerColorSwatch}}');
 		var swatchCarousel = $('.product-gallery-carousel.owl-carousel')
 				.owlCarousel({
-					items: {{product.imagesPerColorSwatch}},
+					items: imagesPerColorSwatch,
 					dotsContainer: ".product-color-swatches",
 					dotsSpeed: 10,
 					lazyLoad: false,
@@ -83,8 +83,8 @@
 							page = 0;
 						}
 						
-						var imgsPerSwatch = '{{product.imagesPerColorSwatch}}' || 0;
-						var index = (page*{{product.imagesPerColorSwatch}});
+						
+						var index = (page*imagesPerColorSwatch);
 						$('#product-' + index).show();
 						$('#product-icon-' + index).show();
 					}

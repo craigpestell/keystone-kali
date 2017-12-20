@@ -28,6 +28,20 @@
 			}
 			scrolled = true;
 		});
-		
+
+
+		//smoot scrolling in page anchors
+		$('a[href^="#"]').on('click',function (e) {
+			e.preventDefault();
+
+			var target = this.hash;
+			
+			var $target = $('a[name="' + target.substring(1) + '"]');
+			$('html, body').stop().animate({
+				'scrollTop': $target.offset().top
+			}, 900, 'swing', function () {
+				window.location.hash = target;
+			});
+		});
     });
 </script>
