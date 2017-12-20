@@ -128,6 +128,17 @@
 		
         $( ".percentage-end" ).clone().show().insertAfter( $( "div.percentage" ) );
 
+        $(".feature-descr").css({visibility: 'hidden'});
+        $(".feature-icon").hover(function(e){
+        	//console.log(e.target);
+        	var id = $(this).data('id');
+        	console.log(id);
+        	console.log($('.feature-descr[data-id=\'' + id + '\']'));
+			$(".feature-descr").css({visibility: 'hidden'});
+			$('.feature-descr[data-id=\'' + id + '\']').css({visibility: 'visible'});
+		});
+        
+        
 		//$.cloudinary.responsive({responsive_resize: false});
 		$('#blueimp-gallery.blueimp-gallery.blueimp-gallery-controls').on('slide', function(){
 			var label = $('.product-title>h1').text();

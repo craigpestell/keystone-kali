@@ -1,25 +1,36 @@
-<div class="container-fluid" style="padding: 60px 0;background-color: lightgrey">
+<div class="container-fluid features">
+	
 	<div class="row">
 		<div class="col col-md-2"></div>
-		<div class="col col-xs-6 col-md-4 text-center"><H1>Features</H1></div>
-	</div>
-	<div class="row">
-		<div class="col col-md-2"></div>
-		<div class="col col-xs-6 col-md-4 text-center">
-	{{#each product.features}}
-		<div class="col-xs-2" data-feature-key="{{key}}">
-				<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto" quality="auto"}}}" src="" class="cld-responsive"/>
+		<div class="col col-md-10">
+			<div class="row">
+				<div class="col col-md-7"><div class="row"><div class="col col-xs-12"><h2>Features</h2></div></div></div>
+				<div class="col col-md-6">
+					<div class="row">
+					{{#each product.features}}
+						<div class="col col-xs-2 text-center">
+							<div class="feature-icon" data-id="{{@index}}">
+								<img data-src="{{{cloudinaryUrl iconImage width="auto" fetch_format="auto"}}}" src="" class="cld-responsive"/>
+							</div>
+						</div>
+					{{/each}}
+					</div>
+					<div class="row feature-descr-container">
+						<div class="col col-xs-1 col-md-2"></div>
+						{{#each product.features}}
+							<div class="col col-xs-10 col-md-8 feature-descr" data-id="{{@index}}">
+								<h4>{{{name}}}</h4>
+								<p>{{{description}}}</p>
+							</div>
+							
+						{{/each}}
+						
+					</div>
+						
+					</div>
+				</div>
+			</div>
 		</div>
-	{{/each}}
-	</div>
-	{{#each product.features}}
-		<div class="col-xs-1" data-feature-key="{{key}}">
-		<h4>{{{name}}}</h4>
-		<p>{{{description}}}</p>
-		</div>
-	{{/each}}
-
-
 	</div>
 	
 </div>

@@ -697,6 +697,24 @@ a.product-category-anchor:hover, a.product-category-anchor:active {
   //background-color: $brand-primary;
 }
 
+.features {
+  padding: 60px 0;
+  background-color: lighten($brand-grey, 15%);
+  h2{
+	font-family: Gotham-Medium, Arial, SansSerif;
+	font-size:1.6em;
+  }
+  .feature-descr-container{
+	position:relative;
+	//min-height: 300px;
+  }
+  .feature-descr{
+	position: absolute;
+	top: 0;
+  }
+
+}
+
 /*
 End Product Page
 */
