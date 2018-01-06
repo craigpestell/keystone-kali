@@ -67,6 +67,13 @@ Post.schema.virtual('galleryImages').get(function(){
 	return images;
 });
 
+Post.schema.virtual('contentExtendedProcessed').get(function () {
+	var processed = this.content.extended;
+	processed = processed.replace(/<img\ src="http(s)?:\/\/res.cloudinary.com\/kaliprotectives-com\/image\/upload\//g, '<img class="cld-responsive" data-src="//res.cloudinary.com/kaliprotectives-com/image/upload/f_auto,q_auto,w_auto/');
+	
+	return processed;
+	
+});
 
 //Post.relationship({ path: 'comments', ref: 'PostComment', refPath: 'post' });
 
