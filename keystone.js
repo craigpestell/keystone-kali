@@ -26,7 +26,7 @@ keystone.init({
 	'session store': 'mongo',
 	'sass': 'public',
 	'static': 'public',
-	'favicon': 'public/favicon.ico',
+	'favicon': 'public/favicon/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'hbs',
 	'handlebars instance': handlebarsInstance,
@@ -50,6 +50,9 @@ keystone.init({
 	'wysiwyg skin': '',
 	//'wysiwyg images': true,
 	'wysiwyg cloudinary images': true,
+	'wysiwyg additional options': {
+		content_css: '/styles/site.css'
+	},
 	
 	//'mongo': process.env.DO ? '10.134.0.166:27017/kali' : '162.243.149.37:27017/kali'
 
@@ -66,6 +69,7 @@ if(process.env.PRODUCTION){
 	keystone.set('env', 'production');
 	keystone.set('domain', 'kaliprotectives.com');
 }
+keystone.Email.defaults = {};
 keystone.Email.defaults.templateExt = 'hbs';
 keystone.Email.defaults.templateEngine = require('handlebars');
 
@@ -109,20 +113,6 @@ keystone.set('email locals', {
 		}
 	}
 });
-
-// Setup replacement rules for emails, to automate the handling of differences
-// between development a production.
-
-// Be sure to update this rule to include your site's actual domain, and add
-// other rules your email templates require.
-
-keystone.set('email rules', [{
-	find: '/images/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/images/' : 'http://localhost:3000/images/'
-}, {
-	find: '/keystone/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/keystone/' : 'http://localhost:3000/keystone/'
-}]);
 
 // Load your project's email test routes
 

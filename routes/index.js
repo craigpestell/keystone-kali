@@ -20,7 +20,7 @@
  */
 
 var keystone = require('keystone');
-var restful = require('restful-keystone')(keystone);
+//var restful = require('restful-keystone')(keystone);
 
 var subdomain = require('subdomain');
 var map = require('express-sitemap');
@@ -37,13 +37,14 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views')
+	views: importRoutes('./views'),
+	api: importRoutes('./api')
 };
 
 // Setup Route Bindings
 exports = module.exports = function(app) {
 	// /api/dealers
-	restful.expose({
+	/*restful.expose({
 		Dealer : true
 	}).start();
 	app.all('*', function(req, res, next){
@@ -52,10 +53,16 @@ exports = module.exports = function(app) {
 		}
 		//res.locals.params = {discipline:'bike'};
 		next();
+	});*/
+	app.get('/api/dealers', keystone.middleware.api, routes.api.dealers.list);
+	
+	app.all('*',function(req, res, next){
+		res.locals.params = {};
+		next();
 	});
 	app.all('/cf-ipcountry', keystone.middleware.cors);
 	
-	app.use(favicon(path.join(__dirname, '..', 'public', 'img', 'favicon.ico')));
+	app.use(favicon(path.join(__dirname, '..', 'public', 'favicon', 'favicon.ico')));
 	app.get(['/cf-ipcountry',
 		'/subdomain/:discipline/cf-ipcountry'], function(req, res){
 		//console.log('route /cf-ipcountry');
@@ -63,7 +70,7 @@ exports = module.exports = function(app) {
 		if(req.headers['cf-ipcountry']){
 			country = req.headers['cf-ipcountry']
 		}
-		console.log('setting custom header');
+		//console.log('setting custom header');
 		res.header('Access-Control-Allow-Origin', '*');
 		res.header('Access-Control-Allow-Methods', 'GET');
 		res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');

@@ -81,6 +81,12 @@ body {
   font-size: 16px;
 }
 
+body#tinymce {
+  font-family: Gotham-Light, Arial, SansSerif;
+}
+body#tinymce img{
+  max-width: 100%;
+}
 
 @media (min-width: 0px) {
   .bh-sl-container .bh-sl-map{
