@@ -134,7 +134,7 @@ exports = module.exports = function (req, res) {
 
 		var q = keystone.list('Post').paginate({
 			page: req.query.page || 1,
-			perPage: 15,
+			perPage: 20,
 			maxPages: 10,
 			filters: filters
 		})
@@ -148,7 +148,7 @@ exports = module.exports = function (req, res) {
 
 		q.exec(function (err, results) {
 			//console.log('here:', results);
-			locals.data.posts = results;
+			locals.data.posts = results.results;
 			if(!results){
 				next(err);
 				return;

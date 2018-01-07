@@ -86,7 +86,17 @@ exports = module.exports = function (req, res) {
 			perPage: 10,
 			maxPages: 10
 		})*/
-		var q = keystone.list('Post').model.find()
+		var filters = {'state': 'published'};
+		if (locals.data.category) {
+			filters.categories = {$in: [locals.data.category]};
+		}
+
+		var q = keystone.list('Post').paginate({
+			page: req.query.page || 1,
+			perPage: 20,
+			maxPages: 10,
+			filters: filters
+		})
 			.where('state', 'published')
 			.sort('-publishedDate')
 			.populate('author categories product postLayout gallery.widgets');
@@ -107,7 +117,7 @@ exports = module.exports = function (req, res) {
 
 		q.exec(function (err, results) {
 			//console.log('here:', results);
-			locals.data.posts = results;
+			locals.data.posts = results.results;
 			if(!results){
 				next(err);
 				return;
