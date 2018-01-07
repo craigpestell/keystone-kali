@@ -86,6 +86,17 @@ exports = module.exports = function (req, res) {
 			perPage: 10,
 			maxPages: 10
 		})*/
+		if(req.originalUrl.indexOf('/republik/post/') === 0){
+			locals.data.category = '590804bee4027ba1787c6575';
+		}
+		if(req.originalUrl.indexOf('/technology/post/') === 0){
+			if(process.env.DO) {
+				locals.data.category = '5a1a5061bc13d294547da833';
+			}else{
+				locals.data.category = '5a1a28f4ecddff59637a740c';
+			}
+		}
+
 		var filters = {'state': 'published'};
 		if (locals.data.category) {
 			filters.categories = {$in: [locals.data.category]};
@@ -100,16 +111,6 @@ exports = module.exports = function (req, res) {
 			.where('state', 'published')
 			.sort('-publishedDate')
 			.populate('author categories product postLayout gallery.widgets');
-		if(req.originalUrl.indexOf('/republik/post/') === 0){
-			locals.data.category = '590804bee4027ba1787c6575';
-		}
-		if(req.originalUrl.indexOf('/technology/post/') === 0){
-			if(process.env.DO) {
-				locals.data.category = '5a1a5061bc13d294547da833';
-			}else{
-				locals.data.category = '5a1a28f4ecddff59637a740c';
-			}
-		}
 		
 		if (locals.data.category) {
 			q.where('categories').in([locals.data.category]);
