@@ -444,7 +444,7 @@
 				if(blogIndexPageFetching === blogIndexPage){
 					blogIndexPageFetching++;
 					$.ajax({
-						url: '//bike.localhost:3000/api/republik/posts?page=' + blogIndexPageFetching,
+						url: '/api/republik/posts?page=' + blogIndexPageFetching,
 						success: function(result){
 							console.log(result);
 							var item = document.createElement('div');
