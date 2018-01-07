@@ -54,12 +54,13 @@ exports = module.exports = function(app) {
 		//res.locals.params = {discipline:'bike'};
 		next();
 	});*/
-	app.get('/api/dealers', keystone.middleware.api, routes.api.dealers.list);
 	
 	app.all('*',function(req, res, next){
 		res.locals.params = {};
 		next();
 	});
+
+
 	app.all('/cf-ipcountry', keystone.middleware.cors);
 	
 	app.use(favicon(path.join(__dirname, '..', 'public', 'favicon', 'favicon.ico')));
@@ -89,15 +90,18 @@ exports = module.exports = function(app) {
 		});
 	});
 	app.param('category', function(req, res, next, category){
-		console.log('param category');
+		console.log('param category', category);
 		keystone.list('ProductCategory').model.findOne({slug: category}).exec(function(err, data){
+			console.log('data:', data);
 			if (err) return next(err);
 			//if (!data) return next(new Error('Nothing is found'));
 			if(!data) return next();
 			res.locals.params.category = data;
+			console.log('setting res.locals.params.category', data);
 			next();
 		});
 	});
+	
 	app.param('subCategory', function(req, res, next, subCategory){
 		console.log('param subCategory');
 		keystone.list('ProductSubCategory').model.findOne({slug: subCategory}).exec(function(err, data){
@@ -108,6 +112,7 @@ exports = module.exports = function(app) {
 			next();
 		});
 	});
+
 	app.param('product', function(req, res, next, product){
 		console.log('param product');
 		keystone.list('Product').model.findOne({slug: product}).populate('mainCategory subCategory technologies').exec(function(err, data){
@@ -118,6 +123,21 @@ exports = module.exports = function(app) {
 			next();
 		});
 	});
+
+	app.param('postCategory', function(req, res, next, category){
+		console.log('param postCategory', category);
+		keystone.list('PostCategory').model.findOne({key: category}).exec(function(err, data){
+			
+			if (err) return next(err);
+			//if (!data) return next(new Error('Nothing is found'));
+			if(!data) return next();
+			res.locals.params.postCategory = data;
+			next();
+		});
+	});
+	
+	app.get('/api/dealers', keystone.middleware.api, routes.api.dealers.list);
+	app.get('/api/:postCategory/posts', keystone.middleware.api, routes.api.posts.list);
 
 	app.use(subdomain({base: keystone.get('domain'), removeWWW: true, debug: true}));
 	

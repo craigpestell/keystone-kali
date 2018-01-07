@@ -172,13 +172,16 @@
 {{/ifCond}}
 
 {{#ifCond section "==" "republik"}}
+	<script src="/js/jquery-debounce/jquery.debounce.js"></script>
 	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 {{#ifCond section "==" "technology"}}
+	<script src="/js/jquery-debounce/jquery.debounce.js"></script>
 	<script src="/js/owl.carousel/src/js/owl.autoplay.js" defer></script>
 	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 {{#ifCond section "==" "technology-detail"}}
+	<script src="/js/jquery-debounce/jquery.debounce.js"></script>
 	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 
@@ -413,6 +416,64 @@
 				eventAction: 'click',
 				eventLabel: "Url: " + href
 			});
+		});
+
+		function isScrolledIntoView(elem)
+		{
+			var docViewTop = $(window).scrollTop();
+			var docViewBottom = docViewTop + $(window).height();
+
+			var elemTop = $(elem).offset().top;
+			var elemBottom = elemTop + $(elem).height();
+
+			return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+		}
+		
+		var blogIndexPage = 4;
+		var blogIndexPageFetching = 4;
+		
+		$(window).scroll(function(e){
+			console.log('scrolling...');
+			console.log('footer in view:', isScrolledIntoView('.blog-index-item'));
+			
+			var section = '{{@root.section}}';
+			if( section.indexOf('technology-detail') > -1){
+				section = 'technology';
+			}
+			if(isScrolledIntoView('#footer')){
+				if(blogIndexPageFetching === blogIndexPage){
+					blogIndexPageFetching++;
+					$.ajax({
+						url: 'http://bike.localhost:3000/api/republik/posts?page=' + blogIndexPageFetching,
+						success: function(result){
+							console.log(result);
+							var item = document.createElement('div');
+							var grid = $('#blog-columns');
+							result.posts.results.forEach(function(post){
+								console.log(post);
+								window.salvattore['append_elements'](grid[0], [item]);
+								var html = '<a href="/' + section + '/post/' + post.key + '">';
+								html += '<div class="blog-index-item">\n' +
+										'\t\t\t\t<div class="blog-main-image">\n' +
+										'\t\t\t\t\t<img src="' + post.mainImage.url +'" class="cld-responsive" src=""/>\n' +
+										'\t\t\t\t</div>\n' +
+										'\t\t\t\t<h3>' + post.name + '</h3>\n' +
+										'\t\t\t\t<div class="blog-main-content">\n' +
+										'\t\t\t\t\t' + post.content.brief + '\n' +
+										'\t\t\t\t</div>\n' +
+										'\t\t\t\t<hr/>\n' +
+										'\t\t\t</div>';
+								
+								html += '</a>';
+								item.outerHTML = html;
+							});
+							blogIndexPage++;
+
+						}
+					})
+
+				}
+			}
 		});
 	
     });
