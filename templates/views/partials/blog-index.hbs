@@ -27,4 +27,23 @@
 		</a>
 	{{/each}}
 	</div>
+
+	<ul class="pagination">
+	{{#ifCond data.posts.totalPages ">" 1}}
+		{{#if data.posts.previous}}
+			<li><a class="page-num" href="?page={{ data.posts.previous }}">Previous</a></li>
+		{{else}}
+			<li><a class="page-num" href="?page=1">Previous</a></li>
+		{{/if}}
+		{{#each data.posts.pages}}
+			<li><a class="page-num {{#ifCond data.posts.currentPage "==" this }} active {{/ifCond}}" href="{{p}}?page={{#ifCond this "==" '...' }} {{#ifCond @index "==" data.posts.totalPages }} 1 {{else}} {{ this }} {{/ifCond}}{{else}}{{ this }}{{/ifCond}}">{{ this }}</a></li>
+		{{/each}}
+		
+		{{#if data.posts.next}}
+			<li><a class="page-num" href="?page={{data.posts.next}}">Next</a></li>
+		{{else}}
+			<li><a class="page-num" href="?page={{data.posts.totalPages}}">Next</a></li>
+		{{/if}}
+	{{/ifCond}}
+	</ul>
 </div>
