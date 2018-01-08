@@ -454,7 +454,7 @@
 								var img = post.mainImage.url;
 								var parts = img.split('upload/');
 								img = parts[0] + 'upload/f_auto,w_auto/' + parts[1];
-								
+								img = img.replace('http://', 'https://');
 								window.salvattore['append_elements'](grid[0], [item]);
 								var html = '<a href="/' + section + '/post/' + post.key + '">';
 								html += '<div class="blog-index-item">\n' +
