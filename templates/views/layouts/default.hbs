@@ -429,8 +429,8 @@
 			return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 		}
 		
-		var blogIndexPage = 4;
-		var blogIndexPageFetching = 4;
+		var blogIndexPage = 1;
+		var blogIndexPageFetching = 1;
 		
 		$(window).scroll(function(e){
 			console.log('scrolling...');
@@ -451,11 +451,15 @@
 							var grid = $('#blog-columns');
 							result.posts.results.forEach(function(post){
 								console.log(post);
+								var img = post.mainImage.url;
+								var parts = img.split('upload/');
+								img = parts[0] + 'upload/f_auto,w_auto/' + parts[1];
+								
 								window.salvattore['append_elements'](grid[0], [item]);
 								var html = '<a href="/' + section + '/post/' + post.key + '">';
 								html += '<div class="blog-index-item">\n' +
 										'\t\t\t\t<div class="blog-main-image">\n' +
-										'\t\t\t\t\t<img src="' + post.mainImage.url +'" class="cld-responsive" src=""/>\n' +
+										'\t\t\t\t\t<img data-src="' + img +'" class="cld-responsive" src=""/>\n' +
 										'\t\t\t\t</div>\n' +
 										'\t\t\t\t<h3>' + post.name + '</h3>\n' +
 										'\t\t\t\t<div class="blog-main-content">\n' +
@@ -466,6 +470,7 @@
 								
 								html += '</a>';
 								item.outerHTML = html;
+								$.cloudinary.responsive();
 							});
 							blogIndexPage++;
 
