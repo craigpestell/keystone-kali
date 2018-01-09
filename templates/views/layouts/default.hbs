@@ -104,6 +104,8 @@
     <meta name="theme-color" content="#ffffff">
 
     <meta name="google-site-verification" content="dI-RltPLU3KpavtHz3jFnU2daR9kCYpOsxYOM5s-Wh8" />
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="{{#ifCond section "==" "home"}}{{#if discipline}}fullpage-nav{{/if}}{{/ifCond}}">
@@ -418,7 +420,7 @@
 			});
 		});
 
-		function isScrolledIntoView(elem)
+		/*function isScrolledIntoView(elem)
 		{
 			var docViewTop = $(window).scrollTop();
 			var docViewBottom = docViewTop + $(window).height();
@@ -427,6 +429,15 @@
 			var elemBottom = elemTop + $(elem).height();
 
 			return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+		}*/
+		function isScrolledIntoView(elem)
+		{
+			var docViewTop = $(window).scrollTop();
+			
+
+			var elemTop = $(elem).offset().top;
+			
+			return (elemTop >= docViewTop);
 		}
 		
 		var blogIndexPage = 1;
@@ -441,23 +452,33 @@
 				section = 'technology';
 			}
 			if(isScrolledIntoView('#footer')){
+				
 				if(blogIndexPageFetching === blogIndexPage){
+					$('#blog-index .spinner').fadeIn();
 					blogIndexPageFetching++;
 					$.ajax({
 						url: '/api/republik/posts?page=' + blogIndexPageFetching,
 						success: function(result){
 							console.log(result);
+							if(result.posts.currentPage === result.posts.pages[result.posts.pages.length-1] || result.posts.results.length === 0){
+								blogIndexPage = 0;
+								$('#blog-index .spinner').remove();
+								return;
+							}
 							var item = document.createElement('div');
 							var grid = $('#blog-columns');
 							result.posts.results.forEach(function(post){
 								console.log(post);
-								var img = post.mainImage.url;
-								var parts = img.split('upload/');
-								img = parts[0] + 'upload/f_auto,w_auto/' + parts[1];
-								img = img.replace('http://', 'https://');
+								var img = "";
+								if(post.mainImage && post.mainImage.url){
+									img = post.mainImage.url;
+									var parts = img.split('upload/');
+									img = parts[0] + 'upload/f_auto,w_auto/' + parts[1];
+									img = img.replace('http://', 'https://');
+								}
 								window.salvattore['append_elements'](grid[0], [item]);
 								var html = '<a href="/' + section + '/post/' + post.key + '">';
-								html += '<div class="blog-index-item">\n' +
+								html += '<div class="blog-index-item fadeInUp animated" style="display:none">\n' +
 										'\t\t\t\t<div class="blog-main-image">\n' +
 										'\t\t\t\t\t<img data-src="' + img +'" class="cld-responsive" src=""/>\n' +
 										'\t\t\t\t</div>\n' +
@@ -471,6 +492,13 @@
 								html += '</a>';
 								item.outerHTML = html;
 								$.cloudinary.responsive();
+								$('#blog-index .spinner').fadeOut();
+								setTimeout(function(){
+									$current = $('.blog-index-item:hidden');
+									if($current.length){
+										$current.css('display', 'block');
+									}
+								},100);
 							});
 							blogIndexPage++;
 
