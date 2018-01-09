@@ -420,16 +420,7 @@
 			});
 		});
 
-		/*function isScrolledIntoView(elem)
-		{
-			var docViewTop = $(window).scrollTop();
-			var docViewBottom = docViewTop + $(window).height();
-
-			var elemTop = $(elem).offset().top;
-			var elemBottom = elemTop + $(elem).height();
-
-			return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-		}*/
+	{{#ifCond section "==" 'republik'}}
 		function isScrolledIntoView(elem, offset)
 		{
 			var docViewTop = $(window).scrollTop();
@@ -497,7 +488,9 @@
 									if($current.length){
 										$current.css('display', 'block');
 									}
+									loadPosts();
 								},100);
+								
 							});
 							blogIndexPage++;
 
@@ -511,6 +504,7 @@
 		$(window).scroll(function(e){
 			loadPosts();
 		});
+	{{/ifCond}}
 	
     });
 </script>
