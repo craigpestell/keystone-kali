@@ -421,14 +421,25 @@
 		});
 
 	{{#ifCond section "==" 'republik'}}
+
+		/*function isScrolledIntoView(elem)
+		{
+			var docViewTop = $(window).scrollTop();
+			var docViewBottom = docViewTop + $(window).height();
+
+			var elemTop = $(elem).offset().top;
+			var elemBottom = elemTop + $(elem).height();
+
+			return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+		}*/
 		function isScrolledIntoView(elem, offset)
 		{
 			var docViewTop = $(window).scrollTop();
-			
+			var docViewBottom = docViewTop + $(window).height();
 
 			var elemTop = $(elem).offset().top + offset;
-			
-			return (elemTop >= docViewTop);
+			console.log('elemTop:', elemTop, ' docTop:', docViewTop, 'docBottom:', docViewBottom);
+			return (elemTop <= docViewBottom);
 		}
 		
 		var blogIndexPage = 1;
