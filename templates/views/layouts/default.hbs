@@ -443,16 +443,13 @@
 		var blogIndexPage = 1;
 		var blogIndexPageFetching = 1;
 		
-		$(window).scroll(function(e){
-			console.log('scrolling...');
-			console.log('footer in view:', isScrolledIntoView('.blog-index-item'));
-			
+		var loadPosts = function(){
 			var section = '{{@root.section}}';
 			if( section.indexOf('technology-detail') > -1){
 				section = 'technology';
 			}
 			if(isScrolledIntoView('#footer')){
-				
+
 				if(blogIndexPageFetching === blogIndexPage){
 					$('#blog-index .spinner').fadeIn();
 					blogIndexPageFetching++;
@@ -468,7 +465,7 @@
 							var item = document.createElement('div');
 							var grid = $('#blog-columns');
 							result.posts.results.forEach(function(post){
-								console.log(post);
+								//console.log(post);
 								var img = "";
 								if(post.mainImage && post.mainImage.url){
 									img = post.mainImage.url;
@@ -488,7 +485,7 @@
 										'\t\t\t\t</div>\n' +
 										'\t\t\t\t<hr/>\n' +
 										'\t\t\t</div>';
-								
+
 								html += '</a>';
 								item.outerHTML = html;
 								$.cloudinary.responsive();
@@ -507,6 +504,10 @@
 
 				}
 			}
+		};
+		loadPosts();
+		$(window).scroll(function(e){
+			loadPosts();
 		});
 	
     });
