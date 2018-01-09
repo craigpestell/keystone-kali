@@ -430,12 +430,12 @@
 
 			return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 		}*/
-		function isScrolledIntoView(elem)
+		function isScrolledIntoView(elem, offset)
 		{
 			var docViewTop = $(window).scrollTop();
 			
 
-			var elemTop = $(elem).offset().top;
+			var elemTop = $(elem).offset().top + offset;
 			
 			return (elemTop >= docViewTop);
 		}
@@ -448,7 +448,7 @@
 			if( section.indexOf('technology-detail') > -1){
 				section = 'technology';
 			}
-			if(isScrolledIntoView('#footer')){
+			if(isScrolledIntoView('#footer', -200)){
 
 				if(blogIndexPageFetching === blogIndexPage){
 					$('#blog-index .spinner').fadeIn();
@@ -457,9 +457,11 @@
 						url: '/api/republik/posts?page=' + blogIndexPageFetching,
 						success: function(result){
 							console.log(result);
+							$('#blog-index .pagination').remove();
 							if(result.posts.currentPage === result.posts.pages[result.posts.pages.length-1] || result.posts.results.length === 0){
 								blogIndexPage = 0;
 								$('#blog-index .spinner').remove();
+								$('#blog-index .blog-end').show();
 								return;
 							}
 							var item = document.createElement('div');
