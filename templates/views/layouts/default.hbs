@@ -441,9 +441,34 @@
 			//console.log('elemTop:', elemTop, ' docTop:', docViewTop, 'docBottom:', docViewBottom);
 			return (elemTop <= docViewBottom);
 		}
+
+		function getParameterByName(name, url) {
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, "\\$&");
+			var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+					results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+
+		var blogIndexPage = getParameterByName('page') || 1;
+		var blogIndexPageFetching = getParameterByName('page') || 1;
 		
-		var blogIndexPage = 1;
-		var blogIndexPageFetching = 1;
+		//fill page numbers of server-side rendered blog-index-items
+		var itemsPerPage = 12;
+		var countPerPage = 0;
+		var currentPage = blogIndexPage;
+		$('.blog-index-item').parent().each(function(idx, item){
+			countPerPage++;
+			if(countPerPage === itemsPerPage){
+				countPerPage = 0;
+				currentPage++;
+			}
+			console.log(item);
+			var a = $(item);
+			a.attr('href', a.attr('href') + '?page=' + currentPage);
+		});
 		
 		var loadPosts = function(){
 			var section = '{{@root.section}}';
