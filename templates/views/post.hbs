@@ -16,11 +16,9 @@
 {{/if}}
 
 {{#container}}
-	<div class="row" style="margin-top:0">
-		<div class="col col-xs-12"><hr style="margin-bottom: 0px"/></div>
-	</div>
+	<hr style="margin-bottom: 0px"/>
 	<div class="row">
-		<div class="col col-xs-3" style="padding-top:7px">
+		<div class="col col-xs-3">
 			{{#ifCond section "==" "technology"}}
 				<a href="/technology">&larr; Back to Technology</a>
 			{{/ifCond}}
@@ -28,10 +26,13 @@
 				<a href="/{{section}}">&larr; Back to Republik</a>
 			{{/ifCond}}
 		</div>
-	
+	</div>
+	<div class="row">
+		<div class="col col-xs-12">
+			{{> blog-index}}
+		</div>
 	</div>
 	<div class="row blog-footer">
-		{{> blog-index}}
 		<div class="col col-xs-3">
 			{{#ifCond section "==" "technology"}}
 				<a href="/technology">&larr; Back to Technology</a>
