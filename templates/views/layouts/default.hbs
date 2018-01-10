@@ -479,7 +479,7 @@
 						success: function(result){
 							console.log(result);
 							//$('#blog-index .pagination').remove();
-							if(result.posts.currentPage === result.posts.pages[result.posts.pages.length-1] || result.posts.results.length === 0){
+							if(result.posts.results.length === 0){
 								blogIndexPage = 0;
 								$('.spinner', '#blog-index').remove();
 								$('.blog-end', '#blog-index').show();
