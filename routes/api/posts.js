@@ -15,7 +15,7 @@ exports.list = function(req, res) {
 
 	var q = Post.paginate({
 		page: req.query.page || 1,
-		perPage: 3,
+		perPage: 12,
 		maxPages: 10,
 		filters: filters
 	})
