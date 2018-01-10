@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
 	// Init locals
 	locals.section = 'republik';
 	if(req.originalUrl.indexOf('/technology/post/') === 0){
-		locals.section = 'technology-detail';
+		locals.section = 'technology';
 	}
 	locals.filters = {
 		post: req.params.post,

@@ -182,10 +182,6 @@
 	<script src="/js/owl.carousel/src/js/owl.autoplay.js" defer></script>
 	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
-{{#ifCond section "==" "technology-detail"}}
-	<script src="/js/jquery-debounce/jquery.debounce.js"></script>
-	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
-{{/ifCond}}
 
 
 <!--bootstrap 3.3.6 -->
@@ -472,9 +468,7 @@
 		
 		var loadPosts = function(){
 			var section = '{{@root.section}}';
-			if( section.indexOf('technology-detail') > -1){
-				section = 'technology';
-			}
+			
 			if(isScrolledIntoView('#footer', -200)){
 
 				if(blogIndexPageFetching === blogIndexPage){
