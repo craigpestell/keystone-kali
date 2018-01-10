@@ -460,14 +460,14 @@
 		var countPerPage = 0;
 		var currentPage = blogIndexPage;
 		$('.blog-index-item').parent().each(function(idx, item){
-			countPerPage++;
+			
 			if(countPerPage === itemsPerPage){
 				countPerPage = 0;
 				currentPage++;
 			}
-			console.log(item);
 			var a = $(item);
 			a.attr('href', a.attr('href') + '?page=' + currentPage);
+			countPerPage++;
 		});
 		
 		var loadPosts = function(){
