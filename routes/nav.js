@@ -8,9 +8,7 @@ var async = require('async');
  * */
 
 var getNavData = function(params, navDataCb) {
-    //console.log('discipline param:', req.params.discipline);
-    //console.log('category param:', req.params.category);
-
+    
     var disciplineWhere = {slug: ''};
     if (params && params.discipline) {
         disciplineWhere.slug = params.discipline.slug;
@@ -64,8 +62,6 @@ var getNavData = function(params, navDataCb) {
                     });
                 });
             }
-            //console.log("MASSAGED RESULTS: ", returnData);
-            //console.log(returnData.categories.bike.subCategories);
             navDataCb(null, returnData);
         });
 	});
@@ -85,7 +81,7 @@ var navRouteHandler = function (req, res, next) {
 	}
 	
 	getNavData(res.locals.params, function (err, data) {
-		//console.log('nav data:', data);
+		
 		
 		locals.navLinks = [
 			{
@@ -94,6 +90,9 @@ var navRouteHandler = function (req, res, next) {
 				href: '/technology'
 			}
 		];
+		if(req.originalUrl.indexOf('/technology/post/') === 0){
+			locals.navLinks[locals.navLinks.length-1]['active'] = true;
+		}
 		var showRepublik = true;
 		
 		if (res.locals.params && res.locals.params.discipline && res.locals.params.discipline.slug === 'moto') {
@@ -106,15 +105,13 @@ var navRouteHandler = function (req, res, next) {
 				href: '/republik'
 			});
 		}
-			
 		
+		if(req.originalUrl.indexOf('/republik/post/') === 0){
+			locals.navLinks[locals.navLinks.length-1]['active'] = true;
+		}
+
 		locals.navSubLinks = [];
-		/*locals.navLinks.push({
-		 label: 'Helmets', key: 'helmets', href: '/helmets',
-		 products: data.categories.helmets,
-		 categories: data.categories.helmets.subCategories,
-		 dropdown: data.categories.helmets.subCategories
-		 });*/
+		
 		data.categories.forEach(function (category) {
 			locals.navLinks.push({
 				label: category.name,
@@ -137,10 +134,6 @@ var navRouteHandler = function (req, res, next) {
 
 		data.disciplines.forEach(function(disc){
 			
-			//console.log('port',keystone.get('port'));
-			//console.log('discParam:', discParam);
-			//console.log('disc',disc);
-			//if(!discParam) {
 			var disciplineNav = {
 				label: disc.name,
 				key: disc.key,
@@ -179,6 +172,7 @@ var navRouteHandler = function (req, res, next) {
 				});
 			}
 		}
+		
 		next();
 	});
 };
