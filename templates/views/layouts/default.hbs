@@ -438,12 +438,12 @@
 			var docViewBottom = docViewTop + $(window).height();
 
 			var elemTop = $(elem).offset().top + offset;
-			console.log('elemTop:', elemTop, ' docTop:', docViewTop, 'docBottom:', docViewBottom);
+			//console.log('elemTop:', elemTop, ' docTop:', docViewTop, 'docBottom:', docViewBottom);
 			return (elemTop <= docViewBottom);
 		}
 		
-		var blogIndexPage = 1;
-		var blogIndexPageFetching = 1;
+		var blogIndexPage = 4;
+		var blogIndexPageFetching = 4;
 		
 		var loadPosts = function(){
 			var section = '{{@root.section}}';
@@ -459,11 +459,11 @@
 						url: '/api/republik/posts?page=' + blogIndexPageFetching,
 						success: function(result){
 							console.log(result);
-							$('#blog-index .pagination').remove();
+							//$('#blog-index .pagination').remove();
 							if(result.posts.currentPage === result.posts.pages[result.posts.pages.length-1] || result.posts.results.length === 0){
 								blogIndexPage = 0;
-								$('#blog-index .spinner').remove();
-								$('#blog-index .blog-end').show();
+								$('.spinner', '#blog-index').remove();
+								$('.blog-end', '#blog-index').show();
 								return;
 							}
 							var item = document.createElement('div');
@@ -478,7 +478,11 @@
 									img = img.replace('http://', 'https://');
 								}
 								window.salvattore['append_elements'](grid[0], [item]);
-								var html = '<a href="/' + section + '/post/' + post.key + '">';
+								var href = '/' + section + '/post/' + post.key; 
+								if(blogIndexPageFetching > 1){
+									href += '?page=' + blogIndexPageFetching;
+								}
+								var html = '<a href="' + href + '">';
 								html += '<div class="blog-index-item fadeInUp animated" style="display:none">\n' +
 										'\t\t\t\t<div class="blog-main-image">\n' +
 										'\t\t\t\t\t<img data-src="' + img +'" class="cld-responsive" src=""/>\n' +
@@ -493,8 +497,9 @@
 								html += '</a>';
 								item.outerHTML = html;
 								$.cloudinary.responsive();
-								$('#blog-index .spinner').fadeOut();
+								
 								setTimeout(function(){
+									$('#blog-index .spinner').fadeOut();
 									$current = $('.blog-index-item:hidden');
 									if($current.length){
 										$current.css('display', 'block');

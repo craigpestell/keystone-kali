@@ -1,24 +1,4 @@
 <div class="blog">
-{{#container}}
-	{{#ifCond section "==" "technology-detail"}}
-		<div class="row">
-			<div class="col col-xs-12">
-				<p><a href="/technology">&larr; Back to Technology</a></p>
-				<hr/>				
-			</div>
-		</div>
-	{{/ifCond}}
-	{{#ifCond section "==" "republik"}}
-		<div class="row">
-			<div class="col col-xs-12">
-				<p><a href="/{{section}}">&larr; Back to Republik</a></p>
-				<hr/>
-			</div>
-		</div>
-
-	{{/ifCond}}
-{{/container}}
-
 {{#with post}}
 	{{> post-layout}}
 {{/with}}
@@ -38,7 +18,21 @@
 {{#container}}
 	<div class="row" style="margin-top:0">
 		<div class="col col-xs-12"><hr style="margin-bottom: 0px"/></div>
-		<div class="col col-xs-12">{{>blog-index}}</div>
 	</div>
+	<div class="row">
+		<div class="col col-xs-3" style="padding-top:7px">
+			{{#ifCond section "==" "technology-detail"}}
+				<a href="/technology">&larr; Back to Technology</a>
+			{{/ifCond}}
+			{{#ifCond section "==" "republik"}}
+				<a href="/{{section}}">&larr; Back to Republik</a>
+			{{/ifCond}}
+		</div>
+		{{>blog-pagination}}
+	</div>
+	<div class="row">
+		{{> blog-index}}
+	</div>
+	
 {{/container}}
 </div>

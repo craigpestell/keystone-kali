@@ -1,4 +1,9 @@
 {{#container}}
-	{{> blog-index}}
-<!--{{>pagination}}-->
+	<div class="row">
+		<div class="col col-xs-3"></div>
+		{{>blog-pagination}}
+	</div>
+	<div class="row">
+		{{> blog-index}}
+	</div>
 {{/container}}

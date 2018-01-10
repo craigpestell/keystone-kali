@@ -8,7 +8,7 @@ var Post = keystone.list('Post');
  */
 exports.list = function(req, res) {
 	var filters = {'state': 'published'};
-	console.log(res.locals);
+	console.log('api/posts page:', req.query.page);
 	if (res.locals.params.postCategory) {
 		filters.categories = {$in: [res.locals.params.postCategory._id]};
 	}
