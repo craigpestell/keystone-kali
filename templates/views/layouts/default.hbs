@@ -489,12 +489,14 @@
 							var grid = $('#blog-columns');
 							result.posts.results.forEach(function(post){
 								//console.log(post);
-								var img = "";
 								if(post.mainImage && post.mainImage.url){
-									img = post.mainImage.url;
+									var img = post.mainImage.url;
 									var parts = img.split('upload/');
 									img = parts[0] + 'upload/f_auto,w_auto/' + parts[1];
+									var imgSmall = parts[0] + 'upload/f_auto,q_50,w_200/' + parts[1];
 									img = img.replace('http://', 'https://');
+									imgSmall.replace('http://', 'https://');
+									
 								}
 								window.salvattore['append_elements'](grid[0], [item]);
 								var href = '/' + section + '/post/' + post.key; 
@@ -504,7 +506,7 @@
 								var html = '<a href="' + href + '">';
 								html += '<div class="blog-index-item fadeInUp animated" style="display:none">\n' +
 										'\t\t\t\t<div class="blog-main-image">\n' +
-										'\t\t\t\t\t<img data-src="' + img +'" class="cld-responsive" src=""/>\n' +
+										'\t\t\t\t\t<img src="' + imgSmall + '" data-src="' + img +'" class="cld-responsive" src=""/>\n' +
 										'\t\t\t\t</div>\n' +
 										'\t\t\t\t<h3>' + post.name + '</h3>\n' +
 										'\t\t\t\t<div class="blog-main-content">\n' +
