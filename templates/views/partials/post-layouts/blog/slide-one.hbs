@@ -18,7 +18,7 @@
 			</div>
 		{{else}}
 
-			{{{cloudinaryImg style="z-index:2;position:relative;"}}}
+			{{{cloudinaryImg product.gallery.[0] style="z-index:2;position:relative;"}}}
 			{{#unless darkColor}}
 				<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto"
 												fetch_format="auto" quality="auto"}}}" class="cld-responsive" src=""
