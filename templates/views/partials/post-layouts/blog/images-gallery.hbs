@@ -16,21 +16,21 @@
 {{#ifCond imagesGallery.layout "==" "blocks"}}
 	{{#each imagesGallery}}
 		<div class="col col-xs-4">
-			{{{cloudinaryImg}}}
+			{{{cloudinaryImg this}}}
 		</div>
 	{{/each}}
 {{/ifCond}}
 {{#ifCond imagesGallery.layout "==" "left"}}
 	{{#each imagesGallery}}
 		{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
-		{{{cloudinaryImg}}}		
+		{{{cloudinaryImg this}}}		
 		</div>
 	{{/each}}
 {{/ifCond}}
 {{#ifCond imagesGallery.layout "==" "right"}}
 	{{#each imagesGallery}}
 		{{#if @first}}<div class="col col-xs-4">{{else}}<div class="col col-xs-8">{{/if}}
-		{{{cloudinaryImg}}}
+		{{{cloudinaryImg this}}}
 		</div>
 	{{/each}}
 {{/ifCond}}
@@ -39,7 +39,7 @@
 		{{#each imagesGallery.images}}
 		<div class="row">
 			<div class="col col-xs-12">
-			{{{cloudinaryImg}}}
+			{{{cloudinaryImg this}}}
 		</div>
 		</div>
 		{{/each}}
