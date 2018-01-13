@@ -18,11 +18,7 @@
 					{{else}}
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
                            title="{{name}}" data-gallery>
-							{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]" 
-							                       widths="[290,330,345,381,384,405,500,600,700,738,720,536,876]" 
-							                       format="jpg" quality="auto" class="image-toggle" index=@index id="product-"
-							                       onlyShowFirst=true}}}
-
+							{{{cloudinaryImg this id='product-0' class='image-toggle' style='width:100%' width=500}}}
                         </a>
 					{{/if}}
                     
@@ -61,7 +57,7 @@
 						<a href="/technology#{{slug}}">
 							<div class="text-center" style="display:inline-block;">
 								<img src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
-									 class="cld-responsive"/>
+									 class="cld-responsive" alt="{{name}}"/>
 								<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
 							</div>
 						</a>

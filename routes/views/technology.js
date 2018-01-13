@@ -163,7 +163,7 @@ exports = module.exports = function (req, res) {
 					if (err) {
 						console.log('error', err);
 					}
-					console.log('done async 1');
+					
 					next(err);
 				}
 			);

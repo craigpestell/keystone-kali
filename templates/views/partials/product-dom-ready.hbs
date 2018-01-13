@@ -84,7 +84,7 @@
 						}
 						
 						
-						var index = (page*imagesPerColorSwatch);
+						var index = (page*imagesPerColorSwatch) || 0;
 						$('#product-' + index).show();
 						$('#product-icon-' + index).show();
 					}

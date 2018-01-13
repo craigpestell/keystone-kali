@@ -66,22 +66,22 @@ exports = module.exports = function(app) {
 	app.use(favicon(path.join(__dirname, '..', 'public', 'favicon', 'favicon.ico')));
 	app.get(['/cf-ipcountry',
 		'/subdomain/:discipline/cf-ipcountry'], function(req, res){
-		//console.log('route /cf-ipcountry');
+		
 		var country = 'US';
 		if(req.headers['cf-ipcountry']){
 			country = req.headers['cf-ipcountry']
 		}
-		//console.log('setting custom header');
+		
 		res.header('Access-Control-Allow-Origin', '*');
 		res.header('Access-Control-Allow-Methods', 'GET');
 		res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 		res.json({country:country}).end();
-		//console.log(req.headers);
+		
 	});
 
 
 	app.param('discipline', function(req, res, next, discipline){
-		//console.log('param discipline', discipline);
+		
 		keystone.list('Discipline').model.findOne({slug: discipline}).exec(function(err, data){
 			if (err) return next(err);
 			if (!data) return next(new Error('Nothing is found'));
@@ -90,20 +90,20 @@ exports = module.exports = function(app) {
 		});
 	});
 	app.param('category', function(req, res, next, category){
-		console.log('param category', category);
+		
 		keystone.list('ProductCategory').model.findOne({slug: category}).exec(function(err, data){
-			console.log('data:', data);
+		
 			if (err) return next(err);
 			//if (!data) return next(new Error('Nothing is found'));
 			if(!data) return next();
 			res.locals.params.category = data;
-			console.log('setting res.locals.params.category', data);
+			
 			next();
 		});
 	});
 	
 	app.param('subCategory', function(req, res, next, subCategory){
-		console.log('param subCategory');
+		
 		keystone.list('ProductSubCategory').model.findOne({slug: subCategory}).exec(function(err, data){
 			if (err) return next(err);
 			//if (!data) return next(new Error('Nothing is found'));
@@ -114,7 +114,7 @@ exports = module.exports = function(app) {
 	});
 
 	app.param('product', function(req, res, next, product){
-		console.log('param product');
+		
 		keystone.list('Product').model.findOne({slug: product}).populate('mainCategory subCategory technologies').exec(function(err, data){
 			if (err) return next(err);
 			//if (!data) return next(new Error('Nothing is found'));
@@ -125,7 +125,7 @@ exports = module.exports = function(app) {
 	});
 
 	app.param('postCategory', function(req, res, next, category){
-		console.log('param postCategory', category);
+	
 		keystone.list('PostCategory').model.findOne({key: category}).exec(function(err, data){
 			
 			if (err) return next(err);

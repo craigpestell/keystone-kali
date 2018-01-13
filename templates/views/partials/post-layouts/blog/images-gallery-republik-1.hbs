@@ -3,28 +3,28 @@
 		
 		<div class="row">
 			{{#if this.imagesGallery.images.[0]}}
-				<img data-src="{{cloudinaryUrl imagesGallery.images.[0] width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+				{{{cloudinaryImg imagesGallery.images.[0]}}}
 			{{/if}}
 		</div>
 		<div class="row">
 			<div class="col-xs-6">
 				{{#if this.imagesGallery.images.[1]}}
-					<img data-src="{{cloudinaryUrl imagesGallery.images.[1] width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+					{{{cloudinaryImg imagesGallery.images.[1]}}}
 				{{/if}}
 			</div>
 			<div class="col-xs-6">
 				{{#if this.imagesGallery.images.[2]}}
-					<img data-src="{{cloudinaryUrl imagesGallery.images.[2] width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+					{{{cloudinaryImg imagesGallery.images.[2]}}}
 				{{/if}}
 			</div>
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-4">
 		{{#if this.imagesGallery.images.[3]}}
-			<img data-src="{{cloudinaryUrl imagesGallery.images.[3] width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+			{{{cloudinaryImg imagesGallery.images.[3]}}}
 		{{/if}}
 		{{#if this.imagesGallery.images.[4]}}
-			<img data-src="{{cloudinaryUrl imagesGallery.images.[4] width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+			{{{cloudinaryImg imagesGallery.images.[4]}}}
 		{{/if}}
 	</div>
 	

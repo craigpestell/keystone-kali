@@ -30,7 +30,7 @@ function getSiteSettings(cb) {
 * */
 
 function getNavData(discipline, navDataCb){
-	console.log('discipline',discipline);
+	
 	async.parallel({
 			categories: function(callback){
 				keystone.list('ProductCategory').model.find().exec(callback);

@@ -6,8 +6,7 @@
 		<div class="widget widget-{{type}}" id="widget-{{key}}">
 		{{#if href}}<a href="{{href}}">{{/if}}
 		{{#if contentHtml}}{{{contentHtml}}}{{/if}}
-		<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto"}}}"
-			 src="" class="cld-responsive"/>
+			{{{cloudinaryImg image}}}
 		{{#if href}}</a>{{/if}}
 		</div>
 	{{/container}}

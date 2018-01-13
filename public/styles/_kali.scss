@@ -890,11 +890,13 @@ End Product Page
 
 
 /* Product category */
+
 .product-category-item {
   position: relative;
 }
 .product-category-item img {
   margin: 8px 0;
+  width: 100%;
 }
 
 .product-category-item a:hover, .product-category-item a:active {

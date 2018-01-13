@@ -17,10 +17,8 @@
 				<iframe class="embed-responsive-item" src="{{youtube}}"  allowfullscreen="allowfullscreen"></iframe>
 			</div>
 		{{else}}
-		
-			<img data-src="{{cloudinaryUrl product.gallery.[0] width="auto" fetch_format="auto"
-										   quality="auto"}}" class="cld-responsive" src=""
-				 style="z-index:2;position:relative;"/>
+
+			{{{cloudinaryImg style="z-index:2;position:relative;"}}}
 			{{#unless darkColor}}
 				<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto"
 												fetch_format="auto" quality="auto"}}}" class="cld-responsive" src=""
