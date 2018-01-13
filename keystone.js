@@ -38,6 +38,10 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+
+	
+	'embedly api key': 'e9763d8cbe1c468fb6b5b10b5ac87e98',
+
 	'wysiwyg skin': '',
 	//'wysiwyg images': true,
 	'wysiwyg cloudinary images': true,

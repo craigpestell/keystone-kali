@@ -6,7 +6,12 @@
 		<div class="widget widget-{{type}}" id="widget-{{key}}">
 		{{#if href}}<a href="{{href}}">{{/if}}
 		{{#if contentHtml}}{{{contentHtml}}}{{/if}}
-			{{{cloudinaryImg image}}}
+			{{#ifCond ../container '===' 'container-fluid'}}
+				{{{cloudinaryImg image width='500'}}}
+			{{else}}
+				{{{cloudinaryImg image}}}
+			{{/ifCond}}
+			
 		{{#if href}}</a>{{/if}}
 		</div>
 	{{/container}}
