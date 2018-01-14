@@ -477,7 +477,7 @@
 					$.ajax({
 						url: '/api/republik/posts?page=' + blogIndexPageFetching,
 						success: function(result){
-							console.log(result);
+							//console.log(result);
 							//$('#blog-index .pagination').remove();
 							if(result.posts.results.length === 0){
 								blogIndexPage = 0;
@@ -503,10 +503,11 @@
 								if(blogIndexPageFetching > 1){
 									href += '?page=' + blogIndexPageFetching;
 								}
+								console.log('imgSmall:', imgSmall);
 								var html = '<a href="' + href + '">';
 								html += '<div class="blog-index-item fadeInUp animated" style="display:none">\n' +
 										'\t\t\t\t<div class="blog-main-image">\n' +
-										'\t\t\t\t\t<img src="' + imgSmall + '" data-src="' + img +'" class="cld-responsive" src=""/>\n' +
+										'\t\t\t\t\t<img src="' + imgSmall + '" data-src="' + img +'" class="cld-responsive notloaded" src=""/>\n' +
 										'\t\t\t\t</div>\n' +
 										'\t\t\t\t<h3>' + post.name + '</h3>\n' +
 										'\t\t\t\t<div class="blog-main-content">\n' +
@@ -517,7 +518,14 @@
 
 								html += '</a>';
 								item.outerHTML = html;
-								$.cloudinary.responsive();
+								var loadedCount = 0;
+								$('.blog-index-item img.notloaded').load(function(){
+									$(this).removeClass('notloaded');
+									console.log('notloaded length:', $('.blog-index-item img.notloaded').length);
+									if($('.blog-index-item img.notloaded').length < 1) {
+										$.cloudinary.responsive();
+									}
+								});
 								
 								setTimeout(function(){
 									$('#blog-index .spinner').fadeOut();
