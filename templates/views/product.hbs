@@ -10,10 +10,7 @@
 					{{#if @index}}
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
                            title="{{name}}" data-gallery>
-							{{{cloudinaryImgSrcSet screenWidths="[320,360,375,411,414,435,530,630,730,768,992,1200,3840]"
-							widths="[290,330,345,381,384,405,500,600,700,738,720,536,876]"
-							format="jpg" quality="auto" class="image-toggle cld-responsive" index=@index id="product-"
-							onlyShowFirst=true dataSrc=true}}}
+							<img id='product-{{@index}}' data-src="{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}" class="image-toggle" src="{{cloudinaryUrl width="200" fetch_format="auto" quality="50"}}" alt="{{../../name}}" style="display:none; width:100%"/>
                         </a>
 					{{else}}
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"

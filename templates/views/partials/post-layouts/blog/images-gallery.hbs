@@ -35,14 +35,8 @@
 	{{/each}}
 {{/ifCond}}
 {{#ifCond imagesGallery.layout "==" "basic"}}
-	<div class="container">
-		{{#each imagesGallery.images}}
-		<div class="row">
-			<div class="col col-xs-12">
-			{{{cloudinaryImg this}}}
-		</div>
-		</div>
-		{{/each}}
-	</div>
+	{{#each imagesGallery.images}}
+		{{{cloudinaryImg this}}}
+	{{/each}}
 {{/ifCond}}
 <!--//end images-gallery-->
