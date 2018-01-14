@@ -564,7 +564,7 @@ module.exports = function() {
 			srcOptions = JSON.parse(JSON.stringify(options));
 			srcOptions.hash.width = options.hash.width || 200;
 			srcOptions.hash.fetch_format = 'auto';
-			srcOptions.hash.quality = '85';
+			srcOptions.hash.quality = 'auto';
 
 			options.hash.width = 'auto';
 			options.hash.fetch_format = 'auto';
