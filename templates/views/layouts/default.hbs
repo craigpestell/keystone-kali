@@ -523,7 +523,7 @@
 									$(this).removeClass('notloaded');
 									if($('.blog-index-item img.notloaded').length < 1) {
 										$.cloudinary.responsive();
-										$('.blog-index-item img.notloaded').off('load')
+										$('.blog-index-item img').off('load')
 										
 									}
 								});
