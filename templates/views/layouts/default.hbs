@@ -521,9 +521,10 @@
 								var loadedCount = 0;
 								$('.blog-index-item img.notloaded').load(function(){
 									$(this).removeClass('notloaded');
-									console.log('notloaded length:', $('.blog-index-item img.notloaded').length);
 									if($('.blog-index-item img.notloaded').length < 1) {
 										$.cloudinary.responsive();
+										$('.blog-index-item img.notloaded').off('load')
+										
 									}
 								});
 								
