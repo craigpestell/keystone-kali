@@ -18,7 +18,7 @@
 {{#container}}
 	<hr style="margin-bottom: 0px"/>
 	<div class="row">
-		<div class="col col-xs-3" style="padding-top:7px">
+		<div class="col col-xs-6 col-sm-3" style="padding-top:7px">
 			{{#ifCond section "==" "technology"}}
 				<a href="/technology">&larr; Back to Technology</a>
 			{{/ifCond}}
@@ -26,6 +26,11 @@
 				<a href="/{{section}}">&larr; Back to Republik</a>
 			{{/ifCond}}
 		</div>
+		<div class="hidden-xs">
+			{{> blog-pagination}}
+		</div>
+	</div>
+	<div class="visible-xs row">
 		{{> blog-pagination}}
 	</div>
 	<div class="row">
@@ -34,7 +39,7 @@
 		</div>
 	</div>
 	<div class="row blog-footer">
-		<div class="col col-xs-3">
+		<div class="col col-xs-6">
 			{{#ifCond section "==" "technology"}}
 				<a href="/technology">&larr; Back to Technology</a>
 			{{/ifCond}}
