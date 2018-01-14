@@ -519,7 +519,7 @@
 								html += '</a>';
 								item.outerHTML = html;
 								var loadedCount = 0;
-								$('.blog-index-item img.notloaded').load(function(){
+								$('.blog-index-item img.notloaded').on('load', function(){
 									$(this).removeClass('notloaded');
 									if($('.blog-index-item img.notloaded').length < 1) {
 										$.cloudinary.responsive();
