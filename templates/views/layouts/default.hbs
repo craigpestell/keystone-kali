@@ -494,8 +494,8 @@
 								if(post.mainImage && post.mainImage.url){
 									var img = post.mainImage.url;
 									var parts = img.split('upload/');
-									img = parts[0] + 'upload/f_auto,w_auto/' + parts[1];
-									var imgSmall = parts[0] + 'upload/f_auto,q_auto,w_200/' + parts[1];
+									img = parts[0] + 'upload/f_auto,w_auto,dpr_auto/' + parts[1];
+									var imgSmall = parts[0] + 'upload/f_auto,q_auto,w_400/' + parts[1];
 									img = img.replace('http://', 'https://');
 									imgSmall.replace('http://', 'https://');
 									

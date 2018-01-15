@@ -569,6 +569,7 @@ module.exports = function() {
 			options.hash.width = 'auto';
 			options.hash.fetch_format = 'auto';
 			options.hash.quality = 'auto';
+			options.hash.dpr = 'auto';
 		}
 		
 		
