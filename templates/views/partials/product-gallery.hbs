@@ -32,7 +32,7 @@
 <div class="product-gallery-carousel owl-carousel owl-theme">
 {{# each product.gallery}}
 		<div data-image-id="#product-{{@index}}" class="image-toggler">
-			<img data-src="{{cloudinaryUrl this width="auto" fetch_format="auto" quality="auto" dpr="auto"}}" class="cld-responsive"/>
+			<img data-src="{{cloudinaryUrl this width="auto" fetch_format="auto" quality="auto" dpr="auto"}}" class="cld-responsive" src="{{cloudinaryUrl width="400" fetch_format="auto" quality="auto"}}" alt="{{../../product.name}}"/>
 		</div>
 {{/each}}
 </div>
