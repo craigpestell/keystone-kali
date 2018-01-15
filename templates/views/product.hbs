@@ -10,7 +10,7 @@
 					{{#if @index}}
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
                            title="{{name}}" data-gallery>
-							<img id='product-{{@index}}' data-src="{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto" dpr="auto"}}" class="image-toggle" src="{{cloudinaryUrl width="400" fetch_format="auto" quality="auto"}}" alt="{{../../name}}" style="display:none; width:100%"/>
+							<img id='product-{{@index}}' data-src="{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto" dpr="auto"}}" class="image-toggle" src="{{cloudinaryUrl width="400" fetch_format="auto" quality="auto"}}" alt="{{../../product.name}}" style="display:none; width:100%"/>
                         </a>
 					{{else}}
                         <a href="{{cloudinaryUrl this width=1170 background="#FFFFFF" format="jpg" fetch_format="auto" quality="90"}}"
