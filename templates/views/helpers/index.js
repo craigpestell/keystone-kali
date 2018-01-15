@@ -562,7 +562,7 @@ module.exports = function() {
 		var srcOptions = options;
 		if(options){
 			srcOptions = JSON.parse(JSON.stringify(options));
-			srcOptions.hash.width = options.hash.width || 200;
+			srcOptions.hash.width = options.hash.width || 400;
 			srcOptions.hash.fetch_format = 'auto';
 			srcOptions.hash.quality = 'auto';
 
