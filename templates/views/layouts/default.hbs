@@ -37,13 +37,14 @@
 		{{# each post.categories}}
 			<meta property="article:tag" content="{{name}}">
 		{{/each}}
-		<meta name="keywords" content="{{# each post.categories}}{{name}}, {{/each}}">
+		<meta name="keywords" content="helmets, armor, mtb, mountain biking {{# each post.categories}}{{name}}, {{/each}}">
 	{{else}}
 		<title>{{data.page.title}}</title>
-		<meta name="description" content="{{@root.siteSettings.metaDescription}}">
+		<meta name="keywords" content="{{{@root.siteSettings.metakeywords.textValue}}}">
+		<meta name="description" content="{{{@root.siteSettings.metadescription.textValue}}}">
 		<meta property="og:image" content="{{baseurl}}/images/logo.png">
 		<meta name="twitter:image:src" content="{{baseurl}}/images/logo.png">
-		<meta name="keywords" content="kali protectives, helmets, armor, mtb, mountain biking">
+		
 	{{/if}}
 
 	<link href="/styles/site.css" rel="stylesheet">

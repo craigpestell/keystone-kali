@@ -32,7 +32,7 @@ exports = module.exports = function (req, res) {
 	// Load the posts
 	var loadPosts = function(product, next){
 		var q = keystone.list('Post').model
-			.where({products: {$in: [product._id]}})
+			.where({products: {$in: [product._id]}, state: 'published'})
 			.sort('-publishedDate')
 			.populate('author categories product postLayout gallery.widgets');
 		
