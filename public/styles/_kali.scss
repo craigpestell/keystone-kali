@@ -1017,6 +1017,9 @@ End Product Page
 /* END product detail page */
 
 /* Register page */
+.register-content ol > li{
+  margin: 10px 0;
+}
 .register-content a:link, .register-content a:visited {
   color: blue;
 }
