@@ -50,8 +50,16 @@ keystone.init({
 	'wysiwyg skin': '',
 	//'wysiwyg images': true,
 	'wysiwyg cloudinary images': true,
+	'wysiwyg additional buttons': 'jsplusBootstrapEditor jsplusBootstrapEditorSelected',
+	//'wysiwyg additional plugins': 'jsplusInclude jsplusBootstrapEditor',
 	'wysiwyg additional options': {
-		content_css: '/styles/site.css'
+		content_css: '/styles/site.css',
+		external_plugins: {
+			'jsplusInclude':'/js/tinymceBootstrap/jsplusInclude/plugin.min.js',
+            'jsplusBootstrapEditor':'/js/tinymceBootstrap/jsplusBootstrapEditor/plugin.min.js',
+        },
+		jsplusBootstrapEditor: {framework: 'b3', includeCKEditor: false},
+		
 	},
 	
 	//'mongo': process.env.DO ? '10.134.0.166:27017/kali' : '162.243.149.37:27017/kali'
