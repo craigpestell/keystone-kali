@@ -16,33 +16,27 @@
 {{#ifCond imagesGallery.layout "==" "blocks"}}
 	{{#each imagesGallery}}
 		<div class="col col-xs-4">
-			<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+			{{{cloudinaryImg this}}}
 		</div>
 	{{/each}}
 {{/ifCond}}
 {{#ifCond imagesGallery.layout "==" "left"}}
 	{{#each imagesGallery}}
 		{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
-			<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>		
+		{{{cloudinaryImg this}}}		
 		</div>
 	{{/each}}
 {{/ifCond}}
 {{#ifCond imagesGallery.layout "==" "right"}}
 	{{#each imagesGallery}}
 		{{#if @first}}<div class="col col-xs-4">{{else}}<div class="col col-xs-8">{{/if}}
-			<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+		{{{cloudinaryImg this}}}
 		</div>
 	{{/each}}
 {{/ifCond}}
 {{#ifCond imagesGallery.layout "==" "basic"}}
-	<div class="container">
-		{{#each imagesGallery.images}}
-		<div class="row">
-			<div class="col col-xs-12">
-				<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
-			</div>
-		</div>
-		{{/each}}
-	</div>
+	{{#each imagesGallery.images}}
+		{{{cloudinaryImg this}}}
+	{{/each}}
 {{/ifCond}}
 <!--//end images-gallery-->

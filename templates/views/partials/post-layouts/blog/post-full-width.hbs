@@ -18,8 +18,7 @@
 {{#if gallery.images}}
 <div class="container">
 	{{#each gallery}}
-		<img data-src="{{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto"}}}"
-			 src="" class="cld-responsive"/>
+		{{{cloudinaryImg this}}}
 	{{/each}}
 </div>
 {{/if}}

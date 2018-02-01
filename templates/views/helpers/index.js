@@ -556,5 +556,48 @@ module.exports = function() {
 		return new hbs.SafeString(output);
 	};
 
+	_helpers.cloudinaryImg = function(context, options){
+		var template = '<img data-src="{{data-src}}" src="{{src}}" class="cld-responsive {{class}}" alt="{{alt}}" id="{{id}}"/>';
+		
+		var srcOptions = options;
+		if(options){
+			srcOptions = JSON.parse(JSON.stringify(options));
+			srcOptions.hash.width = options.hash.width || 400;
+			srcOptions.hash.fetch_format = 'auto';
+			srcOptions.hash.quality = 'auto';
+
+			options.hash.width = 'auto';
+			options.hash.fetch_format = 'auto';
+			options.hash.quality = 'auto';
+			options.hash.dpr = 'auto';
+		}
+		
+		
+		var params ={
+			'data-src': _helpers.cloudinaryUrl(context, options),
+			'src': _helpers.cloudinaryUrl(context, srcOptions)
+		};
+		if(options){
+			if(options.hash.class){
+				params.class = options.hash.class;
+			}
+			if(options.hash.alt){
+				params.alt = options.hash.alt;
+			}
+			if(options.hash.style){
+				params.style = options.hash.style;
+			}
+			if(options.hash.id){
+				params.id = options.hash.id;
+			}
+			if(options.hash.idIndex){
+				params.id += options.hash.idIndex;
+			}
+		}
+		
+		template = hbs.compile(template);
+		return template(params);
+	};
+	
 	return _helpers;
 };

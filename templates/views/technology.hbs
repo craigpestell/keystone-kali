@@ -1,8 +1,4 @@
 <div id="technology" class="blog">
-	{{#ifCond section "==" "technology-detail"}}
-		<p><a href="/{{section}}">&larr; Back to <span style="text-transform:uppercase">{{section}}</span></a></p>
-		<hr style="margin-bottom:-15px;">
-	{{/ifCond}}
 	{{#with post}}
 		{{> post-layouts/blog/post-full-width}}
 	{{/with}}

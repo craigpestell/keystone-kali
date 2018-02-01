@@ -3,6 +3,9 @@
 		<div class="row">
 			<div class="col col-xs-12">
 				<h3>{{{name}}}</h3>
+				<!--<div>
+					Share:{{>blog-social-share}}
+				</div>-->
 				{{#if content.extended}}
 					{{{content.extended}}}
 				{{/if}}
@@ -67,8 +70,7 @@
 									{{#ifCond type "==" "image"}}
 										{{#if href}}<a href="{{href}}">{{/if}}
 										{{#if contentHtml}}{{{contentHtml}}}{{/if}}
-										<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto"}}}"
-											 src="" class="cld-responsive"/>
+										{{{cloudinaryImg image}}}
 										{{#if href}}</a>{{/if}}
 									{{/ifCond}}
 									{{#ifCond type "==" "html"}}
@@ -87,8 +89,7 @@
 													{{#ifCond type "==" "image"}}
 														{{#if href}}<a href="{{href}}">{{/if}}
 														{{#if contentHtml}}{{{contentHtml}}}{{/if}}
-														<img data-src="{{{cloudinaryUrl image width="auto" fetch_format="auto" quality="auto"}}}"
-															 src="" class="cld-responsive"/>
+														{{{cloudinaryImg image}}}
 														{{#if href}}</a>{{/if}}
 													{{/ifCond}}
 													{{#ifCond type "==" "html"}}
@@ -136,7 +137,6 @@
 
 		{{/if}}
 		{{#if imagesGallery}}
-			<div class="row">
 			<!--images-gallery-->
 			{{#ifCond imagesGallery.layout "==" "republik-1" }}
 				<div class="col col-xs-12">
@@ -155,21 +155,21 @@
 			{{#ifCond imagesGallery.layout "==" "blocks"}}
 				{{#each imagesGallery}}
 					<div class="col col-xs-4">
-						<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+						{{{cloudinaryImg this}}}
 					</div>
 				{{/each}}
 			{{/ifCond}}
 			{{#ifCond imagesGallery.layout "==" "left"}}
 				{{#each imagesGallery}}
 					{{#if @first}}<div class="col col-xs-8">{{else}}<div class="col col-xs-4">{{/if}}
-					<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+					{{{cloudinaryImg this}}}
 				</div>
 				{{/each}}
 			{{/ifCond}}
 			{{#ifCond imagesGallery.layout "==" "right"}}
 				{{#each imagesGallery}}
 					{{#if @first}}<div class="col col-xs-4">{{else}}<div class="col col-xs-8">{{/if}}
-					<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+					{{{cloudinaryImg this}}}
 				</div>
 				{{/each}}
 			{{/ifCond}}
@@ -177,12 +177,11 @@
 					{{#each imagesGallery.images}}
 						<div class="row">
 							<div class="col col-xs-12">
-								<img data-src="{{cloudinaryUrl width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+								{{{cloudinaryImg this}}}
 							</div>
 						</div>
 					{{/each}}
 			{{/ifCond}}
-			</div>
 			<!--//end images-gallery-->
 
 		{{/if}}

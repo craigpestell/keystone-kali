@@ -11,12 +11,9 @@
 		{{#ifCond @root.section "==" "technology"}}
 			<a href="/technology/post/{{key}}">
 		{{/ifCond}}
-		{{#ifCond @root.section "==" "technology-detail"}}
-			<a href="/technology/post/{{key}}">
-		{{/ifCond}}
 			<div class="blog-index-item">
 				<div class="blog-main-image">
-					<img data-src="{{cloudinaryUrl mainImage width="auto" fetch_format="auto"}}" class="cld-responsive" src=""/>
+					{{{cloudinaryImg mainImage alt=name}}}
 				</div>
 				<h3>{{name}}</h3>
 				<div class="blog-main-content">
@@ -27,4 +24,6 @@
 		</a>
 	{{/each}}
 	</div>
+	<div class="spinner fa fa-spinner fa-spin" style="text-align:center; width:100%; font-size:4em; color: #0a0a0a; display:none;"></div>
+	<div class="blog-end" style="display:none;text-align:center"><hr style="margin-bottom:0"/></div>
 </div>

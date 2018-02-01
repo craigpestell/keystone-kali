@@ -22,10 +22,8 @@
 			});
 		};
 		onImgLoad('#product-0', function () {
-			$('source').each(function () {
-				lazyLoad(this);
-			});
 			$('.gallery-icon:not(.cld-responsive)').addClass('cld-responsive');
+			$('#links img:not(.cld-responsive)').addClass('cld-responsive');
 			//$.cloudinary.responsive();
 		});
 
@@ -84,7 +82,7 @@
 						}
 						
 						
-						var index = (page*imagesPerColorSwatch);
+						var index = (page*imagesPerColorSwatch) || 0;
 						$('#product-' + index).show();
 						$('#product-icon-' + index).show();
 					}

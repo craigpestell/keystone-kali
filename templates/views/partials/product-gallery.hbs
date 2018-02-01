@@ -13,19 +13,6 @@
                             <div class="product-swatch-title">{{colorway}}</div>
 						{{/with}}
 				{{/if}}
-				<!--{{#ifCond ../product.imagesPerColorSwatch '>' 1}}
-					<div data-image-id="#product-{{n}}" class="image-toggler" style="display: inline-block;">
-						<div style="width:80px;display:inline-block;">
-							{{#ifCond page ">=" 1}}
-								{{{cloudinaryImgSrcSet screenWidths="[3840]" widths="[80]" format="jpg" quality="auto" 
-								                       class="product-thumb" dataSrc=true index=page}}}
-							{{else}}
-								{{{cloudinaryImgSrcSet screenWidths="[3840]" widths="[80]" format="jpg" quality="auto" 
-								                       class="product-thumb" index=page}}}
-							{{/ifCond}}
-						</div>
-					</div>
-				{{/ifCond}}-->
 				{{#if isLast}}
 					</div>
 				{{/if}}
@@ -45,8 +32,7 @@
 <div class="product-gallery-carousel owl-carousel owl-theme">
 {{# each product.gallery}}
 		<div data-image-id="#product-{{@index}}" class="image-toggler">
-			<img data-src="{{{cloudinaryUrl width="auto" fetch_format="auto" quality="auto" dpr="auto" client_hints="true" crop="scale" sizes="100vw"}}}"
-				 src="" class="cld-responsive"/>
+			<img data-src="{{cloudinaryUrl this width="auto" fetch_format="auto" quality="auto" dpr="auto"}}" class="cld-responsive" src="{{cloudinaryUrl width="400" fetch_format="auto" quality="auto"}}" alt="{{../../product.name}}"/>
 		</div>
 {{/each}}
 </div>

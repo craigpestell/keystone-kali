@@ -120,23 +120,35 @@ exports = module.exports = function (req, res) {
 			perPage: 10,
 			maxPages: 10
 		})*/
-		var q = keystone.list('Post').model.find()
-			.where('state', 'published')
-			.sort('-publishedDate')
-			.populate('author categories product postLayout gallery.widgets');
 		if(process.env.DO) {
 			locals.data.category = '5a1a5061bc13d294547da833';
 		}else{
 			locals.data.category = '5a1a28f4ecddff59637a740c';
 		}
 
+		var filters = {'state': 'published'};
+		if (locals.data.category) {
+			filters.categories = {$in: [locals.data.category]};
+		}
+
+
+		var q = keystone.list('Post').paginate({
+			page: req.query.page || 1,
+			perPage: 20,
+			maxPages: 10,
+			filters: filters
+		})
+			.where('state', 'published')
+			.sort('-publishedDate')
+			.populate('author categories product postLayout gallery.widgets');
+		
 		if (locals.data.category) {
 			q.where('categories').in([locals.data.category]);
 		}
 
 		q.exec(function (err, results) {
 			//console.log('here:', results);
-			locals.data.posts = results;
+			locals.data.posts = results.results;
 			if(!results){
 				next(err);
 				return;
@@ -151,7 +163,7 @@ exports = module.exports = function (req, res) {
 					if (err) {
 						console.log('error', err);
 					}
-					console.log('done async 1');
+					
 					next(err);
 				}
 			);

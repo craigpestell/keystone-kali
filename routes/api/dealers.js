@@ -4,7 +4,7 @@ var async = require('async'),
 var Dealer = keystone.list('Dealer');
 
 /**
- * List Posts
+ * List Dealers
  */
 exports.list = function(req, res) {
 	Dealer.model.find(function(err, items) {

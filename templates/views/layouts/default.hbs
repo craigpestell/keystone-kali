@@ -37,13 +37,14 @@
 		{{# each post.categories}}
 			<meta property="article:tag" content="{{name}}">
 		{{/each}}
-		<meta name="keywords" content="{{# each post.categories}}{{name}}, {{/each}}">
+		<meta name="keywords" content="helmets, armor, mtb, mountain biking {{# each post.categories}}{{name}}, {{/each}}">
 	{{else}}
 		<title>{{data.page.title}}</title>
-		<meta name="description" content="{{@root.siteSettings.metaDescription}}">
+		<meta name="keywords" content="{{{@root.siteSettings.metakeywords.textValue}}}">
+		<meta name="description" content="{{{@root.siteSettings.metadescription.textValue}}}">
 		<meta property="og:image" content="{{baseurl}}/images/logo.png">
 		<meta name="twitter:image:src" content="{{baseurl}}/images/logo.png">
-		<meta name="keywords" content="kali protectives, helmets, armor, mtb, mountain biking">
+		
 	{{/if}}
 
 	<link href="/styles/site.css" rel="stylesheet">
@@ -104,6 +105,8 @@
     <meta name="theme-color" content="#ffffff">
 
     <meta name="google-site-verification" content="dI-RltPLU3KpavtHz3jFnU2daR9kCYpOsxYOM5s-Wh8" />
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="{{#ifCond section "==" "home"}}{{#if discipline}}fullpage-nav{{/if}}{{/ifCond}}">
@@ -172,13 +175,12 @@
 {{/ifCond}}
 
 {{#ifCond section "==" "republik"}}
+	<script src="/js/jquery-debounce/jquery.debounce.js"></script>
 	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 {{#ifCond section "==" "technology"}}
+	<script src="/js/jquery-debounce/jquery.debounce.js"></script>
 	<script src="/js/owl.carousel/src/js/owl.autoplay.js" defer></script>
-	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
-{{/ifCond}}
-{{#ifCond section "==" "technology-detail"}}
 	<script src="/js/salvattore/dist/salvattore.min.js" defer></script>
 {{/ifCond}}
 
@@ -414,6 +416,144 @@
 				eventLabel: "Url: " + href
 			});
 		});
+
+		
+		//TODO: move to blog-dom-ready
+	{{#ifCond section "==" 'republik'}}
+
+		/*function isScrolledIntoView(elem)
+		{
+			var docViewTop = $(window).scrollTop();
+			var docViewBottom = docViewTop + $(window).height();
+
+			var elemTop = $(elem).offset().top;
+			var elemBottom = elemTop + $(elem).height();
+
+			return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+		}*/
+		function isScrolledIntoView(elem, offset)
+		{
+			var docViewTop = $(window).scrollTop();
+			var docViewBottom = docViewTop + $(window).height();
+
+			var elemTop = $(elem).offset().top + offset;
+			//console.log('elemTop:', elemTop, ' docTop:', docViewTop, 'docBottom:', docViewBottom);
+			return (elemTop <= docViewBottom);
+		}
+
+		function getParameterByName(name, url) {
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, "\\$&");
+			var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+					results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+
+		var blogIndexPage = getParameterByName('page') || 1;
+		var blogIndexPageFetching = getParameterByName('page') || 1;
+		
+		//fill page numbers of server-side rendered blog-index-items
+		var itemsPerPage = 12;
+		var countPerPage = 0;
+		var currentPage = blogIndexPage;
+		$('.blog-index-item').parent().each(function(idx, item){
+			
+			if(countPerPage === itemsPerPage){
+				countPerPage = 0;
+				currentPage++;
+			}
+			var a = $(item);
+			a.attr('href', a.attr('href') + '?page=' + currentPage);
+			countPerPage++;
+		});
+		
+		var loadPosts = function(){
+			var section = '{{@root.section}}';
+			
+			if(isScrolledIntoView('#footer', -250)){
+
+				if(blogIndexPageFetching === blogIndexPage){
+					$('#blog-index .spinner').fadeIn();
+					blogIndexPageFetching++;
+					$.ajax({
+						url: '/api/republik/posts?page=' + blogIndexPageFetching,
+						success: function(result){
+							//console.log(result);
+							//$('#blog-index .pagination').remove();
+							if(result.posts.results.length === 0){
+								blogIndexPage = 0;
+								$('.spinner', '#blog-index').remove();
+								$('.blog-end', '#blog-index').show();
+								return;
+							}
+							var item = document.createElement('div');
+							var grid = $('#blog-columns');
+							result.posts.results.forEach(function(post){
+								//console.log(post);
+								if(post.mainImage && post.mainImage.url){
+									var img = post.mainImage.url;
+									var parts = img.split('upload/');
+									img = parts[0] + 'upload/f_auto,w_auto,dpr_auto/' + parts[1];
+									var imgSmall = parts[0] + 'upload/f_auto,q_auto,w_400/' + parts[1];
+									img = img.replace('http://', 'https://');
+									imgSmall.replace('http://', 'https://');
+									
+								}
+								window.salvattore['append_elements'](grid[0], [item]);
+								var href = '/' + section + '/post/' + post.key; 
+								if(blogIndexPageFetching > 1){
+									href += '?page=' + blogIndexPageFetching;
+								}
+								console.log('imgSmall:', imgSmall);
+								var html = '<a href="' + href + '">';
+								html += '<div class="blog-index-item fadeInUp animated" style="display:none">\n' +
+										'\t\t\t\t<div class="blog-main-image">\n' +
+										'\t\t\t\t\t<img src="' + imgSmall + '" data-src="' + img +'" class="cld-responsive notloaded" src=""/>\n' +
+										'\t\t\t\t</div>\n' +
+										'\t\t\t\t<h3>' + post.name + '</h3>\n' +
+										'\t\t\t\t<div class="blog-main-content">\n' +
+										'\t\t\t\t\t' + post.content.brief + '\n' +
+										'\t\t\t\t</div>\n' +
+										'\t\t\t\t<hr/>\n' +
+										'\t\t\t</div>';
+
+								html += '</a>';
+								item.outerHTML = html;
+								var loadedCount = 0;
+								$('.blog-index-item img.notloaded').on('load', function(){
+									$(this).removeClass('notloaded');
+									if($('.blog-index-item img.notloaded').length < 1) {
+										$.cloudinary.responsive();
+										$('.blog-index-item img').off('load')
+										
+									}
+								});
+								
+								setTimeout(function(){
+									$('#blog-index .spinner').fadeOut();
+									$current = $('.blog-index-item:hidden');
+									if($current.length){
+										$current.css('display', 'block');
+									}
+									loadPosts();
+								},100);
+								
+							});
+							blogIndexPage++;
+
+						}
+					})
+
+				}
+			}
+		};
+		loadPosts();
+		$(window).scroll(function(e){
+			loadPosts();
+		});
+	{{/ifCond}}
 	
     });
 </script>

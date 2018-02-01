@@ -16,7 +16,7 @@ exports = module.exports = function(req, res) {
 
 	// Load the current page
 	view.on('init', function(next) {
-		console.log('page...');
+		
 		var q = keystone.list('BasePage').model.findOne({
 			slug: locals.filters.page
 		});//.populate('author categories');

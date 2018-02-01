@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
 	// Init locals
 	locals.section = 'republik';
 	if(req.originalUrl.indexOf('/technology/post/') === 0){
-		locals.section = 'technology-detail';
+		locals.section = 'technology';
 	}
 	locals.filters = {
 		post: req.params.post,
@@ -86,10 +86,6 @@ exports = module.exports = function (req, res) {
 			perPage: 10,
 			maxPages: 10
 		})*/
-		var q = keystone.list('Post').model.find()
-			.where('state', 'published')
-			.sort('-publishedDate')
-			.populate('author categories product postLayout gallery.widgets');
 		if(req.originalUrl.indexOf('/republik/post/') === 0){
 			locals.data.category = '590804bee4027ba1787c6575';
 		}
@@ -100,6 +96,21 @@ exports = module.exports = function (req, res) {
 				locals.data.category = '5a1a28f4ecddff59637a740c';
 			}
 		}
+
+		var filters = {'state': 'published'};
+		if (locals.data.category) {
+			filters.categories = {$in: [locals.data.category]};
+		}
+
+		var q = keystone.list('Post').paginate({
+			page: req.query.page || 1,
+			perPage: 12,
+			maxPages: 10,
+			filters: filters
+		})
+			.where('state', 'published')
+			.sort('-publishedDate')
+			.populate('author categories product postLayout gallery.widgets');
 		
 		if (locals.data.category) {
 			q.where('categories').in([locals.data.category]);
@@ -107,7 +118,7 @@ exports = module.exports = function (req, res) {
 
 		q.exec(function (err, results) {
 			//console.log('here:', results);
-			locals.data.posts = results;
+			locals.data.posts = results.results;
 			if(!results){
 				next(err);
 				return;
