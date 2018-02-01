@@ -50,7 +50,7 @@ keystone.init({
 	'wysiwyg skin': '',
 	//'wysiwyg images': true,
 	'wysiwyg cloudinary images': true,
-	'wysiwyg additional buttons': 'jsplusBootstrapEditor jsplusBootstrapEditorSelected jsplusBootstrapShowBlocks',
+	'wysiwyg additional buttons': 'jsplusBootstrapEditor jsplusBootstrapEditorSelected jsplusShowBlocks',
 	//'wysiwyg additional plugins': 'jsplusInclude jsplusBootstrapEditor',
 	'wysiwyg additional options': {
 		content_css: '/styles/site.css',
@@ -61,7 +61,8 @@ keystone.init({
         },
 		jsplusInclude: {framework: 'b3', includeCKEditor: false,
 			css: [
-				"/demo/bootstrap-editor/css/content1.css"
+				"/js/tinymceBootstrap/skins/be/skin.min.css",
+				"/js/tinymceBootstrap/skins/be/content.min.css"
 			],
 			includeCssToGlobalDoc: true
 		},
