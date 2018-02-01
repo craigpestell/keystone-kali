@@ -50,16 +50,26 @@ keystone.init({
 	'wysiwyg skin': '',
 	//'wysiwyg images': true,
 	'wysiwyg cloudinary images': true,
-	'wysiwyg additional buttons': 'jsplusBootstrapEditor jsplusBootstrapEditorSelected',
+	'wysiwyg additional buttons': 'jsplusBootstrapEditor jsplusBootstrapEditorSelected jsplusBootstrapShowBlocks',
 	//'wysiwyg additional plugins': 'jsplusInclude jsplusBootstrapEditor',
 	'wysiwyg additional options': {
 		content_css: '/styles/site.css',
 		external_plugins: {
 			'jsplusInclude':'/js/tinymceBootstrap/jsplusInclude/plugin.min.js',
-            'jsplusBootstrapEditor':'/js/tinymceBootstrap/jsplusBootstrapEditor/plugin.min.js',
+			'jsplusBootstrapEditor':'/js/tinymceBootstrap/jsplusBootstrapEditor/plugin.min.js',
+            'jsplusBootstrapTools':'/js/tinymceBootstrap/jsplusBootstrapTools/plugin.min.js',
         },
+		jsplusInclude: {framework: 'b3', includeCKEditor: false,
+			css: [
+				"/demo/bootstrap-editor/css/content1.css"
+			],
+			includeCssToGlobalDoc: true
+		},
 		jsplusBootstrapEditor: {framework: 'b3', includeCKEditor: false},
+		jsplusBootstrapTools: {framework: 'b3', includeCKEditor: false},
+		jsplusBootstrapShowBlocks: {framework: 'b3', includeCKEditor: false},
 		
+		extended_valid_elements : "div[*],span[*],i[*]",	
 	},
 	
 	//'mongo': process.env.DO ? '10.134.0.166:27017/kali' : '162.243.149.37:27017/kali'
