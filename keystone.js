@@ -50,7 +50,7 @@ keystone.init({
 	'wysiwyg additional options': {
 		content_css: '/styles/site.css',
 		external_plugins: {
-			'ckeditor': '/js/ckeditor/ckeditor.js',
+			//'ckeditor': '/js/ckeditor/ckeditor.js',
 			'jsplusInclude':'/js/tinymceBootstrap/jsplusInclude/plugin.min.js',
 			'jsplusBootstrapEditor':'/js/tinymceBootstrap/jsplusBootstrapEditor/plugin.min.js',
             'jsplusBootstrapTools':'/js/tinymceBootstrap/jsplusBootstrapTools/plugin.min.js',
