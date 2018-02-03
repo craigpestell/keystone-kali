@@ -12,6 +12,7 @@ Post.add({
 		description: { type: String}
 	},
 	name: { type: String, required: true, initial: true },
+	hideNameOnPost: {type: Boolean, default: false},
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true },
