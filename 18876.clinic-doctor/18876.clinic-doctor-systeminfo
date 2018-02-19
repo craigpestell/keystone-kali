@@ -1,0 +1,25 @@
+{
+  "clock": {
+    "hrtime": [
+      417,
+      776579153
+    ],
+    "unixtime": 1518814290923
+  },
+  "nodeVersions": {
+    "http_parser": "2.7.0",
+    "node": "8.9.4",
+    "v8": "6.1.534.50",
+    "uv": "1.15.0",
+    "zlib": "1.2.11",
+    "ares": "1.10.1-DEV",
+    "modules": "57",
+    "nghttp2": "1.25.0",
+    "openssl": "1.0.2n",
+    "icu": "59.1",
+    "unicode": "9.0",
+    "cldr": "31.0.1",
+    "tz": "2017b"
+  },
+  "toolVersion": "1.0.2"
+}
