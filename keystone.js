@@ -45,10 +45,11 @@ keystone.init({
 	'wysiwyg skin': '',
 	//'wysiwyg images': true,
 	'wysiwyg cloudinary images': true,
-	'wysiwyg additional buttons': 'jsplusBootstrapEditor jsplusBootstrapEditorSelected jsplusShowBlocks',
+	'wysiwyg additional buttons': 'undo redo | formatselect fontsizeselect jsplusBootstrapEditor jsplusBootstrapEditorSelected jsplusShowBlocks',
 	//'wysiwyg additional plugins': 'jsplusInclude jsplusBootstrapEditor',
 	'wysiwyg additional options': {
 		content_css: '/styles/site.css',
+		//toolbar: 'undo redo | alignleft aligncenter alignright alignjustify | formatselect fontselect fontsizeselect | bullist numlist | outdent indent',
 		external_plugins: {
 			//'ckeditor': '/js/ckeditor/ckeditor.js',
 			'jsplusInclude':'/js/tinymceBootstrap/jsplusInclude/plugin.min.js',
