@@ -19,11 +19,11 @@
 		{{else}}
 
 			{{{cloudinaryImg product.gallery.[0] style="z-index:2;position:relative;"}}}
-			{{#unless darkColor}}
+			{{#if showDropShadow}}
 				<img data-src="{{{cloudinaryUrl @root.siteSettings.hero-drop-shadow.imageValue width="auto"
 												fetch_format="auto" quality="auto"}}}" class="cld-responsive" src=""
 					 style="margin-top:-20%;z-index:1;position:relative;"/>
-			{{/unless}}
+			{{/if}}
 		{{/if}}
 
 	</div>
