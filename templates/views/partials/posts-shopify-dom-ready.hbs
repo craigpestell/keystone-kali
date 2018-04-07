@@ -24,17 +24,18 @@
 		function ShopifyBuyInit() {
 			var client = ShopifyBuy.buildClient({
 				domain: domain + '.myshopify.com',
-				apiKey: apiKey,
 				appId: '6',
+				storefrontAccessToken: '234d4fce88b6f8900f3c499b3049a485'
 			});
-			client.fetchProduct(shopifyId).then(function(product){
+			var encodedStorefrontShopifyId = window.btoa('gid://shopify/Product/' + shopifyId);
+			client.product.fetch(encodedStorefrontShopifyId).then(function(product){
 				var buySelector = '.buy-button[data-shopifyid-';
 				var domain;
 				if(country === "CA" || country === "US") {
 					domain = 'shop-usa';
 					buySelector += 'us=';
 				}
-				buySelector += '"' + product.id + '"]';
+				buySelector += '"' + shopifyId + '"]';
 				if(preOrder){
 					$(buySelector).html('Pre-order');
 				}
