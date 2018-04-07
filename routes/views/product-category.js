@@ -12,7 +12,6 @@ var productCategoryData = function (locals, productDataCb){
 
 	var versionWhere = {version: locals.currentProductVersion._id};
 	if (locals.params.version) {
-		console.log(locals);
 		locals.productVersions.forEach(function(version){
 			if(version.key === locals.params.version.key){
 				versionWhere = {version: version._id}
@@ -20,7 +19,6 @@ var productCategoryData = function (locals, productDataCb){
 		})
 		//versionWhere = params.version;
 	}
-	console.log('versionWhere:', versionWhere);
 	var categoryWhere = {};
 	if(locals.params.category) {
 		categoryWhere = {slug: locals.params.category.slug};
@@ -45,7 +43,6 @@ var productCategoryData = function (locals, productDataCb){
 						.model.find(subCategoryWhere).where(disciplineWhere).sort('sortOrder').exec(callback);
 				},
 				products: function (callback) {
-					console.log('where:', Object.assign(disciplineWhere,versionWhere));
 					keystone.list('Product')
 						.model.find().where(Object.assign(disciplineWhere,versionWhere))
 						.populate('mainCategory subCategory technologies').sort('sortOrder').exec(callback);
