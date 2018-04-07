@@ -12,6 +12,7 @@ var SiteSetting = new keystone.List('SiteSetting', {
 SiteSetting.defaultColumns = 'name';
 SiteSetting.add({
 	name: { type: String, required: true },
+	currentProductVersion: { type: Types.Relationship, ref: 'ProductVersion', dependsOn: {name: 'Current Product Version'} },
 	textValue: {type: Types.Text},
 	htmlValue: {type: Types.Html},
 	imageValue:{type: Types.CloudinaryImage,  autoCleanup : true},

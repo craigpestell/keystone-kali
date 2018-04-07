@@ -36,6 +36,7 @@
     "npm": ">=1.3.14"
   },
   "scripts": {
+    "dev": "node keystone.js",
     "start": "node multicore.js"
   },
   "main": "keystone.js"
