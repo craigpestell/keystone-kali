@@ -17,6 +17,7 @@ Post.add({
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true },
 	postLayout: { type: Types.Relationship, ref: 'PostLayout'},
+	showDropShadow: {type: Boolean, note: 'Show drop shadow below main product image?', dependsOn: {postLayout: '590803bfe4027ba1787c6572'}},
 	mainImage: { type: Types.CloudinaryImage,  autoCleanup : true, note: 'blog index / thumbnail' },
 	gallery:
 		{
