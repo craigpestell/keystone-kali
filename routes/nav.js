@@ -42,26 +42,26 @@ var getNavData = function(params, navDataCb) {
 				subCategories: []
 			};
             if (results.categories) {
-                results.categories.foreach(function (cat) {
-                    results.subcategories.foreach(function (subcat, j) {
-                        if (subcat.products == undefined) {
-                            subcat.products = [];
+                results.categories.forEach(function (cat) {
+                    results.subcategories.forEach(function (subCat, j) {
+                        if (subCat.products == undefined) {
+                            subCat.products = [];
                         }
                         //get all products for sub category
-                        results.products.foreach(function (product) {
-                            if (subcat._id.equals(product.subcategory.id) &&
-                                cat._id.equals(subcat.parentcategory.id)) {
-                                subcat.products.push(product);
+                        results.products.forEach(function (product) {
+                            if (subCat._id.equals(product.subCategory.id) &&
+                                cat._id.equals(subCat.parentCategory.id)) {
+                                subCat.products.push(product);
                             }
                         });
 
-                        if (cat._id.equals(subcat.parentcategory.id)) {
-                            returndata.subcategories.push(subcat);
+                        if (cat._id.equals(subCat.parentCategory.id)) {
+                            returnData.subCategories.push(subCat);
                         }
                     });
                 });
             }
-            navdatacb(null, returndata);
+            navDataCb(null, returnData);
         });
 	});
 };
