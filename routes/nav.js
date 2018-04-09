@@ -66,7 +66,7 @@ var getNavData = function(params, navDataCb) {
 	});
 };
 
-var navroutehandler = function (req, res, next) {
+var navRouteHandler = function (req, res, next) {
 	var locals = res.locals;
 	var domain = keystone.get('domain');
 	var domainAndPort = domain + (keystone.get('port')?':' + keystone.get('port'):'');
