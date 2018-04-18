@@ -49,16 +49,19 @@ exports = module.exports = function (req, res) {
 
 	// Load the current category filter
 	view.on('init', function (next) {
-		req.params.category = 'republik';
-		locals.filters.category = 'republik';
-		if (req.params.category) {
-			keystone.list('PostCategory').model.findOne({key: locals.filters.category}).populate('category').exec(function (err, result) {
-				locals.data.category = result._id;
+		req.params.category = req.params.category || 'republik';
+		locals.filters.category = [];
+		//if (req.params.category) {
+			keystone.list('PostCategory').model.find({key: {$in: [locals.filters.category, req.params.category]}}).populate('category').exec(function (err, result) {
+				console.log('result:', result);
+				locals.data.category = result.map(function(cat){
+					return cat._id;
+				});
 				next(err);
 			});
-		} else {
-			next();
-		}
+		//} else {
+		//	next();
+		//}
 
 	});
 
@@ -76,7 +79,6 @@ exports = module.exports = function (req, res) {
 			filters.categories = {$in: [locals.data.category]};
 		}
 
-		
 		var q = keystone.list('Post').paginate({
 			page: req.query.page || 1,
 			perPage: 12,
@@ -92,6 +94,10 @@ exports = module.exports = function (req, res) {
 		}
 
 		q.exec(function (err, results) {
+			if(!results){
+				next(err);
+				return;
+			}
 			locals.data.posts = results.results;
 
 			async.forEachOf(results, function (post, i, cb) {

@@ -8,6 +8,7 @@ var PostCategory = new keystone.List('PostCategory', {
 
 PostCategory.add({
 	name: { type: String, required: true },
+	showInNavigation: { type: Boolean, default: false}
 });
 
 PostCategory.relationship({ ref: 'Post', refPath: 'categories' });

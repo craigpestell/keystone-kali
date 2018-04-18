@@ -32,14 +32,20 @@ var getNavData = function(params, navDataCb) {
             },
             products: function (callback) {
                 keystone.list('Product').model.find().where(disciplineWhere)
-					.populate('mainCategory subCategory').sort('sortOrder').exec(callback);
+                    .populate('mainCategory subCategory').sort('sortOrder').exec(callback);
+            },
+            postCategories: function (callback) {
+                keystone.list('PostCategory').model.find().where({showInNavigation: true})
+					.populate('disciplines').sort('sortOrder').exec(callback);
             }
+			
         },
         function massage(err, results) {
             var returnData = {
 				disciplines: results.disciplines,
 				categories: results.categories, 
-				subCategories: []
+				subCategories: [], 
+				postCategories: results.postCategories
 			};
             //console.log('subcategories:', results.subcategories);
             if (results.categories) {
@@ -173,6 +179,7 @@ var navRouteHandler = function (req, res, next) {
 			}
 		}
 		
+		locals.postCategories = data.postCategories;
 		next();
 	});
 };

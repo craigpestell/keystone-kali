@@ -477,8 +477,12 @@
 				if(blogIndexPageFetching === blogIndexPage){
 					$('#blog-index .spinner').fadeIn();
 					blogIndexPageFetching++;
+					var url = '/api/republik/posts?page=' + blogIndexPageFetching;
+					if('{{postCategory}}'){
+						
+					}
 					$.ajax({
-						url: '/api/republik/posts?page=' + blogIndexPageFetching,
+						url: url,
 						success: function(result){
 							//console.log(result);
 							//$('#blog-index .pagination').remove();
