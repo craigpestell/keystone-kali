@@ -475,80 +475,82 @@
 			if(isScrolledIntoView('#footer', -250)){
 
 				if(blogIndexPageFetching === blogIndexPage){
-					$('#blog-index .spinner').fadeIn();
-					blogIndexPageFetching++;
-					var url = '/api/republik/posts?page=' + blogIndexPageFetching;
-					if('{{postCategory}}'){
-						
-					}
-					$.ajax({
-						url: url,
-						success: function(result){
-							//console.log(result);
-							//$('#blog-index .pagination').remove();
-							if(result.posts.results.length === 0){
-								blogIndexPage = 0;
-								$('.spinner', '#blog-index').remove();
-								$('.blog-end', '#blog-index').show();
-								return;
-							}
-							var item = document.createElement('div');
-							var grid = $('#blog-columns');
-							result.posts.results.forEach(function(post){
-								//console.log(post);
-								if(post.mainImage && post.mainImage.url){
-									var img = post.mainImage.url;
-									var parts = img.split('upload/');
-									img = parts[0] + 'upload/f_auto,w_auto,dpr_auto/' + parts[1];
-									var imgSmall = parts[0] + 'upload/f_auto,q_auto,w_400/' + parts[1];
-									img = img.replace('http://', 'https://');
-									imgSmall.replace('http://', 'https://');
-									
+					console.log('{{filters.category}}');
+					if('{{filters.category}}' === 'republik'){
+						$('#blog-index .spinner').fadeIn();
+						blogIndexPageFetching++;
+						var url = '/api/republik/posts?page=' + blogIndexPageFetching;
+						$.ajax({
+							url: url,
+							success: function (result) {
+								//console.log(result);
+								//$('#blog-index .pagination').remove();
+								if (result.posts.results.length === 0) {
+									blogIndexPage = 0;
+									$('.spinner', '#blog-index').remove();
+									$('.blog-end', '#blog-index').show();
+									return;
 								}
-								window.salvattore['append_elements'](grid[0], [item]);
-								var href = '/' + section + '/post/' + post.key; 
-								if(blogIndexPageFetching > 1){
-									href += '?page=' + blogIndexPageFetching;
-								}
-								console.log('imgSmall:', imgSmall);
-								var html = '<a href="' + href + '">';
-								html += '<div class="blog-index-item fadeInUp animated" style="display:none">\n' +
-										'\t\t\t\t<div class="blog-main-image">\n' +
-										'\t\t\t\t\t<img src="' + imgSmall + '" data-src="' + img +'" class="cld-responsive notloaded" src=""/>\n' +
-										'\t\t\t\t</div>\n' +
-										'\t\t\t\t<h3>' + post.name + '</h3>\n' +
-										'\t\t\t\t<div class="blog-main-content">\n' +
-										'\t\t\t\t\t' + post.content.brief + '\n' +
-										'\t\t\t\t</div>\n' +
-										'\t\t\t\t<hr/>\n' +
-										'\t\t\t</div>';
+								var item = document.createElement('div');
+								var grid = $('#blog-columns');
+								result.posts.results.forEach(function (post) {
+									//console.log(post);
+									if (post.mainImage && post.mainImage.url) {
+										var img = post.mainImage.url;
+										var parts = img.split('upload/');
+										img = parts[0] + 'upload/f_auto,w_auto,dpr_auto/' + parts[1];
+										var imgSmall = parts[0] + 'upload/f_auto,q_auto,w_400/' + parts[1];
+										img = img.replace('http://', 'https://');
+										imgSmall.replace('http://', 'https://');
 
-								html += '</a>';
-								item.outerHTML = html;
-								var loadedCount = 0;
-								$('.blog-index-item img.notloaded').on('load', function(){
-									$(this).removeClass('notloaded');
-									if($('.blog-index-item img.notloaded').length < 1) {
-										$.cloudinary.responsive();
-										$('.blog-index-item img').off('load')
-										
 									}
+									window.salvattore['append_elements'](grid[0], [item]);
+									var href = '/' + section + '/post/' + post.key;
+									if (blogIndexPageFetching > 1) {
+										href += '?page=' + blogIndexPageFetching;
+									}
+									console.log('imgSmall:', imgSmall);
+									var html = '<a href="' + href + '">';
+									html += '<div class="blog-index-item fadeInUp animated" style="display:none">\n' +
+											'\t\t\t\t<div class="blog-main-image">\n' +
+											'\t\t\t\t\t<img src="' + imgSmall + '" data-src="' + img + '" class="cld-responsive notloaded" src=""/>\n' +
+											'\t\t\t\t</div>\n' +
+											'\t\t\t\t<h3>' + post.name + '</h3>\n' +
+											'\t\t\t\t<div class="blog-main-content">\n' +
+											'\t\t\t\t\t' + post.content.brief + '\n' +
+											'\t\t\t\t</div>\n' +
+											'\t\t\t\t<hr/>\n' +
+											'\t\t\t</div>';
+
+									html += '</a>';
+									item.outerHTML = html;
+									var loadedCount = 0;
+									$('.blog-index-item img.notloaded').on('load', function () {
+										$(this).removeClass('notloaded');
+										if ($('.blog-index-item img.notloaded').length < 1) {
+											$.cloudinary.responsive();
+											$('.blog-index-item img').off('load')
+
+										}
+									});
+
+									setTimeout(function () {
+										$('#blog-index .spinner').fadeOut();
+										$current = $('.blog-index-item:hidden');
+										if ($current.length) {
+											$current.css('display', 'block');
+										}
+										loadPosts();
+									}, 100);
+
 								});
-								
-								setTimeout(function(){
-									$('#blog-index .spinner').fadeOut();
-									$current = $('.blog-index-item:hidden');
-									if($current.length){
-										$current.css('display', 'block');
-									}
-									loadPosts();
-								},100);
-								
-							});
-							blogIndexPage++;
 
-						}
-					})
+								blogIndexPage++;
+
+							}
+
+						});
+					}
 
 				}
 			}

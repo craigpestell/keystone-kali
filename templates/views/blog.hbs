@@ -1,13 +1,11 @@
-{{json postCategories}}<br/>
-{{section}}
 {{#ifCond section "==" "republik"}}
-	<nav id="nav-republik" class="navbar navbar-static-top" role="navigation">
+	<nav id="nav-republik" class="navbar navbar-static-top hidden-xs" role="navigation">
 		<div class="container-fluid">
 			<div class="col col-lg-2 visible-lg"></div>
 			<div class="col col-sm-12 col-lg-8">
 				<ul class="nav navbar-nav">
 					{{#each postCategories}}
-						<li class="{{#ifeq key @root.page}} active{{/ifeq}}{{#if active}} active{{/if}}"><a href="{{href}}">{{name}}</a></li>
+						<li class="{{#ifeq key @root.filters.category}} active{{/ifeq}}{{#if active}} active{{/if}}"><a href="/republik/{{key}}">{{name}}</a></li>
 					{{/each}}
 				</ul>
 			</div>

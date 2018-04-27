@@ -50,15 +50,15 @@ exports = module.exports = function (req, res) {
 	// Load the current category filter
 	view.on('init', function (next) {
 		req.params.category = req.params.category || 'republik';
-		locals.filters.category = [];
 		//if (req.params.category) {
-			keystone.list('PostCategory').model.find({key: {$in: [locals.filters.category, req.params.category]}}).populate('category').exec(function (err, result) {
-				console.log('result:', result);
-				locals.data.category = result.map(function(cat){
-					return cat._id;
+			keystone.list('PostCategory').model.find({key: {$in: [locals.filters.category, req.params.category]}})
+				.populate('category')
+				.exec(function (err, result) {
+					locals.data.category = result.map(function(cat){
+						return cat._id;
+					});
+					next(err);
 				});
-				next(err);
-			});
 		//} else {
 		//	next();
 		//}
