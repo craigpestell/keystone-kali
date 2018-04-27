@@ -14,9 +14,11 @@
 {{/ifCond}}
 
 {{#container}}
+	{{#ifCond data.posts.totalPages ">" 1}}
 	<div class="row blog">
 		<div class="col col-xs-3"></div>{{> blog-pagination}}
 	</div>
+	{{/ifCond}}
 	<div class="row">
 		{{> blog-index}}
 	</div>
