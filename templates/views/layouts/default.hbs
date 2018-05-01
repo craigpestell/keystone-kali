@@ -476,7 +476,7 @@
 
 				if(blogIndexPageFetching === blogIndexPage){
 					//console.log('{{filters.category}}');
-					if('{{filters.category}}' === 'republik'){
+					if('{{filters.category}}' === ''){
 						$('#blog-index .spinner').fadeIn();
 						blogIndexPageFetching++;
 						var url = '/api/republik/posts?page=' + blogIndexPageFetching;
