@@ -538,6 +538,7 @@ hr {
 .subnav {
   z-index: 100;
 }
+
 .subnav .navbar {
   
   background-color: rgba(255, 255, 255, 0);
@@ -571,12 +572,21 @@ hr {
   text-decoration: none;
 }
 
-.nav li a:hover, .nav li a:focus, .nav .open a:hover, .navbar.subnav li:hover {
+.navbar li a:hover, .navbar li a:focus, .navbar .open a:hover, .navbar.subnav li:hover {
   background-color: $brand-grey;
 }
 
-.nav li.active {
+.navbar li.active {
   background-color: lighten($brand-grey, 15%);
+}
+
+#nav-republik.subnav li a:hover, #nav-republik.subnav li a:focus {
+  //background-color: #FFF;
+}
+
+#nav-republik.subnav li.active {
+  background-color: #FFF;
+  text-decoration: underline;
 }
 
 #nav-discipline {

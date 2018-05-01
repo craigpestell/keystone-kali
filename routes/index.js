@@ -149,7 +149,7 @@ exports = module.exports = function(app) {
 	});
 	
 	app.get('/api/dealers', keystone.middleware.api, routes.api.dealers.list);
-	app.get('/api/:postCategory/posts', keystone.middleware.api, routes.api.posts.list);
+	app.get(['/api/:postCategory/posts', '/api/:postCategory/:postSubCategory/posts'], keystone.middleware.api, routes.api.posts.list);
 
 	app.use(subdomain({base: keystone.get('domain'), removeWWW: true, debug: true}));
 	
