@@ -13,6 +13,7 @@ Product.defaultColumns = 'name,subCategory';
 Product.add({
 	name: { type: String, required: true },
 	slug: { type: String, required: true, default: '', initial: true},
+	version: { type: Types.Relationship, ref: 'ProductVersion' },
 	shopifyIdCan: {type: Number, label: 'Shopify Id Canada', hidden: true},
 	preOrderCan: {type: Boolean, note: 'Show Preorder button instead of Buy Now - Canada', hidden: true},
 	shopifyIdUS: {type: Number, label: 'Shopify Id'},

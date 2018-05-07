@@ -4,8 +4,8 @@ var async = require('async');
 
 
 module.exports.getProductNavigationData = function (params, productDataCb){
-	console.log('getProductNavigationData discipline param:', params.discipline);
-	console.log('getProductNavigationData category param:', params.category);
+	//console.log('getProductNavigationData discipline param:', params.discipline);
+	//console.log('getProductNavigationData category param:', params.category);
 	var getDocumentIdsFromParams = function(params){
 		if(params.category){
 			
@@ -24,10 +24,10 @@ module.exports.getProductNavigationData = function (params, productDataCb){
 	
 	async.parallel({
 			categories: function(callback){
-				console.log(categoryWhere);
+				//console.log(categoryWhere);
 				keystone.list('Discipline').model.find().where(disciplineWhere).exec(function(err, data){
-					console.log('discipline data:', data);
-					console.log('discipline _id: ', data[0]._id);
+					//console.log('discipline data:', data);
+					//console.log('discipline _id: ', data[0]._id);
 					//keystone.list('ProductCategory').model.find({discipline:data[0]._id}).exec(callback);
 					keystone.list('ProductCategory').model.find({disciplines:data[0]._id}).exec(callback);
 				});
@@ -41,7 +41,7 @@ module.exports.getProductNavigationData = function (params, productDataCb){
 		},
 		function massage(err, results){
 			var returnData = {categories:results.categories, subCategories:[]};
-			console.log('categories', results.categories);
+			//console.log('categories', results.categories);
 			if(results.categories) {
 				results.categories.forEach(function(cat){
 					results.subcategories.forEach(function(subCat, j){

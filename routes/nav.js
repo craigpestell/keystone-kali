@@ -47,7 +47,6 @@ var getNavData = function(params, navDataCb) {
 				subCategories: [], 
 				postCategories: results.postCategories
 			};
-            //console.log('subcategories:', results.subcategories);
             if (results.categories) {
                 results.categories.forEach(function (cat) {
                     results.subcategories.forEach(function (subCat, j) {
@@ -74,7 +73,6 @@ var getNavData = function(params, navDataCb) {
 };
 
 var navRouteHandler = function (req, res, next) {
-	
 	var locals = res.locals;
 	var domain = keystone.get('domain');
 	var domainAndPort = domain + (keystone.get('port')?':' + keystone.get('port'):'');
