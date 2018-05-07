@@ -34,7 +34,7 @@ Post.add({
 	embedly: { type: Types.Embedly, from: 'youtube' },
 	product: { type: Types.Relationship, ref: 'Product', note: 'Product for Slide Post' },
 	products: { type: Types.Relationship, ref: 'Product', many: true, note: 'Related Products' },
-	showGalleryImages: { type: String, note: 'comma-delimited indexes of Product gallery images (e.g.: "2,3,5"', dependsOn: {product:true}},
+	showGalleryImages: { type: String, note: 'comma-delimited indexes of Product gallery images (e.g.: "2,3,5"' },
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
