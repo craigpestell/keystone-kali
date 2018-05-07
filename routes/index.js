@@ -89,6 +89,18 @@ exports = module.exports = function(app) {
 			next();
 		});
 	});
+
+	app.param('version', function(req, res, next, version){
+
+		keystone.list('ProductVersion').model.findOne({key: version}).exec(function(err, data){
+			if (err) return next(err);
+			if (!data) return next(new Error('Nothing is found'));
+			res.locals.params.version = data;
+			next();
+		});
+	});
+	
+	
 	app.param('category', function(req, res, next, category){
 		
 		keystone.list('ProductCategory').model.findOne({slug: category}).exec(function(err, data){
@@ -151,7 +163,9 @@ exports = module.exports = function(app) {
 		'/',
 		'/:category',
 		'/:category/:subCategory',
-		'/:category/:subCategory/:product'
+		'/:category/:subCategory/:product',
+		'/subdomain/:discipline/archive/*',
+		'/archive/*'
 	], navRouteHandler);
 
 	//app.get('/country', routes.views.country);
@@ -170,17 +184,20 @@ exports = module.exports = function(app) {
 	app.all(['/subdomain/:discipline/contact', '/contact'], routes.views.contact);
 
 	app.get([
+		'/subdomain/:discipline/archive/:version?',
 		'/:category',
 		'/:category/:subCategory',
 		'/subdomain/:discipline/:category',
 		'/subdomain/:discipline/:category/:subCategory'
+		
 	], routes.views['product-category']);
 
 	app.get(['/:page', '/subdomain/:discipline/:page'], routes.views.page);
 	
 	app.get([
 		'/subdomain/:discipline/:category/:subCategory/:product',
-		'/:category/:subCategory/:product'
+		'/:category/:subCategory/:product',
+		'/subdomain/:discipline/archive/:version/:category/:subCategory/:product'
 	], routes.views.product);
 	
 	

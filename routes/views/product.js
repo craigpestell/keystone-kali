@@ -23,7 +23,6 @@ exports = module.exports = function (req, res) {
 
 		q.exec(function (err, results) {
 			locals.data.mainPost = results;
-			//console.log('results:', results);
 			next();
 		});
 	};
@@ -38,27 +37,55 @@ exports = module.exports = function (req, res) {
 		
 		q.exec(function (err, results) {
 			locals.data.posts = results;
-			//console.log('results:', results);
 			next();
 		});
 
 	};
-
-	view.query('product', keystone.list('Product').model.findOne({slug:req.params.product})
-		.populate('canonicalDiscipline technologies features mainCategory subCategory sizingChart'))
-		.then(function (err, product, next) {
-			if(!product) {
+	var productWhere = {slug: req.params.product};
+	view.query('product', keystone.list('Product').model.find(productWhere)
+		.populate('canonicalDiscipline technologies features mainCategory subCategory sizingChart version'))
+		.then(function (err, products, next) {
+			if(!products) {
 				next();
 			}else{
-				locals.page = product.mainCategory.key;
-				locals.subCategory = product.subCategory.key;
-				locals.data.page.title = product.name + ' - Kali Protectives';
 			
 				if (err) return next(err);
 				
-				loadPosts(product, function(){
-					loadMainPost(product, function(){
-						populatePost(product, next);
+				var p = undefined;
+                if(res.locals.params.version){
+                    products.forEach(function(product) {
+                        if (res.locals.params.version.key === product.version.key) {
+                            locals.page = product.mainCategory.key;
+                            locals.subCategory = product.subCategory.key;
+                            locals.data.page.title = product.name + ' - Kali Protectives';
+                            if (!p) {
+                                p = product;
+                            }
+                        }
+                    });
+                }else{
+                    //find latest version
+                    res.locals.productVersions.forEach(function (version) {
+                        products.forEach(function(product) {
+                            if (version.key === product.version.key) {
+                                locals.page = product.mainCategory.key;
+                                locals.subCategory = product.subCategory.key;
+                                locals.data.page.title = product.name + ' - Kali Protectives';
+                                if (!p) {
+                                    p = product;
+                                }
+                            }
+                        });
+                    });
+                }
+
+				if(!p){
+						res.redirect('/404');
+				}
+				locals.product = p;
+				loadPosts(p, function(){
+					loadMainPost(p, function(){
+						populatePost(p, next);
 					});
 				});
 			}

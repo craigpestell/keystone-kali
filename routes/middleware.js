@@ -13,7 +13,7 @@ var keystone = require('keystone');
 var async = require('async');
 
 function getSiteSettings(cb) {
-	keystone.list('SiteSetting').model.find().exec(function(err, data){
+	keystone.list('SiteSetting').model.find().populate('currentProductVersion').exec(function(err, data){
 		var simpleData = {};
 		data.forEach(function(setting, i){
 			simpleData[setting._doc.key] = setting._doc;
@@ -84,12 +84,18 @@ function getNavData(discipline, navDataCb){
  */
 exports.initLocals = function (req, res, next) {
 	var locals = res.locals;
+	locals.user = req.user;
 
 	locals.baseUrl = keystone.get('baseUrl');
 	getSiteSettings(function(err, siteSettings){
 		locals.siteSettings = siteSettings;
-		locals.user = req.user;
-		next();
+		locals.currentProductVersion = siteSettings['current-product-version'].currentProductVersion;
+		//console.log('currentProductVersion', locals.currentProductVersion);
+		keystone.list('ProductVersion').model.find().exec(function(err, versions){
+			//console.log('versions:', versions);
+			locals.productVersions = versions;
+			next();
+		});
 	});
 
 };
