@@ -1,19 +1,7 @@
 <div class="row product-main" style="">
 	<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
-		<!--<h3><a href="{{postUrl key}}">{{{name}}}</a></h3>-->
-		<!--<p class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
-			{{#if author.name.first}}by {{author.name.first}}{{/if}}
-					</p>-->
-		{{{content.brief}}}
-
-		{{#if @root.params.discipline}}
-		<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
-		{{else}}
-		<a href="//{{product.canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
-		{{/if}}
 		<div class="col col-xs-12 col-sm-6 col-md-7">
 		</div>
-	</a>
 
 		<div class="col col-xs-12 col-sm-6 col-md-5 ">
 			<div class="row" style="margin-top:0px">
@@ -137,3 +125,4 @@
 	</div>
 	<!--{{> blog-social post=this}}-->
 </div>
+
