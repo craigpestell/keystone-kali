@@ -1,0 +1,15 @@
+{{#if @root.params.discipline}}
+	<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
+{{else}}
+	<a href="//{{product.canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
+{{/if}}
+	<div class="row">
+		{{#each galleryImages}}
+			<div class="col col-xs-6">
+				<img data-src="{{cloudinaryUrl  width="auto" fetch_format="auto" quality="auto"}}"
+					 class="cld-responsive" src=""/>
+			</div>
+
+		{{/each}}
+	</div>
+</a>
