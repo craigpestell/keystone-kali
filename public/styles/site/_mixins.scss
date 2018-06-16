@@ -1,0 +1,42 @@
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative;
+  /* use this value to count block height */
+  line-height: $lineHeight;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  height: $lineHeight*$lineCount;
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;
+
+  /* */
+  margin-right: -1em;
+  padding-right: 1em;
+  p {
+	background-color: white;
+	z-index:10;
+  }
+  &:before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 1em;
+    bottom: 1em;
+	z-index: 5;
+  }
+  &.block-with-text:after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    width: 1em;
+    /* set width and height */
+    height: 1em;
+    margin-top: 0.2em;
+    background: white;
+  }
+}

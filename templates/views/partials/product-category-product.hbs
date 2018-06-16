@@ -1,18 +1,15 @@
-<a href="/{{#if @root.params.version}}archive/{{@root.params.version.slug}}/{{/if}}{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-	<div class="col-xs-12 col-lg-4 product-category-href" data-href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
-		<div class="product-category-item">
-			<div class="col-xs-6 col-lg-12">
+<div class="product-category-item">
+    <a href="/{{#if @root.params.version}}archive/{{@root.params.version.slug}}/{{/if}}{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+        <div class="product-category-href" data-href="/{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}">
+			<div class="product-category-image">
 				{{{cloudinaryImg this.gallery.[0] width=400 alt=name}}}
-				<div class="product-category-item-overlay hidden-xs hidden-sm hidden-md">
-					<h2>{{this.name}}</h2>
-					{{{shortDescription}}}
-				</div>
 			</div>
-
-			<div class="col-xs-6 visible-xs visible-sm visible-md">
-				<h4>{{this.name}}</h4>
-				{{{shortDescription}}}
+            <div class="title">
+				<h4>{{this.name}}</h4>				
 			</div>
-		</div>
-	</div>
-</a>
+            <div class="description">
+                {{{shortDescription}}}
+            </div>
+        </div>
+    </a>
+</div>
