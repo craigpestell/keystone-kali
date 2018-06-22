@@ -17,12 +17,38 @@
 				{{/ifCond}}
 				</div>
 			</div>
-
-
-			{{#each this.products}}
-            {{> product-category-product}}
-			{{/each}}
-            
+			<div class="hidden-xs">
+			{{#everyNth this.products 3}}
+				{{#if isModZeroNotFirst}}
+					</div>
+				{{/if}}
+				{{#if isModZero}}
+					<div class="row">
+				{{/if}}
+					<div class="col-xs-4">
+						{{> product-category-product}}
+					</div>
+				{{#if isLast}}
+					</div>
+				{{/if}}
+			{{/everyNth}}
+			</div>
+			<div class="visible-xs">
+			{{#everyNth this.products 2}}
+				{{#if isModZeroNotFirst}}
+					</div>
+				{{/if}}
+				{{#if isModZero}}
+					<div class="row">
+				{{/if}}
+					<div class="col-xs-6">
+						{{> product-category-product}}
+					</div>
+				{{#if isLast}}
+					</div>
+				{{/if}}
+			{{/everyNth}}
+			</div>
 		{{/each}}
     </div>
 	{{/container}}

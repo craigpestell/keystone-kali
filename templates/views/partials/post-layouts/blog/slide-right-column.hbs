@@ -39,9 +39,15 @@
 							{{{product.description}}}
 						{{/ifCond}}
 					{{/if}}
-
 				</div>
 			</div>
+			{{#if product}}
+                <div class="row">
+                <div class="col col-xs-12 visible-xs">
+                    {{> post-layouts/blog/slide-gallery-images}}
+                </div>
+				</div>
+			{{/if}}
 			{{#if product.technologies.length}}
 				<div class="row technology">
 					<div class="col col-xs-12">
@@ -99,21 +105,7 @@
 			{{#if product}}
 				<div class="row"></div>
 				<div class="col col-xs-12 hidden-xs">
-					{{#if @root.params.discipline}}
-					<a href="/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
-					{{else}}
-					<a href="//{{product.canonicalDiscipline.slug}}.{{@root.domainAndPort}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}">
-					{{/if}}
-					<div class="row">
-						{{#each galleryImages}}
-							<div class="col col-xs-6">
-								<img data-src="{{cloudinaryUrl  width="auto" fetch_format="auto" quality="auto"}}"
-									 class="cld-responsive" src=""/>
-							</div>
-
-						{{/each}}
-					</div>
-				</a>
+					{{> post-layouts/blog/slide-gallery-images}}
 				</div>
 			{{/if}}
 		</div>
