@@ -7,11 +7,11 @@
 {{#if post.products}}
 {{#container}}
 	<div class="row">
-		<div class="col-xs-12 products">
-			{{#each post.products}}
+        {{#each post.products}}
+			<div class="col-xs-3 products">
 				{{> product-category-product}}
-			{{/each}}
-		</div>
+			</div>
+        {{/each}}
 	</div>
 {{/container}}
 {{/if}}
