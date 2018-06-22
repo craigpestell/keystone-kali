@@ -2,7 +2,7 @@
 $black: #000;
 $white: #fff;
 $color_delta_approx: #a3a69f;
-$color_pumice_approx: lighten($brand-grey, 15%);;
+$color_pumice_approx: lighten($brand-grey, 15%);
 $color_christi_approx: #4cbb17;
 $black_7_5: rgba(0, 0, 0, 0.075);
 $color_lima_60_approx: rgba(102, 204, 0, 0.6);
@@ -1040,7 +1040,7 @@ hr {
 	opacity: 1;
 	transition: .5s ease;
 	.percentage {
-	  animation: usage-reveal 500ms ease-in-out;
+	  animation: usage-reveal 600ms ease-in-out;
 	  animation-fill-mode: inherit;
 	}
   }
@@ -1069,8 +1069,9 @@ hr {
 	  padding: 2px 2px 5px;
 	  //height: 100%;
 	  width: 100%;
-	  background-color: rgba(255,255,255,0.95);
-	  border: 2px solid rgba(lighten($brand-grey, 15%), 0.95);
+	  background-color: rgba($color_pumice_approx,0.95);
+	  border: 2px solid rgba($brand-grey, 0.5);
+	  border-radius: 5px;
 	  white-space: nowrap;
 	  //box-shadow: 5px 5px rgba(lighten($brand-grey, 15%), 0.95);
 	}
