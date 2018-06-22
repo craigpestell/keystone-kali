@@ -2,7 +2,7 @@
 $black: #000;
 $white: #fff;
 $color_delta_approx: #a3a69f;
-$color_pumice_approx: #c9cbc7;
+$color_pumice_approx: lighten($brand-grey, 15%);;
 $color_christi_approx: #4cbb17;
 $black_7_5: rgba(0, 0, 0, 0.075);
 $color_lima_60_approx: rgba(102, 204, 0, 0.6);
@@ -686,6 +686,7 @@ hr {
 
 @for $i from 1 through 100 {
   .percentage-#{$i} {
+	--width: ($i * 1%); 
 	border-bottom: 2px solid $brand-primary;
 	margin-top: 8px;
 	float: left;
@@ -1034,12 +1035,45 @@ hr {
 
 .product-category-item {
   margin-bottom: 32px;
-  .product-category-image img {
-	//padding: 2px;
-	margin: 8px 0;
-	width: 100%;
-	transform: scale(.996);
-	transition: transform .2s ease;
+  &:hover .product-category-image .product-category-item-overlay {
+	visibility: visible;
+	opacity: 1;
+	transition: .5s ease;
+	.percentage {
+	  animation: usage-reveal 500ms ease-in-out;
+	  animation-fill-mode: inherit;
+	}
+  }
+  .product-category-image {
+	position: relative;
+	margin-bottom: 10px;	
+	img {
+	  //padding: 2px;
+	  margin: 8px 0;
+	  width: 100%;
+	  transform: scale(.996);
+	  transition: transform .2s ease;
+	}
+	
+	.product-category-item-overlay {
+	  font-family: Gotham-Medium, Arial, sans-serif;
+	  visibility: hidden;
+	  position: absolute;
+
+	  transition: .5s ease;
+	  font-size: 0.8em;
+	  opacity: 0;
+	  bottom: 0px;
+	  left: 0;
+	  right: 0;
+	  padding: 2px 2px 5px;
+	  //height: 100%;
+	  width: 100%;
+	  background-color: rgba(255,255,255,0.95);
+	  border: 2px solid rgba(lighten($brand-grey, 15%), 0.95);
+	  white-space: nowrap;
+	  //box-shadow: 5px 5px rgba(lighten($brand-grey, 15%), 0.95);
+	}
   }
   &:hover .product-category-image img {
 	transform: scale(1.04);
@@ -1062,8 +1096,14 @@ hr {
 	text-decoration: underline;
   }
 
-  &:hover .product-category-item-overlay {
-	visibility: visible;
+}
+
+@keyframes usage-reveal{
+  0% {
+	width:0;
+  }
+  100% {
+	width: var(--width);
   }
 }
 
