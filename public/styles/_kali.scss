@@ -1483,6 +1483,9 @@ a[href^="https://maps.google.com/maps"] {
   .light-to-black {
 	fill: $black !important;
   }
+  .slide-description{
+	background-color:rgba(255,255,255,0.1)
+  }
 }
 
 .bh-sl-container .bh-sl-loc-list .list-focus {
