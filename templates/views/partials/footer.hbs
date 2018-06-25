@@ -29,7 +29,9 @@
 				<ul>
 					{{#each productVersions}}
 						{{#ifCond this.key "!=" @root.currentProductVersion.key}}
-                            <li><a href="/archive/{{slug}}">{{name}}</a></li>
+							{{#ifCond this.key "!=" '2019-pre-release'}}
+                            	<li><a href="/archive/{{slug}}">{{name}}</a></li>
+							{{/ifCond}}
 						{{/ifCond}}
 					{{/each}}
 				</ul>

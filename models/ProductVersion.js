@@ -9,7 +9,7 @@ var Types = keystone.Field.Types;
 var ProductVersion = new keystone.List('ProductVersion', {
 	autokey: { from: 'name', path: 'key', unique: true }, sortable: true
 });
-ProductVersion.relationship({ path: 'products', ref: 'Product', refPath: 'versions' });
+ProductVersion.relationship({ path: 'products', ref: 'Product', refPath: 'version' });
 ProductVersion.add({
 	name: { type: String, required: true, default: '' },
 	slug: { type: String, required: true, initial: true},
