@@ -328,7 +328,7 @@ h4 {
   background: linear-gradient(var(--color-swatch-colors)); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aebcbf', endColorstr='#0a0809',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   
-  margin: 5px 10px;
+  margin: 10px;
   cursor: pointer;
   height: $radius;
   width: $radius;
@@ -338,7 +338,7 @@ h4 {
   overflow: hidden;
   display: inline-block;
   
-  box-shadow: 2px 2px 5px $color_delta_approx;
+  box-shadow: -2px 2px 5px $color_delta_approx;
   border-image-width: 0;
   //-webkit-backface-visibility: hidden;
   //Instead of the line below you could use @include backface-visibility($visibility)
