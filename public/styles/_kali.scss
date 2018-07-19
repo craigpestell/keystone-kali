@@ -338,7 +338,7 @@ h4 {
   overflow: hidden;
   display: inline-block;
   
-  box-shadow: -2px 2px 5px $color_delta_approx;
+  box-shadow: -2px 2px 6px $color_delta_approx;
   border-image-width: 0;
   //-webkit-backface-visibility: hidden;
   //Instead of the line below you could use @include backface-visibility($visibility)
