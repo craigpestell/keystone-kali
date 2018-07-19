@@ -1,19 +1,11 @@
 {{#ifCond product.galleryColorwaysArray.length '>' 1}}
     <div class="row {{visibleClass}}">
-        <div class="product-color-swatches.product-color-swatches-xs col-xs-12 owl-dots" style="text-align:{{align}}">
+        <div class="col-xs-12 owl-dots" style="text-align:{{align}}">
 			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
                 <div data-icon-id="#product-icon-{{productIndex}}"
 					 data-colorway="{{colorway}} {{color}}"
-                     data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch owl-dot">
-                    <div class="circle">
-						{{#ifCond split.length ">" 1}}
-							{{#each split}}
-                                <div class="circle-slice" style="background-color:{{this}}"></div>
-							{{/each}}
-						{{else}}
-                            <div class="circle-slice" style="background-color:{{color}}"></div>
-						{{/ifCond}}
-                    </div>
+                     data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch-gradient owl-dot"
+					 style="{{colorSwatchBackground this split}}">
                 </div>
 			{{/everyNth}}
 

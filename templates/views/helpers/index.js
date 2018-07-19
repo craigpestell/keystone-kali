@@ -599,5 +599,25 @@ module.exports = function() {
 		return template(params);
 	};
 	
+	_helpers.colorSwatchBackground = function(context, options){
+		var bg = "--color-swatch-colors: ";
+		var divisor = 1;
+		var pctSum = 0;
+
+		if(options) {
+			divisor = 100 / options.length;
+			options.forEach(function (c, i) {
+				console.log('colors:', c, ' + ', i);
+				if(i){
+					bg+=',';
+				}
+				bg += c + ' ' + (pctSum)+ '%, ' + c + ' ' + (pctSum+divisor) + '%';
+				pctSum += divisor;
+			});
+		}
+		//bg += "'";
+		return bg;
+	}
+	
 	return _helpers;
 };
