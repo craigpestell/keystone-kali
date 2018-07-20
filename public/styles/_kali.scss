@@ -649,7 +649,7 @@ hr {
 .product-title {
   color: $white;
   background-color: $black;
-  display: inline-block;
+  width: 100%;
   padding: 10px;
   padding-bottom: 8px;
   margin-bottom: 15px;
@@ -662,8 +662,8 @@ hr {
 }
 
 .product-description {
-  background-color: $color_gallery_approx;
-  padding: 10px;
+  //background-color: $color_gallery_approx;
+  //padding: 10px;
   p {
 	margin: 0;
   }
@@ -800,6 +800,7 @@ hr {
 	display: inline-block;
 	margin: 0;
   }
+
   .more-info {
 	text-transform: uppercase;
 	font-size: 18px;
@@ -813,6 +814,7 @@ hr {
 	  transform: scale(1.1, 1.1);
 	}
   }
+
   .buy-button {
 	text-transform: uppercase;
 	font-size: 18px;
@@ -827,6 +829,11 @@ hr {
 	  transform: scale(1.1, 1.1);
 	}
   }
+
+  .product-title a:hover {
+	text-decoration: none;
+  }
+  
   .technology {
 	h4 {
 	  font-size: 10px;
@@ -1562,25 +1569,29 @@ a.product-category-anchor {
 }
 
 .product-gallery-carousel.owl-carousel {
-  .owl-prev {
+  .owl-prev, .owl-next,
+  .owl-prev:hover, .owl-next:hover{
+	background: none;
+	color: black;
+	padding: 0;
+	margin: -27px -24px;
 	position: absolute;
 	top: 50%;
-	margin: -27px -40px;
+
+  }
+  
+  .owl-prev {
 	font-size: 1.5em;
-	background-color: $black;
-	margin-right: 15px;
+	border: 1px solid green;
 	left: 0;
 	.glyphicon {
 	  top: 2px;
 	}
   }
   .owl-next {
-	position: absolute;
-	top: 50%;
-	margin: -27px -40px;
+	
 	font-size: 1.5em;
-	background-color: $black;
-	margin-left: 15px;
+	
 	right: 0;
 	.glyphicon {
 	  top: 2px;

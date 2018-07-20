@@ -26,12 +26,16 @@
 							 style="margin-top:-70px;margin-right:32px" alt="zoom"/>
 					</div>
                 </div>
-				{{> product-gallery class="col-xs-12"}}
             </div>
 
             <div class="col-xs-12 col-md-5">
 				<div class="product-title">
 					<h1>{{product.name}}</h1>
+					<a href="" target="_blank">
+						<div class="text-center buy-button" data-shopifyid-us="{{product.shopifyIdUS}}" data-shopifyid-can="{{product.shopifyIdCan}}" style="display:none">
+							buy now
+						</div>
+					</a>
 				</div>
 				<div class="product-description">
 					<p>{{#ifCond @root.params.discipline.slug "==" "moto"}}
@@ -44,6 +48,8 @@
 						{{{product.description}}}
 					{{/ifCond}}</p>
 				</div>
+				{{> product-gallery class="col-xs-12"}}
+
 				{{#if product.technologies.length}}
 				<div class="row technology">
 					<div class="col col-xs-5 initialism">
@@ -86,13 +92,6 @@
 						</div>
                     </div>
 				{{/if}}-->
-				<div class="row">
-					<a href="" target="_blank">
-						<div class="col-xs-12 text-center buy-button" data-shopifyid-us="{{product.shopifyIdUS}}" data-shopifyid-can="{{product.shopifyIdCan}}" style="display:none">
-							buy now
-						</div>
-					</a>
-				</div>
 				<div class="row">
 					<div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em;font-family:Gotham-Black">Find a Dealer</h3></a>
 					</div>
