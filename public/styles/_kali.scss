@@ -319,7 +319,9 @@ h4 {
 }
 
 .color-swatch-gradient {
-  $radius: 36px;
+  $radius: 32px;
+  
+  border: 1px solid darken($brand-primary, 15%);
   &:before{
 	content: attr(data-colors);
   }
@@ -328,7 +330,7 @@ h4 {
   background: linear-gradient(var(--color-swatch-colors)); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aebcbf', endColorstr='#0a0809',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   
-  margin: 10px;
+  margin: 8px;
   cursor: pointer;
   height: $radius;
   width: $radius;
@@ -346,6 +348,7 @@ h4 {
   &:hover {
 	transform: rotate(-45deg) scale(1.1);
 	transition: ease-in-out;
+	border: 1px solid darken($brand-primary, 0%);
   }
 }
 
