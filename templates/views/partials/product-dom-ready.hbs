@@ -85,6 +85,9 @@
 						var index = (page*imagesPerColorSwatch) || 0;
 						$('#product-' + index).show();
 						$('#product-icon-' + index).show();
+						$('.icon-toggler').removeClass('active');
+						$('[data-icon-id="#product-icon-' + index + '"]').addClass('active');
+						
 					}
 				});
 		if (swatchCarousel.length === 0) {

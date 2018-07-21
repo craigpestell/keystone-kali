@@ -4,6 +4,7 @@
     {{#container}}
         <div class="product-main row">
             <div class="col-xs-12 col-md-7">
+				{{> product-title bootstrap-visibility="visible-xs visible-sm"}}
                 <div id="links">
 					<!--[536,652,720]-->
 				{{#each product.gallery}}
@@ -29,14 +30,8 @@
             </div>
 
             <div class="col-xs-12 col-md-5">
-				<div class="product-title">
-					<h1>{{product.name}}</h1>
-					<a href="" target="_blank">
-						<div class="text-center buy-button" data-shopifyid-us="{{product.shopifyIdUS}}" data-shopifyid-can="{{product.shopifyIdCan}}" style="display:none">
-							buy now
-						</div>
-					</a>
-				</div>
+				
+				{{> product-title bootstrap-visibility="hidden-xs hidden-sm"}}
 				<div class="product-description">
 					<p>{{#ifCond @root.params.discipline.slug "==" "moto"}}
 						{{#if product.motoDescription}}
@@ -49,56 +44,68 @@
 					{{/ifCond}}</p>
 				</div>
 				{{> product-gallery class="col-xs-12"}}
-
+				
+				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="center"}}
 				{{#if product.technologies.length}}
-				<div class="row technology">
-					<div class="col col-xs-5 initialism">
-						<strong>Technology</strong>
-					</div>
-				{{#each product.technologies}}
-					<div class="col-xs-3">
-						<a href="/technology#{{slug}}">
-							<div class="text-center" style="display:inline-block;">
-								<img src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
-									 class="cld-responsive" alt="{{name}}"/>
-								<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
-							</div>
-						</a>
-					</div>
-				{{/each}}
-				</div>
-				
-				{{/if}}
-				<div class="row">
-					<div class="col-xs-12 initialism">
-						{{{product.specs}}}
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 initialism">
-						{{{product.usageChart}}}
-					</div>
-				</div>
-				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="left"}}
-				
-				<!--{{#if product.features.length}}
-                    <div class="row feature">
-						<div class="col-xs-12">
-							<ul>
-						{{#each product.features}}
-                             <li><h4>{{name}}</h4></li>
-						{{/each}}
-                            </ul>
+
+					<div class="row technology">
+
+						<div class="col col-xs-5 initialism">
+							<strong>Technology</strong>
 						</div>
-                    </div>
-				{{/if}}-->
-				<div class="row">
-					<div class="col-xs-12"><a href="/dealers"><h3 style="font-size:1.1em;font-family:Gotham-Black">Find a Dealer</h3></a>
+
+						{{#each product.technologies}}
+							<div class="col-xs-3">
+								<a href="/technology#{{slug}}">
+									<div class="text-center" style="display:inline-block;">
+										<img src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
+											 class="cld-responsive" alt="{{name}}"/>
+										<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
+									</div>
+								</a>
+							</div>
+						{{/each}}
 					</div>
+
+				{{/if}}
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-xs-7 col-md-5 initialism">
+				{{{product.specs}}}
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-xs-5 col-md-4">
+				<div class="row">
+					<div class="col-xs-12 initialism">
+						{{{product.usageChart}}}	
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 initialism">
+						<a href="/dealers"><h3 style="font-size:1.1em;font-family:Gotham-Black;text-decoration:underline;">Find a Dealer</h3></a>
+					</div>
+				</div>
+				
+
+			</div>
+		</div>
+		
+		
+		<!--{{#if product.features.length}}
+			<div class="row feature">
+				<div class="col-xs-12">
+					<ul>
+				{{#each product.features}}
+					 <li><h4>{{name}}</h4></li>
+				{{/each}}
+					</ul>
 				</div>
 			</div>
-            
-        </div>
+		{{/if}}-->
+		
 	{{/container}}
 	{{#if data.mainPost}}
 		

@@ -321,7 +321,6 @@ h4 {
 .color-swatch-gradient {
   $radius: 32px;
   
-  border: 1px solid darken($brand-primary, 15%);
   &:before{
 	content: attr(data-colors);
   }
@@ -337,18 +336,28 @@ h4 {
   border-radius: $radius;
   
   transform: rotate(-45deg);
-  overflow: hidden;
+  //overflow: hidden;
   display: inline-block;
   
   box-shadow: -2px 2px 6px $color_delta_approx;
   border-image-width: 0;
-  //-webkit-backface-visibility: hidden;
-  //Instead of the line below you could use @include backface-visibility($visibility)
-  //backface-visibility: hidden;
+  
+  &.active{
+	border: 2px solid darken($brand-primary, 10%);
+  }
+  
   &:hover {
+	border: 2px solid darken($brand-primary, 0%);
+	&.active{
+	  border: 2px solid darken($brand-primary, 10%);
+	}
+  }
+  
+
+  &:hover, &.active {
 	transform: rotate(-45deg) scale(1.1);
-	transition: ease-in-out;
-	border: 1px solid darken($brand-primary, 0%);
+	//transition: ease-in-out;
+	box-shadow: -2px 2px 6px darken($color_delta_approx, 10%);
   }
 }
 
@@ -664,6 +673,7 @@ hr {
 .product-description {
   //background-color: $color_gallery_approx;
   //padding: 10px;
+  margin: 30px auto;
   p {
 	margin: 0;
   }
@@ -824,9 +834,11 @@ hr {
 	background-color: $color_christi_approx;
 	color: $white;
 	font-weight: bold;
+	margin: 5px auto;
 	&:hover {
 	  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
 	  transform: scale(1.1, 1.1);
+	  transition: ease 0.1s
 	}
   }
 
@@ -1569,29 +1581,34 @@ a.product-category-anchor {
 }
 
 .product-gallery-carousel.owl-carousel {
-  .owl-prev, .owl-next,
-  .owl-prev:hover, .owl-next:hover{
-	background: none;
-	color: black;
-	padding: 0;
-	margin: -27px -24px;
-	position: absolute;
-	top: 50%;
-
+  
+  .owl-nav {
+	//position: absolute;
+	//border: 1px solid cadetblue;
+	font-size: 12px;
   }
   
+  .owl-prev, .owl-next{
+	margin-bottom: 0;
+	padding-bottom: 0;
+	color: $black;
+	background-color: $white;
+	text-align: center;
+	letter-spacing: -2px;
+	&:hover {
+	  transform: scale(1.01);
+	  background-color: $white;
+	  color: $black;
+	}
+  }
+
   .owl-prev {
-	font-size: 1.5em;
-	border: 1px solid green;
 	left: 0;
 	.glyphicon {
 	  top: 2px;
 	}
   }
   .owl-next {
-	
-	font-size: 1.5em;
-	
 	right: 0;
 	.glyphicon {
 	  top: 2px;
