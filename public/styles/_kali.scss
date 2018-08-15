@@ -14,12 +14,10 @@ $white_80: rgba(255, 255, 255, 0.8);
 $blue: blue;
 $black_30: rgba(0, 0, 0, 0.3);
 $color_cornflower_blue_approx: #4d90fe;
-
 @import 'bootstrap/bootstrap/variables';
 @import '/js/fullpage.js/dist/jquery.fullpage.css';
 @import '_fullpage-custom.scss';
 @import 'site/_widget.scss';
-
 .clearfix {
   zoom: 1;
   &:before {
@@ -285,60 +283,36 @@ h4 {
   border-radius: 50%;
 }
 
-.color-swatch {
-  margin: 5px 12px;
-  cursor: hand;
-  height: 25px;
-  width: 25px;
-  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-  border-radius: 25px;
-  -moz-border-radius: 25px;
-  -webkit-border-radius: 25px;
-  //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
-  transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  overflow: hidden;
+.color-swatch-wrapper {
   display: inline-block;
-  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-  box-shadow: 2px 2px 5px $color_delta_approx;
-  border-image-width: 0;
-  -webkit-backface-visibility: hidden;
-  //Instead of the line below you could use @include backface-visibility($visibility)
-  backface-visibility: hidden;
-  .circle {
-	height: 100%;
-	width: 100%;
-	display: table;
-  }
-  .circle-slice {
-	display: table-cell;
+    // background-color: pink;
+    line-height: 1px;
+    margin: 0;
+    &.active {
+        border-bottom: 2px solid $brand-primary;
+        margin-top: -2px;
   }
 }
 
 .color-swatch-gradient {
   $radius: 32px;
-  
   &:before{
 	content: attr(data-colors);
   }
-  background: #aebcbf; /* Old browsers */
-  
-  background: linear-gradient(var(--color-swatch-colors)); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aebcbf', endColorstr='#0a0809',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  
+    background: #aebcbf;
+    /* Old browsers */
+    background: linear-gradient(var(--color-swatch-colors));
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aebcbf',
+    endColorstr='#0a0809',
+    GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
   margin: 8px;
   cursor: pointer;
   height: $radius;
   width: $radius;
   border-radius: $radius;
-  
   transform: rotate(-45deg);
-  //overflow: hidden;
-  display: inline-block;
-  
   box-shadow: -2px 2px 6px $color_delta_approx;
   border-image-width: 0;
   
@@ -347,17 +321,6 @@ h4 {
   }
   
   &:hover {
-	border: 2px solid darken($brand-primary, 0%);
-	&.active{
-	  border: 2px solid darken($brand-primary, 10%);
-	}
-  }
-  
-
-  &:hover, &.active {
-	transform: rotate(-45deg) scale(1.1);
-	//transition: ease-in-out;
-	box-shadow: -2px 2px 6px darken($color_delta_approx, 10%);
   }
 }
 
@@ -854,7 +817,6 @@ hr {
 	  text-decoration: none;
 	}
   }
-
   .slide-description {
 	background-color: rgba(255, 255, 255, 0.1);
 	border-radius: 9px;
@@ -1113,12 +1075,10 @@ hr {
 	  transform: scale(.996);
 	  transition: transform .2s ease;
 	}
-
 	.product-category-item-overlay {
 	  font-family: Gotham-Medium, Arial, sans-serif;
 	  visibility: hidden;
 	  position: absolute;
-
 	  transition: .5s ease;
 	  font-size: 0.8em;
 	  opacity: 0;
@@ -1139,11 +1099,9 @@ hr {
 	transform: scale(1.04);
 	transition: transform .2s ease;
   }
-
   a {
 	text-decoration: none;
   }
-
   .title {
 	text-align: center;
 	h4 {
@@ -1151,11 +1109,9 @@ hr {
 	  line-height: 1.1;
 	}
   }
-
   &:hover .title {
 	text-decoration: underline;
   }
-
 }
 
 @keyframes usage-reveal {
