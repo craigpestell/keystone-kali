@@ -92,11 +92,15 @@
 		}
 	
         $('.icon-toggler').on('click', function (e) {
+			
+			$('.icon-toggler').parent().removeClass('active');
+			$(this).parent().addClass('active');
+
             $('.icon-toggle').hide();
             $($(this).attr('data-icon-id')).show();
             $('.image-toggle').hide();
             $($(this).attr('data-image-id')).show();
-			swatchCarousel.trigger('to.owl.carousel', [$(this).index(), 300]);
+			swatchCarousel.trigger('to.owl.carousel', [$(this).parent().index(), 300]);
 			var label = $('.product-title>h1').text() + ': ' + $(this).attr('data-colorway');
             ga('send', {
                 hitType: 'event',
