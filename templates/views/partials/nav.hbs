@@ -27,7 +27,7 @@
 					{{#each navLinks}}
 						{{#if positionRight}}
 							{{#if discipline}}
-								<li class="{{#ifeq key @root.params.discipline.slug}} hidden-xs active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+								<li class="{{#ifeq key @root.params.discipline.slug}} hidden-xs active{{/ifeq}}{{#ifCond lablel "==" "Technology"}} hidden-sm{{/ifCond}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
 							{{else}}
 								<li class="{{#ifeq key ../../page}} active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
 							{{/if}}
@@ -40,7 +40,7 @@
 							{{#if discipline}}
 								{{#ifeq key @root.params.discipline.slug}}
 								{{else}}
-									<li{{#ifCond lablel "==" "Moto"}} class="hidden-sm"{{/ifCond}}>{{../../page}}<a href="{{href}}"{{#if _blank}} target="_blank"{{/if}}>{{label}}</a></li>
+									<li>{{../../page}}<a href="{{href}}"{{#if _blank}} target="_blank"{{/if}}>{{label}}</a></li>
 								{{/ifeq}}
 							{{/if}}
 						{{/each}}
