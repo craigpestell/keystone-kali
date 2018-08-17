@@ -47,7 +47,7 @@
 						
 						{{#each navLinks}}
 							{{#if @last}}
-								<li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
+								<li class="{{#ifeq key ../../page}} active{{/ifeq}}{{#ifCond lablel "==" "Moto"}} hidden-sm{{/ifCond}}><a href="{{href}}">{{label}}</a></li>
 							{{/if}}
 						{{/each}}
 						
