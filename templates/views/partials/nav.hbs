@@ -40,14 +40,14 @@
 							{{#if discipline}}
 								{{#ifeq key @root.params.discipline.slug}}
 								{{else}}
-									<li>{{../../page}}<a href="{{href}}"{{#if _blank}} target="_blank"{{/if}}>{{label}}</a></li>
+									<li{{#ifCond lablel "==" "Moto"}} class="hidden-sm"{{/ifCond}}>{{../../page}}<a href="{{href}}"{{#if _blank}} target="_blank"{{/if}}>{{label}}</a></li>
 								{{/ifeq}}
 							{{/if}}
 						{{/each}}
 						
 						{{#each navLinks}}
 							{{#if @last}}
-								<li class="{{#ifeq key ../../page}} active{{/ifeq}}{{#ifCond lablel "==" "Moto"}} hidden-sm{{/ifCond}}><a href="{{href}}">{{label}}</a></li>
+								<li class="{{#ifeq key ../../page}} active{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 							{{/if}}
 						{{/each}}
 						
