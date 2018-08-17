@@ -6,13 +6,38 @@
 
 {{#if post.products}}
 {{#container}}
-	<div class="row">
-		<div class="col-xs-12 products">
-			{{#each post.products}}
-				{{> product-category-product}}
-			{{/each}}
-		</div>
-	</div>
+	<div class="hidden-xs">
+			{{#everyNth post.products 3}}
+				{{#if isModZeroNotFirst}}
+					</div>
+				{{/if}}
+				{{#if isModZero}}
+					<div class="row">
+				{{/if}}
+					<div class="col-xs-4">
+						{{> product-category-product}}
+					</div>
+				{{#if isLast}}
+					</div>
+				{{/if}}
+			{{/everyNth}}
+			</div>
+			<div class="visible-xs">
+			{{#everyNth post.products 2}}
+				{{#if isModZeroNotFirst}}
+					</div>
+				{{/if}}
+				{{#if isModZero}}
+					<div class="row">
+				{{/if}}
+					<div class="col-xs-6">
+						{{> product-category-product}}
+					</div>
+				{{#if isLast}}
+					</div>
+				{{/if}}
+			{{/everyNth}}
+			</div>
 {{/container}}
 {{/if}}
 
