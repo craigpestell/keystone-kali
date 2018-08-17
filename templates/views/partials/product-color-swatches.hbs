@@ -2,9 +2,10 @@
     <div class="row {{visibleClass}}">
         <div class="col-xs-12 owl-dots" style="text-align:{{align}}">
 			{{#everyNth product.galleryColorwaysArray product.imagesPerColorSwatch}}
-            <div class="color-swatch-wrapper{{#if isFirst}} active{{/if}}">
+            <div class="color-swatch-wrapper{{#if isFirst}} active{{/if}}" data-icon-index="{{productIndex}}">
                 <div data-icon-id="#product-icon-{{productIndex}}"
 					 data-colorway="{{colorway}} {{color}}"
+                     data-icon-index="{{productIndex}}"
                      data-image-id="#product-{{productIndex}}" class="icon-toggler color-swatch-gradient owl-dot"
 					 style="{{colorSwatchBackground this split}}">
                 </div>
