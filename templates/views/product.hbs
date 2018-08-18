@@ -46,8 +46,19 @@
 				{{> product-gallery class="col-xs-12"}}
 				
 				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="center"}}
+
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-xs-7 col-md-5 initialism">
+				{{{product.specs}}}
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-xs-5 initialism">
 				{{#if product.technologies.length}}
-					<div class="row technology boxout initialism">
+					<div class="row technology boxout ">
 						<div class="col-xs-5"><strong>Technology</strong></div>
 						<div class="col-xs-7">
 						{{#each product.technologies}}
@@ -63,16 +74,6 @@
 						</div>
 					</div>	
 				{{/if}}
-
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-xs-7 col-md-5 initialism">
-				{{{product.specs}}}
-			</div>
-			<div class="col-md-1"></div>
-			<div class="col-xs-5 initialism">
 				{{#if product.usageChart}}
 					<div class="product-usage-chart boxout" style="background-color: black;">
 						{{{product.usageChart}}}
