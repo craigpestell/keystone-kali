@@ -47,24 +47,23 @@
 				
 				{{> product-color-swatches visibleClass="hidden-xs hidden-sm" align="center"}}
 				{{#if product.technologies.length}}
-
-					<div class="row technology">
-
-						<div class="col col-xs-5 initialism">
-							<strong>Technology</strong>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="row technology boxout initialism">
+								<div class="col-xs-5"><strong>Technologies</strong></div>
+								<div class="col-xs-7">
+								{{#each product.technologies}}
+									<a href="/technology/post/{{slug}}">
+										<div class="text-center col-xs-6" title="{{name}}">
+											<img src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
+													class="cld-responsive" alt="{{name}}"/>
+											<!--<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>-->
+										</div>
+									</a>
+								{{/each}}
+								</div>
+							</div>	
 						</div>
-
-						{{#each product.technologies}}
-							<div class="col-xs-3">
-								<a href="/technology#{{slug}}">
-									<div class="text-center" style="display:inline-block;">
-										<img src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
-											 class="cld-responsive" alt="{{name}}"/>
-										<h4 style="margin-top:10px;margin-bottom:0px;">{{name}}</h4>
-									</div>
-								</a>
-							</div>
-						{{/each}}
 					</div>
 
 				{{/if}}
@@ -77,8 +76,12 @@
 				{{{product.specs}}}
 			</div>
 			<div class="col-md-1"></div>
-			<div class="col-xs-5 col-md-4 initialism">
-				{{{product.usageChart}}}	
+			<div class="col-xs-5 initialism">
+				{{#if product.usageChart}}
+					<div class="product-usage-chart boxout">
+						{{{product.usageChart}}}
+					</div>
+				{{/if}}
 				<div class="row">
 					<div class="col-xs-12">
 						<a href="/dealers"><h3 style="font-size:1.1em;font-family:Gotham-Black;text-decoration:underline;">Find a Dealer</h3></a>

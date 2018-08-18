@@ -1049,18 +1049,11 @@ hr {
     }
 }
 
-.product-usage-chart {
-    // variables
+.boxout {
     font-family: Gotham-Medium, Arial, sans-serif;
-    visibility: hidden;
-    position: absolute;
     transition: .5s ease;
     font-size: 0.7em;
-    opacity: 0;
-    bottom: 0px;
-    left: 0;
-    right: 0;
-    padding: 2px 2px 5px;
+    padding: 2px 5px;
     //height: 100%;
     width: 100%;
     color: white;
@@ -1069,8 +1062,14 @@ hr {
     border-radius: 5px;
     white-space: nowrap;
     text-align: left;
-    width: 80%;
     margin: 0 auto;
+    padding: 15px 0px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.product-usage-chart {
+    padding: 15px;
     @for $i from 1 through 100 {
         .percentage-#{$i} {
             --width: ($i * 1%);
@@ -1100,6 +1099,16 @@ hr {
 .product-category-item {
     margin-bottom: 32px;
     text-align: center;
+    .product-usage-chart {
+        visibility: hidden;
+        position: absolute;
+        width: 80%;
+        opacity: 0;
+        bottom: 0px;
+        left: 0;
+        right: 0;
+        padding: 0;
+    }
     &:hover .product-category-image .product-usage-chart {
         visibility: visible;
         opacity: 1;
