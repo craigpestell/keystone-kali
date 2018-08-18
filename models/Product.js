@@ -52,13 +52,13 @@ Product.add({
                 if (err) {
                     callback(err);
                 }
-                subCat = result && result.name;
+                subCat = result && result.name.slice(0, 12).padEnd(12);
                 getVersionExpanded(version, function(err, result) {
                     if (err) {
                         callback(err);
                     }
-                    version = result && result.name;
-                    var label = `${title} /${subCat}/${version}`
+                    version = result && result.name.slice(0, 8).padEnd(8);
+                    var label = `${version}/${subCat}/ ${title}`
                     callback(null, label);
 
 
