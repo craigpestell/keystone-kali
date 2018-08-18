@@ -625,6 +625,7 @@ hr {
     padding: 10px;
     padding-bottom: 8px;
     margin-bottom: 15px;
+    border-radius: 5px;
     h1 {
         color: $white;
         font-family: 'Gotham-Medium', 'Arial', 'sans-serif';
@@ -796,6 +797,7 @@ hr {
         color: $white;
         font-weight: bold;
         margin: 5px auto;
+        border-radius: 3px;
         &:hover {
             //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
             transform: scale(1.1, 1.1);
@@ -1053,18 +1055,17 @@ hr {
 .boxout {
     font-family: Gotham-Medium, Arial, sans-serif;
     transition: .5s ease;
-    font-size: 0.7em;
     padding: 2px 5px;
     //height: 100%;
     width: 100%;
-    background-color: rgba($black_7_5, 0.1);
+    background-color: rgba($brand-grey, 0.2);
     // border: 2px solid rgba($brand-primary, 0.6);
     border-radius: 5px;
     white-space: nowrap;
     text-align: left;
     margin: 0 auto;
     padding: 15px 0px;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
@@ -1110,6 +1111,7 @@ hr {
         left: 0;
         right: 0;
         padding: 5px 10px;
+        font-size: 0.7em;
     }
     &:hover .product-category-image .product-usage-chart {
         visibility: visible;
