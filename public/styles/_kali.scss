@@ -609,6 +609,7 @@ hr {
     padding: 10px;
     padding-bottom: 8px;
     margin-bottom: 15px;
+    border-radius: 5px;
     h1 {
         color: $white;
         font-family: 'Gotham-Medium', 'Arial', 'sans-serif';
@@ -1069,7 +1070,7 @@ hr {
 }
 
 .product-usage-chart {
-    padding: 15px;
+    padding: 10px 15px;
     @for $i from 1 through 100 {
         .percentage-#{$i} {
             --width: ($i * 1%);
@@ -1107,7 +1108,6 @@ hr {
         bottom: 0px;
         left: 0;
         right: 0;
-        padding: 0;
     }
     &:hover .product-category-image .product-usage-chart {
         visibility: visible;
