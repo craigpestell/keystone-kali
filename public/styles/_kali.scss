@@ -1049,10 +1049,58 @@ hr {
     }
 }
 
+.product-usage-chart {
+    // variables
+    font-family: Gotham-Medium, Arial, sans-serif;
+    visibility: hidden;
+    position: absolute;
+    transition: .5s ease;
+    font-size: 0.7em;
+    opacity: 0;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    padding: 2px 2px 5px;
+    //height: 100%;
+    width: 100%;
+    color: white;
+    background-color: rgba($black_7_5, 0.7);
+    // border: 2px solid rgba($brand-primary, 0.6);
+    border-radius: 5px;
+    white-space: nowrap;
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+    @for $i from 1 through 100 {
+        .percentage-#{$i} {
+            --width: ($i * 1%);
+            border-bottom: $usage-line-width solid $brand-primary;
+            margin-top: $usage-line-radius - ($usage-line-width/2);
+            float: left;
+            $value: ($i * 1%);
+            width: $value;
+            content: '\00a0';
+        }
+    }
+    .percentage-end {
+        height: $usage-line-radius;
+        width: $usage-line-radius;
+        float: left;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: $usage-line-radius;
+        -moz-border-radius: $usage-line-radius;
+        -webkit-border-radius: $usage-line-radius;
+        background-color: $color_christi_approx;
+        margin-top: $usage-line-radius / 2;
+        margin-left: -$usage-line-radius;
+    }
+    //box-shadow: 5px 5px rgba(lighten($brand-grey, 15%), 0.95);
+}
+
 .product-category-item {
     margin-bottom: 32px;
     text-align: center;
-    &:hover .product-category-image .product-category-item-overlay {
+    &:hover .product-category-image .product-usage-chart {
         visibility: visible;
         opacity: 1;
         transition: .5s ease;
@@ -1070,58 +1118,6 @@ hr {
             width: 100%;
             transform: scale(.996);
             transition: transform .2s ease;
-        }
-        .product-category-item-overlay {
-            // variables
-            font-family: Gotham-Medium, Arial, sans-serif;
-            visibility: hidden;
-            position: absolute;
-            transition: .5s ease;
-            font-size: 0.7em;
-            opacity: 0;
-            bottom: 0px;
-            left: 0;
-            right: 0;
-            padding: 2px 2px 5px;
-            //height: 100%;
-            width: 100%;
-            color: white;
-            background-color: rgba($black_7_5, 0.7);
-            // border: 2px solid rgba($brand-primary, 0.6);
-            border-radius: 5px;
-            white-space: nowrap;
-            text-align: right;
-            width: 80%;
-            margin: 0 auto;
-            .col-xs-5,
-            .col-xs-7 {
-                padding-left: 5px;
-                padding-right: 5px;
-            }
-            @for $i from 1 through 100 {
-                .percentage-#{$i} {
-                    --width: ($i * 1%);
-                    border-bottom: $usage-line-width solid $brand-primary;
-                    //margin-top: 4px;
-                    float: left;
-                    $value: ($i * 1%);
-                    width: $value;
-                    content: '\00a0';
-                }
-            }
-            .percentage-end {
-                height: $usage-line-radius;
-                width: $usage-line-radius;
-                float: left;
-                //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-                border-radius: $usage-line-radius;
-                -moz-border-radius: $usage-line-radius;
-                -webkit-border-radius: $usage-line-radius;
-                background-color: $color_christi_approx;
-                margin-top: $usage-line-radius;
-                margin-left: -$usage-line-radius;
-            }
-            //box-shadow: 5px 5px rgba(lighten($brand-grey, 15%), 0.95);
         }
     }
     &:hover .product-category-image img {
@@ -1160,20 +1156,6 @@ hr {
     height: 40px;
     width: 40px;
     cursor: pointer;
-}
-
-#product-usage-chart {
-    dt {
-        float: left;
-        clear: left;
-        width: 100px;
-        font-weight: bold;
-        white-space: nowrap;
-    }
-    dd {
-        margin: 0 0 0 110px;
-        padding: 0 0 0.5em 0;
-    }
 }
 
 #product-sizing-guide {
