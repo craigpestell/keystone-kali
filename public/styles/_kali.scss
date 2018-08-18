@@ -1057,8 +1057,7 @@ hr {
     padding: 2px 5px;
     //height: 100%;
     width: 100%;
-    color: white;
-    background-color: rgba($black_7_5, 0.7);
+    background-color: rgba($black_7_5, 0.1);
     // border: 2px solid rgba($brand-primary, 0.6);
     border-radius: 5px;
     white-space: nowrap;
@@ -1071,6 +1070,8 @@ hr {
 
 .product-usage-chart {
     padding: 10px 15px;
+    color: white;
+    background-color: rgba($black_7_5, 0.7);
     @for $i from 1 through 100 {
         .percentage-#{$i} {
             --width: ($i * 1%);
