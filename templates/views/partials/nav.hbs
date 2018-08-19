@@ -27,7 +27,11 @@
 					{{#each navLinks}}
 						{{#if positionRight}}
 							{{#if discipline}}
+<<<<<<< HEAD
 								<li class="{{#ifeq key @root.params.discipline.slug}} hidden-xs active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+=======
+								<li class="{{#ifeq key @root.params.discipline.slug}} hidden-xs active{{/ifeq}}{{#ifCond label "==" "Technology"}} hidden-sm{{/ifCond}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
+>>>>>>> 4d60a2660aea908f5ca7b9e69040e541ccf6e6bf
 							{{else}}
 								<li class="{{#ifeq key ../../page}} active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
 							{{/if}}
