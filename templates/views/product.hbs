@@ -52,24 +52,26 @@
 		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="col-xs-7 col-md-5 initialism">
+			<div class="col-xs-12 col-sm-6 col-md-5 initialism">
 				{{{product.specs}}}
 			</div>
 			<div class="col-md-1"></div>
-			<div class="col-xs-5 initialism">
+			<div class="col-xs-12 col-sm-6 col-md-5 initialism">
 				{{#if product.technologies.length}}
 					<div class="row technology boxout ">
-						<div class="col-xs-5"><strong>Technology</strong></div>
-						<div class="col-xs-7">
+						<div class="col col-xs-5"><strong>Technology</strong></div>
+						<div class="col col-xs-7">
 						{{#each product.technologies}}
+						<div class="col-xs-4" style="padding: 0 5px">
 							<a href="/technology/post/{{slug}}">
-								<div class="text-center" title="{{name}}" style="display:inline-block;width:50%">
+								<div class="text-center" title="{{name}}">
 									<img src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
 											class="cld-responsive" alt="{{name}}"/>
-										<!--<h4 style='margin-bottom:0'>{{name}}</h4>-->
+										<!--<div style='text-transform: uppercase'>{{name}}</div>-->
 									
 								</div>
-							</a>
+							</a>						
+						</div>
 						{{/each}}
 						</div>
 					</div>	
