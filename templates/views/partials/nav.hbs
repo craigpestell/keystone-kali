@@ -17,7 +17,7 @@
 			<ul class="nav navbar-nav">
 				{{#each navLinks}}
 					{{#unless positionRight}}
-						<li class="{{#ifeq key @root.page}} active{{/ifeq}}{{#if active}} active{{/if}}"><a href="{{href}}">{{label}}</a></li>
+						<li class="{{#ifeq key @root.page}} active{{/ifeq}}{{#if active}} active{{/if}}{{#ifeq label "Technology"}} {{#if @root.params.discipline.slug}} hidden-sm{{/if}}{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
 					{{/unless}}
 				{{/each}}
 			</ul>
@@ -27,11 +27,7 @@
 					{{#each navLinks}}
 						{{#if positionRight}}
 							{{#if discipline}}
-<<<<<<< HEAD
 								<li class="{{#ifeq key @root.params.discipline.slug}} hidden-xs active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
-=======
-								<li class="{{#ifeq key @root.params.discipline.slug}} hidden-xs active{{/ifeq}}{{#ifCond label "==" "Technology"}} hidden-sm{{/ifCond}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
->>>>>>> 4d60a2660aea908f5ca7b9e69040e541ccf6e6bf
 							{{else}}
 								<li class="{{#ifeq key ../../page}} active{{/ifeq}}">{{../../page}}<a href="{{href}}">{{label}}</a></li>
 							{{/if}}
@@ -44,7 +40,7 @@
 							{{#if discipline}}
 								{{#ifeq key @root.params.discipline.slug}}
 								{{else}}
-									<li{{#ifeq label "Technology"}} class="hidden-sm"{{/ifeq}}>{{../../page}}<a href="{{href}}"{{#if _blank}} target="_blank"{{/if}}>{{label}}</a></li>
+									<li>{{../../page}}<a href="{{href}}"{{#if _blank}} target="_blank"{{/if}}>{{label}}</a></li>
 								{{/ifeq}}
 							{{/if}}
 						{{/each}}
