@@ -1,0 +1,19 @@
+//
+// Grid system
+// --------------------------------------------------
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+.container {
+    @include container-fixed;
+    @media (min-width: $screen-xl-min) {
+        width: $container-xl;
+    }
+}
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+@media (min-width: $screen-xl-min) {
+    @include make-grid(xl);
+}

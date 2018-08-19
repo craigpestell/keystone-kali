@@ -1,8 +1,11 @@
 {{#ifCond section "==" "republik"}}
 	<nav id="nav-republik" class="navbar navbar-static-top hidden-xs subnav" role="navigation">
 		<div class="container-fluid">
-			<div class="col col-lg-1 visible-lg"></div>
-			<div class="col col-sm-12 col-lg-10">
+			<div class="col col-lg-1 visible-lg hidden-xl">&nbsp;
+		</div>
+		<div class="col col-xl-2 visible-xl">&nbsp;
+		</div>
+		<div class="col col-sm-12 col-lg-10 col-xl-8">
 				<ul class="nav navbar-nav">
 					{{#each postCategories}}
 						<li class="{{#ifeq key @root.filters.category}} active{{/ifeq}}{{#if active}} active{{/if}}"><a href="/republik/{{key}}">{{name}}</a></li>

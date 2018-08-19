@@ -547,7 +547,11 @@ module.exports = function() {
 
         if (container === 'container') {
             output = '<div class="container-fluid">' +
-                '<div class="col col-lg-2"></div><div class="col col-lg-8">' + fn(this) + '</div>' +
+                '<div class="col col-lg-1 visible-lg hidden-xl">&nbsp; ' +
+                '</div>' +
+                '<div class="col col-xl-2 visible-xl">&nbsp;' +
+                '</div>' +
+                '<div class="col col-sm-12 col-lg-10 col-xl-8">' + fn(this) + '</div>' +
                 '</div>';
 
         }
