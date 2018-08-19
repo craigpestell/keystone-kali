@@ -50,47 +50,69 @@
 
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-xs-12 col-sm-6 col-md-5 initialism">
-				{{{product.specs}}}
+		<div class="row" style="margin-bottom: 15px">
+			
+			<div class="col-xs-12 col-md-7">
+				<div class="boxout">
+					<div class="row">
+						<div class="col col-xs-12 initialism">
+						{{{product.specs}}}
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-1"></div>
-			<div class="col-xs-12 col-sm-6 col-md-5 initialism">
-				{{#if product.technologies.length}}
-					<div class="row technology boxout ">
-						<div class="col col-xs-5"><strong>Technology</strong></div>
-						<div class="col col-xs-7">
-						{{#each product.technologies}}
-						<div class="col-xs-4" style="padding: 0 5px">
-							<a href="/technology/post/{{slug}}">
-								<div class="text-center" title="{{name}}">
-									<img src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
-											class="cld-responsive" alt="{{name}}"/>
-										<!--<div style='text-transform: uppercase'>{{name}}</div>-->
-									
+
+			<div class="col-xs-12 col-md-5">
+			{{#if product.technologies.length}}
+				<div class="boxout">
+					<div class="row">
+						<div class="col col-xs-5 initialism">
+							<strong>Technology</strong>
+						</div>
+						<div class="col-xs-7 initialism">
+
+						{{#everyNth product.technologies 2}}
+							{{#if isModZeroNotFirst}}
 								</div>
-							</a>						
+							{{/if}}
+							{{#if isModZero}}
+								<div class="row">
+							{{/if}}
+								<div class="col col-xs-6">
+									<a href="/technology/post/{{slug}}">
+										<div title="{{name}}">
+											<img src="{{{cloudinaryUrl flatIconImage fetch_format="auto" }}}"
+													class="cld-responsive" alt="{{name}}"/>
+												<!--<div style='text-transform: uppercase'>{{name}}</div>-->
+										</div>
+									</a>
+								</div>
+							{{#if isLast}}
+								</div>
+							{{/if}}
+						{{/everyNth}}
 						</div>
-						{{/each}}
-						</div>
-					</div>	
-				{{/if}}
-				{{#if product.usageChart}}
-					<div class="product-usage-chart boxout">
+					</div>
+				</div>
+			{{/if}}
+				
+			{{#if product.usageChart}}
+			<div class="row">
+				<div class="col col-xs-12">
+					<div class="product-usage-chart boxout initialism">
 						{{{product.usageChart}}}
 					</div>
-				{{/if}}
-				<div class="row">
+				</div>
+			</div>
+			{{/if}}
+				<div class="row" style='margin-top: 15px;'>
 					<div class="col-xs-12">
 						<a href="/dealers"><h3 style="font-size:1.1em;font-family:Gotham-Black;text-decoration:underline;">Find a Dealer</h3></a>
 					</div>
 				</div>
-				
-
 			</div>
-		</div>
-		
+			
+		</div>		
 		
 		<!--{{#if product.features.length}}
 			<div class="row feature">

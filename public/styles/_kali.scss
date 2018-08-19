@@ -1038,23 +1038,27 @@ hr {
 .boxout {
     font-family: Gotham-Medium, Arial, sans-serif;
     transition: .5s ease;
-    padding: 2px 5px;
     //height: 100%;
-    width: 100%;
     background-color: rgba($brand-grey, 0.2);
     // border: 2px solid rgba($brand-primary, 0.6);
     border-radius: 5px;
-    white-space: nowrap;
     text-align: left;
-    margin: 0 auto;
-    padding: 15px 0px;
-    margin-top: 15px;
+    padding: 5px 15px;
+    &>.row {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 .product-usage-chart {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    color: white;
+    background-color: rgba($black_7_5, 0.7);
+    padding: 5px 10px;
+    font-size: 0.7em;
     padding: 10px 15px;
+    &.col-xs-5 {
+        white-space: nowrap;
+    }
     @for $i from 1 through 100 {
         .percentage-#{$i} {
             --width: ($i * 1%);
@@ -1085,6 +1089,8 @@ hr {
     margin-bottom: 32px;
     text-align: center;
     .product-usage-chart {
+        width: 100%;
+        padding: 15px 0px;
         visibility: hidden;
         position: absolute;
         width: 80%;
@@ -1092,15 +1098,13 @@ hr {
         bottom: 0px;
         left: 0;
         right: 0;
-        padding: 5px 10px;
-        font-size: 0.7em;
+        margin: 0 auto;
+        white-space: nowrap;
     }
     &:hover .product-category-image .product-usage-chart {
         visibility: visible;
         opacity: 1;
         transition: .5s ease;
-        color: white;
-        background-color: rgba($black_7_5, 0.7);
         .percentage {
             animation: usage-reveal 600ms ease-in-out;
             animation-fill-mode: inherit;
