@@ -1,8 +1,9 @@
 <!-- subnav here -->
 <div class="container-fluid">
 <nav id="nav-product-categories" class="navbar navbar-static-top hidden-xs subnav" role="navigation">
-	{{#container}}
-		<ul class="navbar navbar-nav">
+	<div class="col col-lg-1 visible-lg"></div>
+	<div class="col col-sm-12 col-lg-10">
+	<ul class="navbar navbar-nav">
 		{{#each this}}
 			{{#if name}}
 			<li class="{{#ifeq key ../../subCategory}}active{{/ifeq}}">
@@ -11,6 +12,6 @@
 			{{/if}}
 		{{/each}}
 		</ul>
-	{{/container}}
+	</div>
 </nav>
 </div>
