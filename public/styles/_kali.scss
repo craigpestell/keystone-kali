@@ -817,6 +817,12 @@ hr {
         border-radius: 9px;
         padding: 16px 10px 3px 10px;
     }
+    .specs {
+        border: 2px solid lighten($brand-grey, 11%);
+    }
+    .specs .row:nth-child(even) {
+        background-color: lighten($brand-grey, 11%);
+    }
 }
 
 .blog {
@@ -1062,6 +1068,8 @@ hr {
         margin-top: 10px;
         margin-bottom: 10px;
     }
+    border: 2px solid lighten($brand-grey,
+    11%);
 }
 
 .product-usage-chart {
@@ -1072,6 +1080,9 @@ hr {
     padding: 10px 15px;
     &.col-xs-5 {
         white-space: nowrap;
+    }
+    &.boxout {
+        border: 0;
     }
     @for $i from 1 through 100 {
         .percentage-#{$i} {
