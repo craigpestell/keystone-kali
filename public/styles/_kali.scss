@@ -144,23 +144,6 @@ body {
             top: calc(45%);
         }
     }
-    #nav-main {
-        font-size: 1.0em;
-        .navbar-nav>li {
-            margin-top: 5px;
-            >a {
-                padding: 8px;
-            }
-        }
-    }
-    .navbar> {
-        .container .navbar-brand {
-            margin-left: 0;
-        }
-        .container-fluid .navbar-brand {
-            margin-left: 0;
-        }
-    }
 }
 
 @media(min-width: 992px) {
