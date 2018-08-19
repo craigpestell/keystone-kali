@@ -17,7 +17,7 @@
 			<ul class="nav navbar-nav">
 				{{#each navLinks}}
 					{{#unless positionRight}}
-						<li class="{{#ifeq key @root.page}} active{{/ifeq}}{{#if active}} active{{/if}}{{#ifeq label "Technology"}} {{#if @root.params.discipline.slug}} hidden-sm{{/if}}{{/ifeq}}"><a href="{{href}}">{{label}}</a></li>
+						<li class="{{#ifeq key @root.page}} active{{/ifeq}}{{#if active}} active{{/if}}"><a href="{{href}}">{{label}}</a></li>
 					{{/unless}}
 				{{/each}}
 			</ul>
