@@ -298,7 +298,7 @@ h4 {
     width: $radius;
     border-radius: $radius;
     transform: rotate(-45deg);
-    box-shadow: -2px 2px $usage-line-radius $color_delta_approx;
+    box-shadow: -2px 2px 3px $color_delta_approx;
     border-image-width: 0;
     &.active {
         border: 2px solid darken($brand-primary, 10%);
@@ -801,7 +801,7 @@ hr {
     .slide-description {
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 9px;
-        padding: 16px 10px $usage-line-radius 10px;
+        padding: 16px 10px 3px 10px;
     }
 }
 
@@ -1055,8 +1055,6 @@ hr {
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 10px 15px;
-    color: white;
-    background-color: rgba($black_7_5, 0.7);
     @for $i from 1 through 100 {
         .percentage-#{$i} {
             --width: ($i * 1%);
@@ -1101,6 +1099,8 @@ hr {
         visibility: visible;
         opacity: 1;
         transition: .5s ease;
+        color: white;
+        background-color: rgba($black_7_5, 0.7);
         .percentage {
             animation: usage-reveal 600ms ease-in-out;
             animation-fill-mode: inherit;

@@ -90,6 +90,9 @@
 	
 	{{#container this}}
 		<div class="technology-sub owl-carousel owl-theme hidden-xs">
+			<script type="text/javascript">
+				console.log({{{json @root.technology}}})
+			</script>
 			{{#each @root.technology}}
 				{{> technology-section}}
 			{{/each}}
