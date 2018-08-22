@@ -146,6 +146,11 @@ Product.schema.virtual('galleryColorwaysArray').get(function() {
         if (color.split(':').length > 1) {
             c = color.split(':')[1];
         }
+        console.log('color:', color, 'length: ', color.split(':').length, ' c: ', color.split(':')[1], 'push: ', {
+            colorway: colorway,
+            color: c
+        });
+
         colorSwatches.push({
             colorway: colorway,
             color: c
@@ -154,7 +159,7 @@ Product.schema.virtual('galleryColorwaysArray').get(function() {
 
     var split = [];
     colorSwatches.forEach(function(swatch, i) {
-        split = [];
+        split = [swatch.color];
         if (swatch.color.indexOf('/') > -1) {
             split = swatch.color.split('/');
         }
@@ -178,5 +183,5 @@ Product.schema.virtual('galleryColorwaysArray').get(function() {
 });
 
 
-
+Product.defaultColumns = 'version, subCategory, name, slug';
 Product.register();
