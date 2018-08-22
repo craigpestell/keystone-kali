@@ -146,10 +146,6 @@ Product.schema.virtual('galleryColorwaysArray').get(function() {
         if (color.split(':').length > 1) {
             c = color.split(':')[1];
         }
-        console.log('color:', color, 'length: ', color.split(':').length, ' c: ', color.split(':')[1], 'push: ', {
-            colorway: colorway,
-            color: c
-        });
 
         colorSwatches.push({
             colorway: colorway,
