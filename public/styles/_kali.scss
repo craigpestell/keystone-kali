@@ -281,19 +281,18 @@ h4 {
     // background-color: pink;
     line-height: 1px;
     margin: 0;
-    transition: .2s ease;
     &:hover {
-        margin-top: -2px;
-        padding-bottom: 2px;
+        // margin-top: -2px;
+        margin-top: -4px;
+        padding-bottom: 4px;
         transition: .1s ease;
     }
     &.active {
-        transition: .2s ease;
         border-bottom: 2px solid $brand-primary;
-        margin-top: -2px;
+        margin-top: -4px;
+        padding-bottom: 2px;
         &:hover {
-            margin-top: -2px;
-            padding-bottom: 0;
+            padding-bottom: 2px;
         }
     }
 }
@@ -311,7 +310,7 @@ h4 {
     endColorstr='#0a0809',
     GradientType=1);
     /* IE6-9 fallback on horizontal gradient */
-    margin: 7px;
+    margin: 8px;
     cursor: pointer;
     height: $radius;
     width: $radius;

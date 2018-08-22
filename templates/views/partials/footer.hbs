@@ -25,6 +25,7 @@
                 <ul>
 					<li><a href="https://shop-usa.kaliprotectives.com/" target="_blank">USA &amp; Canada</a></li>
                 </ul>
+				{{#if @root.params.discipline.slug}}
 				<h3>Archives</h3>
 				<ul>
 					{{#each productVersions}}
@@ -33,6 +34,7 @@
 						{{/ifCond}}
 					{{/each}}
 				</ul>
+				{{/if}}
             </div>
 		</div>
 		<div class="row">
