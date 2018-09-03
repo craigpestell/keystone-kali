@@ -375,6 +375,7 @@ h4 {
                 width: 100%;
                 text-align: center;
                 .lbl {
+                    border-radius: 3px;
                     background-color: $black;
                     color: $white;
                     text-transform: uppercase;
@@ -789,6 +790,7 @@ hr {
         font-weight: normal;
         font-family: 'Gotham-Black';
         padding: 8px 11px;
+        border-radius: 3px;
         &:hover {
             //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
             transform: scale(1.1, 1.1);
