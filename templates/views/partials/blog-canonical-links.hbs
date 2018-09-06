@@ -6,7 +6,7 @@
 	{{/if}}
 {{/ifCond}}
 {{#ifCond @root.section "==" "technology"}}
-	{{#if post}}
+	{{#ifCond post.key "!=" "technology"}}
 		<link rel="canonical" href="https://kaliprotectives.com/technology/post/{{post.key}}"/>
 	{{else}}
 		<link rel="canonical" href="https://kaliprotectives.com/technology"/>
