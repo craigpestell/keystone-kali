@@ -98,7 +98,13 @@
 
 	</script>-->
 {{#ifCond section "==" "product"}}	
-	<link rel="canonical" href="https://{{#if product.canonicalDiscipline}}{{product.canonicalDiscipline.slug}}.{{/if}}kaliprotectives.com/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}"/>
+	{{#ifCond @root.currentProductVersion.key "==" product.version}}
+		<link rel="canonical" href="https://{{#if product.canonicalDiscipline}}{{product.canonicalDiscipline.slug}}.{{/if}}kaliprotectives.com/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}"/>
+	{{else}}
+		{{#if @root.params.version}}
+		<link rel="canonical" href="https://{{#if product.canonicalDiscipline}}{{product.canonicalDiscipline.slug}}.{{/if}}kaliprotectives.com/archive/{{@root.params.version.slug}}/{{/if}}{{this.mainCategory.slug}}/{{this.subCategory.slug}}/{{this.slug}}" />
+		{{/if}}
+	{{/ifCond}}
 {{/ifCond}}
 
 {{> blog-canonical-links}}
