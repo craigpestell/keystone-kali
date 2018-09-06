@@ -1,0 +1,14 @@
+{{#ifCond @root.section "==" "republik"}}
+	{{#if post}}
+		<link rel="canonical" href="https://bike.kaliprotectives.com/republik/post/{{key}}"/>
+	{{else}}
+		<link rel="canonical" href="https://bike.kaliprotectives.com/republik"/>
+	{{/if}}
+{{/ifCond}}
+{{#ifCond @root.section "==" "technology"}}
+	{{#if post}}
+		<link rel="canonical" href="https://kaliprotectives.com/technology/post/{{key}}"/>
+	{{else}}
+		<link rel="canonical" href="https://kaliprotectives.com/technology"/>
+	{{/if}}
+{{/ifCond}}
