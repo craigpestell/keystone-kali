@@ -1,5 +1,5 @@
-<div class="col col-xs-12 col-sm-6 text-center">
-	<ul class="pagination" style="margin:0">
+<div class="col hidden-xs hidden-sm col-md-12 text-center">
+	<ul class="pagination initialism">
 		{{#ifCond data.posts.totalPages ">" 1}}
 			{{#if data.posts.previous}}
 				<li><a class="page-num" href="/{{@root.section}}?page={{ data.posts.previous }}">Previous</a></li>
