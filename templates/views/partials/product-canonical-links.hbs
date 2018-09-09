@@ -1,7 +1,7 @@
-{{#ifCond @root.currentProductVersion.key "==" product.version}}
+{{#ifCond @root.currentProductVersion.key "==" product.version.key}}
     <link rel="canonical" href="https://{{#if product.canonicalDiscipline}}{{product.canonicalDiscipline.slug}}.{{/if}}kaliprotectives.com/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}"/>
 {{/ifCond}}
-{{#ifCond @root.currentProductVersion.key "!=" product.version}}
+{{#ifCond @root.currentProductVersion.key "!=" product.version.key}}
     {{#if @root.params.version}}
     <link rel="canonical" href="https://{{#if product.canonicalDiscipline}}{{product.canonicalDiscipline.slug}}.{{/if}}kaliprotectives.com/archive/{{@root.params.version.slug}}/{{product.mainCategory.slug}}/{{product.subCategory.slug}}/{{product.slug}}" />
     {{/if}}
