@@ -65,22 +65,26 @@ exports = module.exports = function(req, res) {
                     });
                 } else {
                     //find latest version
-                    console.log('getting latest Version:');
                     var latestVersion = Math.max.apply(Math, res.locals.productVersions.map(function(v) { return parseInt(v.name) }))
-                    console.log('latest version: ', latestVersion);
-                    // res.locals.productVersions.forEach(function(version) {
                     products.forEach(function(product) {
-                        if (latestVersion == product.version.key) {
+			// if the version param was specified, just find that specific version.
+			// current version is never than stored.
+			if(!p || (product.version.key >p.version.key )){
+				p = product;
+			}
+			if (latestVersion == product.version.key) {
                             locals.page = product.mainCategory.key;
                             locals.subCategory = product.subCategory.key;
                             locals.data.page.title = product.name + ' - Kali Protectives';
-                            if (!p) {
-                                p = product;
-                            }
+			    p = product;
                         }
                     });
                     // });
                 }
+                if(!res.locals.params.version && p.version.key != latestVersion){
+			return res.redirect(301, 'https://' + req.headers.host + '/' + req.originalUrl);
+		}
+
 
                 if (!p) {
                     res.redirect('/404');
