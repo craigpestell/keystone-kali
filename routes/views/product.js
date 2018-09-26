@@ -65,6 +65,7 @@ exports = module.exports = function(req, res) {
                     });
                 } else {
                     //find latest version
+                    console.log('finding latest..');
                     var latestVersion = Math.max.apply(Math, res.locals.productVersions.map(function(v) { return parseInt(v.name) }))
                     products.forEach(function(product) {
 			// if the version param was specified, just find that specific version.
@@ -72,6 +73,7 @@ exports = module.exports = function(req, res) {
 			if(!p || (product.version.key >p.version.key )){
 				p = product;
 			}
+			console.log('product.version: ', product.version);
 			if (latestVersion == product.version.key) {
                             locals.page = product.mainCategory.key;
                             locals.subCategory = product.subCategory.key;
@@ -81,8 +83,9 @@ exports = module.exports = function(req, res) {
                     });
                     // });
                 }
+		console.log('p.version.key: ', p.version.key);
                 if(!res.locals.params.version && p.version.key != latestVersion){
-			return res.redirect(301, 'https://' + req.headers.host + '/' + req.originalUrl);
+			return res.redirect(301, '/achive/' + p.version.key + req.originalUrl);
 		}
 
 
