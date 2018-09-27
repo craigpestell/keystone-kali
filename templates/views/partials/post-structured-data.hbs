@@ -9,7 +9,7 @@
 "headline": "{{{name}}}",
 "image": {
 "@type": "ImageObject",
-"url": "https://{{cloudinaryUrl mainImage width=700}}",
+"url": "https:{{cloudinaryUrl mainImage width=700}}",
 "width": 700
 },
 "datePublished": "{{date publishedDate format='YYYY-MM-DD'}}",
@@ -20,7 +20,13 @@
 },
 "publisher": {
 "@type": "Organization",
-"name": "Kali Protectives Inc"
+"name": "Kali Protectives Inc",
+"logo": {
+	"@type": "ImageObject",
+	"url": "{{cloudinaryUrl siteSettings.nav-logo-large.imageValue format="jpg" width=550 height=60}}",
+	"width": 550,
+	"height": 60
+	}
 },
 "description": "{{content.brief}}",
 "articleBody": "{{content.extended}}"
