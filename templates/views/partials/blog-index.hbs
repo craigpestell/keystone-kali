@@ -2,15 +2,7 @@
 <div id="blog-index" class="blog">
 	<div id="blog-columns" data-columns class="row">
 	{{#each data.posts}}
-		{{#ifCond @root.section "==" "republik"}}
-			<a href="/republik/post/{{key}}">
-		{{/ifCond}}
-		{{#ifCond @root.section "==" "product"}}
-		<a href="/republik/post/{{key}}">
-		{{/ifCond}}
-		{{#ifCond @root.section "==" "technology"}}
-			<a href="/technology/post/{{key}}">
-		{{/ifCond}}
+		<a href="{{postUrl this @root.section}}">
 			<div class="blog-index-item">
 				<div class="blog-main-image">
 					{{{cloudinaryImg mainImage alt=name}}}
