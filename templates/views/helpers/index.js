@@ -342,8 +342,26 @@ module.exports = function() {
     // the routes by keynames to reduce the maintenance of changing urls
 
     // Direct url link to a specific post
-    _helpers.postUrl = function(postSlug, options) {
-        return ('/republik/post/' + postSlug);
+    _helpers.postUrl = function(post, options) {
+		/**
+		 {{#ifCond @root.section "==" "republik"}}
+		 <a href="/republik/post/{{key}}">
+		 {{/ifCond}}
+		 {{#ifCond @root.section "==" "product"}}
+		 <a href="/republik/post/{{key}}">
+		 {{/ifCond}}
+		 {{#ifCond @root.section "==" "technology"}}
+		 <a href="/technology/post/{{key}}">
+		 {{/ifCond}}
+
+		 */
+		
+		var url = '/republik/post/';
+		if(options && options.hash && options.hash.section){
+			url = '/${options.hash.section}/post/';
+		}
+		url += post.key;
+		return (url);
     };
 
     // might be a ghost helper

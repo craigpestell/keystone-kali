@@ -1,0 +1,35 @@
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "BlogPosting",
+"mainEntityOfPage":{
+"@type":"WebPage",
+"@id":"{{postUrl this}}"
+},
+"headline": "{{{name}}}",
+"image": {
+"@type": "ImageObject",
+"url": "{{cloudinaryUrl mainImage}}",
+<!--"height": 463,
+"width": 700-->
+},
+"datePublished": "{{date publishedDate format='YYYY-MM-DD'}}",
+"author": {
+"@type": "Organization",
+"name": "Kali Protectives"
+},
+"publisher": {
+"@type": "Organization",
+"name": "Kali Protectives Inc",
+"logo": {
+"@type": "ImageObject",
+"url": "http://applefostering.co.uk/apple-logo-schema/",
+"width": 550,
+"height": 60
+}
+},
+"description": "{{content.brief}}",
+"articleBody": "{{content.extended}}"
+}
+
+</script>
