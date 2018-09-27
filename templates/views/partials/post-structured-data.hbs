@@ -9,10 +9,11 @@
 "headline": "{{{name}}}",
 "image": {
 "@type": "ImageObject",
-"url": "{{cloudinaryUrl mainImage width=700}}",
+"url": "https://{{cloudinaryUrl mainImage width=700}}",
 "width": 700
 },
 "datePublished": "{{date publishedDate format='YYYY-MM-DD'}}",
+"dateModified": "{{date publishedDate format='YYYY-MM-DD'}}",
 "author": {
 "@type": "Organization",
 "name": "Kali Protectives"
@@ -20,15 +21,18 @@
 "publisher": {
 "@type": "Organization",
 "name": "Kali Protectives Inc",
-"logo": {
-"@type": "ImageObject",
-"url": "http://applefostering.co.uk/apple-logo-schema/",
-"width": 550,
-"height": 60
-}
+
 },
 "description": "{{content.brief}}",
 "articleBody": "{{content.extended}}"
 }
 
 </script>
+<!--
+publisher logo object:
+"logo": {
+"@type": "ImageObject",
+"url": "http://applefostering.co.uk/apple-logo-schema/",
+"width": 550,
+"height": 60
+}-->
