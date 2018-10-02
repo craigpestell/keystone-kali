@@ -92,7 +92,7 @@ exports = module.exports = function (req, res) {
 				}
 				console.log('p.version.key: ', p.version.key);
 				if (!res.locals.params.version && p.version.key != latestVersion) {
-					return res.redirect(301, '/achive/' + p.version.key + req.originalUrl);
+					return res.redirect(301, '/archive/' + p.version.key + req.originalUrl);
 				}
 
 
