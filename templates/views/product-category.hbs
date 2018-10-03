@@ -1,58 +1,64 @@
 <!-- if products -->
 {{#if products}}
-	{{> nav-sub-categories navSubLinks}}
-	{{#container}}
-    <div class="products blog">
-		{{#each products}}
-			<div class="col-xs-12">
-				<div class="product-category-title">
-				{{#ifCond @root.params.discipline.slug "==" "moto"}}
-					{{#ifCond ../name "==" "Full Face"}}
-						<a id="{{slug}}" class="product-category-anchor"><h1>MX</h1></a>
-					{{else}}
-						<a id="{{slug}}" class="product-category-anchor"><h1>{{name}}</h1></a>
-					{{/ifCond}}
-				{{else}}
-					<a id="{{slug}}" class="product-category-anchor"><h1>{{name}}</h1></a>
-				{{/ifCond}}
-				</div>
-			</div>
-			<div class="hidden-xs">
-			{{#everyNth this.products 3}}
-				{{#if isModZeroNotFirst}}
-					</div>
-				{{/if}}
-				{{#if isModZero}}
-					<div class="row">
-				{{/if}}
-					<div class="col-xs-4 hidden-xl">
-						{{> product-category-product}}
-						</div>
-				{{#if isLast}}
-					</div>
-				{{/if}}
-			{{/everyNth}}
-			</div>
-			<div class="visible-xs">
-			{{#everyNth this.products 2}}
-				{{#if isModZeroNotFirst}}
-					</div>
-				{{/if}}
-				{{#if isModZero}}
-					<div class="row">
-				{{/if}}
-					<div class="col-xs-6">
-						{{> product-category-product}}
-					</div>
-				{{#if isLast}}
-					</div>
-				{{/if}}
-			{{/everyNth}}
-			</div>
-		{{/each}}
+{{> nav-sub-categories navSubLinks}}
+{{#container}}
+<div class="products blog">
+  {{#each products}}
+  <div class="col-xs-12">
+    <div class="product-category-title">
+      {{#ifCond @root.params.discipline.slug "==" "moto"}}
+      {{#ifCond ../name "==" "Full Face"}}
+      <a id="{{slug}}" class="product-category-anchor">
+        <h1>MX</h1>
+      </a>
+      {{else}}
+      <a id="{{slug}}" class="product-category-anchor">
+        <h1>{{name}}</h1>
+      </a>
+      {{/ifCond}}
+      {{else}}
+      <a id="{{slug}}" class="product-category-anchor">
+        <h1>{{name}}</h1>
+      </a>
+      {{/ifCond}}
     </div>
-	{{/container}}
+  </div>
+  <div class="hidden-xs">
+    {{#everyNth this.products 3}}
+    {{#if isModZeroNotFirst}}
+  </div>
+  {{/if}}
+  {{#if isModZero}}
+  <div class="row">
+    {{/if}}
+    <div class="col-xs-4">
+      {{> product-category-product}}
+    </div>
+    {{#if isLast}}
+  </div>
+  {{/if}}
+  {{/everyNth}}
+</div>
+<div class="visible-xs">
+  {{#everyNth this.products 2}}
+  {{#if isModZeroNotFirst}}
+</div>
+{{/if}}
+{{#if isModZero}}
+<div class="row">
+  {{/if}}
+  <div class="col-xs-6">
+    {{> product-category-product}}
+  </div>
+  {{#if isLast}}
+</div>
+{{/if}}
+{{/everyNth}}
+</div>
+{{/each}}
+</div>
+{{/container}}
 {{else}}
-    <!-- else -->
-    <h3 class="text-muted">No products exist.</h3>
+<!-- else -->
+<h3 class="text-muted">No products exist.</h3>
 {{/if}}
