@@ -77,8 +77,10 @@ exports = module.exports = function(app) {
 	app.all(['/helmets'], function redirects(req, res, next) {
 		var host = req.get('Host');
 		if (req.url === '/helmets' || req.url === '/helmets/') {
-			console.log('redirect URL: ', 'https://bike.kaliprotectives.com/helmets/');
-			return res.redirect(301, 'https://bike.kaliprotectives.com/helmets/');
+			if (req.host.indexOf('bike.') !== -1) {
+				console.log('redirect URL: ', 'https://bike.kaliprotectives.com/helmets/');
+				return res.redirect(301, 'https://bike.kaliprotectives.com/helmets/');
+			}
 		}
 		return next();
 	});
