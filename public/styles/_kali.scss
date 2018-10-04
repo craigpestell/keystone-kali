@@ -766,9 +766,9 @@ hr {
     }
 }
 
-.fullpage-wrapper .product-main {
+#fullpage .product-main {
     .buy-button {
-        margin: 0
+        margin: initial;
     }
 }
 
