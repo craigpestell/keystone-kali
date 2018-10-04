@@ -766,13 +766,6 @@ hr {
     }
 }
 
-#fullpage .product-main {
-    .buy-button,
-    .more-info {
-        margin: 6px 0;
-    }
-}
-
 .product-main {
     h2 {
         color: $white;
@@ -834,6 +827,13 @@ hr {
     }
     .specs .row:nth-child(even) {
         background-color: lighten($brand-grey, 11%);
+    }
+}
+
+#fullpage .product-main {
+    .buy-button,
+    .more-info {
+        margin: 6px 0;
     }
 }
 
