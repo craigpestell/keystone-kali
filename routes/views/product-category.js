@@ -139,10 +139,6 @@ exports = module.exports = function(req, res, next) {
 
 			locals.data.page.title = titleCategory;
 
-			// + ' - ' + locals.data.page.title;
-			if (res.locals.params.discipline) {
-				locals.data.page.title = res.locals.params.discipline.name + ' ' + locals.data.page.title;
-			}
 			view.render('product-category');
 		});
 	} else {
