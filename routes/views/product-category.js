@@ -137,7 +137,7 @@ exports = module.exports = function(req, res, next) {
 				}
 			}
 
-			locals.data.page.title = titleCategory;
+			locals.data.page.title = titleCategory + ' - Kali Protectives';
 
 			view.render('product-category');
 		});
