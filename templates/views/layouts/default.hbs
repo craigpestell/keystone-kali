@@ -33,11 +33,11 @@
 	{{/if}}    
 	{{#if post}}
 		{{#if post.meta.title}}
-    	<title>{{post.meta.title}} - Kali Protectives{{#if locals.params.discipline }} / {{locals.params.discipline.name}}{{/if}}</title>
+    	<title>{{post.meta.title}}{{#ifCond section "==" "republik"}} - Republik{{/ifCond}} - Kali Protectives{{#if locals.params.discipline }} / {{locals.params.discipline.name}}{{/if}}</title>
 			<meta property="og:title" content="{{post.meta.title}} - Kali Protectives">
 			<meta name="twitter:title" content="{{post.meta.title}} - Kali Protectives">
 		{{else}}
-			<title>{{post.name}} - Kali Protectives{{#if locals.params.discipline }}{{locals.params.discipline.name}} {{/if}}</title>
+			<title>{{post.name}}{{#ifCond section "==" "republik"}} - Republik{{/ifCond}} - Kali Protectives{{#if locals.params.discipline }}{{locals.params.discipline.name}} {{/if}}</title>
 			<meta property="og:title" content="{{post.name}} - Kali Protectives">
 			<meta name="twitter:title" content="{{post.name}} - Kali Protectives">
 		{{/if}}

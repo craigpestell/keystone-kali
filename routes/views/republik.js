@@ -54,9 +54,11 @@ exports = module.exports = function (req, res) {
 			keystone.list('PostCategory').model.find({key: {$in: [locals.filters.category, req.params.category]}})
 				.populate('category')
 				.exec(function (err, result) {
-					locals.data.category = result.map(function(cat){
+          locals.data.category = result.map(function(cat){
+            locals.data.page.title = cat.name + ' - Republik - Kali Protectives';
 						return cat._id;
 					});
+          
 					next(err);
 				});
 		//} else {
