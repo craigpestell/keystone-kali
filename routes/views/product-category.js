@@ -115,24 +115,25 @@ exports = module.exports = function(req, res, next) {
 			if (res.locals.params.category) {
 				locals.data.category = res.locals.params.category.slug;
 			}
-			var titleCategory = 'Archives ';
+			var titleCategory = '';
 			if (res.locals.params.version) {
-				titleCategory += res.locals.params.version.name;
-			}
-
-			// if there is a category specified we aren't in Archives.
-			if (res.locals.params.category && res.locals.params.subCategory) {
-				titleCategory = res.locals.params.subCategory.name;
-				if (res.locals.params.discipline) {
-					titleCategory += ' ' + res.locals.params.discipline.name;
-				}
-				titleCategory += ' ' + res.locals.params.category.name;
+				titleCategory += 'Archives / ' + res.locals.params.version.name;
 			} else {
-				if (res.locals.params.category) {
+				if (res.locals.params.category && res.locals.params.subCategory) {
+					titleCategory = res.locals.params.subCategory.name;
 					if (res.locals.params.discipline) {
-						titleCategory += res.locals.params.discipline.name;
+						titleCategory += ' ' + res.locals.params.discipline.name;
 					}
-					titleCategory += res.locals.params.category.name;
+					titleCategory += ' ' + res.locals.params.category.name;
+				} else {
+					if (res.locals.params.category) {
+						if (res.locals.params.discipline) {
+							titleCategory += res.locals.params.discipline.name + ' ' + res.locals.params.category.name;
+						}else{
+              titleCategory += res.locals.params.category.name;
+            }
+						// titleCategory += res.locals.params.category.name;
+					}
 				}
 			}
 
