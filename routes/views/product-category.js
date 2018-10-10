@@ -65,7 +65,7 @@ var productCategoryData = function(locals, productDataCb) {
 				},
 				function massage(err, results) {
 					var returnData = [];
-					
+
 					results.categories.forEach(function(cat) {
 						results.subcategories.forEach(function(subCat, j) {
 							if (subCat.products === undefined) {
@@ -107,7 +107,6 @@ exports = module.exports = function(req, res, next) {
 	locals.section = 'products';
 
 	if (res.locals.params.category || res.locals.params.version) {
-		
 		productCategoryData(res.locals, function(err, productCategoryData) {
 			locals.products = productCategoryData;
 			if (res.locals.params.discipline) {
@@ -116,17 +115,30 @@ exports = module.exports = function(req, res, next) {
 			if (res.locals.params.category) {
 				locals.data.category = res.locals.params.category.slug;
 			}
-			var titleCategory = 'Archives';
-      if(res.locals.params.version) {
+			var titleCategory = 'Archives ';
+			if (res.locals.params.version) {
 				titleCategory += res.locals.params.version.name;
 			}
-      if (res.locals.params.category) {
-				titleCategory = res.locals.params.category.name;
+
+			// if there is a category specified we aren't in Archives.
+			if (res.locals.params.category && res.locals.params.subCategory) {
+				titleCategory = res.locals.params.subCategory.name;
+				if (res.locals.params.discipline) {
+					titleCategory += ' ' + res.locals.params.discipline.name;
+				}
+				titleCategory += ' ' + res.locals.params.category.name;
+			} else {
+				if (res.locals.params.category) {
+					if (res.locals.params.discipline) {
+						titleCategory += res.locals.params.discipline.name;
+					}
+					titleCategory += res.locals.params.category.name;
+				}
 			}
-			locals.data.page.title = titleCategory + ' - ' + locals.data.page.title;
-			if (res.locals.params.subCategory) {
-				locals.data.page.title = res.locals.params.subCategory.name + ' - ' + locals.data.page.title;
-			}
+
+			locals.data.page.title = titleCategory;
+
+			// + ' - ' + locals.data.page.title;
 			if (res.locals.params.discipline) {
 				locals.data.page.title = res.locals.params.discipline.name + ' ' + locals.data.page.title;
 			}
