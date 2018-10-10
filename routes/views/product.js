@@ -103,24 +103,18 @@ exports = module.exports = function(req, res) {
 					);
 				}
 
-				var pageTitle = '';
+				var pageTitle = p.name;
 				if (locals.params.discipline) {
-					pageTitle += locals.params.discipline.name;
+					pageTitle += ' - ' + locals.params.discipline.name;
 				} else {
 					// default to bike for now.
-					pageTitle += 'Bike';
+					pageTitle += ' - Bike';
 				}
 				if (p.mainCategory) {
-          if (pageTitle.length > 0) {
-						pageTitle += ' ';
-					}
-					pageTitle += p.mainCategory.name;
+        		pageTitle += ' ' + p.mainCategory.name;
 				}
-
-				if (pageTitle.length > 0) {
-					pageTitle += ' - ';
-				}
-				pageTitle += p.name + ' - Kali Protectives';
+        pageTitle += ' - Kali Protectives';
+      
 				locals.data.page.title = pageTitle;
 
 				locals.product = p;
