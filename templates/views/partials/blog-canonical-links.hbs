@@ -2,7 +2,7 @@
 	{{#if post}}
 		<link rel="canonical" href="https://bike.kaliprotectives.com/republik/post/{{post.key}}"/>
 	{{else}}
-		<link rel="canonical" href="https://bike.kaliprotectives.com/republik"/>
+		<link rel="canonical" href="https://bike.kaliprotectives.com/republik/{{#if data.posts.currentPage}}?page={{data.posts.currentPage}}{{/if}}" />
 	{{/if}}
 {{/ifCond}}
 {{#ifCond @root.section "==" "technology"}}
