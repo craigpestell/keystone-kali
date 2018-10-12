@@ -95,6 +95,13 @@ body {
 }
 
 @media(min-width: 0px) {
+    .blog {
+        .col-text-2,
+        .col-text-3,
+        .col-text-4 {
+            column-count: 1;
+        }
+    }
     .slide-overlay {
         font-size: 0.8em;
     }
@@ -124,6 +131,28 @@ body {
 }
 
 @media(min-width: 768px) {
+    .blog {
+        .col-text-2,
+        .col-text-3,
+        .col-text-4 {
+            column-gap: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+            text-align: justify;
+            p {
+                margin-bottom: 20px;
+            }
+        }
+        .col-text-2 {
+            column-count: 2;
+        }
+        .col-text-3 {
+            column-count: 3;
+        }
+        .col-text-4 {
+            column-count: 4;
+        }
+    }
     .bh-sl-container {
         .bh-sl-map {
             height: 400px;
@@ -838,7 +867,12 @@ hr {
 }
 
 .blog {
-    font-family: 'Gotham-Light', 'Arial', 'sans-serif';
+    .interview-label {
+        font-family: 'Gotham-Medium', 'Arial', 'sans-serif';
+    }
+    font-family: 'Gotham-Light',
+    'Arial',
+    'sans-serif';
     .buy-button {
         text-transform: uppercase;
         font-size: 18px;
