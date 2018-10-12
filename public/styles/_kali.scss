@@ -136,12 +136,12 @@ body {
         .col-text-3,
         .col-text-4 {
             column-gap: 30px;
-            padding-left: 30px;
-            padding-right: 30px;
+            padding-left: 15px;
+            padding-right: 25px;
             text-align: justify;
             p {
                 text-indent: -10px;
-                padding: 10px;
+                padding-left: 10px;
             }
         }
         .col-text-2 {
