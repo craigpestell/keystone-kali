@@ -15,7 +15,7 @@
  * Bind each route pattern your application should respond to in the function
  * that is exported from this module, following the examples below.
  *
- * See the Express application routing documentation for more information:
+ * See the Express application routing documenapp.use(require('express-uncapitalize')());tation for more information:
  * http://expressjs.com/api.html#app.VERB
  */
 
@@ -24,6 +24,7 @@ var keystone = require('keystone');
 
 var subdomain = require('subdomain');
 var map = require('express-sitemap');
+var slash = require('express-slash');
 
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
@@ -55,6 +56,12 @@ exports = module.exports = function(app) {
     	next();
     });*/
 
+	// Because you're the type of developer who cares about this sort of thing!
+	// app.enable('strict routing');
+
+	app.use(require('express-uncapitalize')());
+	app.use(slash());
+
 	app.all('*', function(req, res, next) {
 		res.locals.params = {};
 		next();
@@ -76,10 +83,10 @@ exports = module.exports = function(app) {
 
 	app.all(['/helmets'], function redirects(req, res, next) {
 		var host = req.get('Host');
-		if (req.url === '/helmets' || req.url === '/helmets/') {
+		if (req.url === '/helmets') {
 			if (req.host.indexOf('bike.') === -1) {
-				console.log('redirect URL: ', 'https://bike.kaliprotectives.com/helmets/');
-				return res.redirect(301, 'https://bike.kaliprotectives.com/helmets/');
+				// console.log('redirect URL: ', 'https://bike.kaliprotectives.com/helmets/');
+				return res.redirect(301, 'https://bike.kaliprotectives.com/helmets');
 			}
 		}
 		return next();
