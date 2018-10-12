@@ -2,7 +2,13 @@
 	{{#if post}}
 		<link rel="canonical" href="https://bike.kaliprotectives.com/republik/post/{{post.key}}"/>
 	{{else}}
-		<link rel="canonical" href="https://bike.kaliprotectives.com/republik"/>
+		<link rel="canonical" href="https://bike.kaliprotectives.com/republik/{{#ifCond data.posts.currentPage ">" 1}}?page={{data.posts.currentPage}}{{/ifCond}}" />
+    {{#if data.posts.previous}}
+      <link rel="prev" href="https://bike.kaliprotectives.com/republik/?page={{data.posts.previous}}" />
+    {{/if}}
+    {{#if data.posts.next}}
+      <link rel="next" href=" https://bike.kaliprotectives.com/republik/?page={{data.posts.next}}" />
+    {{/if}}
 	{{/if}}
 {{/ifCond}}
 {{#ifCond @root.section "==" "technology"}}

@@ -65,7 +65,7 @@ var productCategoryData = function(locals, productDataCb) {
 				},
 				function massage(err, results) {
 					var returnData = [];
-					//console.log('results:', results);
+
 					results.categories.forEach(function(cat) {
 						results.subcategories.forEach(function(subCat, j) {
 							if (subCat.products === undefined) {
@@ -88,8 +88,6 @@ var productCategoryData = function(locals, productDataCb) {
 					results.subcategories = results.subcategories.filter(function(subCategory) {
 						return subCategory.products.length > 0;
 					});
-					//console.log("MASSAGED RESULTS: ", returnData);
-					//console.log(returnData.categories.bike.subCategories);
 					productDataCb(null, returnData);
 				},
 			);
@@ -109,26 +107,38 @@ exports = module.exports = function(req, res, next) {
 	locals.section = 'products';
 
 	if (res.locals.params.category || res.locals.params.version) {
-		//console.log('params:', res.locals.params);
 		productCategoryData(res.locals, function(err, productCategoryData) {
 			locals.products = productCategoryData;
-			//console.log('products:',locals.products);
-
-			//console.log('category param: ', res.locals.params.category);
 			if (res.locals.params.discipline) {
 				locals.data.discipline = res.locals.params.discipline.slug;
 			}
 			if (res.locals.params.category) {
 				locals.data.category = res.locals.params.category.slug;
 			}
-			var titleCategory = 'Archives';
-			if (res.locals.params.category) {
-				titleCategory = res.locals.params.category.name;
+			var titleCategory = '';
+			if (res.locals.params.version) {
+				titleCategory += 'Archives / ' + res.locals.params.version.name;
+			} else {
+				if (res.locals.params.category && res.locals.params.subCategory) {
+					titleCategory = res.locals.params.subCategory.name;
+					if (res.locals.params.discipline) {
+						titleCategory += ' ' + res.locals.params.discipline.name;
+					}
+					titleCategory += ' ' + res.locals.params.category.name;
+				} else {
+					if (res.locals.params.category) {
+						if (res.locals.params.discipline) {
+							titleCategory += res.locals.params.discipline.name + ' ' + res.locals.params.category.name;
+						}else{
+              titleCategory += res.locals.params.category.name;
+            }
+						// titleCategory += res.locals.params.category.name;
+					}
+				}
 			}
-			locals.data.page.title = titleCategory + ' - ' + locals.data.page.title;
-			if (res.locals.params.subCategory) {
-				locals.data.page.title = res.locals.params.subCategory.name + ' - ' + locals.data.page.title;
-			}
+
+			locals.data.page.title = titleCategory + ' - Kali Protectives';
+
 			view.render('product-category');
 		});
 	} else {

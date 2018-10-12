@@ -62,6 +62,9 @@ exports = module.exports = function(req, res) {
 							locals.page = product.mainCategory.key;
 							locals.subCategory = product.subCategory.key;
 							locals.data.page.title = product.name + ' - Kali Protectives';
+							if (product.mainCategory) {
+								locals.data.page.title = product.mainCategory.name;
+							}
 							if (!p) {
 								p = product;
 							}
@@ -69,7 +72,7 @@ exports = module.exports = function(req, res) {
 					});
 				} else {
 					//find latest version
-					console.log('finding latest..');
+
 					var latestVersion = Math.max.apply(
 						Math,
 						res.locals.productVersions.map(function(v) {
@@ -82,22 +85,16 @@ exports = module.exports = function(req, res) {
 						if (!p || product.version.key > p.version.key) {
 							p = product;
 						}
-						console.log('product.version: ', product.version);
 						if (latestVersion == product.version.key) {
 							locals.page = product.mainCategory.key;
 							locals.subCategory = product.subCategory.key;
-							locals.data.page.title = product.name + ' - Kali Protectives';
 							p = product;
 						}
 					});
-					console.log('end of loop, p: ', p);
-
-					// });
 				}
 				if (!p) {
 					res.redirect('/404');
 				}
-				console.log('p.version.key: ', p.version.key);
 				if (!res.locals.params.version && p.version.key != latestVersion) {
 					return res.redirect(
 						301,
@@ -106,7 +103,22 @@ exports = module.exports = function(req, res) {
 					);
 				}
 
+				var pageTitle = p.name;
+				if (locals.params.discipline) {
+					pageTitle += ' - ' + locals.params.discipline.name;
+				} else {
+					// default to bike for now.
+					pageTitle += ' - Bike';
+				}
+				if (p.mainCategory) {
+        		pageTitle += ' ' + p.mainCategory.name;
+				}
+        pageTitle += ' - Kali Protectives';
+      
+				locals.data.page.title = pageTitle;
+
 				locals.product = p;
+
 				loadPosts(p, function() {
 					loadMainPost(p, function() {
 						populatePost(p, next);

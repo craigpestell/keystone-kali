@@ -33,11 +33,11 @@
 	{{/if}}    
 	{{#if post}}
 		{{#if post.meta.title}}
-			<title>{{post.meta.title}} - Kali Protectives</title>
+    	<title>{{post.meta.title}}{{#ifCond section "==" "republik"}} - Republik{{/ifCond}} - Kali Protectives{{#if locals.params.discipline }} / {{locals.params.discipline.name}}{{/if}}</title>
 			<meta property="og:title" content="{{post.meta.title}} - Kali Protectives">
 			<meta name="twitter:title" content="{{post.meta.title}} - Kali Protectives">
 		{{else}}
-			<title>{{post.name}} - Kali Protectives</title>
+			<title>{{post.name}}{{#ifCond section "==" "republik"}} - Republik{{/ifCond}} - Kali Protectives{{#if locals.params.discipline }}{{locals.params.discipline.name}} {{/if}}</title>
 			<meta property="og:title" content="{{post.name}} - Kali Protectives">
 			<meta name="twitter:title" content="{{post.name}} - Kali Protectives">
 		{{/if}}
@@ -62,8 +62,8 @@
 		{{/each}}
 		<meta name="keywords" content="helmets, armor, mtb, mountain biking {{# each post.categories}}{{name}}, {{/each}}">
 	{{else}}
-		<title>{{data.page.title}}</title>
-		<meta name="keywords" content="{{{@root.siteSettings.metakeywords.textValue}}}">
+		<title>{{data.page.title}}{{#if locals.params.discipline }}{{/if}}</title>
+		<meta name="keywords" content="{{#if product}}Kali {{product.name}}, {{/if}}{{{@root.siteSettings.metakeywords.textValue}}}">
 		<meta name="description" content="{{{@root.siteSettings.metadescription.textValue}}}">
 		<meta property="og:image" content="{{baseurl}}/images/logo.png">
 		<meta name="twitter:image:src" content="{{baseurl}}/images/logo.png">
