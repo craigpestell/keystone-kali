@@ -531,7 +531,7 @@
 										img = parts[0] + 'upload/f_auto,w_auto,dpr_auto/' + parts[1];
 										var imgSmall = parts[0] + 'upload/f_auto,q_auto,w_400/' + parts[1];
 										img = img.replace('http://', 'https://');
-										imgSmall.replace('http://', 'https://');
+									  imgSmall =	imgSmall.replace('http://', 'https://');
 
 									}
 									window.salvattore['append_elements'](grid[0], [item]);
