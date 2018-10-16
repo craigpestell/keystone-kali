@@ -54,6 +54,7 @@ exports = module.exports = function(app) {
     	//res.locals.params = {discipline:'bike'};
     	next();
     });*/
+	app.use(require('express-uncapitalize')());
 
 	app.all('*', function(req, res, next) {
 		res.locals.params = {};
@@ -78,8 +79,8 @@ exports = module.exports = function(app) {
 		var host = req.get('Host');
 		if (req.url === '/helmets' || req.url === '/helmets/') {
 			if (req.host.indexOf('bike.') === -1) {
-				console.log('redirect URL: ', 'https://bike.kaliprotectives.com/helmets/');
-				return res.redirect(301, 'https://bike.kaliprotectives.com/helmets/');
+				console.log('redirect URL: ', 'https://bike.kaliprotectives.com/helmets');
+				return res.redirect(301, 'https://bike.kaliprotectives.com/helmets');
 			}
 		}
 		return next();
