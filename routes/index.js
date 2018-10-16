@@ -60,7 +60,7 @@ exports = module.exports = function(app) {
 	// app.enable('strict routing');
 
 	app.use(require('express-uncapitalize')());
-	app.use(slash());
+	// app.use(slash());
 
 	app.all('*', function(req, res, next) {
 		res.locals.params = {};
