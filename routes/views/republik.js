@@ -15,7 +15,7 @@ exports = module.exports = function (req, res) {
 		category: req.params.category
 	};
 	locals.data = {
-		page: {title: 'Republik - Kali Protectives'},
+		page: {title: 'Kali Protectives'},
 		posts: [],
 		categories: []
 	};
@@ -55,7 +55,7 @@ exports = module.exports = function (req, res) {
 				.populate('category')
 				.exec(function (err, result) {
           locals.data.category = result.map(function(cat){
-            locals.data.page.title = cat.name + ' - Republik - Kali Protectives';
+            locals.data.page.title = cat.name + ' - Kali Protectives';
 						return cat._id;
 					});
           
