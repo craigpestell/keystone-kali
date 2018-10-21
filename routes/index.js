@@ -78,7 +78,7 @@ exports = module.exports = function(app) {
 	app.all(['/helmets'], function redirects(req, res, next) {
 		var host = req.get('Host');
 		if (req.url === '/helmets' || req.url === '/helmets/') {
-			if (req.host.indexOf('bike.') === -1) {
+			if (req.hostname.indexOf('bike.') === -1) {
 				console.log('redirect URL: ', 'https://bike.kaliprotectives.com/helmets');
 				return res.redirect(301, 'https://bike.kaliprotectives.com/helmets');
 			}
@@ -179,12 +179,30 @@ exports = module.exports = function(app) {
 			});
 	});
 
+	app.param('postId', function(req, res, next, postId) {
+		keystone
+			.list('Post')
+			.model.findById(postId)
+			.populate('author categories product postLayout gallery.widgets product product')
+			.exec(function(err, data) {
+				if (err) return next(err);
+				//if (!data) return next(new Error('Nothing is found'));
+				if (!data) return next();
+				res.locals.params.post = data;
+				next();
+			});
+      
+    
+	});
+
 	app.get('/api/dealers', keystone.middleware.api, routes.api.dealers.list);
 	app.get(
 		['/api/:postCategory/posts', '/api/:postCategory/:postSubCategory/posts'],
 		keystone.middleware.api,
 		routes.api.posts.list,
 	);
+
+	app.get('/api/post/:postId', keystone.middleware.api, routes.api.post.get);
 
 	app.use(subdomain({ base: keystone.get('domain'), removeWWW: true, debug: true }));
 
