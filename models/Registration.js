@@ -20,7 +20,7 @@ Registration.add({
     gender: { type: Types.Select, options: 'male, female', required: true },
     //birthDate: {type: Types.Date, required: true, label: 'Birthdate (mm/dd/yyyy)'},
     age: { type: String },
-    helmetSerial: { type: String, required: true },
+    helmetSerial: { type: String },
     helmetModel: { type: String, required: true },
     helmetColor: { type: String, required: true },
     helmetSize: { type: String, required: true },
