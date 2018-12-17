@@ -1544,30 +1544,6 @@ hr {
     }
 }
 
-a[href^="http://maps.google.com/maps"] {
-    display: none !important;
-}
-
-a[href^="https://maps.google.com/maps"] {
-    display: none !important;
-}
-
-.gmnoprint {
-    a {
-        display: none;
-    }
-    span {
-        display: none;
-    }
-    div {
-        background: none !important;
-    }
-}
-
-.gm-style-cc {
-    display: none;
-}
-
 .section.dark {
     color: $white;
     .dark-to-white {
