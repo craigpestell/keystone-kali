@@ -1,6 +1,6 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
-require('dotenv').load();
+require('dotenv').config({path: __dirname + '/.env'});
 
 // Require keystone
 var keystone = require('keystone');
@@ -18,6 +18,7 @@ var handlebarsInstance = handlebars.create({
 	extname: '.hbs'
 });
 
+console.log('MONGO_URL:', process.env.MONGO_URL);
 keystone.init({
 
 	'name': 'kali',
@@ -39,7 +40,7 @@ keystone.init({
 	'auth': true,
 	'user model': 'User',
 
-	
+	'cloudinary config': process.env.CLOUDINARY_URL,	
 	'embedly api key': 'e9763d8cbe1c468fb6b5b10b5ac87e98',
 
 	'wysiwyg skin': '',
@@ -71,7 +72,7 @@ keystone.init({
 	},
 	
 
-	'mongo': process.env.DO ? 'mongodb://162.243.146.93:27017/kali' : 'mongodb://104.236.143.31:27017/kali',
+	'mongo': 'mongodb://10.134.250.237:27017/kali',
 	'ga_key': process.env.GOOGLE_TRACKING_KEY,
 	'port': process.env.PORT
 });
